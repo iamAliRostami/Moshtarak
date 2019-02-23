@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/img_home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_connect_to_portl"
+            android:icon="@drawable/img_connect_to_portal"
+            android:title="@string/portal_connect" />
+        <item
+            android:id="@+id/nav_transaction"
+            android:icon="@drawable/img_transactions"
+            android:title="@string/transaction" />
+        <item
+            android:id="@+id/nav_update"
+            android:icon="@drawable/img_update"
+            android:title="@string/update"></item>
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/img_share"
+            android:title="@string/account" />
+        <item
+            android:id="@+id/nav_code"
+            android:icon="@drawable/img_recovery_code"
+            android:title="@string/recovery_code" />
+
+        <item
+            android:id="@+id/nav_connect"
+            android:icon="@drawable/img_contact_us"
+            android:title="@string/connect" />
+
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/img_exit"
+            android:title="@string/exit" />
+    </group>
+
+    <item android:title="امکانات">
+        <menu>
+            <!-- <item
+                 android:id="@+id/nav_location"
+                 android:icon="@drawable/ic_place_black_36dp"
+                 android:title="مکان یابی" />
+             <item
+                 android:id="@+id/preferred_setting"
+                 android:icon="@drawable/ic_settings_black_36dp"
+                 android:title="@string/title_activity_setting" />
+             <item
+                 android:id="@+id/close_app"
+                 android:icon="@drawable/ic_close_black_36dp"-->
+            android:title="خروج"/>
+        </menu>
+    </item>
+
+</menu>
