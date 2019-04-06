@@ -25,6 +25,17 @@ public interface IAbfaService {
             @Query("eshterak") String eshterak
     );
 
+    @GET("/MoshtarakinApi/Member/CanMatch/")
+    Call<SimpleMessage> register(
+            @Query("billId") String billId,
+            @Query("eshterak") String eshterak,
+            @Query("buildSerial") String buildSerial,
+            @Query("appVersion") String appVersion,
+            @Query("osVersion") String osVersion,
+            @Query("mobile") String mobile,
+            @Query("phoneModel") String phoneModel
+
+    );
     @GET("/MoshtarakinApi/Member/GetInfo/{billId}")
     Call<MemberInfo> getInfo(
             @Path("billId") String billId

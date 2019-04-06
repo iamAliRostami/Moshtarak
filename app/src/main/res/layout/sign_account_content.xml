@@ -18,9 +18,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/activity_mid_margin"
             android:layout_marginLeft="@dimen/activity_large_margin"
             android:layout_marginRight="@dimen/activity_large_margin"
             android:layout_weight="1"
@@ -34,8 +33,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/activity_large_margin"
-                android:layout_marginRight="@dimen/activity_large_margin"
                 android:text="@string/id_bill"
                 android:textSize="@dimen/textSizeMedium" />
 
@@ -43,17 +40,20 @@
                 android:id="@+id/editTextBillId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
                 android:inputType="number"
-                android:padding="@dimen/activity_large_padding" />
+                android:layout_marginLeft="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
+                android:gravity="center"
+                android:paddingLeft="@dimen/activity_large_padding"
+                android:paddingTop="@dimen/activity_mid_padding"
+                android:paddingRight="@dimen/activity_large_padding"
+                android:paddingBottom="@dimen/activity_mid_padding" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/activity_large_margin"
-                android:layout_marginRight="@dimen/activity_large_margin"
                 android:text="@string/account_number"
                 android:textSize="@dimen/textSizeMedium" />
 
@@ -61,11 +61,85 @@
                 android:id="@+id/editTextAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
                 android:inputType="number"
-                android:padding="@dimen/activity_large_padding" />
+                android:layout_marginLeft="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
+                android:gravity="center"
+                android:paddingLeft="@dimen/activity_large_padding"
+                android:paddingTop="@dimen/activity_mid_padding"
+                android:paddingRight="@dimen/activity_large_padding"
+                android:paddingBottom="@dimen/activity_mid_padding" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:text="@string/nation_number"
+                android:textSize="@dimen/textSizeMedium" />
+
+            <EditText
+                android:id="@+id/editTextNationNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
+                android:background="@drawable/border_gray_"
+                android:gravity="center"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="10"
+                android:paddingLeft="@dimen/activity_large_padding"
+                android:paddingTop="@dimen/activity_mid_padding"
+                android:paddingRight="@dimen/activity_large_padding"
+                android:paddingBottom="@dimen/activity_mid_padding" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:text="@string/mobile_number"
+                android:textSize="@dimen/textSizeMedium" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/editTextMobile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_gray_"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="9"
+                    android:paddingLeft="@dimen/activity_large_padding"
+                    android:paddingTop="@dimen/activity_mid_padding"
+                    android:paddingRight="@dimen/activity_large_padding"
+                    android:paddingBottom="@dimen/activity_mid_padding" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_mid_margin"
+                    android:layout_marginEnd="@dimen/activity_mid_margin"
+                    android:text="09"
+                    android:textSize="@dimen/textSizeMedium" />
+
+
+            </LinearLayout>
             <Button
                 android:id="@+id/buttonSign"
                 android:layout_width="match_parent"

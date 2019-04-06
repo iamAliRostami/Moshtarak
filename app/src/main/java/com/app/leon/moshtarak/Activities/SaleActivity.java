@@ -2,7 +2,6 @@ package com.app.leon.moshtarak.Activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -145,8 +144,6 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
     private void sendRequest() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService SendRegisterRequest = retrofit.create(IAbfaService.class);
-        Log.e("selected", String.valueOf(radioButtonService1.isChecked()));
-        Log.e("selected", String.valueOf(radioButtonService2.isChecked()));
         registerNewDto = new RegisterNewDto(editTextBillId.getText().toString(), editTextName.getText().toString()
                 , editTextFamily.getText().toString(), editTextFatherName.getText().toString(),
                 editTextNationNumber.getText().toString(), "09".concat(editTextMobile.getText().toString()),

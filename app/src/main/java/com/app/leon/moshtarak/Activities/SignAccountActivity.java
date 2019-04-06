@@ -1,8 +1,10 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.content.Context;
+import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,11 +33,15 @@ public class SignAccountActivity extends BaseActivity
     EditText editTextBillId;
     @BindView(R.id.editTextAccount)
     EditText editTextAccount;
+    @BindView(R.id.editTextNationNumber)
+    EditText editTextNationNumber;
+    @BindView(R.id.editTextMobile)
+    EditText editTextMobile;
     @BindView(R.id.buttonSign)
     Button buttonSign;
     @BindView(R.id.buttonLogOut)
     Button buttonLogOut;
-    String billId, account;
+    String billId, account, mobile, nationNumber;
     View viewFocus;
     Context context;
     boolean change = false;
@@ -51,6 +57,7 @@ public class SignAccountActivity extends BaseActivity
     @Override
     protected void initialize() {
         ButterKnife.bind(this);
+        Log.e("seial", String.valueOf(Build.SERIAL));
         SharedPreference sharedPreference = new SharedPreference(context);
         if (sharedPreference.checkIsNotEmpty()) {
             buttonSign.setText(getResources().getString(R.string.change_account));
@@ -71,7 +78,7 @@ public class SignAccountActivity extends BaseActivity
             @Override
             public void onClick(View view) {
                 View viewFocus;
-                Boolean cancel = false;
+                boolean cancel = false;
                 if (editTextBillId.getText().length() < 1) {
                     cancel = true;
                     editTextBillId.setError(getString(R.string.error_empty));
@@ -84,10 +91,22 @@ public class SignAccountActivity extends BaseActivity
                     viewFocus = editTextAccount;
                     viewFocus.requestFocus();
                 }
+                if (editTextNationNumber.getText().length() < 10) {
+                    view = editTextNationNumber;
+                    view.requestFocus();
+                    cancel = true;
+                }
+                if (editTextMobile.getText().length() < 9) {
+                    view = editTextMobile;
+                    view.requestFocus();
+                    cancel = true;
+                }
                 if (!cancel) {
                     account = editTextAccount.getText().toString();
                     billId = editTextBillId.getText().toString();
-                    canMatch(billId, account);
+                    mobile = "09".concat(editTextMobile.getText().toString());
+                    nationNumber = editTextNationNumber.getText().toString();
+                    canMatch(billId, account, mobile, nationNumber);
                 }
             }
         });
@@ -150,10 +169,14 @@ public class SignAccountActivity extends BaseActivity
         });
     }
 
-    void canMatch(String billId, String account) {
+    void canMatch(String billId, String account, String mobile, String nationNumber) {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService canMatch = retrofit.create(IAbfaService.class);
-        Call<SimpleMessage> call = canMatch.canMatch(billId, account);
+
+//        Call<SimpleMessage> call = canMatch.canMatch(billId, account);
+        Call<SimpleMessage> call = canMatch.register(billId, account,
+                String.valueOf(Build.SERIAL), "1.0.0", String.valueOf(Build.VERSION.RELEASE),
+                getDeviceName(), mobile);
         HttpClientWrapper.callHttpAsync(call, SignAccountActivity.this, context, ProgressType.SHOW.getValue());
     }
 
@@ -176,6 +199,29 @@ public class SignAccountActivity extends BaseActivity
             new CustomDialog(DialogType.Red, SignAccountActivity.this, getString(R.string.error_is_not_match),
                     getString(R.string.dear_user), getString(R.string.login),
                     getString(R.string.accepted));
+        }
+    }
+
+    public String getDeviceName() {
+        String manufacturer = Build.MANUFACTURER;
+        String model = Build.MODEL;
+        if (model.toLowerCase().startsWith(manufacturer.toLowerCase())) {
+            return capitalize(model);
+        } else {
+            return capitalize(manufacturer) + " " + model;
+        }
+    }
+
+
+    private String capitalize(String s) {
+        if (s == null || s.length() == 0) {
+            return "";
+        }
+        char first = s.charAt(0);
+        if (Character.isUpperCase(first)) {
+            return s;
+        } else {
+            return Character.toUpperCase(first) + s.substring(1);
         }
     }
 }
