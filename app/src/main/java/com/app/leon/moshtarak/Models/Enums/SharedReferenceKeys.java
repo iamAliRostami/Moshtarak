@@ -5,14 +5,9 @@ package com.app.leon.moshtarak.Models.Enums;
  */
 
 public enum SharedReferenceKeys {
-    USERNAME("username"),
-    PASSWORD("password"),
-    TOKEN("token"),
-    REFRESH_TOKEN("refresh_token"),
-    THEME_STABLE("theme_stable"),
-    THEME_TEMPORARY("theme_temporary"),
-    ESHTERAK_OR_QERAAT("eshterak_or_qeraat"),
-    BILL_COUNTER("bill_counter");
+    ACCOUNT_NUMBER("account_number"),
+    BILL_ID("bill_id"),
+    MOBILE_NUMBER("mobile_number");
 
     private final String value;
 

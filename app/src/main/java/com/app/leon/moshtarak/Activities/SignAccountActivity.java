@@ -1,10 +1,10 @@
 package com.app.leon.moshtarak.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,7 +57,6 @@ public class SignAccountActivity extends BaseActivity
     @Override
     protected void initialize() {
         ButterKnife.bind(this);
-        Log.e("seial", String.valueOf(Build.SERIAL));
         SharedPreference sharedPreference = new SharedPreference(context);
         if (sharedPreference.checkIsNotEmpty()) {
             buttonSign.setText(getResources().getString(R.string.change_account));
@@ -117,7 +116,7 @@ public class SignAccountActivity extends BaseActivity
             @Override
             public void onClick(View view) {
                 SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
-                sharedPreference.putData("", "");
+                sharedPreference.putData("", "", "");
                 new CustomDialog(DialogType.YellowRedirect, SignAccountActivity.this, getString(R.string.logout_successful),
                         getString(R.string.dear_user), getString(R.string.logout),
                         getString(R.string.accepted));
@@ -174,8 +173,9 @@ public class SignAccountActivity extends BaseActivity
         final IAbfaService canMatch = retrofit.create(IAbfaService.class);
 
 //        Call<SimpleMessage> call = canMatch.canMatch(billId, account);
-        Call<SimpleMessage> call = canMatch.register(billId, account,
-                String.valueOf(Build.SERIAL), "1.0.0", String.valueOf(Build.VERSION.RELEASE),
+        @SuppressLint("HardwareIds") String serial = String.valueOf(Build.SERIAL);
+        Call<SimpleMessage> call = canMatch.register(billId, account, serial,
+                "1.0.0", String.valueOf(Build.VERSION.RELEASE),
                 getDeviceName(), mobile);
         HttpClientWrapper.callHttpAsync(call, SignAccountActivity.this, context, ProgressType.SHOW.getValue());
     }
@@ -184,7 +184,7 @@ public class SignAccountActivity extends BaseActivity
     public void execute(SimpleMessage simpleMessage) {
         if (simpleMessage.getMessage().contains("شناسه قبض و اشتراک مطابقت دارند")) {
             SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
-            sharedPreference.putData(account, billId);
+            sharedPreference.putData(account, billId, mobile);
             new CustomDialog(DialogType.GreenRedirect, SignAccountActivity.this, getString(R.string.you_are_signed),
                     getString(R.string.dear_user), getString(R.string.login),
                     getString(R.string.accepted));
@@ -195,6 +195,8 @@ public class SignAccountActivity extends BaseActivity
             }
             editTextAccount.setText("");
             editTextBillId.setText("");
+            editTextMobile.setText("");
+            editTextNationNumber.setText("");
         } else {
             new CustomDialog(DialogType.Red, SignAccountActivity.this, getString(R.string.error_is_not_match),
                     getString(R.string.dear_user), getString(R.string.login),

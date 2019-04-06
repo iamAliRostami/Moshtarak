@@ -2,9 +2,9 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference
         android:defaultValue=""
-        android:key="file_number"
-        android:summary="Number of File in Database!"
-        android:title="File Number"></EditTextPreference>
+        android:key="mobile"
+        android:summary="mobile of File in Database!"
+        android:title="Mobile Number"></EditTextPreference>
     <EditTextPreference
         android:defaultValue=""
         android:key="account_number"
