@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
@@ -77,7 +78,8 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
         recyclerViewCardex.setAdapter(kardexCustomAdapter);
         recyclerViewCardex.setLayoutManager(new LinearLayoutManager(this) {
             @Override
-            public boolean requestChildRectangleOnScreen(RecyclerView parent, View child, Rect rect, boolean immediate) {
+            public boolean requestChildRectangleOnScreen(@NonNull RecyclerView parent,
+                                                         @NonNull View child, @NonNull Rect rect, boolean immediate) {
                 return false;
             }
         });
