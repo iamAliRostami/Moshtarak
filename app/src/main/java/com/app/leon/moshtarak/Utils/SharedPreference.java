@@ -16,11 +16,6 @@ public class SharedPreference {
         appPrefs = this.context.getSharedPreferences("com.app.leon.moshtarak.user_preferences", MODE_PRIVATE);
     }
 
-    public void saveData(String account_number, String bill_id) {
-        putBillID(bill_id);
-        putAccountNumber(account_number);
-    }
-
     private void putAccountNumber(String account_number) {
         SharedPreferences.Editor prefsEditor = appPrefs.edit();
         prefsEditor.putString(SharedReferenceKeys.ACCOUNT_NUMBER.getValue(), account_number);
@@ -39,10 +34,17 @@ public class SharedPreference {
         prefsEditor.apply();
     }
 
-    public void putData(String account_number, String bill_id, String mobile_number) {
+    private void putApiKey(String mobile_number) {
+        SharedPreferences.Editor prefsEditor = appPrefs.edit();
+        prefsEditor.putString(SharedReferenceKeys.API_KEY.getValue(), mobile_number);
+        prefsEditor.apply();
+    }
+
+    public void putData(String account_number, String bill_id, String mobile_number, String api_key) {
         putAccountNumber(account_number);
         putBillID(bill_id);
         putMobileNumber(mobile_number);
+        putApiKey(api_key);
     }
 
     public boolean checkIsNotEmpty() {
@@ -50,12 +52,15 @@ public class SharedPreference {
             return false;
         } else if (appPrefs.getString(SharedReferenceKeys.ACCOUNT_NUMBER.getValue(), "").isEmpty() ||
                 appPrefs.getString(SharedReferenceKeys.BILL_ID.getValue(), "").isEmpty() ||
-                appPrefs.getString(SharedReferenceKeys.MOBILE_NUMBER.getValue(), "").isEmpty()
+                appPrefs.getString(SharedReferenceKeys.MOBILE_NUMBER.getValue(), "").isEmpty() ||
+                appPrefs.getString(SharedReferenceKeys.API_KEY.getValue(), "").isEmpty()
+
         ) {
             return false;
         } else
             return appPrefs.getString(SharedReferenceKeys.ACCOUNT_NUMBER.getValue(), "").length() >= 1 &&
                     appPrefs.getString(SharedReferenceKeys.BILL_ID.getValue(), "").length() >= 1 &&
+                    appPrefs.getString(SharedReferenceKeys.API_KEY.getValue(), "").length() >= 1 &&
                     appPrefs.getString(SharedReferenceKeys.MOBILE_NUMBER.getValue(), "").length() >= 1;
     }
 
@@ -71,7 +76,8 @@ public class SharedPreference {
         return appPrefs.getString(SharedReferenceKeys.BILL_ID.getValue(), "");
     }
 
-    public interface accessData {
-        void AccessData();
+    public String getApiKey() {
+        return appPrefs.getString(SharedReferenceKeys.API_KEY.getValue(), "");
     }
+
 }

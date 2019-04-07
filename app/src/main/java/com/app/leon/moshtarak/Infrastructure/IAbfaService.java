@@ -2,6 +2,7 @@ package com.app.leon.moshtarak.Infrastructure;
 
 import com.app.leon.moshtarak.Models.DbTables.Kardex;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
+import com.app.leon.moshtarak.Models.DbTables.Login;
 import com.app.leon.moshtarak.Models.DbTables.MemberInfo;
 import com.app.leon.moshtarak.Models.DbTables.RegisterAsDto;
 import com.app.leon.moshtarak.Models.DbTables.RegisterNewDto;
@@ -25,17 +26,12 @@ public interface IAbfaService {
             @Query("eshterak") String eshterak
     );
 
-    @GET("/MoshtarakinApi/Member/CanMatch/")
-    Call<SimpleMessage> register(
-            @Query("billId") String billId,
-            @Query("eshterak") String eshterak,
-            @Query("buildSerial") String buildSerial,
-            @Query("appVersion") String appVersion,
-            @Query("osVersion") String osVersion,
-            @Query("mobile") String mobile,
-            @Query("phoneModel") String phoneModel
+    @POST("/MoshtarakinApi/HamrahAbfaManager/Register")
+    Call<Login> register(
+            @Body Login login
 
     );
+
     @GET("/MoshtarakinApi/Member/GetInfo/{billId}")
     Call<MemberInfo> getInfo(
             @Path("billId") String billId

@@ -11,9 +11,9 @@ import android.widget.EditText;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
+import com.app.leon.moshtarak.Models.DbTables.Login;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
-import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
@@ -28,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class SignAccountActivity extends BaseActivity
-        implements ICallback<SimpleMessage> {
+        implements ICallback<Login> {
     @BindView(R.id.editTextBillId)
     EditText editTextBillId;
     @BindView(R.id.editTextAccount)
@@ -116,7 +116,7 @@ public class SignAccountActivity extends BaseActivity
             @Override
             public void onClick(View view) {
                 SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
-                sharedPreference.putData("", "", "");
+                sharedPreference.putData("", "", "", "");
                 new CustomDialog(DialogType.YellowRedirect, SignAccountActivity.this, getString(R.string.logout_successful),
                         getString(R.string.dear_user), getString(R.string.logout),
                         getString(R.string.accepted));
@@ -174,17 +174,23 @@ public class SignAccountActivity extends BaseActivity
 
 //        Call<SimpleMessage> call = canMatch.canMatch(billId, account);
         @SuppressLint("HardwareIds") String serial = String.valueOf(Build.SERIAL);
-        Call<SimpleMessage> call = canMatch.register(billId, account, serial,
+        Call<Login> call = canMatch.register(new Login(billId, account, nationNumber, serial,
                 "1.0.0", String.valueOf(Build.VERSION.RELEASE),
-                getDeviceName(), mobile);
+                mobile, getDeviceName()));
         HttpClientWrapper.callHttpAsync(call, SignAccountActivity.this, context, ProgressType.SHOW.getValue());
     }
 
     @Override
-    public void execute(SimpleMessage simpleMessage) {
-        if (simpleMessage.getMessage().contains("شناسه قبض و اشتراک مطابقت دارند")) {
+    public void execute(Login login) {
+        if (login.getApiKey().isEmpty()) {
+            new CustomDialog(DialogType.Red, SignAccountActivity.this, login.getMessage(),
+                    //getString(R.string.error_is_not_match),
+                    getString(R.string.dear_user), getString(R.string.login),
+                    getString(R.string.accepted));
+
+        } else {
             SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
-            sharedPreference.putData(account, billId, mobile);
+            sharedPreference.putData(account, billId, mobile, login.getApiKey());
             new CustomDialog(DialogType.GreenRedirect, SignAccountActivity.this, getString(R.string.you_are_signed),
                     getString(R.string.dear_user), getString(R.string.login),
                     getString(R.string.accepted));
@@ -197,10 +203,6 @@ public class SignAccountActivity extends BaseActivity
             editTextBillId.setText("");
             editTextMobile.setText("");
             editTextNationNumber.setText("");
-        } else {
-            new CustomDialog(DialogType.Red, SignAccountActivity.this, getString(R.string.error_is_not_match),
-                    getString(R.string.dear_user), getString(R.string.login),
-                    getString(R.string.accepted));
         }
     }
 

@@ -7,7 +7,8 @@ package com.app.leon.moshtarak.Models.Enums;
 public enum SharedReferenceKeys {
     ACCOUNT_NUMBER("account_number"),
     BILL_ID("bill_id"),
-    MOBILE_NUMBER("mobile_number");
+    MOBILE_NUMBER("mobile_number"),
+    API_KEY("api_key");
 
     private final String value;
 
