@@ -55,7 +55,7 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     View viewFocus;
     Context context;
     String billId, number, phoneNumber;
-    ;
+    SharedPreference sharedPreference;
 
     @Override
     protected UiElementInActivity getUiElementsInActivity() {
@@ -68,11 +68,14 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     protected void initialize() {
         ButterKnife.bind(this);
         context = this;
+        accessData();
+        sharedPreference = new SharedPreference(context);
+        phoneNumber = sharedPreference.getMobileNumber().replace("09", "");
+        editTextPhoneNumber.setText(phoneNumber);
         setComponentPosition();
         setTextChangedListener();
         viewFocus = editText1;
         viewFocus.requestFocus();
-        accessData();
         setOnButtonSignClickListener();
 
     }

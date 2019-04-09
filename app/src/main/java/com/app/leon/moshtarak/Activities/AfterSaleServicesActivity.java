@@ -43,6 +43,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
     @BindView(R.id.editTextMobile)
     EditText editTextMobile;
     Context context;
+    SharedPreference sharedPreference;
     String billId;
     private ArrayList<String> servicesTitle = new ArrayList<>();
     private ArrayList<String> servicesId = new ArrayList<>();
@@ -60,18 +61,19 @@ public class AfterSaleServicesActivity extends BaseActivity {
         ButterKnife.bind(this);
         context = this;
         accessData();
-        getServices();
-        setOnButtonSubmitClickListener();
     }
 
     private void accessData() {
-        SharedPreference appPrefs = new SharedPreference(context);
-        if (!appPrefs.checkIsNotEmpty()) {
+        sharedPreference = new SharedPreference(context);
+        if (!sharedPreference.checkIsNotEmpty()) {
             Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
             startActivity(intent);
             finish();
         } else {
-            billId = appPrefs.getBillID();
+            billId = sharedPreference.getBillID();
+            editTextMobile.setText(sharedPreference.getMobileNumber().replace("09", ""));
+            getServices();
+            setOnButtonSubmitClickListener();
         }
     }
 

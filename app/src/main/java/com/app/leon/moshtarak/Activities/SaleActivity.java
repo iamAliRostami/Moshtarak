@@ -104,6 +104,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
     String billId;
     Context context;
     RegisterNewDto registerNewDto;
+    SharedPreference sharedPreference;
 
     @Override
     protected UiElementInActivity getUiElementsInActivity() {
@@ -116,6 +117,8 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
     protected void initialize() {
         ButterKnife.bind(this);
         context = this;
+        sharedPreference = new SharedPreference(context);
+        editTextMobile.setText(sharedPreference.getMobileNumber().replace("09", ""));
         View view = editTextFamily;
         view.requestFocus();
         radioButtonService1.setChecked(true);
