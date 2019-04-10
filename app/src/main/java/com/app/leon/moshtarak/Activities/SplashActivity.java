@@ -16,7 +16,6 @@ import butterknife.ButterKnife;
 public class SplashActivity extends Activity {
     @BindView(R.id.splashScreenImageView)
     ImageView imageViewSplash;
-    @BindView(R.id.shimmer_view_container)
     ShimmerFrameLayout container;
     private boolean splashLoaded = false;
 
@@ -42,6 +41,7 @@ public class SplashActivity extends Activity {
     private void initialize() {
         int splashResourceId = R.drawable.img_splash;
         imageViewSplash.setImageResource(splashResourceId);
+        container = findViewById(R.id.shimmer_view_container);
     }
 
     private void startSplash() {
