@@ -5,10 +5,8 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
-import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.CustomDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
