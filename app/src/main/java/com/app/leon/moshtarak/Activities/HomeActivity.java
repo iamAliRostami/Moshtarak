@@ -1,6 +1,10 @@
 package com.app.leon.moshtarak.Activities;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -90,10 +94,27 @@ public class HomeActivity extends BaseActivity {
         return uiElementInActivity;
     }
 
+    @SuppressLint({"HardwareIds", "MissingPermission"})
     @Override
     protected void initialize() {
         ButterKnife.bind(this);
         setOnClickListener();
+        TelephonyManager tMgr = (TelephonyManager)
+                HomeActivity.this.getSystemService(Context.TELEPHONY_SERVICE);
+
+        String MyPhoneNumber = "0000000000";
+
+        try {
+            MyPhoneNumber = tMgr.getLine1Number();
+            Log.e("phone number1:", MyPhoneNumber);
+        } catch (NullPointerException ex) {
+            Log.e("error", ex.getMessage());
+            Log.e("error", ex.toString());
+        }
+        if (MyPhoneNumber.equals("")) {
+            MyPhoneNumber = tMgr.getSubscriberId();
+            Log.e("phone number2:", MyPhoneNumber);
+        }
     }
 
     void setOnClickListener() {
