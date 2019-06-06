@@ -23,18 +23,5 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp" />
 
-    <!--<android.support.design.widget.NavigationView-->
-    <!--android:id="@+id/nav_view"-->
-    <!--android:layout_width="@dimen/nav_width"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_gravity="start"-->
-    <!--android:fitsSystemWindows="true"-->
-    <!--app:headerLayout="@layout/nav_header_base"-->
-    <!--app:menu="@menu/activity_base_drawer"-->
-    <!--app:itemIconTint="?attr/colorPrimaryDark"-->
-    <!--app:itemTextColor="?attr/colorPrimaryDark"-->
-    <!--android:theme="@style/navigationDrawerStyle"-->
-    <!--app:itemTextAppearance="@style/drawerItemStyle" />-->
-
 </android.support.v4.widget.DrawerLayout>
 

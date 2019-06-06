@@ -1,10 +1,7 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -26,7 +23,7 @@ public class HomeActivity extends BaseActivity {
     ImageButton imageButtonTrain;
     @BindView(R.id.imageButtonMamoor)
     ImageButton imageButtonMamoor;
-    @BindView(R.id.imageButtonSuggets)
+    @BindView(R.id.imageButtonSuggest)
     ImageButton imageButtonSuggets;
     @BindView(R.id.imageButtonTracking)
     ImageButton imageButtonTracking;
@@ -39,6 +36,14 @@ public class HomeActivity extends BaseActivity {
         public void onClick(View view) {
             Intent intent;
             switch (view.getId()) {
+                case R.id.imageButtonSuggest:
+                    intent = new Intent(getApplicationContext(), SuggestActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.imageButtonTrain:
+                    intent = new Intent(getApplicationContext(), LearningActivity.class);
+                    startActivity(intent);
+                    break;
                 case R.id.imageButtonLastBill:
                     intent = new Intent(getApplicationContext(), LastBillActivity.class);
                     startActivity(intent);
@@ -47,13 +52,7 @@ public class HomeActivity extends BaseActivity {
                     intent = new Intent(getApplicationContext(), CardexActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.imageButtonSuggets:
-                    break;
                 case R.id.imageButtonTracking:
-                    break;
-                case R.id.imageButtonTrain:
-                    intent = new Intent(getApplicationContext(), LearningActivity.class);
-                    startActivity(intent);
                     break;
                 case R.id.imageButtonMamoor:
                     intent = new Intent(getApplicationContext(), SetCounterActivity.class);
@@ -99,22 +98,7 @@ public class HomeActivity extends BaseActivity {
     protected void initialize() {
         ButterKnife.bind(this);
         setOnClickListener();
-        TelephonyManager tMgr = (TelephonyManager)
-                HomeActivity.this.getSystemService(Context.TELEPHONY_SERVICE);
 
-        String MyPhoneNumber = "0000000000";
-
-        try {
-            MyPhoneNumber = tMgr.getLine1Number();
-            Log.e("phone number1:", MyPhoneNumber);
-        } catch (NullPointerException ex) {
-            Log.e("error", ex.getMessage());
-            Log.e("error", ex.toString());
-        }
-        if (MyPhoneNumber.equals("")) {
-            MyPhoneNumber = tMgr.getSubscriberId();
-            Log.e("phone number2:", MyPhoneNumber);
-        }
     }
 
     void setOnClickListener() {
