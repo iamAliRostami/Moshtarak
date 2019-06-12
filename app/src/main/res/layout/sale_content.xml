@@ -54,11 +54,11 @@
                         android:inputType="text"
                         android:lines="1"
                         android:maxLength="8"
-                        android:nextFocusDown="@id/editTextFamily"
-                        android:nextFocusForward="@id/editTextFamily"
                         android:nextFocusLeft="@id/editTextFamily"
                         android:nextFocusRight="@id/editTextFamily"
                         android:nextFocusUp="@id/editTextFamily"
+                        android:nextFocusDown="@id/editTextFamily"
+                        android:nextFocusForward="@id/editTextFamily"
                         android:padding="@dimen/activity_mid_padding"
                         tools:ignore="LabelFor" />
                 </LinearLayout>
@@ -98,11 +98,11 @@
                         android:inputType="text"
                         android:lines="1"
                         android:maxLength="8"
-                        android:nextFocusDown="@id/editTextFatherName"
-                        android:nextFocusForward="@id/editTextFatherName"
                         android:nextFocusLeft="@id/editTextFatherName"
                         android:nextFocusRight="@id/editTextFatherName"
                         android:nextFocusUp="@id/editTextFatherName"
+                        android:nextFocusDown="@id/editTextFatherName"
+                        android:nextFocusForward="@id/editTextFatherName"
                         android:padding="@dimen/activity_mid_padding" />
                 </LinearLayout>
 
@@ -151,11 +151,11 @@
 
                         android:lines="1"
                         android:maxLength="8"
-                        android:nextFocusDown="@id/editTextNationNumber"
-                        android:nextFocusForward="@id/editTextNationNumber"
                         android:nextFocusLeft="@id/editTextNationNumber"
                         android:nextFocusRight="@id/editTextNationNumber"
                         android:nextFocusUp="@id/editTextNationNumber"
+                        android:nextFocusDown="@id/editTextNationNumber"
+                        android:nextFocusForward="@id/editTextNationNumber"
                         android:padding="@dimen/activity_mid_padding" />
                 </LinearLayout>
             </LinearLayout>
@@ -194,11 +194,11 @@
                         android:inputType="number"
                         android:lines="1"
                         android:maxLength="10"
-                        android:nextFocusDown="@id/editTextPhoneNumber"
-                        android:nextFocusForward="@id/editTextPhoneNumber"
                         android:nextFocusLeft="@id/editTextPhoneNumber"
                         android:nextFocusRight="@id/editTextPhoneNumber"
                         android:nextFocusUp="@id/editTextPhoneNumber"
+                        android:nextFocusDown="@id/editTextPhoneNumber"
+                        android:nextFocusForward="@id/editTextPhoneNumber"
                         android:padding="@dimen/activity_mid_padding"
                         tools:ignore="TextFields" />
                 </LinearLayout>
@@ -247,11 +247,11 @@
                         android:inputType="number"
                         android:lines="1"
                         android:maxLength="8"
-                        android:nextFocusDown="@id/editTextMobile"
-                        android:nextFocusForward="@id/editTextMobile"
                         android:nextFocusLeft="@id/editTextMobile"
                         android:nextFocusRight="@id/editTextMobile"
                         android:nextFocusUp="@id/editTextMobile"
+                        android:nextFocusDown="@id/editTextMobile"
+                        android:nextFocusForward="@id/editTextMobile"
                         android:padding="@dimen/activity_mid_padding"
                         tools:ignore="TextFields" />
                 </LinearLayout>
@@ -294,18 +294,18 @@
                         android:inputType="number"
                         android:lines="1"
                         android:maxLength="9"
-                        android:nextFocusDown="@id/editTextBillId"
-                        android:nextFocusForward="@id/editTextBillId"
                         android:nextFocusLeft="@id/editTextBillId"
                         android:nextFocusRight="@id/editTextBillId"
                         android:nextFocusUp="@id/editTextBillId"
+                        android:nextFocusDown="@id/editTextBillId"
+                        android:nextFocusForward="@id/editTextBillId"
                         android:padding="@dimen/activity_mid_padding" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginStart="@dimen/activity_mid_margin"
+                        android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:text="09"
                         android:textSize="@dimen/textSizeMedium" />
 
@@ -500,10 +500,10 @@
             style="@style/text_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_mid_margin"
             android:layout_marginLeft="@dimen/activity_large_margin"
-            android:layout_marginRight="@dimen/activity_large_margin"
             android:layout_marginTop="@dimen/activity_mid_margin"
+            android:layout_marginRight="@dimen/activity_large_margin"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
             android:background="@drawable/border_green_2"
             android:focusable="true"
             android:text="@string/buy"

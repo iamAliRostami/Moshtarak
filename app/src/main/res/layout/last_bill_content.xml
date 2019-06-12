@@ -277,8 +277,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:paddingBottom="6dp"
                     android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
                     android:text="@string/pay_Date"
                     android:textColor="@color/red2"
                     android:textSize="@dimen/textSizeMedium" />
@@ -290,8 +290,8 @@
                     android:layout_weight="1"
                     android:foregroundGravity="center"
                     android:gravity="center"
-                    android:paddingBottom="6dp"
                     android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
                     android:textColor="@color/red2"
                     android:textSize="@dimen/textSizeMedium" />
 
@@ -309,8 +309,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:gravity="end"
-                    android:paddingBottom="6dp"
-                    android:paddingTop="6dp" />
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp" />
 
 
             </android.support.v7.widget.LinearLayoutCompat>
@@ -337,8 +337,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:gravity="start"
-                    android:paddingBottom="6dp"
                     android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
                     android:text="@string/pay"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
@@ -350,8 +350,8 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:paddingBottom="6dp"
                     android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -360,8 +360,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:gravity="end"
-                    android:paddingBottom="6dp"
                     android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
                     android:text="ریال"
                     android:textColor="@color/white"
                     android:textSize="20sp" />

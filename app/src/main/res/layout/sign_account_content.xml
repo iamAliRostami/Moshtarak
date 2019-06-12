@@ -40,11 +40,11 @@
                 android:id="@+id/editTextBillId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_gray_"
-                android:inputType="number"
                 android:layout_marginLeft="@dimen/activity_mid_margin"
                 android:layout_marginRight="@dimen/activity_mid_margin"
+                android:background="@drawable/border_gray_"
                 android:gravity="center"
+                android:inputType="number"
                 android:paddingLeft="@dimen/activity_large_padding"
                 android:paddingTop="@dimen/activity_mid_padding"
                 android:paddingRight="@dimen/activity_large_padding"
@@ -61,11 +61,11 @@
                 android:id="@+id/editTextAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_gray_"
-                android:inputType="number"
                 android:layout_marginLeft="@dimen/activity_mid_margin"
                 android:layout_marginRight="@dimen/activity_mid_margin"
+                android:background="@drawable/border_gray_"
                 android:gravity="center"
+                android:inputType="number"
                 android:paddingLeft="@dimen/activity_large_padding"
                 android:paddingTop="@dimen/activity_mid_padding"
                 android:paddingRight="@dimen/activity_large_padding"
@@ -140,6 +140,7 @@
 
 
             </LinearLayout>
+
             <Button
                 android:id="@+id/buttonSign"
                 android:layout_width="match_parent"
@@ -173,8 +174,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_mid_margin"
-                android:layout_marginRight="@dimen/activity_mid_margin"
                 android:layout_marginTop="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
                 android:gravity="start"
                 android:text="@string/dear_user"
                 android:textColor="@color/red1"
