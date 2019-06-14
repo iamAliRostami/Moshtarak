@@ -8,14 +8,19 @@
     tools:context="com.app.leon.moshtarak.Activities.UsingMethodActivity"
     tools:showIn="@layout/using_method_app_bar">
 
-    <ListView
-        android:id="@+id/listViewLearningUsing"
+    <!--<ListView-->
+    <!--android:id="@+id/listViewLearningUsing"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="start"-->
+    <!--android:layout_marginTop="@dimen/activity_mid_margin"-->
+    <!--android:background="#ffff"-->
+    <!--android:choiceMode="singleChoice"-->
+    <!--android:divider="@android:color/transparent"-->
+    <!--android:dividerHeight="0dp" />-->
+    <WebView
+        android:id="@+id/webViewLearningUsing"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:layout_marginTop="@dimen/activity_mid_margin"
-        android:background="#ffff"
-        android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp" />
+        android:layout_gravity="start" />
 </RelativeLayout>
