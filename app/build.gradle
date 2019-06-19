@@ -12,9 +12,9 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.app.leon.moshtarak"
-        minSdkVersion 21
+        minSdkVersion 17
         targetSdkVersion 28
-        versionCode 2
+        versionCode 3
         versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config
@@ -60,9 +60,9 @@ dependencies {
     implementation 'gun0912.ted:tedpermission:1.0.3'
     implementation 'com.github.satyan:sugar:1.5'
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
-    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.android.support:customtabs:28.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
-    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.google.firebase:firebase-auth:17.0.0'
 }
