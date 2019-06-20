@@ -6,11 +6,12 @@ public class RegisterNewDto {
     private String sureName;
     private String fatherName;
     private String nationalId;
-    private String [] selectedServices;
+    private String[] selectedServices;
     private String mobile;
     private String phoneNumber;
     private String address;
     private String postalCode;
+    private String requestOrigin;
 
     public RegisterNewDto(String neighbourBillId, String firstName, String sureName,
                           String fatherName, String nationalId, String mobile, String phoneNumber,
@@ -24,6 +25,7 @@ public class RegisterNewDto {
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.postalCode = postalCode;
+        this.requestOrigin = requestOrigin;
     }
 
     public String getNeighbourBillId() {
@@ -70,7 +72,7 @@ public class RegisterNewDto {
         return selectedServices;
     }
 
-    public void setSelectedServices(String []selectedServices) {
+    public void setSelectedServices(String[] selectedServices) {
         this.selectedServices = selectedServices;
     }
 
