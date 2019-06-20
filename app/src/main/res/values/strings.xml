@@ -41,7 +41,7 @@
     <string name="input_message">به منظور سهولت در استفاده ازخدمات نرم افزار و جلوگیری از تکرار و ورود، شماره پرونده و اشتراک خود را وارد نموده و برای بار اول اطلاعات مروبط به پرونده را تکمیل و تایید نمایید.</string>
     <string name="account_">اشتراک</string>
     <string name="id_bill">شناسه قبض</string>
-    <string name="id_bill_neighbour">شناسه قبض همسایه</string>
+    <string name="id_bill_neighbour">شناسه همسایه</string>
     <string name="user">کاربری</string>
     <string name="formal_capacity">ظرفیت قراردادی</string>
     <string name="ahad">آحاد</string>
@@ -130,4 +130,8 @@
     <string name="submit">ثبت</string>
     <string name="select">لطفا یکی از خدمات را انتخاب کنید</string>
     <string name="error_report">گزارش خطا</string>
+    <string name="request">پیگیری درخواست</string>
+    <string name="track_number">شماره پیگیری:</string>
+    <string name="status">وضعیت</string>
+    <string name="time">ساعت</string>
 </resources>

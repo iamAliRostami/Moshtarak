@@ -7,6 +7,7 @@ import com.app.leon.moshtarak.Models.DbTables.MemberInfo;
 import com.app.leon.moshtarak.Models.DbTables.RegisterAsDto;
 import com.app.leon.moshtarak.Models.DbTables.RegisterNewDto;
 import com.app.leon.moshtarak.Models.DbTables.Service;
+import com.app.leon.moshtarak.Models.DbTables.TrackingDto;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 
 import java.util.ArrayList;
@@ -62,4 +63,10 @@ public interface IAbfaService {
 
     @GET("/MoshtarakinApi/RequestManager/GetDictionary?serviceGroupId=2")
     Call<ArrayList<Service>> getDictionary();
+
+
+    @GET("/MoshtarakinApi/RequestManager/GetTrackings/{trackNumber}")
+    Call<ArrayList<TrackingDto>> getTrackings(
+            @Path("trackNumber") String trackNumber
+    );
 }

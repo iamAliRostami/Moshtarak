@@ -2,6 +2,8 @@ package com.app.leon.moshtarak.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
+import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.RegisterNewDto;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
@@ -20,7 +23,6 @@ import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
-import com.app.leon.moshtarak.Utils.ICallback;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 
@@ -105,6 +107,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
     Context context;
     RegisterNewDto registerNewDto;
     SharedPreference sharedPreference;
+    View viewFocus;
 
     @Override
     protected UiElementInActivity getUiElementsInActivity() {
@@ -124,6 +127,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         radioButtonService1.setChecked(true);
         setEditTextClickListener();
         setButtonNavigationOnClickListener();
+        SetEditTextChangedListener();
 //        accessData();
     }
 
@@ -151,7 +155,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
                 , editTextFamily.getText().toString(), editTextFatherName.getText().toString(),
                 editTextNationNumber.getText().toString(), "09".concat(editTextMobile.getText().toString()),
                 editTextPhoneNumber.getText().toString(), editTextAddress.getText().toString(),
-                editTextPostalCode.getText().toString());
+                editTextPostalCode.getText().toString(), "4");
         if (radioButtonService1.isChecked())
             registerNewDto.setSelectedServices(new String[]{"1"});
         else if (radioButtonService2.isChecked())
@@ -185,7 +189,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
                     view.requestFocus();
                     cancel = true;
                 }
-                if (editTextBillId.getText().length() < 6 || editTextBillId.getText().length() > 13) {
+                if (editTextBillId.getText().length() < 6) {
                     view = editTextBillId;
                     view.requestFocus();
                     cancel = true;
@@ -396,4 +400,107 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
             }
         });
     }
+
+    private void SetEditTextChangedListener() {
+        editTextNationNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() == 10) {
+                    viewFocus = editTextPhoneNumber;
+                    viewFocus.requestFocus();
+                }
+            }
+        });
+
+        editTextPhoneNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() == 8) {
+                    viewFocus = editTextMobile;
+                    viewFocus.requestFocus();
+                }
+            }
+        });
+
+        editTextMobile.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() == 9) {
+                    viewFocus = editTextBillId;
+                    viewFocus.requestFocus();
+                }
+            }
+        });
+        editTextBillId.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() == 13) {
+                    viewFocus = editTextPostalCode;
+                    viewFocus.requestFocus();
+                }
+            }
+        });
+
+        editTextPostalCode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() == 10) {
+                    viewFocus = radioGroupService;
+                    viewFocus.requestFocus();
+                }
+            }
+        });
+
+    }
+
 }

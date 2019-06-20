@@ -53,6 +53,8 @@ public class HomeActivity extends BaseActivity {
                     startActivity(intent);
                     break;
                 case R.id.imageButtonTracking:
+                    intent = new Intent(getApplicationContext(), TrackingsActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.imageButtonMamoor:
                     intent = new Intent(getApplicationContext(), SetCounterActivity.class);

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.app.leon.moshtarak.Infrastructure.CustomErrorHandling;
+import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ErrorHandlerType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;

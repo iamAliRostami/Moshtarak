@@ -14,7 +14,7 @@ public class RegisterNewDto {
 
     public RegisterNewDto(String neighbourBillId, String firstName, String sureName,
                           String fatherName, String nationalId, String mobile, String phoneNumber,
-                          String address, String postalCode) {
+                          String address, String postalCode, String requestOrigin) {
         this.neighbourBillId = neighbourBillId;
         this.firstName = firstName;
         this.sureName = sureName;

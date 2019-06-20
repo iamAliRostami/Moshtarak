@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
+import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Login;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
@@ -18,7 +19,6 @@ import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
-import com.app.leon.moshtarak.Utils.ICallback;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 
@@ -78,13 +78,13 @@ public class SignAccountActivity extends BaseActivity
             public void onClick(View view) {
                 View viewFocus;
                 boolean cancel = false;
-                if (editTextBillId.getText().length() < 1) {
+                if (editTextBillId.getText().length() < 6) {
                     cancel = true;
                     editTextBillId.setError(getString(R.string.error_empty));
                     viewFocus = editTextBillId;
                     viewFocus.requestFocus();
                 }
-                if (!cancel && editTextAccount.getText().length() < 1) {
+                if (!cancel && editTextAccount.getText().length() < 7) {
                     cancel = true;
                     editTextAccount.setError(getString(R.string.error_empty));
                     viewFocus = editTextAccount;
@@ -141,7 +141,7 @@ public class SignAccountActivity extends BaseActivity
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (editable.length() > 9) {
+                if (editable.length() == 13) {
                     viewFocus = editTextAccount;
                     viewFocus.requestFocus();
                 }
@@ -160,8 +160,8 @@ public class SignAccountActivity extends BaseActivity
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (editable.length() > 9) {
-                    viewFocus = buttonSign;
+                if (editable.length() == 14) {
+                    viewFocus = editTextNationNumber;
                     viewFocus.requestFocus();
                 }
             }

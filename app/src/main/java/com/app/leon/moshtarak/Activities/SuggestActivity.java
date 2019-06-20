@@ -62,7 +62,7 @@ public class SuggestActivity extends BaseActivity {
         items.add(getString(R.string.mamoor));
         items.add(getString(R.string.train));
         items.add(getString(R.string.help));
-        items.add(getString(R.string.sale));
+        items.add(getString(R.string.support));
         items.add(getString(R.string.suggest));
         items.add("دیگر");
         spinner.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,

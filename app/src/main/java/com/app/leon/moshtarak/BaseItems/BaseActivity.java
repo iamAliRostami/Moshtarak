@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
@@ -55,6 +56,7 @@ public abstract class BaseActivity extends AppCompatActivity
     Typeface typeface;
     NavigationCustomAdapter adapter;
     List<NavigationCustomAdapter.DrawerItem> dataList;
+    final String packageName = "com.app.leon.moshtarak";
 
     protected abstract UiElementInActivity getUiElementsInActivity();
 
@@ -124,6 +126,11 @@ public abstract class BaseActivity extends AppCompatActivity
                     startActivity(intent);
                 } else if (position == 4) {
                 } else if (position == 5) {
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
+                    } catch (android.content.ActivityNotFoundException anfe) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
+                    }
                 } else if (position == 6) {
                     Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
                     startActivity(intent);

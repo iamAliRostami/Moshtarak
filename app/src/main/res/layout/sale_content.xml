@@ -336,11 +336,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:maxLength="13"
                     android:text="@string/id_bill_neighbour"
                     android:textColor="@color/black1"
                     android:textSize="@dimen/textSizeMedium"
                     android:textStyle="bold" />
-
 
                 <LinearLayout
                     android:id="@+id/linearLayoutBillId"
@@ -357,7 +357,7 @@
                         android:gravity="center"
                         android:inputType="number"
                         android:lines="1"
-                        android:maxLength="10"
+                        android:maxLength="13"
                         android:padding="@dimen/activity_mid_padding"
                         tools:ignore="TextFields" />
                 </LinearLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.app.leon.moshtarak.Activities.SuggestActivity"
+    tools:showIn="@layout/suggest_app_bar">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/activity_large_margin"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <RadioGroup
+            android:id="@+id/radioGroupSuggest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radioButtonSuggest1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/error_report"
+                android:textSize="@dimen/textSizeMedium"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/radioButtonSuggest2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/suggest"
+                android:textSize="@dimen/textSizeMedium"
+                android:textStyle="bold" />
+
+        </RadioGroup>
+
+        <Spinner
+            android:id="@+id/suggestSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_">
+
+            <EditText
+                android:id="@+id/suggestEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginTop="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:layout_marginBottom="@dimen/activity_mid_margin"
+                android:gravity="top"
+                android:hint="توضیحات را وارد کنید..."
+                android:inputType="textMultiLine" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_large_margin"
+            android:layout_marginTop="@dimen/activity_mid_margin"
+            android:layout_marginRight="@dimen/activity_large_margin"
+            android:background="@drawable/border_yellow_"
+            android:text="ارسال بازخورد"
+            android:textSize="@dimen/textSizeMedium"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

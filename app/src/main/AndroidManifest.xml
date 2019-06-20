@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.app.leon.moshtarak">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,6 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Activities.ShowSMSActivity"></activity>
+        <activity
+            android:name=".Activities.TrackingsActivity"
+            android:label="@string/request"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.SplashActivity"
             android:screenOrientation="portrait">
