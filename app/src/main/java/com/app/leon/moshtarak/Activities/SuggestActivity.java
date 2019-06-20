@@ -1,6 +1,9 @@
 package com.app.leon.moshtarak.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,15 +14,24 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
+import com.app.leon.moshtarak.Infrastructure.IAbfaService;
+import com.app.leon.moshtarak.Infrastructure.ICallback;
+import com.app.leon.moshtarak.Models.DbTables.Suggestion;
+import com.app.leon.moshtarak.Models.Enums.ProgressType;
+import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.Utils.HttpClientWrapper;
+import com.app.leon.moshtarak.Utils.NetworkHelper;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Retrofit;
 
-public class SuggestActivity extends BaseActivity {
+public class SuggestActivity extends BaseActivity implements ICallback<SimpleMessage> {
     @BindView(R.id.suggestSpinner)
     Spinner spinner;
     @BindView(R.id.radioGroupSuggest)
@@ -33,7 +45,7 @@ public class SuggestActivity extends BaseActivity {
     @BindView(R.id.suggestEditText)
     EditText editText;
     @BindView(R.id.sendButton)
-    Button button;
+    Button sendButton;
     ArrayList<String> items;
     Context context;
 
@@ -50,6 +62,7 @@ public class SuggestActivity extends BaseActivity {
         context = this;
         setRadioGroupOnCheckedChanged();
         setSpinnerArrayAdapter();
+        setOnSendButtonClickListener();
     }
 
     void setSpinnerArrayAdapter() {
@@ -87,5 +100,48 @@ public class SuggestActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    void setOnSendButtonClickListener() {
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Retrofit retrofit = NetworkHelper.getInstance();
+                final IAbfaService suggestion = retrofit.create(IAbfaService.class);
+
+                @SuppressLint("HardwareIds") String serial = String.valueOf(Build.SERIAL);
+                Call<SimpleMessage> call = suggestion.sendSuggestion(new Suggestion("1", "سلام",
+                        String.valueOf(Build.VERSION.RELEASE), getDeviceName()));
+                HttpClientWrapper.callHttpAsync(call, SuggestActivity.this, context, ProgressType.SHOW.getValue());
+            }
+        });
+    }
+
+    public String getDeviceName() {
+        String manufacturer = Build.MANUFACTURER;
+        String model = Build.MODEL;
+        if (model.toLowerCase().startsWith(manufacturer.toLowerCase())) {
+            return capitalize(model);
+        } else {
+            return capitalize(manufacturer) + " " + model;
+        }
+    }
+
+
+    private String capitalize(String s) {
+        if (s == null || s.length() == 0) {
+            return "";
+        }
+        char first = s.charAt(0);
+        if (Character.isUpperCase(first)) {
+            return s;
+        } else {
+            return Character.toUpperCase(first) + s.substring(1);
+        }
+    }
+
+    @Override
+    public void execute(SimpleMessage simpleMessage) {
+        Log.e("Message:", simpleMessage.getMessage());
     }
 }

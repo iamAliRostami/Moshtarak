@@ -3,8 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/activity_large_margin"
+    android:layout_marginBottom="@dimen/activity_large_margin"
     tools:context="com.app.leon.moshtarak.Activities.TrackingsActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/activity_large_margin"
+        android:layout_marginBottom="@dimen/activity_large_margin"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewTrack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/activity_large_margin"
+            android:layout_marginBottom="@dimen/activity_large_margin" />
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
@@ -46,82 +66,7 @@
             android:text="@string/submit"
             android:textSize="@dimen/textSizeLarge"
             android:textStyle="bold" />
+
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:background="@drawable/border_blue_2"
-            android:gravity="center"
-            android:text="@string/cardex"
-            android:textColor="@color/white"
-            android:textSize="25sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:orientation="horizontal"
-            android:weightSum="4">
-
-            <TextView
-                android:id="@+id/textViewStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:padding="@dimen/activity_mid_margin"
-                android:text="@string/status"
-                android:textColor="@color/green2" />
-
-            <TextView
-                android:id="@+id/textViewDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="@dimen/activity_mid_margin"
-                android:text="@string/date"
-                android:textColor="@color/blue2" />
-
-            <TextView
-                android:id="@+id/textViewTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="@dimen/activity_mid_margin"
-                android:text="@string/time"
-                android:textColor="@color/pink1" />
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center" />
-        </LinearLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewTrack"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:divider="@null"
-            android:dividerHeight="2dp"
-            android:scrollbars="vertical" />
-    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

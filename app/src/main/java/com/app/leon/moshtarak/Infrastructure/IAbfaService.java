@@ -7,6 +7,7 @@ import com.app.leon.moshtarak.Models.DbTables.MemberInfo;
 import com.app.leon.moshtarak.Models.DbTables.RegisterAsDto;
 import com.app.leon.moshtarak.Models.DbTables.RegisterNewDto;
 import com.app.leon.moshtarak.Models.DbTables.Service;
+import com.app.leon.moshtarak.Models.DbTables.Suggestion;
 import com.app.leon.moshtarak.Models.DbTables.TrackingDto;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 
@@ -69,4 +70,10 @@ public interface IAbfaService {
     Call<ArrayList<TrackingDto>> getTrackings(
             @Path("trackNumber") String trackNumber
     );
+
+    @POST("/MoshtarakinApi/SuggestionManager/SetSuggestion")
+    Call<SimpleMessage> sendSuggestion(//type , message, OS Version, Phone model
+                                       @Body Suggestion suggestionInput
+    );
+
 }

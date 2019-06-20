@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,62 +8,105 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_"
-        android:orientation="horizontal"
-        android:scrollbars="horizontal"
-        android:weightSum="4"
-        tools:ignore="UselessParent">
+        android:background="@drawable/border__"
+        android:orientation="vertical"
+        android:scrollbars="horizontal">
 
-
-        <TextView
-            android:id="@+id/textViewStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_mid_margin"
-            android:layout_marginEnd="@dimen/activity_mid_margin"
-            android:layout_marginBottom="@dimen/activity_mid_margin"
-            android:layout_weight="1"
-            android:maxLines="1"
-            android:textColor="@color/green2" />
-
-        <TextView
-            android:id="@+id/textViewDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_mid_margin"
-            android:layout_marginEnd="@dimen/activity_mid_margin"
-            android:layout_marginBottom="@dimen/activity_mid_margin"
-            android:layout_weight="1"
-            android:maxLines="1"
-            android:textColor="@color/blue2" />
-
-        <TextView
-            android:id="@+id/textViewTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_mid_margin"
-            android:layout_marginEnd="@dimen/activity_mid_margin"
-            android:layout_marginBottom="@dimen/activity_mid_margin"
-            android:layout_weight="1"
-            android:maxLines="1"
-            android:textColor="@color/pink1" />
-        <!--<TextView-->
-        <!--android:id="@+id/textViewUse"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="@dimen/activity_mid_margin"-->
-        <!--android:layout_marginEnd="@dimen/activity_mid_margin"-->
-        <!--android:layout_marginBottom="@dimen/activity_mid_margin"-->
-        <!--android:layout_weight="1"-->
-        <!--android:maxLines="1"-->
-        <!--android:textColor="@color/orange2" />-->
-
-
-        <ImageView
-            android:id="@+id/imageViewInfo"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@android:drawable/ic_dialog_info" />
+            android:layout_margin="@dimen/activity_mid_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/activity_mid_margin"
+                android:layout_marginEnd="@dimen/activity_mid_margin"
+                android:layout_marginBottom="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/status"
+                android:textColor="@color/green2" />
+
+            <TextView
+                android:id="@+id/textViewStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/activity_mid_margin"
+                android:layout_marginEnd="@dimen/activity_mid_margin"
+                android:layout_marginBottom="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/green2" />
+
+            <ImageView
+                android:id="@+id/imageViewInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@android:drawable/sym_action_email" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/activity_mid_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_mid_margin"
+                android:layout_marginEnd="@dimen/activity_mid_margin"
+                android:layout_marginBottom="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:text="@string/date"
+                android:textColor="@color/blue2" />
+
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_mid_margin"
+                android:layout_marginEnd="@dimen/activity_mid_margin"
+                android:layout_marginBottom="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:textColor="@color/blue2" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_mid_margin"
+                android:layout_marginEnd="@dimen/activity_mid_margin"
+                android:layout_marginBottom="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:text="@string/time"
+                android:textColor="@color/pink1" />
+
+            <TextView
+                android:id="@+id/textViewTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_mid_margin"
+                android:layout_marginEnd="@dimen/activity_mid_margin"
+                android:layout_marginBottom="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:textColor="@color/pink1" />
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
