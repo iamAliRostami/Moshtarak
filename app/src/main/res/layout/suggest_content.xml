@@ -63,7 +63,8 @@
                 android:layout_marginBottom="@dimen/activity_mid_margin"
                 android:gravity="top"
                 android:hint="توضیحات را وارد کنید..."
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:maxLength="280" />
         </LinearLayout>
 
         <Button

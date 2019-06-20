@@ -23,9 +23,11 @@ public class TrackCustomAdapter extends RecyclerView.Adapter<TrackCustomAdapter.
     private ArrayList<TrackingDto> trackingDtos;
     private Context context;
     private int size = 0;
+    private int width;
 
-    public TrackCustomAdapter(ArrayList<TrackingDto> trackingDtos) {
+    public TrackCustomAdapter(ArrayList<TrackingDto> trackingDtos, int width) {
         this.trackingDtos = trackingDtos;
+        this.width = width;
     }
 
     @SuppressLint("InflateParams")
@@ -62,6 +64,11 @@ public class TrackCustomAdapter extends RecyclerView.Adapter<TrackCustomAdapter.
         viewHolder.textViewStatus.setTypeface(typeface);
         viewHolder.textViewDate.setTypeface(typeface);
         viewHolder.textViewTime.setTypeface(typeface);
+
+
+        viewHolder.textViewStatus.setWidth((width - viewHolder.imageViewInfo.getWidth()) / 2);
+        viewHolder.textViewDate.setWidth((width - viewHolder.imageViewInfo.getWidth()) / 3);
+        viewHolder.textViewTime.setWidth((width - viewHolder.imageViewInfo.getWidth()) / 3);
 
         viewHolder.textViewStatus.setGravity(1);
         viewHolder.textViewDate.setGravity(1);

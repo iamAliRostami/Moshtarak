@@ -169,19 +169,6 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         buttonNavigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view1) {
-//                Retrofit retrofit = NetworkHelper.getInstance();
-//                final IAbfaService SendRegisterRequest = retrofit.create(IAbfaService.class);
-//
-//                registerNewDto = new RegisterNewDto(billId, "علی", "رستمی",
-//                        "حسن", "1271559854", "09379158929",
-//                        "35557594", "میدان انقلاب", "8158923882");
-//                if (radioButtonService1.isChecked())
-//                    registerNewDto.setSelectedServices(new String []{"1"});
-//                else if (radioButtonService2.isChecked())
-//                    registerNewDto.setSelectedServices(new String[]{"1","2"});
-//                Call<SimpleMessage> call = SendRegisterRequest.registerNew(registerNewDto);
-//                HttpClientWrapper.callHttpAsync(call, SaleActivity.this, context, ProgressType.SHOW.getValue());
-
                 View view;
                 boolean cancel = false;
                 if (editTextAddress.getText().length() < 1) {

@@ -1,9 +1,7 @@
 package com.app.leon.moshtarak.Activities;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,10 +15,12 @@ import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Suggestion;
+import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 
@@ -77,7 +77,7 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
         items.add(getString(R.string.help));
         items.add(getString(R.string.support));
         items.add(getString(R.string.suggest));
-        items.add("دیگر");
+        items.add("سایر");
         spinner.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,
                 items));
 
@@ -106,13 +106,25 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Retrofit retrofit = NetworkHelper.getInstance();
-                final IAbfaService suggestion = retrofit.create(IAbfaService.class);
-
-                @SuppressLint("HardwareIds") String serial = String.valueOf(Build.SERIAL);
-                Call<SimpleMessage> call = suggestion.sendSuggestion(new Suggestion("1", "سلام",
-                        String.valueOf(Build.VERSION.RELEASE), getDeviceName()));
-                HttpClientWrapper.callHttpAsync(call, SuggestActivity.this, context, ProgressType.SHOW.getValue());
+                View viewFocus;
+                if (editText.getText().length() < 1) {
+                    viewFocus = editText;
+                    viewFocus.requestFocus();
+                } else {
+                    int select;
+                    if (radioButtonSuggest2.isChecked()) {
+                        select = 1;
+                    } else {
+                        select = spinner.getSelectedItemPosition() + 2;
+                    }
+                    Retrofit retrofit = NetworkHelper.getInstance();
+                    final IAbfaService suggestion = retrofit.create(IAbfaService.class);
+                    Call<SimpleMessage> call = suggestion.sendSuggestion(new Suggestion(
+                            String.valueOf(select), editText.getText().toString(),
+                            String.valueOf(Build.VERSION.RELEASE), getDeviceName()));
+                    HttpClientWrapper.callHttpAsync(call, SuggestActivity.this, context,
+                            ProgressType.SHOW.getValue());
+                }
             }
         });
     }
@@ -142,6 +154,7 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
 
     @Override
     public void execute(SimpleMessage simpleMessage) {
-        Log.e("Message:", simpleMessage.getMessage());
+        new CustomDialog(DialogType.Yellow, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
+                context.getString(R.string.suggest), context.getString(R.string.accepted));
     }
 }

@@ -29,7 +29,7 @@ public class ShowSMSActivity extends AppCompatActivity {
         sms = intent.getStringArrayListExtra("SMS");
 
         arrayAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, sms);
+                R.layout.sms_layout, sms);
         listViewSMS.setAdapter(arrayAdapter);
     }
 }

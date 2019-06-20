@@ -1,10 +1,12 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,6 +45,7 @@ public class TrackingsActivity extends BaseActivity
     View viewFocus;
     Context context;
     TrackCustomAdapter trackCustomAdapter;
+    ArrayList<TrackingDto> trackingDtos = new ArrayList<>();
 
     @Override
     protected UiElementInActivity getUiElementsInActivity() {
@@ -80,9 +83,14 @@ public class TrackingsActivity extends BaseActivity
 
     @Override
     public void execute(ArrayList<TrackingDto> trackingDtos) {
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
         linearLayout1.setVisibility(View.GONE);
         linearLayout2.setVisibility(View.VISIBLE);
-        trackCustomAdapter = new TrackCustomAdapter(trackingDtos);
+        trackCustomAdapter = new TrackCustomAdapter(trackingDtos, width);
         recyclerViewTrack.setAdapter(trackCustomAdapter);
         recyclerViewTrack.setLayoutManager(new LinearLayoutManager(this) {
             @Override

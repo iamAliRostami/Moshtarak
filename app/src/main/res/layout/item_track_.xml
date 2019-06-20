@@ -23,15 +23,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="end|center_vertical"
                 android:layout_marginTop="@dimen/activity_mid_margin"
-                android:layout_marginEnd="@dimen/activity_mid_margin"
                 android:layout_marginBottom="@dimen/activity_mid_margin"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:maxLines="1"
                 android:text="@string/status"
-                android:textColor="@color/green2" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewStatus"
@@ -43,8 +42,8 @@
                 android:layout_marginBottom="@dimen/activity_mid_margin"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:maxLines="1"
-                android:textColor="@color/green2" />
+                android:textColor="@color/green2"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imageViewInfo"
@@ -65,18 +64,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginStart="@dimen/activity_mid_margin"
                 android:layout_marginTop="@dimen/activity_mid_margin"
-                android:layout_marginEnd="@dimen/activity_mid_margin"
                 android:layout_marginBottom="@dimen/activity_mid_margin"
                 android:layout_weight="1"
-                android:maxLines="1"
                 android:text="@string/date"
-                android:textColor="@color/blue2" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
                 android:layout_marginTop="@dimen/activity_mid_margin"
                 android:layout_marginEnd="@dimen/activity_mid_margin"
                 android:layout_marginBottom="@dimen/activity_mid_margin"
@@ -88,18 +89,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
                 android:layout_marginTop="@dimen/activity_mid_margin"
-                android:layout_marginEnd="@dimen/activity_mid_margin"
                 android:layout_marginBottom="@dimen/activity_mid_margin"
                 android:layout_weight="1"
                 android:maxLines="1"
                 android:text="@string/time"
-                android:textColor="@color/pink1" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
                 android:layout_marginTop="@dimen/activity_mid_margin"
                 android:layout_marginEnd="@dimen/activity_mid_margin"
                 android:layout_marginBottom="@dimen/activity_mid_margin"
