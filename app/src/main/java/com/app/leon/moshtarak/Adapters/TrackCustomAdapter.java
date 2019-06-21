@@ -50,7 +50,6 @@ public class TrackCustomAdapter extends RecyclerView.Adapter<TrackCustomAdapter.
         viewHolder.textViewStatus.setText(trackingDto.getStatus());
         viewHolder.textViewDate.setText(trackingDto.getDateJalali());
         viewHolder.textViewTime.setText(trackingDto.getTime());
-
         viewHolder.imageViewInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,12 +58,10 @@ public class TrackCustomAdapter extends RecyclerView.Adapter<TrackCustomAdapter.
                 context.startActivity(intent);
             }
         });
-
         Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/BYekan_3.ttf");
         viewHolder.textViewStatus.setTypeface(typeface);
         viewHolder.textViewDate.setTypeface(typeface);
         viewHolder.textViewTime.setTypeface(typeface);
-
 
         viewHolder.textViewStatus.setWidth((width - viewHolder.imageViewInfo.getWidth()) / 2);
         viewHolder.textViewDate.setWidth((width - viewHolder.imageViewInfo.getWidth()) / 3);
@@ -80,7 +77,6 @@ public class TrackCustomAdapter extends RecyclerView.Adapter<TrackCustomAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull List<Object> payloads) {
         super.onBindViewHolder(holder, position, payloads);
     }
-
 
     @Override
     public int getItemCount() {

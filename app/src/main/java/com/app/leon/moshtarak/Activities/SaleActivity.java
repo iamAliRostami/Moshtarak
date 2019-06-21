@@ -1,7 +1,6 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.content.Context;
-import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -31,18 +30,16 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
-public class SaleActivity extends BaseActivity implements ICallback<SimpleMessage> {
+public class SaleActivity extends BaseActivity
+        implements ICallback<SimpleMessage> {
     @BindView(R.id.radioGroupService)
     RadioGroup radioGroupService;
-
     @BindView(R.id.radioButtonService1)
     RadioButton radioButtonService1;
     @BindView(R.id.radioButtonService2)
     RadioButton radioButtonService2;
-
     @BindView(R.id.buttonNavigation)
     Button buttonNavigation;
-
     @BindView(R.id.textViewFamily)
     TextView textViewFamily;
     @BindView(R.id.textViewName)
@@ -63,7 +60,6 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
     TextView textViewAddress;
     @BindView(R.id.textViewBillId)
     TextView textViewBillId;
-
     @BindView(R.id.editTextFamily)
     EditText editTextFamily;
     @BindView(R.id.editTextName)
@@ -82,8 +78,6 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
     EditText editTextAddress;
     @BindView(R.id.editTextBillId)
     EditText editTextBillId;
-
-
     @BindView(R.id.linearLayoutName)
     LinearLayout linearLayoutName;
     @BindView(R.id.linearLayoutFamily)
@@ -102,8 +96,6 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
     LinearLayout linearLayoutAddress;
     @BindView(R.id.linearLayoutBillId)
     LinearLayout linearLayoutBillId;
-
-    String billId;
     Context context;
     RegisterNewDto registerNewDto;
     SharedPreference sharedPreference;
@@ -125,27 +117,15 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         View view = editTextFamily;
         view.requestFocus();
         radioButtonService1.setChecked(true);
-        setEditTextClickListener();
+        setEditTextOnFocusChangeListener();
         setButtonNavigationOnClickListener();
         SetEditTextChangedListener();
-//        accessData();
     }
 
     @Override
     public void execute(SimpleMessage simpleMessage) {
         new CustomDialog(DialogType.Green, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
                 context.getString(R.string.buy), context.getString(R.string.accepted));
-    }
-
-    private void accessData() {
-        SharedPreference appPrefs = new SharedPreference(context);
-        if (!appPrefs.checkIsNotEmpty()) {
-            Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
-            startActivity(intent);
-            finish();
-        } else {
-            billId = appPrefs.getBillID();
-        }
     }
 
     private void sendRequest() {
@@ -164,8 +144,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         HttpClientWrapper.callHttpAsync(call, SaleActivity.this, context, ProgressType.SHOW.getValue());
     }
 
-
-    void setButtonNavigationOnClickListener() {
+    private void setButtonNavigationOnClickListener() {
         buttonNavigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view1) {
@@ -223,19 +202,19 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         });
     }
 
-    void setEditTextClickListener() {
-        setEditTextNameClickListener();
-        setEditTextFamilyClickListener();
-        setEditTextFatherNameClickListener();
-        setEditTextNationNumberClickListener();
-        setEditTextPhoneNumberClickListener();
-        setEditTextMobileClickListener();
-        setEditTextPostalCodeClickListener();
-        setEditTextBillIdClickListener();
-        setEditTextAddressClickListener();
+    private void setEditTextOnFocusChangeListener() {
+        setEditTextNameOnFocusChangeListener();
+        setEditTextFamilyOnFocusChangeListener();
+        setEditTextFatherNameOnFocusChangeListener();
+        setEditTextNationNumberOnFocusChangeListener();
+        setEditTextPhoneNumberOnFocusChangeListener();
+        setEditTextMobileOnFocusChangeListener();
+        setEditTextPostalCodeOnFocusChangeListener();
+        setEditTextBillIdOnFocusChangeListener();
+        setEditTextAddressOnFocusChangeListener();
     }
 
-    void setEditTextNameClickListener() {
+    private void setEditTextNameOnFocusChangeListener() {
         editTextName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view1, boolean b) {
@@ -252,7 +231,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         });
     }
 
-    void setEditTextFamilyClickListener() {
+    private void setEditTextFamilyOnFocusChangeListener() {
         editTextFamily.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view1, boolean b) {
@@ -269,7 +248,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         });
     }
 
-    void setEditTextFatherNameClickListener() {
+    private void setEditTextFatherNameOnFocusChangeListener() {
         editTextFatherName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view1, boolean b) {
@@ -286,7 +265,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         });
     }
 
-    void setEditTextNationNumberClickListener() {
+    private void setEditTextNationNumberOnFocusChangeListener() {
         editTextNationNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view1, boolean b) {
@@ -303,7 +282,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         });
     }
 
-    void setEditTextPhoneNumberClickListener() {
+    private void setEditTextPhoneNumberOnFocusChangeListener() {
         editTextPhoneNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view1, boolean b) {
@@ -320,7 +299,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         });
     }
 
-    void setEditTextMobileClickListener() {
+    private void setEditTextMobileOnFocusChangeListener() {
         editTextMobile.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view1, boolean b) {
@@ -337,7 +316,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         });
     }
 
-    void setEditTextPostalCodeClickListener() {
+    private void setEditTextPostalCodeOnFocusChangeListener() {
         editTextPostalCode.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view1, boolean b) {
@@ -354,7 +333,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         });
     }
 
-    void setEditTextBillIdClickListener() {
+    private void setEditTextBillIdOnFocusChangeListener() {
         editTextBillId.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view1, boolean b) {
@@ -371,7 +350,7 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         });
     }
 
-    void setEditTextAddressClickListener() {
+    private void setEditTextAddressOnFocusChangeListener() {
         editTextAddress.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -388,7 +367,17 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
         });
     }
 
-    private void SetEditTextChangedListener() {
+    private void setEditTextNameChangedListener() {
+
+    }
+
+    private void setEditTextFamilyChangedListener() {
+    }
+
+    private void setEditTextFatherNameChangedListener() {
+    }
+
+    private void setEditTextNationNumberChangedListener() {
         editTextNationNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -408,7 +397,9 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
                 }
             }
         });
+    }
 
+    private void setEditTextPhoneNumberChangedListener() {
         editTextPhoneNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -428,7 +419,9 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
                 }
             }
         });
+    }
 
+    private void setEditTextMobileChangedListener() {
         editTextMobile.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -448,26 +441,26 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
                 }
             }
         });
-        editTextBillId.addTextChangedListener(new TextWatcher() {
+    }
+
+    private void setEditTextPostalCodeChangedListener() {
+        editTextPostalCode.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() == 13) {
-                    viewFocus = editTextPostalCode;
-                    viewFocus.requestFocus();
+            public void onFocusChange(View view1, boolean b) {
+                if (b) {
+                    editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                    linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                    textViewPostalCode.setTextColor(getResources().getColor(R.color.orange2));
+                } else {
+                    editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                    linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                    textViewPostalCode.setTextColor(getResources().getColor(R.color.black1));
                 }
             }
         });
+    }
 
+    private void setEditTextBillIdChangedListener() {
         editTextPostalCode.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -487,7 +480,20 @@ public class SaleActivity extends BaseActivity implements ICallback<SimpleMessag
                 }
             }
         });
-
     }
 
+    private void setEditTextAddressChangedListener() {
+    }
+
+    protected void SetEditTextChangedListener() {
+        setEditTextNameChangedListener();
+        setEditTextFamilyChangedListener();
+        setEditTextFatherNameChangedListener();
+        setEditTextPhoneNumberChangedListener();
+        setEditTextNationNumberChangedListener();
+        setEditTextMobileChangedListener();
+        setEditTextBillIdChangedListener();
+        setEditTextPostalCodeChangedListener();
+        setEditTextAddressChangedListener();
+    }
 }

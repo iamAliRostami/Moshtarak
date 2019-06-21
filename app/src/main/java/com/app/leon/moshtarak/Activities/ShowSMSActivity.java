@@ -23,13 +23,10 @@ public class ShowSMSActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_sms_activity);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         Intent intent = getIntent();
         sms = intent.getStringArrayListExtra("SMS");
-
-        arrayAdapter = new ArrayAdapter<String>(this,
-                R.layout.sms_layout, sms);
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.sms_layout, sms);
         listViewSMS.setAdapter(arrayAdapter);
     }
 }

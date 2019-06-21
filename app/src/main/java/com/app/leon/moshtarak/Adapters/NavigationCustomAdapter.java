@@ -86,7 +86,6 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
     }
 
     public static class DrawerItem {
-
         String ItemName;
         int imgResID;
 
@@ -100,7 +99,7 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
             return ItemName;
         }
 
-        public void setItemName(String itemName) {
+        private void setItemName(String itemName) {
             ItemName = itemName;
         }
 

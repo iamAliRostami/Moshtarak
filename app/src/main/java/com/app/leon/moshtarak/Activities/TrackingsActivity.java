@@ -45,7 +45,6 @@ public class TrackingsActivity extends BaseActivity
     View viewFocus;
     Context context;
     TrackCustomAdapter trackCustomAdapter;
-    ArrayList<TrackingDto> trackingDtos = new ArrayList<>();
 
     @Override
     protected UiElementInActivity getUiElementsInActivity() {
@@ -83,7 +82,6 @@ public class TrackingsActivity extends BaseActivity
 
     @Override
     public void execute(ArrayList<TrackingDto> trackingDtos) {
-
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -99,6 +97,5 @@ public class TrackingsActivity extends BaseActivity
                 return false;
             }
         });
-
     }
 }

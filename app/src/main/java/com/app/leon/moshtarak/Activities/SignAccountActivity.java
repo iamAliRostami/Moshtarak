@@ -2,6 +2,8 @@ package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -71,7 +73,6 @@ public class SignAccountActivity extends BaseActivity
         SetEditTextChangedListener();
     }
 
-
     void setButtonSignClickListener() {
         buttonSign.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,8 +118,8 @@ public class SignAccountActivity extends BaseActivity
             public void onClick(View view) {
                 SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
                 sharedPreference.putData("", "", "", "");
-                new CustomDialog(DialogType.YellowRedirect, SignAccountActivity.this, getString(R.string.logout_successful),
-                        getString(R.string.dear_user), getString(R.string.logout),
+                new CustomDialog(DialogType.YellowRedirect, SignAccountActivity.this,
+                        getString(R.string.logout_successful), getString(R.string.dear_user), getString(R.string.logout),
                         getString(R.string.accepted));
                 buttonSign.setText(getResources().getString(R.string.account));
                 buttonLogOut.setVisibility(View.GONE);
@@ -171,12 +172,9 @@ public class SignAccountActivity extends BaseActivity
     void canMatch(String billId, String account, String mobile, String nationNumber) {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService canMatch = retrofit.create(IAbfaService.class);
-
-//        Call<SimpleMessage> call = canMatch.canMatch(billId, account);
         @SuppressLint("HardwareIds") String serial = String.valueOf(Build.SERIAL);
         Call<Login> call = canMatch.register(new Login(billId, account, nationNumber, serial,
-                "1.0.0", String.valueOf(Build.VERSION.RELEASE),
-                mobile, getDeviceName()));
+                getVersionInfo(), String.valueOf(Build.VERSION.RELEASE), mobile, getDeviceName()));
         HttpClientWrapper.callHttpAsync(call, SignAccountActivity.this, context, ProgressType.SHOW.getValue());
     }
 
@@ -206,7 +204,7 @@ public class SignAccountActivity extends BaseActivity
         }
     }
 
-    public String getDeviceName() {
+    private String getDeviceName() {
         String manufacturer = Build.MANUFACTURER;
         String model = Build.MODEL;
         if (model.toLowerCase().startsWith(manufacturer.toLowerCase())) {
@@ -215,7 +213,6 @@ public class SignAccountActivity extends BaseActivity
             return capitalize(manufacturer) + " " + model;
         }
     }
-
 
     private String capitalize(String s) {
         if (s == null || s.length() == 0) {
@@ -227,5 +224,18 @@ public class SignAccountActivity extends BaseActivity
         } else {
             return Character.toUpperCase(first) + s.substring(1);
         }
+    }
+
+    private String getVersionInfo() {
+        String versionName = "";
+//        int versionCode = -1;
+        try {
+            PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            versionName = packageInfo.versionName;
+//            versionCode = packageInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return versionName;
     }
 }

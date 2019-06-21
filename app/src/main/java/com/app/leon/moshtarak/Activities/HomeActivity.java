@@ -75,20 +75,6 @@ public class HomeActivity extends BaseActivity {
     };
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        imageButtonSale.setImageDrawable(null);
-        imageButtonLastBill.setImageDrawable(null);
-        imageButtonKardex.setImageDrawable(null);
-        imageButtonTrain.setImageDrawable(null);
-        imageButtonMamoor.setImageDrawable(null);
-        imageButtonSuggets.setImageDrawable(null);
-        imageButtonTracking.setImageDrawable(null);
-        imageButtonSupport.setImageDrawable(null);
-        imageButtonHelp.setImageDrawable(null);
-    }
-
-    @Override
     protected UiElementInActivity getUiElementsInActivity() {
         UiElementInActivity uiElementInActivity = new UiElementInActivity();
         uiElementInActivity.setContentViewId(R.layout.home_activity);
@@ -100,7 +86,6 @@ public class HomeActivity extends BaseActivity {
     protected void initialize() {
         ButterKnife.bind(this);
         setOnClickListener();
-
     }
 
     void setOnClickListener() {
@@ -113,5 +98,19 @@ public class HomeActivity extends BaseActivity {
         imageButtonTracking.setOnClickListener(onClickListener);
         imageButtonHelp.setOnClickListener(onClickListener);
         imageButtonSupport.setOnClickListener(onClickListener);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        imageButtonSale.setImageDrawable(null);
+        imageButtonLastBill.setImageDrawable(null);
+        imageButtonKardex.setImageDrawable(null);
+        imageButtonTrain.setImageDrawable(null);
+        imageButtonMamoor.setImageDrawable(null);
+        imageButtonSuggets.setImageDrawable(null);
+        imageButtonTracking.setImageDrawable(null);
+        imageButtonSupport.setImageDrawable(null);
+        imageButtonHelp.setImageDrawable(null);
     }
 }

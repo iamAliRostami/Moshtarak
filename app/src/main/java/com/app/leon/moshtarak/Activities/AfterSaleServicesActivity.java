@@ -82,30 +82,6 @@ public class AfterSaleServicesActivity extends BaseActivity {
             for (Service service : services) {
                 servicesTitle.add(service.getTitle());
                 servicesId.add(service.getId());
-//                switch (service.getTitle()) {
-//                    case "واگذاری انشعاب فاضلاب":
-//                        if (service.getId().equals("2")) {
-//                            servicesTitle.add(service.getTitle());
-//                            servicesId.add(service.getId());
-//                        }
-//                        break;
-//                    case "آماده سازی آب":
-//                        if (service.getId().equals("43")) {
-//                            servicesTitle.add(service.getTitle());
-//                            servicesId.add(service.getId());
-//                        }
-//                        break;
-//                    case "آماده سازی فاضلاب":
-//                        if (service.getId().equals("44")) {
-//                            servicesTitle.add(service.getTitle());
-//                            servicesId.add(service.getId());
-//                        }
-//                        break;
-//                    default:
-//                        servicesTitle.add(service.getTitle());
-//                        servicesId.add(service.getId());
-//                        break;
-//                }
             }
         }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,

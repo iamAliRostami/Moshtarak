@@ -29,7 +29,8 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 
 
-public class LastBillActivity extends BaseActivity implements ICallback<LastBillInfo> {
+public class LastBillActivity extends BaseActivity
+        implements ICallback<LastBillInfo> {
     @BindView(R.id.textViewBillId)
     TextView textViewBillId;
     @BindView(R.id.textViewPayId)
@@ -84,14 +85,12 @@ public class LastBillActivity extends BaseActivity implements ICallback<LastBill
     void fillLastBillInfo() {
         if (getIntent().getExtras() != null) {
             Bundle bundle = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
-
             textViewBillId.setText(bundle.getString(BundleEnum.BILL_ID.getValue()));
             textViewPayId.setText(bundle.getString(BundleEnum.PAY_ID.getValue()));
             textViewNew.setText(bundle.getString(BundleEnum.NEW.getValue()));
             textViewPre.setText(bundle.getString(BundleEnum.PRE.getValue()));
             textViewAbBaha.setText(bundle.getString(BundleEnum.AB_BAHA.getValue()));
             textViewTax.setText(bundle.getString(BundleEnum.TAX.getValue()));
-
             textViewDate.setText(bundle.getString(BundleEnum.DATE.getValue()));
             textViewCost.setText(bundle.getString(BundleEnum.COST.getValue()));
             setImageBitmap(imageViewBarcode, bundle.getString(BundleEnum.COST.getValue()));
@@ -112,7 +111,6 @@ public class LastBillActivity extends BaseActivity implements ICallback<LastBill
         textViewPre.setText(lastBillInfo.getPreReadingNumber());
         textViewAbBaha.setText(lastBillInfo.getAbBaha());
         textViewTax.setText(lastBillInfo.getMaliat());
-
         textViewDate.setText(lastBillInfo.getDeadLine());
         textViewCost.setText(lastBillInfo.getPayable());
         setImageBitmap(imageViewBarcode, lastBillInfo.getPayable());

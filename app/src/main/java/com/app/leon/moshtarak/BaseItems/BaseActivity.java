@@ -46,6 +46,7 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    final String packageName = "com.app.leon.moshtarak";
     private final String url = "https://www.abfaesfahan.ir";
     @BindView(R.id.toolbar)
     public Toolbar toolbar;
@@ -56,7 +57,6 @@ public abstract class BaseActivity extends AppCompatActivity
     Typeface typeface;
     NavigationCustomAdapter adapter;
     List<NavigationCustomAdapter.DrawerItem> dataList;
-    final String packageName = "com.app.leon.moshtarak";
 
     protected abstract UiElementInActivity getUiElementsInActivity();
 

@@ -48,7 +48,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.SignAccountActivity"
-            android:label="@string/aزcount"
+            android:label="@string/account"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.UsingMethodActivity"

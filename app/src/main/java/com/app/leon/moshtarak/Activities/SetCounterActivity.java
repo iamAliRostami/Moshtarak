@@ -243,7 +243,6 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
                     number = editText1.getText().toString();
                     number = number.concat(editText2.getText().toString()).concat(editText3.getText().toString())
                             .concat(editText4.getText().toString()).concat(editText5.getText().toString());
-
                     sendNumber();
                 }
             }
@@ -271,9 +270,6 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
 
     @Override
     public void execute(LastBillInfo lastBillInfo) {
-//        new CustomDialog(DialogType.Green, context, lastBillInfo.getPayable(), context.getString(R.string.dear_user),
-//                context.getString(R.string.mamoor), context.getString(R.string.accepted));
-
         Intent intent = new Intent(getApplicationContext(), LastBillActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString(BundleEnum.BILL_ID.getValue(), lastBillInfo.getBillId());

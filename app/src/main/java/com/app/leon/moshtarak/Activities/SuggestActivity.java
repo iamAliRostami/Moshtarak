@@ -36,12 +36,10 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
     Spinner spinner;
     @BindView(R.id.radioGroupSuggest)
     RadioGroup radioGroup;
-
     @BindView(R.id.radioButtonSuggest1)
     RadioButton radioButtonSuggest1;
     @BindView(R.id.radioButtonSuggest2)
     RadioButton radioButtonSuggest2;
-
     @BindView(R.id.suggestEditText)
     EditText editText;
     @BindView(R.id.sendButton)
@@ -77,10 +75,9 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
         items.add(getString(R.string.help));
         items.add(getString(R.string.support));
         items.add(getString(R.string.suggest));
-        items.add("سایر");
-        spinner.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,
+        items.add(getString(R.string.other));
+        spinner.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item,
                 items));
-
     }
 
     void setRadioGroupOnCheckedChanged() {
@@ -138,7 +135,6 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
             return capitalize(manufacturer) + " " + model;
         }
     }
-
 
     private String capitalize(String s) {
         if (s == null || s.length() == 0) {

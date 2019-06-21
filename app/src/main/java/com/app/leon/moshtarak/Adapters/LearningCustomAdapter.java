@@ -75,7 +75,6 @@ public class LearningCustomAdapter extends ArrayAdapter<LearningCustomAdapter.Dr
     }
 
     public static class DrawerItem {
-
         String ItemName;
         int imgResID;
 
@@ -85,19 +84,19 @@ public class LearningCustomAdapter extends ArrayAdapter<LearningCustomAdapter.Dr
             this.imgResID = imgResID;
         }
 
-        public String getItemName() {
+        private String getItemName() {
             return ItemName;
         }
 
-        public void setItemName(String itemName) {
+        private void setItemName(String itemName) {
             ItemName = itemName;
         }
 
-        public int getImgResID() {
+        private int getImgResID() {
             return imgResID;
         }
 
-        public void setImgResID(int imgResID) {
+        private void setImgResID(int imgResID) {
             this.imgResID = imgResID;
         }
 
