@@ -3,14 +3,15 @@ package com.app.leon.moshtarak.Activities;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.leon.moshtarak.Adapters.TrackCustomAdapter;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;

@@ -27,7 +27,7 @@
             android:src="@drawable/img_splash" />
     </com.facebook.shimmer.ShimmerFrameLayout>
 
-    <android.support.v7.widget.LinearLayoutCompat
+    <androidx.appcompat.widget.LinearLayoutCompat
         style="@style/bottomView"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
@@ -41,7 +41,7 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -50,12 +50,12 @@
                 android:foregroundGravity="center"
                 android:src="@drawable/img_logo_footer" />
 
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/copy_right"
                 android:textColor="@color/white" />
         </LinearLayout>
-    </android.support.v7.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </RelativeLayout>
