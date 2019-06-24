@@ -45,12 +45,12 @@ public class SplashActivity extends Activity {
     }
 
     private void startSplash() {
-        container.setRepeatCount(0);
-        container.setDuration(2800);
-        container.setBaseAlpha(0.5f);
-        container.setAutoStart(false);
-        container.setIntensity(1);
-        container.startShimmerAnimation();
+//        container.setRepeatCount(0);
+//        container.setDuration(2800);
+//        container.setBaseAlpha(0.5f);
+//        container.setAutoStart(false);
+//        container.setIntensity(1);
+//        container.startShimmerAnimation();
         Thread timerThread = new Thread() {
             public void run() {
                 try {
