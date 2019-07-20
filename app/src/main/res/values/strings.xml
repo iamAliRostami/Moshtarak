@@ -4,6 +4,7 @@
     <string name="navigation_drawer_close">بستن منو</string>
 
     <string name="sale">فروش انشعاب</string>
+    <string name="sale_1">ورود اطلاعات</string>
     <string name="last_bill">مشاهده قبض</string>
     <string name="kardex">مشاهده صورتحساب</string>
     <string name="cardex">صورت حساب آب بها</string>
@@ -12,6 +13,7 @@
     <string name="train">آموزش</string>
     <string name="help">راهنما</string>
     <string name="support">خدمات پس از فروش</string>
+    <string name="support_1">خدمات مورد نیاز</string>
     <string name="suggest">انتقادات پیشنهادات</string>
 
     <string name="login">ثبت</string>

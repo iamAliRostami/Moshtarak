@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
@@ -103,32 +102,26 @@ public class AfterSaleServicesActivity extends BaseActivity {
     }
 
     private void setListViewServiceClickListener() {
-        listViewService.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (listViewService.isItemChecked(i)) {
-                    requestServices.add(servicesId.get(i));
-                } else {
-                    requestServices.add(servicesId.remove(i));
-                }
+        listViewService.setOnItemClickListener((adapterView, view, i, l) -> {
+            if (listViewService.isItemChecked(i)) {
+                requestServices.add(servicesId.get(i));
+            } else {
+                requestServices.add(servicesId.remove(i));
             }
         });
     }
 
     void setOnButtonSubmitClickListener() {
-        buttonSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View viewFocus;
-                if (editTextMobile.getText().length() < 9) {
-                    viewFocus = editTextMobile;
-                    viewFocus.requestFocus();
-                } else if (servicesId.size() < 1) {
-                    new CustomDialog(DialogType.Green, context, context.getString(R.string.select), context.getString(R.string.dear_user),
-                            context.getString(R.string.support), context.getString(R.string.accepted));
-                } else {
-                    sendAfterSaleServiceRequest("09".concat(editTextMobile.getText().toString()));
-                }
+        buttonSubmit.setOnClickListener(view -> {
+            View viewFocus;
+            if (editTextMobile.getText().length() < 9) {
+                viewFocus = editTextMobile;
+                viewFocus.requestFocus();
+            } else if (servicesId.size() < 1) {
+                new CustomDialog(DialogType.Green, context, context.getString(R.string.select), context.getString(R.string.dear_user),
+                        context.getString(R.string.support), context.getString(R.string.accepted));
+            } else {
+                sendAfterSaleServiceRequest("09".concat(editTextMobile.getText().toString()));
             }
         });
     }

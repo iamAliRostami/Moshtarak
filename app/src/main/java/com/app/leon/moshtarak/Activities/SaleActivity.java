@@ -114,7 +114,7 @@ public class SaleActivity extends BaseActivity
         context = this;
         sharedPreference = new SharedPreference(context);
         editTextMobile.setText(sharedPreference.getMobileNumber().replace("09", ""));
-        View view = editTextFamily;
+        View view = editTextName;
         view.requestFocus();
         radioButtonService1.setChecked(true);
         setEditTextOnFocusChangeListener();
