@@ -5,7 +5,6 @@ import android.os.Build;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -66,7 +65,7 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
     void setSpinnerArrayAdapter() {
         items = new ArrayList<>();
         items.add(getString(R.string.sale));
-        items.add(getString(R.string.last_bill));
+        items.add(getString(R.string.last_bill_2));
         items.add(getString(R.string.kardex));
         items.add(getString(R.string.cardex));
         items.add(getString(R.string.tracking));
@@ -81,47 +80,38 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
     }
 
     void setRadioGroupOnCheckedChanged() {
-        radioButtonSuggest1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    spinner.setVisibility(View.VISIBLE);
-                }
+        radioButtonSuggest1.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                spinner.setVisibility(View.VISIBLE);
             }
         });
-        radioButtonSuggest2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    spinner.setVisibility(View.GONE);
-                }
+        radioButtonSuggest2.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                spinner.setVisibility(View.GONE);
             }
         });
     }
 
     void setOnSendButtonClickListener() {
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View viewFocus;
-                if (editText.getText().length() < 1) {
-                    viewFocus = editText;
-                    viewFocus.requestFocus();
+        sendButton.setOnClickListener(v -> {
+            View viewFocus;
+            if (editText.getText().length() < 1) {
+                viewFocus = editText;
+                viewFocus.requestFocus();
+            } else {
+                int select;
+                if (radioButtonSuggest2.isChecked()) {
+                    select = 1;
                 } else {
-                    int select;
-                    if (radioButtonSuggest2.isChecked()) {
-                        select = 1;
-                    } else {
-                        select = spinner.getSelectedItemPosition() + 2;
-                    }
-                    Retrofit retrofit = NetworkHelper.getInstance();
-                    final IAbfaService suggestion = retrofit.create(IAbfaService.class);
-                    Call<SimpleMessage> call = suggestion.sendSuggestion(new Suggestion(
-                            String.valueOf(select), editText.getText().toString(),
-                            String.valueOf(Build.VERSION.RELEASE), getDeviceName()));
-                    HttpClientWrapper.callHttpAsync(call, SuggestActivity.this, context,
-                            ProgressType.SHOW.getValue());
+                    select = spinner.getSelectedItemPosition() + 2;
                 }
+                Retrofit retrofit = NetworkHelper.getInstance();
+                final IAbfaService suggestion = retrofit.create(IAbfaService.class);
+                Call<SimpleMessage> call = suggestion.sendSuggestion(new Suggestion(
+                        String.valueOf(select), editText.getText().toString(),
+                        String.valueOf(Build.VERSION.RELEASE), getDeviceName()));
+                HttpClientWrapper.callHttpAsync(call, SuggestActivity.this, context,
+                        ProgressType.SHOW.getValue());
             }
         });
     }

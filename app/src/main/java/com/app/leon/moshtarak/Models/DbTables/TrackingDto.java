@@ -13,7 +13,8 @@ public class TrackingDto {
     String status;
     ArrayList<String> smsList;
 
-    public TrackingDto(String aidId, String billId, String dateJalali, String description, String hour, String id, String minute, String status, ArrayList<String> smsList) {
+    public TrackingDto(String aidId, String billId, String dateJalali, String description,
+                       String hour, String id, String minute, String status, ArrayList<String> smsList) {
         this.aidId = aidId;
         this.billId = billId;
         this.dateJalali = dateJalali;

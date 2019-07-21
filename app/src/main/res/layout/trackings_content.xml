@@ -12,16 +12,20 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:foregroundGravity="center_horizontal"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         android:visibility="gone">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewTrack"
+        <ListView
+            android:id="@+id/listViewTrack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="@dimen/activity_mid_margin"
             android:divider="@null"
-            android:dividerHeight="0dp"
+            android:dividerHeight="1dp"
+            android:padding="@dimen/activity_mid_padding"
             android:scrollbars="vertical" />
     </LinearLayout>
 

@@ -6,6 +6,7 @@
     <string name="sale">فروش انشعاب</string>
     <string name="sale_1">ورود اطلاعات</string>
     <string name="last_bill">مشاهده قبض</string>
+    <string name="last_bill_2">مشاهده آخرین قبض</string>
     <string name="kardex">مشاهده صورتحساب</string>
     <string name="cardex">صورت حساب آب بها</string>
     <string name="tracking">پیگیری درخواستها</string>
@@ -15,6 +16,7 @@
     <string name="support">خدمات پس از فروش</string>
     <string name="support_1">خدمات مورد نیاز</string>
     <string name="suggest">انتقادات پیشنهادات</string>
+    <string name="suggest_1">گزارش خطای برنامه</string>
 
     <string name="login">ثبت</string>
 
@@ -133,6 +135,7 @@
     <string name="error_report">گزارش خطا</string>
     <string name="request">پیگیری درخواست</string>
     <string name="track_number">شماره پیگیری:</string>
-    <string name="status">وضعیت</string>
-    <string name="time">ساعت</string>
+    <string name="status">وضعیت:</string>
+    <string name="time">ساعت:</string>
+    <string name="date_1">تاریخ:</string>
 </resources>

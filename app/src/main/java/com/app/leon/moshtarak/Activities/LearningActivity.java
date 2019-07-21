@@ -1,7 +1,6 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.content.Intent;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
@@ -33,12 +32,9 @@ public class LearningActivity extends BaseActivity {
     }
 
     private void setImageViewWaterConsumptionListener() {
-        imageViewWaterConsumption.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LearningActivity.this, UsingMethodActivity.class);
-                startActivity(intent);
-            }
+        imageViewWaterConsumption.setOnClickListener(view -> {
+            Intent intent = new Intent(LearningActivity.this, UsingMethodActivity.class);
+            startActivity(intent);
         });
     }
 }

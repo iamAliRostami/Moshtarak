@@ -80,15 +80,16 @@ public class BaseInfoActivity extends BaseActivity implements ICallback<MemberIn
 
     @Override
     public void execute(MemberInfo memberInfo) {
+//        String id = memberInfo.getBillId().substring(1,memberInfo.getBillId().indexOf("."));
         textViewId.setText(memberInfo.getBillId());
+        textViewFile.setText(memberInfo.getRadif().substring(0, memberInfo.getRadif().indexOf(".")));
         textViewAccount.setText(memberInfo.getEshterak());
         textViewAhad.setText(memberInfo.getDomesticUnit().concat(memberInfo.getNonDomesticUnit()));
         textViewBranchRadius.setText(memberInfo.getQotr());
         textViewCapacity.setText(memberInfo.getCapacity());
         textViewDebt.setText(memberInfo.getMande());
-        textViewFile.setText(memberInfo.getRadif());
         textViewSiphonRadius.setText(memberInfo.getSiphon());
         textViewUser.setText(memberInfo.getKarbari());
-        textViewName.setText(memberInfo.getFirstName().concat(" ").concat(memberInfo.getSureName()));
+        textViewName.setText(memberInfo.getFirstName().trim().concat(" ").concat(memberInfo.getSureName().trim()));
     }
 }

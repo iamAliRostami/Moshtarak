@@ -14,19 +14,6 @@
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
-        <TextView
-            android:id="@+id/textViewName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:background="@drawable/border_gray"
-            android:gravity="center"
-            android:padding="@dimen/activity_mid_padding"
-            android:text=""
-            android:textColor="@color/red3"
-            android:textSize="@dimen/textSizeMedium"
-            android:textStyle="bold" />
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -35,6 +22,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_mid_margin"
+                    android:background="@drawable/border_gray"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/activity_mid_padding">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="نام و نام خانوادگی مشترک:"
+                        android:textColor="@color/blue2"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:gravity="center"
+                        android:padding="@dimen/activity_mid_padding"
+                        android:text=""
+                        android:textColor="@color/red3"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -51,63 +68,7 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/id_bill"
-                        android:textColor="@color/blue2" />
-
-                    <TextView
-                        android:id="@+id/textViewFile"
-                        android:layout_width="0px"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
-                        android:layout_marginBottom="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:text="@string/dash"
-                        android:textColor="@color/green2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_mid_margin"
-                    android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <TextView
-                        android:layout_width="0px"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:text="@string/account_"
-                        android:textColor="@color/blue2" />
-
-                    <TextView
-                        android:id="@+id/textViewAccount"
-                        android:layout_width="0px"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
-                        android:layout_marginBottom="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:text="@string/dash"
-                        android:textColor="@color/green2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_mid_margin"
-                    android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <TextView
-                        android:layout_width="0px"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:text="@string/file_number"
+                        android:textStyle="bold"
                         android:textColor="@color/blue2" />
 
                     <TextView
@@ -119,6 +80,7 @@
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/dash"
+                        android:textStyle="bold"
                         android:textColor="@color/green2" />
                 </LinearLayout>
 
@@ -135,12 +97,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:text="@string/user"
+                        android:text="@string/file_number"
+                        android:textStyle="bold"
                         android:textColor="@color/blue2" />
 
                     <TextView
-                        android:id="@+id/textViewUser"
+                        android:id="@+id/textViewFile"
                         android:layout_width="0px"
+                        android:textStyle="bold"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
@@ -154,6 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:textStyle="bold"
                     android:layout_marginRight="@dimen/activity_mid_margin"
                     android:background="@drawable/border_gray_"
                     android:orientation="horizontal"
@@ -163,6 +128,71 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
+                        android:text="@string/account_"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue2" />
+
+                    <TextView
+                        android:id="@+id/textViewAccount"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_mid_margin"
+                        android:layout_marginEnd="@dimen/activity_mid_margin"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:text="@string/dash"
+                        android:textColor="@color/green2" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:textStyle="bold"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:text="@string/user"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue2" />
+
+                    <TextView
+                        android:id="@+id/textViewUser"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_mid_margin"
+                        android:layout_marginEnd="@dimen/activity_mid_margin"
+                        android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:text="@string/dash"
+                        android:textColor="@color/green2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:textStyle="bold"
+                    android:background="@drawable/border_gray_"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:textStyle="bold"
                         android:layout_weight="1"
                         android:text="@string/formal_capacity"
                         android:textColor="@color/blue2" />
@@ -174,6 +204,7 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:textStyle="bold"
                         android:layout_weight="1"
                         android:text="@string/dash"
                         android:textColor="@color/green2" />
@@ -183,6 +214,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:textStyle="bold"
                     android:layout_marginRight="@dimen/activity_mid_margin"
                     android:orientation="horizontal"
                     android:weightSum="2">
@@ -192,6 +224,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:textStyle="bold"
                         android:text="@string/ahad"
                         android:textColor="@color/blue2" />
 
@@ -202,6 +235,7 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:textStyle="bold"
                         android:layout_weight="1"
                         android:text="@string/dash"
                         android:textColor="@color/green2" />
@@ -212,6 +246,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:textStyle="bold"
                     android:background="@drawable/border_gray_"
                     android:orientation="horizontal"
                     android:weightSum="2">
@@ -222,6 +257,7 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/branch_radius"
+                        android:textStyle="bold"
                         android:textColor="@color/blue2" />
 
                     <TextView
@@ -232,6 +268,7 @@
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:textStyle="bold"
                         android:text="@string/dash"
                         android:textColor="@color/green2" />
                 </LinearLayout>
@@ -250,6 +287,7 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/siphon_radius"
+                        android:textStyle="bold"
                         android:textColor="@color/blue2" />
 
                     <TextView
@@ -259,40 +297,11 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:textStyle="bold"
                         android:layout_weight="1"
                         android:text="@string/dash"
                         android:textColor="@color/green2" />
                 </LinearLayout>
-
-                <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="@dimen/activity_mid_margin"-->
-                <!--android:layout_marginRight="@dimen/activity_mid_margin"-->
-                <!--android:orientation="horizontal"-->
-                <!--android:weightSum="2">-->
-
-                <!--<TextView-->
-                <!--android:layout_width="0px"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginBottom="@dimen/activity_mid_margin"-->
-                <!--android:layout_marginEnd="@dimen/activity_mid_margin"-->
-                <!--android:layout_marginTop="@dimen/activity_mid_margin"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="@string/last_read_date"-->
-                <!--android:textColor="@color/blue2" />-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/textViewLastReadDate"-->
-                <!--android:layout_width="0px"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginBottom="@dimen/activity_mid_margin"-->
-                <!--android:layout_marginEnd="@dimen/activity_mid_margin"-->
-                <!--android:layout_marginTop="@dimen/activity_mid_margin"-->
-                <!--android:layout_weight="1"-->
-                <!--android:text="@string/dash"-->
-                <!--android:textColor="@color/green2" />-->
-                <!--</LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -307,6 +316,7 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
+                        android:textStyle="bold"
                         android:layout_weight="1"
                         android:text="@string/debt"
                         android:textColor="@color/blue2" />
@@ -319,6 +329,7 @@
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:textStyle="bold"
                         android:text="@string/dash"
                         android:textColor="@color/green2" />
                 </LinearLayout>

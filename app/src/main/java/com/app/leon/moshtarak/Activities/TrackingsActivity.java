@@ -2,18 +2,15 @@ package com.app.leon.moshtarak.Activities;
 
 import android.content.Context;
 import android.graphics.Point;
-import android.graphics.Rect;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.widget.ListView;
 
 import com.app.leon.moshtarak.Adapters.TrackCustomAdapter;
+import com.app.leon.moshtarak.Adapters.TrackCustomAdapter_1;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
@@ -41,8 +38,8 @@ public class TrackingsActivity extends BaseActivity
     LinearLayout linearLayout1;
     @BindView(R.id.linearLayout2)
     LinearLayout linearLayout2;
-    @BindView(R.id.recyclerViewTrack)
-    RecyclerView recyclerViewTrack;
+    @BindView(R.id.listViewTrack)
+    ListView listViewTrack;
     View viewFocus;
     Context context;
     TrackCustomAdapter trackCustomAdapter;
@@ -62,21 +59,18 @@ public class TrackingsActivity extends BaseActivity
     }
 
     void setOnButtonSubmitClickListener() {
-        buttonSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean cancel = false;
-                if (editTextTrack.getText().length() < 1) {
-                    cancel = true;
-                    viewFocus = editTextTrack;
-                    viewFocus.requestFocus();
-                }
-                if (!cancel) {
-                    Retrofit retrofit = NetworkHelper.getInstance();
-                    final IAbfaService tracking = retrofit.create(IAbfaService.class);
-                    Call<ArrayList<TrackingDto>> call = tracking.getTrackings(editTextTrack.getText().toString());
-                    HttpClientWrapper.callHttpAsync(call, TrackingsActivity.this, context, ProgressType.SHOW.getValue());
-                }
+        buttonSubmit.setOnClickListener(v -> {
+            boolean cancel = false;
+            if (editTextTrack.getText().length() < 1) {
+                cancel = true;
+                viewFocus = editTextTrack;
+                viewFocus.requestFocus();
+            }
+            if (!cancel) {
+                Retrofit retrofit = NetworkHelper.getInstance();
+                final IAbfaService tracking = retrofit.create(IAbfaService.class);
+                Call<ArrayList<TrackingDto>> call = tracking.getTrackings(editTextTrack.getText().toString());
+                HttpClientWrapper.callHttpAsync(call, TrackingsActivity.this, context, ProgressType.SHOW.getValue());
             }
         });
     }
@@ -90,13 +84,7 @@ public class TrackingsActivity extends BaseActivity
         linearLayout1.setVisibility(View.GONE);
         linearLayout2.setVisibility(View.VISIBLE);
         trackCustomAdapter = new TrackCustomAdapter(trackingDtos, width);
-        recyclerViewTrack.setAdapter(trackCustomAdapter);
-        recyclerViewTrack.setLayoutManager(new LinearLayoutManager(this) {
-            @Override
-            public boolean requestChildRectangleOnScreen(@NonNull RecyclerView parent,
-                                                         @NonNull View child, @NonNull Rect rect, boolean immediate) {
-                return false;
-            }
-        });
+        TrackCustomAdapter_1 trackCustomAdapter_1 = new TrackCustomAdapter_1(context, trackingDtos);
+        listViewTrack.setAdapter(trackCustomAdapter_1);
     }
 }

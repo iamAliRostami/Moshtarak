@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_gray_"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal"
     android:scrollbars="horizontal">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_gray_"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:scrollbars="horizontal">
+        android:scrollbars="horizontal"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,14 +22,14 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/activity_mid_margin"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginTop="@dimen/activity_mid_margin"
-                android:layout_marginBottom="@dimen/activity_mid_margin"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/activity_mid_margin"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/status"
@@ -37,20 +41,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/activity_mid_margin"
-                android:layout_marginEnd="@dimen/activity_mid_margin"
-                android:layout_marginBottom="@dimen/activity_mid_margin"
+                android:layout_margin="@dimen/activity_mid_margin"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/green2"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/imageViewInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@android:drawable/sym_action_email" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,7 +55,8 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/activity_mid_margin"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="4">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,7 +66,7 @@
                 android:layout_marginTop="@dimen/activity_mid_margin"
                 android:layout_marginBottom="@dimen/activity_mid_margin"
                 android:layout_weight="1"
-                android:text="@string/date"
+                android:text="@string/date_1"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -112,4 +109,12 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageViewInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.2"
+        android:src="@android:drawable/sym_action_email" />
 </LinearLayout>

@@ -1,9 +1,14 @@
 package com.app.leon.moshtarak.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,15 +24,28 @@ public class ShowSMSActivity extends AppCompatActivity {
     ArrayList<String> sms;
     @BindView(R.id.listViewSMS)
     ListView listViewSMS;
-
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_sms_activity);
+        context = this;
         ButterKnife.bind(this);
         Intent intent = getIntent();
         sms = intent.getStringArrayListExtra("SMS");
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.sms_layout, sms);
+//        arrayAdapter = new ArrayAdapter<>(this, R.layout.sms_layout, sms);
+
+        arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
+                R.layout.sms_layout, sms) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView text = view.findViewById(android.R.id.text1);
+                Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/BYekan_3.ttf");
+                text.setTypeface(typeface);
+                return view;
+            }
+        };
         listViewSMS.setAdapter(arrayAdapter);
     }
 }
