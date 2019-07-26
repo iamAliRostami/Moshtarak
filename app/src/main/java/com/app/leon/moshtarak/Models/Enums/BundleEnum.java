@@ -6,9 +6,7 @@ package com.app.leon.moshtarak.Models.Enums;
 
 public enum BundleEnum {
     TRACK_NUMBER("trackNumber"),
-    DATA("data"),
     READ_STATUS("readStatus"),
-    THEME("theme"),
     ACCOUNT("ACCOUNT"),
     TYPE("type"),
     ON_OFFLOAD("ON_OFFLOAD"),
@@ -18,8 +16,13 @@ public enum BundleEnum {
     COUNTER_STATE_CODE("counterStatePosition"),
     NUMBER("counterStateCode"),
     ESHTERAK_OR_QERAAT("eshterak_or_qeraat"),
-    CURRENT_PAGE("number"),
 
+    USE_AVERAGE("use_average"),
+    USE_LENGTH("use_length"),
+    USE("use"),
+    CURRENT_READING_DATE("current_reading_date"),
+    PRE_READING_DATE("pre_reading_date"),
+    DATA("data"),
     BILL_ID("bill_id"),
     PAY_ID("pay_id"),
     NEW("new"),
@@ -27,6 +30,9 @@ public enum BundleEnum {
     AB_BAHA("ab_baha"),
     TAX("tax"),
     DATE("date"),
+    PRE_DEBT_OR_OWE("pre_debt_or_owe"),
+    TAKALIF_BOODJE("takalif_boodje"),
+    KARMOZDE_FAZELAB("karmozde_fazelab"),
     COST("cost");
     private final String value;
 

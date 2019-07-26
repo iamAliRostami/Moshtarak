@@ -32,6 +32,8 @@
 
     <string name="date">تاریخ</string>
     <string name="use">مصرف</string>
+    <string name="use_average">متوسط مصرف</string>
+    <string name="use_date">مدت مصرف</string>
     <string name="cost">مبلغ</string>
     <string name="note">شرح</string>
     <string name="get_cardex">قبض</string>
@@ -51,7 +53,9 @@
     <string name="ahad">آحاد</string>
     <string name="branch_radius">قطر انشعاب</string>
     <string name="siphon_radius">قطر سیفون</string>
-    <string name="last_read_date">تاریخ آخرین قرائت</string>
+    <string name="current_reading_date">تاریخ قرائت فعلی</string>
+    <string name="last_read_date"> تاریخ قرائت پیشین</string>
+    <string name="pre_debt_or_owe">بدهی بستانکاری قبلی</string>
     <string name="debt">بدهی</string>
     <string name="logout">خروج از حساب کاربری</string>
     <string name="title_activity_home">خانه</string>
@@ -114,6 +118,8 @@
     <string name="pre_number">شماره قبلی قرائت</string>
     <string name="now_number">شماره فعلی قرائت</string>
     <string name="ab_baha">آب بها</string>
+    <string name="karmozd_dafe_fazelab">کارمزد دفع فاضلاب</string>
+    <string name="takalife_boodje">تکالیف بودجه</string>
     <string name="maliat">مالیات و عوارض</string>
     <string name="abonman">آبونمان</string>
     <string name="other">سایر هزینه ها</string>

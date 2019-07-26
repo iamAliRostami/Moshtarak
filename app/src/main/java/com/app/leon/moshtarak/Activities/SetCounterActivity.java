@@ -280,6 +280,18 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         bundle.putString(BundleEnum.TAX.getValue(), lastBillInfo.getMaliat());
         bundle.putString(BundleEnum.DATE.getValue(), lastBillInfo.getDeadLine());
         bundle.putString(BundleEnum.COST.getValue(), lastBillInfo.getPayable());
+
+        bundle.putString(BundleEnum.USE.getValue(), lastBillInfo.getUsageM3());
+        bundle.putString(BundleEnum.USE_LENGTH.getValue(), lastBillInfo.getDuration());
+        bundle.putString(BundleEnum.USE_AVERAGE.getValue(), lastBillInfo.getRate());
+        bundle.putString(BundleEnum.PRE_READING_DATE.getValue(), lastBillInfo.getPreReadingDate());
+        bundle.putString(BundleEnum.CURRENT_READING_DATE.getValue(), lastBillInfo.getCurrentReadingDate());
+
+
+        bundle.putString(BundleEnum.PRE_DEBT_OR_OWE.getValue(), lastBillInfo.getPreDebtOrOwe());
+        bundle.putString(BundleEnum.TAKALIF_BOODJE.getValue(), lastBillInfo.getBoodje());
+        bundle.putString(BundleEnum.KARMOZDE_FAZELAB.getValue(), lastBillInfo.getKarmozdFazelab());
+
         intent.putExtra(BundleEnum.DATA.getValue(), bundle);
         startActivity(intent);
     }

@@ -35,22 +35,36 @@ public class LastBillActivity extends BaseActivity
     TextView textViewBillId;
     @BindView(R.id.textViewPayId)
     TextView textViewPayId;
-    @BindView(R.id.textViewPre)
-    TextView textViewPre;
-    @BindView(R.id.textViewNew)
-    TextView textViewNew;
+    @BindView(R.id.textViewPreNumber)
+    TextView textViewPreNumber;
+    @BindView(R.id.textViewNewNumber)
+    TextView textViewNewNumber;
+    @BindView(R.id.textViewPreDate)
+    TextView textViewPreDate;
+    @BindView(R.id.textViewNewDate)
+    TextView textViewNewDate;
     @BindView(R.id.textViewAbBaha)
     TextView textViewAbBaha;
     @BindView(R.id.textViewTax)
     TextView textViewTax;
-    @BindView(R.id.textViewAbo)
-    TextView textViewAbo;
-    @BindView(R.id.textViewOther)
-    TextView textViewOther;
+    @BindView(R.id.textViewKarmozdeFazelab)
+    TextView textViewKarmozdeFazelab;
+    @BindView(R.id.textViewTakalifBoodje)
+    TextView textViewTakalifBoodje;
+    @BindView(R.id.textViewPreDebtOrOwe)
+    TextView textViewPreDebtOrOwe;
     @BindView(R.id.textViewDate)
     TextView textViewDate;
     @BindView(R.id.textViewCost)
     TextView textViewCost;
+
+    @BindView(R.id.textViewUse)
+    TextView textViewUse;
+    @BindView(R.id.textViewUseAverage)
+    TextView textViewUseAverage;
+    @BindView(R.id.textViewUseLength)
+    TextView textViewUseLength;
+
     @BindView(R.id.imageViewBarcode)
     ImageView imageViewBarcode;
     Context context;
@@ -87,8 +101,21 @@ public class LastBillActivity extends BaseActivity
             Bundle bundle = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
             textViewBillId.setText(bundle.getString(BundleEnum.BILL_ID.getValue()));
             textViewPayId.setText(bundle.getString(BundleEnum.PAY_ID.getValue()));
-            textViewNew.setText(bundle.getString(BundleEnum.NEW.getValue()));
-            textViewPre.setText(bundle.getString(BundleEnum.PRE.getValue()));
+            textViewNewNumber.setText(bundle.getString(BundleEnum.NEW.getValue()));
+            textViewPreNumber.setText(bundle.getString(BundleEnum.PRE.getValue()));
+
+            textViewNewDate.setText(bundle.getString(BundleEnum.CURRENT_READING_DATE.getValue()));
+            textViewPreDate.setText(bundle.getString(BundleEnum.PRE_READING_DATE.getValue()));
+
+            textViewUseAverage.setText(bundle.getString(BundleEnum.USE_AVERAGE.getValue()));
+            textViewUseLength.setText(bundle.getString(BundleEnum.USE_LENGTH.getValue()));
+            textViewUse.setText(bundle.getString(BundleEnum.USE.getValue()));
+
+
+            textViewPreDebtOrOwe.setText(bundle.getString(BundleEnum.PRE_DEBT_OR_OWE.getValue()));
+            textViewTakalifBoodje.setText(bundle.getString(BundleEnum.TAKALIF_BOODJE.getValue()));
+            textViewKarmozdeFazelab.setText(bundle.getString(BundleEnum.KARMOZDE_FAZELAB.getValue()));
+
             textViewAbBaha.setText(bundle.getString(BundleEnum.AB_BAHA.getValue()));
             textViewTax.setText(bundle.getString(BundleEnum.TAX.getValue()));
             textViewDate.setText(bundle.getString(BundleEnum.DATE.getValue()));
@@ -107,12 +134,25 @@ public class LastBillActivity extends BaseActivity
     public void execute(LastBillInfo lastBillInfo) {
         textViewBillId.setText(lastBillInfo.getBillId());
         textViewPayId.setText(lastBillInfo.getPayId());
-        textViewNew.setText(lastBillInfo.getCurrentReadingNumber());
-        textViewPre.setText(lastBillInfo.getPreReadingNumber());
+        textViewNewNumber.setText(lastBillInfo.getCurrentReadingNumber());
+        textViewPreNumber.setText(lastBillInfo.getPreReadingNumber());
+
+        textViewNewDate.setText(lastBillInfo.getCurrentReadingDate());
+        textViewPreDate.setText(lastBillInfo.getPreReadingDate());
+
+        textViewUseAverage.setText(lastBillInfo.getRate());
+        textViewUseLength.setText(lastBillInfo.getDuration());
+        textViewUse.setText(lastBillInfo.getUsageM3());
+
         textViewAbBaha.setText(lastBillInfo.getAbBaha());
         textViewTax.setText(lastBillInfo.getMaliat());
         textViewDate.setText(lastBillInfo.getDeadLine());
         textViewCost.setText(lastBillInfo.getPayable());
+
+        textViewPreDebtOrOwe.setText(lastBillInfo.getPreDebtOrOwe());
+        textViewTakalifBoodje.setText(lastBillInfo.getBoodje());
+        textViewKarmozdeFazelab.setText(lastBillInfo.getKarmozdFazelab());
+
         setImageBitmap(imageViewBarcode, lastBillInfo.getPayable());
     }
 
