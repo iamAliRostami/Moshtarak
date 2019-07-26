@@ -124,7 +124,7 @@ public class SaleActivity extends BaseActivity
 
     @Override
     public void execute(SimpleMessage simpleMessage) {
-        new CustomDialog(DialogType.Green, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
+        new CustomDialog(DialogType.GreenRedirect, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
                 context.getString(R.string.buy), context.getString(R.string.accepted));
     }
 
@@ -145,59 +145,56 @@ public class SaleActivity extends BaseActivity
     }
 
     private void setButtonNavigationOnClickListener() {
-        buttonNavigation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view1) {
-                View view;
-                boolean cancel = false;
-                if (editTextAddress.getText().length() < 1) {
-                    view = editTextAddress;
-                    view.requestFocus();
-                    cancel = true;
-                }
-                if (editTextBillId.getText().length() < 6) {
-                    view = editTextBillId;
-                    view.requestFocus();
-                    cancel = true;
-                }
-                if (editTextPostalCode.getText().length() < 10) {
-                    view = editTextPostalCode;
-                    view.requestFocus();
-                    cancel = true;
-                }
-                if (editTextMobile.getText().length() < 9) {
-                    view = editTextMobile;
-                    view.requestFocus();
-                    cancel = true;
-                }
-                if (editTextPhoneNumber.getText().length() < 8) {
-                    view = editTextPhoneNumber;
-                    view.requestFocus();
-                    cancel = true;
-                }
-                if (editTextNationNumber.getText().length() < 10) {
-                    view = editTextNationNumber;
-                    view.requestFocus();
-                    cancel = true;
-                }
-                if (editTextFatherName.getText().length() < 1) {
-                    view = editTextFatherName;
-                    view.requestFocus();
-                    cancel = true;
-                }
-                if (editTextFamily.getText().length() < 1) {
-                    view = editTextFamily;
-                    view.requestFocus();
-                    cancel = true;
-                }
-                if (editTextName.getText().length() < 1) {
-                    view = editTextName;
-                    view.requestFocus();
-                    cancel = true;
-                }
-                if (!cancel) {
-                    sendRequest();
-                }
+        buttonNavigation.setOnClickListener(view1 -> {
+            View view;
+            boolean cancel = false;
+            if (editTextAddress.getText().length() < 1) {
+                view = editTextAddress;
+                view.requestFocus();
+                cancel = true;
+            }
+            if (editTextBillId.getText().length() < 6) {
+                view = editTextBillId;
+                view.requestFocus();
+                cancel = true;
+            }
+            if (editTextPostalCode.getText().length() < 10) {
+                view = editTextPostalCode;
+                view.requestFocus();
+                cancel = true;
+            }
+            if (editTextMobile.getText().length() < 9) {
+                view = editTextMobile;
+                view.requestFocus();
+                cancel = true;
+            }
+            if (editTextPhoneNumber.getText().length() < 8) {
+                view = editTextPhoneNumber;
+                view.requestFocus();
+                cancel = true;
+            }
+            if (editTextNationNumber.getText().length() < 10) {
+                view = editTextNationNumber;
+                view.requestFocus();
+                cancel = true;
+            }
+            if (editTextFatherName.getText().length() < 1) {
+                view = editTextFatherName;
+                view.requestFocus();
+                cancel = true;
+            }
+            if (editTextFamily.getText().length() < 1) {
+                view = editTextFamily;
+                view.requestFocus();
+                cancel = true;
+            }
+            if (editTextName.getText().length() < 1) {
+                view = editTextName;
+                view.requestFocus();
+                cancel = true;
+            }
+            if (!cancel) {
+                sendRequest();
             }
         });
     }

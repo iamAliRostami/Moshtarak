@@ -20,7 +20,6 @@ import java.util.Collections;
 public class TrackCustomAdapter_1 extends ArrayAdapter<TrackingDto> {
     private ArrayList<TrackingDto> trackingDtos;
     private Context context;
-    private int width;
 
     public TrackCustomAdapter_1(Context context, ArrayList<TrackingDto> trackingDtos) {
         super(context, 0);

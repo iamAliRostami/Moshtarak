@@ -3,15 +3,10 @@ package com.app.leon.moshtarak.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
-import android.graphics.Rect;
 import android.view.Display;
-import android.view.View;
+import android.widget.ListView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.app.leon.moshtarak.Adapters.KardexCustomAdapter;
+import com.app.leon.moshtarak.Adapters.KardexCustomAdapter_1;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
@@ -30,9 +25,9 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class CardexActivity extends BaseActivity implements ICallback<ArrayList<Kardex>> {
-    @BindView(R.id.recyclerViewCardex)
-    RecyclerView recyclerViewCardex;
-    KardexCustomAdapter kardexCustomAdapter;
+    @BindView(R.id.listViewCardex)
+    ListView recyclerViewCardex;
+    KardexCustomAdapter_1 kardexCustomAdapter;
     int width;
     private Context context;
     private String billId;
@@ -75,14 +70,14 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
 
     @Override
     public void execute(ArrayList<Kardex> kardexes) {
-        kardexCustomAdapter = new KardexCustomAdapter(kardexes, width);
+        kardexCustomAdapter = new KardexCustomAdapter_1(kardexes, context);
         recyclerViewCardex.setAdapter(kardexCustomAdapter);
-        recyclerViewCardex.setLayoutManager(new LinearLayoutManager(this) {
-            @Override
-            public boolean requestChildRectangleOnScreen(@NonNull RecyclerView parent,
-                                                         @NonNull View child, @NonNull Rect rect, boolean immediate) {
-                return false;
-            }
-        });
+//        recyclerViewCardex.setLayoutManager(new LinearLayoutManager(this) {
+//            @Override
+//            public boolean requestChildRectangleOnScreen(@NonNull RecyclerView parent,
+//                                                         @NonNull View child, @NonNull Rect rect, boolean immediate) {
+//                return false;
+//            }
+//        });
     }
 }

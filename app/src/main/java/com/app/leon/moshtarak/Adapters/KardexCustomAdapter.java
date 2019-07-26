@@ -46,6 +46,7 @@ public class KardexCustomAdapter extends RecyclerView.Adapter<KardexCustomAdapte
         return new ViewHolder(viewCardex);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Kardex kardex = kardexes.get(i);
@@ -53,25 +54,24 @@ public class KardexCustomAdapter extends RecyclerView.Adapter<KardexCustomAdapte
         viewHolder.textViewNote.setText(kardex.getDescription());
         viewHolder.textViewUse.setText(kardex.getUsage());
         String owe = kardex.getOweDate();
-        String creditor = kardex.getCreditorDate();
+        String creditor = kardex.getCreditorDate().trim();
 
-        if (creditor.contains("        ") || creditor.equals("          ") || TextUtils.isEmpty(creditor)) {
+        if (TextUtils.isEmpty(creditor)) {
             viewHolder.textViewDate.setText(owe);
         } else if (owe == null || owe.equals("null") || TextUtils.isEmpty(owe)) {
             viewHolder.textViewDate.setText(creditor);
         }
-        viewHolder.imageViewInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, LastBillActivity.class);
-                context.startActivity(intent);
-            }
+        viewHolder.imageViewInfo.setOnClickListener(view -> {
+            Intent intent = new Intent(context, LastBillActivity.class);
+            context.startActivity(intent);
         });
         Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/BYekan_3.ttf");
         viewHolder.textViewNote.setTypeface(typeface);
         viewHolder.textViewDate.setTypeface(typeface);
         viewHolder.textViewCost.setTypeface(typeface);
         viewHolder.textViewUse.setTypeface(typeface);
+        if (kardex.getDescription().contains("صدور قبض"))
+            viewHolder.textViewNote.setTextColor(context.getResources().getColor(R.color.colorAccentIndigo));
 
         viewHolder.textViewNote.setWidth((width - viewHolder.imageViewInfo.getWidth()) / 4);
         viewHolder.textViewCost.setWidth((width - viewHolder.imageViewInfo.getWidth()) / 4);
