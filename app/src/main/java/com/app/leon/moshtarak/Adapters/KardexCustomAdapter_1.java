@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.leon.moshtarak.Activities.LastBillActivity;
 import com.app.leon.moshtarak.Models.DbTables.Kardex;
+import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.R;
 
 import java.util.ArrayList;
@@ -28,7 +31,7 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
         this.context = context;
     }
 
-    @SuppressLint("InflateParams")
+    @SuppressLint({"InflateParams", "DefaultLocale"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
@@ -61,24 +64,26 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
         } else if (owe == null || owe.equals("null") || TextUtils.isEmpty(owe)) {
             textViewDate.setText(creditor);
         }
-        imageViewInfo.setOnClickListener(view ->
 
-        {
-            Intent intent = new Intent(context, LastBillActivity.class);
-            context.startActivity(intent);
-        });
         Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/BYekan_3.ttf");
         textViewNote.setTypeface(typeface);
         textViewDate.setTypeface(typeface);
         textViewCost.setTypeface(typeface);
         textViewUse.setTypeface(typeface);
-        if (kardex.getDescription().
-
-                contains("صدور قبض"))
-            textViewNote.setTextColor(context.getResources().
-
-                    getColor(R.color.colorAccentIndigo));
-
+        if (kardex.isBill()) {
+            textViewNote.setTextColor(context.getResources().getColor(R.color.colorAccentIndigo));
+            imageViewInfo.setOnClickListener(view ->
+            {
+                Intent intent = new Intent(context, LastBillActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString(BundleEnum.ID.getValue(), kardex.getId());
+                bundle.putString(BundleEnum.ZONE_ID.getValue(), kardex.getZoneId());
+                intent.putExtra(BundleEnum.THIS_BILL.getValue(), bundle);
+                context.startActivity(intent);
+            });
+        } else if (kardex.isPay()) {
+            imageViewInfo.setOnClickListener(view -> Toast.makeText(context, context.getString(R.string.payed), Toast.LENGTH_SHORT).show());
+        }
         textViewCost.setGravity(1);
         textViewNote.setGravity(1);
         textViewDate.setGravity(1);
@@ -101,21 +106,4 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
     public long getItemId(int position) {
         return position;
     }
-
-//    class ViewHolder extends RecyclerView.ViewHolder {
-//        TextView textViewDate;
-//        TextView textViewUse;
-//        TextView textViewCost;
-//        TextView textViewNote;
-//        ImageView imageViewInfo;
-//
-//        ViewHolder(View itemView) {
-//            super(itemView);
-//            textViewDate = itemView.findViewById(R.id.textViewDate);
-//            textViewUse = itemView.findViewById(R.id.textViewUse);
-//            textViewCost = itemView.findViewById(R.id.textViewCost);
-//            textViewNote = itemView.findViewById(R.id.textViewNote);
-//            imageViewInfo = itemView.findViewById(R.id.imageViewInfo);
-//        }
-//    }
 }

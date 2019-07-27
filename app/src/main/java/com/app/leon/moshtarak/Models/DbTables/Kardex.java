@@ -1,6 +1,8 @@
 package com.app.leon.moshtarak.Models.DbTables;
 
 public class Kardex {
+    private String id;
+    private String zoneId;
     private String preReadingDate;
     private String currentReadingDate;
     private String duration;
@@ -15,25 +17,8 @@ public class Kardex {
     private String description;
     private String payId;
     private String date;
-
-    public Kardex(String preReadingDate, String currentReadingDate, String duration,
-                  String preReadingNumber, String currentReadingNumber, String usage,
-                  String oweDate, String amount, String deadLine, String creditorDate,
-                  String creditorAmount, String description, String payId) {
-        this.preReadingDate = preReadingDate;
-        this.currentReadingDate = currentReadingDate;
-        this.duration = duration;
-        this.preReadingNumber = preReadingNumber;
-        this.currentReadingNumber = currentReadingNumber;
-        this.usage = usage;
-        this.amount = amount;
-        this.deadLine = deadLine;
-        this.creditorAmount = creditorAmount;
-        this.description = description;
-        this.payId = payId;
-        this.oweDate = oweDate;
-        this.creditorDate = creditorDate;
-    }
+    private boolean isBill;
+    private boolean isPay;
 
     public String getDate() {
         return date;
@@ -145,5 +130,37 @@ public class Kardex {
 
     public void setPayId(String payId) {
         this.payId = payId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public boolean isBill() {
+        return isBill;
+    }
+
+    public void setBill(boolean bill) {
+        isBill = bill;
+    }
+
+    public boolean isPay() {
+        return isPay;
+    }
+
+    public void setPay(boolean pay) {
+        isPay = pay;
+    }
+
+    public String getZoneId() {
+        return zoneId;
+    }
+
+    public void setZoneId(String zoneId) {
+        this.zoneId = zoneId;
     }
 }

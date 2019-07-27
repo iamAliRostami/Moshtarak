@@ -16,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -102,46 +101,41 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     void setOnDrawerItemClick() {
-        drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> adpterView, View view, int position,
-                                    long id) {
-                setItemsColor(drawer, position);
-                if (position != 0) {
-                    for (int i = 0; i < drawerList.getChildCount(); i++) {
-                        if (position == i) {
-                            drawerList.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.red2));
-                        } else {
-                            drawerList.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.white));
-                        }
+        drawerList.setOnItemClickListener((adpterView, view, position, id) -> {
+            setItemsColor(drawer, position);
+            if (position != 0) {
+                for (int i = 0; i < drawerList.getChildCount(); i++) {
+                    if (position == i) {
+                        drawerList.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.red2));
+                    } else {
+                        drawerList.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.white));
                     }
                 }
-                if (position == 1) {
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
-                } else if (position == 2) {
-                    new CustomTab(url, BaseActivity.this);
-                } else if (position == 3) {
-                    Intent intent = new Intent(getApplicationContext(), BaseInfoActivity.class);
-                    startActivity(intent);
-                } else if (position == 4) {
-                } else if (position == 5) {
-                    try {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
-                    } catch (android.content.ActivityNotFoundException anfe) {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
-                    }
-                } else if (position == 6) {
-                    Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
-                    startActivity(intent);
-                } else if (position == 7) {
-                } else if (position == 8) {
-                } else if (position == 9) {
-                    finishAffinity();
-                }
-                drawer.closeDrawer(GravityCompat.START);
             }
+            if (position == 1) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            } else if (position == 2) {
+                new CustomTab(url, BaseActivity.this);
+            } else if (position == 3) {
+                Intent intent = new Intent(getApplicationContext(), BaseInfoActivity.class);
+                startActivity(intent);
+            } else if (position == 4) {
+            } else if (position == 5) {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
+                }
+            } else if (position == 6) {
+                Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
+                startActivity(intent);
+            } else if (position == 7) {
+            } else if (position == 8) {
+            } else if (position == 9) {
+                finishAffinity();
+            }
+            drawer.closeDrawer(GravityCompat.START);
         });
     }
 

@@ -74,40 +74,37 @@ public class SignAccountActivity extends BaseActivity
     }
 
     void setButtonSignClickListener() {
-        buttonSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View viewFocus;
-                boolean cancel = false;
-                if (editTextBillId.getText().length() < 6) {
-                    cancel = true;
-                    editTextBillId.setError(getString(R.string.error_empty));
-                    viewFocus = editTextBillId;
-                    viewFocus.requestFocus();
-                }
-                if (!cancel && editTextAccount.getText().length() < 7) {
-                    cancel = true;
-                    editTextAccount.setError(getString(R.string.error_empty));
-                    viewFocus = editTextAccount;
-                    viewFocus.requestFocus();
-                }
-                if (editTextNationNumber.getText().length() < 10) {
-                    view = editTextNationNumber;
-                    view.requestFocus();
-                    cancel = true;
-                }
-                if (editTextMobile.getText().length() < 9) {
-                    view = editTextMobile;
-                    view.requestFocus();
-                    cancel = true;
-                }
-                if (!cancel) {
-                    account = editTextAccount.getText().toString();
-                    billId = editTextBillId.getText().toString();
-                    mobile = "09".concat(editTextMobile.getText().toString());
-                    nationNumber = editTextNationNumber.getText().toString();
-                    canMatch(billId, account, mobile, nationNumber);
-                }
+        buttonSign.setOnClickListener(view -> {
+            View viewFocus;
+            boolean cancel = false;
+            if (editTextBillId.getText().length() < 6) {
+                cancel = true;
+                editTextBillId.setError(getString(R.string.error_empty));
+                viewFocus = editTextBillId;
+                viewFocus.requestFocus();
+            }
+            if (!cancel && editTextAccount.getText().length() < 7) {
+                cancel = true;
+                editTextAccount.setError(getString(R.string.error_empty));
+                viewFocus = editTextAccount;
+                viewFocus.requestFocus();
+            }
+            if (editTextNationNumber.getText().length() < 10) {
+                view = editTextNationNumber;
+                view.requestFocus();
+                cancel = true;
+            }
+            if (editTextMobile.getText().length() < 9) {
+                view = editTextMobile;
+                view.requestFocus();
+                cancel = true;
+            }
+            if (!cancel) {
+                account = editTextAccount.getText().toString();
+                billId = editTextBillId.getText().toString();
+                mobile = "09".concat(editTextMobile.getText().toString());
+                nationNumber = editTextNationNumber.getText().toString();
+                canMatch(billId, account, mobile, nationNumber);
             }
         });
     }

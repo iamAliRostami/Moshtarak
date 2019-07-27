@@ -14,9 +14,11 @@ public enum BundleEnum {
     SPINNER_POSITION("spinner_position"),
     COUNTER_STATE_POSITION("counterStatePosition"),
     COUNTER_STATE_CODE("counterStatePosition"),
-    NUMBER("counterStateCode"),
-    ESHTERAK_OR_QERAAT("eshterak_or_qeraat"),
 
+    ID("id"),
+    IS_PAYED("is_payed"),
+    ZONE_ID("zone_id"),
+    THIS_BILL("this_bill"),
     USE_AVERAGE("use_average"),
     USE_LENGTH("use_length"),
     USE("use"),

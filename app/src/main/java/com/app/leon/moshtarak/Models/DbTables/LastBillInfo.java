@@ -23,14 +23,13 @@ public class LastBillInfo {
     private String radif;
     private String billId;
     private String payId;
-    private String isPayed;
-
+    private boolean isPayed;
     public LastBillInfo(String preReadingDate, String currentReadingDate, String duration,
                         String preReadingNumber, String currentReadingNumber, String usageM3,
                         String usageLiter, String rate, String abBaha, String karmozdFazelab,
                         String maliat, String boodje, String jam, String preDebtOrOwe,
                         String payable, String persianPayable, String deadLine, String bargeNumber,
-                        String ehsterak, String radif, String billId, String payId, String isPayed) {
+                        String ehsterak, String radif, String billId, String payId, boolean isPayed) {
         this.preReadingDate = preReadingDate;
         this.currentReadingDate = currentReadingDate;
         this.duration = duration;
@@ -54,6 +53,14 @@ public class LastBillInfo {
         this.billId = billId;
         this.payId = payId;
         this.isPayed = isPayed;
+    }
+
+    public boolean isPayed() {
+        return isPayed;
+    }
+
+    public void setPayed(boolean payed) {
+        isPayed = payed;
     }
 
     public String getPreReadingDate() {
@@ -232,11 +239,4 @@ public class LastBillInfo {
         this.payId = payId;
     }
 
-    public String getIsPayed() {
-        return isPayed;
-    }
-
-    public void setIsPayed(String isPayed) {
-        this.isPayed = isPayed;
-    }
 }

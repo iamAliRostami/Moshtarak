@@ -9,6 +9,7 @@ import android.view.Display;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
@@ -19,6 +20,7 @@ import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
+import com.app.leon.moshtarak.Utils.CustomTab;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
@@ -29,8 +31,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 
 
-public class LastBillActivity extends BaseActivity
-        implements ICallback<LastBillInfo> {
+public class LastBillActivity extends BaseActivity {
     @BindView(R.id.textViewBillId)
     TextView textViewBillId;
     @BindView(R.id.textViewPayId)
@@ -69,6 +70,10 @@ public class LastBillActivity extends BaseActivity
     ImageView imageViewBarcode;
     Context context;
     String billId;
+    String id;
+    String zoneId;
+    String address = "https://bill.bpm.bankmellat.ir/bpgwchannel/";
+    boolean isPayed = false;
 
     @Override
     protected UiElementInActivity getUiElementsInActivity() {
@@ -81,6 +86,12 @@ public class LastBillActivity extends BaseActivity
     protected void initialize() {
         ButterKnife.bind(this);
         context = this;
+        textViewCost.setOnClickListener(view -> {
+            if (!isPayed)
+                new CustomTab(address, LastBillActivity.this);
+            else
+                Toast.makeText(context, context.getString(R.string.payed), Toast.LENGTH_SHORT).show();
+        });
         accessData();
     }
 
@@ -98,62 +109,51 @@ public class LastBillActivity extends BaseActivity
 
     void fillLastBillInfo() {
         if (getIntent().getExtras() != null) {
-            Bundle bundle = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
-            textViewBillId.setText(bundle.getString(BundleEnum.BILL_ID.getValue()));
-            textViewPayId.setText(bundle.getString(BundleEnum.PAY_ID.getValue()));
-            textViewNewNumber.setText(bundle.getString(BundleEnum.NEW.getValue()));
-            textViewPreNumber.setText(bundle.getString(BundleEnum.PRE.getValue()));
+            Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
+            Bundle bundle2 = getIntent().getBundleExtra(BundleEnum.THIS_BILL.getValue());
+            if (bundle1 != null) {
+                textViewBillId.setText(bundle1.getString(BundleEnum.BILL_ID.getValue()));
+                textViewPayId.setText(bundle1.getString(BundleEnum.PAY_ID.getValue()));
+                textViewNewNumber.setText(bundle1.getString(BundleEnum.NEW.getValue()));
+                textViewPreNumber.setText(bundle1.getString(BundleEnum.PRE.getValue()));
 
-            textViewNewDate.setText(bundle.getString(BundleEnum.CURRENT_READING_DATE.getValue()));
-            textViewPreDate.setText(bundle.getString(BundleEnum.PRE_READING_DATE.getValue()));
+                textViewNewDate.setText(bundle1.getString(BundleEnum.CURRENT_READING_DATE.getValue()));
+                textViewPreDate.setText(bundle1.getString(BundleEnum.PRE_READING_DATE.getValue()));
 
-            textViewUseAverage.setText(bundle.getString(BundleEnum.USE_AVERAGE.getValue()));
-            textViewUseLength.setText(bundle.getString(BundleEnum.USE_LENGTH.getValue()));
-            textViewUse.setText(bundle.getString(BundleEnum.USE.getValue()));
+                textViewUseAverage.setText(bundle1.getString(BundleEnum.USE_AVERAGE.getValue()));
+                textViewUseLength.setText(bundle1.getString(BundleEnum.USE_LENGTH.getValue()));
+                textViewUse.setText(bundle1.getString(BundleEnum.USE.getValue()));
 
 
-            textViewPreDebtOrOwe.setText(bundle.getString(BundleEnum.PRE_DEBT_OR_OWE.getValue()));
-            textViewTakalifBoodje.setText(bundle.getString(BundleEnum.TAKALIF_BOODJE.getValue()));
-            textViewKarmozdeFazelab.setText(bundle.getString(BundleEnum.KARMOZDE_FAZELAB.getValue()));
+                textViewPreDebtOrOwe.setText(bundle1.getString(BundleEnum.PRE_DEBT_OR_OWE.getValue()));
+                textViewTakalifBoodje.setText(bundle1.getString(BundleEnum.TAKALIF_BOODJE.getValue()));
+                textViewKarmozdeFazelab.setText(bundle1.getString(BundleEnum.KARMOZDE_FAZELAB.getValue()));
 
-            textViewAbBaha.setText(bundle.getString(BundleEnum.AB_BAHA.getValue()));
-            textViewTax.setText(bundle.getString(BundleEnum.TAX.getValue()));
-            textViewDate.setText(bundle.getString(BundleEnum.DATE.getValue()));
-            textViewCost.setText(bundle.getString(BundleEnum.COST.getValue()));
-            setImageBitmap(imageViewBarcode, bundle.getString(BundleEnum.COST.getValue()));
+                textViewAbBaha.setText(bundle1.getString(BundleEnum.AB_BAHA.getValue()));
+                textViewTax.setText(bundle1.getString(BundleEnum.TAX.getValue()));
+                textViewDate.setText(bundle1.getString(BundleEnum.DATE.getValue()));
+                textViewCost.setText(bundle1.getString(BundleEnum.COST.getValue()));
+                setImageBitmap(imageViewBarcode, bundle1.getString(BundleEnum.COST.getValue()));
+
+                isPayed = bundle1.getBoolean(BundleEnum.IS_PAYED.getValue());
+
+            } else if (bundle2 != null) {
+                Retrofit retrofit = NetworkHelper.getInstance();
+                final IAbfaService getLastBillInfo = retrofit.create(IAbfaService.class);
+                Call<LastBillInfo> call = getLastBillInfo.getThisBillInfo(
+                        bundle2.getString(BundleEnum.ID.getValue()),
+                        bundle2.getString(BundleEnum.ZONE_ID.getValue()));
+                ThisBill thisBill = new ThisBill();
+                HttpClientWrapper.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
+            }
 
         } else {
             Retrofit retrofit = NetworkHelper.getInstance();
-            final IAbfaService getLastBillInfo = retrofit.create(IAbfaService.class);
-            Call<LastBillInfo> call = getLastBillInfo.getLastBillInfo(billId);
-            HttpClientWrapper.callHttpAsync(call, LastBillActivity.this, context, ProgressType.SHOW.getValue());
+            final IAbfaService getThisBillInfo = retrofit.create(IAbfaService.class);
+            Call<LastBillInfo> call = getThisBillInfo.getLastBillInfo(billId);
+            ThisBill thisBill = new ThisBill();
+            HttpClientWrapper.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
         }
-    }
-
-    @Override
-    public void execute(LastBillInfo lastBillInfo) {
-        textViewBillId.setText(lastBillInfo.getBillId());
-        textViewPayId.setText(lastBillInfo.getPayId());
-        textViewNewNumber.setText(lastBillInfo.getCurrentReadingNumber());
-        textViewPreNumber.setText(lastBillInfo.getPreReadingNumber());
-
-        textViewNewDate.setText(lastBillInfo.getCurrentReadingDate());
-        textViewPreDate.setText(lastBillInfo.getPreReadingDate());
-
-        textViewUseAverage.setText(lastBillInfo.getRate());
-        textViewUseLength.setText(lastBillInfo.getDuration());
-        textViewUse.setText(lastBillInfo.getUsageM3());
-
-        textViewAbBaha.setText(lastBillInfo.getAbBaha());
-        textViewTax.setText(lastBillInfo.getMaliat());
-        textViewDate.setText(lastBillInfo.getDeadLine());
-        textViewCost.setText(lastBillInfo.getPayable());
-
-        textViewPreDebtOrOwe.setText(lastBillInfo.getPreDebtOrOwe());
-        textViewTakalifBoodje.setText(lastBillInfo.getBoodje());
-        textViewKarmozdeFazelab.setText(lastBillInfo.getKarmozdFazelab());
-
-        setImageBitmap(imageViewBarcode, lastBillInfo.getPayable());
     }
 
     void setImageBitmap(ImageView imageView, String s) {
@@ -168,5 +168,35 @@ public class LastBillActivity extends BaseActivity
         int width = metrics.widthPixels;
         Bitmap bitmap = code.getBitmap(2 * width / 3, height / 8);
         imageView.setImageBitmap(bitmap);
+    }
+
+    class ThisBill implements ICallback<LastBillInfo> {
+        @Override
+        public void execute(LastBillInfo lastBillInfo) {
+            textViewBillId.setText(lastBillInfo.getBillId().trim());
+            textViewPayId.setText(lastBillInfo.getPayId().trim());
+            textViewNewNumber.setText(lastBillInfo.getCurrentReadingNumber());
+            textViewPreNumber.setText(lastBillInfo.getPreReadingNumber());
+
+            textViewNewDate.setText(lastBillInfo.getCurrentReadingDate());
+            textViewPreDate.setText(lastBillInfo.getPreReadingDate());
+
+            textViewUseAverage.setText(lastBillInfo.getRate());
+            textViewUseLength.setText(lastBillInfo.getDuration());
+            textViewUse.setText(lastBillInfo.getUsageM3());
+
+            textViewAbBaha.setText(lastBillInfo.getAbBaha());
+            textViewTax.setText(lastBillInfo.getMaliat());
+            textViewDate.setText(lastBillInfo.getDeadLine());
+            textViewCost.setText(lastBillInfo.getPayable());
+
+            textViewPreDebtOrOwe.setText(lastBillInfo.getPreDebtOrOwe());
+            textViewTakalifBoodje.setText(lastBillInfo.getBoodje());
+            textViewKarmozdeFazelab.setText(lastBillInfo.getKarmozdFazelab());
+
+            setImageBitmap(imageViewBarcode, lastBillInfo.getPayable());
+
+            isPayed = lastBillInfo.isPayed();
+        }
     }
 }

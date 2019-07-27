@@ -292,6 +292,8 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         bundle.putString(BundleEnum.TAKALIF_BOODJE.getValue(), lastBillInfo.getBoodje());
         bundle.putString(BundleEnum.KARMOZDE_FAZELAB.getValue(), lastBillInfo.getKarmozdFazelab());
 
+        bundle.putBoolean(BundleEnum.IS_PAYED.getValue(), lastBillInfo.isPayed());
+
         intent.putExtra(BundleEnum.DATA.getValue(), bundle);
         startActivity(intent);
     }
