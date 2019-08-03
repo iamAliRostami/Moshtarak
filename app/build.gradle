@@ -14,8 +14,8 @@ android {
         applicationId "com.app.leon.moshtarak"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 4
-        versionName "1.0.1.1"
+        versionCode 5
+        versionName "1.0.1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config
     }
@@ -40,6 +40,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    configurations {
+        all*.exclude group: 'com.google.guava', module: 'listenablefuture'
     }
 }
 
