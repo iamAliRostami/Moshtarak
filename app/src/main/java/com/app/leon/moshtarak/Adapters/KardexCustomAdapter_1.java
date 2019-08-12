@@ -37,9 +37,9 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View viewHolder;
         if (position % 2 == 0)
-            viewHolder = layoutInflater.inflate(R.layout.item_cardex, null);
+            viewHolder = layoutInflater.inflate(R.layout.item_cardex_1, null);
         else
-            viewHolder = layoutInflater.inflate(R.layout.item_cardex_, null);
+            viewHolder = layoutInflater.inflate(R.layout.item_cardex_2, null);
 
         Kardex kardex = kardexes.get(position);
         TextView textViewDate;
@@ -72,6 +72,7 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
         textViewUse.setTypeface(typeface);
         if (kardex.isBill()) {
             textViewNote.setTextColor(context.getResources().getColor(R.color.colorAccentIndigo));
+            textViewCost.setTextColor(context.getResources().getColor(R.color.pink2));
             imageViewInfo.setOnClickListener(view ->
             {
                 Intent intent = new Intent(context, LastBillActivity.class);

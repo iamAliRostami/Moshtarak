@@ -14,6 +14,17 @@
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:adjustViewBounds="true"
+            android:background="@color/transparent"
+            android:padding="@dimen/activity_mid_padding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_text_header" />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -68,8 +79,8 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/id_bill"
-                        android:textStyle="bold"
-                        android:textColor="@color/blue2" />
+                        android:textColor="@color/blue2"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewId"
@@ -80,8 +91,8 @@
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/dash"
-                        android:textStyle="bold"
-                        android:textColor="@color/green2" />
+                        android:textColor="@color/green3"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -98,40 +109,40 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/file_number"
-                        android:textStyle="bold"
-                        android:textColor="@color/blue2" />
+                        android:textColor="@color/blue2"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewFile"
                         android:layout_width="0px"
-                        android:textStyle="bold"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/dash"
-                        android:textColor="@color/green2" />
+                        android:textColor="@color/green3"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
-                    android:textStyle="bold"
                     android:layout_marginRight="@dimen/activity_mid_margin"
                     android:background="@drawable/border_gray_"
                     android:orientation="horizontal"
+                    android:textStyle="bold"
                     android:weightSum="2">
 
                     <TextView
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
-                        android:text="@string/account_"
                         android:layout_weight="1"
-                        android:textStyle="bold"
-                        android:textColor="@color/blue2" />
+                        android:text="@string/account_"
+                        android:textColor="@color/blue2"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewAccount"
@@ -139,11 +150,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
-                        android:textStyle="bold"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/dash"
-                        android:textColor="@color/green2" />
+                        android:textColor="@color/green3"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
 
@@ -152,8 +163,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:textStyle="bold"
                     android:orientation="horizontal"
+                    android:textStyle="bold"
                     android:weightSum="2">
 
                     <TextView
@@ -162,8 +173,8 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/user"
-                        android:textStyle="bold"
-                        android:textColor="@color/blue2" />
+                        android:textColor="@color/blue2"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewUser"
@@ -173,9 +184,9 @@
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:textStyle="bold"
                         android:text="@string/dash"
-                        android:textColor="@color/green2" />
+                        android:textColor="@color/green3"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -183,19 +194,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:textStyle="bold"
                     android:background="@drawable/border_gray_"
                     android:orientation="horizontal"
+                    android:textStyle="bold"
                     android:weightSum="2">
 
                     <TextView
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
-                        android:textStyle="bold"
                         android:layout_weight="1"
                         android:text="@string/formal_capacity"
-                        android:textColor="@color/blue2" />
+                        android:textColor="@color/blue2"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewCapacity"
@@ -204,19 +215,19 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
-                        android:textStyle="bold"
                         android:layout_weight="1"
                         android:text="@string/dash"
-                        android:textColor="@color/green2" />
+                        android:textColor="@color/green3"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
-                    android:textStyle="bold"
                     android:layout_marginRight="@dimen/activity_mid_margin"
                     android:orientation="horizontal"
+                    android:textStyle="bold"
                     android:weightSum="2">
 
                     <TextView
@@ -224,9 +235,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:textStyle="bold"
                         android:text="@string/ahad"
-                        android:textColor="@color/blue2" />
+                        android:textColor="@color/blue2"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewAhad"
@@ -235,10 +246,10 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
-                        android:textStyle="bold"
                         android:layout_weight="1"
                         android:text="@string/dash"
-                        android:textColor="@color/green2" />
+                        android:textColor="@color/green3"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -246,9 +257,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:textStyle="bold"
                     android:background="@drawable/border_gray_"
                     android:orientation="horizontal"
+                    android:textStyle="bold"
                     android:weightSum="2">
 
                     <TextView
@@ -257,8 +268,8 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/branch_radius"
-                        android:textStyle="bold"
-                        android:textColor="@color/blue2" />
+                        android:textColor="@color/blue2"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewBranchRadius"
@@ -268,9 +279,9 @@
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:textStyle="bold"
                         android:text="@string/dash"
-                        android:textColor="@color/green2" />
+                        android:textColor="@color/green3"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -287,8 +298,8 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/siphon_radius"
-                        android:textStyle="bold"
-                        android:textColor="@color/blue2" />
+                        android:textColor="@color/blue2"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewSiphonRadius"
@@ -297,10 +308,10 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
-                        android:textStyle="bold"
                         android:layout_weight="1"
                         android:text="@string/dash"
-                        android:textColor="@color/green2" />
+                        android:textColor="@color/green3"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -316,10 +327,10 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
-                        android:textStyle="bold"
                         android:layout_weight="1"
                         android:text="@string/debt"
-                        android:textColor="@color/blue2" />
+                        android:textColor="@color/blue2"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewDebt"
@@ -329,9 +340,9 @@
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:textStyle="bold"
                         android:text="@string/dash"
-                        android:textColor="@color/green2" />
+                        android:textColor="@color/green3"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

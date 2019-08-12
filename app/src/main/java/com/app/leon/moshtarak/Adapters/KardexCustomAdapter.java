@@ -40,9 +40,9 @@ public class KardexCustomAdapter extends RecyclerView.Adapter<KardexCustomAdapte
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View viewCardex;
         if (size % 2 == 0)
-            viewCardex = layoutInflater.inflate(R.layout.item_cardex, null);
+            viewCardex = layoutInflater.inflate(R.layout.item_cardex_1, null);
         else
-            viewCardex = layoutInflater.inflate(R.layout.item_cardex_, null);
+            viewCardex = layoutInflater.inflate(R.layout.item_cardex_2, null);
         return new ViewHolder(viewCardex);
     }
 

@@ -114,7 +114,7 @@ public class SaleActivity extends BaseActivity
         context = this;
         sharedPreference = new SharedPreference(context);
         editTextMobile.setText(sharedPreference.getMobileNumber().replace("09", ""));
-        View view = editTextName;
+        View view = buttonNavigation;
         view.requestFocus();
         radioButtonService1.setChecked(true);
         setEditTextOnFocusChangeListener();
@@ -212,154 +212,127 @@ public class SaleActivity extends BaseActivity
     }
 
     private void setEditTextNameOnFocusChangeListener() {
-        editTextName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view1, boolean b) {
-                if (b) {
-                    editTextName.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    linearLayoutName.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    textViewName.setTextColor(getResources().getColor(R.color.orange2));
-                } else {
-                    editTextName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    linearLayoutName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    textViewName.setTextColor(getResources().getColor(R.color.black1));
-                }
+        editTextName.setOnFocusChangeListener((view1, b) -> {
+            if (b) {
+                editTextName.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                linearLayoutName.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                textViewName.setTextColor(getResources().getColor(R.color.orange2));
+            } else {
+                editTextName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                linearLayoutName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                textViewName.setTextColor(getResources().getColor(R.color.black1));
             }
         });
     }
 
     private void setEditTextFamilyOnFocusChangeListener() {
-        editTextFamily.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view1, boolean b) {
-                if (b) {
-                    editTextFamily.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    linearLayoutFamily.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    textViewFamily.setTextColor(getResources().getColor(R.color.orange2));
-                } else {
-                    editTextFamily.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    linearLayoutFamily.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    textViewFamily.setTextColor(getResources().getColor(R.color.black1));
-                }
+        editTextFamily.setOnFocusChangeListener((view1, b) -> {
+            if (b) {
+                editTextFamily.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                linearLayoutFamily.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                textViewFamily.setTextColor(getResources().getColor(R.color.orange2));
+            } else {
+                editTextFamily.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                linearLayoutFamily.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                textViewFamily.setTextColor(getResources().getColor(R.color.black1));
             }
         });
     }
 
     private void setEditTextFatherNameOnFocusChangeListener() {
-        editTextFatherName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view1, boolean b) {
-                if (b) {
-                    editTextFatherName.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    linearLayoutFatherName.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    textViewFatherName.setTextColor(getResources().getColor(R.color.orange2));
-                } else {
-                    editTextFatherName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    linearLayoutFatherName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    textViewFatherName.setTextColor(getResources().getColor(R.color.black1));
-                }
+        editTextFatherName.setOnFocusChangeListener((view1, b) -> {
+            if (b) {
+                editTextFatherName.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                linearLayoutFatherName.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                textViewFatherName.setTextColor(getResources().getColor(R.color.orange2));
+            } else {
+                editTextFatherName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                linearLayoutFatherName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                textViewFatherName.setTextColor(getResources().getColor(R.color.black1));
             }
         });
     }
 
     private void setEditTextNationNumberOnFocusChangeListener() {
-        editTextNationNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view1, boolean b) {
-                if (b) {
-                    editTextNationNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    linearLayoutNationNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    textViewNationNumber.setTextColor(getResources().getColor(R.color.orange2));
-                } else {
-                    editTextNationNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    linearLayoutNationNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    textViewNationNumber.setTextColor(getResources().getColor(R.color.black1));
-                }
+        editTextNationNumber.setOnFocusChangeListener((view1, b) -> {
+            if (b) {
+                editTextNationNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                linearLayoutNationNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                textViewNationNumber.setTextColor(getResources().getColor(R.color.orange2));
+            } else {
+                editTextNationNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                linearLayoutNationNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                textViewNationNumber.setTextColor(getResources().getColor(R.color.black1));
             }
         });
     }
 
     private void setEditTextPhoneNumberOnFocusChangeListener() {
-        editTextPhoneNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view1, boolean b) {
-                if (b) {
-                    editTextPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    linearLayoutPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    textViewPhoneNumber.setTextColor(getResources().getColor(R.color.orange2));
-                } else {
-                    editTextPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    linearLayoutPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    textViewPhoneNumber.setTextColor(getResources().getColor(R.color.black1));
-                }
+        editTextPhoneNumber.setOnFocusChangeListener((view1, b) -> {
+            if (b) {
+                editTextPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                linearLayoutPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                textViewPhoneNumber.setTextColor(getResources().getColor(R.color.orange2));
+            } else {
+                editTextPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                linearLayoutPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                textViewPhoneNumber.setTextColor(getResources().getColor(R.color.black1));
             }
         });
     }
 
     private void setEditTextMobileOnFocusChangeListener() {
-        editTextMobile.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view1, boolean b) {
-                if (b) {
-                    editTextMobile.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    linearLayoutMobile.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    textViewMobile.setTextColor(getResources().getColor(R.color.orange2));
-                } else {
-                    editTextMobile.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    linearLayoutMobile.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    textViewMobile.setTextColor(getResources().getColor(R.color.black1));
-                }
+        editTextMobile.setOnFocusChangeListener((view1, b) -> {
+            if (b) {
+                editTextMobile.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                linearLayoutMobile.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                textViewMobile.setTextColor(getResources().getColor(R.color.orange2));
+            } else {
+                editTextMobile.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                linearLayoutMobile.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                textViewMobile.setTextColor(getResources().getColor(R.color.black1));
             }
         });
     }
 
     private void setEditTextPostalCodeOnFocusChangeListener() {
-        editTextPostalCode.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view1, boolean b) {
-                if (b) {
-                    editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    textViewPostalCode.setTextColor(getResources().getColor(R.color.orange2));
-                } else {
-                    editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    textViewPostalCode.setTextColor(getResources().getColor(R.color.black1));
-                }
+        editTextPostalCode.setOnFocusChangeListener((view1, b) -> {
+            if (b) {
+                editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                textViewPostalCode.setTextColor(getResources().getColor(R.color.orange2));
+            } else {
+                editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                textViewPostalCode.setTextColor(getResources().getColor(R.color.black1));
             }
         });
     }
 
     private void setEditTextBillIdOnFocusChangeListener() {
-        editTextBillId.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view1, boolean b) {
-                if (b) {
-                    editTextBillId.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    linearLayoutBillId.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    textViewBillId.setTextColor(getResources().getColor(R.color.orange2));
-                } else {
-                    editTextBillId.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    linearLayoutBillId.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    textViewBillId.setTextColor(getResources().getColor(R.color.black1));
-                }
+        editTextBillId.setOnFocusChangeListener((view1, b) -> {
+            if (b) {
+                editTextBillId.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                linearLayoutBillId.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                textViewBillId.setTextColor(getResources().getColor(R.color.orange2));
+            } else {
+                editTextBillId.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                linearLayoutBillId.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                textViewBillId.setTextColor(getResources().getColor(R.color.black1));
             }
         });
     }
 
     private void setEditTextAddressOnFocusChangeListener() {
-        editTextAddress.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (b) {
-                    editTextAddress.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    linearLayoutAddress.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    textViewAddress.setTextColor(getResources().getColor(R.color.orange2));
-                } else {
-                    editTextAddress.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    linearLayoutAddress.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    textViewAddress.setTextColor(getResources().getColor(R.color.black1));
-                }
+        editTextAddress.setOnFocusChangeListener((view, b) -> {
+            if (b) {
+                editTextAddress.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                linearLayoutAddress.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                textViewAddress.setTextColor(getResources().getColor(R.color.orange2));
+            } else {
+                editTextAddress.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                linearLayoutAddress.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                textViewAddress.setTextColor(getResources().getColor(R.color.black1));
             }
         });
     }
@@ -441,18 +414,15 @@ public class SaleActivity extends BaseActivity
     }
 
     private void setEditTextPostalCodeChangedListener() {
-        editTextPostalCode.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view1, boolean b) {
-                if (b) {
-                    editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                    textViewPostalCode.setTextColor(getResources().getColor(R.color.orange2));
-                } else {
-                    editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                    textViewPostalCode.setTextColor(getResources().getColor(R.color.black1));
-                }
+        editTextPostalCode.setOnFocusChangeListener((view1, b) -> {
+            if (b) {
+                editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                textViewPostalCode.setTextColor(getResources().getColor(R.color.orange2));
+            } else {
+                editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
+                textViewPostalCode.setTextColor(getResources().getColor(R.color.black1));
             }
         });
     }

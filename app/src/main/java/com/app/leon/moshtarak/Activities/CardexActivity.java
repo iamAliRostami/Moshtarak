@@ -26,7 +26,7 @@ import retrofit2.Retrofit;
 
 public class CardexActivity extends BaseActivity implements ICallback<ArrayList<Kardex>> {
     @BindView(R.id.listViewCardex)
-    ListView recyclerViewCardex;
+    ListView listViewCardex;
     KardexCustomAdapter_1 kardexCustomAdapter;
     int width;
     private Context context;
@@ -71,8 +71,8 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     @Override
     public void execute(ArrayList<Kardex> kardexes) {
         kardexCustomAdapter = new KardexCustomAdapter_1(kardexes, context);
-        recyclerViewCardex.setAdapter(kardexCustomAdapter);
-//        recyclerViewCardex.setLayoutManager(new LinearLayoutManager(this) {
+        listViewCardex.setAdapter(kardexCustomAdapter);
+//        listViewCardex.setLayoutManager(new LinearLayoutManager(this) {
 //            @Override
 //            public boolean requestChildRectangleOnScreen(@NonNull RecyclerView parent,
 //                                                         @NonNull View child, @NonNull Rect rect, boolean immediate) {

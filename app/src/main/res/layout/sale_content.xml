@@ -1,501 +1,522 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.app.leon.moshtarak.Activities.SaleActivity"
-    tools:showIn="@layout/sale_app_bar">
+    tools:context="com.app.leon.moshtarak.Activities.SaleActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:adjustViewBounds="true"
+            android:background="@color/transparent"
+            android:padding="@dimen/activity_mid_padding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_text_header" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewName"
-                    style="@style/text_bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/name"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeMedium"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_gray_"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editTextName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/border_gray_"
-                        android:gravity="center"
-                        android:inputType="text"
-                        android:lines="1"
-                        android:maxLength="8"
-                        android:nextFocusLeft="@id/editTextFamily"
-                        android:nextFocusRight="@id/editTextFamily"
-                        android:nextFocusUp="@id/editTextFamily"
-                        android:nextFocusDown="@id/editTextFamily"
-                        android:nextFocusForward="@id/editTextFamily"
-                        android:padding="@dimen/activity_mid_padding"
-                        tools:ignore="LabelFor" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewFamily"
-                    style="@style/text_bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/family"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeMedium"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutFamily"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_gray_"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editTextFamily"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/border_gray_"
-                        android:gravity="center"
-                        android:inputType="text"
-                        android:lines="1"
-                        android:maxLength="8"
-                        android:nextFocusLeft="@id/editTextFatherName"
-                        android:nextFocusRight="@id/editTextFatherName"
-                        android:nextFocusUp="@id/editTextFatherName"
-                        android:nextFocusDown="@id/editTextFatherName"
-                        android:nextFocusForward="@id/editTextFatherName"
-                        android:padding="@dimen/activity_mid_padding" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewFatherName"
-                    style="@style/text_bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/father_name"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeMedium"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutFatherName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_gray_"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editTextFatherName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/border_gray_"
-                        android:gravity="center"
-                        android:inputType="text"
-
-                        android:lines="1"
-                        android:maxLength="8"
-                        android:nextFocusLeft="@id/editTextNationNumber"
-                        android:nextFocusRight="@id/editTextNationNumber"
-                        android:nextFocusUp="@id/editTextNationNumber"
-                        android:nextFocusDown="@id/editTextNationNumber"
-                        android:nextFocusForward="@id/editTextNationNumber"
-                        android:padding="@dimen/activity_mid_padding" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewNationNumber"
-                    style="@style/text_bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/nation_number"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeMedium"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutNationNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_gray_"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editTextNationNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/border_gray_"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:lines="1"
-                        android:maxLength="10"
-                        android:nextFocusLeft="@id/editTextPhoneNumber"
-                        android:nextFocusRight="@id/editTextPhoneNumber"
-                        android:nextFocusUp="@id/editTextPhoneNumber"
-                        android:nextFocusDown="@id/editTextPhoneNumber"
-                        android:nextFocusForward="@id/editTextPhoneNumber"
-                        android:padding="@dimen/activity_mid_padding"
-                        tools:ignore="TextFields" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewPhoneNumber"
-                    style="@style/text_bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/phone_number"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeMedium"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutPhoneNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_gray_"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editTextPhoneNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/border_gray_"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:lines="1"
-                        android:maxLength="8"
-                        android:nextFocusLeft="@id/editTextMobile"
-                        android:nextFocusRight="@id/editTextMobile"
-                        android:nextFocusUp="@id/editTextMobile"
-                        android:nextFocusDown="@id/editTextMobile"
-                        android:nextFocusForward="@id/editTextMobile"
-                        android:padding="@dimen/activity_mid_padding"
-                        tools:ignore="TextFields" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewMobile"
-                    style="@style/text_bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/mobile_number"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeMedium"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutMobile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_gray_"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editTextMobile"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-
-                        android:layout_weight="1"
-                        android:background="@drawable/border_gray_"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:lines="1"
-                        android:maxLength="9"
-                        android:nextFocusLeft="@id/editTextBillId"
-                        android:nextFocusRight="@id/editTextBillId"
-                        android:nextFocusUp="@id/editTextBillId"
-                        android:nextFocusDown="@id/editTextBillId"
-                        android:nextFocusForward="@id/editTextBillId"
-                        android:padding="@dimen/activity_mid_padding" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
-                        android:text="09"
-                        android:textSize="@dimen/textSizeMedium" />
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            tools:ignore="RtlHardcoded">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewBillId"
-                    style="@style/text_bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:maxLength="13"
-                    android:text="@string/id_bill_neighbour"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeMedium"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutBillId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_gray_"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editTextBillId"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/border_gray_"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:lines="1"
-                        android:maxLength="13"
-                        android:padding="@dimen/activity_mid_padding"
-                        tools:ignore="TextFields" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewPostalCode"
-                    style="@style/text_bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/postal_code"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeMedium"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutPostalCode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_gray_"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editTextPostalCode"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/border_gray_"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:lines="1"
-                        android:maxLength="10"
-                        android:padding="@dimen/activity_mid_padding"
-                        tools:ignore="TextFields" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal"
-            tools:ignore="RtlHardcoded">
-
-            <LinearLayout
-                android:id="@+id/linearLayoutService"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:background="@drawable/border_gray_"
-                android:orientation="vertical"
-                android:padding="@dimen/activity_mid_margin">
-
-                <TextView
-                    android:id="@+id/textViewService"
-                    style="@style/text_bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/service"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeSmall"
-                    android:textStyle="bold" />
-
-
-                <RadioGroup
-                    android:id="@+id/radioGroupService"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    tools:ignore="RtlHardcoded">
-
-                    <RadioButton
-                        android:id="@+id/radioButtonService1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:enabled="true"
-                        android:text="@string/water_branch" />
-
-                    <RadioButton
-                        android:id="@+id/radioButtonService2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/water_and_fa_branch" />
-                </RadioGroup>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textViewAddress"
-                style="@style/text_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:maxLength="50"
-                android:text="@string/address"
-                android:textColor="@color/black1"
-                android:textSize="@dimen/textSizeLarge_"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/linearLayoutAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_gray_"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/editTextAddress"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border_gray_"
-                    android:gravity="top"
-                    android:lines="6"
-                    android:padding="@dimen/activity_mid_padding"
-                    tools:ignore="RtlHardcoded" />
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewName"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/name"
+                            android:textColor="@color/black1"
+                            android:textSize="@dimen/textSizeMedium"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_gray_"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/editTextName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/border_gray_"
+                                android:gravity="center"
+                                android:inputType="text"
+                                android:lines="1"
+                                android:maxLength="8"
+                                android:nextFocusLeft="@id/editTextFamily"
+                                android:nextFocusRight="@id/editTextFamily"
+                                android:nextFocusUp="@id/editTextFamily"
+                                android:nextFocusDown="@id/editTextFamily"
+                                android:nextFocusForward="@id/editTextFamily"
+                                android:padding="@dimen/activity_mid_padding"
+                                tools:ignore="LabelFor" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewFamily"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/family"
+                            android:textColor="@color/black1"
+                            android:textSize="@dimen/textSizeMedium"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutFamily"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_gray_"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/editTextFamily"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/border_gray_"
+                                android:gravity="center"
+                                android:inputType="text"
+                                android:lines="1"
+                                android:maxLength="8"
+                                android:nextFocusLeft="@id/editTextFatherName"
+                                android:nextFocusRight="@id/editTextFatherName"
+                                android:nextFocusUp="@id/editTextFatherName"
+                                android:nextFocusDown="@id/editTextFatherName"
+                                android:nextFocusForward="@id/editTextFatherName"
+                                android:padding="@dimen/activity_mid_padding" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewFatherName"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/father_name"
+                            android:textColor="@color/black1"
+                            android:textSize="@dimen/textSizeMedium"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutFatherName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_gray_"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/editTextFatherName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/border_gray_"
+                                android:gravity="center"
+                                android:inputType="text"
+
+                                android:lines="1"
+                                android:maxLength="8"
+                                android:nextFocusLeft="@id/editTextNationNumber"
+                                android:nextFocusRight="@id/editTextNationNumber"
+                                android:nextFocusUp="@id/editTextNationNumber"
+                                android:nextFocusDown="@id/editTextNationNumber"
+                                android:nextFocusForward="@id/editTextNationNumber"
+                                android:padding="@dimen/activity_mid_padding" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewNationNumber"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/nation_number"
+                            android:textColor="@color/black1"
+                            android:textSize="@dimen/textSizeMedium"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutNationNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_gray_"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/editTextNationNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/border_gray_"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:lines="1"
+                                android:maxLength="10"
+                                android:nextFocusLeft="@id/editTextPhoneNumber"
+                                android:nextFocusRight="@id/editTextPhoneNumber"
+                                android:nextFocusUp="@id/editTextPhoneNumber"
+                                android:nextFocusDown="@id/editTextPhoneNumber"
+                                android:nextFocusForward="@id/editTextPhoneNumber"
+                                android:padding="@dimen/activity_mid_padding"
+                                tools:ignore="TextFields" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewPhoneNumber"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/phone_number"
+                            android:textColor="@color/black1"
+                            android:textSize="@dimen/textSizeMedium"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutPhoneNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_gray_"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/editTextPhoneNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/border_gray_"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:lines="1"
+                                android:maxLength="8"
+                                android:nextFocusLeft="@id/editTextMobile"
+                                android:nextFocusRight="@id/editTextMobile"
+                                android:nextFocusUp="@id/editTextMobile"
+                                android:nextFocusDown="@id/editTextMobile"
+                                android:nextFocusForward="@id/editTextMobile"
+                                android:padding="@dimen/activity_mid_padding"
+                                tools:ignore="TextFields" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewMobile"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/mobile_number"
+                            android:textColor="@color/black1"
+                            android:textSize="@dimen/textSizeMedium"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutMobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_gray_"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/editTextMobile"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+
+                                android:layout_weight="1"
+                                android:background="@drawable/border_gray_"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:lines="1"
+                                android:maxLength="9"
+                                android:nextFocusLeft="@id/editTextBillId"
+                                android:nextFocusRight="@id/editTextBillId"
+                                android:nextFocusUp="@id/editTextBillId"
+                                android:nextFocusDown="@id/editTextBillId"
+                                android:nextFocusForward="@id/editTextBillId"
+                                android:padding="@dimen/activity_mid_padding" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/activity_mid_margin"
+                                android:layout_marginEnd="@dimen/activity_mid_margin"
+                                android:text="09"
+                                android:textSize="@dimen/textSizeMedium" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    tools:ignore="RtlHardcoded">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewBillId"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:maxLength="13"
+                            android:text="@string/id_bill_neighbour"
+                            android:textColor="@color/black1"
+                            android:textSize="@dimen/textSizeMedium"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutBillId"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_gray_"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/editTextBillId"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/border_gray_"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:lines="1"
+                                android:maxLength="13"
+                                android:padding="@dimen/activity_mid_padding"
+                                tools:ignore="TextFields" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewPostalCode"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/postal_code"
+                            android:textColor="@color/black1"
+                            android:textSize="@dimen/textSizeMedium"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutPostalCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_gray_"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/editTextPostalCode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/border_gray_"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:lines="1"
+                                android:maxLength="10"
+                                android:padding="@dimen/activity_mid_padding"
+                                tools:ignore="TextFields" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    tools:ignore="RtlHardcoded">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutService"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:background="@drawable/border_gray_"
+                        android:orientation="vertical"
+                        android:padding="@dimen/activity_mid_margin">
+
+                        <TextView
+                            android:id="@+id/textViewService"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/service"
+                            android:textColor="@color/black1"
+                            android:textSize="@dimen/textSizeSmall"
+                            android:textStyle="bold" />
+
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupService"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            tools:ignore="RtlHardcoded">
+
+                            <RadioButton
+                                android:id="@+id/radioButtonService1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:enabled="true"
+                                android:text="@string/water_branch" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonService2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/water_and_fa_branch" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_mid_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewAddress"
+                        style="@style/text_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:maxLength="50"
+                        android:text="@string/address"
+                        android:textColor="@color/black1"
+                        android:textSize="@dimen/textSizeLarge_"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_gray_"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editTextAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border_gray_"
+                            android:gravity="top"
+                            android:lines="6"
+                            android:padding="@dimen/activity_mid_padding"
+                            tools:ignore="RtlHardcoded" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+        </ScrollView>
 
         <Button
             android:id="@+id/buttonNavigation"
@@ -513,4 +534,4 @@
             android:textSize="@dimen/textSizeLarge_"
             android:textStyle="bold" />
     </LinearLayout>
-</ScrollView>
+</RelativeLayout>

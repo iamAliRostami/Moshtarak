@@ -13,6 +13,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:adjustViewBounds="true"
+            android:background="@color/transparent"
+            android:padding="@dimen/activity_mid_padding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_text_header" />
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
@@ -40,7 +50,8 @@
                 android:gravity="center"
                 android:padding="@dimen/activity_mid_margin"
                 android:text="@string/date"
-                android:textColor="@color/blue2" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewUse"
@@ -51,7 +62,8 @@
                 android:gravity="center"
                 android:padding="@dimen/activity_mid_margin"
                 android:text="@string/use"
-                android:textColor="@color/orange2" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewCost"
@@ -59,10 +71,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_mid_margin"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:padding="@dimen/activity_mid_margin"
                 android:text="@string/cost"
-                android:textColor="@color/green2" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewNote"
@@ -70,9 +83,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_mid_margin"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:padding="@dimen/activity_mid_margin"
                 android:text="@string/note"
-                android:textColor="@color/pink1" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="30dp"

@@ -33,6 +33,7 @@
     <color name="footer">@color/blue1</color>
     <color name="green1">#BAE9BA</color>
     <color name="green2">#06a106</color>
+    <color name="green3">#114D11</color>
     <color name="orange1">#FF7900</color>
     <color name="orange2">#dd732a</color>
     <color name="yellow1">#ff9c00</color>
@@ -41,8 +42,8 @@
     <color name="blue3">#6ca9b2</color>
     <color name="blue4">#0d8ced</color>
 
-    <color name="pink1">#94649c</color>
-    <!--<color name="pink2">#e0e0e0</color>-->
+    <color name="pink1">#A275AA</color>
+    <color name="pink2">#7A2F86</color>
     <color name="gray1">#e0e0e0</color>
     <color name="gray2">#868686</color>
     <color name="red1">#f12525</color>

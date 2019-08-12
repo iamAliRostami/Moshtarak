@@ -169,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
                     android:gravity="center_horizontal|bottom"
-                    android:text="@string/last_bill_2"
+                    android:text="@string/last_bill"
                     android:textColor="@color/black1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
