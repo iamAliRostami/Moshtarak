@@ -75,7 +75,6 @@
                                 android:gravity="center"
                                 android:inputType="text"
                                 android:lines="1"
-                                android:maxLength="8"
                                 android:nextFocusLeft="@id/editTextFamily"
                                 android:nextFocusRight="@id/editTextFamily"
                                 android:nextFocusUp="@id/editTextFamily"
@@ -119,7 +118,6 @@
                                 android:gravity="center"
                                 android:inputType="text"
                                 android:lines="1"
-                                android:maxLength="8"
                                 android:nextFocusLeft="@id/editTextFatherName"
                                 android:nextFocusRight="@id/editTextFatherName"
                                 android:nextFocusUp="@id/editTextFatherName"
@@ -170,9 +168,7 @@
                                 android:background="@drawable/border_gray_"
                                 android:gravity="center"
                                 android:inputType="text"
-
                                 android:lines="1"
-                                android:maxLength="8"
                                 android:nextFocusLeft="@id/editTextNationNumber"
                                 android:nextFocusRight="@id/editTextNationNumber"
                                 android:nextFocusUp="@id/editTextNationNumber"
@@ -494,7 +490,7 @@
                         android:maxLength="50"
                         android:text="@string/address"
                         android:textColor="@color/black1"
-                        android:textSize="@dimen/textSizeLarge_"
+                        android:textSize="@dimen/textSizeLarge"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -531,7 +527,7 @@
             android:focusable="true"
             android:text="@string/buy"
             android:textColor="@color/textColor"
-            android:textSize="@dimen/textSizeLarge_"
+            android:textSize="@dimen/textSizeLarge"
             android:textStyle="bold" />
     </LinearLayout>
 </RelativeLayout>

@@ -20,6 +20,7 @@ import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
     private ArrayList<Kardex> kardexes;
@@ -28,6 +29,15 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
     public KardexCustomAdapter_1(ArrayList<Kardex> kardexes, Context context) {
         super(context, 0);
         this.kardexes = kardexes;
+        for (int i = 0; i < this.kardexes.size(); i++) {
+            Kardex kardex = this.kardexes.get(i);
+            String owe = kardex.getOweDate();
+            String creditor = kardex.getCreditorDate().trim();
+            if (owe == null || owe.equals("null") || TextUtils.isEmpty(owe)) {
+                kardex.setOweDate(creditor);
+            }
+        }
+        Collections.sort(this.kardexes, (o1, o2) -> o2.getOweDate().compareTo(o1.getOweDate()));
         this.context = context;
     }
 
@@ -52,18 +62,23 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
         textViewCost = viewHolder.findViewById(R.id.textViewCost);
         textViewNote = viewHolder.findViewById(R.id.textViewNote);
         imageViewInfo = viewHolder.findViewById(R.id.imageViewInfo);
-        textViewCost.setText(kardex.getAmount());
+        float floatNumber = Float.valueOf(kardex.getAmount());
+        int intNumber = (int) floatNumber;
+        textViewCost.setText(String.valueOf(intNumber));
         textViewNote.setText(kardex.getDescription());
-        textViewUse.setText(kardex.getUsage());
+        floatNumber = Float.valueOf(kardex.getUsage());
+        intNumber = (int) floatNumber;
+        textViewUse.setText(String.valueOf(intNumber));
 
-        String owe = kardex.getOweDate();
-        String creditor = kardex.getCreditorDate().trim();
+        textViewDate.setText(kardex.getOweDate());
 
-        if (TextUtils.isEmpty(creditor)) {
-            textViewDate.setText(owe);
-        } else if (owe == null || owe.equals("null") || TextUtils.isEmpty(owe)) {
-            textViewDate.setText(creditor);
-        }
+//        String owe = kardex.getOweDate();
+//        String creditor = kardex.getCreditorDate().trim();
+//        if (TextUtils.isEmpty(creditor)) {
+//            textViewDate.setText(owe);
+//        } else if (owe == null || owe.equals("null") || TextUtils.isEmpty(owe)) {
+//            textViewDate.setText(creditor);
+//        }
 
         Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/BYekan_3.ttf");
         textViewNote.setTypeface(typeface);

@@ -70,7 +70,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
             finish();
         } else {
             billId = sharedPreference.getBillID();
-            editTextMobile.setText(sharedPreference.getMobileNumber().replace("09", ""));
+            editTextMobile.setText(sharedPreference.getMobileNumber().replaceFirst("09", ""));
             getServices();
             setOnButtonSubmitClickListener();
         }

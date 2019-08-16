@@ -69,7 +69,7 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
         items.add(getString(R.string.kardex));
         items.add(getString(R.string.cardex));
         items.add(getString(R.string.tracking));
-        items.add(getString(R.string.mamoor));
+        items.add(getString(R.string.mamoor_1));
         items.add(getString(R.string.train));
         items.add(getString(R.string.help));
         items.add(getString(R.string.support));

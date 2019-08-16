@@ -79,7 +79,7 @@
                 android:background="@drawable/border_green_"
                 android:text="@string/submit"
                 android:textColor="@color/textColor"
-                android:textSize="@dimen/textSizeLarge_"
+                android:textSize="@dimen/textSizeLarge"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>

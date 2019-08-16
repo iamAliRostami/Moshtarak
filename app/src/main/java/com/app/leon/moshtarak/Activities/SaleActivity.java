@@ -113,7 +113,7 @@ public class SaleActivity extends BaseActivity
         ButterKnife.bind(this);
         context = this;
         sharedPreference = new SharedPreference(context);
-        editTextMobile.setText(sharedPreference.getMobileNumber().replace("09", ""));
+        editTextMobile.setText(sharedPreference.getMobileNumber().replaceFirst("09", ""));
         View view = buttonNavigation;
         view.requestFocus();
         radioButtonService1.setChecked(true);

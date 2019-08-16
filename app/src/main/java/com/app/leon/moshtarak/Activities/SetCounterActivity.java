@@ -1,6 +1,5 @@
 package com.app.leon.moshtarak.Activities;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -56,6 +55,9 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     Context context;
     String billId, number, phoneNumber;
     SharedPreference sharedPreference;
+    int width;
+    int height;
+    float textSize;
 
     @Override
     protected UiElementInActivity getUiElementsInActivity() {
@@ -70,17 +72,92 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         context = this;
         accessData();
         sharedPreference = new SharedPreference(context);
-        phoneNumber = sharedPreference.getMobileNumber().replace("09", "");
+        phoneNumber = sharedPreference.getMobileNumber().replaceFirst("09", "");
         editTextPhoneNumber.setText(phoneNumber);
         setComponentPosition();
         setTextChangedListener();
-        viewFocus = editText1;
+        editText1.measure(0, 0);
+        width = editText1.getMeasuredWidth();
+        height = editText1.getMeasuredHeight();
+        textSize = getResources().getDimensionPixelSize(R.dimen.textSizeMedium);
+
+        viewFocus = editTextPhoneNumber;
         viewFocus.requestFocus();
         setOnButtonSignClickListener();
 
     }
 
+    void changeEditTextSize(boolean b) {
+//        final ViewGroup.LayoutParams layoutParams = editText1.getLayoutParams(); // Width , height
+//        layoutParams.height = height * i;
+//        layoutParams.width = width * i;
+//        editText1.setLayoutParams(layoutParams);
+//        editText2.setLayoutParams(layoutParams);
+//        editText3.setLayoutParams(layoutParams);
+//        editText4.setLayoutParams(layoutParams);
+//        editText5.setLayoutParams(layoutParams);
+//
+//        editText1.setGravity(1);
+//        editText2.setGravity(1);
+//        editText3.setGravity(1);
+//        editText4.setGravity(1);
+//        editText5.setGravity(1);
+//        editText1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//        editText2.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//        editText3.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//        editText4.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+//        editText5.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        if (b) {
+            editText1.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
+            editText2.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
+            editText3.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
+            editText4.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
+            editText5.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
+        } else {
+            editText1.setTextSize(getResources().getDimension(R.dimen.textSizeSmall));
+            editText2.setTextSize(getResources().getDimension(R.dimen.textSizeSmall));
+            editText3.setTextSize(getResources().getDimension(R.dimen.textSizeSmall));
+            editText4.setTextSize(getResources().getDimension(R.dimen.textSizeSmall));
+            editText5.setTextSize(getResources().getDimension(R.dimen.textSizeSmall));
+        }
+    }
+
     private void setTextChangedListener() {
+        editText1.setOnFocusChangeListener((view, b) -> {
+            if (b) {
+                changeEditTextSize(b);
+            } else {
+                changeEditTextSize(b);
+            }
+        });
+        editText2.setOnFocusChangeListener((view, b) -> {
+            if (b) {
+                changeEditTextSize(b);
+            } else {
+                changeEditTextSize(b);
+            }
+        });
+        editText3.setOnFocusChangeListener((view, b) -> {
+            if (b) {
+                changeEditTextSize(b);
+            } else {
+                changeEditTextSize(b);
+            }
+        });
+        editText4.setOnFocusChangeListener((view, b) -> {
+            if (b) {
+                changeEditTextSize(b);
+            } else {
+                changeEditTextSize(b);
+            }
+        });
+        editText5.setOnFocusChangeListener((view, b) -> {
+            if (b) {
+                changeEditTextSize(b);
+            } else {
+                changeEditTextSize(b);
+            }
+        });
         editText1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -89,7 +166,6 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -98,8 +174,6 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
                     viewFocus = editText2;
                     viewFocus.requestFocus();
                 }
-
-
             }
         });
         editText2.addTextChangedListener(new TextWatcher() {
@@ -200,51 +274,47 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     }
 
     private void setOnButtonSignClickListener() {
-        buttonSign.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("HardwareIds")
-            @Override
-            public void onClick(View view) {
-                boolean cancel = false;
-                View viewFocus;
-                if (editText5.getText().length() < 1) {
-                    cancel = true;
-                    viewFocus = editText5;
-                    viewFocus.requestFocus();
-                }
-                if (editText4.getText().length() < 1) {
-                    cancel = true;
-                    viewFocus = editText4;
-                    viewFocus.requestFocus();
-                }
-                if (editText3.getText().length() < 1) {
-                    cancel = true;
-                    viewFocus = editText3;
-                    viewFocus.requestFocus();
-                }
+        buttonSign.setOnClickListener(view -> {
+            boolean cancel = false;
+            View viewFocus;
+            if (editText5.getText().length() < 1) {
+                cancel = true;
+                viewFocus = editText5;
+                viewFocus.requestFocus();
+            }
+            if (editText4.getText().length() < 1) {
+                cancel = true;
+                viewFocus = editText4;
+                viewFocus.requestFocus();
+            }
+            if (editText3.getText().length() < 1) {
+                cancel = true;
+                viewFocus = editText3;
+                viewFocus.requestFocus();
+            }
 
-                if (editText2.getText().length() < 1) {
-                    cancel = true;
-                    viewFocus = editText2;
-                    viewFocus.requestFocus();
-                }
-                if (editText1.getText().length() < 1) {
-                    cancel = true;
-                    viewFocus = editText1;
-                    viewFocus.requestFocus();
-                }
-                if (editTextPhoneNumber.getText().length() != 9) {
-                    cancel = true;
-                    viewFocus = editTextPhoneNumber;
-                    viewFocus.requestFocus();
-                }
-                if (!cancel) {
-                    phoneNumber = "09";
-                    phoneNumber = phoneNumber.concat(editTextPhoneNumber.getText().toString());
-                    number = editText1.getText().toString();
-                    number = number.concat(editText2.getText().toString()).concat(editText3.getText().toString())
-                            .concat(editText4.getText().toString()).concat(editText5.getText().toString());
-                    sendNumber();
-                }
+            if (editText2.getText().length() < 1) {
+                cancel = true;
+                viewFocus = editText2;
+                viewFocus.requestFocus();
+            }
+            if (editText1.getText().length() < 1) {
+                cancel = true;
+                viewFocus = editText1;
+                viewFocus.requestFocus();
+            }
+            if (editTextPhoneNumber.getText().length() != 9) {
+                cancel = true;
+                viewFocus = editTextPhoneNumber;
+                viewFocus.requestFocus();
+            }
+            if (!cancel) {
+                phoneNumber = "09";
+                phoneNumber = phoneNumber.concat(editTextPhoneNumber.getText().toString());
+                number = editText1.getText().toString();
+                number = number.concat(editText2.getText().toString()).concat(editText3.getText().toString())
+                        .concat(editText4.getText().toString()).concat(editText5.getText().toString());
+                sendNumber();
             }
         });
 

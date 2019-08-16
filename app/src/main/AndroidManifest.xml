@@ -36,7 +36,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.LastBillActivity"
-            android:label="@string/last_bill_2"
+            android:label="@string/last_bill_1"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.LearningActivity"
@@ -44,8 +44,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.SetCounterActivity"
-            android:label="@string/mamoor"
-            android:screenOrientation="portrait" />
+            android:label="@string/mamoor_1"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Activities.SignAccountActivity"
             android:label="@string/account"

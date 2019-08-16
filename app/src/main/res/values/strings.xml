@@ -5,12 +5,13 @@
 
     <string name="sale">فروش انشعاب</string>
     <string name="sale_1">ورود اطلاعات</string>
-    <string name="last_bill">مشاهده قبض و پرداخت</string>
+    <string name="last_bill_1">مشاهده قبض و پرداخت</string>
     <string name="last_bill_2">مشاهده آخرین قبض</string>
     <string name="kardex">مشاهده صورتحساب</string>
     <string name="cardex">صورت حساب آب بها</string>
     <string name="tracking">پیگیری درخواستها</string>
-    <string name="mamoor">اعلام کارکرد کنتور و قبض میاندوره</string>
+    <string name="mamoor_1">اعلام کارکرد کنتور و قبض میاندوره</string>
+    <string name="mamoor_2">اعلام کارکرد کنتور</string>
     <string name="train">آموزش</string>
     <string name="help">راهنما</string>
     <string name="support">خدمات پس از فروش</string>
@@ -67,7 +68,8 @@
     <string name="title_activity_learning_method">روش های صحیح مصرف</string>
     <string name="title_activity_counter">اعلام کارکرد کنتور</string>
 
-    <string name="copy_right">copyright 2017 by H.G.K co</string>
+    <string name="copy_right_1">copyright 2017 by H.G.K co</string>
+    <string name="copy_right_2">شبکه تارنما سپاهان</string>
     <string name="webserviceAddress">http://81.90.148.25/ApiSimafa</string>
     <string name="you_are_signed"> شماره اشتراک شما در سامانه ثبت گردید</string>
     <string name="accepted">ادامه</string>

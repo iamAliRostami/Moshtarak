@@ -1,5 +1,6 @@
 package com.app.leon.moshtarak.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -112,28 +113,56 @@ public class LastBillActivity extends BaseActivity {
             Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
             Bundle bundle2 = getIntent().getBundleExtra(BundleEnum.THIS_BILL.getValue());
             if (bundle1 != null) {
+
+                float floatNumber;
+                int intNumber;
                 textViewBillId.setText(bundle1.getString(BundleEnum.BILL_ID.getValue()));
                 textViewPayId.setText(bundle1.getString(BundleEnum.PAY_ID.getValue()));
-                textViewNewNumber.setText(bundle1.getString(BundleEnum.NEW.getValue()));
-                textViewPreNumber.setText(bundle1.getString(BundleEnum.PRE.getValue()));
+                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.NEW.getValue()));
+                intNumber = (int) floatNumber;
+                textViewNewNumber.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.PRE.getValue()));
+                intNumber = (int) floatNumber;
+                textViewPreNumber.setText(String.valueOf(intNumber));
 
                 textViewNewDate.setText(bundle1.getString(BundleEnum.CURRENT_READING_DATE.getValue()));
                 textViewPreDate.setText(bundle1.getString(BundleEnum.PRE_READING_DATE.getValue()));
 
-                textViewUseAverage.setText(bundle1.getString(BundleEnum.USE_AVERAGE.getValue()));
-                textViewUseLength.setText(bundle1.getString(BundleEnum.USE_LENGTH.getValue()));
-                textViewUse.setText(bundle1.getString(BundleEnum.USE.getValue()));
+                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.USE_AVERAGE.getValue()));
+                intNumber = (int) floatNumber;
+                textViewUseAverage.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.USE_LENGTH.getValue()));
+                intNumber = (int) floatNumber;
+                textViewUseLength.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.USE.getValue()));
+                intNumber = (int) floatNumber;
+                textViewUse.setText(String.valueOf(intNumber));
 
+                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.PRE_DEBT_OR_OWE.getValue()));
+                intNumber = (int) floatNumber;
+                textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
 
-                textViewPreDebtOrOwe.setText(bundle1.getString(BundleEnum.PRE_DEBT_OR_OWE.getValue()));
-                textViewTakalifBoodje.setText(bundle1.getString(BundleEnum.TAKALIF_BOODJE.getValue()));
-                textViewKarmozdeFazelab.setText(bundle1.getString(BundleEnum.KARMOZDE_FAZELAB.getValue()));
+                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.TAKALIF_BOODJE.getValue()));
+                intNumber = (int) floatNumber;
+                textViewTakalifBoodje.setText(String.valueOf(intNumber));
 
-                textViewAbBaha.setText(bundle1.getString(BundleEnum.AB_BAHA.getValue()));
-                textViewTax.setText(bundle1.getString(BundleEnum.TAX.getValue()));
+                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.KARMOZDE_FAZELAB.getValue()));
+                intNumber = (int) floatNumber;
+                textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
+
+                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.AB_BAHA.getValue()));
+                intNumber = (int) floatNumber;
+                textViewAbBaha.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.TAX.getValue()));
+                intNumber = (int) floatNumber;
+                textViewTax.setText(String.valueOf(intNumber));
+
                 textViewDate.setText(bundle1.getString(BundleEnum.DATE.getValue()));
-                textViewCost.setText(bundle1.getString(BundleEnum.COST.getValue()));
-                setImageBitmap(imageViewBarcode, bundle1.getString(BundleEnum.COST.getValue()));
+
+                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.COST.getValue()));
+                intNumber = (int) floatNumber;
+                textViewCost.setText(String.valueOf(intNumber));
+                setImageBitmap(imageViewBarcode, String.valueOf(intNumber));
 
                 isPayed = bundle1.getBoolean(BundleEnum.IS_PAYED.getValue());
 
@@ -171,30 +200,59 @@ public class LastBillActivity extends BaseActivity {
     }
 
     class ThisBill implements ICallback<LastBillInfo> {
+        @SuppressLint("DefaultLocale")
         @Override
         public void execute(LastBillInfo lastBillInfo) {
             textViewBillId.setText(lastBillInfo.getBillId().trim());
             textViewPayId.setText(lastBillInfo.getPayId().trim());
-            textViewNewNumber.setText(lastBillInfo.getCurrentReadingNumber());
-            textViewPreNumber.setText(lastBillInfo.getPreReadingNumber());
+            float floatNumber = Float.valueOf(lastBillInfo.getCurrentReadingNumber());
+            int intNumber = (int) floatNumber;
+
+            textViewNewNumber.setText(String.valueOf(intNumber));
+
+            floatNumber = Float.valueOf(lastBillInfo.getPreReadingNumber());
+            intNumber = (int) floatNumber;
+            textViewPreNumber.setText(String.valueOf(intNumber));
 
             textViewNewDate.setText(lastBillInfo.getCurrentReadingDate());
             textViewPreDate.setText(lastBillInfo.getPreReadingDate());
 
-            textViewUseAverage.setText(lastBillInfo.getRate());
+            floatNumber = Float.valueOf(lastBillInfo.getRate());
+            intNumber = (int) floatNumber;
+            textViewUseAverage.setText(String.valueOf(intNumber));
+
             textViewUseLength.setText(lastBillInfo.getDuration());
-            textViewUse.setText(lastBillInfo.getUsageM3());
 
-            textViewAbBaha.setText(lastBillInfo.getAbBaha());
-            textViewTax.setText(lastBillInfo.getMaliat());
+            floatNumber = Float.valueOf(lastBillInfo.getUsageM3());
+            intNumber = (int) floatNumber;
+            textViewUse.setText(String.valueOf(intNumber));
+
+            floatNumber = Float.valueOf(lastBillInfo.getAbBaha());
+            intNumber = (int) floatNumber;
+            textViewAbBaha.setText(String.valueOf(intNumber));
+
+            floatNumber = Float.valueOf(lastBillInfo.getMaliat());
+            intNumber = (int) floatNumber;
+            textViewTax.setText(String.valueOf(intNumber));
+
             textViewDate.setText(lastBillInfo.getDeadLine());
-            textViewCost.setText(lastBillInfo.getPayable());
 
-            textViewPreDebtOrOwe.setText(lastBillInfo.getPreDebtOrOwe());
-            textViewTakalifBoodje.setText(lastBillInfo.getBoodje());
-            textViewKarmozdeFazelab.setText(lastBillInfo.getKarmozdFazelab());
+            floatNumber = Float.valueOf(lastBillInfo.getPayable());
+            intNumber = (int) floatNumber;
+            textViewCost.setText(String.valueOf(intNumber));
+            setImageBitmap(imageViewBarcode, String.valueOf(intNumber));
 
-            setImageBitmap(imageViewBarcode, lastBillInfo.getPayable());
+            floatNumber = Float.valueOf(lastBillInfo.getPreDebtOrOwe());
+            intNumber = (int) floatNumber;
+            textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
+
+            floatNumber = Float.valueOf(lastBillInfo.getBoodje());
+            intNumber = (int) floatNumber;
+            textViewTakalifBoodje.setText(String.valueOf(intNumber));
+
+            floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelab());
+            intNumber = (int) floatNumber;
+            textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
 
             isPayed = lastBillInfo.isPayed();
         }
