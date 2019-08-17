@@ -27,6 +27,7 @@
             android:padding="@dimen/activity_mid_padding"
             android:scaleType="fitCenter"
             android:src="@drawable/img_text_header" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -356,6 +357,267 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/abBahaDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="start"
+                    android:padding="6dp"
+                    android:text="@string/pre_debt_or_owe"
+                    android:textColor="@color/green2"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewAbBahaDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:padding="6dp"
+                    android:textSize="@dimen/textSizeMedium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/tabsare2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="start"
+                    android:padding="6dp"
+                    android:text="@string/tabsare2"
+                    android:textColor="@color/green2"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewTabsare2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:padding="6dp"
+                    android:textSize="@dimen/textSizeMedium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/tabsare3Ab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="start"
+                    android:padding="6dp"
+                    android:text="@string/tabsare3Ab"
+                    android:textColor="@color/green2"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewTabsare3Ab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:padding="6dp"
+                    android:textSize="@dimen/textSizeMedium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/tabsare3Fazelab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="start"
+                    android:padding="6dp"
+                    android:text="@string/tabsare3Fazelab"
+                    android:textColor="@color/green2"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewTabsare3Fazelab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:padding="6dp"
+                    android:textSize="@dimen/textSizeMedium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/abonmanAb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="start"
+                    android:padding="6dp"
+                    android:text="@string/abonmanAb"
+                    android:textColor="@color/green2"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewAbonmanAb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:padding="6dp"
+                    android:textSize="@dimen/textSizeMedium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/abonmanFazelab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="start"
+                    android:padding="6dp"
+                    android:text="@string/abonmanFazelab"
+                    android:textColor="@color/green2"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewAbonmanFazelab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:padding="6dp"
+                    android:textSize="@dimen/textSizeMedium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/fasleGarm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="start"
+                    android:padding="6dp"
+                    android:text="@string/fasleGarm"
+                    android:textColor="@color/green2"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewFasleGarm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:padding="6dp"
+                    android:textSize="@dimen/textSizeMedium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/mazadOlgoo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="start"
+                    android:padding="6dp"
+                    android:text="@string/mazadOlgoo"
+                    android:textColor="@color/green2"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewMazadOlgoo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:padding="6dp"
+                    android:textSize="@dimen/textSizeMedium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/karmozdFazelabDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="start"
+                    android:padding="6dp"
+                    android:text="@string/karmozdFazelabDetails"
+                    android:textColor="@color/green2"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewKarmozdFazelabDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:padding="6dp"
+                    android:textSize="@dimen/textSizeMedium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -497,7 +759,8 @@
                     android:layout_gravity="end"
                     android:gravity="end"
                     android:paddingTop="6dp"
-                    android:paddingBottom="6dp" />
+                    android:paddingBottom="6dp"
+                    tools:ignore="ContentDescription" />
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -522,7 +785,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:gravity="left"
+                    android:gravity="start"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
                     android:text="@string/pay"
@@ -531,7 +794,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textViewCost"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
@@ -545,7 +808,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:gravity="right"
+                    android:gravity="end"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
                     android:text="ریال"

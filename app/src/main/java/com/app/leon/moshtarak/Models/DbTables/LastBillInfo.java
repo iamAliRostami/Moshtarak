@@ -24,6 +24,17 @@ public class LastBillInfo {
     private String billId;
     private String payId;
     private boolean isPayed;
+
+    String abBahaDetail;
+    String tabsare2;
+    String tabsare3Ab;
+    String tabsare3Fazelab;
+    String abonmanAb;
+    String abonmanFazelab;
+    String fasleGarm;
+    String mazadOlgoo;
+    String karmozdFazelabDetails;
+
     public LastBillInfo(String preReadingDate, String currentReadingDate, String duration,
                         String preReadingNumber, String currentReadingNumber, String usageM3,
                         String usageLiter, String rate, String abBaha, String karmozdFazelab,
@@ -239,4 +250,75 @@ public class LastBillInfo {
         this.payId = payId;
     }
 
+    public String getAbBahaDetail() {
+        return abBahaDetail;
+    }
+
+    public void setAbBahaDetail(String abBahaDetail) {
+        this.abBahaDetail = abBahaDetail;
+    }
+
+    public String getTabsare2() {
+        return tabsare2;
+    }
+
+    public void setTabsare2(String tabsare2) {
+        this.tabsare2 = tabsare2;
+    }
+
+    public String getTabsare3Ab() {
+        return tabsare3Ab;
+    }
+
+    public void setTabsare3Ab(String tabsare3Ab) {
+        this.tabsare3Ab = tabsare3Ab;
+    }
+
+    public String getTabsare3Fazelab() {
+        return tabsare3Fazelab;
+    }
+
+    public void setTabsare3Fazelab(String tabsare3Fazelab) {
+        this.tabsare3Fazelab = tabsare3Fazelab;
+    }
+
+    public String getAbonmanAb() {
+        return abonmanAb;
+    }
+
+    public void setAbonmanAb(String abonmanAb) {
+        this.abonmanAb = abonmanAb;
+    }
+
+    public String getAbonmanFazelab() {
+        return abonmanFazelab;
+    }
+
+    public void setAbonmanFazelab(String abonmanFazelab) {
+        this.abonmanFazelab = abonmanFazelab;
+    }
+
+    public String getFasleGarm() {
+        return fasleGarm;
+    }
+
+    public void setFasleGarm(String fasleGarm) {
+        this.fasleGarm = fasleGarm;
+    }
+
+    public String getMazadOlgoo() {
+        return mazadOlgoo;
+    }
+
+    public void setMazadOlgoo(String mazadOlgoo) {
+        this.mazadOlgoo = mazadOlgoo;
+    }
+
+    public String getKarmozdFazelabDetails() {
+        return karmozdFazelabDetails;
+    }
+
+    public void setKarmozdFazelabDetails(String karmozdFazelabDetails) {
+        this.karmozdFazelabDetails = karmozdFazelabDetails;
+    }
 }

@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -59,6 +60,24 @@ public class LastBillActivity extends BaseActivity {
     TextView textViewDate;
     @BindView(R.id.textViewCost)
     TextView textViewCost;
+    @BindView(R.id.textViewAbBahaDetail)
+    TextView textViewabBahaDetail;
+    @BindView(R.id.textViewTabsare2)
+    TextView textViewTabsare2;
+    @BindView(R.id.textViewTabsare3Ab)
+    TextView textViewTabsare3Ab;
+    @BindView(R.id.textViewTabsare3Fazelab)
+    TextView textViewTabsare3Fazelab;
+    @BindView(R.id.textViewAbonmanAb)
+    TextView textViewAbonmanAb;
+    @BindView(R.id.textViewAbonmanFazelab)
+    TextView textViewAbonmanFazelab;
+    @BindView(R.id.textViewFasleGarm)
+    TextView textViewFasleGarm;
+    @BindView(R.id.textViewMazadOlgoo)
+    TextView textViewMazadOlgoo;
+    @BindView(R.id.textViewKarmozdFazelabDetails)
+    TextView textViewKarmozdFazelabDetails;
 
     @BindView(R.id.textViewUse)
     TextView textViewUse;
@@ -75,6 +94,7 @@ public class LastBillActivity extends BaseActivity {
     String zoneId;
     String address = "https://bill.bpm.bankmellat.ir/bpgwchannel/";
     boolean isPayed = false;
+    boolean isFromCardex = false;
 
     @Override
     protected UiElementInActivity getUiElementsInActivity() {
@@ -87,13 +107,13 @@ public class LastBillActivity extends BaseActivity {
     protected void initialize() {
         ButterKnife.bind(this);
         context = this;
+        accessData();
         textViewCost.setOnClickListener(view -> {
             if (!isPayed)
                 new CustomTab(address, LastBillActivity.this);
             else
                 Toast.makeText(context, context.getString(R.string.payed), Toast.LENGTH_SHORT).show();
         });
-        accessData();
     }
 
     private void accessData() {
@@ -113,7 +133,6 @@ public class LastBillActivity extends BaseActivity {
             Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
             Bundle bundle2 = getIntent().getBundleExtra(BundleEnum.THIS_BILL.getValue());
             if (bundle1 != null) {
-
                 float floatNumber;
                 int intNumber;
                 textViewBillId.setText(bundle1.getString(BundleEnum.BILL_ID.getValue()));
@@ -167,6 +186,7 @@ public class LastBillActivity extends BaseActivity {
                 isPayed = bundle1.getBoolean(BundleEnum.IS_PAYED.getValue());
 
             } else if (bundle2 != null) {
+                isFromCardex = true;
                 Retrofit retrofit = NetworkHelper.getInstance();
                 final IAbfaService getLastBillInfo = retrofit.create(IAbfaService.class);
                 Call<LastBillInfo> call = getLastBillInfo.getThisBillInfo(
@@ -255,6 +275,55 @@ public class LastBillActivity extends BaseActivity {
             textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
 
             isPayed = lastBillInfo.isPayed();
+            if (isFromCardex) {
+                androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
+                linearLayoutCompat = findViewById(R.id.abBahaDetail);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.tabsare2);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.tabsare3Ab);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.tabsare3Fazelab);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.abonmanAb);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.abonmanFazelab);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.fasleGarm);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.mazadOlgoo);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.karmozdFazelabDetails);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+
+                floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());
+                intNumber = (int) floatNumber;
+                textViewabBahaDetail.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getTabsare2());
+                intNumber = (int) floatNumber;
+                textViewTabsare2.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getTabsare3Ab());
+                intNumber = (int) floatNumber;
+                textViewTabsare3Ab.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getTabsare3Fazelab());
+                intNumber = (int) floatNumber;
+                textViewTabsare3Fazelab.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getAbonmanAb());
+                intNumber = (int) floatNumber;
+                textViewAbonmanAb.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getAbonmanFazelab());
+                intNumber = (int) floatNumber;
+                textViewAbonmanFazelab.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getFasleGarm());
+                intNumber = (int) floatNumber;
+                textViewFasleGarm.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getMazadOlgoo());
+                intNumber = (int) floatNumber;
+                textViewMazadOlgoo.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelabDetails());
+                intNumber = (int) floatNumber;
+                textViewKarmozdFazelabDetails.setText(String.valueOf(intNumber));
+            }
         }
     }
 }
