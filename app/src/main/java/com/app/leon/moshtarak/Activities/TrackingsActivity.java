@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.app.leon.moshtarak.Adapters.TrackCustomAdapter;
 import com.app.leon.moshtarak.Adapters.TrackCustomAdapter_1;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
@@ -42,7 +41,6 @@ public class TrackingsActivity extends BaseActivity
     ListView listViewTrack;
     View viewFocus;
     Context context;
-    TrackCustomAdapter trackCustomAdapter;
 
     @Override
     protected UiElementInActivity getUiElementsInActivity() {
@@ -83,7 +81,6 @@ public class TrackingsActivity extends BaseActivity
         int width = size.x;
         linearLayout1.setVisibility(View.GONE);
         linearLayout2.setVisibility(View.VISIBLE);
-        trackCustomAdapter = new TrackCustomAdapter(trackingDtos, width);
         TrackCustomAdapter_1 trackCustomAdapter_1 = new TrackCustomAdapter_1(context, trackingDtos);
         listViewTrack.setAdapter(trackCustomAdapter_1);
     }
