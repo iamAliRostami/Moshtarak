@@ -48,7 +48,7 @@
                         android:layout_height="wrap_content"
                         android:text="نام و نام خانوادگی مشترک:"
                         android:textColor="@color/blue2"
-                        android:textSize="@dimen/textSizeSmall"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
                     <TextView

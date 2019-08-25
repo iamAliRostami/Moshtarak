@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SplashActivity extends Activity {
-    @BindView(R.id.splashScreenImageView)
+    @BindView(R.id.imageViewSplashScreen)
     ImageView imageViewSplash;
     ShimmerFrameLayout container;
     private boolean splashLoaded = false;
@@ -42,6 +42,7 @@ public class SplashActivity extends Activity {
         int splashResourceId = R.drawable.img_splash;
         imageViewSplash.setImageResource(splashResourceId);
         container = findViewById(R.id.shimmer_view_container);
+        container.startShimmer();
     }
 
     private void startSplash() {
@@ -54,7 +55,7 @@ public class SplashActivity extends Activity {
         Thread timerThread = new Thread() {
             public void run() {
                 try {
-                    sleep(3000);
+                    sleep(2500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {

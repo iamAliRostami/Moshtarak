@@ -100,11 +100,8 @@ public class CustomDialog {
                 .setTopColorRes(R.color.red1)
                 .setTopTitleColor(context.getResources().getColor(R.color.white))
                 .setButtonsBackground(R.drawable.border_red_2)
-                .setPositiveButton(buttonText, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        lovelyStandardDialog.dismiss();
-                    }
+                .setPositiveButton(buttonText, v -> {
+                    lovelyStandardDialog.dismiss();
                 })
                 .show();
     }

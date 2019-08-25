@@ -1,6 +1,5 @@
 package com.app.leon.moshtarak.BaseItems;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -71,17 +70,10 @@ public abstract class BaseActivity extends AppCompatActivity
         setContentView(uiElementInActivity.getContentViewId());
         initializeBase();
         setSupportActionBar(toolbar);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @SuppressLint("RtlHardcoded")
-            @Override
-            public void onClick(View view) {
-                drawer.openDrawer(Gravity.RIGHT);
-            }
-        });
+        toolbar.setNavigationOnClickListener(view -> drawer.openDrawer(Gravity.RIGHT));
         initialize();
     }
 
