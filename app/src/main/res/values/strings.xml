@@ -155,4 +155,6 @@
     <string name="fasleGarm">فصل گرم</string>
     <string name="mazadOlgoo">مازاد الگو</string>
     <string name="karmozdFazelabDetails">جزئیات کارمزد فاضلاب</string>
+    <string name="send_feedback">ارسال بازخورد</string>
+    <string name="enter">توضیحات را وارد کنید...</string>
 </resources>

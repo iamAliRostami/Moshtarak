@@ -4,7 +4,6 @@ package com.app.leon.moshtarak.Utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
 
 import com.app.leon.moshtarak.Activities.HomeActivity;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
@@ -87,10 +86,9 @@ public class CustomDialog {
                 .setTopTitleColor(context.getResources().getColor(R.color.white))
                 .setButtonsBackground(R.drawable.border_yellow_2)
                 .setTopColorRes(R.color.yellow1)
-                .setPositiveButton(buttonText, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                    }
+                .setPositiveButton(buttonText, v -> {
+                    Intent intent = new Intent(context, HomeActivity.class);
+                    context.startActivity(intent);
                 })
                 .show();
     }
@@ -101,7 +99,8 @@ public class CustomDialog {
                 .setTopTitleColor(context.getResources().getColor(R.color.white))
                 .setButtonsBackground(R.drawable.border_red_2)
                 .setPositiveButton(buttonText, v -> {
-                    lovelyStandardDialog.dismiss();
+                    Intent intent = new Intent(context, HomeActivity.class);
+                    context.startActivity(intent);
                 })
                 .show();
     }

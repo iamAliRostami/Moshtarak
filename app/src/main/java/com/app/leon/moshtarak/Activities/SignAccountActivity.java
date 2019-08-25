@@ -63,10 +63,15 @@ public class SignAccountActivity extends BaseActivity
         if (sharedPreference.checkIsNotEmpty()) {
             buttonSign.setText(getResources().getString(R.string.change_account));
             buttonLogOut.setVisibility(View.VISIBLE);
+//            Objects.requireNonNull(getActionBar()).setTitle(getString(R.string.change_account));
+            getSupportActionBar().setTitle(getString(R.string.change_account));
+
             change = true;
         } else {
             buttonSign.setText(getResources().getString(R.string.account));
             buttonLogOut.setVisibility(View.GONE);
+//            Objects.requireNonNull(getActionBar()).setTitle(getString(R.string.account));
+            getSupportActionBar().setTitle(getString(R.string.account));
         }
         setButtonLogOutClickListener();
         setButtonSignClickListener();

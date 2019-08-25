@@ -17,33 +17,26 @@
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
-        <RadioGroup
-            android:id="@+id/radioGroupSuggest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_large_margin"
+            android:layout_marginTop="@dimen/activity_mid_margin"
+            android:layout_marginRight="@dimen/activity_large_margin"
+            android:background="@drawable/border_yellow_"
+            android:text="@string/send_feedback"
+            android:textSize="@dimen/textSizeMedium"
+            android:textStyle="bold" />
 
-            <RadioButton
-                android:id="@+id/radioButtonSuggest1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/error_report"
-                android:textSize="@dimen/textSizeMedium"
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/suggestSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <RadioButton
-                android:id="@+id/radioButtonSuggest2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/suggest"
-                android:textSize="@dimen/textSizeMedium"
-                android:textStyle="bold" />
-
-        </RadioGroup>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@color/transparent"
+            android:padding="@dimen/activity_mid_padding"
+            app:srcCompat="@drawable/img_text_header" />
 
 
         <LinearLayout
@@ -62,21 +55,40 @@
                 android:layout_marginRight="@dimen/activity_large_margin"
                 android:layout_marginBottom="@dimen/activity_mid_margin"
                 android:gravity="top"
-                android:hint="توضیحات را وارد کنید..."
+                android:hint="@string/enter"
                 android:inputType="textMultiLine"
                 android:maxLength="280" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/sendButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_large_margin"
-            android:layout_marginTop="@dimen/activity_mid_margin"
-            android:layout_marginRight="@dimen/activity_large_margin"
-            android:background="@drawable/border_yellow_"
-            android:text="ارسال بازخورد"
-            android:textSize="@dimen/textSizeMedium"
-            android:textStyle="bold" />
+        <RadioGroup
+            android:id="@+id/radioGroupSuggest"
+            android:layout_width="wrap_content"
+            android:layout_margin="@dimen/activity_mid_margin"
+            android:padding="@dimen/activity_mid_padding"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radioButtonSuggest1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/error_report"
+                android:textSize="@dimen/textSizeMedium"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/suggestSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/radioButtonSuggest2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/suggest"
+                android:textSize="@dimen/textSizeMedium"
+                android:textStyle="bold" />
+
+        </RadioGroup>
     </LinearLayout>
 </RelativeLayout>
