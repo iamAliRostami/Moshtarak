@@ -287,6 +287,32 @@
                     android:layout_marginEnd="25dp"
                     android:gravity="start"
                     android:padding="6dp"
+                    android:text="@string/karmozd_dafe_fazelab"
+                    android:textColor="@color/green2"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewKarmozdeFazelab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:padding="6dp"
+                    android:textSize="@dimen/textSizeMedium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="start"
+                    android:padding="6dp"
                     android:text="@string/maliat"
                     android:textColor="@color/green2"
                     android:textSize="@dimen/textSizeMedium" />
@@ -302,32 +328,6 @@
                     android:textSize="@dimen/textSizeMedium" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginEnd="25dp"
-                    android:gravity="start"
-                    android:padding="6dp"
-                    android:text="@string/karmozd_dafe_fazelab"
-                    android:textColor="@color/green2"
-                    android:textSize="@dimen/textSizeMedium" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/textViewKarmozdeFazelab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:padding="6dp"
-                    android:textSize="@dimen/textSizeMedium" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -649,6 +649,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_margin="2dp"
             android:background="@drawable/border_orange"
             android:orientation="vertical">
@@ -712,6 +713,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:visibility="gone"
             android:orientation="horizontal">
 
 
@@ -773,6 +775,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:background="@drawable/border_orange_"
+            android:visibility="gone"
             android:orientation="vertical">
 
             <LinearLayout

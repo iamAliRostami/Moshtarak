@@ -272,6 +272,10 @@ public class LastBillActivity extends BaseActivity {
 
             floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelab());
             intNumber = (int) floatNumber;
+
+            floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelabDetails());
+            intNumber = (int) floatNumber;
+
             textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
 
             isPayed = lastBillInfo.isPayed();
@@ -293,8 +297,8 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat.setVisibility(View.VISIBLE);
                 linearLayoutCompat = findViewById(R.id.mazadOlgoo);
                 linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.karmozdFazelabDetails);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
+//                linearLayoutCompat = findViewById(R.id.karmozdFazelabDetails);
+//                linearLayoutCompat.setVisibility(View.VISIBLE);
 
                 floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());
                 intNumber = (int) floatNumber;
@@ -320,9 +324,9 @@ public class LastBillActivity extends BaseActivity {
                 floatNumber = Float.valueOf(lastBillInfo.getMazadOlgoo());
                 intNumber = (int) floatNumber;
                 textViewMazadOlgoo.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelabDetails());
-                intNumber = (int) floatNumber;
-                textViewKarmozdFazelabDetails.setText(String.valueOf(intNumber));
+//                floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelabDetails());
+//                intNumber = (int) floatNumber;
+//                textViewKarmozdFazelabDetails.setText(String.valueOf(intNumber));
             }
         }
     }

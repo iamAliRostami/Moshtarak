@@ -354,7 +354,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:maxLength="13"
                             android:text="@string/id_bill_neighbour"
                             android:textColor="@color/black1"
                             android:textSize="@dimen/textSizeMedium"
@@ -427,36 +426,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     tools:ignore="RtlHardcoded">
 
                     <LinearLayout
                         android:id="@+id/linearLayoutService"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:background="@drawable/border_gray_"
                         android:orientation="vertical"
                         android:padding="@dimen/activity_mid_margin">
 
-                        <TextView
-                            android:id="@+id/textViewService"
-                            style="@style/text_bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/service"
-                            android:textColor="@color/black1"
-                            android:textSize="@dimen/textSizeSmall"
-                            android:textStyle="bold" />
-
-
                         <RadioGroup
                             android:id="@+id/radioGroupService"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            tools:ignore="RtlHardcoded">
+                            android:layout_gravity="center"
+                            android:orientation="horizontal"
+                            tools:ignore="RtlHardcoded,UselessParent">
 
                             <RadioButton
                                 android:id="@+id/radioButtonService1"
@@ -472,6 +460,17 @@
                                 android:text="@string/water_and_fa_branch" />
                         </RadioGroup>
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textViewService"
+                        style="@style/text_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/service"
+                        android:textColor="@color/black1"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
