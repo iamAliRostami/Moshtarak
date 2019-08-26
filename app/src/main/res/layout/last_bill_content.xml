@@ -287,32 +287,6 @@
                     android:layout_marginEnd="25dp"
                     android:gravity="start"
                     android:padding="6dp"
-                    android:text="@string/karmozd_dafe_fazelab"
-                    android:textColor="@color/green2"
-                    android:textSize="@dimen/textSizeMedium" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/textViewKarmozdeFazelab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:padding="6dp"
-                    android:textSize="@dimen/textSizeMedium" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginEnd="25dp"
-                    android:gravity="start"
-                    android:padding="6dp"
                     android:text="@string/maliat"
                     android:textColor="@color/green2"
                     android:textSize="@dimen/textSizeMedium" />
@@ -328,6 +302,32 @@
                     android:textSize="@dimen/textSizeMedium" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="start"
+                    android:padding="6dp"
+                    android:text="@string/karmozd_dafe_fazelab"
+                    android:textColor="@color/green2"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewKarmozdeFazelab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:padding="6dp"
+                    android:textSize="@dimen/textSizeMedium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -370,7 +370,7 @@
                     android:layout_marginEnd="25dp"
                     android:gravity="start"
                     android:padding="6dp"
-                    android:text="@string/pre_debt_or_owe"
+                    android:text="@string/abbaha_Details"
                     android:textColor="@color/green2"
                     android:textSize="@dimen/textSizeMedium" />
 
@@ -644,6 +644,33 @@
                     android:textSize="@dimen/textSizeMedium" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="start"
+                    android:padding="6dp"
+                    android:text="@string/total"
+                    android:textColor="@color/green2"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textViewTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:padding="6dp"
+                    android:textSize="@dimen/textSizeMedium" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -732,7 +759,8 @@
                     android:paddingBottom="6dp"
                     android:text="@string/pay_Date"
                     android:textColor="@color/red2"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textSize="@dimen/textSizeMedium"
+                    tools:ignore="TooManyViews" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textViewDate"
@@ -818,8 +846,6 @@
                     android:textColor="@color/white"
                     android:textSize="20sp" />
             </LinearLayout>
-
-
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </ScrollView>

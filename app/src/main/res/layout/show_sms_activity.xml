@@ -30,7 +30,8 @@
             android:background="@drawable/border_blue_4"
             android:gravity="center"
             android:padding="@dimen/activity_mid_padding"
-            android:text="فهرست پیامک های ارسالی در مرحله تعیین روز ارزیابی"
+            android:id="@+id/textViewSmsLevel"
+            android:text="@string/sms_level"
             android:textColor="@color/black"
             android:textStyle="bold" />
 

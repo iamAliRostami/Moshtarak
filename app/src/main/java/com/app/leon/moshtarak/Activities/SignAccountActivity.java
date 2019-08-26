@@ -115,18 +115,15 @@ public class SignAccountActivity extends BaseActivity
     }
 
     void setButtonLogOutClickListener() {
-        buttonLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
-                sharedPreference.putData("", "", "", "");
-                new CustomDialog(DialogType.YellowRedirect, SignAccountActivity.this,
-                        getString(R.string.logout_successful), getString(R.string.dear_user), getString(R.string.logout),
-                        getString(R.string.accepted));
-                buttonSign.setText(getResources().getString(R.string.account));
-                buttonLogOut.setVisibility(View.GONE);
-                change = false;
-            }
+        buttonLogOut.setOnClickListener(view -> {
+            SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
+            sharedPreference.putData("", "", "", "");
+            new CustomDialog(DialogType.YellowRedirect, SignAccountActivity.this,
+                    getString(R.string.logout_successful), getString(R.string.dear_user), getString(R.string.logout),
+                    getString(R.string.accepted));
+            buttonSign.setText(getResources().getString(R.string.account));
+            buttonLogOut.setVisibility(View.GONE);
+            change = false;
         });
     }
 

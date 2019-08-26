@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:padding="@dimen/activity_mid_padding"
     android:layout_height="wrap_content"
-    android:background="@drawable/border_"
+    android:background="@drawable/border_yellow_1"
     android:gravity="center_horizontal"
     android:orientation="horizontal"
     android:scrollbars="horizontal">
@@ -120,6 +120,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_weight="0.2"
-        android:src="@android:drawable/sym_action_email" />
+        android:src="@drawable/sym_action_email" />
     </LinearLayout>
 </LinearLayout>

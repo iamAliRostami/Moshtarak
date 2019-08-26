@@ -57,6 +57,7 @@ public class TrackCustomAdapter_1 extends ArrayAdapter<TrackingDto> {
         imageViewInfo.setOnClickListener(view1 -> {
             Intent intent = new Intent(context, ShowSMSActivity.class);
             intent.putExtra("SMS", trackingDto.getSmsList());
+            intent.putExtra("SMS_LEVEL", " ".concat(trackingDto.getStatus()));
             context.startActivity(intent);
         });
 

@@ -25,6 +25,9 @@ public class ShowSMSActivity extends AppCompatActivity {
     @BindView(R.id.listViewSMS)
     ListView listViewSMS;
     Context context;
+    @BindView(R.id.textViewSmsLevel)
+    TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,7 @@ public class ShowSMSActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         sms = intent.getStringArrayListExtra("SMS");
+        textView.setText(textView.getText().toString().concat(intent.getStringExtra("SMS_LEVEL")));
 //        arrayAdapter = new ArrayAdapter<>(this, R.layout.sms_layout, sms);
 
         arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),

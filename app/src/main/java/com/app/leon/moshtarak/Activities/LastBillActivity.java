@@ -78,6 +78,8 @@ public class LastBillActivity extends BaseActivity {
     TextView textViewMazadOlgoo;
     @BindView(R.id.textViewKarmozdFazelabDetails)
     TextView textViewKarmozdFazelabDetails;
+    @BindView(R.id.textViewTotal)
+    TextView textViewTotal;
 
     @BindView(R.id.textViewUse)
     TextView textViewUse;
@@ -247,7 +249,7 @@ public class LastBillActivity extends BaseActivity {
             intNumber = (int) floatNumber;
             textViewUse.setText(String.valueOf(intNumber));
 
-            floatNumber = Float.valueOf(lastBillInfo.getAbBaha());
+            floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());
             intNumber = (int) floatNumber;
             textViewAbBaha.setText(String.valueOf(intNumber));
 
@@ -278,11 +280,15 @@ public class LastBillActivity extends BaseActivity {
 
             textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
 
+            floatNumber = Float.valueOf(lastBillInfo.getJam());
+            intNumber = (int) floatNumber;
+            textViewTotal.setText(String.valueOf(intNumber));
+
             isPayed = lastBillInfo.isPayed();
             if (isFromCardex) {
                 androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
-                linearLayoutCompat = findViewById(R.id.abBahaDetail);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
+//                linearLayoutCompat = findViewById(R.id.abBahaDetail);
+//                linearLayoutCompat.setVisibility(View.VISIBLE);
                 linearLayoutCompat = findViewById(R.id.tabsare2);
                 linearLayoutCompat.setVisibility(View.VISIBLE);
                 linearLayoutCompat = findViewById(R.id.tabsare3Ab);
@@ -300,9 +306,9 @@ public class LastBillActivity extends BaseActivity {
 //                linearLayoutCompat = findViewById(R.id.karmozdFazelabDetails);
 //                linearLayoutCompat.setVisibility(View.VISIBLE);
 
-                floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());
-                intNumber = (int) floatNumber;
-                textViewabBahaDetail.setText(String.valueOf(intNumber));
+//                floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());
+//                intNumber = (int) floatNumber;
+//                textViewabBahaDetail.setText(String.valueOf(intNumber));
                 floatNumber = Float.valueOf(lastBillInfo.getTabsare2());
                 intNumber = (int) floatNumber;
                 textViewTabsare2.setText(String.valueOf(intNumber));

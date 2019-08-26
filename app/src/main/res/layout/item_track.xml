@@ -121,6 +121,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="0.2"
-            android:src="@android:drawable/sym_action_email" />
+            android:src="@drawable/sym_action_email" />
     </LinearLayout>
 </LinearLayout>
