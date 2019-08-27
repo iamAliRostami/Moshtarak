@@ -1,13 +1,10 @@
 package com.app.leon.moshtarak.BaseItems;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.InflateException;
 import android.view.LayoutInflater;
@@ -17,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +22,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.app.leon.moshtarak.Activities.BaseInfoActivity;
+import com.app.leon.moshtarak.Activities.ContactDeveloperActivity;
 import com.app.leon.moshtarak.Activities.HomeActivity;
 import com.app.leon.moshtarak.Activities.SignAccountActivity;
 import com.app.leon.moshtarak.Adapters.NavigationCustomAdapter;
@@ -124,6 +121,8 @@ public abstract class BaseActivity extends AppCompatActivity
                 startActivity(intent);
             } else if (position == 7) {
             } else if (position == 8) {
+                Intent intent = new Intent(getApplicationContext(), ContactDeveloperActivity.class);
+                startActivity(intent);
             } else if (position == 9) {
                 finishAffinity();
             }
@@ -134,45 +133,37 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.nav_logout) {
-            SharedPreferences appPrefs = getSharedPreferences("com.app.leon.moshtarak.user_preferences", MODE_PRIVATE);
-            SharedPreferences.Editor prefsEditor = appPrefs.edit();
-            prefsEditor.putString("file_number", "");
-            prefsEditor.putString("account_number", "");
-            prefsEditor.apply();
-            Toast.makeText(getApplicationContext(), getString(R.string.logout_successful), Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(intent);
-            finish();
+        if (id == R.id.nav_contact) {
+//            SharedPreferences appPrefs = getSharedPreferences("com.app.leon.moshtarak.user_preferences", MODE_PRIVATE);
+//            SharedPreferences.Editor prefsEditor = appPrefs.edit();
+//            prefsEditor.putString("file_number", "");
+//            prefsEditor.putString("account_number", "");
+//            prefsEditor.apply();
+//            Toast.makeText(getApplicationContext(), getString(R.string.logout_successful), Toast.LENGTH_SHORT).show();
+//            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+//            startActivity(intent);
+//            finish();
         }
         return super.onOptionsItemSelected(item);
     }
 
     protected void setMenuBackground() {
-        getLayoutInflater().setFactory(new LayoutInflater.Factory() {
-            @Override
-            public View onCreateView(String name, Context context, AttributeSet attrs) {
-                if (name.equalsIgnoreCase("com.android.internal.view.menu.IconMenuItemView")) {
-                    try {
-                        // Ask our inflater to create the view
-                        LayoutInflater f = getLayoutInflater();
-                        final View view = f.createView(name, null, attrs);
-                        // Kind of apply our own background
-                        new Handler().post(new Runnable() {
-                            public void run() {
-                                view.setBackgroundResource(R.color.black);
-                            }
-                        });
-                        return view;
-                    } catch (InflateException | ClassNotFoundException ignored) {
-                    }
+        getLayoutInflater().setFactory((name, context, attrs) -> {
+            if (name.equalsIgnoreCase("com.android.internal.view.menu.IconMenuItemView")) {
+                try {
+                    // Ask our inflater to create the view
+                    LayoutInflater f = getLayoutInflater();
+                    final View view = f.createView(name, null, attrs);
+                    // Kind of apply our own background
+                    new Handler().post(() -> view.setBackgroundResource(R.color.black));
+                    return view;
+                } catch (InflateException | ClassNotFoundException ignored) {
                 }
-                return null;
             }
+            return null;
         });
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -211,7 +202,7 @@ public abstract class BaseActivity extends AppCompatActivity
         else
             dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.account), R.drawable.img_registration));
         dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.recovery_code), R.drawable.img_recovery_code));
-        dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.connect), R.drawable.img_contact_us));
+        dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.connect_developer), R.drawable.img_contact_us));
         dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.exit), R.drawable.img_exit));
         adapter = new NavigationCustomAdapter(this, R.layout.item_navigation, dataList);
         drawerList.setAdapter(adapter);

@@ -23,12 +23,13 @@
 
     <string name="home">خانه</string>
     <string name="portal_connect">اتصال به پرتال</string>
-    <string name="transaction">تراکنش</string>
+    <string name="transaction">نشست ها</string>
     <string name="update">به روزرسانی</string>
     <string name="account">ثبت کاربر جدید</string>
     <string name="change_account">تغییر شناسه قبض</string>
     <string name="recovery_code">بازیابی کد رهگیری</string>
-    <string name="connect">ارتباط با ما</string>
+    <string name="connect_abfa">ارتباط با آبفا</string>
+    <string name="connect_developer">ارتباط با پشتیبان</string>
     <string name="exit">خروج از برنامه</string>
 
     <string name="date">تاریخ</string>

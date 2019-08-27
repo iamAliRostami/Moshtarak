@@ -2,6 +2,8 @@ package com.app.leon.moshtarak.Activities;
 
 import android.content.Context;
 import android.os.Build;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -142,5 +144,21 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
     public void execute(SimpleMessage simpleMessage) {
         new CustomDialog(DialogType.Yellow, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
                 context.getString(R.string.suggest), context.getString(R.string.accepted));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.logout, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.nav_contact) {
+            new CustomDialog(DialogType.Green, context, context.getString(R.string.select), context.getString(R.string.connect_abfa),
+                    context.getString(R.string.support), getString(R.string.accepted));
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

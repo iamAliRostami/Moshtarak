@@ -30,7 +30,7 @@
         <item
             android:id="@+id/nav_connect"
             android:icon="@drawable/img_contact_us"
-            android:title="@string/connect" />
+            android:title="@string/connect_abfa" />
 
         <item
             android:id="@+id/nav_exit"
