@@ -7,14 +7,13 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.app.leon.moshtarak.Activities.SignAccountActivity"
     tools:showIn="@layout/sign_account_app_bar">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:orientation="vertical"
-        tools:ignore="UselessParent">
+        tools:ignore="RtlCompat,UselessParent">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -27,117 +26,42 @@
             android:padding="@dimen/activity_mid_padding"
             android:scaleType="fitCenter"
             android:src="@drawable/img_text_header" />
-        <LinearLayout
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_large_margin"
-            android:layout_marginRight="@dimen/activity_large_margin"
-            android:layout_weight="1"
-            android:foregroundGravity="center"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/activity_large_padding"
-            android:paddingRight="@dimen/activity_large_padding">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/id_bill"
-                android:textSize="@dimen/textSizeMedium" />
-
-            <EditText
-                android:id="@+id/editTextBillId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_mid_margin"
-                android:layout_marginRight="@dimen/activity_mid_margin"
-                android:background="@drawable/border_gray_"
-                android:gravity="center"
-                android:inputType="number"
-                android:maxLength="13"
-                android:paddingLeft="@dimen/activity_large_padding"
-                android:paddingTop="@dimen/activity_mid_padding"
-                android:paddingRight="@dimen/activity_large_padding"
-                android:paddingBottom="@dimen/activity_mid_padding" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/account_number"
-                android:textSize="@dimen/textSizeMedium" />
-
-            <EditText
-                android:id="@+id/editTextAccount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_mid_margin"
-                android:layout_marginRight="@dimen/activity_mid_margin"
-                android:background="@drawable/border_gray_"
-                android:gravity="center"
-                android:inputType="number"
-                android:maxLength="14"
-                android:paddingLeft="@dimen/activity_large_padding"
-                android:paddingTop="@dimen/activity_mid_padding"
-                android:paddingRight="@dimen/activity_large_padding"
-                android:paddingBottom="@dimen/activity_mid_padding" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/activity_large_margin"
-                android:layout_marginRight="@dimen/activity_large_margin"
-                android:text="@string/nation_number"
-                android:textSize="@dimen/textSizeMedium" />
-
-            <EditText
-                android:id="@+id/editTextNationNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_mid_margin"
-                android:layout_marginRight="@dimen/activity_mid_margin"
-                android:background="@drawable/border_gray_"
-                android:gravity="center"
-                android:inputType="number"
-                android:lines="1"
-                android:maxLength="10"
-                android:paddingLeft="@dimen/activity_large_padding"
-                android:paddingTop="@dimen/activity_mid_padding"
-                android:paddingRight="@dimen/activity_large_padding"
-                android:paddingBottom="@dimen/activity_mid_padding" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/activity_large_margin"
-                android:layout_marginRight="@dimen/activity_large_margin"
-                android:text="@string/mobile_number"
-                android:textSize="@dimen/textSizeMedium" />
+            android:layout_weight="1">
 
             <LinearLayout
-                android:id="@+id/linearLayoutMobile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:layout_weight="1"
+                android:foregroundGravity="center"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/activity_large_padding"
+                android:paddingRight="@dimen/activity_large_padding">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/id_bill"
+                    android:textSize="@dimen/textSizeMedium" />
 
                 <EditText
-                    android:id="@+id/editTextMobile"
-                    android:layout_width="0dp"
+                    android:id="@+id/editTextBillId"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:layout_weight="1"
                     android:background="@drawable/border_gray_"
                     android:gravity="center"
                     android:inputType="number"
-                    android:lines="1"
-                    android:maxLength="9"
+                    android:maxLength="13"
                     android:paddingLeft="@dimen/activity_large_padding"
                     android:paddingTop="@dimen/activity_mid_padding"
                     android:paddingRight="@dimen/activity_large_padding"
@@ -146,34 +70,116 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/activity_mid_margin"
-                    android:layout_marginEnd="@dimen/activity_mid_margin"
-                    android:text="09"
+                    android:layout_gravity="center"
+                    android:text="@string/account_number"
                     android:textSize="@dimen/textSizeMedium" />
 
+                <EditText
+                    android:id="@+id/editTextAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:background="@drawable/border_gray_"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="14"
+                    android:paddingLeft="@dimen/activity_large_padding"
+                    android:paddingTop="@dimen/activity_mid_padding"
+                    android:paddingRight="@dimen/activity_large_padding"
+                    android:paddingBottom="@dimen/activity_mid_padding" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/activity_large_margin"
+                    android:layout_marginRight="@dimen/activity_large_margin"
+                    android:text="@string/nation_number"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <EditText
+                    android:id="@+id/editTextNationNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:background="@drawable/border_gray_"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="10"
+                    android:paddingLeft="@dimen/activity_large_padding"
+                    android:paddingTop="@dimen/activity_mid_padding"
+                    android:paddingRight="@dimen/activity_large_padding"
+                    android:paddingBottom="@dimen/activity_mid_padding" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/activity_large_margin"
+                    android:layout_marginRight="@dimen/activity_large_margin"
+                    android:text="@string/mobile_number"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/editTextMobile"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_mid_margin"
+                        android:layout_marginRight="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_gray_"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="9"
+                        android:paddingLeft="@dimen/activity_large_padding"
+                        android:paddingTop="@dimen/activity_mid_padding"
+                        android:paddingRight="@dimen/activity_large_padding"
+                        android:paddingBottom="@dimen/activity_mid_padding" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/activity_mid_margin"
+                        android:layout_marginEnd="@dimen/activity_mid_margin"
+                        android:text="09"
+                        android:textSize="@dimen/textSizeMedium" />
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/buttonSign"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_mid_margin"
+                    android:background="@drawable/border_yellow_"
+                    android:text="@string/login"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <Button
+                    android:id="@+id/buttonLogOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_mid_margin"
+                    android:background="@drawable/border_red_"
+                    android:text="@string/logout"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSizeMedium" />
             </LinearLayout>
-
-            <Button
-                android:id="@+id/buttonSign"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:background="@drawable/border_yellow_"
-                android:text="@string/login"
-                android:textColor="@color/white"
-                android:textSize="@dimen/textSizeMedium" />
-
-            <Button
-                android:id="@+id/buttonLogOut"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:background="@drawable/border_red_"
-                android:text="@string/logout"
-                android:textColor="@color/white"
-                android:textSize="@dimen/textSizeMedium" />
-        </LinearLayout>
+        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"

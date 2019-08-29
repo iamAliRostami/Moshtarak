@@ -12,7 +12,7 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.app.leon.moshtarak"
-        minSdkVersion 21
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 6
         versionName "1.0.1.3"
@@ -81,4 +81,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0-beta03'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.google.firebase:firebase-auth:19.0.0'
+    implementation 'com.daimajia.easing:library:2.1@aar'
+    implementation 'com.daimajia.androidanimations:library:2.3@aar'
 }
