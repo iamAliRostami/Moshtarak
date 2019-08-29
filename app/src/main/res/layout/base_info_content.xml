@@ -79,12 +79,14 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/id_bill"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textColor="@color/blue2"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewId"
                         android:layout_width="0px"
+                        android:textSize="@dimen/textSizeMedium"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
@@ -216,6 +218,7 @@
                         android:layout_weight="1"
                         android:text="@string/formal_capacity"
                         android:textColor="@color/blue2"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
                     <TextView
@@ -261,6 +264,7 @@
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/dash"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textColor="@color/green3"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -282,6 +286,7 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/branch_radius"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textColor="@color/blue2"
                         android:textStyle="bold" />
 
@@ -294,6 +299,7 @@
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/dash"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textColor="@color/green3"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -361,6 +367,7 @@
                         android:text="@string/dash"
                         android:textColor="@color/green3"
                         android:textStyle="bold"
+                        android:textSize="@dimen/textSizeMedium"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
             </LinearLayout>
