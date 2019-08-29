@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
-        <activity android:name=".Activities.ContactDeveloperActivity"></activity>
+        <activity android:name=".Activities.HelpActivity"></activity>
+        <activity android:name=".Activities.ContactDeveloperActivity" />
         <activity
             android:name=".Activities.SplashActivity"
             android:screenOrientation="portrait">

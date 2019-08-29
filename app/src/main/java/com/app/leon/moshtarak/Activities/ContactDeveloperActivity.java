@@ -9,8 +9,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.leon.moshtarak.R;
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,15 +33,15 @@ public class ContactDeveloperActivity extends AppCompatActivity {
 //        Point size = new Point();
 //        display.getSize(size);
 //        int width = size.x;
-        YoYo.with(Techniques.Tada)
-                .duration(1000)
-                .repeat(2)
-                .playOn(textView1);
-        imageView1.animate()
-                .scaleX(2f)
-                .scaleY(2f)
-                .translationYBy(170f)
-                .rotation(360)
-                .setDuration(2000);
+//        YoYo.with(Techniques.Tada)
+//                .duration(1000)
+//                .repeat(2)
+//                .playOn(textView1);
+//        imageView1.animate()
+//                .scaleX(2f)
+//                .scaleY(2f)
+//                .translationYBy(170f)
+//                .rotation(360)
+//                .setDuration(2000);
     }
 }

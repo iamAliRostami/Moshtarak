@@ -65,6 +65,8 @@ public class HomeActivity extends BaseActivity {
                     startActivity(intent);
                     break;
                 case R.id.imageButtonHelp:
+                    intent = new Intent(getApplicationContext(), HelpActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.imageButtonSupport:
                     intent = new Intent(getApplicationContext(), AfterSaleServicesActivity.class);
