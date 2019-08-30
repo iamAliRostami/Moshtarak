@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_background"
+    android:layoutDirection="rtl"
+    tools:context="com.app.leon.moshtarak.Activities.ContactDeveloperActivity"
+    tools:ignore="UnusedAttribute">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/activity_large_margin"
+        android:layout_marginRight="@dimen/activity_large_margin"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/activity_large_margin"
+            android:layout_marginRight="@dimen/activity_large_margin"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/activity_large_margin"
+                android:background="@drawable/border_red_1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/img_sos"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    style="@style/text_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_large_padding"
+                    android:text="تلفن حوادث:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeLarge_" />
+
+                <TextView
+                    style="@style/text_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_large_margin"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/activity_large_padding"
+                    android:paddingBottom="@dimen/activity_large_padding"
+                    android:text="122"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeLarge_" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/activity_large_margin"
+                android:background="@drawable/border_green_1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/img_suppurt"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    style="@style/text_bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_large_padding"
+                    android:text="تلفن خدمات مشترکین:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeLarge_" />
+
+                <TextView
+                    style="@style/text_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_large_margin"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/activity_large_padding"
+                    android:paddingBottom="@dimen/activity_large_padding"
+                    android:text="1522"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeLarge_" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/activity_large_margin"
+                android:background="@drawable/border_yellow_1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/img_phone"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    style="@style/text_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_large_padding"
+                    android:text="تلفن ستاد:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeLarge_" />
+
+                <TextView
+                    style="@style/text_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_large_margin"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/activity_large_padding"
+                    android:paddingBottom="@dimen/activity_large_padding"
+                    android:text="03136680030"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeLarge_" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/activity_large_margin"
+                android:background="@drawable/border_blue"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/img_email"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    style="@style/text_bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_large_padding"
+                    android:text="ایمیل:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeLarge_" />
+
+                <TextView
+                    style="@style/text_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_large_margin"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/activity_large_padding"
+                    android:paddingBottom="@dimen/activity_large_padding"
+                    android:text="info@abfaisfahan.ir"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeLarge_" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/activity_large_margin"
+                android:background="@drawable/border_"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/img_fax"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    style="@style/text_bold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_large_padding"
+                    android:text="نمابر:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeLarge_" />
+
+                <TextView
+                    style="@style/text_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_large_margin"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/activity_large_padding"
+                    android:paddingBottom="@dimen/activity_large_padding"
+                    android:text="031-36689586"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textSizeLarge_" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

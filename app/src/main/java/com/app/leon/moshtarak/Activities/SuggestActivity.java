@@ -1,6 +1,7 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -76,7 +77,7 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
         items.add(getString(R.string.help));
         items.add(getString(R.string.support));
         items.add(getString(R.string.suggest));
-        items.add(getString(R.string.other));
+        items.add(getString(R.string.other_));
         spinner.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item,
                 items));
     }
@@ -156,8 +157,8 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_contact) {
-            new CustomDialog(DialogType.Green, context, context.getString(R.string.select), context.getString(R.string.connect_abfa),
-                    context.getString(R.string.support), getString(R.string.accepted));
+            Intent intent = new Intent(getApplicationContext(), ContactUsActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

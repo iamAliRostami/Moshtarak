@@ -1,5 +1,6 @@
 package com.app.leon.moshtarak.BaseItems;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -58,6 +59,7 @@ public abstract class BaseActivity extends AppCompatActivity
 
     protected abstract void initialize();
 
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);

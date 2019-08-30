@@ -14,7 +14,10 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
-        <activity android:name=".Activities.HelpActivity"></activity>
+        <activity
+            android:name=".Activities.ContactUsActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".Activities.HelpActivity" />
         <activity android:name=".Activities.ContactDeveloperActivity" />
         <activity
             android:name=".Activities.SplashActivity"
@@ -80,6 +83,8 @@
             android:screenOrientation="portrait" />
     </application>
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
 
 </manifest>
