@@ -31,14 +31,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_mid_margin"
         android:layout_marginRight="@dimen/activity_mid_margin"
+        android:layout_marginLeft="@dimen/activity_mid_margin"
         android:layout_alignTop="@id/imageView2"
         android:orientation="vertical">
         <LinearLayout
+            android:layout_margin="@dimen/activity_mid_margin"
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
-            android:layout_margin="@dimen/activity_mid_margin"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="@dimen/activity_mid_padding"
@@ -48,8 +48,8 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="سپهر شمسایی"
+                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -77,8 +77,8 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="علی رستمی"
+                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -87,10 +87,10 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:gravity="center"
                 android:text="ali.rostami33@gmail.com"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/black" />
         </LinearLayout>
         <TextView
