@@ -35,6 +35,18 @@
         android:layout_marginLeft="@dimen/activity_mid_margin"
         android:layout_alignTop="@id/imageView2"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
+            android:gravity="center"
+            android:padding="@dimen/activity_large_padding"
+            android:text="@string/programmer_team"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeMedium" />
         <LinearLayout
             android:layout_margin="@dimen/activity_mid_margin"
             android:layout_width="match_parent"
@@ -93,17 +105,6 @@
                 android:layout_weight="1"
                 android:textColor="@color/black" />
         </LinearLayout>
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:layout_marginBottom="@dimen/activity_mid_margin"
-            android:gravity="center"
-            android:padding="@dimen/activity_large_padding"
-            android:text="@string/programmer_team"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textSizeMedium" />
 
     </LinearLayout>
 

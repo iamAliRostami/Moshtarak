@@ -59,7 +59,7 @@ public abstract class BaseActivity extends AppCompatActivity
 
     protected abstract void initialize();
 
-    @SuppressLint("NewApi")
+    @SuppressLint({"NewApi", "RtlHardcoded", "WrongConstant"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
@@ -72,7 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        toolbar.setNavigationOnClickListener(view -> drawer.openDrawer(Gravity.RIGHT));
+        toolbar.setNavigationOnClickListener(view -> drawer.openDrawer(Gravity.START));
         initialize();
     }
 
