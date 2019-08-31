@@ -28,6 +28,7 @@
                 android:hint="0"
                 android:inputType="number"
                 android:maxLength="1"
+                android:layout_marginRight="@dimen/activity_mid_margin"
                 android:padding="@dimen/activity_mid_padding" />
 
             <EditText
@@ -39,7 +40,8 @@
                 android:hint="0"
                 android:inputType="number"
                 android:maxLength="1"
-                android:padding="@dimen/activity_mid_padding" />
+                android:padding="@dimen/activity_mid_padding"
+                tools:ignore="RtlCompat" />
 
 
             <EditText
@@ -51,7 +53,8 @@
                 android:hint="0"
                 android:inputType="number"
                 android:maxLength="1"
-                android:padding="@dimen/activity_mid_padding" />
+                android:padding="@dimen/activity_mid_padding"
+                tools:ignore="RtlCompat" />
 
             <EditText
                 android:id="@+id/editText2"
@@ -62,7 +65,8 @@
                 android:hint="0"
                 android:inputType="number"
                 android:maxLength="1"
-                android:padding="@dimen/activity_mid_padding" />
+                android:padding="@dimen/activity_mid_padding"
+                tools:ignore="RtlCompat" />
 
             <EditText
                 android:id="@+id/editText1"
@@ -73,7 +77,8 @@
                 android:hint="0"
                 android:inputType="number"
                 android:maxLength="1"
-                android:padding="@dimen/activity_mid_padding" />
+                android:padding="@dimen/activity_mid_padding"
+                tools:ignore="RtlCompat" />
         </LinearLayout>
 
         <LinearLayout

@@ -125,9 +125,9 @@ public class ContactUsActivity extends AppCompatActivity {
 
     private void forceClose() {
         new CustomDialog(DialogType.Red, context,
-                context.getString(R.string.permission_not_completed),
+                context.getString(R.string.force_close),
                 context.getString(R.string.dear_user),
                 context.getString(R.string.call_operator),
-                context.getString(R.string.force_close));
+                context.getString(R.string.permission_not_completed));
     }
 }
