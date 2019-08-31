@@ -11,14 +11,12 @@ android {
     }
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.app.leon.moshtarak"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 6
-        versionName "1.0.1.3"
+        versionCode 7
+        versionName "1.0.1.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config
-        applicationIdSuffix = 'com.app.leon.moshtarak'
     }
     buildTypes {
         release {

@@ -37,8 +37,8 @@
         android:orientation="vertical">
         <LinearLayout
             android:layout_margin="@dimen/activity_mid_margin"
-            android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
+            android:id="@+id/linearLayout1"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="@dimen/activity_mid_padding"
@@ -89,8 +89,8 @@
                 android:layout_height="wrap_content"
                 android:text="ali.rostami33@gmail.com"
                 android:layout_gravity="center"
-                android:layout_weight="1"
                 android:gravity="center"
+                android:layout_weight="1"
                 android:textColor="@color/black" />
         </LinearLayout>
         <TextView
