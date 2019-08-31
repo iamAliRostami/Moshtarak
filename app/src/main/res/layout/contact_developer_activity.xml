@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="rtl"
     android:id="@+id/relativeLayout"
     android:background="@drawable/img_background"
-    android:layoutDirection="rtl"
     tools:context="com.app.leon.moshtarak.Activities.ContactDeveloperActivity"
     tools:ignore="UnusedAttribute">
 
@@ -31,47 +31,45 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/imageView2"
         android:layout_marginLeft="@dimen/activity_mid_margin"
         android:layout_marginRight="@dimen/activity_mid_margin"
+        android:layout_alignTop="@id/imageView2"
         android:orientation="vertical">
-
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_mid_margin"
-            android:background="@drawable/border_"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="@dimen/activity_mid_padding"
+            android:background="@drawable/border_"
             android:weightSum="2">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:text="سپهر شمسایی"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textSizeMedium" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:gravity="center"
                 android:text="mantera.sh@gmail.com"
                 android:textColor="@color/black" />
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_mid_margin"
+            android:layout_width="match_parent"
             android:background="@drawable/border_"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="@dimen/activity_mid_padding"
             android:weightSum="2">
@@ -79,23 +77,22 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:text="علی رستمی"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textSizeMedium" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:gravity="center"
                 android:text="ali.rostami33@gmail.com"
                 android:textColor="@color/black" />
         </LinearLayout>
-
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
