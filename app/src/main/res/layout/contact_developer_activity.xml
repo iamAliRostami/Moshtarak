@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.app.leon.moshtarak.Activities.ContactDeveloperActivity">
+    android:id="@+id/relativeLayout"
+    android:background="@drawable/img_background"
+    android:layoutDirection="rtl"
+    tools:context="com.app.leon.moshtarak.Activities.ContactDeveloperActivity"
+    tools:ignore="UnusedAttribute">
 
     <ImageView
         android:id="@+id/imageView1"
@@ -15,24 +19,95 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-10dp" />
 
-    <!--    android:layout_marginTop="200dp"-->
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="115dp"
         android:foregroundGravity="center"
         app:srcCompat="@drawable/img_profile_"
         tools:ignore="ContentDescription,MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/imageView2"
-        android:layout_marginTop="200dp"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:text="@string/programmer_team"
-        android:textSize="@dimen/textSizeMedium" />
+        android:layout_marginLeft="@dimen/activity_mid_margin"
+        android:layout_marginRight="@dimen/activity_mid_margin"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_mid_margin"
+            android:background="@drawable/border_"
+            android:orientation="horizontal"
+            android:padding="@dimen/activity_mid_padding"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="سپهر شمسایی"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeMedium" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="mantera.sh@gmail.com"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_mid_margin"
+            android:background="@drawable/border_"
+            android:orientation="horizontal"
+            android:padding="@dimen/activity_mid_padding"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="علی رستمی"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeMedium" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="ali.rostami33@gmail.com"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
+            android:gravity="center"
+            android:padding="@dimen/activity_large_padding"
+            android:text="@string/programmer_team"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeMedium" />
+
+    </LinearLayout>
+
 </RelativeLayout>
