@@ -1,10 +1,13 @@
 package com.app.leon.moshtarak.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Point;
-import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ListView;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.Adapters.KardexCustomAdapter_1;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
@@ -12,15 +15,17 @@ import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Kardex;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
-import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.Utils.FontManager;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
@@ -33,19 +38,15 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     private String billId;
 
     @Override
-    protected UiElementInActivity getUiElementsInActivity() {
-        UiElementInActivity uiElementInActivity = new UiElementInActivity();
-        uiElementInActivity.setContentViewId(R.layout.cardex_activity);
-        return uiElementInActivity;
-    }
-
-    @Override
     protected void initialize() {
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.cardex_content, findViewById(R.id.cardex_activity));
+        @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        parentLayout.addView(childLayout);
+        ButterKnife.bind(this);
+        FontManager fontManager = new FontManager(getApplicationContext());
+        fontManager.setFont(findViewById(R.id.cardex_activity));
         context = this;
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        width = size.x;
         accessData();
     }
 

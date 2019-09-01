@@ -1,16 +1,19 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.app.leon.moshtarak.Adapters.LearningCustomAdapter;
-import com.app.leon.moshtarak.BaseItems.BaseActivity;
-import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
-import com.app.leon.moshtarak.R;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-import java.util.List;
+import com.app.leon.moshtarak.BaseItems.BaseActivity;
+import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.Utils.FontManager;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,20 +23,19 @@ public class UsingMethodActivity extends BaseActivity {
 //    ListView listViewLearningUsing;
     @BindView(R.id.webViewLearningUsing)
     WebView webView;
-    LearningCustomAdapter adapter;
-    List<LearningCustomAdapter.DrawerItem> dataList;
+//    LearningCustomAdapter adapter;
+//    List<LearningCustomAdapter.DrawerItem> dataList;
 
-    @Override
-    protected UiElementInActivity getUiElementsInActivity() {
-        UiElementInActivity uiElementInActivity = new UiElementInActivity();
-        uiElementInActivity.setContentViewId(R.layout.using_method_activity);
-        return uiElementInActivity;
-    }
-
-    @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint({"SetJavaScriptEnabled", "CutPasteId"})
     @Override
     protected void initialize() {
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.using_method_content, findViewById(R.id.using_method_activity));
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        parentLayout.addView(childLayout);
         ButterKnife.bind(this);
+        FontManager fontManager = new FontManager(getApplicationContext());
+        fontManager.setFont(findViewById(R.id.using_method_activity));
 //        fillListViewLearningUsing();
         WebSettings webSetting = webView.getSettings();
         webSetting.setBuiltInZoomControls(true);

@@ -1,8 +1,10 @@
 package com.app.leon.moshtarak.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
@@ -20,13 +24,14 @@ import com.app.leon.moshtarak.Models.DbTables.Suggestion;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
-import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
+import com.app.leon.moshtarak.Utils.FontManager;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,16 +54,16 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
     ArrayList<String> items;
     Context context;
 
-    @Override
-    protected UiElementInActivity getUiElementsInActivity() {
-        UiElementInActivity uiElementInActivity = new UiElementInActivity();
-        uiElementInActivity.setContentViewId(R.layout.suggest_activity);
-        return uiElementInActivity;
-    }
 
     @Override
     protected void initialize() {
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.suggest_content, findViewById(R.id.suggest_activity));
+        @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        parentLayout.addView(childLayout);
         ButterKnife.bind(this);
+        FontManager fontManager = new FontManager(getApplicationContext());
+        fontManager.setFont(findViewById(R.id.suggest_activity));
         context = this;
         setRadioGroupOnCheckedChanged();
         setSpinnerArrayAdapter();

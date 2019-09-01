@@ -2,14 +2,9 @@ package com.app.leon.moshtarak.BaseItems;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Gravity;
-import android.view.InflateException;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,10 +22,8 @@ import com.app.leon.moshtarak.Activities.ContactDeveloperActivity;
 import com.app.leon.moshtarak.Activities.HomeActivity;
 import com.app.leon.moshtarak.Activities.SignAccountActivity;
 import com.app.leon.moshtarak.Adapters.NavigationCustomAdapter;
-import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomTab;
-import com.app.leon.moshtarak.Utils.FontManager;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.google.android.material.navigation.NavigationView;
 
@@ -38,35 +31,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public abstract class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     final String packageName = "com.app.leon.moshtarak";
     private final String url = "https://www.abfaesfahan.ir";
-    @BindView(R.id.toolbar)
     public Toolbar toolbar;
-    @BindView(R.id.drawer_layout)
     DrawerLayout drawer;
-    @BindView(R.id.left_drawer)
     ListView drawerList;
-    Typeface typeface;
     NavigationCustomAdapter adapter;
     List<NavigationCustomAdapter.DrawerItem> dataList;
-
-    protected abstract UiElementInActivity getUiElementsInActivity();
 
     protected abstract void initialize();
 
     @SuppressLint({"NewApi", "RtlHardcoded", "WrongConstant"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         super.onCreate(savedInstanceState);
-        UiElementInActivity uiElementInActivity = getUiElementsInActivity();
+        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         overridePendingTransition(R.anim.slide_up_info, R.anim.no_change);
-        setContentView(uiElementInActivity.getContentViewId());
+        setContentView(R.layout.base_activity);
         initializeBase();
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -85,16 +68,10 @@ public abstract class BaseActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.logout, menu);
-        return true;
-    }
-
     void setOnDrawerItemClick() {
         drawerList.setOnItemClickListener((adpterView, view, position, id) -> {
-            setItemsColor(drawer, position);
             if (position != 0) {
+                setItemsColor(drawer, position);
                 for (int i = 0; i < drawerList.getChildCount(); i++) {
                     if (position == i) {
                         drawerList.getChildAt(i).setBackgroundColor(getResources().getColor(R.color.red2));
@@ -133,54 +110,18 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.nav_contact) {
-//            SharedPreferences appPrefs = getSharedPreferences("com.app.leon.moshtarak.user_preferences", MODE_PRIVATE);
-//            SharedPreferences.Editor prefsEditor = appPrefs.edit();
-//            prefsEditor.putString("file_number", "");
-//            prefsEditor.putString("account_number", "");
-//            prefsEditor.apply();
-//            Toast.makeText(getApplicationContext(), getString(R.string.logout_successful), Toast.LENGTH_SHORT).show();
-//            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-//            startActivity(intent);
-//            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    protected void setMenuBackground() {
-        getLayoutInflater().setFactory((name, context, attrs) -> {
-            if (name.equalsIgnoreCase("com.android.internal.view.menu.IconMenuItemView")) {
-                try {
-                    // Ask our inflater to create the view
-                    LayoutInflater f = getLayoutInflater();
-                    final View view = f.createView(name, null, attrs);
-                    // Kind of apply our own background
-                    new Handler().post(() -> view.setBackgroundResource(R.color.black));
-                    return view;
-                } catch (InflateException | ClassNotFoundException ignored) {
-                }
-            }
-            return null;
-        });
-    }
-
-    @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
     private void initializeBase() {
-        initializeTypeface();
-        ButterKnife.bind(this);
+        toolbar = findViewById(R.id.toolbar);
+        drawer = findViewById(R.id.drawer_layout);
+        drawerList = findViewById(R.id.right_drawer);
         dataList = new ArrayList<>();
         fillDrawerListView();
         setOnDrawerItemClick();
-        FontManager fontManager = new FontManager(getApplicationContext());
-        fontManager.setFont(this.drawer);
     }
 
     @Override
@@ -188,7 +129,6 @@ public abstract class BaseActivity extends AppCompatActivity
         super.onDestroy();
         dataList = null;
         adapter = null;
-        typeface = null;
     }
 
     void fillDrawerListView() {
@@ -208,10 +148,6 @@ public abstract class BaseActivity extends AppCompatActivity
         dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.exit), R.drawable.img_exit));
         adapter = new NavigationCustomAdapter(this, R.layout.item_navigation, dataList);
         drawerList.setAdapter(adapter);
-    }
-
-    void initializeTypeface() {
-        typeface = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/BYekan_3.ttf");
     }
 
     public void setItemsColor(ViewGroup viewTree, int selected) {

@@ -2,12 +2,17 @@ package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
-import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.Utils.FontManager;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,62 +36,58 @@ public class HomeActivity extends BaseActivity {
     ImageButton imageButtonHelp;
     @BindView(R.id.imageButtonSupport)
     ImageButton imageButtonSupport;
-    View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent;
-            switch (view.getId()) {
-                case R.id.imageButtonSuggest:
-                    intent = new Intent(getApplicationContext(), SuggestActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButtonTrain:
-                    intent = new Intent(getApplicationContext(), LearningActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButtonLastBill:
-                    intent = new Intent(getApplicationContext(), LastBillActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButtonKardex:
-                    intent = new Intent(getApplicationContext(), CardexActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButtonTracking:
-                    intent = new Intent(getApplicationContext(), TrackingsActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButtonMamoor:
-                    intent = new Intent(getApplicationContext(), SetCounterActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButtonSale:
-                    intent = new Intent(getApplicationContext(), SaleActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButtonHelp:
-                    intent = new Intent(getApplicationContext(), HelpActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButtonSupport:
-                    intent = new Intent(getApplicationContext(), AfterSaleServicesActivity.class);
-                    startActivity(intent);
-                    break;
-            }
+    View.OnClickListener onClickListener = view -> {
+        Intent intent;
+        switch (view.getId()) {
+            case R.id.imageButtonSuggest:
+                intent = new Intent(getApplicationContext(), SuggestActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButtonTrain:
+                intent = new Intent(getApplicationContext(), LearningActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButtonLastBill:
+                intent = new Intent(getApplicationContext(), LastBillActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButtonKardex:
+                intent = new Intent(getApplicationContext(), CardexActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButtonTracking:
+                intent = new Intent(getApplicationContext(), TrackingsActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButtonMamoor:
+                intent = new Intent(getApplicationContext(), SetCounterActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButtonSale:
+                intent = new Intent(getApplicationContext(), SaleActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButtonHelp:
+                intent = new Intent(getApplicationContext(), HelpActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButtonSupport:
+                intent = new Intent(getApplicationContext(), AfterSaleServicesActivity.class);
+                startActivity(intent);
+                break;
         }
     };
 
-    @Override
-    protected UiElementInActivity getUiElementsInActivity() {
-        UiElementInActivity uiElementInActivity = new UiElementInActivity();
-        uiElementInActivity.setContentViewId(R.layout.home_activity);
-        return uiElementInActivity;
-    }
-
-    @SuppressLint({"HardwareIds", "MissingPermission"})
+    @SuppressLint({"HardwareIds", "MissingPermission", "CutPasteId"})
     @Override
     protected void initialize() {
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.home_content, findViewById(R.id.home_activity));
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        parentLayout.addView(childLayout);
         ButterKnife.bind(this);
+        FontManager fontManager = new FontManager(getApplicationContext());
+        fontManager.setFont(findViewById(R.id.home_activity));
         setOnClickListener();
     }
 

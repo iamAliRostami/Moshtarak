@@ -7,7 +7,8 @@
     android:layoutDirection="rtl"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.app.leon.moshtarak.Activities.HomeActivity"
-    tools:showIn="@layout/home_app_bar">
+    android:id="@+id/home_activity"
+    tools:ignore="UnusedAttribute">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"

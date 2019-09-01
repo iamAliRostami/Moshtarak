@@ -1,13 +1,15 @@
 package com.app.leon.moshtarak.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Point;
-import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.Adapters.TrackCustomAdapter_1;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
@@ -15,12 +17,13 @@ import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.TrackingDto;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
-import com.app.leon.moshtarak.Models.ViewModels.UiElementInActivity;
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.Utils.FontManager;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,16 +45,16 @@ public class TrackingsActivity extends BaseActivity
     View viewFocus;
     Context context;
 
-    @Override
-    protected UiElementInActivity getUiElementsInActivity() {
-        UiElementInActivity uiElementInActivity = new UiElementInActivity();
-        uiElementInActivity.setContentViewId(R.layout.trackings_activity);
-        return uiElementInActivity;
-    }
-
+    @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.trackings_content, findViewById(R.id.tracking_activity));
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        parentLayout.addView(childLayout);
         ButterKnife.bind(this);
+        FontManager fontManager = new FontManager(getApplicationContext());
+        fontManager.setFont(findViewById(R.id.tracking_activity));
         context = this;
         setOnButtonSubmitClickListener();
     }
@@ -75,10 +78,6 @@ public class TrackingsActivity extends BaseActivity
 
     @Override
     public void execute(ArrayList<TrackingDto> trackingDtos) {
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
         linearLayout1.setVisibility(View.GONE);
         linearLayout2.setVisibility(View.VISIBLE);
         TrackCustomAdapter_1 trackCustomAdapter_1 = new TrackCustomAdapter_1(context, trackingDtos);

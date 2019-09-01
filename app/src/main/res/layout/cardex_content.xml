@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.app.leon.moshtarak.Activities.CardexActivity"
-    tools:showIn="@layout/cardex_app_bar">
+    android:id="@+id/cardex_activity">
 
     <LinearLayout
         android:layout_width="match_parent"

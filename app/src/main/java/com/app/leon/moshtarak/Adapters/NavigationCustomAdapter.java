@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.Utils.FontManager;
 
 import java.util.List;
 
@@ -56,6 +57,7 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
         convertView = null;
         DrawerItem dItem;
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+        FontManager fontManager = new FontManager(context);
         if (position == 0) {
             drawerHolder = new DrawerItemHolder();
             convertView = inflater.inflate(R.layout.item_navigation_, parent, false);
@@ -76,6 +78,7 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
             drawerHolder.imageViewIcon.setImageDrawable(convertView.getResources().getDrawable(
                     dItem.getImgResID()));
             drawerHolder.textViewTitle.setText(dItem.getItemName());
+            fontManager.setFont(drawerHolder.textViewTitle);
         }
         convertView.setTag(drawerHolder);
         return convertView;
