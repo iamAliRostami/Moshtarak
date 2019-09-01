@@ -171,6 +171,26 @@ public class SignAccountActivity extends BaseActivity
                 }
             }
         });
+
+        editTextNationNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() == 10) {
+                    viewFocus = editTextMobile;
+                    viewFocus.requestFocus();
+                }
+            }
+        });
     }
 
     void canMatch(String billId, String account, String mobile, String nationNumber) {

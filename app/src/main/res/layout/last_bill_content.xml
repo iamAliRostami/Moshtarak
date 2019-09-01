@@ -721,9 +721,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
+                android:id="@+id/linearLayoutCompat1"
                 android:background="@drawable/border_orange"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -787,8 +788,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
+                android:id="@+id/linearLayoutCompat2"
                 android:orientation="horizontal"
-                android:visibility="gone">
+                android:visibility="visible">
 
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -849,9 +851,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
+                android:id="@+id/linearLayoutCompat3"
                 android:background="@drawable/border_orange_"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:id="@+id/linearLayoutPay"

@@ -66,7 +66,7 @@ public class LastBillActivity extends BaseActivity {
     @BindView(R.id.textViewCost)
     TextView textViewCost;
     @BindView(R.id.textViewAbBahaDetail)
-    TextView textViewabBahaDetail;
+    TextView textViewAbBahaDetail;
     @BindView(R.id.textViewTabsare2)
     TextView textViewTabsare2;
     @BindView(R.id.textViewTabsare3Ab)
@@ -102,6 +102,7 @@ public class LastBillActivity extends BaseActivity {
     String address = "https://bill.bpm.bankmellat.ir/bpgwchannel/";
     boolean isPayed = false;
     boolean isFromCardex = false;
+
     @Override
     protected void initialize() {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -191,6 +192,34 @@ public class LastBillActivity extends BaseActivity {
                 isPayed = bundle1.getBoolean(BundleEnum.IS_PAYED.getValue());
 
             } else if (bundle2 != null) {
+                androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
+//                linearLayoutCompat = findViewById(R.id.abBahaDetail);
+//                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.tabsare2);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.tabsare3Ab);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.tabsare3Fazelab);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.abonmanAb);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.abonmanFazelab);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.fasleGarm);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+                linearLayoutCompat = findViewById(R.id.mazadOlgoo);
+                linearLayoutCompat.setVisibility(View.VISIBLE);
+
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompat1);
+                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompat2);
+                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompat3);
+                linearLayoutCompat.setVisibility(View.GONE);
+
+//                linearLayoutCompat = findViewById(R.id.karmozdFazelabDetails);
+//                linearLayoutCompat.setVisibility(View.VISIBLE);
+
                 isFromCardex = true;
                 Retrofit retrofit = NetworkHelper.getInstance();
                 final IAbfaService getLastBillInfo = retrofit.create(IAbfaService.class);
@@ -289,29 +318,10 @@ public class LastBillActivity extends BaseActivity {
 
             isPayed = lastBillInfo.isPayed();
             if (isFromCardex) {
-                androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
-//                linearLayoutCompat = findViewById(R.id.abBahaDetail);
-//                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.tabsare2);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.tabsare3Ab);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.tabsare3Fazelab);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.abonmanAb);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.abonmanFazelab);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.fasleGarm);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.mazadOlgoo);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-//                linearLayoutCompat = findViewById(R.id.karmozdFazelabDetails);
-//                linearLayoutCompat.setVisibility(View.VISIBLE);
 
 //                floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());
 //                intNumber = (int) floatNumber;
-//                textViewabBahaDetail.setText(String.valueOf(intNumber));
+//                textViewAbBahaDetail.setText(String.valueOf(intNumber));
                 floatNumber = Float.valueOf(lastBillInfo.getTabsare2());
                 intNumber = (int) floatNumber;
                 textViewTabsare2.setText(String.valueOf(intNumber));
