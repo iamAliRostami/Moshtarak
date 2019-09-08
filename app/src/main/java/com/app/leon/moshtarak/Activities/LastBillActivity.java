@@ -118,7 +118,7 @@ public class LastBillActivity extends BaseActivity {
             if (!isPayed)
                 new CustomTab(address, LastBillActivity.this);
             else
-                Toast.makeText(context, context.getString(R.string.payed), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, context.getString(R.string.payed_2), Toast.LENGTH_SHORT).show();
         });
     }
 

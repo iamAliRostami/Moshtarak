@@ -98,7 +98,7 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
                 context.startActivity(intent);
             });
         } else if (kardex.isPay()) {
-            imageViewInfo.setOnClickListener(view -> Toast.makeText(context, context.getString(R.string.payed), Toast.LENGTH_SHORT).show());
+            imageViewInfo.setOnClickListener(view -> Toast.makeText(context, context.getString(R.string.payed_1), Toast.LENGTH_SHORT).show());
         }
         textViewCost.setGravity(1);
         textViewNote.setGravity(1);

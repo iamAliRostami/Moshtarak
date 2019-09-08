@@ -149,7 +149,8 @@
     <string name="status">وضعیت:</string>
     <string name="time">ساعت:</string>
     <string name="date_1">تاریخ:</string>
-    <string name="payed">لطفاً روی قبوض صادره تَپ کنید.</string>
+    <string name="payed_1">لطفاً روی قبوض صادره تَپ کنید.</string>
+    <string name="payed_2">این قبض قبلا پرداخت شده است.</string>
     <string name="tabsare2">تبصره 2</string>
     <string name="tabsare3Ab">تبصره 3 آب</string>
     <string name="tabsare3Fazelab">تبصره 3 فاضلاب</string>

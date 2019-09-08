@@ -11,13 +11,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="@dimen/activity_large_margin"
-        android:layout_marginRight="@dimen/activity_large_margin"
+        android:paddingLeft="@dimen/activity_mid_margin"
+        android:paddingRight="@dimen/activity_mid_margin"
         android:layout_marginBottom="@dimen/activity_large_margin"
         android:orientation="vertical"
-        tools:ignore="RtlCompat,UselessParent">
+        tools:ignore="UselessParent">
 
 
         <ImageView
@@ -26,10 +24,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:background="@color/transparent"
-            android:paddingLeft="@dimen/activity_mid_padding"
-            android:paddingRight="@dimen/activity_mid_padding"
             android:paddingBottom="@dimen/activity_mid_padding"
-            app:srcCompat="@drawable/img_text_header" />
+            app:srcCompat="@drawable/img_text_header"
+            tools:ignore="ContentDescription" />
 
 
         <RadioGroup
@@ -80,7 +77,8 @@
                 android:gravity="top"
                 android:hint="@string/enter"
                 android:inputType="textMultiLine"
-                android:maxLength="280" />
+                android:maxLength="280"
+                tools:ignore="Autofill" />
         </LinearLayout>
 
         <Button
