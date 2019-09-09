@@ -65,7 +65,7 @@ public class ContactUsActivity extends AppCompatActivity {
             if (ActivityCompat.checkSelfPermission(context,
                     Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 Log.e("call permission :", "Denied");
-                Toast.makeText(context, getString(R.string.access), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, getString(R.string.access), Toast.LENGTH_SHORT).show();
                 intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
                 startActivity(intent);
                 return;
@@ -86,7 +86,7 @@ public class ContactUsActivity extends AppCompatActivity {
         setContentView(R.layout.contact_us_activity);
         ButterKnife.bind(this);
         context = this;
-        manage_permissions();
+//        manage_permissions();
         FontManager fontManager = new FontManager(context);
         fontManager.setFont(relativeLayout);
         linearLayout1.setOnClickListener(onClickListener);

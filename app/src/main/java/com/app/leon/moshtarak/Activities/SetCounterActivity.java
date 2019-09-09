@@ -69,24 +69,24 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     @Override
     protected void initialize() {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.set_counter_content, findViewById(R.id.set_counter__activity));
+        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.set_counter_content, findViewById(R.id.set_counter_activity));
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
+
         FontManager fontManager = new FontManager(getApplicationContext());
-        fontManager.setFont(findViewById(R.id.set_counter__activity));
+        fontManager.setFont(findViewById(R.id.set_counter_activity));
         context = this;
         accessData();
         sharedPreference = new SharedPreference(context);
         phoneNumber = sharedPreference.getMobileNumber().replaceFirst("09", "");
         editTextPhoneNumber.setText(phoneNumber);
-        setComponentPosition();
+//        setComponentPosition();
         setTextChangedListener();
-        editText1.measure(0, 0);
-        width = editText1.getMeasuredWidth();
-        height = editText1.getMeasuredHeight();
-        textSize = getResources().getDimensionPixelSize(R.dimen.textSizeMedium);
-
+//        editText1.measure(0, 0);
+//        width = editText1.getMeasuredWidth();
+//        height = editText1.getMeasuredHeight();
+//        textSize = getResources().getDimensionPixelSize(R.dimen.textSizeMedium);
         viewFocus = editTextPhoneNumber;
         viewFocus.requestFocus();
         setOnButtonSignClickListener();
@@ -113,56 +113,43 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
 //        editText3.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 //        editText4.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 //        editText5.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
         if (b) {
+            layoutParams.setMargins(0, 170, 0, 0);
             editText1.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
             editText2.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
             editText3.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
             editText4.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
             editText5.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
         } else {
-            editText1.setTextSize(getResources().getDimension(R.dimen.textSizeSmall));
-            editText2.setTextSize(getResources().getDimension(R.dimen.textSizeSmall));
-            editText3.setTextSize(getResources().getDimension(R.dimen.textSizeSmall));
-            editText4.setTextSize(getResources().getDimension(R.dimen.textSizeSmall));
-            editText5.setTextSize(getResources().getDimension(R.dimen.textSizeSmall));
+            layoutParams.setMargins(0, 560, 0, 0);
+            editText1.setTextSize(15);
+            editText2.setTextSize(15);
+            editText3.setTextSize(15);
+            editText4.setTextSize(15);
+            editText5.setTextSize(15);
         }
+        linearLayout1.setLayoutParams(layoutParams);
     }
 
     private void setTextChangedListener() {
         editText1.setOnFocusChangeListener((view, b) -> {
-            if (b) {
-                changeEditTextSize(b);
-            } else {
-                changeEditTextSize(b);
-            }
+            changeEditTextSize(b);
         });
         editText2.setOnFocusChangeListener((view, b) -> {
-            if (b) {
-                changeEditTextSize(b);
-            } else {
-                changeEditTextSize(b);
-            }
+            changeEditTextSize(b);
         });
         editText3.setOnFocusChangeListener((view, b) -> {
-            if (b) {
-                changeEditTextSize(b);
-            } else {
-                changeEditTextSize(b);
-            }
+            changeEditTextSize(b);
         });
         editText4.setOnFocusChangeListener((view, b) -> {
-            if (b) {
-                changeEditTextSize(b);
-            } else {
-                changeEditTextSize(b);
-            }
+            changeEditTextSize(b);
         });
         editText5.setOnFocusChangeListener((view, b) -> {
-            if (b) {
-                changeEditTextSize(b);
-            } else {
-                changeEditTextSize(b);
-            }
+            changeEditTextSize(b);
         });
         editText1.addTextChangedListener(new TextWatcher() {
             @Override
@@ -381,8 +368,8 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
         int height = metrics.heightPixels;
-        linearLayout1.setY(height - 13 * height / 25);
-        linearLayout2.setY(height - 10 * height / 27);
-        linearLayout3.setY(height - 3 * height / 8);
+        linearLayout1.setY(height - 14 * height / 25);
+        linearLayout2.setY(height - 17 * height / 38);
+        linearLayout3.setY(height - 6 * height / 14);
     }
 }
