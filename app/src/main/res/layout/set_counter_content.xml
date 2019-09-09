@@ -18,7 +18,6 @@
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="280dp"
             android:gravity="center">
 
             <EditText
@@ -90,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="120dp"
             android:orientation="horizontal"
             android:weightSum="1">
 

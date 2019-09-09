@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,10 +70,10 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
-
         FontManager fontManager = new FontManager(getApplicationContext());
         fontManager.setFont(findViewById(R.id.set_counter_activity));
         context = this;
+        setComponentPosition();
         accessData();
         sharedPreference = new SharedPreference(context);
         phoneNumber = sharedPreference.getMobileNumber().replaceFirst("09", "");
@@ -321,15 +324,19 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         startActivity(intent);
     }
 
-//    void setComponentPosition() {
-//        WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-//        assert wm != null;
-//        Display display = wm.getDefaultDisplay();
-//        DisplayMetrics metrics = new DisplayMetrics();
-//        display.getMetrics(metrics);
-//        int height = metrics.heightPixels;
+    void setComponentPosition() {
+        WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+        assert wm != null;
+        Display display = wm.getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+        int height = metrics.heightPixels;
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.topMargin = height - 14 * height / 25;
+        linearLayout1.setLayoutParams(layoutParams);
 //        linearLayout1.setY(height - 14 * height / 25);
 //        linearLayout2.setY(height - 17 * height / 38);
 //        linearLayout3.setY(height - 6 * height / 14);
-//    }
+    }
 }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.Utils.FontManager;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,8 @@ public class ShowSMSActivity extends AppCompatActivity {
         setContentView(R.layout.show_sms_activity);
         context = this;
         ButterKnife.bind(this);
+        FontManager fontManager = new FontManager(getApplicationContext());
+        fontManager.setFont(findViewById(R.id.relativeLayout));
         Intent intent = getIntent();
         sms = intent.getStringArrayListExtra("SMS");
         textView.setText(textView.getText().toString().concat(intent.getStringExtra("SMS_LEVEL")));
