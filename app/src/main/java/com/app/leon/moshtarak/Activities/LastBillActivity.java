@@ -37,7 +37,6 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
-
 public class LastBillActivity extends BaseActivity {
     @BindView(R.id.textViewBillId)
     TextView textViewBillId;
@@ -111,7 +110,6 @@ public class LastBillActivity extends BaseActivity {
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
-
         FontManager fontManager = new FontManager(getApplicationContext());
         fontManager.setFont(findViewById(R.id.last_bill_activity));
         context = this;
@@ -121,7 +119,6 @@ public class LastBillActivity extends BaseActivity {
                 new CustomTab(address, LastBillActivity.this);
             else
                 Toast.makeText(context, context.getString(R.string.payed_2), Toast.LENGTH_SHORT).show();
-
         });
     }
 
@@ -148,63 +145,58 @@ public class LastBillActivity extends BaseActivity {
                 billId = bundle1.getString(BundleEnum.BILL_ID.getValue());
                 textViewBillId.setText(billId);
                 textViewPayId.setText(payId);
+                setImageBitmap(imageViewBarcode);
 
-                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.COST.getValue()));
+                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.COST.getValue())));
                 intNumber = (int) floatNumber;
                 textViewCost.setText(String.valueOf(intNumber));
 
-                setImageBitmap(imageViewBarcode);
-
-                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.NEW.getValue()));
+                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.NEW.getValue())));
                 intNumber = (int) floatNumber;
                 textViewNewNumber.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.PRE.getValue()));
+                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.PRE.getValue())));
                 intNumber = (int) floatNumber;
                 textViewPreNumber.setText(String.valueOf(intNumber));
 
                 textViewNewDate.setText(bundle1.getString(BundleEnum.CURRENT_READING_DATE.getValue()));
                 textViewPreDate.setText(bundle1.getString(BundleEnum.PRE_READING_DATE.getValue()));
 
-                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.USE_AVERAGE.getValue()));
+                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.USE_AVERAGE.getValue())));
                 intNumber = (int) floatNumber;
                 textViewUseAverage.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.USE_LENGTH.getValue()));
+                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.USE_LENGTH.getValue())));
                 intNumber = (int) floatNumber;
                 textViewUseLength.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.USE.getValue()));
+                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.USE.getValue())));
                 intNumber = (int) floatNumber;
                 textViewUse.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.PRE_DEBT_OR_OWE.getValue()));
+                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.PRE_DEBT_OR_OWE.getValue())));
                 intNumber = (int) floatNumber;
                 textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.TAKALIF_BOODJE.getValue()));
+                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.TAKALIF_BOODJE.getValue())));
                 intNumber = (int) floatNumber;
                 textViewTakalifBoodje.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.KARMOZDE_FAZELAB.getValue()));
+                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.KARMOZDE_FAZELAB.getValue())));
                 intNumber = (int) floatNumber;
                 textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.AB_BAHA.getValue()));
+                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.AB_BAHA.getValue())));
                 intNumber = (int) floatNumber;
                 textViewAbBaha.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.TAX.getValue()));
+
+                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.TAX.getValue())));
                 intNumber = (int) floatNumber;
                 textViewTax.setText(String.valueOf(intNumber));
 
                 textViewDate.setText(bundle1.getString(BundleEnum.DATE.getValue()));
-
-
                 isPayed = bundle1.getBoolean(BundleEnum.IS_PAYED.getValue());
                 if (isPayed)
                     textViewIsPayed.setText(context.getString(R.string.payed_2));
-
             } else if (bundle2 != null) {
                 androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
-//                linearLayoutCompat = findViewById(R.id.abBahaDetail);
-//                linearLayoutCompat.setVisibility(View.VISIBLE);
                 linearLayoutCompat = findViewById(R.id.tabsare2);
                 linearLayoutCompat.setVisibility(View.VISIBLE);
                 linearLayoutCompat = findViewById(R.id.tabsare3Ab);
@@ -227,9 +219,6 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompat3);
                 linearLayoutCompat.setVisibility(View.GONE);
 
-//                linearLayoutCompat = findViewById(R.id.karmozdFazelabDetails);
-//                linearLayoutCompat.setVisibility(View.VISIBLE);
-
                 isFromCardex = true;
                 Retrofit retrofit = NetworkHelper.getInstance();
                 final IAbfaService getLastBillInfo = retrofit.create(IAbfaService.class);
@@ -251,7 +240,6 @@ public class LastBillActivity extends BaseActivity {
 
     void setImageBitmap(ImageView imageView) {
         String barcode = "";
-
         for (int count = 0; count < 13 - billId.length(); count++) {
             barcode = barcode.concat("0");
         }
@@ -261,7 +249,6 @@ public class LastBillActivity extends BaseActivity {
         }
         barcode = barcode.concat(payId);
         Code128 code = new Code128(this);
-
         code.setData(barcode);
         WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
         assert wm != null;
@@ -282,21 +269,19 @@ public class LastBillActivity extends BaseActivity {
             payId = lastBillInfo.getPayId().trim();
             textViewBillId.setText(billId);
             textViewPayId.setText(payId);
+            setImageBitmap(imageViewBarcode);
+
             float floatNumber = Float.valueOf(lastBillInfo.getCurrentReadingNumber());
             int intNumber = (int) floatNumber;
-
             textViewNewNumber.setText(String.valueOf(intNumber));
 
             floatNumber = Float.valueOf(lastBillInfo.getPreReadingNumber());
             intNumber = (int) floatNumber;
             textViewPreNumber.setText(String.valueOf(intNumber));
 
-
             floatNumber = Float.valueOf(lastBillInfo.getPayable());
             intNumber = (int) floatNumber;
             textViewCost.setText(String.valueOf(intNumber));
-
-            setImageBitmap(imageViewBarcode);
 
             textViewNewDate.setText(lastBillInfo.getCurrentReadingDate());
             textViewPreDate.setText(lastBillInfo.getPreReadingDate());
@@ -329,9 +314,6 @@ public class LastBillActivity extends BaseActivity {
             intNumber = (int) floatNumber;
             textViewTakalifBoodje.setText(String.valueOf(intNumber));
 
-            floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelab());
-            intNumber = (int) floatNumber;
-
             floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelabDetails());
             intNumber = (int) floatNumber;
 
@@ -344,7 +326,6 @@ public class LastBillActivity extends BaseActivity {
             isPayed = lastBillInfo.isPayed();
             if (isPayed) {
                 textViewIsPayed.setText(context.getString(R.string.payed_2));
-
                 androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompat1);
                 linearLayoutCompat.setVisibility(View.GONE);
@@ -354,10 +335,6 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat.setVisibility(View.GONE);
             }
             if (isFromCardex) {
-
-//                floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());
-//                intNumber = (int) floatNumber;
-//                textViewAbBahaDetail.setText(String.valueOf(intNumber));
                 floatNumber = Float.valueOf(lastBillInfo.getTabsare2());
                 intNumber = (int) floatNumber;
                 textViewTabsare2.setText(String.valueOf(intNumber));
@@ -379,9 +356,6 @@ public class LastBillActivity extends BaseActivity {
                 floatNumber = Float.valueOf(lastBillInfo.getMazadOlgoo());
                 intNumber = (int) floatNumber;
                 textViewMazadOlgoo.setText(String.valueOf(intNumber));
-//                floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelabDetails());
-//                intNumber = (int) floatNumber;
-//                textViewKarmozdFazelabDetails.setText(String.valueOf(intNumber));
             }
         }
     }
