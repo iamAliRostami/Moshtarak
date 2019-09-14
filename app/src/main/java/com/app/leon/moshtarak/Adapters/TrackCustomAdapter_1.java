@@ -24,7 +24,7 @@ public class TrackCustomAdapter_1 extends ArrayAdapter<TrackingDto> {
     public TrackCustomAdapter_1(Context context, ArrayList<TrackingDto> trackingDtos) {
         super(context, 0);
         this.trackingDtos = trackingDtos;
-        Collections.sort(this.trackingDtos, (o1, o2) -> o1.getDateJalali().compareToIgnoreCase(o2.getDateJalali()));
+        Collections.sort(this.trackingDtos, (o1, o2) -> o2.getDateJalali().compareToIgnoreCase(o1.getDateJalali()));
         this.context = context;
     }
 
