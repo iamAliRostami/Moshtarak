@@ -335,6 +335,7 @@
                         android:text="@string/dash"
                         android:textColor="@color/green3"
                         android:textStyle="bold"
+                        android:textSize="@dimen/textSizeMedium"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
 

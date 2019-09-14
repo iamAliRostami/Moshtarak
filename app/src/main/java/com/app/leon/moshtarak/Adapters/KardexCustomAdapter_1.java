@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +58,7 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
         TextView textViewCost;
         TextView textViewNote;
         ImageView imageViewInfo;
+        LinearLayout linearLayoutItem = viewHolder.findViewById(R.id.linearLayoutItem);
         textViewDate = viewHolder.findViewById(R.id.textViewDate);
         textViewUse = viewHolder.findViewById(R.id.textViewUse);
         textViewCost = viewHolder.findViewById(R.id.textViewCost);
@@ -88,7 +90,7 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
         if (kardex.isBill()) {
             textViewNote.setTextColor(context.getResources().getColor(R.color.colorAccentIndigo));
             textViewCost.setTextColor(context.getResources().getColor(R.color.pink2));
-            imageViewInfo.setOnClickListener(view ->
+            linearLayoutItem.setOnClickListener(view ->
             {
                 Intent intent = new Intent(context, LastBillActivity.class);
                 Bundle bundle = new Bundle();
@@ -98,7 +100,7 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
                 context.startActivity(intent);
             });
         } else if (kardex.isPay()) {
-            imageViewInfo.setOnClickListener(view -> Toast.makeText(context, context.getString(R.string.payed_1), Toast.LENGTH_SHORT).show());
+            linearLayoutItem.setOnClickListener(view -> Toast.makeText(context, context.getString(R.string.payed_1), Toast.LENGTH_SHORT).show());
         }
         textViewCost.setGravity(1);
         textViewNote.setGravity(1);

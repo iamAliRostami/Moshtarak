@@ -26,7 +26,7 @@
     <string name="transaction">نشست ها</string>
     <string name="update">به روزرسانی</string>
     <string name="account">ثبت کاربر جدید</string>
-    <string name="change_account">تغییر شناسه قبض</string>
+    <string name="change_account">تغییر حساب کاربری من</string>
     <string name="recovery_code">بازیابی کد رهگیری</string>
     <string name="connect_abfa">ارتباط با آبفا</string>
     <string name="connect_developer">ارتباط با پشتیبان</string>
@@ -57,9 +57,9 @@
     <string name="siphon_radius">قطر سیفون</string>
     <string name="current_reading_date">تاریخ قرائت فعلی</string>
     <string name="last_read_date"> تاریخ قرائت پیشین</string>
-    <string name="pre_debt_or_owe">بدهی بستانکاری قبلی</string>
+    <string name="pre_debt_or_owe">بدهی بستانکاری</string>
     <string name="total">جمع کل</string>
-    <string name="debt">بدهی</string>
+    <string name="debt">بدهی آب بها</string>
     <string name="logout">خروج از حساب کاربری</string>
     <string name="title_activity_home">خانه</string>
     <string name="title_activity_base_info">اطلاعات پایه</string>
@@ -150,7 +150,7 @@
     <string name="time">ساعت:</string>
     <string name="date_1">تاریخ:</string>
     <string name="payed_1">لطفاً روی قبوض صادره تَپ کنید.</string>
-    <string name="payed_2">این قبض قبلا پرداخت شده است.</string>
+    <string name="payed_2">قبض پرداخت شده</string>
     <string name="tabsare2">تبصره 2</string>
     <string name="tabsare3Ab">تبصره 3 آب</string>
     <string name="tabsare3Fazelab">تبصره 3 فاضلاب</string>

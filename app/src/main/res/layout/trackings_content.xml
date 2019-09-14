@@ -97,6 +97,7 @@
                 android:layout_marginTop="@dimen/activity_mid_margin"
                 android:layout_marginRight="@dimen/activity_large_margin"
                 android:background="@drawable/border_green_"
+                android:textColor="@color/white"
                 android:text="@string/submit"
                 android:textSize="@dimen/textSizeLarge"
                 android:textStyle="bold" />

@@ -92,11 +92,12 @@ public class LastBillActivity extends BaseActivity {
     TextView textViewUseAverage;
     @BindView(R.id.textViewUseLength)
     TextView textViewUseLength;
-
+    @BindView(R.id.textViewIsPayed)
+    TextView textViewIsPayed;
     @BindView(R.id.imageViewBarcode)
     ImageView imageViewBarcode;
     Context context;
-    String billId;
+    String billId, payId;
     String id;
     String zoneId;
     String address = "https://bill.bpm.bankmellat.ir/bpgwchannel/";
@@ -110,6 +111,7 @@ public class LastBillActivity extends BaseActivity {
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
+
         FontManager fontManager = new FontManager(getApplicationContext());
         fontManager.setFont(findViewById(R.id.last_bill_activity));
         context = this;
@@ -119,6 +121,7 @@ public class LastBillActivity extends BaseActivity {
                 new CustomTab(address, LastBillActivity.this);
             else
                 Toast.makeText(context, context.getString(R.string.payed_2), Toast.LENGTH_SHORT).show();
+
         });
     }
 
@@ -136,13 +139,22 @@ public class LastBillActivity extends BaseActivity {
 
     void fillLastBillInfo() {
         if (getIntent().getExtras() != null) {
-            Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
-            Bundle bundle2 = getIntent().getBundleExtra(BundleEnum.THIS_BILL.getValue());
+            Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());//setCounter
+            Bundle bundle2 = getIntent().getBundleExtra(BundleEnum.THIS_BILL.getValue());//cardex
             if (bundle1 != null) {
                 float floatNumber;
                 int intNumber;
-                textViewBillId.setText(bundle1.getString(BundleEnum.BILL_ID.getValue()));
-                textViewPayId.setText(bundle1.getString(BundleEnum.PAY_ID.getValue()));
+                payId = bundle1.getString(BundleEnum.PAY_ID.getValue());
+                billId = bundle1.getString(BundleEnum.BILL_ID.getValue());
+                textViewBillId.setText(billId);
+                textViewPayId.setText(payId);
+
+                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.COST.getValue()));
+                intNumber = (int) floatNumber;
+                textViewCost.setText(String.valueOf(intNumber));
+
+                setImageBitmap(imageViewBarcode);
+
                 floatNumber = Float.valueOf(bundle1.getString(BundleEnum.NEW.getValue()));
                 intNumber = (int) floatNumber;
                 textViewNewNumber.setText(String.valueOf(intNumber));
@@ -184,12 +196,10 @@ public class LastBillActivity extends BaseActivity {
 
                 textViewDate.setText(bundle1.getString(BundleEnum.DATE.getValue()));
 
-                floatNumber = Float.valueOf(bundle1.getString(BundleEnum.COST.getValue()));
-                intNumber = (int) floatNumber;
-                textViewCost.setText(String.valueOf(intNumber));
-                setImageBitmap(imageViewBarcode, String.valueOf(intNumber));
 
                 isPayed = bundle1.getBoolean(BundleEnum.IS_PAYED.getValue());
+                if (isPayed)
+                    textViewIsPayed.setText(context.getString(R.string.payed_2));
 
             } else if (bundle2 != null) {
                 androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
@@ -239,9 +249,20 @@ public class LastBillActivity extends BaseActivity {
         }
     }
 
-    void setImageBitmap(ImageView imageView, String s) {
+    void setImageBitmap(ImageView imageView) {
+        String barcode = "";
+
+        for (int count = 0; count < 13 - billId.length(); count++) {
+            barcode = barcode.concat("0");
+        }
+        barcode = barcode.concat(billId);
+        for (int count = 0; count < 13 - payId.length(); count++) {
+            barcode = barcode.concat("0");
+        }
+        barcode = barcode.concat(payId);
         Code128 code = new Code128(this);
-        code.setData(s);
+
+        code.setData(barcode);
         WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
         assert wm != null;
         Display display = wm.getDefaultDisplay();
@@ -257,8 +278,10 @@ public class LastBillActivity extends BaseActivity {
         @SuppressLint("DefaultLocale")
         @Override
         public void execute(LastBillInfo lastBillInfo) {
-            textViewBillId.setText(lastBillInfo.getBillId().trim());
-            textViewPayId.setText(lastBillInfo.getPayId().trim());
+            billId = lastBillInfo.getBillId().trim();
+            payId = lastBillInfo.getPayId().trim();
+            textViewBillId.setText(billId);
+            textViewPayId.setText(payId);
             float floatNumber = Float.valueOf(lastBillInfo.getCurrentReadingNumber());
             int intNumber = (int) floatNumber;
 
@@ -267,6 +290,13 @@ public class LastBillActivity extends BaseActivity {
             floatNumber = Float.valueOf(lastBillInfo.getPreReadingNumber());
             intNumber = (int) floatNumber;
             textViewPreNumber.setText(String.valueOf(intNumber));
+
+
+            floatNumber = Float.valueOf(lastBillInfo.getPayable());
+            intNumber = (int) floatNumber;
+            textViewCost.setText(String.valueOf(intNumber));
+
+            setImageBitmap(imageViewBarcode);
 
             textViewNewDate.setText(lastBillInfo.getCurrentReadingDate());
             textViewPreDate.setText(lastBillInfo.getPreReadingDate());
@@ -291,11 +321,6 @@ public class LastBillActivity extends BaseActivity {
 
             textViewDate.setText(lastBillInfo.getDeadLine());
 
-            floatNumber = Float.valueOf(lastBillInfo.getPayable());
-            intNumber = (int) floatNumber;
-            textViewCost.setText(String.valueOf(intNumber));
-            setImageBitmap(imageViewBarcode, String.valueOf(intNumber));
-
             floatNumber = Float.valueOf(lastBillInfo.getPreDebtOrOwe());
             intNumber = (int) floatNumber;
             textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
@@ -317,6 +342,17 @@ public class LastBillActivity extends BaseActivity {
             textViewTotal.setText(String.valueOf(intNumber));
 
             isPayed = lastBillInfo.isPayed();
+            if (isPayed) {
+                textViewIsPayed.setText(context.getString(R.string.payed_2));
+
+                androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompat1);
+                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompat2);
+                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompat3);
+                linearLayoutCompat.setVisibility(View.GONE);
+            }
             if (isFromCardex) {
 
 //                floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());
