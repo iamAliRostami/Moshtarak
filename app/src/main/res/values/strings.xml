@@ -23,7 +23,7 @@
 
     <string name="home">خانه</string>
     <string name="portal_connect">اتصال به پرتال</string>
-    <string name="transaction">نشست ها</string>
+    <string name="session">نشست ها</string>
     <string name="update">به روزرسانی</string>
     <string name="account">ثبت کاربر جدید</string>
     <string name="change_account">تغییر حساب کاربری من</string>

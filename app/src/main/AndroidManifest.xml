@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.app.leon.moshtarak">
-    <!-- <uses-permission android:name="android.permission.CALL_PHONE" /> -->
+
     <application
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
@@ -15,10 +15,19 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
         <activity
+            android:name=".BaseItems.RecoveryCodeActivity"
+            android:label="@string/recovery_code"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.SessionActivity"
+            android:label="@string/session"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Activities.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -29,7 +38,9 @@
             android:name=".Activities.ContactUsActivity"
             android:label="@string/connect_abfa"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Activities.HelpActivity" />
+        <activity
+            android:name=".Activities.HelpActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".Activities.ContactDeveloperActivity" />
         <activity
             android:name=".Activities.BaseInfoActivity"

@@ -13,7 +13,7 @@
         <item
             android:id="@+id/nav_transaction"
             android:icon="@drawable/img_transactions"
-            android:title="@string/transaction" />
+            android:title="@string/session" />
         <item
             android:id="@+id/nav_update"
             android:icon="@drawable/img_update"

@@ -20,6 +20,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.app.leon.moshtarak.Activities.BaseInfoActivity;
 import com.app.leon.moshtarak.Activities.ContactDeveloperActivity;
 import com.app.leon.moshtarak.Activities.HomeActivity;
+import com.app.leon.moshtarak.Activities.SessionActivity;
 import com.app.leon.moshtarak.Activities.SignAccountActivity;
 import com.app.leon.moshtarak.Adapters.NavigationCustomAdapter;
 import com.app.leon.moshtarak.R;
@@ -89,6 +90,8 @@ public abstract class BaseActivity extends AppCompatActivity
                 Intent intent = new Intent(getApplicationContext(), BaseInfoActivity.class);
                 startActivity(intent);
             } else if (position == 4) {
+                Intent intent = new Intent(getApplicationContext(), SessionActivity.class);
+                startActivity(intent);
             } else if (position == 5) {
                 try {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
@@ -99,6 +102,8 @@ public abstract class BaseActivity extends AppCompatActivity
                 Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
                 startActivity(intent);
             } else if (position == 7) {
+                Intent intent = new Intent(getApplicationContext(), RecoveryCodeActivity.class);
+                startActivity(intent);
             } else if (position == 8) {
                 Intent intent = new Intent(getApplicationContext(), ContactDeveloperActivity.class);
                 startActivity(intent);
@@ -136,7 +141,7 @@ public abstract class BaseActivity extends AppCompatActivity
         dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.home), R.drawable.img_home));
         dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.portal_connect), R.drawable.img_connect_to_portal));
         dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.base_info), R.drawable.img_profile));
-        dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.transaction), R.drawable.img_transactions));
+        dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.session), R.drawable.img_transactions));
         dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.update), R.drawable.img_update));
         SharedPreference sharedPreference = new SharedPreference(this);
         if (sharedPreference.checkIsNotEmpty())

@@ -6,7 +6,9 @@ import com.app.leon.moshtarak.Models.DbTables.Login;
 import com.app.leon.moshtarak.Models.DbTables.MemberInfo;
 import com.app.leon.moshtarak.Models.DbTables.RegisterAsDto;
 import com.app.leon.moshtarak.Models.DbTables.RegisterNewDto;
+import com.app.leon.moshtarak.Models.DbTables.Request;
 import com.app.leon.moshtarak.Models.DbTables.Service;
+import com.app.leon.moshtarak.Models.DbTables.Session;
 import com.app.leon.moshtarak.Models.DbTables.Suggestion;
 import com.app.leon.moshtarak.Models.DbTables.TrackingDto;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
@@ -82,4 +84,13 @@ public interface IAbfaService {
                                        @Body Suggestion suggestionInput
     );
 
+    @GET("/MoshtarakinApi/Member/GetAllRequests?=10018315")
+    Call<ArrayList<Request>> getAllRequests(
+            @Query("billId") String billId
+    );
+
+    @GET("/MoshtarakinApi/HamrahAbfaManager/GetSesssions?")
+    Call<ArrayList<Session>> getSessions(
+            @Query("billId") String billId
+    );
 }

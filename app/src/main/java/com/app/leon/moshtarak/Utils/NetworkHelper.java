@@ -20,7 +20,6 @@ public class NetworkHelper {
     private NetworkHelper() {
 
     }
-
     static OkHttpClient getHttpClient() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -47,12 +46,11 @@ public class NetworkHelper {
                 .setLenient()
                 .create();
         String baseUrl = "http://37.191.92.130/";
-        Retrofit retrofit = new Retrofit.Builder()
+        return new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(NetworkHelper.getHttpClient())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
-        return retrofit;
     }
 
 }
