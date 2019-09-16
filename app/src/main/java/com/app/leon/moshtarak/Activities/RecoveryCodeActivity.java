@@ -1,24 +1,27 @@
-package com.app.leon.moshtarak.BaseItems;
+package com.app.leon.moshtarak.Activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.app.leon.moshtarak.Activities.SignAccountActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Request;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.Utils.FontManager;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 
 import java.util.ArrayList;
 
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
@@ -28,10 +31,15 @@ public class RecoveryCodeActivity extends AppCompatActivity implements ICallback
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recovery_code_activity);
+        ButterKnife.bind(this);
         context = this;
+        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
         SharedPreference appPrefs = new SharedPreference(context);
+        FontManager fontManager = new FontManager(context);
+        fontManager.setFont(constraintLayout);
         if (!appPrefs.checkIsNotEmpty()) {
             Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
             startActivity(intent);
@@ -40,7 +48,6 @@ public class RecoveryCodeActivity extends AppCompatActivity implements ICallback
             billId = appPrefs.getBillID();
             getAllSession();
         }
-
     }
 
     void getAllSession() {

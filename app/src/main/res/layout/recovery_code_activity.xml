@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.app.leon.moshtarak.BaseItems.RecoveryCodeActivity">
+    android:id="@+id/constraintLayout"
+    tools:context="com.app.leon.moshtarak.Activities.RecoveryCodeActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

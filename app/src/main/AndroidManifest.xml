@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
         <activity
-            android:name=".BaseItems.RecoveryCodeActivity"
+            android:name=".Activities.RecoveryCodeActivity"
             android:label="@string/recovery_code"
             android:screenOrientation="portrait" />
         <activity

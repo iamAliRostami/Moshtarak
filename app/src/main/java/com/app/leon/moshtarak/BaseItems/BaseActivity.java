@@ -20,6 +20,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.app.leon.moshtarak.Activities.BaseInfoActivity;
 import com.app.leon.moshtarak.Activities.ContactDeveloperActivity;
 import com.app.leon.moshtarak.Activities.HomeActivity;
+import com.app.leon.moshtarak.Activities.RecoveryCodeActivity;
 import com.app.leon.moshtarak.Activities.SessionActivity;
 import com.app.leon.moshtarak.Activities.SignAccountActivity;
 import com.app.leon.moshtarak.Adapters.NavigationCustomAdapter;
