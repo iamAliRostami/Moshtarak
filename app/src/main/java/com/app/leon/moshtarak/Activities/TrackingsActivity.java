@@ -1,6 +1,8 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,8 +59,23 @@ public class TrackingsActivity extends BaseActivity
         fontManager.setFont(findViewById(R.id.tracking_activity));
         context = this;
         setOnButtonSubmitClickListener();
+        setEditTextTrackOnLongClickListener();
     }
 
+    void setEditTextTrackOnLongClickListener() {
+        editTextTrack.setOnLongClickListener(v -> {
+            Object clipboardService = getSystemService(CLIPBOARD_SERVICE);
+            final ClipboardManager clipboardManager = (ClipboardManager) clipboardService;
+            ClipData clipData = clipboardManager.getPrimaryClip();
+            int itemCount = clipData.getItemCount();
+            if (itemCount > 0) {
+                ClipData.Item item = clipData.getItemAt(0);
+                String text = item.getText().toString();
+                editTextTrack.setText(text);
+            }
+            return false;
+        });
+    }
     void setOnButtonSubmitClickListener() {
         buttonSubmit.setOnClickListener(v -> {
             boolean cancel = false;

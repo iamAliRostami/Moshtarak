@@ -165,4 +165,12 @@
     <string name="sms_level">فهرست پیامک های ارسالی در مرحله</string>
     <string name="programmer_team">تیم توسعه دهنده شبکه تارنما سپاهان</string>
     <string name="access">لطفا دسترسی تماس را به برنامه اضافه نمایید</string>
+    <string name="search">جستجو</string>
+    <string name="title">عنوان:</string>
+    <string name="request_date_ask">تاریخ درخواست:</string>
+    <string name="request_date_request">تاریخ ثبت درخواست:</string>
+    <string name="copy_in_clipboard">شماره پیگیری در کلیپ بورد ذخیره شد</string>
+    <string name="mobile_model">مدل گوشی:</string>
+    <string name="os_version">نسخه اندروید:</string>
+    <string name="login_date">تاریخ ورود:</string>
 </resources>

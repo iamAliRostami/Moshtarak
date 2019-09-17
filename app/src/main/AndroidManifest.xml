@@ -17,10 +17,12 @@
         <activity
             android:name=".Activities.RecoveryCodeActivity"
             android:label="@string/recovery_code"
+            android:theme="@style/AppTheme"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.SessionActivity"
             android:label="@string/session"
+            android:theme="@style/AppTheme"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.SplashActivity"
@@ -37,6 +39,7 @@
         <activity
             android:name=".Activities.ContactUsActivity"
             android:label="@string/connect_abfa"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Activities.HelpActivity"
