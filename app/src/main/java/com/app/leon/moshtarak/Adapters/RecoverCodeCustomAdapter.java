@@ -17,7 +17,6 @@ import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.FontManager;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -30,10 +29,10 @@ public class RecoverCodeCustomAdapter extends BaseAdapter {
 
     public RecoverCodeCustomAdapter(List<Request> requests, Context context) {
         this.tempRequests = requests;
-        Collections.sort(this.tempRequests, (o1, o2) -> o2.getRequestDateAsk().compareTo(o1.getRequestDateAsk()));
+//        Collections.sort(this.tempRequests, (o1, o2) -> o2.getRequestDateAsk().compareTo(o1.getRequestDateAsk()));
         this.requests = new ArrayList<>();
         this.requests.addAll(requests);
-        Collections.sort(this.requests, (o1, o2) -> o2.getRequestDateAsk().compareTo(o1.getRequestDateAsk()));
+//        Collections.sort(this.requests, (o1, o2) -> o2.getRequestDateAsk().compareTo(o1.getRequestDateAsk()));
         this.context = context;
     }
 

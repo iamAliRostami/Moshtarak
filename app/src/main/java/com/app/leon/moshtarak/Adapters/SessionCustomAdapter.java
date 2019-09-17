@@ -12,7 +12,6 @@ import com.app.leon.moshtarak.Models.DbTables.Session;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.FontManager;
 
-import java.util.Collections;
 import java.util.List;
 
 public class SessionCustomAdapter extends BaseAdapter {
@@ -21,7 +20,7 @@ public class SessionCustomAdapter extends BaseAdapter {
 
     public SessionCustomAdapter(List<Session> sessions, Context context) {
         this.sessionList = sessions;
-        Collections.sort(this.sessionList, (o1, o2) -> o2.getRegisterDayJalali().compareTo(o1.getRegisterDayJalali()));
+//        Collections.sort(this.sessionList, (o1, o2) -> o2.getRegisterDayJalali().compareTo(o1.getRegisterDayJalali()));
         this.context = context;
     }
 
