@@ -53,6 +53,9 @@ public class SessionCustomAdapter extends BaseAdapter {
         FontManager fontManager = new FontManager(context);
         fontManager.setFont(view.findViewById(R.id.linearLayout));
 
+        textViewModel.setTextAppearance(context, R.style.text_default);
+        textViewOsVersion.setTextAppearance(context, R.style.text_default);
+
         textViewModel.setText(session.getPhoneModel());
         textViewLoginDate.setText(session.getRegisterDayJalali());
         textViewOsVersion.setText(session.getOsVersion());

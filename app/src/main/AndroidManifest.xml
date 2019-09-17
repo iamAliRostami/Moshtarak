@@ -18,6 +18,7 @@
             android:name=".Activities.RecoveryCodeActivity"
             android:label="@string/recovery_code"
             android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.SessionActivity"

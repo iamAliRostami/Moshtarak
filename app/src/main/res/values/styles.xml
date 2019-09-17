@@ -44,4 +44,9 @@
     <style name="text_bold">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="text_default">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
