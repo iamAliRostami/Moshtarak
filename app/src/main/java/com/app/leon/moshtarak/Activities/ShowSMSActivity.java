@@ -48,7 +48,7 @@ public class ShowSMSActivity extends AppCompatActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 TextView text = view.findViewById(android.R.id.text1);
-                Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/BYekan_3.ttf");
+                Typeface typeface = Typeface.createFromAsset(context.getAssets(), "font/BYekan_3.ttf");
                 text.setTypeface(typeface);
                 return view;
             }

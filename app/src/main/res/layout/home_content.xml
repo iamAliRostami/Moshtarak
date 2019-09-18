@@ -36,6 +36,7 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -43,111 +44,16 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imageButtonSale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:adjustViewBounds="true"
-                    android:background="@color/transparent"
-                    android:padding="2dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/img_sale" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
                     android:gravity="center_horizontal|bottom"
-                    android:text="@string/sale"
+                    android:text="@string/last_bill_2"
                     android:textColor="@color/black1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imageButtonSupport"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:adjustViewBounds="true"
-                    android:background="@color/transparent"
-                    android:padding="2dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/img_support" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:gravity="center_horizontal|bottom"
-                    android:text="@string/support"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeSmall"
-                    android:textStyle="bold" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/imageButtonTracking"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:adjustViewBounds="true"
-                    android:background="@color/transparent"
-                    android:padding="2dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/img_tracking" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:gravity="center_horizontal|bottom"
-                    android:text="@string/tracking"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeSmall"
-                    android:textStyle="bold" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/activity_mid_margin"-->
-        <!--android:background="@color/gray1" />-->
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/imageButtonLastBill"
@@ -160,16 +66,6 @@
                     android:scaleType="fitCenter"
                     android:src="@drawable/img_last_bill"
                     app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:gravity="center_horizontal|bottom"
-                    android:text="@string/last_bill_2"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeSmall"
-                    android:textStyle="bold" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -180,6 +76,16 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:gravity="center_horizontal|bottom"
+                    android:text="@string/kardex"
+                    android:textColor="@color/black1"
+                    android:textSize="@dimen/textSizeSmall"
+                    android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/imageButtonKardex"
@@ -191,16 +97,6 @@
                     android:padding="2dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/img_kardex" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:gravity="center_horizontal|bottom"
-                    android:text="@string/kardex"
-                    android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeSmall"
-                    android:textStyle="bold" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -210,6 +106,16 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:gravity="center_horizontal|bottom"
+                    android:text="@string/mamoor_2"
+                    android:textColor="@color/black1"
+                    android:textSize="@dimen/textSizeSmall"
+                    android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/imageButtonMamoor"
@@ -221,24 +127,108 @@
                     android:padding="2dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/img_mamoor" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
                     android:gravity="center_horizontal|bottom"
-                    android:text="@string/mamoor_2"
+                    android:text="@string/sale"
                     android:textColor="@color/black1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/imageButtonSale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:adjustViewBounds="true"
+                    android:background="@color/transparent"
+                    android:padding="2dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_sale" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-        <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/activity_mid_margin"-->
-        <!--android:background="@color/gray1" />-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:gravity="center_horizontal|bottom"
+                    android:text="@string/support"
+                    android:textColor="@color/black1"
+                    android:textSize="@dimen/textSizeSmall"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/imageButtonSupport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:adjustViewBounds="true"
+                    android:background="@color/transparent"
+                    android:padding="2dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_support" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:gravity="center_horizontal|bottom"
+                    android:text="@string/tracking"
+                    android:textColor="@color/black1"
+                    android:textSize="@dimen/textSizeSmall"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/imageButtonTracking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:adjustViewBounds="true"
+                    android:background="@color/transparent"
+                    android:padding="2dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/img_tracking" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

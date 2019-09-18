@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Stack;
@@ -22,12 +21,12 @@ public class FontManager {
     }
 
     private void initializeTypeface() {
-        String fontName = "fonts/BYekan_3.ttf";
+        String fontName = "font/BYekan_3.ttf";
         typeface = Typeface.createFromAsset(context.getAssets(), fontName);
     }
 
     public void setFont(ViewGroup viewGroup) {
-        Stack<ViewGroup> stackOfViewGroup = new Stack<ViewGroup>();
+        Stack<ViewGroup> stackOfViewGroup = new Stack<>();
         stackOfViewGroup.push(viewGroup);
         while (!stackOfViewGroup.isEmpty()) {
             ViewGroup tree = stackOfViewGroup.pop();
@@ -41,11 +40,6 @@ public class FontManager {
                     ((EditText) child).setTypeface(typeface);
                 } else if (child instanceof TextView) {
                     ((TextView) child).setTypeface(typeface);
-                } else if (child instanceof ListView) {
-                    TextView textView = (TextView) ((ListView) child).getChildAt(0);
-                    textView.setTypeface(typeface);
-                    textView = (TextView) ((ListView) child).getChildAt(2);
-                    textView.setTypeface(typeface);
                 }
             }
         }

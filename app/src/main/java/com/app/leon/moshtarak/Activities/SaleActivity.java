@@ -24,7 +24,6 @@ import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
-import com.app.leon.moshtarak.Utils.FontManager;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
@@ -115,8 +114,6 @@ public class SaleActivity extends BaseActivity
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
-        FontManager fontManager = new FontManager(getApplicationContext());
-        fontManager.setFont(findViewById(R.id.sale_activity));
         context = this;
         sharedPreference = new SharedPreference(context);
         editTextMobile.setText(sharedPreference.getMobileNumber().replaceFirst("09", ""));

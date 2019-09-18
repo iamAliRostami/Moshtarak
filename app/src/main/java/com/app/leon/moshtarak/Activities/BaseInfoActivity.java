@@ -15,7 +15,6 @@ import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.MemberInfo;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.FontManager;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
@@ -58,8 +57,6 @@ public class BaseInfoActivity extends BaseActivity implements ICallback<MemberIn
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
-        FontManager fontManager = new FontManager(getApplicationContext());
-        fontManager.setFont(findViewById(R.id.base_info_activity));
         context = this;
         accessData();
 

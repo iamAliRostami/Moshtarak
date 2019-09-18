@@ -3,7 +3,6 @@ package com.app.leon.moshtarak.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -65,7 +64,6 @@ public class SessionActivity extends AppCompatActivity implements ICallback<Arra
 
     @Override
     public void execute(ArrayList<Session> sessions) {
-        Log.e("size:", String.valueOf(sessions.size()));
         sessionCustomAdapter = new SessionCustomAdapter(sessions, context);
         listViewSession.setAdapter(sessionCustomAdapter);
         listViewSession.setTextFilterEnabled(true);

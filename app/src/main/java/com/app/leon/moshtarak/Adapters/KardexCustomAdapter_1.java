@@ -82,7 +82,7 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
 //            textViewDate.setText(creditor);
 //        }
 
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/BYekan_3.ttf");
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "font/BYekan_3.ttf");
         textViewNote.setTypeface(typeface);
         textViewDate.setTypeface(typeface);
         textViewCost.setTypeface(typeface);

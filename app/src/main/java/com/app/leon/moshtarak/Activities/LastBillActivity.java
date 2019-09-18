@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -23,13 +24,18 @@ import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.Code128;
 import com.app.leon.moshtarak.Utils.CustomTab;
-import com.app.leon.moshtarak.Utils.FontManager;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.Writer;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.oned.Code128Writer;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
+import java.util.Hashtable;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -110,8 +116,6 @@ public class LastBillActivity extends BaseActivity {
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
-        FontManager fontManager = new FontManager(getApplicationContext());
-        fontManager.setFont(findViewById(R.id.last_bill_activity));
         context = this;
         accessData();
         textViewCost.setOnClickListener(view -> {
@@ -196,6 +200,7 @@ public class LastBillActivity extends BaseActivity {
                 if (isPayed)
                     textViewIsPayed.setText(context.getString(R.string.payed_2));
             } else if (bundle2 != null) {
+                Objects.requireNonNull(getSupportActionBar()).setTitle("مشاهده قبض");
                 androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
                 linearLayoutCompat = findViewById(R.id.tabsare2);
                 linearLayoutCompat.setVisibility(View.VISIBLE);
@@ -212,6 +217,8 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat = findViewById(R.id.mazadOlgoo);
                 linearLayoutCompat.setVisibility(View.VISIBLE);
 
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatBedehiBestankari);
+                linearLayoutCompat.setVisibility(View.GONE);
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompat1);
                 linearLayoutCompat.setVisibility(View.GONE);
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompat2);
@@ -239,26 +246,56 @@ public class LastBillActivity extends BaseActivity {
     }
 
     void setImageBitmap(ImageView imageView) {
-        String barcode = "";
-        for (int count = 0; count < 13 - billId.length(); count++) {
-            barcode = barcode.concat("0");
+//        Code128 code = new Code128(this);
+//        code.setData(barcode1);
+//        WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+//        assert wm != null;
+//        Display display = wm.getDefaultDisplay();
+//        DisplayMetrics metrics = new DisplayMetrics();
+//        display.getMetrics(metrics);
+//        int height = metrics.heightPixels;
+//        int width = metrics.widthPixels;
+//        Bitmap bitmap = code.getBitmap(2 * width / 3, height / 8);
+//        imageView.setImageBitmap(bitmap);
+
+        try {
+            String barcode = "";
+            for (int count = 0; count < 13 - billId.length(); count++) {
+                barcode = barcode.concat("0");
+            }
+            barcode = barcode.concat(billId);
+            for (int count = 0; count < 13 - payId.length(); count++) {
+                barcode = barcode.concat("0");
+            }
+            barcode = barcode.concat(payId);
+            Hashtable<EncodeHintType, ErrorCorrectionLevel> hintMap = new Hashtable<>();
+            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            Writer codeWriter;
+            codeWriter = new Code128Writer();
+
+            WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+            assert wm != null;
+            Display display = wm.getDefaultDisplay();
+            DisplayMetrics metrics = new DisplayMetrics();
+            display.getMetrics(metrics);
+
+//            int height = metrics.heightPixels;
+            int width = metrics.widthPixels;
+
+            BitMatrix byteMatrix = codeWriter.encode(barcode, BarcodeFormat.CODE_128, width, 200, hintMap);
+//            int width = byteMatrix.getWidth();
+            int height = byteMatrix.getHeight();
+            Bitmap bitmap1 = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            for (int i = 0; i < width; i++) {
+                for (int j = 0; j < height; j++) {
+                    bitmap1.setPixel(i, j, byteMatrix.get(i, j) ? Color.BLACK : Color.WHITE);
+                }
+            }
+            imageView.setImageBitmap(bitmap1);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
-        barcode = barcode.concat(billId);
-        for (int count = 0; count < 13 - payId.length(); count++) {
-            barcode = barcode.concat("0");
-        }
-        barcode = barcode.concat(payId);
-        Code128 code = new Code128(this);
-        code.setData(barcode);
-        WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-        assert wm != null;
-        Display display = wm.getDefaultDisplay();
-        DisplayMetrics metrics = new DisplayMetrics();
-        display.getMetrics(metrics);
-        int height = metrics.heightPixels;
-        int width = metrics.widthPixels;
-        Bitmap bitmap = code.getBitmap(2 * width / 3, height / 8);
-        imageView.setImageBitmap(bitmap);
+
     }
 
     class ThisBill implements ICallback<LastBillInfo> {
@@ -270,7 +307,6 @@ public class LastBillActivity extends BaseActivity {
             textViewBillId.setText(billId);
             textViewPayId.setText(payId);
             setImageBitmap(imageViewBarcode);
-
             float floatNumber = Float.valueOf(lastBillInfo.getCurrentReadingNumber());
             int intNumber = (int) floatNumber;
             textViewNewNumber.setText(String.valueOf(intNumber));

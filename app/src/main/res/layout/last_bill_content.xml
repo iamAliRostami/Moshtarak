@@ -662,6 +662,7 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/linearLayoutCompatBedehiBestankari"
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -839,7 +840,6 @@
                         android:paddingTop="6dp"
                         android:paddingBottom="6dp"
                         tools:ignore="ContentDescription" />
-
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 

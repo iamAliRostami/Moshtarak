@@ -10,7 +10,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.FontManager;
 
 import java.util.Objects;
 
@@ -28,8 +27,6 @@ public class LearningActivity extends BaseActivity {
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
-        FontManager fontManager = new FontManager(getApplicationContext());
-        fontManager.setFont(findViewById(R.id.learning_activity));
         setImageButtonsClickListener();
     }
 

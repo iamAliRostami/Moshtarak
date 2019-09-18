@@ -11,7 +11,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.FontManager;
 
 import java.util.Objects;
 
@@ -34,8 +33,6 @@ public class UsingMethodActivity extends BaseActivity {
         ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
-        FontManager fontManager = new FontManager(getApplicationContext());
-        fontManager.setFont(findViewById(R.id.using_method_activity));
 //        fillListViewLearningUsing();
         WebSettings webSetting = webView.getSettings();
         webSetting.setBuiltInZoomControls(true);

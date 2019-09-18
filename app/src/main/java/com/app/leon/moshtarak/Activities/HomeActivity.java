@@ -10,7 +10,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.FontManager;
 
 import java.util.Objects;
 
@@ -36,6 +35,44 @@ public class HomeActivity extends BaseActivity {
     ImageButton imageButtonHelp;
     @BindView(R.id.imageButtonSupport)
     ImageButton imageButtonSupport;
+
+    @SuppressLint({"HardwareIds", "MissingPermission", "CutPasteId"})
+    @Override
+    protected void initialize() {
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.home_content, findViewById(R.id.home_activity));
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        parentLayout.addView(childLayout);
+        ButterKnife.bind(this);
+        setOnClickListener();
+    }
+
+    void setOnClickListener() {
+        imageButtonSale.setOnClickListener(onClickListener);
+        imageButtonLastBill.setOnClickListener(onClickListener);
+        imageButtonKardex.setOnClickListener(onClickListener);
+        imageButtonTrain.setOnClickListener(onClickListener);
+        imageButtonMamoor.setOnClickListener(onClickListener);
+        imageButtonSuggets.setOnClickListener(onClickListener);
+        imageButtonTracking.setOnClickListener(onClickListener);
+        imageButtonHelp.setOnClickListener(onClickListener);
+        imageButtonSupport.setOnClickListener(onClickListener);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        imageButtonSale.setImageDrawable(null);
+        imageButtonLastBill.setImageDrawable(null);
+        imageButtonKardex.setImageDrawable(null);
+        imageButtonTrain.setImageDrawable(null);
+        imageButtonMamoor.setImageDrawable(null);
+        imageButtonSuggets.setImageDrawable(null);
+        imageButtonTracking.setImageDrawable(null);
+        imageButtonSupport.setImageDrawable(null);
+        imageButtonHelp.setImageDrawable(null);
+    }
+
     View.OnClickListener onClickListener = view -> {
         Intent intent;
         switch (view.getId()) {
@@ -77,43 +114,4 @@ public class HomeActivity extends BaseActivity {
                 break;
         }
     };
-
-    @SuppressLint({"HardwareIds", "MissingPermission", "CutPasteId"})
-    @Override
-    protected void initialize() {
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.home_content, findViewById(R.id.home_activity));
-        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
-        parentLayout.addView(childLayout);
-        ButterKnife.bind(this);
-        FontManager fontManager = new FontManager(getApplicationContext());
-        fontManager.setFont(findViewById(R.id.home_activity));
-        setOnClickListener();
-    }
-
-    void setOnClickListener() {
-        imageButtonSale.setOnClickListener(onClickListener);
-        imageButtonLastBill.setOnClickListener(onClickListener);
-        imageButtonKardex.setOnClickListener(onClickListener);
-        imageButtonTrain.setOnClickListener(onClickListener);
-        imageButtonMamoor.setOnClickListener(onClickListener);
-        imageButtonSuggets.setOnClickListener(onClickListener);
-        imageButtonTracking.setOnClickListener(onClickListener);
-        imageButtonHelp.setOnClickListener(onClickListener);
-        imageButtonSupport.setOnClickListener(onClickListener);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        imageButtonSale.setImageDrawable(null);
-        imageButtonLastBill.setImageDrawable(null);
-        imageButtonKardex.setImageDrawable(null);
-        imageButtonTrain.setImageDrawable(null);
-        imageButtonMamoor.setImageDrawable(null);
-        imageButtonSuggets.setImageDrawable(null);
-        imageButtonTracking.setImageDrawable(null);
-        imageButtonSupport.setImageDrawable(null);
-        imageButtonHelp.setImageDrawable(null);
-    }
 }
