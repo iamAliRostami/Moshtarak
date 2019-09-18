@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/border_yellow_1"
     android:gravity="center_horizontal"
-    android:id="@+id/lineaLayout"
+    android:id="@+id/linearLayout"
     android:layoutDirection="rtl"
     android:orientation="horizontal"
     android:scrollbars="horizontal">

@@ -70,12 +70,5 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     public void execute(ArrayList<Kardex> kardexes) {
         kardexCustomAdapter = new KardexCustomAdapter_1(kardexes, context);
         listViewCardex.setAdapter(kardexCustomAdapter);
-//        listViewCardex.setLayoutManager(new LinearLayoutManager(this) {
-//            @Override
-//            public boolean requestChildRectangleOnScreen(@NonNull RecyclerView parent,
-//                                                         @NonNull View child, @NonNull Rect rect, boolean immediate) {
-//                return false;
-//            }
-//        });
     }
 }

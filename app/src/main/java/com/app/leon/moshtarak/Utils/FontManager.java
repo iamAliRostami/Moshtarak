@@ -26,7 +26,7 @@ public class FontManager {
     }
 
     public void setFont(ViewGroup viewGroup) {
-        Stack<ViewGroup> stackOfViewGroup = new Stack<>();
+        Stack<ViewGroup> stackOfViewGroup = new Stack<ViewGroup>();
         stackOfViewGroup.push(viewGroup);
         while (!stackOfViewGroup.isEmpty()) {
             ViewGroup tree = stackOfViewGroup.pop();
@@ -44,6 +44,7 @@ public class FontManager {
             }
         }
     }
+
 
     public void setFont(SpannableString spannableString) {
         spannableString.setSpan(typeface, 0, spannableString.length(), 0);

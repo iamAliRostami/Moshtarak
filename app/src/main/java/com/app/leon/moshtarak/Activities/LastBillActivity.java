@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,8 +71,6 @@ public class LastBillActivity extends BaseActivity {
     TextView textViewDate;
     @BindView(R.id.textViewCost)
     TextView textViewCost;
-    @BindView(R.id.textViewAbBahaDetail)
-    TextView textViewAbBahaDetail;
     @BindView(R.id.textViewTabsare2)
     TextView textViewTabsare2;
     @BindView(R.id.textViewTabsare3Ab)
@@ -86,8 +85,6 @@ public class LastBillActivity extends BaseActivity {
     TextView textViewFasleGarm;
     @BindView(R.id.textViewMazadOlgoo)
     TextView textViewMazadOlgoo;
-    @BindView(R.id.textViewKarmozdFazelabDetails)
-    TextView textViewKarmozdFazelabDetails;
     @BindView(R.id.textViewTotal)
     TextView textViewTotal;
 
@@ -138,104 +135,80 @@ public class LastBillActivity extends BaseActivity {
         }
     }
 
+    void fillLatBillFromCounter(Bundle bundle) {
+        float floatNumber;
+        int intNumber;
+        textViewBillId.setText(billId);
+        textViewPayId.setText(payId);
+        setImageBitmap(imageViewBarcode);
+        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.COST.getValue())));
+        intNumber = (int) floatNumber;
+        textViewCost.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.NEW.getValue())));
+        intNumber = (int) floatNumber;
+        textViewNewNumber.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.PRE.getValue())));
+        intNumber = (int) floatNumber;
+        textViewPreNumber.setText(String.valueOf(intNumber));
+        textViewNewDate.setText(bundle.getString(BundleEnum.CURRENT_READING_DATE.getValue()));
+        textViewPreDate.setText(bundle.getString(BundleEnum.PRE_READING_DATE.getValue()));
+        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.USE_AVERAGE.getValue())));
+        intNumber = (int) floatNumber;
+        textViewUseAverage.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.USE_LENGTH.getValue())));
+        intNumber = (int) floatNumber;
+        textViewUseLength.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.USE.getValue())));
+        intNumber = (int) floatNumber;
+        textViewUse.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.PRE_DEBT_OR_OWE.getValue())));
+        intNumber = (int) floatNumber;
+        textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.TAKALIF_BOODJE.getValue())));
+        intNumber = (int) floatNumber;
+        textViewTakalifBoodje.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.KARMOZDE_FAZELAB.getValue())));
+        intNumber = (int) floatNumber;
+        textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.AB_BAHA.getValue())));
+        intNumber = (int) floatNumber;
+        textViewAbBaha.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.TAX.getValue())));
+        intNumber = (int) floatNumber;
+        textViewTax.setText(String.valueOf(intNumber));
+        textViewDate.setText(bundle.getString(BundleEnum.DATE.getValue()));
+    }
+
     void fillLastBillInfo() {
         if (getIntent().getExtras() != null) {
             Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());//setCounter
-            Bundle bundle2 = getIntent().getBundleExtra(BundleEnum.THIS_BILL.getValue());//cardex
+            Bundle bundle2 = getIntent().getBundleExtra(BundleEnum.THIS_BILL.getValue());//cardex_no_payed
+            Bundle bundle3 = getIntent().getBundleExtra(BundleEnum.THIS_BILL_PAYED.getValue());//cardex_payed
             if (bundle1 != null) {
-                float floatNumber;
-                int intNumber;
                 payId = bundle1.getString(BundleEnum.PAY_ID.getValue());
                 billId = bundle1.getString(BundleEnum.BILL_ID.getValue());
-                textViewBillId.setText(billId);
-                textViewPayId.setText(payId);
-                setImageBitmap(imageViewBarcode);
-
-                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.COST.getValue())));
-                intNumber = (int) floatNumber;
-                textViewCost.setText(String.valueOf(intNumber));
-
-                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.NEW.getValue())));
-                intNumber = (int) floatNumber;
-                textViewNewNumber.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.PRE.getValue())));
-                intNumber = (int) floatNumber;
-                textViewPreNumber.setText(String.valueOf(intNumber));
-
-                textViewNewDate.setText(bundle1.getString(BundleEnum.CURRENT_READING_DATE.getValue()));
-                textViewPreDate.setText(bundle1.getString(BundleEnum.PRE_READING_DATE.getValue()));
-
-                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.USE_AVERAGE.getValue())));
-                intNumber = (int) floatNumber;
-                textViewUseAverage.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.USE_LENGTH.getValue())));
-                intNumber = (int) floatNumber;
-                textViewUseLength.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.USE.getValue())));
-                intNumber = (int) floatNumber;
-                textViewUse.setText(String.valueOf(intNumber));
-
-                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.PRE_DEBT_OR_OWE.getValue())));
-                intNumber = (int) floatNumber;
-                textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
-
-                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.TAKALIF_BOODJE.getValue())));
-                intNumber = (int) floatNumber;
-                textViewTakalifBoodje.setText(String.valueOf(intNumber));
-
-                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.KARMOZDE_FAZELAB.getValue())));
-                intNumber = (int) floatNumber;
-                textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
-
-                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.AB_BAHA.getValue())));
-                intNumber = (int) floatNumber;
-                textViewAbBaha.setText(String.valueOf(intNumber));
-
-                floatNumber = Float.valueOf(Objects.requireNonNull(bundle1.getString(BundleEnum.TAX.getValue())));
-                intNumber = (int) floatNumber;
-                textViewTax.setText(String.valueOf(intNumber));
-
-                textViewDate.setText(bundle1.getString(BundleEnum.DATE.getValue()));
+                fillLatBillFromCounter(bundle1);
                 isPayed = bundle1.getBoolean(BundleEnum.IS_PAYED.getValue());
-                if (isPayed)
-                    textViewIsPayed.setText(context.getString(R.string.payed_2));
-            } else if (bundle2 != null) {
+            } else {
                 Objects.requireNonNull(getSupportActionBar()).setTitle("مشاهده قبض");
-                androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
-                linearLayoutCompat = findViewById(R.id.tabsare2);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.tabsare3Ab);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.tabsare3Fazelab);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.abonmanAb);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.abonmanFazelab);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.fasleGarm);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-                linearLayoutCompat = findViewById(R.id.mazadOlgoo);
-                linearLayoutCompat.setVisibility(View.VISIBLE);
-
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompatBedehiBestankari);
-                linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompat1);
-                linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompat2);
-                linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompat3);
-                linearLayoutCompat.setVisibility(View.GONE);
-
                 isFromCardex = true;
                 Retrofit retrofit = NetworkHelper.getInstance();
                 final IAbfaService getLastBillInfo = retrofit.create(IAbfaService.class);
-                Call<LastBillInfo> call = getLastBillInfo.getThisBillInfo(
-                        bundle2.getString(BundleEnum.ID.getValue()),
-                        bundle2.getString(BundleEnum.ZONE_ID.getValue()));
+                Call<LastBillInfo> call = null;
+                if (bundle2 != null) {
+                    isPayed = false;
+                    call = getLastBillInfo.getThisBillInfo(
+                            bundle2.getString(BundleEnum.ID.getValue()),
+                            bundle2.getString(BundleEnum.ZONE_ID.getValue()));
+                } else if (bundle3 != null) {
+                    isPayed = true;
+                    call = getLastBillInfo.getThisPayInfo(
+                            bundle3.getString(BundleEnum.ID.getValue()),
+                            bundle3.getString(BundleEnum.ZONE_ID.getValue()));
+                }
                 ThisBill thisBill = new ThisBill();
                 HttpClientWrapper.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
             }
-
         } else {
             Retrofit retrofit = NetworkHelper.getInstance();
             final IAbfaService getThisBillInfo = retrofit.create(IAbfaService.class);
@@ -243,6 +216,8 @@ public class LastBillActivity extends BaseActivity {
             ThisBill thisBill = new ThisBill();
             HttpClientWrapper.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
         }
+        if (isPayed)
+            textViewIsPayed.setText(context.getString(R.string.payed_2));
     }
 
     void setImageBitmap(ImageView imageView) {
@@ -302,96 +277,119 @@ public class LastBillActivity extends BaseActivity {
         @SuppressLint("DefaultLocale")
         @Override
         public void execute(LastBillInfo lastBillInfo) {
-            billId = lastBillInfo.getBillId().trim();
-            payId = lastBillInfo.getPayId().trim();
-            textViewBillId.setText(billId);
-            textViewPayId.setText(payId);
-            setImageBitmap(imageViewBarcode);
-            float floatNumber = Float.valueOf(lastBillInfo.getCurrentReadingNumber());
-            int intNumber = (int) floatNumber;
-            textViewNewNumber.setText(String.valueOf(intNumber));
+            androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
+            if (isFromCardex && isPayed) {
+                //here i should add code payed from Kardex
+                Log.e("status", "From Cardex, payed");
+            } else {
+                billId = lastBillInfo.getBillId().trim();
+                payId = lastBillInfo.getPayId().trim();
+                textViewBillId.setText(billId);
+                textViewPayId.setText(payId);
+                setImageBitmap(imageViewBarcode);
+                float floatNumber = Float.valueOf(lastBillInfo.getCurrentReadingNumber());
+                int intNumber = (int) floatNumber;
+                textViewNewNumber.setText(String.valueOf(intNumber));
 
-            floatNumber = Float.valueOf(lastBillInfo.getPreReadingNumber());
-            intNumber = (int) floatNumber;
-            textViewPreNumber.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getPreReadingNumber());
+                intNumber = (int) floatNumber;
+                textViewPreNumber.setText(String.valueOf(intNumber));
 
-            floatNumber = Float.valueOf(lastBillInfo.getPayable());
-            intNumber = (int) floatNumber;
-            textViewCost.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getPayable());
+                intNumber = (int) floatNumber;
+                textViewCost.setText(String.valueOf(intNumber));
 
-            textViewNewDate.setText(lastBillInfo.getCurrentReadingDate());
-            textViewPreDate.setText(lastBillInfo.getPreReadingDate());
+                textViewNewDate.setText(lastBillInfo.getCurrentReadingDate());
+                textViewPreDate.setText(lastBillInfo.getPreReadingDate());
 
-            floatNumber = Float.valueOf(lastBillInfo.getRate());
-            intNumber = (int) floatNumber;
-            textViewUseAverage.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getRate());
+                intNumber = (int) floatNumber;
+                textViewUseAverage.setText(String.valueOf(intNumber));
 
-            textViewUseLength.setText(lastBillInfo.getDuration());
+                textViewUseLength.setText(lastBillInfo.getDuration());
 
-            floatNumber = Float.valueOf(lastBillInfo.getUsageM3());
-            intNumber = (int) floatNumber;
-            textViewUse.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getUsageM3());
+                intNumber = (int) floatNumber;
+                textViewUse.setText(String.valueOf(intNumber));
 
-            floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());
-            intNumber = (int) floatNumber;
-            textViewAbBaha.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());
+                intNumber = (int) floatNumber;
+                textViewAbBaha.setText(String.valueOf(intNumber));
 
-            floatNumber = Float.valueOf(lastBillInfo.getMaliat());
-            intNumber = (int) floatNumber;
-            textViewTax.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getMaliat());
+                intNumber = (int) floatNumber;
+                textViewTax.setText(String.valueOf(intNumber));
 
-            textViewDate.setText(lastBillInfo.getDeadLine());
+                textViewDate.setText(lastBillInfo.getDeadLine());
 
-            floatNumber = Float.valueOf(lastBillInfo.getPreDebtOrOwe());
-            intNumber = (int) floatNumber;
-            textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getPreDebtOrOwe());
+                intNumber = (int) floatNumber;
+                textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
 
-            floatNumber = Float.valueOf(lastBillInfo.getBoodje());
-            intNumber = (int) floatNumber;
-            textViewTakalifBoodje.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getBoodje());
+                intNumber = (int) floatNumber;
+                textViewTakalifBoodje.setText(String.valueOf(intNumber));
 
-            floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelabDetails());
-            intNumber = (int) floatNumber;
+                floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelabDetails());
+                intNumber = (int) floatNumber;
 
-            textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
+                textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
 
-            floatNumber = Float.valueOf(lastBillInfo.getJam());
-            intNumber = (int) floatNumber;
-            textViewTotal.setText(String.valueOf(intNumber));
+                floatNumber = Float.valueOf(lastBillInfo.getJam());
+                intNumber = (int) floatNumber;
+                textViewTotal.setText(String.valueOf(intNumber));
 
-            isPayed = lastBillInfo.isPayed();
-            if (isPayed) {
-                textViewIsPayed.setText(context.getString(R.string.payed_2));
-                androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompat1);
+                isPayed = lastBillInfo.isPayed();
+                if (!isFromCardex) {
+                    linearLayoutCompat = findViewById(R.id.linearLayoutCompatTabsare2);
+                    linearLayoutCompat.setVisibility(View.GONE);
+                    linearLayoutCompat = findViewById(R.id.linearLayoutCompatTabsare3Ab);
+                    linearLayoutCompat.setVisibility(View.GONE);
+                    linearLayoutCompat = findViewById(R.id.linearLayoutCompatTabsare3Fazelab);
+                    linearLayoutCompat.setVisibility(View.GONE);
+                    linearLayoutCompat = findViewById(R.id.linearLayoutCompatAbonmanAb);
+                    linearLayoutCompat.setVisibility(View.GONE);
+                    linearLayoutCompat = findViewById(R.id.linearLayoutCompatAbonmanFazelab);
+                    linearLayoutCompat.setVisibility(View.GONE);
+                    linearLayoutCompat = findViewById(R.id.linearLayoutCompatFasleGarm);
+                    linearLayoutCompat.setVisibility(View.GONE);
+                    linearLayoutCompat = findViewById(R.id.linearLayoutCompatMazadOlgoo);
+                    linearLayoutCompat.setVisibility(View.GONE);
+                }
+                if (isFromCardex) {
+                    floatNumber = Float.valueOf(lastBillInfo.getTabsare2());
+                    intNumber = (int) floatNumber;
+                    textViewTabsare2.setText(String.valueOf(intNumber));
+                    floatNumber = Float.valueOf(lastBillInfo.getTabsare3Ab());
+                    intNumber = (int) floatNumber;
+                    textViewTabsare3Ab.setText(String.valueOf(intNumber));
+                    floatNumber = Float.valueOf(lastBillInfo.getTabsare3Fazelab());
+                    intNumber = (int) floatNumber;
+                    textViewTabsare3Fazelab.setText(String.valueOf(intNumber));
+                    floatNumber = Float.valueOf(lastBillInfo.getAbonmanAb());
+                    intNumber = (int) floatNumber;
+                    textViewAbonmanAb.setText(String.valueOf(intNumber));
+                    floatNumber = Float.valueOf(lastBillInfo.getAbonmanFazelab());
+                    intNumber = (int) floatNumber;
+                    textViewAbonmanFazelab.setText(String.valueOf(intNumber));
+                    floatNumber = Float.valueOf(lastBillInfo.getFasleGarm());
+                    intNumber = (int) floatNumber;
+                    textViewFasleGarm.setText(String.valueOf(intNumber));
+                    floatNumber = Float.valueOf(lastBillInfo.getMazadOlgoo());
+                    intNumber = (int) floatNumber;
+                    textViewMazadOlgoo.setText(String.valueOf(intNumber));
+                }
+            }
+            if (isFromCardex || isPayed) {
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatIDS);
                 linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompat2);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable);
                 linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompat3);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPay);
                 linearLayoutCompat.setVisibility(View.GONE);
             }
-            if (isFromCardex) {
-                floatNumber = Float.valueOf(lastBillInfo.getTabsare2());
-                intNumber = (int) floatNumber;
-                textViewTabsare2.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(lastBillInfo.getTabsare3Ab());
-                intNumber = (int) floatNumber;
-                textViewTabsare3Ab.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(lastBillInfo.getTabsare3Fazelab());
-                intNumber = (int) floatNumber;
-                textViewTabsare3Fazelab.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(lastBillInfo.getAbonmanAb());
-                intNumber = (int) floatNumber;
-                textViewAbonmanAb.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(lastBillInfo.getAbonmanFazelab());
-                intNumber = (int) floatNumber;
-                textViewAbonmanFazelab.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(lastBillInfo.getFasleGarm());
-                intNumber = (int) floatNumber;
-                textViewFasleGarm.setText(String.valueOf(intNumber));
-                floatNumber = Float.valueOf(lastBillInfo.getMazadOlgoo());
-                intNumber = (int) floatNumber;
-                textViewMazadOlgoo.setText(String.valueOf(intNumber));
+            if (isPayed) {
+                textViewIsPayed.setText(context.getString(R.string.payed_2));
             }
         }
     }

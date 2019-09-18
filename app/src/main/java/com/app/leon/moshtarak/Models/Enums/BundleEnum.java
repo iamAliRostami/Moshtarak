@@ -19,6 +19,7 @@ public enum BundleEnum {
     IS_PAYED("is_payed"),
     ZONE_ID("zone_id"),
     THIS_BILL("this_bill"),
+    THIS_BILL_PAYED("this_bill_payed"),
     USE_AVERAGE("use_average"),
     USE_LENGTH("use_length"),
     USE("use"),

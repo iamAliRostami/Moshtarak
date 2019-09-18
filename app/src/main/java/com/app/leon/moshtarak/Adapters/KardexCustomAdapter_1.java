@@ -3,17 +3,14 @@ package com.app.leon.moshtarak.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.leon.moshtarak.Activities.LastBillActivity;
 import com.app.leon.moshtarak.Models.DbTables.Kardex;
@@ -57,13 +54,14 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
         TextView textViewUse;
         TextView textViewCost;
         TextView textViewNote;
-        ImageView imageViewInfo;
         LinearLayout linearLayoutItem = viewHolder.findViewById(R.id.linearLayoutItem);
+//        FontManager fontManager = new FontManager(context);
+//        fontManager.setFont(linearLayout);
         textViewDate = viewHolder.findViewById(R.id.textViewDate);
         textViewUse = viewHolder.findViewById(R.id.textViewUse);
         textViewCost = viewHolder.findViewById(R.id.textViewCost);
         textViewNote = viewHolder.findViewById(R.id.textViewNote);
-        imageViewInfo = viewHolder.findViewById(R.id.imageViewInfo);
+
         float floatNumber = Float.valueOf(kardex.getAmount());
         int intNumber = (int) floatNumber;
         textViewCost.setText(String.valueOf(intNumber));
@@ -82,26 +80,23 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
 //            textViewDate.setText(creditor);
 //        }
 
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "font/BYekan_3.ttf");
-        textViewNote.setTypeface(typeface);
-        textViewDate.setTypeface(typeface);
-        textViewCost.setTypeface(typeface);
-        textViewUse.setTypeface(typeface);
         if (kardex.isBill()) {
             textViewNote.setTextColor(context.getResources().getColor(R.color.colorAccentIndigo));
             textViewCost.setTextColor(context.getResources().getColor(R.color.pink2));
-            linearLayoutItem.setOnClickListener(view ->
-            {
-                Intent intent = new Intent(context, LastBillActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString(BundleEnum.ID.getValue(), kardex.getId());
-                bundle.putString(BundleEnum.ZONE_ID.getValue(), kardex.getZoneId());
-                intent.putExtra(BundleEnum.THIS_BILL.getValue(), bundle);
-                context.startActivity(intent);
-            });
-        } else if (kardex.isPay()) {
-            linearLayoutItem.setOnClickListener(view -> Toast.makeText(context, context.getString(R.string.payed_1), Toast.LENGTH_SHORT).show());
+
         }
+        linearLayoutItem.setOnClickListener(view ->
+        {
+            Intent intent = new Intent(context, LastBillActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString(BundleEnum.ID.getValue(), kardex.getId());
+            bundle.putString(BundleEnum.ZONE_ID.getValue(), kardex.getZoneId());
+            if (kardex.isPay())
+                intent.putExtra(BundleEnum.THIS_BILL_PAYED.getValue(), bundle);
+            else if (kardex.isBill())
+                intent.putExtra(BundleEnum.THIS_BILL.getValue(), bundle);
+            context.startActivity(intent);
+        });
         textViewCost.setGravity(1);
         textViewNote.setGravity(1);
         textViewDate.setGravity(1);

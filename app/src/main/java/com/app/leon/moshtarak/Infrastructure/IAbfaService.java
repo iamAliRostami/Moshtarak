@@ -58,6 +58,12 @@ public interface IAbfaService {
             @Query("zoneId") String zoneId
     );
 
+    @GET("/MoshtarakinApi/Bill/GetThisPayInfo?")
+    Call<LastBillInfo> getThisPayInfo(
+            @Query("id") String id,
+            @Query("zoneId") String zoneId
+    );
+
     @POST("/MoshtarakinApi/Bill/GenerateBill")
     Call<LastBillInfo> sendNumber(
             @Query("billId") String billId,

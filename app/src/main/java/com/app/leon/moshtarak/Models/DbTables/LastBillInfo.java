@@ -25,15 +25,22 @@ public class LastBillInfo {
     private String payId;
     private boolean isPayed;
 
-    String abBahaDetail;
-    String tabsare2;
-    String tabsare3Ab;
-    String tabsare3Fazelab;
-    String abonmanAb;
-    String abonmanFazelab;
-    String fasleGarm;
-    String mazadOlgoo;
-    String karmozdFazelabDetails;
+    private String abBahaDetail;
+    private String tabsare2;
+    private String tabsare3Ab;
+    private String tabsare3Fazelab;
+    private String abonmanAb;
+    private String abonmanFazelab;
+    private String fasleGarm;
+    private String mazadOlgoo;
+    private String karmozdFazelabDetails;
+
+    private String payableReadable;
+    private String bankId;
+    private String bankTitle;
+    private String payDay;
+    private String payTypeId;
+    private String payTypeTitle;
 
     public LastBillInfo(String preReadingDate, String currentReadingDate, String duration,
                         String preReadingNumber, String currentReadingNumber, String usageM3,
@@ -320,5 +327,53 @@ public class LastBillInfo {
 
     public void setKarmozdFazelabDetails(String karmozdFazelabDetails) {
         this.karmozdFazelabDetails = karmozdFazelabDetails;
+    }
+
+    public String getPayableReadable() {
+        return payableReadable;
+    }
+
+    public void setPayableReadable(String payableReadable) {
+        this.payableReadable = payableReadable;
+    }
+
+    public String getBankId() {
+        return bankId;
+    }
+
+    public void setBankId(String bankId) {
+        this.bankId = bankId;
+    }
+
+    public String getBankTitle() {
+        return bankTitle;
+    }
+
+    public void setBankTitle(String bankTitle) {
+        this.bankTitle = bankTitle;
+    }
+
+    public String getPayDay() {
+        return payDay;
+    }
+
+    public void setPayDay(String payDay) {
+        this.payDay = payDay;
+    }
+
+    public String getPayTypeId() {
+        return payTypeId;
+    }
+
+    public void setPayTypeId(String payTypeId) {
+        this.payTypeId = payTypeId;
+    }
+
+    public String getPayTypeTitle() {
+        return payTypeTitle;
+    }
+
+    public void setPayTypeTitle(String payTypeTitle) {
+        this.payTypeTitle = payTypeTitle;
     }
 }

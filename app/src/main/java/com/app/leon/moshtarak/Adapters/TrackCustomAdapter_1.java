@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.app.leon.moshtarak.Activities.ShowSMSActivity;
 import com.app.leon.moshtarak.Models.DbTables.TrackingDto;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.FontManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,8 +47,6 @@ public class TrackCustomAdapter_1 extends ArrayAdapter<TrackingDto> {
         textViewTime = view.findViewById(R.id.textViewTime);
 
         LinearLayout linearLayout = view.findViewById(R.id.linearLayout);
-        FontManager fontManager = new FontManager(context);
-        fontManager.setFont(linearLayout);
 
         linearLayout.setOnClickListener(view1 -> {
             Intent intent = new Intent(context, ShowSMSActivity.class);

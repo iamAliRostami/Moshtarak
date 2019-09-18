@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.app.leon.moshtarak.Infrastructure.CustomErrorHandling;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
@@ -40,7 +42,7 @@ public class HttpClientWrapper {
         final String[] error = new String[1];
         call.enqueue(new Callback<T>() {
             @Override
-            public void onResponse(Call<T> call, Response<T> response) {
+            public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
                 try {
                     if (response.isSuccessful()) {
                         T responseT = response.body();
