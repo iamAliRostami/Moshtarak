@@ -281,6 +281,26 @@ public class LastBillActivity extends BaseActivity {
             if (isFromCardex && isPayed) {
                 //here i should add code payed from Kardex
                 Log.e("status", "From Cardex, payed");
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatTabsare2);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatTabsare3Ab);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatTabsare3Fazelab);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatAbonmanAb);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatAbonmanFazelab);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatFasleGarm);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatMazadOlgoo);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatIDS);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPay);
+//                linearLayoutCompat.setVisibility(View.GONE);
             } else {
                 billId = lastBillInfo.getBillId().trim();
                 payId = lastBillInfo.getPayId().trim();

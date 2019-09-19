@@ -807,7 +807,8 @@
                         android:paddingBottom="6dp"
                         android:text="@string/pay"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:ignore="RtlSymmetry" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/textViewCost"
@@ -831,7 +832,8 @@
                         android:paddingBottom="6dp"
                         android:text="@string/rial"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:ignore="RtlSymmetry" />
                 </LinearLayout>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
