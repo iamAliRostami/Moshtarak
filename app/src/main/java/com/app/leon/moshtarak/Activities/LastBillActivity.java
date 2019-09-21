@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,6 +97,16 @@ public class LastBillActivity extends BaseActivity {
     TextView textViewUseLength;
     @BindView(R.id.textViewIsPayed)
     TextView textViewIsPayed;
+
+    @BindView(R.id.textViewPayable)
+    TextView textViewPayable;
+    @BindView(R.id.textViewPayDate)
+    TextView textViewPayDate;
+    @BindView(R.id.textViewPayTypeTitle)
+    TextView textViewPayTypeTitle;
+    @BindView(R.id.textViewBankTitle)
+    TextView textViewBankTitle;
+
     @BindView(R.id.imageViewBarcode)
     ImageView imageViewBarcode;
     Context context;
@@ -279,28 +290,18 @@ public class LastBillActivity extends BaseActivity {
         public void execute(LastBillInfo lastBillInfo) {
             androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
             if (isFromCardex && isPayed) {
-                //here i should add code payed from Kardex
                 Log.e("status", "From Cardex, payed");
-//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatTabsare2);
-//                linearLayoutCompat.setVisibility(View.GONE);
-//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatTabsare3Ab);
-//                linearLayoutCompat.setVisibility(View.GONE);
-//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatTabsare3Fazelab);
-//                linearLayoutCompat.setVisibility(View.GONE);
-//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatAbonmanAb);
-//                linearLayoutCompat.setVisibility(View.GONE);
-//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatAbonmanFazelab);
-//                linearLayoutCompat.setVisibility(View.GONE);
-//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatFasleGarm);
-//                linearLayoutCompat.setVisibility(View.GONE);
-//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatMazadOlgoo);
-//                linearLayoutCompat.setVisibility(View.GONE);
-//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatIDS);
-//                linearLayoutCompat.setVisibility(View.GONE);
-//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable);
-//                linearLayoutCompat.setVisibility(View.GONE);
-//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPay);
-//                linearLayoutCompat.setVisibility(View.GONE);
+                ScrollView scrollView = findViewById(R.id.scrollView1);
+                scrollView.setVisibility(View.GONE);
+                scrollView = findViewById(R.id.scrollView2);
+                scrollView.setVisibility(View.VISIBLE);
+
+                textViewPayable.setText(lastBillInfo.getPayableReadable());
+                textViewPayDate.setText(lastBillInfo.getPayDay());
+                textViewPayTypeTitle.setText(lastBillInfo.getPayTypeTitle());
+                textViewBankTitle.setText(lastBillInfo.getBankTitle());
+
+                //here i should add code payed from Kardex
             } else {
                 billId = lastBillInfo.getBillId().trim();
                 payId = lastBillInfo.getPayId().trim();
@@ -400,16 +401,20 @@ public class LastBillActivity extends BaseActivity {
                     textViewMazadOlgoo.setText(String.valueOf(intNumber));
                 }
             }
-            if (isFromCardex || isPayed) {
+            if (isFromCardex) {
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompatIDS);
                 linearLayoutCompat.setVisibility(View.GONE);
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable);
                 linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPay);
-                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPay);
+//                linearLayoutCompat.setVisibility(View.GONE);
             }
             if (isPayed) {
                 textViewIsPayed.setText(context.getString(R.string.payed_2));
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatIDS);
+                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable);
+                linearLayoutCompat.setVisibility(View.GONE);
             }
         }
     }
