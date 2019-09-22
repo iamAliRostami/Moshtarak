@@ -39,7 +39,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayoutHeader"
-        android:visibility="gone"
         tools:ignore="UselessParent">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -72,9 +71,9 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
+                        android:layout_gravity="center"
                         android:layout_marginEnd="25dp"
-                        android:gravity="start"
+                        android:gravity="center"
                         android:padding="6dp"
                         style="@style/text_bold"
                         android:text="@string/pay"
@@ -86,9 +85,9 @@
                         android:id="@+id/textViewPayable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end"
+                        android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:gravity="end"
+                        android:gravity="center"
                         android:padding="6dp"
                         style="@style/text_bold"
                         android:textSize="@dimen/textSizeMedium" />
@@ -110,7 +109,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
+                        android:layout_gravity="center"
                         android:layout_marginEnd="25dp"
                         android:gravity="start"
                         android:padding="6dp"
@@ -124,10 +123,11 @@
                         android:id="@+id/textViewPayDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:gravity="end"
+                        android:layout_margin="@dimen/activity_mid_margin"
                         android:padding="6dp"
+                        android:gravity="center"
                         style="@style/text_bold"
                         android:textSize="@dimen/textSizeMedium" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -148,10 +148,10 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
+                        android:layout_gravity="center"
                         android:layout_marginEnd="25dp"
                         style="@style/text_bold"
-                        android:gravity="start"
+                        android:gravity="center"
                         android:padding="6dp"
                         android:text="@string/pay_type_title"
                         android:textColor="@color/blue2"
@@ -162,10 +162,11 @@
                         android:id="@+id/textViewPayTypeTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:gravity="end"
+                        android:layout_margin="@dimen/activity_mid_margin"
                         style="@style/text_bold"
+                        android:gravity="center"
                         android:padding="6dp"
                         android:textSize="@dimen/textSizeMedium" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -175,6 +176,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/activity_mid_margin"
                     android:background="@drawable/border_yellow_1"
+                    android:layout_gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -186,9 +188,9 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
+                        android:layout_gravity="center"
                         android:layout_marginEnd="25dp"
-                        android:gravity="start"
+                        android:gravity="center"
                         android:padding="6dp"
                         android:text="@string/bank_title"
                         style="@style/text_bold"
@@ -200,9 +202,10 @@
                         android:id="@+id/textViewBankTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end"
+                        android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:gravity="end"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:gravity="center"
                         style="@style/text_bold"
                         android:padding="6dp"
                         android:textSize="@dimen/textSizeMedium" />
@@ -214,6 +217,7 @@
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayoutHeader"
         tools:ignore="UselessParent">
