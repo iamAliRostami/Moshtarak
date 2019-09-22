@@ -174,7 +174,7 @@
     <string name="os_version">نسخه اندروید:</string>
     <string name="login_date">تاریخ ورود:</string>
     <string name="rial">ریال</string>
-    <string name="pay_type_title">نحوه پرداخت:</string>
-    <string name="pay_date">تاریخ پرداخت:</string>
-    <string name="bank_title">نام بانک:</string>
+    <string name="pay_type_title">نحوه پرداخت</string>
+    <string name="pay_date">تاریخ پرداخت</string>
+    <string name="bank_title">نام بانک</string>
 </resources>

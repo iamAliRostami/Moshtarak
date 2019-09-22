@@ -201,17 +201,18 @@ public class LastBillActivity extends BaseActivity {
                 fillLatBillFromCounter(bundle1);
                 isPayed = bundle1.getBoolean(BundleEnum.IS_PAYED.getValue());
             } else {
-                Objects.requireNonNull(getSupportActionBar()).setTitle("مشاهده قبض");
                 isFromCardex = true;
                 Retrofit retrofit = NetworkHelper.getInstance();
                 final IAbfaService getLastBillInfo = retrofit.create(IAbfaService.class);
                 Call<LastBillInfo> call = null;
                 if (bundle2 != null) {
+                    Objects.requireNonNull(getSupportActionBar()).setTitle("مشاهده قبض");
                     isPayed = false;
                     call = getLastBillInfo.getThisBillInfo(
                             bundle2.getString(BundleEnum.ID.getValue()),
                             bundle2.getString(BundleEnum.ZONE_ID.getValue()));
                 } else if (bundle3 != null) {
+                    Objects.requireNonNull(getSupportActionBar()).setTitle("اطلاعات پرداخت");
                     isPayed = true;
                     call = getLastBillInfo.getThisPayInfo(
                             bundle3.getString(BundleEnum.ID.getValue()),
