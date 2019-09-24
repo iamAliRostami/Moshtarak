@@ -66,14 +66,14 @@ public class SignAccountActivity extends BaseActivity
             buttonSign.setText(getResources().getString(R.string.change_account));
             buttonLogOut.setVisibility(View.VISIBLE);
 //            Objects.requireNonNull(getActionBar()).setTitle(getString(R.string.change_account));
-            getSupportActionBar().setTitle(getString(R.string.change_account));
+            Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.change_account));
 
             change = true;
         } else {
             buttonSign.setText(getResources().getString(R.string.account));
             buttonLogOut.setVisibility(View.GONE);
 //            Objects.requireNonNull(getActionBar()).setTitle(getString(R.string.account));
-            getSupportActionBar().setTitle(getString(R.string.account));
+            Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.account));
         }
         setButtonLogOutClickListener();
         setButtonSignClickListener();
@@ -99,6 +99,7 @@ public class SignAccountActivity extends BaseActivity
             if (editTextNationNumber.getText().length() < 10) {
                 view = editTextNationNumber;
                 view.requestFocus();
+                editTextNationNumber.setError(getString(R.string.nation_number_error));
                 cancel = true;
             }
             if (editTextMobile.getText().length() < 9) {

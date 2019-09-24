@@ -1,5 +1,6 @@
 package com.app.leon.moshtarak.Activities;
 
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -112,7 +113,7 @@ public class LastBillActivity extends BaseActivity {
     Context context;
     String billId, payId;
     String id;
-    String zoneId;
+//    String zoneId;
     String address = "https://bill.bpm.bankmellat.ir/bpgwchannel/";
     boolean isPayed = false;
     boolean isFromCardex = false;
@@ -244,7 +245,6 @@ public class LastBillActivity extends BaseActivity {
 //        int width = metrics.widthPixels;
 //        Bitmap bitmap = code.getBitmap(2 * width / 3, height / 8);
 //        imageView.setImageBitmap(bitmap);
-
         try {
             String barcode = "";
             for (int count = 0; count < 13 - billId.length(); count++) {

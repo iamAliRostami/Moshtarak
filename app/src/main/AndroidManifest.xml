@@ -45,6 +45,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Activities.HelpActivity"
+            android:label="@string/help"
             android:screenOrientation="portrait" />
         <activity android:name=".Activities.ContactDeveloperActivity" />
         <activity
