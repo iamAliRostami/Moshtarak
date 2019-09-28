@@ -100,7 +100,7 @@ public class Code128 {
             return null;
         }
         int TOP_GAP = 30;
-        int BOTTOM_GAP = 60;
+        int BOTTOM_GAP = 30;
         int inputWidth = code.length;
         int fullWidth = inputWidth + (6);
         int outputWidth = Math.max(width, fullWidth);
@@ -123,8 +123,9 @@ public class Code128 {
         }
         Resources resources = context.getResources();
         float scale = resources.getDisplayMetrics().density;
-        bgPaint.setColor(Color.BLACK);
-        int size = (int) (26 * scale);
+        bgPaint.setColor(Color.WHITE);
+//        int size = (int) (26 * scale);
+        int size = (int) (1 * scale);
         bgPaint.setTextSize(size);
         String str = insertSpace(data);
         bgPaint.setTextAlign(Paint.Align.CENTER);

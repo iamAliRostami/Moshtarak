@@ -70,13 +70,13 @@
                         tools:ignore="ContentDescription" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/text_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginEnd="25dp"
                         android:gravity="center"
                         android:padding="6dp"
-                        style="@style/text_bold"
                         android:text="@string/pay"
                         android:textColor="@color/green2"
                         android:textSize="@dimen/textSizeMedium"
@@ -84,13 +84,13 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/textViewPayable"
+                        style="@style/text_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="6dp"
-                        style="@style/text_bold"
                         android:textSize="@dimen/textSizeMedium" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -108,13 +108,13 @@
                         tools:ignore="ContentDescription" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/text_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginEnd="25dp"
                         android:gravity="start"
                         android:padding="6dp"
-                        style="@style/text_bold"
                         android:text="@string/pay_date"
                         android:textColor="@color/red1"
                         android:textSize="@dimen/textSizeMedium"
@@ -122,14 +122,14 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/textViewPayDate"
+                        style="@style/text_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_weight="1"
                         android:layout_margin="@dimen/activity_mid_margin"
-                        android:padding="6dp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        style="@style/text_bold"
+                        android:padding="6dp"
                         android:textSize="@dimen/textSizeMedium" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -147,11 +147,11 @@
                         tools:ignore="ContentDescription" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/text_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginEnd="25dp"
-                        style="@style/text_bold"
                         android:gravity="center"
                         android:padding="6dp"
                         android:text="@string/pay_type_title"
@@ -161,12 +161,12 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/textViewPayTypeTitle"
+                        style="@style/text_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_weight="1"
                         android:layout_margin="@dimen/activity_mid_margin"
-                        style="@style/text_bold"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:padding="6dp"
                         android:textSize="@dimen/textSizeMedium" />
@@ -175,9 +175,9 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_margin="@dimen/activity_mid_margin"
                     android:background="@drawable/border_yellow_1"
-                    android:layout_gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -187,6 +187,7 @@
                         tools:ignore="ContentDescription" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/text_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -194,20 +195,19 @@
                         android:gravity="center"
                         android:padding="6dp"
                         android:text="@string/bank_title"
-                        style="@style/text_bold"
                         android:textColor="@color/yellow1"
                         android:textSize="@dimen/textSizeMedium"
                         tools:ignore="RtlCompat" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/textViewBankTitle"
+                        style="@style/text_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_weight="1"
                         android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        style="@style/text_bold"
                         android:padding="6dp"
                         android:textSize="@dimen/textSizeMedium" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -1022,4 +1022,6 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </ScrollView>
+
+
 </RelativeLayout>

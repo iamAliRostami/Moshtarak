@@ -11,19 +11,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.FontManager;
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.TedPermission;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -86,7 +79,6 @@ public class ContactUsActivity extends AppCompatActivity {
         setContentView(R.layout.contact_us_activity);
         ButterKnife.bind(this);
         context = this;
-//        manage_permissions();
         FontManager fontManager = new FontManager(context);
         fontManager.setFont(relativeLayout);
         linearLayout1.setOnClickListener(onClickListener);
@@ -96,38 +88,38 @@ public class ContactUsActivity extends AppCompatActivity {
         linearLayout5.setOnClickListener(onClickListener);
     }
 
-    public void manage_permissions() {
-        PermissionListener permissionlistener = new PermissionListener() {
-            @Override
-            public void onPermissionGranted() {
-                Toast.makeText(context, "مجوز ها داده شده", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-                Toast.makeText(context, "مجوز رد شد \n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
-                forceClose();
-            }
-        };
-
-        new TedPermission(this)
-                .setPermissionListener(permissionlistener)
-                .setRationaleMessage("جهت استفاده بهتر از برنامه مجوز های پیشنهادی را قبول فرمایید")
-                .setDeniedMessage("در صورت رد این مجوز قادر با استفاده از این دستگاه نخواهید بود" + "\n" +
-                        "لطفا با فشار دادن دکمه" + " " + "اعطای دسترسی" + " " + "و سپس در بخش " + " دسترسی ها" + " " + " با این مجوز هاموافقت نمایید")
-                .setGotoSettingButtonText("اعطای دسترسی")
-                .setPermissions(
-                        Manifest.permission.INTERNET,
-                        Manifest.permission.CALL_PHONE
-                )
-                .check();
-    }
-
-    private void forceClose() {
-        new CustomDialog(DialogType.Red, context,
-                context.getString(R.string.force_close),
-                context.getString(R.string.dear_user),
-                context.getString(R.string.call_operator),
-                context.getString(R.string.permission_not_completed));
-    }
+//    public void manage_permissions() {
+//        PermissionListener permissionlistener = new PermissionListener() {
+//            @Override
+//            public void onPermissionGranted() {
+//                Toast.makeText(context, "مجوز ها داده شده", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+//                Toast.makeText(context, "مجوز رد شد \n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+//                forceClose();
+//            }
+//        };
+//
+//        new TedPermission(this)
+//                .setPermissionListener(permissionlistener)
+//                .setRationaleMessage("جهت استفاده بهتر از برنامه مجوز های پیشنهادی را قبول فرمایید")
+//                .setDeniedMessage("در صورت رد این مجوز قادر با استفاده از این دستگاه نخواهید بود" + "\n" +
+//                        "لطفا با فشار دادن دکمه" + " " + "اعطای دسترسی" + " " + "و سپس در بخش " + " دسترسی ها" + " " + " با این مجوز هاموافقت نمایید")
+//                .setGotoSettingButtonText("اعطای دسترسی")
+//                .setPermissions(
+//                        Manifest.permission.INTERNET,
+//                        Manifest.permission.CALL_PHONE
+//                )
+//                .check();
+//    }
+//
+//    private void forceClose() {
+//        new CustomDialog(DialogType.Red, context,
+//                context.getString(R.string.force_close),
+//                context.getString(R.string.dear_user),
+//                context.getString(R.string.call_operator),
+//                context.getString(R.string.permission_not_completed));
+//    }
 }
