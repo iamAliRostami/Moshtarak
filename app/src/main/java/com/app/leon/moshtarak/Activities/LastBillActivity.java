@@ -303,7 +303,6 @@ public class LastBillActivity extends BaseActivity {
                 textViewPayDate.setText(lastBillInfo.getPayDay());
                 textViewPayTypeTitle.setText(lastBillInfo.getPayTypeTitle());
                 textViewBankTitle.setText(lastBillInfo.getBankTitle());
-
                 //here i should add code payed from Kardex
             } else {
                 billId = lastBillInfo.getBillId().trim();

@@ -91,7 +91,7 @@ public interface IAbfaService {
                                        @Body Suggestion suggestionInput
     );
 
-    @GET("/MoshtarakinApi/Member/GetAllRequests?=10018315")
+    @GET("/MoshtarakinApi/Member/GetAllRequests?")
     Call<List<Request>> getAllRequests(
             @Query("billId") String billId
     );

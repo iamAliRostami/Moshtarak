@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -14,6 +15,7 @@ import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Kardex;
+import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
@@ -35,6 +37,9 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     int width;
     private Context context;
     private String billId;
+    @BindView(R.id.linearLayoutChart)
+    LinearLayout linearLayoutChart;
+    ArrayList<Integer> yAxisData = new ArrayList<Integer>();
 
     @Override
     protected void initialize() {
@@ -45,6 +50,15 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
         ButterKnife.bind(this);
         context = this;
         accessData();
+        setOnLinearLayoutChartClickListener();
+    }
+
+    void setOnLinearLayoutChartClickListener() {
+        linearLayoutChart.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ChartActivity.class);
+            intent.putIntegerArrayListExtra(BundleEnum.USE.getValue(), yAxisData);
+            startActivity(intent);
+        });
     }
 
     private void accessData() {
@@ -60,6 +74,7 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     }
 
     void fillKardex() {
+
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getKardex = retrofit.create(IAbfaService.class);
         Call<ArrayList<Kardex>> call = getKardex.getKardex(billId);
@@ -70,5 +85,9 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     public void execute(ArrayList<Kardex> kardexes) {
         kardexCustomAdapter = new KardexCustomAdapter_1(kardexes, context);
         listViewCardex.setAdapter(kardexCustomAdapter);
+        for (int i = 0; i < kardexes.size(); i++) {
+            float floatNumber = Float.valueOf(kardexes.get(i).getUsage());
+            yAxisData.add((int) floatNumber);
+        }
     }
 }

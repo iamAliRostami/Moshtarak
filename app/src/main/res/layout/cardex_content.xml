@@ -2,11 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardex_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="rtl"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.app.leon.moshtarak.Activities.CardexActivity"
-    android:id="@+id/cardex_activity">
+    tools:context="com.app.leon.moshtarak.Activities.CardexActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,16 +24,40 @@
             android:padding="@dimen/activity_mid_padding"
             android:scaleType="fitCenter"
             android:src="@drawable/img_text_header" />
-        <TextView
-            android:id="@+id/textView"
+
+        <LinearLayout
+            android:id="@+id/linearLayoutChart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
             android:background="@drawable/border_blue_2"
-            android:gravity="center"
-            android:text="@string/cardex"
-            android:textColor="@color/white"
-            android:textSize="@dimen/textSizeLarge" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:src="@drawable/img_chart"
+                tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/cardex"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeLarge" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:src="@drawable/img_chart"
+                tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,26 +67,14 @@
             android:weightSum="4">
 
             <TextView
-                android:id="@+id/textViewDate"
+                android:id="@+id/textViewNote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_mid_margin"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="@dimen/activity_mid_margin"
-                android:text="@string/date"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textViewUse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="@dimen/activity_mid_margin"
-                android:text="@string/use"
+                android:text="@string/note"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -78,14 +91,25 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textViewNote"
+                android:id="@+id/textViewUse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_mid_margin"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="@dimen/activity_mid_margin"
-                android:text="@string/note"
+                android:text="@string/use"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/activity_mid_margin"
+                android:text="@string/date"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
