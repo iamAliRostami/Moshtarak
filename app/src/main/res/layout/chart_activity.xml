@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/linearLayoutChart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
@@ -25,10 +25,10 @@
             android:textColor="@color/white"
             android:textSize="@dimen/textSizeLarge" />
 
-        <lecho.lib.hellocharts.view.LineChartView
-            android:id="@+id/chart"
+        <com.github.mikephil.charting.charts.HorizontalBarChart
+            android:id="@+id/horizontalChart"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

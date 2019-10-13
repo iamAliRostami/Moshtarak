@@ -41,7 +41,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
+repositories {
+    maven { url 'https://jitpack.io' }
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //noinspection GradleCompatible
@@ -79,7 +81,9 @@ dependencies {
     implementation 'com.android.support:support-annotations:28.0.0'
     androidTestImplementation 'androidx.annotation:annotation:1.1.0'
     implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
-    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
+
+    implementation 'com.github.Philjay:MPAndroidChart:v3.0.0'
+//    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
 //    implementation 'com.github.blackfizz:eazegraph:1.2.3@aar'
 //    implementation 'gun0912.ted:tedpermission:1.0.3'
 //    implementation 'com.google.zxing:core:3.4.0'

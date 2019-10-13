@@ -2,84 +2,137 @@ package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.FontManager;
+import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.XAxis.XAxisPosition;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
-import lecho.lib.hellocharts.model.Axis;
-import lecho.lib.hellocharts.model.AxisValue;
-import lecho.lib.hellocharts.model.Line;
-import lecho.lib.hellocharts.model.LineChartData;
-import lecho.lib.hellocharts.model.PointValue;
-import lecho.lib.hellocharts.view.LineChartView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ChartActivity extends AppCompatActivity {
     Context context;
-    LineChartView lineChartView;
-    ArrayList<Integer> list;
+    @BindView(R.id.horizontalChart)
+    HorizontalBarChart horizontalChart;
+    Typeface typeface;
+    ArrayList<String> listText = new ArrayList<>();
+    String[] lableText;
+    ArrayList<Integer> listValue = new ArrayList<>();
 
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chart_activity);
+        setContentView(R.layout.chart_activity_1);
+
+        if (getIntent().getExtras() != null) {
+            Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
+            if (bundle1 != null) {
+                listText = bundle1.getStringArrayList(BundleEnum.DATE.getValue());
+                listValue = bundle1.getIntegerArrayList(BundleEnum.USE.getValue());
+            }
+        }
         context = this;
-        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
-        FontManager fontManager = new FontManager(context);
-        fontManager.setFont(constraintLayout);
+        ButterKnife.bind(this);
+        String fontName = "font/BYekan_3.ttf";
+        typeface = Typeface.createFromAsset(context.getAssets(), fontName);
 
-        if (getIntent().getExtras() != null)
-            list = getIntent().getIntegerArrayListExtra(BundleEnum.USE.getValue());
+        horizontalChart.setDrawBarShadow(false);
+        horizontalChart.setDrawValueAboveBar(true);
+        horizontalChart.getDescription().setEnabled(false);
 
-        String[] axisData = new String[Objects.requireNonNull(list).size()];
-        int[] yAxisData = new int[list.size()];
+        // scaling can now only be done on x- and y-axis separately
+        horizontalChart.setPinchZoom(false);
+        // draw shadows for each bar that show the maximum value
+        // chart.setDrawBarShadow(true);
+        horizontalChart.setDrawGridBackground(true);
+        XAxis xl = horizontalChart.getXAxis();
+        xl.setPosition(XAxisPosition.BOTTOM);
+        xl.setTypeface(typeface);
+        xl.setDrawAxisLine(true);
+        xl.setDrawGridLines(true);
+        xl.setGranularity(1000f);
+        xl.setGranularityEnabled(true);
 
-        for (int i = 0; i < list.size(); i++) {
-            axisData[i] = "";
-            Log.e("usage", String.valueOf(list.get(i)));
-            float floatNumber = Float.valueOf(list.get(i));
-            yAxisData[i] = (int) floatNumber;
+        YAxis yl = horizontalChart.getAxisLeft();
+        yl.setTypeface(typeface);
+        yl.setDrawAxisLine(true);
+        yl.setDrawGridLines(true);
+        yl.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+//        yl.setInverted(true);
+
+        YAxis yr = horizontalChart.getAxisRight();
+
+        yr.setTypeface(typeface);
+        yr.setDrawAxisLine(true);
+        yr.setDrawGridLines(false);
+        yr.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+//        yr.setInverted(true);
+
+        horizontalChart.setFitBars(true);
+        horizontalChart.animateY(2500);
+        horizontalChart.animateX(2500);
+
+        setData(listValue.size());
+        horizontalChart.setFitBars(true);
+        horizontalChart.invalidate();
+
+        Legend l = horizontalChart.getLegend();
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        l.setDrawInside(false);
+        l.setFormSize(8f);
+        l.setXEntrySpace(4f);
+    }
+
+    private void setData(int count) {
+        float barWidth = 9f;
+        float spaceForBar = 10f;
+        ArrayList<BarEntry> values = new ArrayList<>();
+        lableText = new String[listText.size()];
+        for (int i = 0; i < count; i++) {
+            float val = (float) listValue.get(i);
+            values.add(new BarEntry(i * spaceForBar, val, lableText[i]));
+
+//            lableText[i] = listText.get(i);
         }
-        List yAxisValues = new ArrayList();
-        List axisValues = new ArrayList();
 
-        Line line = new Line(yAxisValues).setColor(getColor(R.color.blue2));
+        BarDataSet barDataSet;
+        if (horizontalChart.getData() != null && horizontalChart.getData().getDataSetCount() > 0) {
+            barDataSet = (BarDataSet) horizontalChart.getData().getDataSetByIndex(0);
+            barDataSet.setValues(values);
+            horizontalChart.getData().notifyDataChanged();
+            horizontalChart.notifyDataSetChanged();
+        } else {
+            barDataSet = new BarDataSet(values, getString(R.string.use));
+            barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+            ArrayList<IBarDataSet> dataSets = new ArrayList<>();
+            dataSets.add(barDataSet);
+            BarData data = new BarData(dataSets);
+            data.setValueTextSize(10f);
+            data.setValueTypeface(typeface);
+            data.setBarWidth(barWidth);
 
-        for (int i = 0; i < axisData.length; i++) {
-            axisValues.add(i, new AxisValue(i).setLabel(axisData[i]));
+            data.setValueFormatter((value, entry, dataSetIndex, viewPortHandler) -> listText.get(dataSetIndex));
+            horizontalChart.setData(data);
         }
-
-        for (int i = 0; i < yAxisData.length; i++) {
-            yAxisValues.add(new PointValue(i, yAxisData[i]));
-        }
-        List lines = new ArrayList();
-        lines.add(line);
-
-        LineChartData data = new LineChartData();
-        data.setLines(lines);
-
-        Axis axis = new Axis();
-        axis.setValues(axisValues);
-        data.setAxisXBottom(axis);
-
-        Axis yAxis = new Axis();
-        yAxis.setTextColor(getColor(R.color.blue2));
-        yAxis.setTextSize(16);
-//        yAxis.setName(getString(R.string.use));
-        data.setAxisYLeft(yAxis);
-        lineChartView = findViewById(R.id.chart);
-        lineChartView.setLineChartData(data);
     }
 }

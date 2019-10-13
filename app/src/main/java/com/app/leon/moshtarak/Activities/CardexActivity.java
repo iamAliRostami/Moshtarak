@@ -3,6 +3,7 @@ package com.app.leon.moshtarak.Activities;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -40,6 +41,7 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     @BindView(R.id.linearLayoutChart)
     LinearLayout linearLayoutChart;
     ArrayList<Integer> yAxisData = new ArrayList<Integer>();
+    ArrayList<String> axisValues = new ArrayList<String>();
 
     @Override
     protected void initialize() {
@@ -56,7 +58,10 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     void setOnLinearLayoutChartClickListener() {
         linearLayoutChart.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ChartActivity.class);
-            intent.putIntegerArrayListExtra(BundleEnum.USE.getValue(), yAxisData);
+            Bundle bundle = new Bundle();
+            bundle.putIntegerArrayList(BundleEnum.USE.getValue(), yAxisData);
+            bundle.putStringArrayList(BundleEnum.DATE.getValue(), axisValues);
+            intent.putExtra(BundleEnum.DATA.getValue(), bundle);
             startActivity(intent);
         });
     }
@@ -88,6 +93,7 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
         for (int i = 0; i < kardexes.size(); i++) {
             float floatNumber = Float.valueOf(kardexes.get(i).getUsage());
             yAxisData.add((int) floatNumber);
+            axisValues.add(kardexes.get(i).getOweDate());
         }
     }
 }

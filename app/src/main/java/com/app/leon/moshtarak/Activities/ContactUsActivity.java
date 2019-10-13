@@ -87,39 +87,4 @@ public class ContactUsActivity extends AppCompatActivity {
         linearLayout4.setOnClickListener(onClickListener);
         linearLayout5.setOnClickListener(onClickListener);
     }
-
-//    public void manage_permissions() {
-//        PermissionListener permissionlistener = new PermissionListener() {
-//            @Override
-//            public void onPermissionGranted() {
-//                Toast.makeText(context, "مجوز ها داده شده", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-//                Toast.makeText(context, "مجوز رد شد \n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
-//                forceClose();
-//            }
-//        };
-//
-//        new TedPermission(this)
-//                .setPermissionListener(permissionlistener)
-//                .setRationaleMessage("جهت استفاده بهتر از برنامه مجوز های پیشنهادی را قبول فرمایید")
-//                .setDeniedMessage("در صورت رد این مجوز قادر با استفاده از این دستگاه نخواهید بود" + "\n" +
-//                        "لطفا با فشار دادن دکمه" + " " + "اعطای دسترسی" + " " + "و سپس در بخش " + " دسترسی ها" + " " + " با این مجوز هاموافقت نمایید")
-//                .setGotoSettingButtonText("اعطای دسترسی")
-//                .setPermissions(
-//                        Manifest.permission.INTERNET,
-//                        Manifest.permission.CALL_PHONE
-//                )
-//                .check();
-//    }
-//
-//    private void forceClose() {
-//        new CustomDialog(DialogType.Red, context,
-//                context.getString(R.string.force_close),
-//                context.getString(R.string.dear_user),
-//                context.getString(R.string.call_operator),
-//                context.getString(R.string.permission_not_completed));
-//    }
 }
