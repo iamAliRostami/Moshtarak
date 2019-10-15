@@ -6,29 +6,10 @@
     android:layout_height="match_parent"
     tools:context="com.app.leon.moshtarak.Activities.ChartActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayoutChart"
+    <com.github.mikephil.charting.charts.HorizontalBarChart
+        android:id="@+id/horizontalChart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints">
+        android:background="@android:color/white" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:background="@drawable/border_blue_2"
-            android:gravity="center"
-            android:text="@string/chart"
-            android:textColor="@color/white"
-            android:textSize="@dimen/textSizeLarge" />
-
-        <com.github.mikephil.charting.charts.HorizontalBarChart
-            android:id="@+id/horizontalChart"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
