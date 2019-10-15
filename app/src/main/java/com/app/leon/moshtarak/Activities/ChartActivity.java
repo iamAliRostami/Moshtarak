@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.Utils.FontManager;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -54,6 +55,8 @@ public class ChartActivity extends AppCompatActivity {
         }
         context = this;
         ButterKnife.bind(this);
+        FontManager fontManager = new FontManager(getApplicationContext());
+        fontManager.setFont(findViewById(R.id.constraintLayout));
         String fontName = "font/BYekan_3.ttf";
         typeface = Typeface.createFromAsset(context.getAssets(), fontName);
         customizeChartView();
@@ -101,7 +104,6 @@ public class ChartActivity extends AppCompatActivity {
     private void setData() {
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         float x = 1f;
-        int y = 0;
         int margin = getResources().getDimensionPixelSize(R.dimen.activity_mid_margin);
         linearLayout.setWeightSum(listValue.size());
         for (int i = 0; i < listValue.size(); i++) {
