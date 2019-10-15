@@ -66,15 +66,27 @@
             android:orientation="horizontal"
             android:weightSum="4">
 
+
             <TextView
-                android:id="@+id/textViewNote"
+                android:id="@+id/textViewDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_mid_margin"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="@dimen/activity_mid_margin"
-                android:text="@string/note"
+                android:text="@string/date"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textViewUse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/activity_mid_margin"
+                android:text="@string/use"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -91,28 +103,16 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textViewUse"
+                android:id="@+id/textViewNote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_mid_margin"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="@dimen/activity_mid_margin"
-                android:text="@string/use"
+                android:text="@string/note"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
-            <TextView
-                android:id="@+id/textViewDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="@dimen/activity_mid_margin"
-                android:text="@string/date"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
