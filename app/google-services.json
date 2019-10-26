@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "928174629834",
+    "firebase_url": "https://abfa-mostarak-esf.firebaseio.com",
+    "project_id": "abfa-mostarak-esf",
+    "storage_bucket": "abfa-mostarak-esf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928174629834:android:847d836f600a4c62582533",
+        "android_client_info": {
+          "package_name": "com.app.leon.moshtarak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928174629834-rohvvm6bil2pu282p0u2qdi9vivf2hde.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBueoaY-FhYFC4uOTYemgXdrR8MGIs-Q_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928174629834-rohvvm6bil2pu282p0u2qdi9vivf2hde.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

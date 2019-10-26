@@ -132,7 +132,7 @@ public class ChartActivity extends AppCompatActivity {
         }
         BarDataSet bardataset = new BarDataSet(barEntries, getString(R.string.use));
         bardataset.setValueTypeface(typeface);
-        bardataset.setValueTextSize(getResources().getDimensionPixelSize(R.dimen.textSizeSmall));
+//        bardataset.setValueTextSize(getResources().getDimensionPixelSize(R.dimen.textSizeSmall));
         BarData data = new BarData(bardataset);
         bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
         horizontalChart.setData(data);
