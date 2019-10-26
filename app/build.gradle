@@ -18,22 +18,18 @@ android {
         versionName "1.0.2.04"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        multiDexEnabled true
     }
     buildTypes {
         release {
             debuggable true
             minifyEnabled false
-            multiDexEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.config
         }
         debug {
             debuggable true
             minifyEnabled false
             applicationIdSuffix '.debug'
-            multiDexEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.config
         }
     }
     compileOptions {
@@ -86,4 +82,4 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-analytics:17.2.1'
 }
-//apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.gms.google-services'
