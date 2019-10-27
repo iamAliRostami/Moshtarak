@@ -247,44 +247,6 @@ public class LastBillActivity extends BaseActivity {
         int width = metrics.widthPixels;
         Bitmap bitmap = code.getBitmap(2 * width / 3, height / 8);
         imageView.setImageBitmap(bitmap);
-//        try {
-//            String barcode = "";
-//            for (int count = 0; count < 13 - billId.length(); count++) {
-//                barcode = barcode.concat("0");
-//            }
-//            barcode = barcode.concat(billId);
-//            for (int count = 0; count < 13 - payId.length(); count++) {
-//                barcode = barcode.concat("0");
-//            }
-//            barcode = barcode.concat(payId);
-//            Hashtable<EncodeHintType, ErrorCorrectionLevel> hintMap = new Hashtable<>();
-//            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-//            Writer codeWriter;
-//            codeWriter = new Code128Writer();
-//
-//            WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-//            assert wm != null;
-//            Display display = wm.getDefaultDisplay();
-//            DisplayMetrics metrics = new DisplayMetrics();
-//            display.getMetrics(metrics);
-//
-////            int height = metrics.heightPixels;
-//            int width = metrics.widthPixels;
-//
-//            BitMatrix byteMatrix = codeWriter.encode(barcode, BarcodeFormat.CODE_128, width, 200, hintMap);
-////            int width = byteMatrix.getWidth();
-//            int height = byteMatrix.getHeight();
-//            Bitmap bitmap1 = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-//            for (int i = 0; i < width; i++) {
-//                for (int j = 0; j < height; j++) {
-//                    bitmap1.setPixel(i, j, byteMatrix.get(i, j) ? Color.BLACK : Color.WHITE);
-//                }
-//            }
-//            imageView.setImageBitmap(bitmap1);
-//        } catch (Exception e) {
-//            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-//        }
-
     }
 
     class ThisBill implements ICallback<LastBillInfo> {

@@ -20,7 +20,8 @@ public class NetworkHelper {
     private NetworkHelper() {
 
     }
-    static OkHttpClient getHttpClient() {
+
+    private static OkHttpClient getHttpClient() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient
@@ -37,7 +38,6 @@ public class NetworkHelper {
 //                    }
 //                })
                 .addInterceptor(interceptor).build();
-
         return client;
     }
 
