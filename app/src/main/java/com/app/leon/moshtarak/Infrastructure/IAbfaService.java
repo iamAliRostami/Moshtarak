@@ -100,4 +100,8 @@ public interface IAbfaService {
     Call<ArrayList<Session>> getSessions(
             @Query("billId") String billId
     );
+
+    //    @GET("/aspsmsx2.asmx/VersionInfo")
+    @GET("/")
+    Call<SimpleMessage> test();
 }
