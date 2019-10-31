@@ -1,12 +1,15 @@
 package com.app.leon.moshtarak.Utils;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.app.leon.moshtarak.Activities.HomeActivity;
 import com.app.leon.moshtarak.Infrastructure.CustomErrorHandling;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
@@ -21,23 +24,25 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HttpClientWrapper {
-
     private HttpClientWrapper() {
     }
+
 
     public static <T> void callHttpAsync(Call<T> call, final ICallback callback, final Context context, int dialogType) {
         callHttpAsync(call, callback, context, dialogType, ErrorHandlerType.ordinary);
     }
 
     public static <T> void callHttpAsync(Call<T> call, final ICallback callback, final Context context, int dialogType, final ErrorHandlerType errorHandlerType) {
-        final ProgressDialog dialog = new ProgressDialog(context);
+//        final ProgressDialog dialog = new ProgressDialog(context);
+        CustomProgressBar progressBar = new CustomProgressBar();
         if (dialogType == ProgressType.SHOW.getValue() || dialogType == ProgressType.SHOW_CANCELABLE.getValue()) {
-            dialog.setMessage(context.getString(R.string.loading_getting_info));
-            dialog.setTitle(context.getString(R.string.loading_connecting));
-            dialog.show();
-            if (ProgressType.SHOW_CANCELABLE.getValue() == dialogType)
-                dialog.setCancelable(true);
-            else dialog.setCancelable(false);
+//            dialog.setMessage(context.getString(R.string.loading_getting_info));
+//            dialog.setTitle(context.getString(R.string.loading_connecting));
+//            dialog.show();
+            progressBar.show(context, "لطفا صبر کنید...", true);
+//            if (ProgressType.SHOW_CANCELABLE.getValue() == dialogType)
+//                dialog.setCancelable(true);
+//            else dialog.setCancelable(false);
         }
         final String[] error = new String[1];
         call.enqueue(new Callback<T>() {
@@ -47,7 +52,7 @@ public class HttpClientWrapper {
                     if (response.isSuccessful()) {
                         T responseT = response.body();
                         callback.execute(responseT);
-                        dialog.dismiss();
+//                        progressBar.getDialog().dismiss();
                     } else {
                         try {
                             JSONObject jsonObject = new JSONObject(response.errorBody().string());
@@ -58,7 +63,7 @@ public class HttpClientWrapper {
                         }
                         new CustomDialog(DialogType.Yellow, context, error[0], context.getString(R.string.dear_user),
                                 context.getString(R.string.error), context.getString(R.string.accepted));
-                        dialog.dismiss();
+                        progressBar.getDialog().dismiss();
                     }
                 } catch (Exception e) {
                     try {
@@ -70,7 +75,7 @@ public class HttpClientWrapper {
                     }
                     new CustomDialog(DialogType.Yellow, context, error[0], context.getString(R.string.dear_user),
                             context.getString(R.string.error), context.getString(R.string.accepted));
-                    dialog.dismiss();
+                    progressBar.getDialog().dismiss();
                 }
             }
 
@@ -84,9 +89,17 @@ public class HttpClientWrapper {
                     new CustomDialog(DialogType.Red, context, error[0], context.getString(R.string.dear_user),
                             context.getString(R.string.error), context.getString(R.string.accepted));
                 }
-                dialog.dismiss();
+                progressBar.getDialog().dismiss();
             }
         });
     }
 
+    private static DialogInterface.OnDismissListener DismissListener(Context context) {
+        return dialog -> {
+            Log.e("cancel", "3");
+            Toast.makeText(context, "", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(context, HomeActivity.class);
+            context.startActivity(intent);
+        };
+    }
 }

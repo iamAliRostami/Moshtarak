@@ -47,6 +47,7 @@ public class NetworkHelper {
                 .create();
         String baseUrl = "http://37.191.92.130/";
         return new Retrofit.Builder()
+//                .baseUrl(baseUrl)
                 .baseUrl("https://www.abfaesfahan.ir")
                 .client(NetworkHelper.getHttpClient())
                 .addConverterFactory(GsonConverterFactory.create(gson))

@@ -143,13 +143,13 @@ public class SaleActivity extends BaseActivity
             registerNewDto.setSelectedServices(new String[]{"1"});
         else if (radioButtonService2.isChecked())
             registerNewDto.setSelectedServices(new String[]{"1", "2"});
-//        Call<SimpleMessage> call = SendRegisterRequest.registerNew(registerNewDto);
-        Call<SimpleMessage> call = SendRegisterRequest.test();
+        Call<SimpleMessage> call = SendRegisterRequest.registerNew(registerNewDto);
+//        Call<SimpleMessage> call = SendRegisterRequest.test();
         HttpClientWrapper.callHttpAsync(call, SaleActivity.this, context, ProgressType.SHOW.getValue());
     }
 
     private void setButtonNavigationOnClickListener() {
-        sendRequest();
+//        sendRequest();
         buttonNavigation.setOnClickListener(view1 -> {
             View view;
             boolean cancel = false;
