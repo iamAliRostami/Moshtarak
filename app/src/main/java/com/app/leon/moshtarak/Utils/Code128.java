@@ -1,7 +1,6 @@
 package com.app.leon.moshtarak.Utils;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -99,8 +98,8 @@ public class Code128 {
         if (code == null) {
             return null;
         }
-        int TOP_GAP = 30;
-        int BOTTOM_GAP = 30;
+        int TOP_GAP = 10;
+        int BOTTOM_GAP = 10;
         int inputWidth = code.length;
         int fullWidth = inputWidth + (6);
         int outputWidth = Math.max(width, fullWidth);
@@ -121,15 +120,15 @@ public class Code128 {
                 canvas.drawRect(outputX, TOP_GAP, (outputX + multiple), outputHeight, barPaint);
             }
         }
-        Resources resources = context.getResources();
-        float scale = resources.getDisplayMetrics().density;
+//        Resources resources = context.getResources();
+//        float scale = resources.getDisplayMetrics().density;
         bgPaint.setColor(Color.WHITE);
 //        int size = (int) (26 * scale);
-        int size = (int) (1 * scale);
-        bgPaint.setTextSize(size);
-        String str = insertSpace(data);
-        bgPaint.setTextAlign(Paint.Align.CENTER);
-        canvas.drawText(str, width / 2, (height - 10), bgPaint);
+//        int size = (int) (1 * scale);
+//        bgPaint.setTextSize(size);
+//        String str = insertSpace(data);
+//        bgPaint.setTextAlign(Paint.Align.CENTER);
+//        canvas.drawText(str, width / 2, (height - 10), bgPaint);
         return bitmap;
     }
 

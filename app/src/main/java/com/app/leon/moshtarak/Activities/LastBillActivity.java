@@ -245,7 +245,7 @@ public class LastBillActivity extends BaseActivity {
         display.getMetrics(metrics);
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
-        Bitmap bitmap = code.getBitmap(2 * width / 3, height / 8);
+        Bitmap bitmap = code.getBitmap(width, height / 8);
         imageView.setImageBitmap(bitmap);
     }
 
@@ -368,8 +368,10 @@ public class LastBillActivity extends BaseActivity {
             if (isFromCardex) {
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompatIDS);
                 linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable);
-                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable1);
+//                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable2);
+//                linearLayoutCompat.setVisibility(View.GONE);
 //                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPay);
 //                linearLayoutCompat.setVisibility(View.GONE);
             }
@@ -377,8 +379,10 @@ public class LastBillActivity extends BaseActivity {
                 textViewIsPayed.setText(context.getString(R.string.payed_2));
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompatIDS);
                 linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable);
-                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable1);
+//                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable2);
+//                linearLayoutCompat.setVisibility(View.GONE);
             }
         }
     }

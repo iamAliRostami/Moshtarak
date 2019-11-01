@@ -52,7 +52,7 @@ public class HttpClientWrapper {
                     if (response.isSuccessful()) {
                         T responseT = response.body();
                         callback.execute(responseT);
-//                        progressBar.getDialog().dismiss();
+                        progressBar.getDialog().dismiss();
                     } else {
                         try {
                             JSONObject jsonObject = new JSONObject(response.errorBody().string());
