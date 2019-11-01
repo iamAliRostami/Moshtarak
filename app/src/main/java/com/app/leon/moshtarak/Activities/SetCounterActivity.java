@@ -7,14 +7,15 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -26,6 +27,7 @@ import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
+import com.app.leon.moshtarak.Utils.LovelyTextInputDialog;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 
@@ -41,8 +43,6 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     LinearLayout linearLayout1;
     @BindView(R.id.linearLayout2)
     LinearLayout linearLayout2;
-    @BindView(R.id.linearLayout3)
-    LinearLayout linearLayout3;
     @BindView(R.id.buttonSign)
     Button buttonSign;
     @BindView(R.id.editText1)
@@ -55,18 +55,19 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     EditText editText4;
     @BindView(R.id.editText5)
     EditText editText5;
-    @BindView(R.id.editTextPhoneNumber)
-    EditText editTextPhoneNumber;
     View viewFocus;
     Context context;
     String billId, number, phoneNumber;
     SharedPreference sharedPreference;
+    boolean f = false;
 
     @Override
     protected void initialize() {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
         View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.set_counter_content, findViewById(R.id.set_counter_activity));
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
         context = this;
@@ -74,44 +75,87 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         accessData();
         sharedPreference = new SharedPreference(context);
         phoneNumber = sharedPreference.getMobileNumber().replaceFirst("09", "");
-        editTextPhoneNumber.setText(phoneNumber);
         setTextChangedListener();
-        viewFocus = editTextPhoneNumber;
-        viewFocus.requestFocus();
         setOnButtonSignClickListener();
     }
 
     void changeEditTextSize(boolean b) {
-        View view = getCurrentFocus();
-        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        assert inputMethodManager != null && view != null;
-        inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        if (b) {
-            layoutParams.setMargins(0, 170, 0, 0);
-            editText1.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
-            editText2.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
-            editText3.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
-            editText4.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
-            editText5.setTextSize(getResources().getDimension(R.dimen.textSizeMedium));
-        } else {
-            layoutParams.setMargins(0, 560, 0, 0);
-            editText1.setTextSize(15);
-            editText2.setTextSize(15);
-            editText3.setTextSize(15);
-            editText4.setTextSize(15);
-            editText5.setTextSize(15);
+        if (b && f) {
         }
-        linearLayout1.setLayoutParams(layoutParams);
+        f = true;
     }
 
+    void showDialog() {
+        LovelyTextInputDialog lovelyTextInputDialog = new LovelyTextInputDialog(this, R.style.EditTextTintTheme)
+                .setTopColorRes(R.color.orange1)
+                .setTitle("test1")
+                .setMessage("test2")
+                .setInputFilter("همه فیلدها باید پر شود.", text -> {
+                    String s1, s2, s3, s4, s5;
+                    EditText editTextNumber = LovelyTextInputDialog.getEditTextNumber(1);
+                    if (editTextNumber.getText().length() < 1)
+                        return false;
+                    editTextNumber = LovelyTextInputDialog.getEditTextNumber(2);
+                    if (editTextNumber.getText().length() < 1)
+                        return false;
+                    editTextNumber = LovelyTextInputDialog.getEditTextNumber(3);
+                    if (editTextNumber.getText().length() < 1)
+                        return false;
+                    editTextNumber = LovelyTextInputDialog.getEditTextNumber(4);
+                    if (editTextNumber.getText().length() < 1)
+                        return false;
+                    editTextNumber = LovelyTextInputDialog.getEditTextNumber(5);
+                    return editTextNumber.getText().length() >= 1;
+//                            return text.matches("\\w+");
+                })
+                .setConfirmButton(R.string.confirm, text -> {
+                    String s1, s2, s3, s4, s5;
+                    EditText editTextNumber = LovelyTextInputDialog.getEditTextNumber(1);
+                    s1 = editTextNumber.getText().toString();
+                    editTextNumber = LovelyTextInputDialog.getEditTextNumber(2);
+                    s2 = editTextNumber.getText().toString();
+                    editTextNumber = LovelyTextInputDialog.getEditTextNumber(3);
+                    s3 = editTextNumber.getText().toString();
+                    editTextNumber = LovelyTextInputDialog.getEditTextNumber(4);
+                    s4 = editTextNumber.getText().toString();
+                    editTextNumber = LovelyTextInputDialog.getEditTextNumber(5);
+                    s5 = editTextNumber.getText().toString();
+                    Log.e("Number", s1.concat(s2).concat(s3).concat(s4).concat(s5));
+                    editText1.setText(s1);
+                    editText2.setText(s2);
+                    editText3.setText(s3);
+                    editText4.setText(s4);
+                    editText5.setText(s5);
+                })
+                .setNegativeButton(R.string.cancel, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(context, R.string.canceled, Toast.LENGTH_LONG).show();
+                    }
+                });
+        lovelyTextInputDialog.show();
+    }
     private void setTextChangedListener() {
-        editText1.setOnFocusChangeListener((view, b) -> changeEditTextSize(b));
-        editText2.setOnFocusChangeListener((view, b) -> changeEditTextSize(b));
-        editText3.setOnFocusChangeListener((view, b) -> changeEditTextSize(b));
-        editText4.setOnFocusChangeListener((view, b) -> changeEditTextSize(b));
-        editText5.setOnFocusChangeListener((view, b) -> changeEditTextSize(b));
+        editText1.setOnLongClickListener(v -> {
+            showDialog();
+            return false;
+        });
+        editText2.setOnLongClickListener(v -> {
+            showDialog();
+            return false;
+        });
+        editText3.setOnLongClickListener(v -> {
+            showDialog();
+            return false;
+        });
+        editText4.setOnLongClickListener(v -> {
+            showDialog();
+            return false;
+        });
+        editText5.setOnLongClickListener(v -> {
+            showDialog();
+            return false;
+        });
         editText1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -201,25 +245,6 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
             @Override
             public void afterTextChanged(Editable editable) {
                 if (editable.length() > 0) {
-                    viewFocus = editTextPhoneNumber;
-                    viewFocus.requestFocus();
-                }
-            }
-        });
-        editTextPhoneNumber.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
                     viewFocus = buttonSign;
                     viewFocus.requestFocus();
                 }
@@ -257,14 +282,7 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
                 viewFocus = editText1;
                 viewFocus.requestFocus();
             }
-            if (editTextPhoneNumber.getText().length() != 9) {
-                cancel = true;
-                viewFocus = editTextPhoneNumber;
-                viewFocus.requestFocus();
-            }
             if (!cancel) {
-                phoneNumber = "09";
-                phoneNumber = phoneNumber.concat(editTextPhoneNumber.getText().toString());
                 number = editText1.getText().toString();
                 number = number.concat(editText2.getText().toString()).concat(editText3.getText().toString())
                         .concat(editText4.getText().toString()).concat(editText5.getText().toString());
@@ -323,17 +341,11 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
 
     void setComponentPosition() {
         WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-        assert wm != null;
-        Display display = wm.getDefaultDisplay();
+        Display display = Objects.requireNonNull(wm).getDefaultDisplay();
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
         int height = metrics.heightPixels;
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        layoutParams.topMargin = height - 14 * height / 25;
-        linearLayout1.setLayoutParams(layoutParams);
-//        linearLayout1.setY(height - 14 * height / 25);
-//        linearLayout2.setY(height - 17 * height / 38);
-//        linearLayout3.setY(height - 6 * height / 14);
+        linearLayout1.setY(height - 14 * height / 25);
+        linearLayout2.setY(height - 2 * height / 5);
     }
 }

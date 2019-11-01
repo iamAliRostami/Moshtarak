@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.app.leon.moshtarak.Activities.HomeActivity;
-import com.app.leon.moshtarak.Infrastructure.CustomErrorHandling;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ErrorHandlerType;

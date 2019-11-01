@@ -179,4 +179,7 @@
     <string name="pay_date">تاریخ پرداخت</string>
     <string name="bank_title">نام بانک</string>
     <string name="nation_number_error">شماره ملی باید 10 رقم باشد</string>
+    <string name="confirm">تایید</string>
+    <string name="cancel">ردکردن</string>
+    <string name="canceled">عملیات متوقف شد.</string>
 </resources>

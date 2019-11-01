@@ -954,7 +954,6 @@
                         android:layout_weight="1"
                         android:foregroundGravity="center"
                         android:gravity="center"
-                        android:text="98/8/21"
                         android:paddingTop="6dp"
                         android:paddingBottom="6dp"
                         android:textColor="@color/red2"

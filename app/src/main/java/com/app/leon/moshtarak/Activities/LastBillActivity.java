@@ -369,9 +369,9 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompatIDS);
                 linearLayoutCompat.setVisibility(View.GONE);
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable1);
-//                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat.setVisibility(View.GONE);
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable2);
-//                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat.setVisibility(View.GONE);
 //                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPay);
 //                linearLayoutCompat.setVisibility(View.GONE);
             }
@@ -380,9 +380,9 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompatIDS);
                 linearLayoutCompat.setVisibility(View.GONE);
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable1);
-//                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat.setVisibility(View.GONE);
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable2);
-//                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat.setVisibility(View.GONE);
             }
         }
     }

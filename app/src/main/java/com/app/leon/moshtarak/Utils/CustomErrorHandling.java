@@ -1,10 +1,9 @@
-package com.app.leon.moshtarak.Infrastructure;
+package com.app.leon.moshtarak.Utils;
 
 import android.content.Context;
 
 import com.app.leon.moshtarak.Models.Enums.ErrorHandlerType;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.IOException;
@@ -22,7 +21,7 @@ public class CustomErrorHandling extends Exception {
     private int ErrorCode;
 
     public CustomErrorHandling(Context context) {
-        this.context = context;
+        CustomErrorHandling.context = context;
     }
 
     public static APIError parseError(Response<?> response) {

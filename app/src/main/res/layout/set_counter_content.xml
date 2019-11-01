@@ -1,132 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/set_counter_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/img_water_meter"
-    tools:context="com.app.leon.moshtarak.Activities.SetCounterActivity"
-    android:id="@+id/set_counter_activity"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.app.leon.moshtarak.Activities.SetCounterActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:ignore="ScrollViewSize,UselessParent">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:gravity="center">
 
             <EditText
                 android:id="@+id/editText5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
                 android:hint="0"
                 android:inputType="number"
                 android:maxLength="1"
-                android:layout_marginRight="@dimen/activity_mid_margin"
                 android:padding="@dimen/activity_mid_padding"
-                tools:ignore="Autofill,RtlHardcoded" />
+                android:textSize="@dimen/textSizeLarge" />
 
             <EditText
                 android:id="@+id/editText4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
                 android:hint="0"
                 android:inputType="number"
                 android:maxLength="1"
                 android:padding="@dimen/activity_mid_padding"
-                tools:ignore="Autofill,RtlCompat" />
+                android:textSize="@dimen/textSizeLarge" />
 
 
             <EditText
                 android:id="@+id/editText3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
                 android:hint="0"
                 android:inputType="number"
                 android:maxLength="1"
                 android:padding="@dimen/activity_mid_padding"
-                tools:ignore="RtlCompat" />
+                android:textSize="@dimen/textSizeLarge" />
 
             <EditText
                 android:id="@+id/editText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
                 android:hint="0"
                 android:inputType="number"
                 android:maxLength="1"
                 android:padding="@dimen/activity_mid_padding"
-                tools:ignore="RtlCompat" />
+                android:textSize="@dimen/textSizeLarge" />
 
             <EditText
                 android:id="@+id/editText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
                 android:hint="0"
                 android:inputType="number"
                 android:maxLength="1"
                 android:padding="@dimen/activity_mid_padding"
-                tools:ignore="RtlCompat" />
+                android:textSize="@dimen/textSizeLarge" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginTop="120dp"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:background="@drawable/border_yellow_1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/editTextPhoneNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="000000000"
-                    android:inputType="number"
-                    android:maxLength="9"
-                    android:textSize="@dimen/textSizeMedium"
-                    tools:ignore="TextFields" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="09"
-                    android:textSize="@dimen/textSizeMedium" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_marginTop="@dimen/activity_mid_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
             android:weightSum="1">
 
             <Button
@@ -137,7 +99,8 @@
                 android:background="@drawable/border_yellow_"
                 android:text="@string/sign"
                 android:textColor="@color/white"
-                android:textSize="@dimen/textSizeMedium" />
+                android:textSize="@dimen/textSizeLarge"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
