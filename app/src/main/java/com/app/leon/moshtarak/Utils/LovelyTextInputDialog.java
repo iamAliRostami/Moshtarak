@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -121,6 +122,9 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
                 }
             }
         });
+
+        viewFocus = editText1;
+        viewFocus.requestFocus();
 
     }
 
@@ -283,7 +287,7 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
             if (wrapped != null) {
                 wrapped.onTextInputConfirmed(text);
             }
-
+            Log.e("status", "out");
             dismiss();
         }
     }

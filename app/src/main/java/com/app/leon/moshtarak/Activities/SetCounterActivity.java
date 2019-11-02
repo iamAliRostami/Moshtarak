@@ -1,15 +1,16 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -58,7 +59,7 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     String billId, number, phoneNumber;
     SharedPreference sharedPreference;
     boolean f = false;
-
+    Activity activity;
     @Override
     protected void initialize() {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -69,27 +70,22 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
         context = this;
+        activity = this;
         setComponentPosition();
         accessData();
         sharedPreference = new SharedPreference(context);
-        phoneNumber = sharedPreference.getMobileNumber();//.replaceFirst("09", "");
+        phoneNumber = sharedPreference.getMobileNumber();
         setTextChangedListener();
         setOnButtonSignClickListener();
-    }
-
-    void changeEditTextSize(boolean b) {
-        if (b && f) {
-        }
-        f = true;
     }
 
     void showDialog() {
         LovelyTextInputDialog lovelyTextInputDialog = new LovelyTextInputDialog(this, R.style.EditTextTintTheme)
                 .setTopColorRes(R.color.orange1)
                 .setTitle("test1")
-                .setMessage("test2")
+                .setMessage("شماره کنتور را وارد نمایید.")
+                .setCancelable(false)
                 .setInputFilter("همه فیلدها باید پر شود.", text -> {
-                    String s1, s2, s3, s4, s5;
                     EditText editTextNumber = LovelyTextInputDialog.getEditTextNumber(1);
                     if (editTextNumber.getText().length() < 1)
                         return false;
@@ -104,9 +100,11 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
                         return false;
                     editTextNumber = LovelyTextInputDialog.getEditTextNumber(5);
                     return editTextNumber.getText().length() >= 1;
-//                            return text.matches("\\w+");
                 })
                 .setConfirmButton(R.string.confirm, text -> {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+//                    imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    Objects.requireNonNull(imm).toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
                     String s1, s2, s3, s4, s5;
                     EditText editTextNumber = LovelyTextInputDialog.getEditTextNumber(1);
                     s1 = editTextNumber.getText().toString();
@@ -118,18 +116,17 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
                     s4 = editTextNumber.getText().toString();
                     editTextNumber = LovelyTextInputDialog.getEditTextNumber(5);
                     s5 = editTextNumber.getText().toString();
-                    Log.e("Number", s1.concat(s2).concat(s3).concat(s4).concat(s5));
                     editText1.setText(s1);
                     editText2.setText(s2);
                     editText3.setText(s3);
                     editText4.setText(s4);
                     editText5.setText(s5);
                 })
-                .setNegativeButton(R.string.cancel, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context, R.string.canceled, Toast.LENGTH_LONG).show();
-                    }
+                .setNegativeButton(R.string.cancel, v -> {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+//                    imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    Objects.requireNonNull(imm).toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                    Toast.makeText(context, R.string.canceled, Toast.LENGTH_LONG).show();
                 });
         lovelyTextInputDialog.show();
     }
