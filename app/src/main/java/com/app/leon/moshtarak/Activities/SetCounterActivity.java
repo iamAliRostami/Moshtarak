@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -74,7 +72,7 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         setComponentPosition();
         accessData();
         sharedPreference = new SharedPreference(context);
-        phoneNumber = sharedPreference.getMobileNumber().replaceFirst("09", "");
+        phoneNumber = sharedPreference.getMobileNumber();//.replaceFirst("09", "");
         setTextChangedListener();
         setOnButtonSignClickListener();
     }
@@ -135,121 +133,14 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
                 });
         lovelyTextInputDialog.show();
     }
+
+    @SuppressLint("ClickableViewAccessibility")
     private void setTextChangedListener() {
-        editText1.setOnLongClickListener(v -> {
-            showDialog();
-            return false;
-        });
-        editText2.setOnLongClickListener(v -> {
-            showDialog();
-            return false;
-        });
-        editText3.setOnLongClickListener(v -> {
-            showDialog();
-            return false;
-        });
-        editText4.setOnLongClickListener(v -> {
-            showDialog();
-            return false;
-        });
-        editText5.setOnLongClickListener(v -> {
-            showDialog();
-            return false;
-        });
-        editText1.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
-                    viewFocus = editText2;
-                    viewFocus.requestFocus();
-                }
-            }
-        });
-        editText2.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
-                    viewFocus = editText3;
-                    viewFocus.requestFocus();
-                }
-            }
-        });
-        editText3.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
-                    viewFocus = editText4;
-                    viewFocus.requestFocus();
-                }
-            }
-        });
-        editText4.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
-                    viewFocus = editText5;
-                    viewFocus.requestFocus();
-                }
-            }
-        });
-        editText5.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
-                    viewFocus = buttonSign;
-                    viewFocus.requestFocus();
-                }
-            }
-        });
+        editText1.setOnClickListener(v -> showDialog());
+        editText2.setOnClickListener(v -> showDialog());
+        editText3.setOnClickListener(v -> showDialog());
+        editText4.setOnClickListener(v -> showDialog());
+        editText5.setOnClickListener(v -> showDialog());
     }
 
     private void setOnButtonSignClickListener() {

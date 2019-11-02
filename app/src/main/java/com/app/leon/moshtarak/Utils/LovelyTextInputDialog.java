@@ -41,7 +41,10 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
 
         errorMessage = findView(R.id.ld_error_message);
         editText1.addTextChangedListener(new HideErrorOnTextChanged());
-
+        editText2.addTextChangedListener(new HideErrorOnTextChanged());
+        editText3.addTextChangedListener(new HideErrorOnTextChanged());
+        editText4.addTextChangedListener(new HideErrorOnTextChanged());
+        editText5.addTextChangedListener(new HideErrorOnTextChanged());
 
         editText1.addTextChangedListener(new TextWatcher() {
             @Override
