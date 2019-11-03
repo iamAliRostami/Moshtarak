@@ -82,8 +82,8 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     void showDialog() {
         LovelyTextInputDialog lovelyTextInputDialog = new LovelyTextInputDialog(this, R.style.EditTextTintTheme)
                 .setTopColorRes(R.color.orange1)
-                .setTitle("test1")
-                .setMessage("شماره کنتور را وارد نمایید.")
+                .setTitle("مشترک گرامی")
+                .setMessage("لطفا شماره کنتور را وارد نمایید.")
                 .setCancelable(false)
                 .setInputFilter("همه فیلدها باید پر شود.", text -> {
                     EditText editTextNumber = LovelyTextInputDialog.getEditTextNumber(1);
