@@ -79,6 +79,7 @@
     <string name="logout_successful">با موفقیت از حساب کاربری خود خارج شدید</string>
     <string name="error">خطا</string>
 
+    <string name="all_field_should_filled">همه فیلدها باید پر شود.</string>
     <string name="error_empty">این فیلد باید پر شود.</string>
     <string name="error_empty_all">همه فیلد ها خالی است.</string>
     <string name="error_short_length">.این فیلد کوتاه است</string>
@@ -182,4 +183,7 @@
     <string name="confirm">تایید</string>
     <string name="cancel">ردکردن</string>
     <string name="canceled">عملیات متوقف شد.</string>
+    <string name="Why_We_Ask_For_This_Information">چرا به این اطلاعات نیاز است؟</string>
+    <string name="enter_counter_number">لطفا شماره کنتور را وارد نمایید.</string>
+    <string name="dont_show_again">دیگر نمایش نده!</string>
 </resources>

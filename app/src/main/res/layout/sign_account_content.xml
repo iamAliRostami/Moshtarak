@@ -199,6 +199,14 @@
 
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/textViewInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_mid_margin"
+                    android:gravity="center"
+                    android:text="@string/Why_We_Ask_For_This_Information"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
                 <Button
                     android:id="@+id/buttonSign"
                     android:layout_width="match_parent"

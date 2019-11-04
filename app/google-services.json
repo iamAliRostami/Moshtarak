@@ -1,129 +1,42 @@
 {
   "project_info": {
-    "project_number": "928174629834",
-    "firebase_url": "https://abfa-mostarak-esf.firebaseio.com",
-    "project_id": "abfa-mostarak-esf",
-    "storage_bucket": "abfa-mostarak-esf.appspot.com"
+    "project_number": "659797548657",
+    "firebase_url": "https://abfa-esfahan-moshtarak.firebaseio.com",
+    "project_id": "abfa-esfahan-moshtarak",
+    "storage_bucket": "abfa-esfahan-moshtarak.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:928174629834:android:847d836f600a4c62582533",
+        "mobilesdk_app_id": "1:659797548657:android:aa10f0786b49e05510c5d0",
         "android_client_info": {
           "package_name": "com.app.leon.moshtarak"
         }
       },
       "oauth_client": [
         {
-          "client_id": "928174629834-rohvvm6bil2pu282p0u2qdi9vivf2hde.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBueoaY-FhYFC4uOTYemgXdrR8MGIs-Q_A"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "928174629834-rohvvm6bil2pu282p0u2qdi9vivf2hde.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:928174629834:android:7cfc43972e9a3aa2582533",
-        "android_client_info": {
-          "package_name": "com.app.leon.moshtarak.debug"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "928174629834-mankd9g5cov24tc9052pbsqqla6rkocf.apps.googleusercontent.com",
+          "client_id": "659797548657-c853uminme8hnr3rrvq554jfvm05r6j7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.app.leon.moshtarak.debug",
-            "certificate_hash": "a23e3979df10a6e48aa849d52f3315312055cb3b"
+            "package_name": "com.app.leon.moshtarak",
+            "certificate_hash": "8b8e33fcd1ea8b3962b82013629ce55f1b0530ef"
           }
         },
         {
-          "client_id": "928174629834-rohvvm6bil2pu282p0u2qdi9vivf2hde.apps.googleusercontent.com",
+          "client_id": "659797548657-ss1l0djljbcvu8epuesirdkrpiook77r.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBueoaY-FhYFC4uOTYemgXdrR8MGIs-Q_A"
+          "current_key": "AIzaSyBgUiPXvxIWz0ZCtsJaPpbwI7PhD4e7EdA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "928174629834-rohvvm6bil2pu282p0u2qdi9vivf2hde.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:928174629834:android:e09d32dc586fab65582533",
-        "android_client_info": {
-          "package_name": "com.app.leon.moshtarak.release"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "928174629834-rohvvm6bil2pu282p0u2qdi9vivf2hde.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBueoaY-FhYFC4uOTYemgXdrR8MGIs-Q_A"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "928174629834-rohvvm6bil2pu282p0u2qdi9vivf2hde.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:928174629834:android:162457e087bc1e4c582533",
-        "android_client_info": {
-          "package_name": "com.app.leon.moshtarake.debug"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "928174629834-rohvvm6bil2pu282p0u2qdi9vivf2hde.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBueoaY-FhYFC4uOTYemgXdrR8MGIs-Q_A"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "928174629834-rohvvm6bil2pu282p0u2qdi9vivf2hde.apps.googleusercontent.com",
+              "client_id": "659797548657-ss1l0djljbcvu8epuesirdkrpiook77r.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

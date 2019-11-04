@@ -121,8 +121,6 @@ public class LastBillActivity extends BaseActivity {
         context = this;
         accessData();
         textViewCost.setOnClickListener(view -> {
-            new CustomTab(address, LastBillActivity.this);
-
             if (!isPayed)
                 new CustomTab(address, LastBillActivity.this);
             else

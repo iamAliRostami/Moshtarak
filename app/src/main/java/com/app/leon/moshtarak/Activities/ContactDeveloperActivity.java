@@ -62,7 +62,7 @@ public class ContactDeveloperActivity extends AppCompatActivity {
 //        YoYo.with(Techniques.Tada)
 //                .duration(1000)
 //                .repeat(2)
-//                .playOn(textView1);
+//                .playOn(textViewInfo);
 //        imageView1.animate()
 //                .scaleX(2f)
 //                .scaleY(2f)

@@ -60,6 +60,7 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     SharedPreference sharedPreference;
     boolean f = false;
     Activity activity;
+
     @Override
     protected void initialize() {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -82,10 +83,10 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     void showDialog() {
         LovelyTextInputDialog lovelyTextInputDialog = new LovelyTextInputDialog(this, R.style.EditTextTintTheme)
                 .setTopColorRes(R.color.orange1)
-                .setTitle("مشترک گرامی")
-                .setMessage("لطفا شماره کنتور را وارد نمایید.")
+                .setTitle(R.string.dear_user)
+                .setMessage(getString(R.string.enter_counter_number))
                 .setCancelable(false)
-                .setInputFilter("همه فیلدها باید پر شود.", text -> {
+                .setInputFilter(R.string.all_field_should_filled, text -> {
                     EditText editTextNumber = LovelyTextInputDialog.getEditTextNumber(1);
                     if (editTextNumber.getText().length() < 1)
                         return false;

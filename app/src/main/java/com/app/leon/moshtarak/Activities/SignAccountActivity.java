@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -23,6 +24,7 @@ import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
+import com.app.leon.moshtarak.Utils.LovelyInfoDialog;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 
@@ -47,6 +49,8 @@ public class SignAccountActivity extends BaseActivity
     Button buttonSign;
     @BindView(R.id.buttonLogOut)
     Button buttonLogOut;
+    @BindView(R.id.textViewInfo)
+    TextView textViewInfo;
     String billId, account, mobile, nationNumber;
     View viewFocus;
     Context context;
@@ -77,9 +81,21 @@ public class SignAccountActivity extends BaseActivity
         }
         setButtonLogOutClickListener();
         setButtonSignClickListener();
-        SetEditTextChangedListener();
+        setEditTextChangedListener();
+        setTextViewOnClickListener();
     }
 
+    void setTextViewOnClickListener() {
+        textViewInfo.setOnClickListener(v -> new LovelyInfoDialog(context)
+                .setTopColorRes(R.color.grayDark)
+                .setNotShowAgainOptionEnabled(0)
+                .setNotShowAgainOptionChecked(true)
+                .setTitle(R.string.dear_user)
+                .setMessage("اطلاعات کاربری جهت تطبیق با اطلاعات ثبت شده در سامانه و جلوگیری از هر گونه سوء استفاده احتمالی از اطلاعات شماست.\n" +
+                        "این اطلاعات به صورت محرمانه خواهد ماند.\n")
+                .show());
+
+    }
     void setButtonSignClickListener() {
         buttonSign.setOnClickListener(view -> {
             View viewFocus;
@@ -130,7 +146,7 @@ public class SignAccountActivity extends BaseActivity
         });
     }
 
-    private void SetEditTextChangedListener() {
+    private void setEditTextChangedListener() {
         editTextBillId.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
