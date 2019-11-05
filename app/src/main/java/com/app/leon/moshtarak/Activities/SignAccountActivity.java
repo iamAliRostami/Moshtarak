@@ -92,7 +92,7 @@ public class SignAccountActivity extends BaseActivity
                 .setNotShowAgainOptionChecked(true)
                 .setTitle(R.string.dear_user)
                 .setMessage("اطلاعات کاربری جهت تطبیق با اطلاعات ثبت شده در سامانه و جلوگیری از هر گونه سوء استفاده احتمالی از اطلاعات شماست.\n" +
-                        "این اطلاعات به صورت محرمانه خواهد ماند.\n")
+                        "این اطلاعات به صورت محرمانه نزد ما خواهد ماند.\n")
                 .show());
 
     }
