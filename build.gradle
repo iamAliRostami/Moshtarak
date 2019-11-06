@@ -7,6 +7,10 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
         google()
         jcenter()
+        flatDir
+                {
+                    dirs 'libs'
+                }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.1'

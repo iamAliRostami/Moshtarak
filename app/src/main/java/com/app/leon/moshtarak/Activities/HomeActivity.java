@@ -36,6 +36,8 @@ public class HomeActivity extends BaseActivity {
     @BindView(R.id.imageButtonSupport)
     ImageButton imageButtonSupport;
 
+    public static final int requestCodePaymentBill = 199;
+
     @SuppressLint({"HardwareIds", "MissingPermission", "CutPasteId"})
     @Override
     protected void initialize() {
@@ -43,8 +45,11 @@ public class HomeActivity extends BaseActivity {
         View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.home_content, findViewById(R.id.home_activity));
         ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
+
+
         ButterKnife.bind(this);
         setOnClickListener();
+        pay();
     }
 
     void setOnClickListener() {
@@ -114,4 +119,66 @@ public class HomeActivity extends BaseActivity {
                 break;
         }
     };
+
+    void pay() {
+
+//        Intent intent = new Intent(HomeActivity.this, PaymentInitiator.class);
+//        intent.putExtra("Type", "2");
+//        intent.putExtra("Token", "token");
+//        startActivityForResult(intent, requestCodePaymentBill);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == requestCodePaymentBill) {
+            getPaymentResultCode(resultCode, data);
+        }
+    }
+
+    private void getPaymentResultCode(int resultCode, Intent data) {
+//
+//        if (G.onMplResult != null) {
+//            G.onMplResult.onResult(false);
+//        }
+
+        String enData = "", message = "", status = "0";
+        int errorType = 0, orderId = 0;
+
+        switch (resultCode) {
+            case 1:// payment ok
+                enData = data.getStringExtra("enData");
+                message = data.getStringExtra("message");
+                status = String.valueOf(data.getIntExtra("status", 0));
+                break;
+            case 2://payment error
+                errorType = data.getIntExtra("errorType", 0);
+                orderId = data.getIntExtra("OrderID", 0);
+                break;
+            case 3://bill payment ok
+                enData = data.getStringExtra("enData");
+                message = data.getStringExtra("message");
+                status = String.valueOf(data.getIntExtra("status", 0));
+                break;
+            case 4://bill payment error
+                errorType = data.getIntExtra("errorType", 0);
+                break;
+            case 5://internal error payment
+                errorType = data.getIntExtra("errorType", 0);
+                orderId = data.getIntExtra("OrderID", 0);
+                break;
+            case 6://internal error bill
+                errorType = data.getIntExtra("errorType", 0);
+                break;
+            case 9:// internal error charge
+                errorType = data.getIntExtra("errorType", 0);
+                break;
+        }
+
+//        if (errorType != 0) {
+//            showErrorTypeMpl(errorType);
+//        }
+    }
 }

@@ -52,6 +52,7 @@ public abstract class BaseActivity extends AppCompatActivity
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+
     @SuppressLint({"NewApi", "RtlHardcoded", "WrongConstant"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,6 +131,7 @@ public abstract class BaseActivity extends AppCompatActivity
 
     private void initializeBase() {
         toolbar = findViewById(R.id.toolbar);
+
         drawer = findViewById(R.id.drawer_layout);
         drawerList = findViewById(R.id.right_drawer);
         dataList = new ArrayList<>();
