@@ -45,8 +45,7 @@ public class HomeActivity extends BaseActivity {
         View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.home_content, findViewById(R.id.home_activity));
         ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
-
-
+        
         ButterKnife.bind(this);
         setOnClickListener();
         pay();

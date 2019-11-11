@@ -90,8 +90,8 @@ dependencies {
     implementation project(path: ':pecpayment-release')
     implementation 'com.mcxiaoke.volley:library:1.0.19'
 
-//    configurations.maybeCreate("default")
-//    artifacts.add("default", file('pecpayment-release.aar'))
 
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 }
 apply plugin: 'com.google.gms.google-services'
