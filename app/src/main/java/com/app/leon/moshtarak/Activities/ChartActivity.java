@@ -94,6 +94,7 @@ public class ChartActivity extends AppCompatActivity {
 //        yr.setInverted(true);
 
         horizontalChart.setFitBars(true);
+        horizontalChart.setScaleEnabled(false);
         horizontalChart.animateY(2500);
         horizontalChart.animateX(2500);
         horizontalChart.getLegend().setEnabled(false);

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -54,12 +55,13 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     EditText editText4;
     @BindView(R.id.editText5)
     EditText editText5;
-    View viewFocus;
+    //    View viewFocus;
+//    boolean f = false;
+    //    SharedPreference sharedPreference;
+    LovelyTextInputDialog lovelyTextInputDialog;
+    Activity activity;
     Context context;
     String billId, number, phoneNumber;
-    SharedPreference sharedPreference;
-    boolean f = false;
-    Activity activity;
 
     @Override
     protected void initialize() {
@@ -74,14 +76,13 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         activity = this;
         setComponentPosition();
         accessData();
-        sharedPreference = new SharedPreference(context);
-        phoneNumber = sharedPreference.getMobileNumber();
+//        sharedPreference = new SharedPreference(context);
         setTextChangedListener();
         setOnButtonSignClickListener();
     }
 
     void showDialog() {
-        LovelyTextInputDialog lovelyTextInputDialog = new LovelyTextInputDialog(this, R.style.EditTextTintTheme)
+        lovelyTextInputDialog = new LovelyTextInputDialog(this, R.style.EditTextTintTheme)
                 .setTopColorRes(R.color.orange1)
                 .setTitle(R.string.dear_user)
                 .setMessage(getString(R.string.enter_counter_number))
@@ -188,6 +189,7 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
             finish();
         } else {
             billId = appPrefs.getBillID();
+            phoneNumber = appPrefs.getMobileNumber();
         }
     }
 
@@ -236,5 +238,37 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         int height = metrics.heightPixels;
         linearLayout1.setY(height - 14 * height / 25);
         linearLayout2.setY(height - 2 * height / 5);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        linearLayout1 = null;
+        linearLayout2 = null;
+        buttonSign = null;
+        editText1 = null;
+        editText2 = null;
+        editText3 = null;
+        editText4 = null;
+        editText5 = null;
+        activity = null;
+        context = null;
+        lovelyTextInputDialog = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        lovelyTextInputDialog = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }

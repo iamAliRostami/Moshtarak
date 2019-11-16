@@ -78,7 +78,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0-rc01'
     implementation 'com.android.support:support-annotations:28.0.0'
     androidTestImplementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+
 
     implementation 'com.github.Philjay:MPAndroidChart:v3.0.0'
 

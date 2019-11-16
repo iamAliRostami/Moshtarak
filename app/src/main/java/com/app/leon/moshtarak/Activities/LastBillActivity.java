@@ -386,4 +386,45 @@ public class LastBillActivity extends BaseActivity {
             }
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        textViewBillId = null;
+        textViewPayId = null;
+        textViewPreNumber = null;
+        textViewNewNumber = null;
+        textViewPreDate = null;
+        textViewNewDate = null;
+        textViewAbBaha = null;
+        textViewTax = null;
+        textViewKarmozdeFazelab = null;
+        textViewTakalifBoodje = null;
+        textViewPreDebtOrOwe = null;
+        textViewDate = null;
+        textViewCost = null;
+        textViewTabsare2 = null;
+        textViewTabsare3Ab = null;
+        textViewTabsare3Fazelab = null;
+        textViewAbonmanAb = null;
+        textViewAbonmanFazelab = null;
+        textViewFasleGarm = null;
+        textViewMazadOlgoo = null;
+        textViewTotal = null;
+        textViewUse = null;
+        textViewUseAverage = null;
+        textViewUseLength = null;
+        textViewIsPayed = null;
+        textViewPayable = null;
+        textViewPayDate = null;
+        textViewPayTypeTitle = null;
+        textViewBankTitle = null;
+
+        imageViewBarcode.setImageDrawable(null);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 }
