@@ -176,8 +176,36 @@ public class HomeActivity extends BaseActivity {
                 break;
         }
 
-//        if (errorType != 0) {
-//            showErrorTypeMpl(errorType);
-//        }
+        if (errorType != 0) {
+            showErrorTypeMpl(errorType);
+        }
+    }
+
+    private void showErrorTypeMpl(int errorType) {
+        String message = "";
+        switch (errorType) {
+            case 2:
+                message = getString(R.string.time_out_error);
+                break;
+            case 1000:
+                message = getString(R.string.connection_error);
+                break;
+            case 1001:
+                message = getString(R.string.server_error);
+                break;
+            case 1002:
+                message = getString(R.string.network_error);
+                break;
+            case 201:
+                message = getString(R.string.dialog_canceled);
+                break;
+            case 2334:
+                message = getString(R.string.device_root);
+                break;
+        }
+
+        if (message.length() > 0) {
+//            HelperError.showSnackMessage(message, false);
+        }
     }
 }
