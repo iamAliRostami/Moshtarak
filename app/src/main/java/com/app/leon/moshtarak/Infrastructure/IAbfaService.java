@@ -2,6 +2,7 @@ package com.app.leon.moshtarak.Infrastructure;
 
 import com.app.leon.moshtarak.Models.DbTables.Kardex;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
+import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
 import com.app.leon.moshtarak.Models.DbTables.Login;
 import com.app.leon.moshtarak.Models.DbTables.MemberInfo;
 import com.app.leon.moshtarak.Models.DbTables.RegisterAsDto;
@@ -56,6 +57,12 @@ public interface IAbfaService {
             @Path("billId") String billId
     );
 
+    @GET("/MoshtarakinApi/V2/Bill/Get/{api}/{billId}")
+    Call<LastBillInfoV2> getLastBillInfo(
+            @Path("billId") String billId,
+            @Path("api") String apiKey
+
+    );
     @GET("/MoshtarakinApi/Bill/GetThisBill?")
     Call<LastBillInfo> getThisBillInfo(
             @Query("id") String id,

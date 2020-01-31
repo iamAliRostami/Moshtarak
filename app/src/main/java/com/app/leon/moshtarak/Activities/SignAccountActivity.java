@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,7 @@ import com.app.leon.moshtarak.Utils.LovelyInfoDialog;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -213,26 +215,11 @@ public class SignAccountActivity extends BaseActivity
         final IAbfaService canMatch = retrofit.create(IAbfaService.class);
         @SuppressLint("HardwareIds") String serial = String.valueOf(Build.SERIAL);
 
-//        byte[] encrypt = new byte[0];
-//        try {
-//            encrypt = billId.getBytes("UTF-8");
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
-//        String base64 = Base64.encodeToString(encrypt, Base64.DEFAULT);
+        byte[] encrypt = new byte[0];
+        encrypt = billId.getBytes(StandardCharsets.UTF_8);
+        String base64 = Base64.encodeToString(encrypt, Base64.DEFAULT);
 
-//        byte[] byteArray;
-//        try {
-//            byteArray = base64.getBytes("UTF-16");
-//            billIdCoded = new String(Base64.decode(Base64.encode(byteArray,
-//                    Base64.DEFAULT), Base64.DEFAULT));
-//        } catch (UnsupportedEncodingException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-
-        Call<Login> call = canMatch.register(new Login(billId,
-                new com.app.leon.moshtarak.Utils.Base64().encoder(billId), serial, getVersionInfo(),
+        Call<Login> call = canMatch.register(new Login(billId, base64, serial, getVersionInfo(),
                 String.valueOf(Build.VERSION.RELEASE), mobile, getDeviceName()));
         HttpClientWrapper.callHttpAsync(call, SignAccountActivity.this, context, ProgressType.SHOW.getValue());
     }
