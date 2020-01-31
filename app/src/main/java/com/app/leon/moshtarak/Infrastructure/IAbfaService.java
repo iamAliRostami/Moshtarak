@@ -31,12 +31,16 @@ public interface IAbfaService {
             @Query("eshterak") String eshterak
     );
 
-    @POST("/MoshtarakinApi/HamrahAbfaManager/Register")
+    @POST("/MoshtarakinApi/V2/HamrahAbfaManager/Register")
     Call<Login> register(
             @Body Login login
-
     );
 
+    @GET("/MoshtarakinApi/V2/Member/IsValid/{api}/{billId}")
+    Call<Login> register(
+            @Path("api") String api,
+            @Path("billId") String billId
+    );
     @GET("/MoshtarakinApi/Member/GetInfo/{billId}")
     Call<MemberInfo> getInfo(
             @Path("billId") String billId

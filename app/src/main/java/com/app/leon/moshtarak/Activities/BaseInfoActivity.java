@@ -78,6 +78,7 @@ public class BaseInfoActivity extends BaseActivity implements ICallback<MemberIn
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getInfo = retrofit.create(IAbfaService.class);
         Call<MemberInfo> call = getInfo.getInfo(billId);
+
         HttpClientWrapper.callHttpAsync(call, BaseInfoActivity.this, context, ProgressType.SHOW.getValue());
     }
 

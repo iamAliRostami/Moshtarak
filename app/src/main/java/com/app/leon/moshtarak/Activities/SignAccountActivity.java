@@ -39,10 +39,10 @@ public class SignAccountActivity extends BaseActivity
         implements ICallback<Login> {
     @BindView(R.id.editTextBillId)
     EditText editTextBillId;
-    @BindView(R.id.editTextAccount)
-    EditText editTextAccount;
-    @BindView(R.id.editTextNationNumber)
-    EditText editTextNationNumber;
+    //    @BindView(R.id.editTextAccount)
+//    EditText editTextAccount;
+//    @BindView(R.id.editTextNationNumber)
+//    EditText editTextNationNumber;
     @BindView(R.id.editTextMobile)
     EditText editTextMobile;
     @BindView(R.id.buttonSign)
@@ -51,7 +51,7 @@ public class SignAccountActivity extends BaseActivity
     Button buttonLogOut;
     @BindView(R.id.textViewInfo)
     TextView textViewInfo;
-    String billId, account, mobile, nationNumber;
+    String billId, account, mobile;//, nationNumber;
     View viewFocus;
     Context context;
     boolean change = false;
@@ -96,6 +96,7 @@ public class SignAccountActivity extends BaseActivity
                 .show());
 
     }
+
     void setButtonSignClickListener() {
         buttonSign.setOnClickListener(view -> {
             View viewFocus;
@@ -106,29 +107,29 @@ public class SignAccountActivity extends BaseActivity
                 viewFocus = editTextBillId;
                 viewFocus.requestFocus();
             }
-            if (!cancel && editTextAccount.getText().length() < 7) {
-                cancel = true;
-                editTextAccount.setError(getString(R.string.error_empty));
-                viewFocus = editTextAccount;
-                viewFocus.requestFocus();
-            }
-            if (editTextNationNumber.getText().length() < 10) {
-                view = editTextNationNumber;
-                view.requestFocus();
-                editTextNationNumber.setError(getString(R.string.nation_number_error));
-                cancel = true;
-            }
+//            if (!cancel && editTextAccount.getText().length() < 7) {
+//                cancel = true;
+//                editTextAccount.setError(getString(R.string.error_empty));
+//                viewFocus = editTextAccount;
+//                viewFocus.requestFocus();
+//            }
+//            if (editTextNationNumber.getText().length() < 10) {
+//                view = editTextNationNumber;
+//                view.requestFocus();
+//                editTextNationNumber.setError(getString(R.string.nation_number_error));
+//                cancel = true;
+//            }
             if (editTextMobile.getText().length() < 9) {
                 view = editTextMobile;
                 view.requestFocus();
                 cancel = true;
             }
             if (!cancel) {
-                account = editTextAccount.getText().toString();
                 billId = editTextBillId.getText().toString();
                 mobile = "09".concat(editTextMobile.getText().toString());
-                nationNumber = editTextNationNumber.getText().toString();
-                canMatch(billId, account, mobile, nationNumber);
+//                account = editTextAccount.getText().toString();
+//                nationNumber = editTextNationNumber.getText().toString();
+                canMatch(billId, mobile);
             }
         });
     }
@@ -136,7 +137,7 @@ public class SignAccountActivity extends BaseActivity
     void setButtonLogOutClickListener() {
         buttonLogOut.setOnClickListener(view -> {
             SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
-            sharedPreference.putData("", "", "", "");
+            sharedPreference.putData("", "", "");
             new CustomDialog(DialogType.YellowRedirect, SignAccountActivity.this,
                     getString(R.string.logout_successful), getString(R.string.dear_user), getString(R.string.logout),
                     getString(R.string.accepted));
@@ -161,58 +162,78 @@ public class SignAccountActivity extends BaseActivity
             @Override
             public void afterTextChanged(Editable editable) {
                 if (editable.length() == 13) {
-                    viewFocus = editTextAccount;
-                    viewFocus.requestFocus();
-                }
-            }
-        });
-        editTextAccount.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() == 14) {
-                    viewFocus = editTextNationNumber;
-                    viewFocus.requestFocus();
-                }
-            }
-        });
-
-        editTextNationNumber.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable.length() == 10) {
                     viewFocus = editTextMobile;
                     viewFocus.requestFocus();
                 }
             }
         });
+//        editTextAccount.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                if (editable.length() == 14) {
+//                    viewFocus = editTextMobile;
+//                    viewFocus.requestFocus();
+//                }
+//            }
+//        });
+
+//        editTextNationNumber.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                if (editable.length() == 10) {
+//                    viewFocus = editTextMobile;
+//                    viewFocus.requestFocus();
+//                }
+//            }
+//        });
     }
 
-    void canMatch(String billId, String account, String mobile, String nationNumber) {
+    void canMatch(String billId, String mobile) {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService canMatch = retrofit.create(IAbfaService.class);
         @SuppressLint("HardwareIds") String serial = String.valueOf(Build.SERIAL);
-        Call<Login> call = canMatch.register(new Login(billId, account, nationNumber, serial,
-                getVersionInfo(), String.valueOf(Build.VERSION.RELEASE), mobile, getDeviceName()));
+
+//        byte[] encrypt = new byte[0];
+//        try {
+//            encrypt = billId.getBytes("UTF-8");
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
+//        String base64 = Base64.encodeToString(encrypt, Base64.DEFAULT);
+
+//        byte[] byteArray;
+//        try {
+//            byteArray = base64.getBytes("UTF-16");
+//            billIdCoded = new String(Base64.decode(Base64.encode(byteArray,
+//                    Base64.DEFAULT), Base64.DEFAULT));
+//        } catch (UnsupportedEncodingException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+
+        Call<Login> call = canMatch.register(new Login(billId,
+                new com.app.leon.moshtarak.Utils.Base64().encoder(billId), serial, getVersionInfo(),
+                String.valueOf(Build.VERSION.RELEASE), mobile, getDeviceName()));
         HttpClientWrapper.callHttpAsync(call, SignAccountActivity.this, context, ProgressType.SHOW.getValue());
     }
 
@@ -226,7 +247,7 @@ public class SignAccountActivity extends BaseActivity
 
         } else {
             SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
-            sharedPreference.putData(account, billId, mobile, login.getApiKey());
+            sharedPreference.putData(billId, mobile, login.getApiKey());
             new CustomDialog(DialogType.GreenRedirect, SignAccountActivity.this, getString(R.string.you_are_signed),
                     getString(R.string.dear_user), getString(R.string.login),
                     getString(R.string.accepted));
@@ -235,10 +256,10 @@ public class SignAccountActivity extends BaseActivity
                 buttonLogOut.setVisibility(View.VISIBLE);
                 change = true;
             }
-            editTextAccount.setText("");
             editTextBillId.setText("");
             editTextMobile.setText("");
-            editTextNationNumber.setText("");
+//            editTextAccount.setText("");
+//            editTextNationNumber.setText("");
         }
     }
 

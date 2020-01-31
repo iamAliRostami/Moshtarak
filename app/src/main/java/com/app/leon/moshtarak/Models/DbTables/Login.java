@@ -2,6 +2,7 @@ package com.app.leon.moshtarak.Models.DbTables;
 
 public class Login {
     String billId;
+    String billIdCoded;
     String eshterak;
     String nationalId;
     String buildSerial;
@@ -12,6 +13,19 @@ public class Login {
     String apiKey;
     String nameAndFamily;
     String message;
+    int errorCode;
+
+
+    public Login(String billId, String billIdCoded, String buildSerial, String appVersion,
+                 String osVersion, String mobile, String phoneModel) {
+        this.billId = billId;
+        this.apiKey = billIdCoded;
+        this.buildSerial = buildSerial;
+        this.appVersion = appVersion;
+        this.osVersion = osVersion;
+        this.mobile = mobile;
+        this.phoneModel = phoneModel;
+    }
 
     public Login(String billId, String eshterak, String nationalId, String buildSerial,
                  String appVersion, String osVersion, String mobile, String phoneModel) {
@@ -29,6 +43,22 @@ public class Login {
         this.apiKey = apiKey;
         this.nameAndFamily = nameAndFamily;
         this.message = message;
+    }
+
+    public String getBillIdCoded() {
+        return billIdCoded;
+    }
+
+    public void setBillIdCoded(String billIdCoded) {
+        this.billIdCoded = billIdCoded;
+    }
+
+    public int getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
     }
 
     public String getApiKey() {

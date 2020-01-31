@@ -2,8 +2,6 @@ package com.app.leon.moshtarak;
 
 import androidx.multidex.MultiDexApplication;
 
-import com.squareup.leakcanary.LeakCanary;
-
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class MyApplication extends MultiDexApplication {
@@ -16,10 +14,10 @@ public class MyApplication extends MultiDexApplication {
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            return;
-        }
-        LeakCanary.install(this);
+//        if (LeakCanary.isInAnalyzerProcess(this)) {
+//            return;
+//        }
+//        LeakCanary.install(this);
     }
 //    @Override
 //    protected void attachBaseContext(Context base) {

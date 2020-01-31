@@ -104,54 +104,54 @@
                     android:paddingBottom="@dimen/activity_mid_padding"
                     tools:ignore="Autofill,LabelFor" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/account_number"
-                    android:textSize="@dimen/textSizeMedium" />
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_gravity="center"-->
+                <!--                    android:text="@string/account_number"-->
+                <!--                    android:textSize="@dimen/textSizeMedium" />-->
 
-                <EditText
-                    android:id="@+id/editTextAccount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_mid_margin"
-                    android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_"
-                    android:gravity="center"
-                    android:inputType="number"
-                    tools:ignore="Autofill,LabelFor"
-                    android:maxLength="14"
-                    android:paddingLeft="@dimen/activity_large_padding"
-                    android:paddingTop="@dimen/activity_mid_padding"
-                    android:paddingRight="@dimen/activity_large_padding"
-                    android:paddingBottom="@dimen/activity_mid_padding" />
+                <!--                <EditText-->
+                <!--                    android:id="@+id/editTextAccount"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="@dimen/activity_mid_margin"-->
+                <!--                    android:layout_marginRight="@dimen/activity_mid_margin"-->
+                <!--                    android:background="@drawable/border_gray_"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:inputType="number"-->
+                <!--                    tools:ignore="Autofill,LabelFor"-->
+                <!--                    android:maxLength="14"-->
+                <!--                    android:paddingLeft="@dimen/activity_large_padding"-->
+                <!--                    android:paddingTop="@dimen/activity_mid_padding"-->
+                <!--                    android:paddingRight="@dimen/activity_large_padding"-->
+                <!--                    android:paddingBottom="@dimen/activity_mid_padding" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/activity_large_margin"
-                    android:layout_marginRight="@dimen/activity_large_margin"
-                    android:text="@string/nation_number"
-                    android:textSize="@dimen/textSizeMedium" />
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_gravity="center"-->
+                <!--                    android:layout_marginLeft="@dimen/activity_large_margin"-->
+                <!--                    android:layout_marginRight="@dimen/activity_large_margin"-->
+                <!--                    android:text="@string/nation_number"-->
+                <!--                    android:textSize="@dimen/textSizeMedium" />-->
 
-                <EditText
-                    tools:ignore="Autofill,LabelFor"
-                    android:id="@+id/editTextNationNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_mid_margin"
-                    android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:lines="1"
-                    android:maxLength="10"
-                    android:paddingLeft="@dimen/activity_large_padding"
-                    android:paddingTop="@dimen/activity_mid_padding"
-                    android:paddingRight="@dimen/activity_large_padding"
-                    android:paddingBottom="@dimen/activity_mid_padding" />
+                <!--                <EditText-->
+                <!--                    tools:ignore="Autofill,LabelFor"-->
+                <!--                    android:id="@+id/editTextNationNumber"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="@dimen/activity_mid_margin"-->
+                <!--                    android:layout_marginRight="@dimen/activity_mid_margin"-->
+                <!--                    android:background="@drawable/border_gray_"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:inputType="number"-->
+                <!--                    android:lines="1"-->
+                <!--                    android:maxLength="10"-->
+                <!--                    android:paddingLeft="@dimen/activity_large_padding"-->
+                <!--                    android:paddingTop="@dimen/activity_mid_padding"-->
+                <!--                    android:paddingRight="@dimen/activity_large_padding"-->
+                <!--                    android:paddingBottom="@dimen/activity_mid_padding" />-->
 
                 <TextView
                     android:layout_width="wrap_content"

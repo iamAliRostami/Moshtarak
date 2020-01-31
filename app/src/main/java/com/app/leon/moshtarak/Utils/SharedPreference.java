@@ -40,17 +40,20 @@ public class SharedPreference {
         prefsEditor.apply();
     }
 
-    public void putData(String account_number, String bill_id, String mobile_number, String api_key) {
-        putAccountNumber(account_number);
+    public void putData(String bill_id, String mobile_number, String api_key) {
+//        putAccountNumber(account_number);
         putBillID(bill_id);
         putMobileNumber(mobile_number);
         putApiKey(api_key);
     }
 
+    public void putData(String bill_id) {
+        putBillID(bill_id);
+    }
     public boolean checkIsNotEmpty() {
         if (appPrefs == null) {
             return false;
-        } else if (appPrefs.getString(SharedReferenceKeys.ACCOUNT_NUMBER.getValue(), "").isEmpty() ||
+        } else if ( //appPrefs.getString(SharedReferenceKeys.ACCOUNT_NUMBER.getValue(), "").isEmpty() ||
                 appPrefs.getString(SharedReferenceKeys.BILL_ID.getValue(), "").isEmpty() ||
                 appPrefs.getString(SharedReferenceKeys.MOBILE_NUMBER.getValue(), "").isEmpty() ||
                 appPrefs.getString(SharedReferenceKeys.API_KEY.getValue(), "").isEmpty()
@@ -58,7 +61,7 @@ public class SharedPreference {
         ) {
             return false;
         } else
-            return appPrefs.getString(SharedReferenceKeys.ACCOUNT_NUMBER.getValue(), "").length() >= 1 &&
+            return //appPrefs.getString(SharedReferenceKeys.ACCOUNT_NUMBER.getValue(), "").length() >= 1 &&
                     appPrefs.getString(SharedReferenceKeys.BILL_ID.getValue(), "").length() >= 1 &&
                     appPrefs.getString(SharedReferenceKeys.API_KEY.getValue(), "").length() >= 1 &&
                     appPrefs.getString(SharedReferenceKeys.MOBILE_NUMBER.getValue(), "").length() >= 1;
