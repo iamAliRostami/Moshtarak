@@ -64,13 +64,13 @@ public interface IAbfaService {
 
     );
     @GET("/MoshtarakinApi/Bill/GetThisBill?")
-    Call<LastBillInfo> getThisBillInfo(
+    Call<LastBillInfoV2> getThisBillInfo(
             @Query("id") String id,
             @Query("zoneId") String zoneId
     );
 
     @GET("/MoshtarakinApi/Bill/GetThisPayInfo?")
-    Call<LastBillInfo> getThisPayInfo(
+    Call<LastBillInfoV2> getThisPayInfo(
             @Query("id") String id,
             @Query("zoneId") String zoneId
     );

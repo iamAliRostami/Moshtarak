@@ -29,7 +29,6 @@ import com.app.leon.moshtarak.Utils.LovelyInfoDialog;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -215,9 +214,8 @@ public class SignAccountActivity extends BaseActivity
         final IAbfaService canMatch = retrofit.create(IAbfaService.class);
         @SuppressLint("HardwareIds") String serial = String.valueOf(Build.SERIAL);
 
-        byte[] encrypt = new byte[0];
-        encrypt = billId.getBytes(StandardCharsets.UTF_8);
-        String base64 = Base64.encodeToString(encrypt, Base64.DEFAULT);
+        byte[] encodeValue = Base64.encode(billId.getBytes(), Base64.DEFAULT);
+        String base64 = new String(encodeValue);
 
         Call<Login> call = canMatch.register(new Login(billId, base64, serial, getVersionInfo(),
                 String.valueOf(Build.VERSION.RELEASE), mobile, getDeviceName()));

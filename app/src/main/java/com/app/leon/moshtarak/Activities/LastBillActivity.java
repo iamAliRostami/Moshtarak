@@ -23,7 +23,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
-import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
@@ -34,7 +33,6 @@ import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -196,13 +194,13 @@ public class LastBillActivity extends BaseActivity {
             if (bundle1 != null) {
                 payId = bundle1.getString(BundleEnum.PAY_ID.getValue());
                 billId = bundle1.getString(BundleEnum.BILL_ID.getValue());
-                fillLatBillFromCounter(bundle1);
                 isPayed = bundle1.getBoolean(BundleEnum.IS_PAYED.getValue());
+                fillLatBillFromCounter(bundle1);
             } else {
                 isFromCardex = true;
                 Retrofit retrofit = NetworkHelper.getInstance();
                 final IAbfaService getLastBillInfo = retrofit.create(IAbfaService.class);
-                Call<LastBillInfo> call = null;
+                Call<LastBillInfoV2> call = null;
                 if (bundle2 != null) {
                     Objects.requireNonNull(getSupportActionBar()).setTitle("مشاهده قبض");
                     isPayed = false;
@@ -223,9 +221,8 @@ public class LastBillActivity extends BaseActivity {
             isLastBill = true;
             Retrofit retrofit = NetworkHelper.getInstance();
             final IAbfaService getThisBillInfo = retrofit.create(IAbfaService.class);
-            byte[] encrypt = new byte[0];
-            encrypt = billId.getBytes(StandardCharsets.UTF_8);
-            String base64 = Base64.encodeToString(encrypt, Base64.DEFAULT);
+            byte[] encodeValue = Base64.encode(billId.getBytes(), Base64.DEFAULT);
+            String base64 = new String(encodeValue);
             Call<LastBillInfoV2> call = getThisBillInfo.getLastBillInfo(billId, base64.substring(0, base64.length() - 1));
             ThisBill thisBill = new ThisBill();
             HttpClientWrapper.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
@@ -274,8 +271,8 @@ public class LastBillActivity extends BaseActivity {
                 textViewPayTypeTitle.setText(lastBillInfo.getPayTypeTitle());
                 textViewBankTitle.setText(lastBillInfo.getBankTitle());
                 //here i should add code payed from Kardex
-            }
-            if (isLastBill) {
+            } else if (isLastBill) {
+                Log.e("status", "From last bill");
                 billId = lastBillInfo.getBillId().trim();
                 payId = lastBillInfo.getPayId().trim();
                 textViewBillId.setText(billId);
@@ -360,6 +357,7 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat.setVisibility(View.GONE);
 
             } else {
+                Log.e("status", "From Cardex, not payed Or New Counter");
                 billId = lastBillInfo.getBillId().trim();
                 payId = lastBillInfo.getPayId().trim();
                 textViewBillId.setText(billId);
