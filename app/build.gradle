@@ -16,8 +16,8 @@ android {
         applicationId "com.app.leon.moshtarak"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 19
-        versionName "1.0.2.05"
+        versionCode 20
+        versionName "1.0.2.06"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config
         proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

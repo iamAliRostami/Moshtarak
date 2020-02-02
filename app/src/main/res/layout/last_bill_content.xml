@@ -380,13 +380,13 @@
                         android:layout_marginEnd="25dp"
                         android:gravity="start"
                         android:padding="6dp"
-                        android:text="@string/use"
+                        android:text="@string/use_m_3"
                         android:textColor="@color/yellow1"
                         android:textSize="@dimen/textSizeMedium"
                         tools:ignore="RtlCompat" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/textViewUse"
+                        android:id="@+id/textViewUseM3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -396,6 +396,33 @@
                         android:textSize="@dimen/textSizeMedium" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="25dp"
+                        android:gravity="start"
+                        android:padding="6dp"
+                        android:text="@string/use_litr"
+                        android:textColor="@color/yellow1"
+                        android:textSize="@dimen/textSizeMedium"
+                        tools:ignore="RtlCompat" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewUseLitr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:padding="6dp"
+                        android:textSize="@dimen/textSizeMedium" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -500,34 +527,6 @@
                         android:layout_marginEnd="25dp"
                         android:gravity="start"
                         android:padding="6dp"
-                        android:text="@string/maliat"
-                        android:textColor="@color/green2"
-                        android:textSize="@dimen/textSizeMedium"
-                        tools:ignore="RtlCompat" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/textViewTax"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:padding="6dp"
-                        android:textSize="@dimen/textSizeMedium" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_marginEnd="25dp"
-                        android:gravity="start"
-                        android:padding="6dp"
                         android:text="@string/karmozd_dafe_fazelab"
                         android:textColor="@color/green2"
                         android:textSize="@dimen/textSizeMedium"
@@ -543,7 +542,33 @@
                         android:padding="6dp"
                         android:textSize="@dimen/textSizeMedium" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="25dp"
+                        android:gravity="start"
+                        android:padding="6dp"
+                        android:text="@string/maliat"
+                        android:textColor="@color/green2"
+                        android:textSize="@dimen/textSizeMedium"
+                        tools:ignore="RtlCompat" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewTax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:padding="6dp"
+                        android:textSize="@dimen/textSizeMedium" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -572,6 +597,34 @@
                         android:textSize="@dimen/textSizeMedium" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompatKahande"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="25dp"
+                        android:gravity="start"
+                        android:padding="6dp"
+                        android:text="@string/lavazeme_kahande"
+                        android:textColor="@color/green2"
+                        android:textSize="@dimen/textSizeMedium"
+                        tools:ignore="RtlCompat" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewLavzemKahande"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:padding="6dp"
+                        android:textSize="@dimen/textSizeMedium" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/linearLayoutCompatTabsare2"
                     android:layout_width="match_parent"
@@ -776,6 +829,34 @@
                         android:textSize="@dimen/textSizeMedium" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayoutCompatTaxfif"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginEnd="25dp"
+                        android:gravity="start"
+                        android:padding="6dp"
+                        android:text="@string/taxfif"
+                        android:textColor="@color/green2"
+                        android:textSize="@dimen/textSizeMedium"
+                        tools:ignore="RtlCompat" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewTaxfif"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:padding="6dp"
+                        android:textSize="@dimen/textSizeMedium" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -985,7 +1066,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
                         android:gravity="start"
-                        android:paddingStart="6dp"
+                        android:paddingRight="6dp"
                         android:paddingTop="6dp"
                         android:paddingBottom="6dp"
                         android:text="@string/pay"
@@ -1011,7 +1092,7 @@
                         android:layout_gravity="end"
                         android:gravity="end"
                         android:paddingTop="6dp"
-                        android:paddingEnd="6dp"
+                        android:paddingLeft="6dp"
                         android:paddingBottom="6dp"
                         android:text="@string/rial"
                         android:textColor="@color/white"

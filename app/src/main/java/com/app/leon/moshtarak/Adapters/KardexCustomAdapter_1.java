@@ -58,7 +58,7 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
 //        FontManager fontManager = new FontManager(context);
 //        fontManager.setFont(linearLayout);
         textViewDate = viewHolder.findViewById(R.id.textViewDate);
-        textViewUse = viewHolder.findViewById(R.id.textViewUse);
+        textViewUse = viewHolder.findViewById(R.id.textViewUseM3);
         textViewCost = viewHolder.findViewById(R.id.textViewCost);
         textViewNote = viewHolder.findViewById(R.id.textViewNote);
 

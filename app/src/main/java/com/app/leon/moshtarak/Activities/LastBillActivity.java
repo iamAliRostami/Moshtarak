@@ -84,15 +84,20 @@ public class LastBillActivity extends BaseActivity {
     @BindView(R.id.textViewTotal)
     TextView textViewTotal;
 
-    @BindView(R.id.textViewUse)
-    TextView textViewUse;
+    @BindView(R.id.textViewUseM3)
+    TextView textViewUseM3;
+    @BindView(R.id.textViewUseLitr)
+    TextView textViewUseLitr;
     @BindView(R.id.textViewUseAverage)
     TextView textViewUseAverage;
     @BindView(R.id.textViewUseLength)
     TextView textViewUseLength;
     @BindView(R.id.textViewIsPayed)
     TextView textViewIsPayed;
-
+    @BindView(R.id.textViewLavzemKahande)
+    TextView textViewLavzemKahande;
+    @BindView(R.id.textViewTaxfif)
+    TextView textViewTaxfif;
     @BindView(R.id.textViewPayable)
     TextView textViewPayable;
     @BindView(R.id.textViewPayDate)
@@ -167,7 +172,7 @@ public class LastBillActivity extends BaseActivity {
         textViewUseLength.setText(String.valueOf(intNumber));
         floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.USE.getValue())));
         intNumber = (int) floatNumber;
-        textViewUse.setText(String.valueOf(intNumber));
+        textViewUseM3.setText(String.valueOf(intNumber));
         floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.PRE_DEBT_OR_OWE.getValue())));
         intNumber = (int) floatNumber;
         textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
@@ -254,6 +259,42 @@ public class LastBillActivity extends BaseActivity {
         imageView.setImageBitmap(bitmap);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        textViewBillId = null;
+        textViewPayId = null;
+        textViewPreNumber = null;
+        textViewNewNumber = null;
+        textViewPreDate = null;
+        textViewNewDate = null;
+        textViewAbBaha = null;
+        textViewTax = null;
+        textViewKarmozdeFazelab = null;
+        textViewTakalifBoodje = null;
+        textViewPreDebtOrOwe = null;
+        textViewDate = null;
+        textViewCost = null;
+        textViewTabsare2 = null;
+        textViewTabsare3Ab = null;
+        textViewTabsare3Fazelab = null;
+        textViewAbonmanAb = null;
+        textViewAbonmanFazelab = null;
+        textViewFasleGarm = null;
+        textViewMazadOlgoo = null;
+        textViewTotal = null;
+        textViewUseM3 = null;
+        textViewUseAverage = null;
+        textViewUseLength = null;
+        textViewIsPayed = null;
+        textViewPayable = null;
+        textViewPayDate = null;
+        textViewPayTypeTitle = null;
+        textViewBankTitle = null;
+
+        imageViewBarcode.setImageDrawable(null);
+    }
+
     class ThisBill implements ICallback<LastBillInfoV2> {
         @SuppressLint("DefaultLocale")
         @Override
@@ -308,12 +349,24 @@ public class LastBillActivity extends BaseActivity {
 //                floatNumber = Float.valueOf(lastBillInfo.getUsageM3());TODO
                 floatNumber = Float.valueOf(lastBillInfo.getMasraf());
                 intNumber = (int) floatNumber;
-                textViewUse.setText(String.valueOf(intNumber));
+                textViewUseM3.setText(String.valueOf(intNumber));
+
+                floatNumber = Float.valueOf(lastBillInfo.getMasrafLiter());
+                intNumber = (int) floatNumber;
+                textViewUseLitr.setText(String.valueOf(intNumber));
 
 //                floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());//TODO
                 floatNumber = Float.valueOf(lastBillInfo.getAbBaha());
                 intNumber = (int) floatNumber;
                 textViewAbBaha.setText(String.valueOf(intNumber));
+
+                floatNumber = Float.valueOf(lastBillInfo.getLavazemKahande());
+                intNumber = (int) floatNumber;
+                textViewLavzemKahande.setText(String.valueOf(intNumber));
+
+                floatNumber = Float.valueOf(lastBillInfo.getTaxfif());
+                intNumber = (int) floatNumber;
+                textViewTaxfif.setText(String.valueOf(intNumber));
 
                 floatNumber = Float.valueOf(lastBillInfo.getMaliat());
                 intNumber = (int) floatNumber;
@@ -386,7 +439,11 @@ public class LastBillActivity extends BaseActivity {
 
                 floatNumber = Float.valueOf(lastBillInfo.getUsageM3());
                 intNumber = (int) floatNumber;
-                textViewUse.setText(String.valueOf(intNumber));
+                textViewUseM3.setText(String.valueOf(intNumber));
+
+                floatNumber = Float.valueOf(lastBillInfo.getUsageLiter());
+                intNumber = (int) floatNumber;
+                textViewUseLitr.setText(String.valueOf(intNumber));
 
                 floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());
                 intNumber = (int) floatNumber;
@@ -463,8 +520,12 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat.setVisibility(View.GONE);
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable2);
                 linearLayoutCompat.setVisibility(View.GONE);
-//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPay);
-//                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPay);
+                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatTaxfif);
+                linearLayoutCompat.setVisibility(View.GONE);
+                linearLayoutCompat = findViewById(R.id.linearLayoutCompatKahande);
+                linearLayoutCompat.setVisibility(View.GONE);
             }
             if (isPayed) {
                 textViewIsPayed.setText(context.getString(R.string.payed_2));
@@ -476,42 +537,6 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat.setVisibility(View.GONE);
             }
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        textViewBillId = null;
-        textViewPayId = null;
-        textViewPreNumber = null;
-        textViewNewNumber = null;
-        textViewPreDate = null;
-        textViewNewDate = null;
-        textViewAbBaha = null;
-        textViewTax = null;
-        textViewKarmozdeFazelab = null;
-        textViewTakalifBoodje = null;
-        textViewPreDebtOrOwe = null;
-        textViewDate = null;
-        textViewCost = null;
-        textViewTabsare2 = null;
-        textViewTabsare3Ab = null;
-        textViewTabsare3Fazelab = null;
-        textViewAbonmanAb = null;
-        textViewAbonmanFazelab = null;
-        textViewFasleGarm = null;
-        textViewMazadOlgoo = null;
-        textViewTotal = null;
-        textViewUse = null;
-        textViewUseAverage = null;
-        textViewUseLength = null;
-        textViewIsPayed = null;
-        textViewPayable = null;
-        textViewPayDate = null;
-        textViewPayTypeTitle = null;
-        textViewBankTitle = null;
-
-        imageViewBarcode.setImageDrawable(null);
     }
 
     @Override
