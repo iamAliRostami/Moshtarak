@@ -88,7 +88,8 @@ public class BaseInfoActivity extends BaseActivity implements ICallback<MemberIn
         textViewId.setText(memberInfo.getBillId());
         textViewFile.setText(memberInfo.getRadif().substring(0, memberInfo.getRadif().indexOf(".")));
         textViewAccount.setText(memberInfo.getEshterak());
-        textViewAhad.setText(memberInfo.getDomesticUnit().concat(memberInfo.getNonDomesticUnit()));
+        int ahad = Integer.valueOf(memberInfo.getDomesticUnit()) + Integer.valueOf(memberInfo.getNonDomesticUnit());
+        textViewAhad.setText(String.valueOf(ahad));
         textViewBranchRadius.setText(memberInfo.getQotr());
         textViewCapacity.setText(memberInfo.getCapacity());
         textViewDebt.setText(memberInfo.getMande());
