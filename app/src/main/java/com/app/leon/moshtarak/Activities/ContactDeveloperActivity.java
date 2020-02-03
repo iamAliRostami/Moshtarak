@@ -33,14 +33,11 @@ public class ContactDeveloperActivity extends AppCompatActivity {
     @BindView(R.id.relativeLayout)
     RelativeLayout relativeLayout;
     Context context;
-    View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("message/rfc822");
-            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"ali.rostami33@gmail.com", "infoshamsaii@gmail.com", "mantera.sh@gmail.com"});
-            startActivity(Intent.createChooser(intent, "Choose an Email client :"));
-        }
+    View.OnClickListener onClickListener = view -> {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("message/rfc822");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"ali.rostami33@gmail.com", "infoshamsaii@gmail.com", "mantera.sh@gmail.com"});
+        startActivity(Intent.createChooser(intent, "Choose an Email client :"));
     };
 
     @Override
@@ -55,19 +52,5 @@ public class ContactDeveloperActivity extends AppCompatActivity {
         fontManager.setFont(relativeLayout);
         linearLayout1.setOnClickListener(onClickListener);
         linearLayout2.setOnClickListener(onClickListener);
-//        Display display = getWindowManager().getDefaultDisplay();
-//        Point size = new Point();
-//        display.getSize(size);
-//        int width = size.x;
-//        YoYo.with(Techniques.Tada)
-//                .duration(1000)
-//                .repeat(2)
-//                .playOn(textViewInfo);
-//        imageView1.animate()
-//                .scaleX(2f)
-//                .scaleY(2f)
-//                .translationYBy(170f)
-//                .rotation(360)
-//                .setDuration(2000);
     }
 }

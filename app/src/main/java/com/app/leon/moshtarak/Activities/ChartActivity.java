@@ -36,7 +36,6 @@ public class ChartActivity extends AppCompatActivity {
     HorizontalBarChart horizontalChart;
     Typeface typeface;
     ArrayList<String> listText = new ArrayList<>();
-    String[] labelText;
     ArrayList<Integer> listValue = new ArrayList<>();
 
     @SuppressLint("NewApi")
@@ -63,7 +62,6 @@ public class ChartActivity extends AppCompatActivity {
         setData();
     }
 
-
     void customizeChartView() {
         horizontalChart.setDrawBarShadow(false);
         horizontalChart.setDrawValueAboveBar(true);
@@ -83,15 +81,13 @@ public class ChartActivity extends AppCompatActivity {
         yl.setTypeface(typeface);
         yl.setDrawAxisLine(true);
         yl.setDrawGridLines(true);
-        yl.setAxisMinimum(-1f); // this replaces setStartAtZero(true)
-//        yl.setInverted(true);
+        yl.setAxisMinimum(-1f);
 
         YAxis yr = horizontalChart.getAxisRight();
         yr.setTypeface(typeface);
         yr.setDrawAxisLine(true);
         yr.setDrawGridLines(true);
-        yr.setAxisMinimum(-1f); // this replaces setStartAtZero(true)
-//        yr.setInverted(true);
+        yr.setAxisMinimum(-1f);
 
         horizontalChart.setFitBars(true);
         horizontalChart.setScaleEnabled(false);
@@ -125,7 +121,6 @@ public class ChartActivity extends AppCompatActivity {
                 textView.setPadding(0, 0, 0, margin);
             } else
                 params.setMargins(margin, 0, margin, 0);
-//            textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             textView.setLayoutParams(params);
             textView.setGravity(Gravity.CENTER);
             linearLayout.addView(textView);
@@ -133,7 +128,6 @@ public class ChartActivity extends AppCompatActivity {
         }
         BarDataSet bardataset = new BarDataSet(barEntries, getString(R.string.use));
         bardataset.setValueTypeface(typeface);
-//        bardataset.setValueTextSize(getResources().getDimensionPixelSize(R.dimen.textSizeSmall));
         BarData data = new BarData(bardataset);
         bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
         horizontalChart.setData(data);

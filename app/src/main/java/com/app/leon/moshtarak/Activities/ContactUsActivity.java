@@ -58,15 +58,11 @@ public class ContactUsActivity extends AppCompatActivity {
             if (ActivityCompat.checkSelfPermission(context,
                     Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 Log.e("call permission :", "Denied");
-//                Toast.makeText(context, getString(R.string.access), Toast.LENGTH_SHORT).show();
                 intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
                 startActivity(intent);
                 return;
             }
             startActivity(intent);
-//                String phone = "122";
-//                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
-//                startActivity(intent);
 
         }
     };

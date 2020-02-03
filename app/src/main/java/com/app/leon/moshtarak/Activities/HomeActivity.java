@@ -120,7 +120,6 @@ public class HomeActivity extends BaseActivity {
     };
 
     void pay() {
-
 //        Intent intent = new Intent(HomeActivity.this, PaymentInitiator.class);
 //        intent.putExtra("Type", "2");
 //        intent.putExtra("Token", "token");

@@ -19,10 +19,10 @@ import butterknife.ButterKnife;
 
 public class HelpActivity extends BaseActivity //implements OnPageChangeListener, OnLoadCompleteListener {
 {
-    public static final String SAMPLE_FILE = "1.pdf";
-    private static final String TAG = HelpActivity.class.getSimpleName();
     @BindView(R.id.webViewHelp)
     WebView webView;
+    public static final String SAMPLE_FILE = "1.pdf";
+    private static final String TAG = HelpActivity.class.getSimpleName();
     //    @BindView(R.id.pdfView)
 //    PDFView pdfView;
     Integer pageNumber = 0;
@@ -36,14 +36,12 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
-
-//        displayFromAsset();
         WebSettings webSetting = webView.getSettings();
         webSetting.setBuiltInZoomControls(true);
         webSetting.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("file:///android_asset/help.htm");
-
+//        displayFromAsset();
     }
 
 //    private void displayFromAsset() {

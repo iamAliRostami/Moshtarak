@@ -301,19 +301,17 @@ public class LastBillActivity extends BaseActivity {
         public void execute(LastBillInfoV2 lastBillInfo) {
             androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
             if (isFromCardex && isPayed) {
-                Log.e("status", "From Cardex, payed");
+                //اگر از کاردکس بود و پرداخت شده بود
                 ScrollView scrollView = findViewById(R.id.scrollView1);
                 scrollView.setVisibility(View.GONE);
                 scrollView = findViewById(R.id.scrollView2);
                 scrollView.setVisibility(View.VISIBLE);
-
                 textViewPayable.setText(lastBillInfo.getPayableReadable());
                 textViewPayDate.setText(lastBillInfo.getPayDay());
                 textViewPayTypeTitle.setText(lastBillInfo.getPayTypeTitle());
                 textViewBankTitle.setText(lastBillInfo.getBankTitle());
-                //here i should add code payed from Kardex
             } else if (isLastBill) {
-                Log.e("status", "From last bill");
+                //اگر از آخرین قبض بود
                 billId = lastBillInfo.getBillId().trim();
                 payId = lastBillInfo.getPayId().trim();
                 textViewBillId.setText(billId);

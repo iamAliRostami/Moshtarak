@@ -77,14 +77,12 @@ public class BaseInfoActivity extends BaseActivity implements ICallback<MemberIn
     private void fillInfo() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getInfo = retrofit.create(IAbfaService.class);
-
         Call<MemberInfo> call = getInfo.getInfo(billId);
         HttpClientWrapper.callHttpAsync(call, BaseInfoActivity.this, context, ProgressType.SHOW.getValue());
     }
 
     @Override
     public void execute(MemberInfo memberInfo) {
-//        String id = memberInfo.getBillId().substring(1,memberInfo.getBillId().indexOf("."));
         textViewId.setText(memberInfo.getBillId());
         textViewFile.setText(memberInfo.getRadif().substring(0, memberInfo.getRadif().indexOf(".")));
         textViewAccount.setText(memberInfo.getEshterak());
