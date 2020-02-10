@@ -112,7 +112,6 @@ public interface IAbfaService {
             @Query("billId") String billId
     );
 
-    //    @GET("/aspsmsx2.asmx/VersionInfo")
     @GET("/")
-    Call<SimpleMessage> test();
+    Call<SimpleMessage> getToken();
 }

@@ -48,7 +48,6 @@ public class HomeActivity extends BaseActivity {
         
         ButterKnife.bind(this);
         setOnClickListener();
-        pay();
     }
 
     void setOnClickListener() {
@@ -118,93 +117,4 @@ public class HomeActivity extends BaseActivity {
                 break;
         }
     };
-
-    void pay() {
-//        Intent intent = new Intent(HomeActivity.this, PaymentInitiator.class);
-//        intent.putExtra("Type", "2");
-//        intent.putExtra("Token", "token");
-//        startActivityForResult(intent, requestCodePaymentBill);
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == requestCodePaymentBill) {
-            getPaymentResultCode(resultCode, data);
-        }
-    }
-
-    private void getPaymentResultCode(int resultCode, Intent data) {
-//
-//        if (G.onMplResult != null) {
-//            G.onMplResult.onResult(false);
-//        }
-
-        String enData = "", message = "", status = "0";
-        int errorType = 0, orderId = 0;
-
-        switch (resultCode) {
-            case 1:// payment ok
-                enData = data.getStringExtra("enData");
-                message = data.getStringExtra("message");
-                status = String.valueOf(data.getIntExtra("status", 0));
-                break;
-            case 2://payment error
-                errorType = data.getIntExtra("errorType", 0);
-                orderId = data.getIntExtra("OrderID", 0);
-                break;
-            case 3://bill payment ok
-                enData = data.getStringExtra("enData");
-                message = data.getStringExtra("message");
-                status = String.valueOf(data.getIntExtra("status", 0));
-                break;
-            case 4://bill payment error
-                errorType = data.getIntExtra("errorType", 0);
-                break;
-            case 5://internal error payment
-                errorType = data.getIntExtra("errorType", 0);
-                orderId = data.getIntExtra("OrderID", 0);
-                break;
-            case 6://internal error bill
-                errorType = data.getIntExtra("errorType", 0);
-                break;
-            case 9:// internal error charge
-                errorType = data.getIntExtra("errorType", 0);
-                break;
-        }
-
-        if (errorType != 0) {
-            showErrorTypeMpl(errorType);
-        }
-    }
-
-    private void showErrorTypeMpl(int errorType) {
-        String message = "";
-        switch (errorType) {
-            case 2:
-                message = getString(R.string.time_out_error);
-                break;
-            case 1000:
-                message = getString(R.string.connection_error);
-                break;
-            case 1001:
-                message = getString(R.string.server_error);
-                break;
-            case 1002:
-                message = getString(R.string.network_error);
-                break;
-            case 201:
-                message = getString(R.string.dialog_canceled);
-                break;
-            case 2334:
-                message = getString(R.string.device_root);
-                break;
-        }
-
-        if (message.length() > 0) {
-//            HelperError.showSnackMessage(message, false);
-        }
-    }
 }

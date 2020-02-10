@@ -26,6 +26,7 @@ import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
+import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
 import com.app.leon.moshtarak.Utils.CustomTab;
@@ -37,6 +38,7 @@ import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ir.pec.mpl.pecpayment.view.PaymentInitiator;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
@@ -117,6 +119,7 @@ public class LastBillActivity extends BaseActivity {
     boolean isPayed = false;
     boolean isFromCardex = false;
     boolean isLastBill = false;
+    public static final int requestCodePaymentBill = 199;
 
     @Override
     protected void initialize() {
@@ -128,11 +131,113 @@ public class LastBillActivity extends BaseActivity {
         context = this;
         accessData();
         textViewCost.setOnClickListener(view -> {
-            if (!isPayed)
+            if (!isPayed) {
                 new CustomTab(address, LastBillActivity.this);
-            else
+                getToken();
+            } else
                 Toast.makeText(context, context.getString(R.string.payed_2), Toast.LENGTH_SHORT).show();
         });
+    }
+
+    void getToken() {
+        Retrofit retrofit = NetworkHelper.getInstance();
+        final IAbfaService getToken = retrofit.create(IAbfaService.class);
+        Call<SimpleMessage> call = getToken.getToken();
+        GetToken getToken1 = new GetToken();
+        HttpClientWrapper.callHttpAsync(call, getToken1, context, ProgressType.SHOW.getValue());
+    }
+
+    void pay(String simpleMessage) {
+        Intent intent = new Intent(LastBillActivity.this, PaymentInitiator.class);
+        intent.putExtra("Type", "2");
+        intent.putExtra("Token", simpleMessage);
+        startActivityForResult(intent, requestCodePaymentBill);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == requestCodePaymentBill) {
+            getPaymentResultCode(resultCode, data);
+        }
+    }
+
+    private void getPaymentResultCode(int resultCode, Intent data) {
+//
+//        if (G.onMplResult != null) {
+//            G.onMplResult.onResult(false);
+//        }
+
+        String enData = "", message = "", status = "0";
+        int errorType = 0, orderId = 0;
+
+        switch (resultCode) {
+            case 1:// payment ok
+                enData = data.getStringExtra("enData");
+                message = data.getStringExtra("message");
+                status = String.valueOf(data.getIntExtra("status", 0));
+                break;
+            case 2://payment error
+                errorType = data.getIntExtra("errorType", 0);
+                orderId = data.getIntExtra("OrderID", 0);
+                break;
+            case 3://bill payment ok
+                enData = data.getStringExtra("enData");
+                message = data.getStringExtra("message");
+                status = String.valueOf(data.getIntExtra("status", 0));
+                break;
+            case 4://bill payment error
+                errorType = data.getIntExtra("errorType", 0);
+                break;
+            case 5://internal error payment
+                errorType = data.getIntExtra("errorType", 0);
+                orderId = data.getIntExtra("OrderID", 0);
+                break;
+            case 6://internal error bill
+                errorType = data.getIntExtra("errorType", 0);
+                break;
+            case 9:// internal error charge
+                errorType = data.getIntExtra("errorType", 0);
+                break;
+        }
+        if (errorType != 0) {
+            showErrorTypeMpl(errorType);
+        }
+    }
+
+    private void showErrorTypeMpl(int errorType) {
+        String message = "";
+        switch (errorType) {
+            case 2:
+                message = getString(R.string.time_out_error);
+                break;
+            case 1000:
+                message = getString(R.string.connection_error);
+                break;
+            case 1001:
+                message = getString(R.string.server_error);
+                break;
+            case 1002:
+                message = getString(R.string.network_error);
+                break;
+            case 201:
+                message = getString(R.string.dialog_canceled);
+                break;
+            case 2334:
+                message = getString(R.string.device_root);
+                break;
+        }
+
+        if (message.length() > 0) {
+//            HelperError.showSnackMessage(message, false);
+        }
+    }
+
+    class GetToken implements ICallback<SimpleMessage> {
+        @Override
+        public void execute(SimpleMessage simpleMessage) {
+            pay(simpleMessage.getMessage());
+        }
     }
 
     private void accessData() {
