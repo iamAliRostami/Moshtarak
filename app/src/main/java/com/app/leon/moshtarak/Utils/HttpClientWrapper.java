@@ -2,15 +2,12 @@ package com.app.leon.moshtarak.Utils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.app.leon.moshtarak.Activities.HomeActivity;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ErrorHandlerType;
@@ -97,12 +94,4 @@ public class HttpClientWrapper {
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 
-    private static DialogInterface.OnDismissListener DismissListener(Context context) {
-        return dialog -> {
-            Log.e("cancel", "3");
-            Toast.makeText(context, "", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(context, HomeActivity.class);
-            context.startActivity(intent);
-        };
-    }
 }
