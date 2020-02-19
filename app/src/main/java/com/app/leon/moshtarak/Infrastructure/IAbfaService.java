@@ -112,6 +112,9 @@ public interface IAbfaService {
             @Query("billId") String billId
     );
 
-    @GET("/")
-    Call<SimpleMessage> getToken();
+    @POST("/MoshtarakinApi/Payment/GetTokenAb/{apiKey}")
+    Call<SimpleMessage> getToken(
+            @Path("apiKey") String apiKey
+
+    );
 }

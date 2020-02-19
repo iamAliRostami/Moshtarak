@@ -85,11 +85,11 @@ public class HttpClientWrapper {
             });
         } else {
             progressBar.getDialog().dismiss();
-            Toast.makeText(context, "not Connected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "اینترنت وصل نیست، اینترنت وایفای یا همراه خود را روشن کنید.", Toast.LENGTH_SHORT).show();
         }
     }
 
-    static boolean isOnline(Context context) {
+    private static boolean isOnline(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
     }

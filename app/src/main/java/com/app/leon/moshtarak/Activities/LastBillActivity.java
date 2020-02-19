@@ -112,7 +112,7 @@ public class LastBillActivity extends BaseActivity {
     @BindView(R.id.imageViewBarcode)
     ImageView imageViewBarcode;
     Context context;
-    String billId, payId;
+    String billId, payId, apiKey;
     String id;
     //    String zoneId;
     String address = "https://bill.bpm.bankmellat.ir/bpgwchannel/";
@@ -131,9 +131,9 @@ public class LastBillActivity extends BaseActivity {
         context = this;
         accessData();
         textViewCost.setOnClickListener(view -> {
+            getToken();
             if (!isPayed) {
                 new CustomTab(address, LastBillActivity.this);
-                getToken();
             } else
                 Toast.makeText(context, context.getString(R.string.payed_2), Toast.LENGTH_SHORT).show();
         });
@@ -142,7 +142,7 @@ public class LastBillActivity extends BaseActivity {
     void getToken() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getToken = retrofit.create(IAbfaService.class);
-        Call<SimpleMessage> call = getToken.getToken();
+        Call<SimpleMessage> call = getToken.getToken(apiKey);
         GetToken getToken1 = new GetToken();
         HttpClientWrapper.callHttpAsync(call, getToken1, context, ProgressType.SHOW.getValue());
     }
@@ -233,13 +233,6 @@ public class LastBillActivity extends BaseActivity {
         }
     }
 
-    class GetToken implements ICallback<SimpleMessage> {
-        @Override
-        public void execute(SimpleMessage simpleMessage) {
-            pay(simpleMessage.getMessage());
-        }
-    }
-
     private void accessData() {
         SharedPreference appPrefs = new SharedPreference(context);
         if (!appPrefs.checkIsNotEmpty()) {
@@ -248,7 +241,16 @@ public class LastBillActivity extends BaseActivity {
             finish();
         } else {
             billId = appPrefs.getBillID();
+            apiKey = appPrefs.getApiKey();
             fillLastBillInfo();
+        }
+    }
+
+    class GetToken implements ICallback<SimpleMessage> {
+        @Override
+        public void execute(SimpleMessage simpleMessage) {
+            Log.e("token", simpleMessage.getMessage());
+//            pay(simpleMessage.getMessage());
         }
     }
 
