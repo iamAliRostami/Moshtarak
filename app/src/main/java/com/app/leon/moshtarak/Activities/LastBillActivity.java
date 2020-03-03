@@ -302,6 +302,13 @@ public class LastBillActivity extends BaseActivity {
         intNumber = (int) floatNumber;
         textViewTax.setText(String.valueOf(intNumber));
         textViewDate.setText(bundle.getString(BundleEnum.DATE.getValue()));
+
+        androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable1);
+        linearLayoutCompat.setVisibility(View.GONE);
+        if (bundle.getBoolean(BundleEnum.IS_PAYED.getValue())) {
+            linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable2);
+            linearLayoutCompat.setVisibility(View.GONE);
+        }
     }
 
     void fillLastBillInfo() {

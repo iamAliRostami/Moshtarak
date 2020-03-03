@@ -129,12 +129,29 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <Spinner
-                    android:id="@+id/spinnerAccounts"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:gravity="center" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/activity_large_margin"
+                        android:layout_marginRight="@dimen/activity_large_margin"
+                        android:text="@string/id_bill"
+                        android:textSize="@dimen/textSizeMedium" />
+
+                    <Spinner
+                        android:id="@+id/spinnerAccounts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center" />
+
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/buttonContinue"
