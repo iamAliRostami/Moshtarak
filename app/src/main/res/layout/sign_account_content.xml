@@ -249,6 +249,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_mid_margin"
                 android:gravity="center"
+                android:textColor="@color/blue5"
                 android:text="@string/Why_We_Ask_For_This_Information"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 

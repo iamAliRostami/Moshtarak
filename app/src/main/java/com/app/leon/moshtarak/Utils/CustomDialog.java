@@ -38,8 +38,18 @@ public class CustomDialog {
             CustomYellowDialogRedirect(this.context, ButtonText);
         else if (choose == DialogType.RedRedirect)
             CustomRedDialogRedirect(this.context, ButtonText);
+        else if (choose == DialogType.Blue)
+            CustomBlueDialog(this.context, ButtonText);
     }
 
+    private static void CustomBlueDialog(final Context context, String ButtonText) {
+        lovelyStandardDialog
+                .setTopColorRes(R.color.blue5)
+                .setTopTitleColor(context.getResources().getColor(R.color.white))
+                .setButtonsBackground(R.drawable.border_blue_4)
+                .setPositiveButton(ButtonText, v -> lovelyStandardDialog.dismiss())
+                .show();
+    }
 
     private static void CustomGreenDialog(final Context context, String ButtonText) {
         lovelyStandardDialog

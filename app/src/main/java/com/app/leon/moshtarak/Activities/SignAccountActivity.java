@@ -29,7 +29,6 @@ import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
-import com.app.leon.moshtarak.Utils.LovelyInfoDialog;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 
@@ -106,15 +105,18 @@ public class SignAccountActivity extends BaseActivity
     }
 
     void setTextViewOnClickListener() {
-        textViewInfo.setOnClickListener(v -> new LovelyInfoDialog(context)
-                .setTopColorRes(R.color.grayDark)
-                .setNotShowAgainOptionEnabled(0)
-                .setNotShowAgainOptionChecked(true)
-                .setTitle(R.string.dear_user)
-                .setMessage("اطلاعات کاربری جهت تطبیق با اطلاعات ثبت شده در سامانه و جلوگیری از هر گونه سوء استفاده احتمالی از اطلاعات شماست.\n" +
-                        "این اطلاعات به صورت محرمانه نزد ما خواهد ماند.\n")
-                .show());
-
+        textViewInfo.setOnClickListener(v -> new CustomDialog(DialogType.Blue, SignAccountActivity.this,
+                "اطلاعات کاربری جهت تطبیق با اطلاعات ثبت شده در سامانه و جلوگیری از هر گونه سوء استفاده احتمالی از اطلاعات شماست.\n" +
+                        "این اطلاعات به صورت محرمانه نزد ما خواهد ماند.\n", getString(R.string.dear_user), getString(R.string.change_account),
+                getString(R.string.accepted)));
+//        textViewInfo.setOnClickListener(v -> new LovelyInfoDialog(context)
+//                .setTopColorRes(R.color.blue5)
+//                .setNotShowAgainOptionEnabled(0)
+//                .setNotShowAgainOptionChecked(true)
+//                .setTitle(R.string.dear_user)
+//                .setMessage("اطلاعات کاربری جهت تطبیق با اطلاعات ثبت شده در سامانه و جلوگیری از هر گونه سوء استفاده احتمالی از اطلاعات شماست.\n" +
+//                        "این اطلاعات به صورت محرمانه نزد ما خواهد ماند.\n")
+//                .show());
     }
 
     void setButtonSignClickListener() {

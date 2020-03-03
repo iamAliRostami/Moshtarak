@@ -28,7 +28,7 @@
             android:layout_marginTop="@dimen/activity_mid_margin"
             android:layout_marginRight="@dimen/activity_large_margin"
             android:layout_marginBottom="@dimen/activity_mid_margin"
-            android:background="@drawable/border_blue_4"
+            android:background="@drawable/border_blue_2"
             android:gravity="center"
             android:padding="@dimen/activity_mid_padding"
             android:id="@+id/textViewSmsLevel"
