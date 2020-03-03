@@ -135,7 +135,7 @@ public class LastBillActivity extends BaseActivity {
         context = this;
         accessData();
         textViewCost.setOnClickListener(view -> {
-            getToken();
+//            getToken();
             if (!isPayed) {
                 new CustomTab(address, LastBillActivity.this);
             } else

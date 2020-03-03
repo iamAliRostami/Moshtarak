@@ -199,7 +199,7 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     private void sendNumber() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService sendNumber = retrofit.create(IAbfaService.class);
-        Call<LastBillInfo> call = sendNumber.sendNumber(billId, number, phoneNumber);
+        Call<LastBillInfo> call = sendNumber.sendNumber(billId, number, "09".concat(phoneNumber), 4);
         HttpClientWrapper.callHttpAsync(call, SetCounterActivity.this, context, ProgressType.SHOW.getValue());
     }
 

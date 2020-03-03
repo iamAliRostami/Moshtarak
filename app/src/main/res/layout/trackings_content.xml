@@ -9,24 +9,71 @@
     android:id="@+id/tracking_activity">
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayoutHeader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:foregroundGravity="center_horizontal"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:adjustViewBounds="true"
             android:background="@color/transparent"
             android:padding="@dimen/activity_mid_padding"
             android:scaleType="fitCenter"
-            android:src="@drawable/img_text_header" />
+            android:src="@drawable/img_text_header"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutFooter"
+        style="@style/bottomView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:foregroundGravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        tools:ignore="RtlCompat">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="2dp"
+                android:background="@color/transparent"
+                android:foregroundGravity="center"
+                android:src="@drawable/img_logo_footer"
+                tools:ignore="RtlCompat" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/copy_right_2"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/linearLayoutFooter"
+        android:layout_below="@id/linearLayoutHeader"
+        android:foregroundGravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <ListView
             android:id="@+id/listViewTrack"
@@ -41,20 +88,11 @@
 
     <LinearLayout
         android:id="@+id/linearLayout1"
+        android:layout_above="@id/linearLayoutFooter"
+        android:layout_below="@id/linearLayoutHeader"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|top"
-            android:layout_margin="2dp"
-            android:adjustViewBounds="true"
-            android:background="@color/transparent"
-            android:padding="@dimen/activity_mid_padding"
-            android:scaleType="fitCenter"
-            android:src="@drawable/img_text_header" />
 
         <LinearLayout
             android:layout_width="match_parent"

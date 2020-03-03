@@ -42,6 +42,7 @@ public interface IAbfaService {
             @Path("api") String api,
             @Path("billId") String billId
     );
+
     @GET("/MoshtarakinApi/Member/GetInfo/{billId}")
     Call<MemberInfo> getInfo(
             @Path("billId") String billId
@@ -63,6 +64,7 @@ public interface IAbfaService {
             @Path("api") String apiKey
 
     );
+
     @GET("/MoshtarakinApi/Bill/GetThisBill?")
     Call<LastBillInfoV2> getThisBillInfo(
             @Query("id") String id,
@@ -79,7 +81,8 @@ public interface IAbfaService {
     Call<LastBillInfo> sendNumber(
             @Query("billId") String billId,
             @Query("counterclaim") String counterclaim,
-            @Query("notificationMobile") String notificationMobile
+            @Query("notificationMobile") String notificationMobile,
+            @Query("requestOrigin") int requestOrigin
     );
 
     @PUT("/MoshtarakinApi/RequestManager/RegisterNew")
