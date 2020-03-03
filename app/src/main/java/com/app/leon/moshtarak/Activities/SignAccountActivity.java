@@ -40,10 +40,6 @@ public class SignAccountActivity extends BaseActivity
         implements ICallback<Login> {
     @BindView(R.id.editTextBillId)
     EditText editTextBillId;
-    //    @BindView(R.id.editTextAccount)
-//    EditText editTextAccount;
-//    @BindView(R.id.editTextNationNumber)
-//    EditText editTextNationNumber;
     @BindView(R.id.editTextMobile)
     EditText editTextMobile;
     @BindView(R.id.buttonSign)
@@ -52,7 +48,7 @@ public class SignAccountActivity extends BaseActivity
     Button buttonLogOut;
     @BindView(R.id.textViewInfo)
     TextView textViewInfo;
-    String billId, account, mobile;//, nationNumber;
+    String billId, mobile;//, nationNumber, account;
     View viewFocus;
     Context context;
     boolean change = false;
@@ -70,14 +66,11 @@ public class SignAccountActivity extends BaseActivity
         if (sharedPreference.checkIsNotEmpty()) {
             buttonSign.setText(getResources().getString(R.string.change_account));
             buttonLogOut.setVisibility(View.VISIBLE);
-//            Objects.requireNonNull(getActionBar()).setTitle(getString(R.string.change_account));
             Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.change_account));
-
             change = true;
         } else {
             buttonSign.setText(getResources().getString(R.string.account));
             buttonLogOut.setVisibility(View.GONE);
-//            Objects.requireNonNull(getActionBar()).setTitle(getString(R.string.account));
             Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.account));
         }
         setButtonLogOutClickListener();
@@ -108,18 +101,6 @@ public class SignAccountActivity extends BaseActivity
                 viewFocus = editTextBillId;
                 viewFocus.requestFocus();
             }
-//            if (!cancel && editTextAccount.getText().length() < 7) {
-//                cancel = true;
-//                editTextAccount.setError(getString(R.string.error_empty));
-//                viewFocus = editTextAccount;
-//                viewFocus.requestFocus();
-//            }
-//            if (editTextNationNumber.getText().length() < 10) {
-//                view = editTextNationNumber;
-//                view.requestFocus();
-//                editTextNationNumber.setError(getString(R.string.nation_number_error));
-//                cancel = true;
-//            }
             if (editTextMobile.getText().length() < 9) {
                 view = editTextMobile;
                 view.requestFocus();
@@ -128,8 +109,6 @@ public class SignAccountActivity extends BaseActivity
             if (!cancel) {
                 billId = editTextBillId.getText().toString();
                 mobile = "09".concat(editTextMobile.getText().toString());
-//                account = editTextAccount.getText().toString();
-//                nationNumber = editTextNationNumber.getText().toString();
                 canMatch(billId, mobile);
             }
         });
@@ -168,45 +147,6 @@ public class SignAccountActivity extends BaseActivity
                 }
             }
         });
-//        editTextAccount.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//                if (editable.length() == 14) {
-//                    viewFocus = editTextMobile;
-//                    viewFocus.requestFocus();
-//                }
-//            }
-//        });
-
-//        editTextNationNumber.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//                if (editable.length() == 10) {
-//                    viewFocus = editTextMobile;
-//                    viewFocus.requestFocus();
-//                }
-//            }
-//        });
     }
 
     void canMatch(String billId, String mobile) {
@@ -243,8 +183,6 @@ public class SignAccountActivity extends BaseActivity
             }
             editTextBillId.setText("");
             editTextMobile.setText("");
-//            editTextAccount.setText("");
-//            editTextNationNumber.setText("");
         }
     }
 

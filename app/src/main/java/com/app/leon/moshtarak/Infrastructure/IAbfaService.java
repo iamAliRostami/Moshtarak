@@ -112,9 +112,8 @@ public interface IAbfaService {
             @Query("billId") String billId
     );
 
-    @POST("/MoshtarakinApi/Payment/GetTokenAb/{apiKey}")
+    @POST("/MoshtarakinApi/V2/Payment/GetTokenAb/{apiKey}")
     Call<SimpleMessage> getToken(
             @Path("apiKey") String apiKey
-
     );
 }

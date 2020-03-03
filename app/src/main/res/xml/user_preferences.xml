@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference
-        android:defaultValue=""
         android:key="mobile"
         android:summary="mobile of File in Database!"
-        android:title="Mobile Number"></EditTextPreference>
+        android:title="Mobile Number" />
     <EditTextPreference
-        android:defaultValue=""
         android:key="account_number"
         android:summary="Number of Account in Database!"
-        android:title="Account Number"></EditTextPreference>
+        android:title="Account Number" />
     <EditTextPreference
-        android:defaultValue=""
         android:key="bill_id"
         android:summary="ID of Bill in Database!"
-        android:title="Bill ID"></EditTextPreference>
+        android:title="Bill ID" />
+    <EditTextPreference
+        android:defaultValue="0"
+        android:key="index"
+        android:summary="index of account logged in!"
+        android:title="Index" />
 </PreferenceScreen>
