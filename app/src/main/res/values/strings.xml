@@ -28,6 +28,7 @@
     <string name="update">به روزرسانی</string>
     <string name="account">ثبت کاربر جدید</string>
     <string name="change_account">تغییر حساب کاربری من</string>
+    <string name="add_account">افزودن حساب کاربری من</string>
     <string name="recovery_code">بازیابی کد رهگیری</string>
     <string name="connect_abfa">ارتباط با آبفا</string>
     <string name="connect_developer">ارتباط با پشتیبان</string>
@@ -79,7 +80,8 @@
     <string name="webserviceAddress">http://81.90.148.25/ApiSimafa</string>
     <string name="you_are_signed"> شماره اشتراک شما در سامانه ثبت گردید</string>
     <string name="accepted">ادامه</string>
-    <string name="logout_successful">با موفقیت از حساب کاربری خود خارج شدید</string>
+    <string name="logout_successful">با موفقیت از حساب کاربری خود خارج شدید.</string>
+    <string name="change_successful">تغییر حساب کاربری با موفقیت انجام شد.</string>
     <string name="error">خطا</string>
 
     <string name="all_field_should_filled">همه فیلدها باید پر شود.</string>

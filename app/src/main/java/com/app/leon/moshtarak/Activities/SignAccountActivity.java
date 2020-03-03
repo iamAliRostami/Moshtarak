@@ -4,14 +4,19 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -22,6 +27,7 @@ import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Login;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
+import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
@@ -29,6 +35,7 @@ import com.app.leon.moshtarak.Utils.LovelyInfoDialog;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -46,12 +53,21 @@ public class SignAccountActivity extends BaseActivity
     Button buttonSign;
     @BindView(R.id.buttonLogOut)
     Button buttonLogOut;
+
+    @BindView(R.id.buttonContinue)
+    Button buttonContinue;
     @BindView(R.id.textViewInfo)
     TextView textViewInfo;
+    @BindView(R.id.linearLayoutAccounts)
+    LinearLayout linearLayoutAccounts;
+    @BindView(R.id.spinnerAccounts)
+    Spinner spinnerAccounts;
     String billId, mobile;//, nationNumber, account;
     View viewFocus;
     Context context;
     boolean change = false;
+    SharedPreference sharedPreference;
+    ArrayList<String> items = new ArrayList<>();
 
     @Override
     protected void initialize() {
@@ -61,22 +77,52 @@ public class SignAccountActivity extends BaseActivity
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
         context = this;
-
-        SharedPreference sharedPreference = new SharedPreference(context);
+        sharedPreference = new SharedPreference(context);
         if (sharedPreference.checkIsNotEmpty()) {
-            buttonSign.setText(getResources().getString(R.string.change_account));
-            buttonLogOut.setVisibility(View.VISIBLE);
+            buttonSign.setText(getResources().getString(R.string.add_account));
+            linearLayoutAccounts.setVisibility(View.VISIBLE);
+//            buttonLogOut.setVisibility(View.VISIBLE);
             Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.change_account));
             change = true;
         } else {
             buttonSign.setText(getResources().getString(R.string.account));
-            buttonLogOut.setVisibility(View.GONE);
+            linearLayoutAccounts.setVisibility(View.GONE);
             Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.account));
         }
+        Log.e("Length", String.valueOf(sharedPreference.getLength()));
         setButtonLogOutClickListener();
+        setButtonContinueClickListener();
         setButtonSignClickListener();
         setEditTextChangedListener();
         setTextViewOnClickListener();
+        fillSpinner();
+    }
+
+    void fillSpinner() {
+        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "font/BYekan_3.ttf");
+
+        if (sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()) != null) {
+            items = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue());
+        }
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(context,
+//                android.R.layout.simple_spinner_dropdown_item, items) {
+//            @NotNull
+//            @Override
+//            public View getView(int position, View convertView, @NotNull ViewGroup parent) {
+//                View view = super.getView(position, convertView, parent);
+//                final CheckedTextView textView = view.findViewById(android.R.id.text1);
+//                textView.setTypeface(typeface);
+//                textView.setChecked(true);
+//                textView.setTextColor(getResources().getColor(R.color.black));
+//                return view;
+//            }
+//        };
+        if (items.size() > 0) {
+            spinnerAccounts.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item,
+                    items));
+//            spinnerAccounts.setAdapter(arrayAdapter);
+            spinnerAccounts.setSelection(sharedPreference.getIndex());
+        }
     }
 
     void setTextViewOnClickListener() {
@@ -116,14 +162,19 @@ public class SignAccountActivity extends BaseActivity
 
     void setButtonLogOutClickListener() {
         buttonLogOut.setOnClickListener(view -> {
-            SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
-            sharedPreference.putData("", "", "");
+            sharedPreference.removeItem(spinnerAccounts.getSelectedItemPosition());
             new CustomDialog(DialogType.YellowRedirect, SignAccountActivity.this,
                     getString(R.string.logout_successful), getString(R.string.dear_user), getString(R.string.logout),
                     getString(R.string.accepted));
-            buttonSign.setText(getResources().getString(R.string.account));
-            buttonLogOut.setVisibility(View.GONE);
-            change = false;
+        });
+    }
+
+    void setButtonContinueClickListener() {
+        buttonContinue.setOnClickListener(view -> {
+            new CustomDialog(DialogType.YellowRedirect, SignAccountActivity.this,
+                    getString(R.string.change_successful), getString(R.string.dear_user), getString(R.string.change_account),
+                    getString(R.string.accepted));
+            sharedPreference.putIndex(spinnerAccounts.getSelectedItemPosition());
         });
     }
 
@@ -171,8 +222,9 @@ public class SignAccountActivity extends BaseActivity
                     getString(R.string.accepted));
 
         } else {
-            SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
-            sharedPreference.putData(billId, mobile, login.getApiKey());
+//            SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
+//            sharedPreference.putData(billId, mobile, login.getApiKey());
+            sharedPreference.putDataArray(mobile, billId, login.getApiKey());
             new CustomDialog(DialogType.GreenRedirect, SignAccountActivity.this, getString(R.string.you_are_signed),
                     getString(R.string.dear_user), getString(R.string.login),
                     getString(R.string.accepted));

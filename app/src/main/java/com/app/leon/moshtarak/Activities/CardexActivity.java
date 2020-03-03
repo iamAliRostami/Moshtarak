@@ -18,6 +18,7 @@ import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Kardex;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
+import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
@@ -67,19 +68,19 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     }
 
     private void accessData() {
-        SharedPreference appPrefs = new SharedPreference(context);
-        if (!appPrefs.checkIsNotEmpty()) {
+        SharedPreference sharedPreference = new SharedPreference(context);
+        if (!sharedPreference.checkIsNotEmpty()) {
             Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
             startActivity(intent);
             finish();
         } else {
-            billId = appPrefs.getBillID();
+            billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
+                    get(sharedPreference.getIndex());
             fillKardex();
         }
     }
 
     void fillKardex() {
-
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getKardex = retrofit.create(IAbfaService.class);
         Call<ArrayList<Kardex>> call = getKardex.getKardex(billId);

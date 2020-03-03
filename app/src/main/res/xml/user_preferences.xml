@@ -17,4 +17,9 @@
         android:key="index"
         android:summary="index of account logged in!"
         android:title="Index" />
+    <EditTextPreference
+        android:defaultValue="0"
+        android:key="length"
+        android:summary="length of accounts logged in!"
+        android:title="length" />
 </PreferenceScreen>

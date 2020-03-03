@@ -39,9 +39,15 @@ public class SharedPreference {
         prefsEditor.apply();
     }
 
-    private void putLength(int index) {
+    private void putLength(int length) {
         SharedPreferences.Editor prefsEditor = appPrefs.edit();
-        prefsEditor.putInt(SharedReferenceKeys.LENGTH.getValue(), index);
+        prefsEditor.putInt(SharedReferenceKeys.LENGTH.getValue(), length);
+        prefsEditor.apply();
+    }
+
+    public void putIndex(int index) {
+        SharedPreferences.Editor prefsEditor = appPrefs.edit();
+        prefsEditor.putInt(SharedReferenceKeys.INDEX.getValue(), index);
         prefsEditor.apply();
     }
 
@@ -54,18 +60,9 @@ public class SharedPreference {
     public boolean checkIsNotEmpty() {
         if (appPrefs == null) {
             return false;
-        } else if ( //appPrefs.getString(SharedReferenceKeys.ACCOUNT_NUMBER.getValue(), "").isEmpty() ||
-                appPrefs.getString(SharedReferenceKeys.BILL_ID.getValue(), "").isEmpty() ||
-                        appPrefs.getString(SharedReferenceKeys.MOBILE_NUMBER.getValue(), "").isEmpty() ||
-                        appPrefs.getString(SharedReferenceKeys.API_KEY.getValue(), "").isEmpty()
-
-        ) {
-            return false;
-        } else
-            return //appPrefs.getString(SharedReferenceKeys.ACCOUNT_NUMBER.getValue(), "").length() >= 1 &&
-                    appPrefs.getString(SharedReferenceKeys.BILL_ID.getValue(), "").length() >= 1 &&
-                            appPrefs.getString(SharedReferenceKeys.API_KEY.getValue(), "").length() >= 1 &&
-                            appPrefs.getString(SharedReferenceKeys.MOBILE_NUMBER.getValue(), "").length() >= 1;
+        } else {
+            return appPrefs.getInt(SharedReferenceKeys.LENGTH.getValue(), 0) != 0;
+        }
     }
 
     public String getMobileNumber() {
@@ -84,7 +81,34 @@ public class SharedPreference {
         return appPrefs.getInt(SharedReferenceKeys.LENGTH.getValue(), 0);
     }
 
-    public void saveArrayList(ArrayList<String> list, String key) {
+    public int getIndex() {
+        return appPrefs.getInt(SharedReferenceKeys.INDEX.getValue(), 0);
+    }
+
+    public void removeItem(int index) {
+        int length = getLength();
+        if (index < length) {
+            ArrayList<String> billIds = getArrayList(SharedReferenceKeys.BILL_ID.getValue());
+            ArrayList<String> apiKeys = getArrayList(SharedReferenceKeys.API_KEY.getValue());
+            ArrayList<String> mobileNumbers = getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue());
+
+            billIds.remove(index);
+            mobileNumbers.remove(index);
+            apiKeys.remove(index);
+
+            saveArrayList(billIds, SharedReferenceKeys.BILL_ID.getValue());
+            saveArrayList(mobileNumbers, SharedReferenceKeys.MOBILE_NUMBER.getValue());
+            saveArrayList(apiKeys, SharedReferenceKeys.API_KEY.getValue());
+
+            length = length - 1;
+            index = length - 1;
+
+            putIndex(index);
+            putLength(length);
+        }
+    }
+
+    private void saveArrayList(ArrayList<String> list, String key) {
         SharedPreferences.Editor editor = appPrefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(list);
@@ -100,12 +124,16 @@ public class SharedPreference {
         return gson.fromJson(json, type);
     }
 
-    void putDataArray(String mobileNumber, String billId, String apiKey) {
-        ArrayList<String> billIds = getArrayList(SharedReferenceKeys.BILL_ID.getValue());
-        ArrayList<String> apiKeys = getArrayList(SharedReferenceKeys.API_KEY.getValue());
-        ArrayList<String> mobileNumbers = getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue());
+    public void putDataArray(String mobileNumber, String billId, String apiKey) {
         int length = getLength();
-
+        ArrayList<String> billIds = new ArrayList<>();
+        ArrayList<String> apiKeys = new ArrayList<>();
+        ArrayList<String> mobileNumbers = new ArrayList<>();
+        if (length > 0) {
+            billIds = getArrayList(SharedReferenceKeys.BILL_ID.getValue());
+            apiKeys = getArrayList(SharedReferenceKeys.API_KEY.getValue());
+            mobileNumbers = getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue());
+        }
         billIds.add(billId);
         apiKeys.add(apiKey);
         mobileNumbers.add(mobileNumber);
@@ -113,6 +141,7 @@ public class SharedPreference {
         saveArrayList(billIds, SharedReferenceKeys.BILL_ID.getValue());
         saveArrayList(mobileNumbers, SharedReferenceKeys.MOBILE_NUMBER.getValue());
         saveArrayList(apiKeys, SharedReferenceKeys.API_KEY.getValue());
+        putIndex(length);
         length = length + 1;
         putLength(length);
     }

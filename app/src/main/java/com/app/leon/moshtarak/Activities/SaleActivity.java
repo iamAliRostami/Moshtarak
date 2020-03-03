@@ -21,6 +21,7 @@ import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.RegisterNewDto;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
+import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
@@ -116,7 +117,11 @@ public class SaleActivity extends BaseActivity
         ButterKnife.bind(this);
         context = this;
         sharedPreference = new SharedPreference(context);
-        editTextMobile.setText(sharedPreference.getMobileNumber().replaceFirst("09", ""));
+
+        if (sharedPreference.checkIsNotEmpty()) {
+            editTextMobile.setText(sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
+                    get(sharedPreference.getIndex()).replaceFirst("09", ""));
+        }
         View view = radioGroupService;
         view.requestFocus();
         radioButtonService1.setChecked(true);

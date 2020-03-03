@@ -1,5 +1,6 @@
 package com.app.leon.moshtarak.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Session;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
+import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.FontManager;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
@@ -33,6 +35,8 @@ public class SessionActivity extends AppCompatActivity implements ICallback<Arra
     SessionCustomAdapter sessionCustomAdapter;
     @BindView(R.id.listViewSession)
     ListView listViewSession;
+
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
@@ -43,13 +47,14 @@ public class SessionActivity extends AppCompatActivity implements ICallback<Arra
         ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
         FontManager fontManager = new FontManager(context);
         fontManager.setFont(constraintLayout);
-        SharedPreference appPrefs = new SharedPreference(context);
-        if (!appPrefs.checkIsNotEmpty()) {
+        SharedPreference sharedPreference = new SharedPreference(context);
+        if (!sharedPreference.checkIsNotEmpty()) {
             Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
             startActivity(intent);
             finish();
         } else {
-            billId = appPrefs.getBillID();
+            billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
+                    get(sharedPreference.getIndex());
             getAllSession();
         }
 

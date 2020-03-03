@@ -1,5 +1,6 @@
 package com.app.leon.moshtarak.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Request;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
+import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
@@ -38,6 +40,7 @@ public class RecoveryCodeActivity extends AppCompatActivity implements ICallback
     @BindView(R.id.listViewRequest)
     ListView listViewRequest;
 
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
@@ -45,13 +48,14 @@ public class RecoveryCodeActivity extends AppCompatActivity implements ICallback
         setContentView(R.layout.recovery_code_activity);
         ButterKnife.bind(this);
         context = this;
-        SharedPreference appPrefs = new SharedPreference(context);
-        if (!appPrefs.checkIsNotEmpty()) {
+        SharedPreference sharedPreference = new SharedPreference(context);
+        if (!sharedPreference.checkIsNotEmpty()) {
             Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
             startActivity(intent);
             finish();
         } else {
-            billId = appPrefs.getBillID();
+            billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
+                    get(sharedPreference.getIndex());
             getAllSession();
         }
         setOnEditTextSearchChangedListener();

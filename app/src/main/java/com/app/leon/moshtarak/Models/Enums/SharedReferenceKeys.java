@@ -9,6 +9,7 @@ public enum SharedReferenceKeys {
     BILL_ID("bill_id"),
     MOBILE_NUMBER("mobile_number"),
     LENGTH("length"),
+    INDEX("index"),
     API_KEY("api_key");
 
     private final String value;

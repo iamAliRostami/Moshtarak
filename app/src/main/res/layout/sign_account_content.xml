@@ -2,12 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sign_account_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/sign_account_activity"
+    android:background="@drawable/img_background"
+    android:layoutDirection="rtl"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.app.leon.moshtarak.Activities.SignAccountActivity"
-    android:layoutDirection="rtl"
     tools:ignore="UnusedAttribute">
 
     <LinearLayout
@@ -36,184 +37,114 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/activity_mid_margin"
-        android:background="@drawable/border_gray_"
-        android:orientation="vertical"
-        android:padding="@dimen/activity_mid_padding">
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_mid_margin"
-            android:layout_marginTop="@dimen/activity_mid_margin"
-            android:layout_marginRight="@dimen/activity_mid_margin"
-            android:gravity="start"
-            android:text="@string/dear_user"
-            android:textColor="@color/red1"
-            android:textSize="@dimen/textSizeSmall" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|right"
-            android:layout_marginLeft="@dimen/activity_mid_margin"
-            android:layout_marginRight="@dimen/activity_mid_margin"
-            android:gravity="right"
-            android:text="@string/input_message"
-            android:textSize="@dimen/textSizeSmall"
-            tools:ignore="RtlHardcoded" />
+            android:layout_margin="@dimen/activity_mid_margin"
+            android:background="@drawable/border_gray_"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_mid_padding">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_mid_margin"
+                android:layout_marginTop="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
+                android:gravity="start"
+                android:text="@string/dear_user"
+                android:textColor="@color/red1"
+                android:textSize="@dimen/textSizeSmall" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginLeft="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
+                android:gravity="right"
+                android:text="@string/input_message"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSizeSmall"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            style="@style/bottomView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:foregroundGravity="center"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            tools:ignore="ObsoleteLayoutParam,RtlCompat">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginEnd="2dp"
+                    android:background="@color/transparent"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/img_logo_footer"
+                    tools:ignore="RtlCompat" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/copy_right_2"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/linearLayoutFooter"
         android:layout_below="@id/linearLayoutHeader"
         tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/activity_large_margin"
+            android:layout_marginRight="@dimen/activity_large_margin"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_large_padding"
+            android:paddingRight="@dimen/activity_large_padding">
+
             <LinearLayout
+                android:id="@+id/linearLayoutAccounts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/activity_large_margin"
-                android:layout_marginRight="@dimen/activity_large_margin"
-                android:foregroundGravity="center"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/activity_large_padding"
-                android:paddingRight="@dimen/activity_large_padding">
+                android:orientation="vertical">
 
-                <TextView
+                <Spinner
+                    android:id="@+id/spinnerAccounts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/id_bill"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:gravity="center" />
 
-                <EditText
-                    android:id="@+id/editTextBillId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_mid_margin"
-                    android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:maxLength="13"
-                    android:paddingLeft="@dimen/activity_large_padding"
-                    android:paddingTop="@dimen/activity_mid_padding"
-                    android:paddingRight="@dimen/activity_large_padding"
-                    android:paddingBottom="@dimen/activity_mid_padding"
-                    tools:ignore="Autofill,LabelFor" />
-
-                <!--                <TextView-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_gravity="center"-->
-                <!--                    android:text="@string/account_number"-->
-                <!--                    android:textSize="@dimen/textSizeMedium" />-->
-
-                <!--                <EditText-->
-                <!--                    android:id="@+id/editTextAccount"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginLeft="@dimen/activity_mid_margin"-->
-                <!--                    android:layout_marginRight="@dimen/activity_mid_margin"-->
-                <!--                    android:background="@drawable/border_gray_"-->
-                <!--                    android:gravity="center"-->
-                <!--                    android:inputType="number"-->
-                <!--                    tools:ignore="Autofill,LabelFor"-->
-                <!--                    android:maxLength="14"-->
-                <!--                    android:paddingLeft="@dimen/activity_large_padding"-->
-                <!--                    android:paddingTop="@dimen/activity_mid_padding"-->
-                <!--                    android:paddingRight="@dimen/activity_large_padding"-->
-                <!--                    android:paddingBottom="@dimen/activity_mid_padding" />-->
-
-                <!--                <TextView-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_gravity="center"-->
-                <!--                    android:layout_marginLeft="@dimen/activity_large_margin"-->
-                <!--                    android:layout_marginRight="@dimen/activity_large_margin"-->
-                <!--                    android:text="@string/nation_number"-->
-                <!--                    android:textSize="@dimen/textSizeMedium" />-->
-
-                <!--                <EditText-->
-                <!--                    tools:ignore="Autofill,LabelFor"-->
-                <!--                    android:id="@+id/editTextNationNumber"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginLeft="@dimen/activity_mid_margin"-->
-                <!--                    android:layout_marginRight="@dimen/activity_mid_margin"-->
-                <!--                    android:background="@drawable/border_gray_"-->
-                <!--                    android:gravity="center"-->
-                <!--                    android:inputType="number"-->
-                <!--                    android:lines="1"-->
-                <!--                    android:maxLength="10"-->
-                <!--                    android:paddingLeft="@dimen/activity_large_padding"-->
-                <!--                    android:paddingTop="@dimen/activity_mid_padding"-->
-                <!--                    android:paddingRight="@dimen/activity_large_padding"-->
-                <!--                    android:paddingBottom="@dimen/activity_mid_padding" />-->
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/activity_large_margin"
-                    android:layout_marginRight="@dimen/activity_large_margin"
-                    android:text="@string/mobile_number"
-                    android:textSize="@dimen/textSizeMedium" />
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutMobile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-
-                    <EditText
-                        android:id="@+id/editTextMobile"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/activity_mid_margin"
-                        android:layout_marginRight="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:background="@drawable/border_gray_"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:lines="1"
-                        tools:ignore="Autofill,LabelFor"
-                        android:maxLength="9"
-                        android:paddingLeft="@dimen/activity_large_padding"
-                        android:paddingTop="@dimen/activity_mid_padding"
-                        android:paddingRight="@dimen/activity_large_padding"
-                        android:paddingBottom="@dimen/activity_mid_padding" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
-                        android:text="09"
-                        android:textSize="@dimen/textSizeMedium" />
-
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textViewInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/activity_mid_margin"
-                    android:gravity="center"
-                    android:text="@string/Why_We_Ask_For_This_Information"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
                 <Button
-                    android:id="@+id/buttonSign"
+                    android:id="@+id/buttonContinue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/activity_mid_margin"
                     android:background="@drawable/border_yellow_"
-                    android:text="@string/login"
+                    android:text="@string/change_account"
                     android:textColor="@color/white"
                     android:textSize="@dimen/textSizeMedium" />
 
@@ -227,5 +158,95 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/textSizeMedium" />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/id_bill"
+                android:textSize="@dimen/textSizeMedium" />
+
+            <EditText
+                android:id="@+id/editTextBillId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
+                android:background="@drawable/border_gray_"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="13"
+                android:paddingLeft="@dimen/activity_large_padding"
+                android:paddingTop="@dimen/activity_mid_padding"
+                android:paddingRight="@dimen/activity_large_padding"
+                android:paddingBottom="@dimen/activity_mid_padding"
+                tools:ignore="Autofill,LabelFor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_large_margin"
+                android:layout_marginRight="@dimen/activity_large_margin"
+                android:text="@string/mobile_number"
+                android:textSize="@dimen/textSizeMedium" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/editTextMobile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_gray_"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="9"
+                    android:paddingLeft="@dimen/activity_large_padding"
+                    android:paddingTop="@dimen/activity_mid_padding"
+                    android:paddingRight="@dimen/activity_large_padding"
+                    android:paddingBottom="@dimen/activity_mid_padding"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_mid_margin"
+                    android:layout_marginEnd="@dimen/activity_mid_margin"
+                    android:text="09"
+                    android:textSize="@dimen/textSizeMedium" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:gravity="center"
+                android:text="@string/Why_We_Ask_For_This_Information"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/buttonSign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:background="@drawable/border_green_"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSizeMedium" />
+
+        </LinearLayout>
     </ScrollView>
 </RelativeLayout>

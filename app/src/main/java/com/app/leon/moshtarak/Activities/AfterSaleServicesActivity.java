@@ -22,6 +22,7 @@ import com.app.leon.moshtarak.Models.DbTables.RegisterAsDto;
 import com.app.leon.moshtarak.Models.DbTables.Service;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
+import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
@@ -70,8 +71,10 @@ public class AfterSaleServicesActivity extends BaseActivity {
             startActivity(intent);
             finish();
         } else {
-            billId = sharedPreference.getBillID();
-            editTextMobile.setText(sharedPreference.getMobileNumber().replaceFirst("09", ""));
+            billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
+                    get(sharedPreference.getIndex());
+            editTextMobile.setText(sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
+                    get(sharedPreference.getIndex()).replaceFirst("09", ""));
             getServices();
             setOnButtonSubmitClickListener();
         }

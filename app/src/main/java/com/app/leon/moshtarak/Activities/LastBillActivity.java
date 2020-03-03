@@ -26,6 +26,7 @@ import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
+import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
@@ -234,14 +235,16 @@ public class LastBillActivity extends BaseActivity {
     }
 
     private void accessData() {
-        SharedPreference appPrefs = new SharedPreference(context);
-        if (!appPrefs.checkIsNotEmpty()) {
+        SharedPreference sharedPreference = new SharedPreference(context);
+        if (!sharedPreference.checkIsNotEmpty()) {
             Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
             startActivity(intent);
             finish();
         } else {
-            billId = appPrefs.getBillID();
-            apiKey = appPrefs.getApiKey();
+            billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
+                    get(sharedPreference.getIndex());
+            apiKey = sharedPreference.getArrayList(SharedReferenceKeys.API_KEY.getValue()).
+                    get(sharedPreference.getIndex());
             fillLastBillInfo();
         }
     }
