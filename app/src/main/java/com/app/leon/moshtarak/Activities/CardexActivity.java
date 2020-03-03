@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -96,5 +97,9 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
             yAxisData.add((int) floatNumber);
             axisValues.add(kardexes.get(i).getOweDate());
         }
+        LayoutInflater inflater = getLayoutInflater();
+        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.cardex_header, listViewCardex, false);
+
+        listViewCardex.addHeaderView(header, null, false);
     }
 }

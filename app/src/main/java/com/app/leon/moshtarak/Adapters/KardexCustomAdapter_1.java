@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -44,63 +45,59 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View viewHolder;
-        if (position % 2 == 0)
-            viewHolder = layoutInflater.inflate(R.layout.item_cardex_1, null);
-        else
-            viewHolder = layoutInflater.inflate(R.layout.item_cardex_2, null);
+        if (position == 0) viewHolder = layoutInflater.inflate(R.layout.item_cardex_3, null);
+        else {
+            if (position % 2 == 0)
+                viewHolder = layoutInflater.inflate(R.layout.item_cardex_1, null);
+            else
+                viewHolder = layoutInflater.inflate(R.layout.item_cardex_2, null);
 
-        Kardex kardex = kardexes.get(position);
-        TextView textViewDate;
-        TextView textViewUse;
-        TextView textViewCost;
-        TextView textViewNote;
-        LinearLayout linearLayoutItem = viewHolder.findViewById(R.id.linearLayoutItem);
+            Kardex kardex = kardexes.get(position);
+            TextView textViewDate = viewHolder.findViewById(R.id.textViewDate);
+            TextView textViewUse = viewHolder.findViewById(R.id.textViewUseM3);
+            TextView textViewCost = viewHolder.findViewById(R.id.textViewCost);
+            TextView textViewNote = viewHolder.findViewById(R.id.textViewNote);
+            ImageView imageViewInfo = viewHolder.findViewById(R.id.imageViewInfo);
+            LinearLayout linearLayoutItem = viewHolder.findViewById(R.id.linearLayoutItem);
 //        FontManager fontManager = new FontManager(context);
 //        fontManager.setFont(linearLayout);
-        textViewDate = viewHolder.findViewById(R.id.textViewDate);
-        textViewUse = viewHolder.findViewById(R.id.textViewUseM3);
-        textViewCost = viewHolder.findViewById(R.id.textViewCost);
-        textViewNote = viewHolder.findViewById(R.id.textViewNote);
 
-        float floatNumber = Float.valueOf(kardex.getAmount());
-        int intNumber = (int) floatNumber;
-        textViewCost.setText(String.valueOf(intNumber));
-        textViewNote.setText(kardex.getDescription());
-        floatNumber = Float.valueOf(kardex.getUsage());
-        intNumber = (int) floatNumber;
-        textViewUse.setText(String.valueOf(intNumber));
 
-        textViewDate.setText(kardex.getOweDate());
+            float floatNumber = Float.valueOf(kardex.getAmount());
+            int intNumber = (int) floatNumber;
+            textViewCost.setText(String.valueOf(intNumber));
+            textViewNote.setText(kardex.getDescription());
+            floatNumber = Float.valueOf(kardex.getUsage());
+            intNumber = (int) floatNumber;
+            textViewUse.setText(String.valueOf(intNumber));
 
-//        String owe = kardex.getOweDate();
-//        String creditor = kardex.getCreditorDate().trim();
-//        if (TextUtils.isEmpty(creditor)) {
-//            textViewDate.setText(owe);
-//        } else if (owe == null || owe.equals("null") || TextUtils.isEmpty(owe)) {
-//            textViewDate.setText(creditor);
-//        }
+            textViewDate.setText(kardex.getOweDate());
 
-        if (kardex.isBill()) {
-            textViewNote.setTextColor(context.getResources().getColor(R.color.colorAccentIndigo));
-            textViewCost.setTextColor(context.getResources().getColor(R.color.pink2));
+            if (kardex.isBill()) {
+                textViewNote.setTextColor(context.getResources().getColor(R.color.colorAccentIndigo));
+                textViewCost.setTextColor(context.getResources().getColor(R.color.pink2));
+                imageViewInfo.setImageDrawable(context.getResources().getDrawable(R.drawable.img_last_bill1));
+//                imageViewInfo.setImageDrawable(context.getResources().getDrawable(R.drawable.cash_payment));
+//                src = "@drawable/cash_payment"
 
+            }
+            linearLayoutItem.setOnClickListener(view ->
+            {
+                Intent intent = new Intent(context, LastBillActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString(BundleEnum.ID.getValue(), kardex.getId());
+                bundle.putString(BundleEnum.ZONE_ID.getValue(), kardex.getZoneId());
+                if (kardex.isPay())
+                    intent.putExtra(BundleEnum.THIS_BILL_PAYED.getValue(), bundle);
+                else if (kardex.isBill())
+                    intent.putExtra(BundleEnum.THIS_BILL.getValue(), bundle);
+                context.startActivity(intent);
+            });
+            textViewCost.setGravity(1);
+            textViewNote.setGravity(1);
+            textViewDate.setGravity(1);
+            textViewUse.setGravity(1);
         }
-        linearLayoutItem.setOnClickListener(view ->
-        {
-            Intent intent = new Intent(context, LastBillActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putString(BundleEnum.ID.getValue(), kardex.getId());
-            bundle.putString(BundleEnum.ZONE_ID.getValue(), kardex.getZoneId());
-            if (kardex.isPay())
-                intent.putExtra(BundleEnum.THIS_BILL_PAYED.getValue(), bundle);
-            else if (kardex.isBill())
-                intent.putExtra(BundleEnum.THIS_BILL.getValue(), bundle);
-            context.startActivity(intent);
-        });
-        textViewCost.setGravity(1);
-        textViewNote.setGravity(1);
-        textViewDate.setGravity(1);
-        textViewUse.setGravity(1);
         return viewHolder;
     }
 

@@ -17,6 +17,7 @@
                 android:id="@+id/imageViewIcon"
                 android:layout_width="70px"
                 android:layout_height="70px"
+                android:src="@drawable/img_chart"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:gravity="start" />
@@ -29,7 +30,7 @@
                 android:layout_marginRight="@dimen/activity_mid_margin"
                 android:gravity="end|center_vertical"
                 android:padding="@dimen/activity_mid_padding"
-                android:text="title"
+                android:text="@string/kardex"
                 android:textColor="@color/gray2"
                 android:textSize="@dimen/textSizeMedium" />
         </LinearLayout>

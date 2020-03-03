@@ -74,6 +74,15 @@ public class LastBillInfoV2 {
     private String payDay;
     private String payTypeId;
     private String payTypeTitle;
+    private float amount;
+
+    public float getAmount() {
+        return amount;
+    }
+
+    public void setAmount(float amount) {
+        this.amount = amount;
+    }
 
     public LastBillInfoV2(String preReadingDate, String currentReadingDate, String duration,
                           String preReadingNumber, String currentReadingNumber, String usageM3,

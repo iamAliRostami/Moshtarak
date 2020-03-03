@@ -5,9 +5,11 @@
     android:id="@+id/cardex_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img_background"
     android:layoutDirection="rtl"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.app.leon.moshtarak.Activities.CardexActivity">
+    tools:context="com.app.leon.moshtarak.Activities.CardexActivity"
+    tools:ignore="UnusedAttribute">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,6 +31,8 @@
             android:id="@+id/linearLayoutChart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:background="@drawable/border_blue_2"
             android:orientation="horizontal">
 
@@ -41,83 +45,82 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/cardex"
+                android:text="@string/chart1"
                 android:textColor="@color/white"
                 android:textSize="@dimen/textSizeLarge" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:src="@drawable/img_chart"
-                tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry" />
+            <!--            <ImageView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:layout_margin="@dimen/activity_mid_margin"-->
+            <!--                android:src="@drawable/img_chart"-->
+            <!--                tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry" />-->
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:orientation="horizontal"
-            android:weightSum="4">
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="@dimen/activity_mid_margin"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:weightSum="4">-->
 
 
-            <TextView
-                android:id="@+id/textViewDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="@dimen/activity_mid_margin"
-                android:text="@string/date"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/textViewUseM3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="@dimen/activity_mid_margin"
-                android:text="@string/use"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+        <!--            <TextView-->
+        <!--                android:id="@+id/textViewDate"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_margin="@dimen/activity_mid_margin"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:gravity="center"-->
+        <!--                android:padding="@dimen/activity_mid_margin"-->
+        <!--                android:text="@string/date"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                android:textStyle="bold" />-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/textViewUseM3"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_margin="@dimen/activity_mid_margin"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:gravity="center"-->
+        <!--                android:padding="@dimen/activity_mid_margin"-->
+        <!--                android:text="@string/use"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                android:textStyle="bold" />-->
 
-            <TextView
-                android:id="@+id/textViewCost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="@dimen/activity_mid_margin"
-                android:text="@string/cost"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+        <!--            <TextView-->
+        <!--                android:id="@+id/textViewCost"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_margin="@dimen/activity_mid_margin"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:gravity="center"-->
+        <!--                android:padding="@dimen/activity_mid_margin"-->
+        <!--                android:text="@string/cost"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                android:textStyle="bold" />-->
 
-            <TextView
-                android:id="@+id/textViewNote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="@dimen/activity_mid_margin"
-                android:text="@string/note"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center" />
-        </LinearLayout>
+        <!--            <TextView-->
+        <!--                android:id="@+id/textViewNote"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_margin="@dimen/activity_mid_margin"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:gravity="center"-->
+        <!--                android:padding="@dimen/activity_mid_margin"-->
+        <!--                android:text="@string/note"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                android:textStyle="bold" />-->
+        <!--            <ImageView-->
+        <!--                android:layout_width="30dp"-->
+        <!--                android:layout_height="30dp"-->
+        <!--                android:layout_gravity="center" />-->
+        <!--        </LinearLayout>-->
 
         <ListView
             android:id="@+id/listViewCardex"
@@ -139,4 +142,37 @@
         <!--android:scrollbars="vertical" />-->
     </LinearLayout>
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        style="@style/bottomView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:foregroundGravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        tools:ignore="RtlCompat">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="2dp"
+                android:background="@color/transparent"
+                android:foregroundGravity="center"
+                android:src="@drawable/img_logo_footer"
+                tools:ignore="RtlCompat" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/copy_right_2"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </RelativeLayout>

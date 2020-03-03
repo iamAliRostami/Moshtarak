@@ -4,12 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -81,7 +79,6 @@ public class SignAccountActivity extends BaseActivity
         if (sharedPreference.checkIsNotEmpty()) {
             buttonSign.setText(getResources().getString(R.string.add_account));
             linearLayoutAccounts.setVisibility(View.VISIBLE);
-//            buttonLogOut.setVisibility(View.VISIBLE);
             Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.change_account));
             change = true;
         } else {
@@ -89,7 +86,6 @@ public class SignAccountActivity extends BaseActivity
             linearLayoutAccounts.setVisibility(View.GONE);
             Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.account));
         }
-        Log.e("Length", String.valueOf(sharedPreference.getLength()));
         setButtonLogOutClickListener();
         setButtonContinueClickListener();
         setButtonSignClickListener();
@@ -99,28 +95,12 @@ public class SignAccountActivity extends BaseActivity
     }
 
     void fillSpinner() {
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "font/BYekan_3.ttf");
-
-        if (sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()) != null) {
+        if (sharedPreference.getLength() > 0) {
             items = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue());
         }
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(context,
-//                android.R.layout.simple_spinner_dropdown_item, items) {
-//            @NotNull
-//            @Override
-//            public View getView(int position, View convertView, @NotNull ViewGroup parent) {
-//                View view = super.getView(position, convertView, parent);
-//                final CheckedTextView textView = view.findViewById(android.R.id.text1);
-//                textView.setTypeface(typeface);
-//                textView.setChecked(true);
-//                textView.setTextColor(getResources().getColor(R.color.black));
-//                return view;
-//            }
-//        };
         if (items.size() > 0) {
             spinnerAccounts.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item,
                     items));
-//            spinnerAccounts.setAdapter(arrayAdapter);
             spinnerAccounts.setSelection(sharedPreference.getIndex());
         }
     }
@@ -217,24 +197,14 @@ public class SignAccountActivity extends BaseActivity
     public void execute(Login login) {
         if (login.getApiKey().isEmpty()) {
             new CustomDialog(DialogType.Red, SignAccountActivity.this, login.getMessage(),
-                    //getString(R.string.error_is_not_match),
                     getString(R.string.dear_user), getString(R.string.login),
                     getString(R.string.accepted));
 
         } else {
-//            SharedPreference sharedPreference = new SharedPreference(SignAccountActivity.this);
-//            sharedPreference.putData(billId, mobile, login.getApiKey());
             sharedPreference.putDataArray(mobile, billId, login.getApiKey());
             new CustomDialog(DialogType.GreenRedirect, SignAccountActivity.this, getString(R.string.you_are_signed),
                     getString(R.string.dear_user), getString(R.string.login),
                     getString(R.string.accepted));
-            if (!change) {
-                buttonSign.setText(getResources().getString(R.string.change_account));
-                buttonLogOut.setVisibility(View.VISIBLE);
-                change = true;
-            }
-            editTextBillId.setText("");
-            editTextMobile.setText("");
         }
     }
 

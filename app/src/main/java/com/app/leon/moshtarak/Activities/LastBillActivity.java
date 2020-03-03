@@ -101,8 +101,11 @@ public class LastBillActivity extends BaseActivity {
     TextView textViewLavzemKahande;
     @BindView(R.id.textViewTaxfif)
     TextView textViewTaxfif;
-    @BindView(R.id.textViewPayable)
-    TextView textViewPayable;
+    @BindView(R.id.textViewPayableN)
+    TextView textViewPayableN;
+
+    @BindView(R.id.textViewPayableW)
+    TextView textViewPayableW;
     @BindView(R.id.textViewPayDate)
     TextView textViewPayDate;
     @BindView(R.id.textViewPayTypeTitle)
@@ -397,7 +400,7 @@ public class LastBillActivity extends BaseActivity {
         textViewUseAverage = null;
         textViewUseLength = null;
         textViewIsPayed = null;
-        textViewPayable = null;
+        textViewPayableN = null;
         textViewPayDate = null;
         textViewPayTypeTitle = null;
         textViewBankTitle = null;
@@ -416,7 +419,9 @@ public class LastBillActivity extends BaseActivity {
                 scrollView.setVisibility(View.GONE);
                 scrollView = findViewById(R.id.scrollView2);
                 scrollView.setVisibility(View.VISIBLE);
-                textViewPayable.setText(lastBillInfo.getPayableReadable());
+                String amount = String.valueOf(lastBillInfo.getAmount());
+                textViewPayableN.setText(amount.substring(0, amount.indexOf(".")));
+                textViewPayableW.setText(lastBillInfo.getPayableReadable());
                 textViewPayDate.setText(lastBillInfo.getPayDay());
                 textViewPayTypeTitle.setText(lastBillInfo.getPayTypeTitle());
                 textViewBankTitle.setText(lastBillInfo.getBankTitle());

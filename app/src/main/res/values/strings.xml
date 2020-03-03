@@ -9,7 +9,8 @@
     <string name="last_bill_2">آخرین قبض</string>
     <string name="kardex">صورتحساب</string>
     <string name="cardex">صورت حساب آب بها</string>
-    <string name="chart">نمودار مصرف</string>
+    <string name="chart1">مشاهده نمودار مصرف</string>
+    <string name="chart2">نمودار مصرف</string>
     <string name="tracking">پیگیری درخواستها</string>
     <string name="mamoor_1">اعلام کارکرد کنتور و قبض میاندوره</string>
     <string name="mamoor_2">اعلام کارکرد کنتور</string>

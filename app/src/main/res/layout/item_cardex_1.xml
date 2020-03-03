@@ -25,7 +25,8 @@
             android:layout_marginBottom="@dimen/activity_mid_margin"
             android:layout_weight="1"
             android:maxLines="1"
-            android:textColor="@color/blue2" />
+            android:textColor="@color/blue2"
+            tools:ignore="RtlCompat" />
 
         <TextView
             android:id="@+id/textViewUseM3"
@@ -36,7 +37,8 @@
             android:layout_marginBottom="@dimen/activity_mid_margin"
             android:layout_weight="1"
             android:maxLines="1"
-            android:textColor="@color/orange2" />
+            android:textColor="@color/orange2"
+            tools:ignore="RtlCompat" />
 
         <TextView
             android:id="@+id/textViewCost"
@@ -47,7 +49,8 @@
             android:layout_marginBottom="@dimen/activity_mid_margin"
             android:layout_weight="1"
             android:maxLines="1"
-            android:textColor="@color/green2" />
+            android:textColor="@color/green2"
+            tools:ignore="RtlCompat" />
 
         <TextView
             android:id="@+id/textViewNote"
@@ -58,13 +61,14 @@
             android:layout_marginBottom="@dimen/activity_mid_margin"
             android:layout_weight="1"
             android:maxLines="1"
-            android:textColor="@color/pink1" />
+            android:textColor="@color/pink2"
+            tools:ignore="RtlCompat" />
 
         <ImageView
             android:id="@+id/imageViewInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/img_last_bill1" />
+            android:src="@drawable/cash_payment2" />
     </LinearLayout>
 </LinearLayout>

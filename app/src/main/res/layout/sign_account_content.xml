@@ -32,85 +32,83 @@
             tools:ignore="ContentDescription" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayoutFooter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/linearLayoutFooter"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:orientation="vertical">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_margin="@dimen/activity_mid_margin"-->
+    <!--            android:background="@drawable/border_gray_"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:padding="@dimen/activity_mid_padding">-->
+
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginLeft="@dimen/activity_mid_margin"-->
+    <!--                android:layout_marginTop="@dimen/activity_mid_margin"-->
+    <!--                android:layout_marginRight="@dimen/activity_mid_margin"-->
+    <!--                android:gravity="start"-->
+    <!--                android:text="@string/dear_user"-->
+    <!--                android:textColor="@color/red1"-->
+    <!--                android:textSize="@dimen/textSizeSmall" />-->
+
+    <!--            <TextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_gravity="center_vertical|right"-->
+    <!--                android:layout_marginLeft="@dimen/activity_mid_margin"-->
+    <!--                android:layout_marginRight="@dimen/activity_mid_margin"-->
+    <!--                android:gravity="right"-->
+    <!--                android:text="@string/input_message"-->
+    <!--                android:textColor="@color/black"-->
+    <!--                android:textSize="@dimen/textSizeSmall"-->
+    <!--                tools:ignore="RtlHardcoded" />-->
+    <!--        </LinearLayout>-->
+
+    <!--    </LinearLayout>-->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        style="@style/bottomView"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical">
+        android:foregroundGravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        tools:ignore="ObsoleteLayoutParam,RtlCompat">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:background="@drawable/border_gray_"
-            android:orientation="vertical"
-            android:padding="@dimen/activity_mid_padding">
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_mid_margin"
-                android:layout_marginTop="@dimen/activity_mid_margin"
-                android:layout_marginRight="@dimen/activity_mid_margin"
-                android:gravity="start"
-                android:text="@string/dear_user"
-                android:textColor="@color/red1"
-                android:textSize="@dimen/textSizeSmall" />
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="2dp"
+                android:background="@color/transparent"
+                android:foregroundGravity="center"
+                android:src="@drawable/img_logo_footer"
+                tools:ignore="RtlCompat" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|right"
-                android:layout_marginLeft="@dimen/activity_mid_margin"
-                android:layout_marginRight="@dimen/activity_mid_margin"
-                android:gravity="right"
-                android:text="@string/input_message"
-                android:textColor="@color/black"
-                android:textSize="@dimen/textSizeSmall"
-                tools:ignore="RtlHardcoded" />
-        </LinearLayout>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            style="@style/bottomView"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:foregroundGravity="center"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            tools:ignore="ObsoleteLayoutParam,RtlCompat">
-
-            <LinearLayout
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginEnd="2dp"
-                    android:background="@color/transparent"
-                    android:foregroundGravity="center"
-                    android:src="@drawable/img_logo_footer"
-                    tools:ignore="RtlCompat" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/copy_right_2"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </LinearLayout>
+                android:text="@string/copy_right_2"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/linearLayoutFooter"
-        android:layout_below="@id/linearLayoutHeader"
         tools:ignore="UselessParent">
 
         <LinearLayout

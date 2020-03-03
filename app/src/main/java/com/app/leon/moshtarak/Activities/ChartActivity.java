@@ -44,7 +44,7 @@ public class ChartActivity extends AppCompatActivity {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chart_activity);
-
+        getSupportActionBar().setTitle(getString(R.string.chart2));
         if (getIntent().getExtras() != null) {
             Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
             if (bundle1 != null) {
