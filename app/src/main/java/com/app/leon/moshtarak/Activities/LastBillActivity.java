@@ -254,7 +254,7 @@ public class LastBillActivity extends BaseActivity {
                     get(sharedPreference.getIndex());
             apiKey = sharedPreference.getArrayList(SharedReferenceKeys.API_KEY.getValue()).
                     get(sharedPreference.getIndex());
-            Toast.makeText(context, "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
+            Toast.makeText(MyApplication.getContext(), "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
             fillLastBillInfo();
         }
     }

@@ -199,7 +199,7 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
                     get(sharedPreference.getIndex());
             phoneNumber = sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
                     get(sharedPreference.getIndex()).replaceFirst("09", "");
-            Toast.makeText(context, "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
+            Toast.makeText(MyApplication.getContext(), "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
         }
     }
 
