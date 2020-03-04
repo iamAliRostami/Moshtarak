@@ -40,7 +40,7 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
         webSetting.setBuiltInZoomControls(true);
         webSetting.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("file:///android_asset/help.htm");
+        webView.loadUrl("file:///android_asset/help3.htm");
 //        displayFromAsset();
     }
 
