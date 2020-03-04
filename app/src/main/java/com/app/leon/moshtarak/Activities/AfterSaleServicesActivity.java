@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -75,6 +76,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
                     get(sharedPreference.getIndex());
             editTextMobile.setText(sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
                     get(sharedPreference.getIndex()).replaceFirst("09", ""));
+            Toast.makeText(context, "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
             getServices();
             setOnButtonSubmitClickListener();
         }

@@ -23,17 +23,21 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
+import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
+import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
 import com.app.leon.moshtarak.Utils.CustomTab;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.Objects;
 
@@ -139,7 +143,9 @@ public class LastBillActivity extends BaseActivity {
             if (!isPayed) {
                 new CustomTab(address, LastBillActivity.this);
             } else
-                Toast.makeText(context, context.getString(R.string.payed_2), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyApplication.getContext(),
+                        MyApplication.getContext().getString(R.string.payed_2),
+                        Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -248,6 +254,7 @@ public class LastBillActivity extends BaseActivity {
                     get(sharedPreference.getIndex());
             apiKey = sharedPreference.getArrayList(SharedReferenceKeys.API_KEY.getValue()).
                     get(sharedPreference.getIndex());
+            Toast.makeText(context, "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
             fillLastBillInfo();
         }
     }
@@ -260,52 +267,81 @@ public class LastBillActivity extends BaseActivity {
         }
     }
 
-    void fillLatBillFromCounter(Bundle bundle) {
+    void fillLatBillFromCounter(LastBillInfo lastBillInfo) {
         float floatNumber;
         int intNumber;
         textViewBillId.setText(billId);
         textViewPayId.setText(payId);
         setImageBitmap(imageViewBarcode);
-        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.COST.getValue())));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getPayable()));
         intNumber = (int) floatNumber;
         textViewCost.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.NEW.getValue())));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getCurrentReadingNumber()));
         intNumber = (int) floatNumber;
         textViewNewNumber.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.PRE.getValue())));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getPreReadingNumber()));
         intNumber = (int) floatNumber;
         textViewPreNumber.setText(String.valueOf(intNumber));
-        textViewNewDate.setText(bundle.getString(BundleEnum.CURRENT_READING_DATE.getValue()));
-        textViewPreDate.setText(bundle.getString(BundleEnum.PRE_READING_DATE.getValue()));
-        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.USE_AVERAGE.getValue())));
+        textViewNewDate.setText(lastBillInfo.getCurrentReadingDate());
+        textViewPreDate.setText(lastBillInfo.getPreReadingDate());
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getRate()));
         intNumber = (int) floatNumber;
         textViewUseAverage.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.USE_LENGTH.getValue())));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getDuration()));
         intNumber = (int) floatNumber;
         textViewUseLength.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.USE.getValue())));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getUsageM3()));
         intNumber = (int) floatNumber;
         textViewUseM3.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.PRE_DEBT_OR_OWE.getValue())));
+
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getUsageLiter()));
+        intNumber = (int) floatNumber;
+        textViewUseLitr.setText(String.valueOf(intNumber));
+
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getPreDebtOrOwe()));
         intNumber = (int) floatNumber;
         textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.TAKALIF_BOODJE.getValue())));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getBoodje()));
         intNumber = (int) floatNumber;
         textViewTakalifBoodje.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.KARMOZDE_FAZELAB.getValue())));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getKarmozdFazelab()));
         intNumber = (int) floatNumber;
         textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.AB_BAHA.getValue())));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getAbBaha()));
         intNumber = (int) floatNumber;
         textViewAbBaha.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(bundle.getString(BundleEnum.TAX.getValue())));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getMaliat()));
         intNumber = (int) floatNumber;
         textViewTax.setText(String.valueOf(intNumber));
-        textViewDate.setText(bundle.getString(BundleEnum.DATE.getValue()));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getMazadOlgoo()));
+        intNumber = (int) floatNumber;
+        textViewMazadOlgoo.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getTabsare2()));
+        intNumber = (int) floatNumber;
+        textViewTabsare2.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getTabsare3Ab()));
+        intNumber = (int) floatNumber;
+        textViewTabsare3Ab.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getTabsare3Fazelab()));
+        intNumber = (int) floatNumber;
+        textViewTabsare3Fazelab.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getAbonmanAb()));
+        intNumber = (int) floatNumber;
+        textViewAbonmanAb.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getAbonmanFazelab()));
+        intNumber = (int) floatNumber;
+        textViewAbonmanFazelab.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getFasleGarm()));
+        intNumber = (int) floatNumber;
+        textViewFasleGarm.setText(String.valueOf(intNumber));
+        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getJam()));
+        intNumber = (int) floatNumber;
+        textViewTotal.setText(String.valueOf(intNumber));
+        textViewDate.setText(lastBillInfo.getDeadLine());
 
         androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable1);
         linearLayoutCompat.setVisibility(View.GONE);
-        if (bundle.getBoolean(BundleEnum.IS_PAYED.getValue())) {
+        if (isPayed) {
             linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable2);
             linearLayoutCompat.setVisibility(View.GONE);
         }
@@ -317,10 +353,15 @@ public class LastBillActivity extends BaseActivity {
             Bundle bundle2 = getIntent().getBundleExtra(BundleEnum.THIS_BILL.getValue());//cardex_no_payed
             Bundle bundle3 = getIntent().getBundleExtra(BundleEnum.THIS_BILL_PAYED.getValue());//cardex_payed
             if (bundle1 != null) {
-                payId = bundle1.getString(BundleEnum.PAY_ID.getValue());
-                billId = bundle1.getString(BundleEnum.BILL_ID.getValue());
-                isPayed = bundle1.getBoolean(BundleEnum.IS_PAYED.getValue());
-                fillLatBillFromCounter(bundle1);
+                String json = bundle1.getString(BundleEnum.LAST_BILL_FROM_COUNTER.getValue());
+                Gson gson = new GsonBuilder().create();
+                LastBillInfo lastBillInfo = gson.fromJson(json, LastBillInfo.class);
+
+                billId = lastBillInfo.getBillId();
+                payId = lastBillInfo.getPayId();
+                isPayed = lastBillInfo.isPayed();
+
+                fillLatBillFromCounter(lastBillInfo);
             } else {
                 isFromCardex = true;
                 Retrofit retrofit = NetworkHelper.getInstance();
@@ -530,6 +571,7 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat.setVisibility(View.GONE);
 
             } else {
+                //از آخرین قبض پرداخت نشده بود
                 Log.e("status", "From Cardex, not payed Or New Counter");
                 billId = lastBillInfo.getBillId().trim();
                 payId = lastBillInfo.getPayId().trim();

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.leon.moshtarak.Activities.HomeActivity;
+import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 
 import java.util.Objects;
@@ -31,7 +32,9 @@ public final class CustomProgressBar {
 
     public Dialog show(Context context, CharSequence title, boolean cancelable) {
         return show(context, title, cancelable, dialog -> {
-            Toast.makeText(context, R.string.canceled, Toast.LENGTH_LONG).show();
+            Toast.makeText(MyApplication.getContext(),
+                    MyApplication.getContext().getString(R.string.canceled),
+                    Toast.LENGTH_LONG).show();
             Intent intent = new Intent(context, HomeActivity.class);
             context.startActivity(intent);
         });

@@ -26,11 +26,13 @@ import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
+import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.LovelyTextInputDialog;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
+import com.google.gson.Gson;
 
 import java.util.Objects;
 
@@ -129,7 +131,11 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
                     InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 //                    imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                     Objects.requireNonNull(imm).toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-                    Toast.makeText(context, R.string.canceled, Toast.LENGTH_LONG).show();
+//                    Toast.makeText(context, R.string.canceled, Toast.LENGTH_LONG).show();
+                    Toast.makeText(MyApplication.getContext(),
+                            MyApplication.getContext().getString(R.string.canceled),
+                            Toast.LENGTH_LONG).show();
+
                 });
         lovelyTextInputDialog.show();
     }
@@ -193,6 +199,7 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
                     get(sharedPreference.getIndex());
             phoneNumber = sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
                     get(sharedPreference.getIndex()).replaceFirst("09", "");
+            Toast.makeText(context, "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -207,29 +214,33 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     public void execute(LastBillInfo lastBillInfo) {
         Intent intent = new Intent(getApplicationContext(), LastBillActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString(BundleEnum.BILL_ID.getValue(), lastBillInfo.getBillId());
-        bundle.putString(BundleEnum.PAY_ID.getValue(), lastBillInfo.getPayable());
-        bundle.putString(BundleEnum.NEW.getValue(), lastBillInfo.getCurrentReadingNumber());
-        bundle.putString(BundleEnum.PRE.getValue(), lastBillInfo.getPreReadingNumber());
-        bundle.putString(BundleEnum.AB_BAHA.getValue(), lastBillInfo.getAbBaha());
-        bundle.putString(BundleEnum.TAX.getValue(), lastBillInfo.getMaliat());
-        bundle.putString(BundleEnum.DATE.getValue(), lastBillInfo.getDeadLine());
-        bundle.putString(BundleEnum.COST.getValue(), lastBillInfo.getPayable());
+//        bundle.putString(BundleEnum.BILL_ID.getValue(), lastBillInfo.getBillId());
+//        bundle.putString(BundleEnum.PAY_ID.getValue(), lastBillInfo.getPayId());
+//        bundle.putString(BundleEnum.NEW.getValue(), lastBillInfo.getCurrentReadingNumber());
+//        bundle.putString(BundleEnum.PRE.getValue(), lastBillInfo.getPreReadingNumber());
+//        bundle.putString(BundleEnum.AB_BAHA.getValue(), lastBillInfo.getAbBaha());
+//        bundle.putString(BundleEnum.TAX.getValue(), lastBillInfo.getMaliat());
+//        bundle.putString(BundleEnum.DATE.getValue(), lastBillInfo.getDeadLine());
+//        bundle.putString(BundleEnum.COST.getValue(), lastBillInfo.getPayable());
+//
+//        bundle.putString(BundleEnum.USE.getValue(), lastBillInfo.getUsageM3());
+//        bundle.putString(BundleEnum.USAGE_LITER.getValue(), lastBillInfo.getUsageLiter());
+//        bundle.putString(BundleEnum.USE_LENGTH.getValue(), lastBillInfo.getDuration());
+//        bundle.putString(BundleEnum.USE_AVERAGE.getValue(), lastBillInfo.getRate());
+//        bundle.putString(BundleEnum.PRE_READING_DATE.getValue(), lastBillInfo.getPreReadingDate());
+//        bundle.putString(BundleEnum.CURRENT_READING_DATE.getValue(), lastBillInfo.getCurrentReadingDate());
+//
+//        bundle.putString(BundleEnum.PRE_DEBT_OR_OWE.getValue(), lastBillInfo.getPreDebtOrOwe());
+//        bundle.putString(BundleEnum.TAKALIF_BOODJE.getValue(), lastBillInfo.getBoodje());
+//        bundle.putString(BundleEnum.KARMOZDE_FAZELAB.getValue(), lastBillInfo.getKarmozdFazelab());
+//
+//        bundle.putBoolean(BundleEnum.IS_PAYED.getValue(), lastBillInfo.isPayed());
 
-        bundle.putString(BundleEnum.USE.getValue(), lastBillInfo.getUsageM3());
-        bundle.putString(BundleEnum.USE_LENGTH.getValue(), lastBillInfo.getDuration());
-        bundle.putString(BundleEnum.USE_AVERAGE.getValue(), lastBillInfo.getRate());
-        bundle.putString(BundleEnum.PRE_READING_DATE.getValue(), lastBillInfo.getPreReadingDate());
-        bundle.putString(BundleEnum.CURRENT_READING_DATE.getValue(), lastBillInfo.getCurrentReadingDate());
-
-
-        bundle.putString(BundleEnum.PRE_DEBT_OR_OWE.getValue(), lastBillInfo.getPreDebtOrOwe());
-        bundle.putString(BundleEnum.TAKALIF_BOODJE.getValue(), lastBillInfo.getBoodje());
-        bundle.putString(BundleEnum.KARMOZDE_FAZELAB.getValue(), lastBillInfo.getKarmozdFazelab());
-
-        bundle.putBoolean(BundleEnum.IS_PAYED.getValue(), lastBillInfo.isPayed());
-
+        Gson gson = new Gson();
+        String json = gson.toJson(lastBillInfo);
+        bundle.putString(BundleEnum.LAST_BILL_FROM_COUNTER.getValue(), json);
         intent.putExtra(BundleEnum.DATA.getValue(), bundle);
+//        intent.putExtra();
         startActivity(intent);
     }
 

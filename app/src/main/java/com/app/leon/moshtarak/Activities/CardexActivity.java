@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -77,6 +78,7 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
         } else {
             billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
                     get(sharedPreference.getIndex());
+            Toast.makeText(context, "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
             fillKardex();
         }
     }

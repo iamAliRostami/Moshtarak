@@ -14,7 +14,7 @@ public enum BundleEnum {
     SPINNER_POSITION("spinner_position"),
     COUNTER_STATE_POSITION("counterStatePosition"),
     COUNTER_STATE_CODE("counterStatePosition"),
-
+    LAST_BILL_FROM_COUNTER("last_bill_from_counter"),
     ID("id"),
     IS_PAYED("is_payed"),
     ZONE_ID("zone_id"),
@@ -23,6 +23,7 @@ public enum BundleEnum {
     USE_AVERAGE("use_average"),
     USE_LENGTH("use_length"),
     USE("use"),
+    USAGE_LITER("usage_liter"),
     CURRENT_READING_DATE("current_reading_date"),
     PRE_READING_DATE("pre_reading_date"),
     DATA("data"),
