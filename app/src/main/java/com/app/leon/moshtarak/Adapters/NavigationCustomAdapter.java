@@ -2,6 +2,8 @@ package com.app.leon.moshtarak.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import com.app.leon.moshtarak.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapter.DrawerItem> {
@@ -62,8 +65,9 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
             convertView = inflater.inflate(R.layout.item_navigation_, parent, false);
             drawerHolder.imageViewIcon = convertView.findViewById(R.id.imageViewIcon);
             dItem = this.drawerItemList.get(position);
-            drawerHolder.imageViewIcon.setImageDrawable(convertView.getResources().getDrawable(
-                    dItem.getImgResID()));
+//            drawerHolder.imageViewIcon.setImageDrawable(convertView.getResources().getDrawable(
+//                    dItem.getImgResID()));
+            drawerHolder.imageViewIcon.setImageDrawable(dItem.drawable);
         } else {
             drawerHolder = new DrawerItemHolder();
             convertView = inflater.inflate(layoutResID, parent, false);
@@ -74,8 +78,7 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
             }
             drawerHolder.imageViewIcon = convertView.findViewById(R.id.imageViewIcon);
             dItem = this.drawerItemList.get(position);
-            drawerHolder.imageViewIcon.setImageDrawable(convertView.getResources().getDrawable(
-                    dItem.getImgResID()));
+            drawerHolder.imageViewIcon.setImageDrawable(dItem.drawable);
             drawerHolder.textViewTitle.setText(dItem.getItemName());
 //            fontManager.setFont(drawerHolder.textViewTitle);
         }
@@ -91,18 +94,47 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
     public static class DrawerItem {
         String ItemName;
         int imgResID;
+        Drawable drawable;
 
-        public DrawerItem(String itemName, int imgResID) {
+        public DrawerItem() {
             super();
-            ItemName = itemName;
+        }
+
+        DrawerItem(String itemName, int imgResID) {
+            super();
+            this.ItemName = itemName;
             this.imgResID = imgResID;
         }
+
+        DrawerItem(String itemName, Drawable drawable) {
+            super();
+            this.ItemName = itemName;
+            this.drawable = drawable;
+        }
+
+        public Drawable getDrawable() {
+            return drawable;
+        }
+
+        public void setDrawable(Drawable drawable) {
+            this.drawable = drawable;
+        }
+
+        public List<NavigationCustomAdapter.DrawerItem> convertStringToList(String[] items, TypedArray imgs) {
+            List<NavigationCustomAdapter.DrawerItem> drawerItems = new ArrayList<>();
+
+            for (int i = 0; i < items.length; i++) {
+                drawerItems.add(new DrawerItem(items[i], imgs.getDrawable(i)));
+            }
+            return drawerItems;
+        }
+
 
         String getItemName() {
             return ItemName;
         }
 
-        private void setItemName(String itemName) {
+        public void setItemName(String itemName) {
             ItemName = itemName;
         }
 

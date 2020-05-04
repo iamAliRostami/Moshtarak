@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="menu">
+        <item></item>
+        <item>@string/home</item>
+        <item>@string/portal_connect</item>
+        <item>@string/base_info</item>
+        <item>@string/session</item>
+        <item>@string/update</item>
+        <item>@string/account</item>
+        <item>@string/recovery_code</item>
+        <item>@string/connect_developer</item>
+        <item>@string/exit</item>
+    </string-array>
+
+    <array name="icons">
+        <item>@drawable/img_menu_logo</item>
+        <item>@drawable/img_home</item>
+        <item>@drawable/img_connect_to_portal</item>
+        <item>@drawable/img_profile</item>
+        <item>@drawable/img_transactions</item>
+        <item>@drawable/img_update</item>
+        <item>@drawable/img_registration</item>
+        <item>@drawable/img_recovery_code</item>
+        <item>@drawable/img_contact_us</item>
+        <item>@drawable/img_exit</item>
+    </array>
+</resources>

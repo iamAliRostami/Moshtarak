@@ -28,6 +28,7 @@ import com.app.leon.moshtarak.Adapters.NavigationCustomAdapter;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomTab;
 import com.app.leon.moshtarak.Utils.SharedPreference;
+import com.app.leon.moshtarak.databinding.BaseActivityBinding;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity
     ListView drawerList;
     NavigationCustomAdapter adapter;
     List<NavigationCustomAdapter.DrawerItem> dataList;
+    BaseActivityBinding binding;
 
     protected abstract void initialize();
 
@@ -60,7 +62,8 @@ public abstract class BaseActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         overridePendingTransition(R.anim.slide_up_info, R.anim.no_change);
-        setContentView(R.layout.base_activity);
+        binding = BaseActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         initializeBase();
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -132,9 +135,8 @@ public abstract class BaseActivity extends AppCompatActivity
 
     private void initializeBase() {
         toolbar = findViewById(R.id.toolbar);
-
-        drawer = findViewById(R.id.drawer_layout);
-        drawerList = findViewById(R.id.right_drawer);
+        drawer = binding.drawerLayout;
+        drawerList = binding.rightDrawer;
         dataList = new ArrayList<>();
         fillDrawerListView();
         setOnDrawerItemClick();
@@ -148,20 +150,11 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     void fillDrawerListView() {
-        dataList.add(new NavigationCustomAdapter.DrawerItem("", R.drawable.img_menu_logo));
-        dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.home), R.drawable.img_home));
-        dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.portal_connect), R.drawable.img_connect_to_portal));
-        dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.base_info), R.drawable.img_profile));
-        dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.session), R.drawable.img_transactions));
-        dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.update), R.drawable.img_update));
+        dataList = new NavigationCustomAdapter.DrawerItem().convertStringToList(
+                getResources().getStringArray(R.array.menu), getResources().obtainTypedArray(R.array.icons));
         SharedPreference sharedPreference = new SharedPreference(this);
         if (sharedPreference.checkIsNotEmpty())
-            dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.change_account), R.drawable.img_registration));
-        else
-            dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.account), R.drawable.img_registration));
-        dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.recovery_code), R.drawable.img_recovery_code));
-        dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.connect_developer), R.drawable.img_contact_us));
-        dataList.add(new NavigationCustomAdapter.DrawerItem(getString(R.string.exit), R.drawable.img_exit));
+            dataList.get(6).setItemName(getString(R.string.change_account));
         adapter = new NavigationCustomAdapter(this, R.layout.item_navigation, dataList);
         drawerList.setAdapter(adapter);
     }
