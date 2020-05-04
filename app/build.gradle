@@ -54,51 +54,47 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.google.android.material:material:1.2.0-alpha06'
     //noinspection GradleCompatible
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    //noinspection GradleCompatible
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.android.support:support-annotations:28.0.0'
     androidTestImplementation 'androidx.annotation:annotation:1.1.0'
     //noinspection GradleCompatible
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.multidex:multidex:2.0.1'
-    //noinspection GradleCompatible
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    //noinspection AnnotationProcessorOnCompilePath
-    annotationProcessor 'com.jakewharton:butterknife:10.2.0'
-    //noinspection AnnotationProcessorOnCompilePath
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    implementation 'com.jakewharton:butterknife-compiler:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
-    implementation 'com.yarolegovich:lovely-dialog:1.0.7'
 
-    implementation 'com.google.code.gson:gson:2.8.6'
-    //TODO به روزرسانی نشود
+    //TODO آپدیت نشود
     implementation 'com.squareup.retrofit2:retrofit:2.6.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
-//    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
-//    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.3'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.3'
-
+//    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    //TODO آپدیت نشود
+    //noinspection GradleCompatible
+    implementation 'androidx.browser:browser:1.0.0'
     implementation 'gun0912.ted:tedpermission:1.0.3'
     implementation 'com.github.satyan:sugar:1.5'
     implementation 'com.facebook.shimmer:shimmer:0.5.0@aar'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
-    //noinspection GradleCompatible
-    implementation 'androidx.browser:browser:1.2.0'
 
+//    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
     implementation 'io.github.inflationx:calligraphy3:3.1.1'
     implementation 'io.github.inflationx:viewpump:2.0.3'
-
     implementation 'com.github.Philjay:MPAndroidChart:v3.0.0'
+    implementation 'com.yarolegovich:lovely-dialog:1.0.7'
 
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
     implementation 'com.google.firebase:firebase-analytics:17.4.0'
     implementation 'com.google.firebase:firebase-auth:19.3.1'
     implementation 'com.google.firebase:firebase-core:17.4.0'
     implementation 'com.google.firebase:firebase-firestore:21.4.3'
-
     implementation project(path: ':pecpayment-release')
     implementation 'com.mcxiaoke.volley:library:1.0.19'
-//
+
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 //    releaseImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 }

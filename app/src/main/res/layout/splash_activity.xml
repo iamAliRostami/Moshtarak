@@ -12,9 +12,6 @@
         android:id="@+id/shimmer_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:foregroundGravity="center"
         app:shimmer_duration="3000"
@@ -26,14 +23,12 @@
             android:layout_height="300dp"
             android:layout_gravity="center"
             android:foregroundGravity="center"
-            android:scaleType="centerInside"
-            android:src="@drawable/img_splash" />
+            android:src="@drawable/img_splash"
+            tools:ignore="ContentDescription" />
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         style="@style/bottomView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
         android:foregroundGravity="center"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
