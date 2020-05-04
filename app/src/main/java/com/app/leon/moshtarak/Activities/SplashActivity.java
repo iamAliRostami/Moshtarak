@@ -3,20 +3,15 @@ package com.app.leon.moshtarak.Activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
 
 import com.app.leon.moshtarak.R;
-import com.facebook.shimmer.ShimmerFrameLayout;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.app.leon.moshtarak.databinding.SplashActivityBinding;
 
 public class SplashActivity extends Activity {
-    @BindView(R.id.imageViewSplashScreen)
-    ImageView imageViewSplash;
-    ShimmerFrameLayout container;
+    SplashActivityBinding binding;
     private boolean splashLoaded = false;
 
     @Override
@@ -24,12 +19,14 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.splash_activity);
-        ButterKnife.bind(this);
+
+        binding = SplashActivityBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         if (!splashLoaded) {
-            setContentView(R.layout.splash_activity);
+            setContentView(view);
             initialize();
-            startSplash();//TODO 30 27 67
+            startSplash();
         } else {
             Intent goToLoginActivity = new Intent(SplashActivity.this, HomeActivity.class);
             goToLoginActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
@@ -40,18 +37,11 @@ public class SplashActivity extends Activity {
 
     private void initialize() {
         int splashResourceId = R.drawable.img_splash;
-        imageViewSplash.setImageResource(splashResourceId);
-        container = findViewById(R.id.shimmer_view_container);
-        container.startShimmer();
+        binding.imageViewSplashScreen.setImageResource(splashResourceId);
+        binding.shimmerViewContainer.startShimmer();
     }
 
     private void startSplash() {
-//        container.setRepeatCount(0);
-//        container.setDuration(2800);
-//        container.setBaseAlpha(0.5f);
-//        container.setAutoStart(false);
-//        container.setIntensity(1);
-//        container.startShimmerAnimation();
         Thread timerThread = new Thread() {
             public void run() {
                 try {
@@ -78,8 +68,7 @@ public class SplashActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        imageViewSplash.setImageDrawable(null);
-        container = null;
+        binding = null;
     }
 
     @Override
