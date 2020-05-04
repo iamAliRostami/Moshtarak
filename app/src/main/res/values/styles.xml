@@ -21,7 +21,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:actionOverflowButtonStyle">@style/OverFlowButton</item>
         <item name="android:drawablePadding">2dp</item>
-        <item name="android:fontFamily">@font/byekan_3</item>
+        <item name="android:fontFamily">@font/byekan</item>
     </style>
 
     <style name="OverFlowButton">
@@ -29,13 +29,13 @@
     </style>
 
     <style name="AppTheme.NoActionBar">
-        <item name="android:fontFamily">@font/byekan_3</item>
+        <item name="android:fontFamily">@font/byekan</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
     <style name="ActionBar" parent="Theme.AppCompat">
-        <item name="android:fontFamily">@font/byekan_3</item>
+        <item name="android:fontFamily">@font/byekan</item>
         <item name="android:background">@color/blue1</item>
         <item name="android:titleTextStyle">@style/ActionBar.TitleTextStyle</item>
     </style>

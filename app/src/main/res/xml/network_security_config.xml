@@ -3,7 +3,7 @@
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">37.191.92.130</domain>
         <domain includeSubdomains="true">https://www.abfaesfahan.ir</domain>
-        <domain includeSubdomains="true">https://webservice.aspsms.com</domain>
-        <domain includeSubdomains="true">webservice.aspsms.com</domain>
+        <!--        <domain includeSubdomains="true">https://webservice.aspsms.com</domain>-->
+        <!--        <domain includeSubdomains="true">webservice.aspsms.com</domain>-->
     </domain-config>
 </network-security-config>
