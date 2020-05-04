@@ -122,7 +122,6 @@ public class LastBillActivity extends BaseActivity {
     Context context;
     String billId, payId, apiKey;
     String id;
-    //    String zoneId;
     String address = "https://bill.bpm.bankmellat.ir/bpgwchannel/";
     boolean isPayed = false;
     boolean isFromCardex = false;

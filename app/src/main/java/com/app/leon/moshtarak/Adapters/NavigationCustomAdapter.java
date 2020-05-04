@@ -59,14 +59,11 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
         convertView = null;
         DrawerItem dItem;
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-//        FontManager fontManager = new FontManager(context);
         if (position == 0) {
             drawerHolder = new DrawerItemHolder();
             convertView = inflater.inflate(R.layout.item_navigation_, parent, false);
             drawerHolder.imageViewIcon = convertView.findViewById(R.id.imageViewIcon);
             dItem = this.drawerItemList.get(position);
-//            drawerHolder.imageViewIcon.setImageDrawable(convertView.getResources().getDrawable(
-//                    dItem.getImgResID()));
             drawerHolder.imageViewIcon.setImageDrawable(dItem.drawable);
         } else {
             drawerHolder = new DrawerItemHolder();
@@ -80,7 +77,6 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
             dItem = this.drawerItemList.get(position);
             drawerHolder.imageViewIcon.setImageDrawable(dItem.drawable);
             drawerHolder.textViewTitle.setText(dItem.getItemName());
-//            fontManager.setFont(drawerHolder.textViewTitle);
         }
         convertView.setTag(drawerHolder);
         return convertView;
@@ -88,7 +84,7 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
 
     private static class DrawerItemHolder {
         TextView textViewTitle;
-        ImageView imageViewIcon, imageViewSeperator;
+        ImageView imageViewIcon;
     }
 
     public static class DrawerItem {
