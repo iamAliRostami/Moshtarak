@@ -70,7 +70,7 @@ public final class CustomProgressBar {
         return dialog;
     }
 
-    public Dialog getDialog() {
+    Dialog getDialog() {
         return dialog;
     }
 

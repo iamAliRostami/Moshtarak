@@ -4,19 +4,23 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.CheckedTextView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
@@ -31,6 +35,7 @@ import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -43,9 +48,9 @@ import retrofit2.Retrofit;
 public class SignAccountActivity extends BaseActivity
         implements ICallback<Login> {
     @BindView(R.id.editTextBillId)
-    EditText editTextBillId;
+    TextInputEditText editTextBillId;
     @BindView(R.id.editTextMobile)
-    EditText editTextMobile;
+    TextInputEditText editTextMobile;
     @BindView(R.id.buttonSign)
     Button buttonSign;
     @BindView(R.id.buttonLogOut)
@@ -54,12 +59,13 @@ public class SignAccountActivity extends BaseActivity
     @BindView(R.id.buttonContinue)
     Button buttonContinue;
     @BindView(R.id.textViewInfo)
-    TextView textViewInfo;
+    AppCompatTextView textViewInfo;
     @BindView(R.id.linearLayoutAccounts)
     LinearLayout linearLayoutAccounts;
     @BindView(R.id.spinnerAccounts)
     Spinner spinnerAccounts;
-    String billId, mobile;//, nationNumber, account;
+
+    String billId, mobile;
     View viewFocus;
     Context context;
     boolean change = false;
@@ -69,7 +75,7 @@ public class SignAccountActivity extends BaseActivity
     @Override
     protected void initialize() {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.sign_account_content, findViewById(R.id.sign_account_activity));
+        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.sign_account_content1, findViewById(R.id.sign_account_activity));
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         ButterKnife.bind(this);
@@ -98,8 +104,18 @@ public class SignAccountActivity extends BaseActivity
             items = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue());
         }
         if (items.size() > 0) {
-            spinnerAccounts.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item,
-                    items));
+            spinnerAccounts.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,
+                    items) {
+                @NonNull
+                @Override
+                public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                    View view = super.getView(position, convertView, parent);
+                    CheckedTextView text = view.findViewById(android.R.id.text1);
+                    Typeface typeface = Typeface.createFromAsset(context.getAssets(), "font/BYekan_3.ttf");
+                    text.setTypeface(typeface);
+                    return view;
+                }
+            });
             spinnerAccounts.setSelection(sharedPreference.getIndex());
         }
     }
@@ -109,14 +125,6 @@ public class SignAccountActivity extends BaseActivity
                 "اطلاعات کاربری جهت تطبیق با اطلاعات ثبت شده در سامانه و جلوگیری از هر گونه سوء استفاده احتمالی از اطلاعات شماست.\n" +
                         "این اطلاعات به صورت محرمانه نزد ما خواهد ماند.\n", getString(R.string.dear_user), getString(R.string.change_account),
                 getString(R.string.accepted)));
-//        textViewInfo.setOnClickListener(v -> new LovelyInfoDialog(context)
-//                .setTopColorRes(R.color.blue5)
-//                .setNotShowAgainOptionEnabled(0)
-//                .setNotShowAgainOptionChecked(true)
-//                .setTitle(R.string.dear_user)
-//                .setMessage("اطلاعات کاربری جهت تطبیق با اطلاعات ثبت شده در سامانه و جلوگیری از هر گونه سوء استفاده احتمالی از اطلاعات شماست.\n" +
-//                        "این اطلاعات به صورت محرمانه نزد ما خواهد ماند.\n")
-//                .show());
     }
 
     void setButtonSignClickListener() {
@@ -130,9 +138,10 @@ public class SignAccountActivity extends BaseActivity
                 viewFocus.requestFocus();
             }
             if (editTextMobile.getText().length() < 9) {
+                cancel = true;
+                editTextMobile.setError(getString(R.string.error_empty));
                 view = editTextMobile;
                 view.requestFocus();
-                cancel = true;
             }
             if (!cancel) {
                 billId = editTextBillId.getText().toString();

@@ -1,6 +1,5 @@
 package com.app.leon.moshtarak.Utils;
 
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -12,34 +11,27 @@ import com.app.leon.moshtarak.R;
 public class CustomDialog {
     @SuppressLint("StaticFieldLeak")
     private static LovelyStandardDialog lovelyStandardDialog;
-    private Context context;
-    private String Top, Title, Message, ButtonText;
 
 
     public CustomDialog(DialogType choose, Context context, String message, String title, String top, String buttonText) {
-        this.context = context;
-        Message = message;
-        Title = title;
-        Top = top;
-        ButtonText = buttonText;
         lovelyStandardDialog = new LovelyStandardDialog(context)
-                .setTitle(Title)
-                .setMessage(Message)
-                .setTopTitle(Top);
+                .setTitle(title)
+                .setMessage(message)
+                .setTopTitle(top);
         if (choose == DialogType.Green)
-            CustomGreenDialog(this.context, ButtonText);
+            CustomGreenDialog(context, buttonText);
         else if (choose == DialogType.Yellow)
-            CustomYellowDialog(this.context, ButtonText);
+            CustomYellowDialog(context, buttonText);
         else if (choose == DialogType.Red)
-            CustomRedDialog(this.context, ButtonText);
+            CustomRedDialog(context, buttonText);
         else if (choose == DialogType.GreenRedirect)
-            CustomGreenDialogRedirect(this.context, ButtonText);
+            CustomGreenDialogRedirect(context, buttonText);
         else if (choose == DialogType.YellowRedirect)
-            CustomYellowDialogRedirect(this.context, ButtonText);
+            CustomYellowDialogRedirect(context, buttonText);
         else if (choose == DialogType.RedRedirect)
-            CustomRedDialogRedirect(this.context, ButtonText);
+            CustomRedDialogRedirect(context, buttonText);
         else if (choose == DialogType.Blue)
-            CustomBlueDialog(this.context, ButtonText);
+            CustomBlueDialog(context, buttonText);
     }
 
     private static void CustomBlueDialog(final Context context, String ButtonText) {

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/relativeLayout"
+    android:background="@drawable/img_background"
     tools:context="com.app.leon.moshtarak.Activities.ShowSMSActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -20,8 +22,11 @@
             android:background="@color/transparent"
             android:padding="@dimen/activity_mid_padding"
             android:scaleType="fitCenter"
-            android:src="@drawable/img_text_header" />
+            android:src="@drawable/img_text_header"
+            tools:ignore="ContentDescription" />
+
         <TextView
+            android:id="@+id/textViewSmsLevel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_large_margin"
@@ -31,10 +36,25 @@
             android:background="@drawable/border_blue_2"
             android:gravity="center"
             android:padding="@dimen/activity_mid_padding"
-            android:id="@+id/textViewSmsLevel"
             android:text="@string/sms_level"
             android:textColor="@color/black"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewNoSMS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/activity_large_margin"
+            android:layout_marginTop="@dimen/activity_mid_margin"
+            android:layout_marginRight="@dimen/activity_large_margin"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
+            android:background="@drawable/border_blue_3"
+            android:gravity="center"
+            android:padding="@dimen/activity_large_padding"
+            android:text="@string/no_sms"
+            android:textColor="@color/black"
+            android:visibility="gone" />
 
         <ListView
             android:id="@+id/listViewSMS"

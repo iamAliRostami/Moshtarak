@@ -7,7 +7,7 @@ android {
         config {
             keyAlias 'ali_angel'
             keyPassword 'kaka019930'
-            storeFile file('D:/app/keys/MyFourthKey.jks')
+            storeFile file('F:android/app/keys/MyFourthKey.jks')
             storePassword 'kaka019930'
         }
     }

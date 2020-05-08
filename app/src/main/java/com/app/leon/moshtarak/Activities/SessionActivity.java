@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.Adapters.SessionCustomAdapter;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
@@ -44,9 +44,9 @@ public class SessionActivity extends AppCompatActivity implements ICallback<Arra
         setContentView(R.layout.session_activity);
         ButterKnife.bind(this);
         context = this;
-        ConstraintLayout constraintLayout = findViewById(R.id.constraintLayout);
+        RelativeLayout relativeLayout = findViewById(R.id.relativeLayout);
         FontManager fontManager = new FontManager(context);
-        fontManager.setFont(constraintLayout);
+        fontManager.setFont(relativeLayout);
         SharedPreference sharedPreference = new SharedPreference(context);
         if (!sharedPreference.checkIsNotEmpty()) {
             Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);

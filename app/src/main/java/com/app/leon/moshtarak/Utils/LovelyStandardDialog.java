@@ -110,7 +110,7 @@ public class LovelyStandardDialog extends AbsLovelyDialog<LovelyStandardDialog> 
         return this;
     }
 
-    public LovelyStandardDialog setButtonsBackground(int backgroundRes) {
+    LovelyStandardDialog setButtonsBackground(int backgroundRes) {
         return setButtonsBackgroundRes(backgroundRes);
     }
 

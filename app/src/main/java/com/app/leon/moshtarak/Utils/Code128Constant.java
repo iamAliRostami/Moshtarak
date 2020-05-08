@@ -1,7 +1,7 @@
 package com.app.leon.moshtarak.Utils;
 
-public class Code128Constant {
-    public static final byte[][] CODE_WEIGHT = {
+class Code128Constant {
+    static final byte[][] CODE_WEIGHT = {
             {2, 1, 2, 2, 2, 2}, // 0
             {2, 2, 2, 1, 2, 2},
             {2, 2, 2, 2, 2, 1},

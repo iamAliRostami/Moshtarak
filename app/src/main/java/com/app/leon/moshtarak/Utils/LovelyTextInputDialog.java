@@ -20,11 +20,11 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
     private static final String KEY_HAS_ERROR = "key_has_error";
     private static final String KEY_TYPED_TEXT = "key_typed_text";
 
-    public static EditText editText1;
-    public static EditText editText2;
-    public static EditText editText3;
-    public static EditText editText4;
-    public static EditText editText5;
+    private static EditText editText1;
+    private static EditText editText2;
+    private static EditText editText3;
+    private static EditText editText4;
+    private static EditText editText5;
     private TextView errorMessage;
     private TextView confirmButton, negativeButton;
 

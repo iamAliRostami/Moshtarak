@@ -1,19 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/relativeLayout"
     android:layoutDirection="rtl"
-    android:layout_marginLeft="@dimen/activity_mid_margin"
-    android:layout_marginRight="@dimen/activity_mid_margin"
-    tools:context="com.app.leon.moshtarak.Activities.RecoveryCodeActivity">
+    tools:context="com.app.leon.moshtarak.Activities.SessionActivity"
+    tools:ignore="UnusedAttribute">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:adjustViewBounds="true"
+            android:background="@color/transparent"
+            android:padding="@dimen/activity_mid_padding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_text_header"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutFooter"
+        style="@style/bottomView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:foregroundGravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        tools:ignore="RtlCompat">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="2dp"
+                android:background="@color/transparent"
+                android:foregroundGravity="center"
+                android:src="@drawable/img_logo_footer"
+                tools:ignore="RtlCompat" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/copy_right_2"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
 
     <ListView
         android:id="@+id/listViewSession"
-        android:layout_margin="@dimen/activity_mid_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/linearLayoutFooter"
+        android:layout_below="@id/linearLayoutHeader"
+        android:layout_margin="@dimen/activity_mid_margin"
         android:divider="@null"
         android:dividerHeight="0dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

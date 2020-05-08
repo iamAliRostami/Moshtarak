@@ -39,13 +39,12 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     @BindView(R.id.listViewCardex)
     ListView listViewCardex;
     KardexCustomAdapter_1 kardexCustomAdapter;
-    int width;
     private Context context;
     private String billId;
     @BindView(R.id.linearLayoutChart)
     LinearLayout linearLayoutChart;
-    ArrayList<Integer> yAxisData = new ArrayList<Integer>();
-    ArrayList<String> axisValues = new ArrayList<String>();
+    ArrayList<Integer> yAxisData = new ArrayList<>();
+    ArrayList<String> axisValues = new ArrayList<>();
 
     @Override
     protected void initialize() {
@@ -96,7 +95,7 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
         kardexCustomAdapter = new KardexCustomAdapter_1(kardexes, context);
         listViewCardex.setAdapter(kardexCustomAdapter);
         for (int i = 0; i < kardexes.size(); i++) {
-            float floatNumber = Float.valueOf(kardexes.get(i).getUsage());
+            float floatNumber = Float.parseFloat(kardexes.get(i).getUsage());
             yAxisData.add((int) floatNumber);
             axisValues.add(kardexes.get(i).getOweDate());
         }

@@ -22,7 +22,7 @@ public class LovelyDialogCompat {
             this.adapted = adapted;
         }
 
-        public void onClick(DialogInterface dialogInterface, int which) {
+        void onClick(DialogInterface dialogInterface, int which) {
             if (adapted != null) {
                 adapted.onClick(dialogInterface, which);
             }

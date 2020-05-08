@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/base_info_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:id="@+id/base_info_activity"
     tools:context="com.app.leon.moshtarak.Activities.BaseInfoActivity">
 
     <LinearLayout
@@ -126,14 +126,13 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/id_bill"
-                        android:textSize="@dimen/textSizeMedium"
                         android:textColor="@color/blue2"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewId"
                         android:layout_width="0px"
-                        android:textSize="@dimen/textSizeMedium"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
@@ -141,6 +140,7 @@
                         android:layout_weight="1"
                         android:text="@string/dash"
                         android:textColor="@color/green3"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
@@ -158,9 +158,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:textSize="@dimen/textSizeMedium"
                         android:text="@string/file_number"
                         android:textColor="@color/blue2"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
                     <TextView
@@ -171,9 +171,9 @@
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:textSize="@dimen/textSizeMedium"
                         android:text="@string/dash"
                         android:textColor="@color/green3"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
@@ -193,15 +193,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:textSize="@dimen/textSizeMedium"
                         android:text="@string/account_"
                         android:textColor="@color/blue2"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewAccount"
                         android:layout_width="0px"
-                        android:textSize="@dimen/textSizeMedium"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
@@ -209,6 +208,7 @@
                         android:layout_weight="1"
                         android:text="@string/dash"
                         android:textColor="@color/green3"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
@@ -228,15 +228,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:textSize="@dimen/textSizeMedium"
                         android:text="@string/user"
                         android:textColor="@color/blue2"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textViewUser"
                         android:layout_width="0px"
-                        android:textSize="@dimen/textSizeMedium"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
@@ -244,6 +243,7 @@
                         android:layout_weight="1"
                         android:text="@string/dash"
                         android:textColor="@color/green3"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
@@ -277,8 +277,8 @@
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/dash"
-                        android:textSize="@dimen/textSizeMedium"
                         android:textColor="@color/green3"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
@@ -297,9 +297,9 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:textSize="@dimen/textSizeMedium"
                         android:text="@string/ahad"
                         android:textColor="@color/blue2"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
                     <TextView
@@ -311,8 +311,8 @@
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/dash"
-                        android:textSize="@dimen/textSizeMedium"
                         android:textColor="@color/green3"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
@@ -333,8 +333,8 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/branch_radius"
-                        android:textSize="@dimen/textSizeMedium"
                         android:textColor="@color/blue2"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
                     <TextView
@@ -346,8 +346,8 @@
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/dash"
-                        android:textSize="@dimen/textSizeMedium"
                         android:textColor="@color/green3"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
@@ -364,10 +364,10 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
-                        android:textSize="@dimen/textSizeMedium"
                         android:layout_weight="1"
                         android:text="@string/siphon_radius"
                         android:textColor="@color/blue2"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
                     <TextView
@@ -380,8 +380,8 @@
                         android:layout_weight="1"
                         android:text="@string/dash"
                         android:textColor="@color/green3"
-                        android:textStyle="bold"
                         android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
 
@@ -400,8 +400,8 @@
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
                         android:text="@string/debt"
-                        android:textSize="@dimen/textSizeMedium"
                         android:textColor="@color/blue2"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
                     <TextView
@@ -414,8 +414,8 @@
                         android:layout_weight="1"
                         android:text="@string/dash"
                         android:textColor="@color/green3"
-                        android:textStyle="bold"
                         android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
             </LinearLayout>

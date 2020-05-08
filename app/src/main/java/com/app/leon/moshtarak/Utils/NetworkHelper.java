@@ -12,10 +12,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkHelper {
     private static TimeUnit TIME_UNIT = TimeUnit.SECONDS;
-    private static long READ_TIMEOUT = 120;
-    private static long WRITE_TIMEOUT = 60;
-    private static long CONNECT_TIMEOUT = 10;
-    private static boolean RETRY_ENABLED = true;
 
     private NetworkHelper() {
 
@@ -24,7 +20,11 @@ public class NetworkHelper {
     private static OkHttpClient getHttpClient() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient
+        long READ_TIMEOUT = 120;
+        long WRITE_TIMEOUT = 60;
+        long CONNECT_TIMEOUT = 10;
+        boolean RETRY_ENABLED = true;
+        return new OkHttpClient
                 .Builder()
                 .readTimeout(READ_TIMEOUT, TIME_UNIT)
                 .writeTimeout(WRITE_TIMEOUT, TIME_UNIT)
@@ -38,7 +38,6 @@ public class NetworkHelper {
 //                    }
 //                })
                 .addInterceptor(interceptor).build();
-        return client;
     }
 
     public static Retrofit getInstance() {
@@ -48,7 +47,6 @@ public class NetworkHelper {
         String baseUrl = "http://37.191.92.130/";
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
-//                .baseUrl("https://www.abfaesfahan.ir")
                 .client(NetworkHelper.getHttpClient())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();

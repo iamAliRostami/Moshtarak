@@ -7,7 +7,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -22,6 +21,7 @@ import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -34,7 +34,7 @@ import retrofit2.Retrofit;
 public class TrackingsActivity extends BaseActivity
         implements ICallback<ArrayList<TrackingDto>> {
     @BindView(R.id.editTextTrack)
-    EditText editTextTrack;
+    TextInputEditText editTextTrack;
     @BindView(R.id.buttonSubmit)
     Button buttonSubmit;
     @BindView(R.id.linearLayout1)
@@ -73,11 +73,13 @@ public class TrackingsActivity extends BaseActivity
             return false;
         });
     }
+
     void setOnButtonSubmitClickListener() {
         buttonSubmit.setOnClickListener(v -> {
             boolean cancel = false;
-            if (editTextTrack.getText().length() < 1) {
+            if (Objects.requireNonNull(editTextTrack.getText()).length() < 1) {
                 cancel = true;
+                editTextTrack.setError(getString(R.string.error_empty));
                 viewFocus = editTextTrack;
                 viewFocus.requestFocus();
             }

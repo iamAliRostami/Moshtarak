@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/white"
     android:foregroundGravity="center_horizontal"
     android:gravity="center_horizontal"
     android:layoutDirection="rtl"
@@ -1128,7 +1127,7 @@
                         android:text="@string/pay"
                         android:textColor="@color/white"
                         android:textSize="20sp"
-                        tools:ignore="RtlSymmetry" />
+                        tools:ignore="RtlHardcoded,RtlSymmetry" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/textViewCost"
@@ -1153,11 +1152,10 @@
                         android:text="@string/rial"
                         android:textColor="@color/white"
                         android:textSize="20sp"
-                        tools:ignore="RtlSymmetry" />
+                        tools:ignore="RtlHardcoded,RtlSymmetry" />
                 </LinearLayout>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
-
     </ScrollView>
 
 

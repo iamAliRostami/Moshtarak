@@ -1,5 +1,6 @@
 package com.app.leon.moshtarak.Utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.app.leon.moshtarak.Models.Enums.ErrorHandlerType;
@@ -16,11 +17,11 @@ import retrofit2.Converter;
 import retrofit2.Response;
 
 public class CustomErrorHandling extends Exception {
-    static String errorMessage;
+    @SuppressLint("StaticFieldLeak")
     private static Context context;
     private int ErrorCode;
 
-    public CustomErrorHandling(Context context) {
+    CustomErrorHandling(Context context) {
         CustomErrorHandling.context = context;
     }
 
@@ -49,7 +50,8 @@ public class CustomErrorHandling extends Exception {
         return "";
     }
 
-    public String getErrorMessageTotal(Throwable throwable) {
+    String getErrorMessageTotal(Throwable throwable) {
+        String errorMessage;
         if (throwable instanceof IOException) {
             errorMessage = context.getString(R.string.error_IO);
             return errorMessage;
@@ -63,7 +65,7 @@ public class CustomErrorHandling extends Exception {
         return errorMessage;
     }
 
-    public String getErrorMessageDefault(int httpResponseCode) {
+    private String getErrorMessageDefault(int httpResponseCode) {
         String errorMessage = "";
         if (httpResponseCode == 500) {
             errorMessage = context.getString(R.string.error_internal);
@@ -81,7 +83,7 @@ public class CustomErrorHandling extends Exception {
         return errorMessage;
     }
 
-    public String getErrorMessageForLogin(int httpResponseCode) {
+    private String getErrorMessageForLogin(int httpResponseCode) {
         String errorMessage = "";
         if (httpResponseCode == 500) {
             errorMessage = context.getString(R.string.error_internal);
@@ -104,7 +106,7 @@ public class CustomErrorHandling extends Exception {
         private int Status;
         private String Message;
 
-        public APIError() {
+        APIError() {
         }
 
         public int status() {
@@ -115,5 +117,4 @@ public class CustomErrorHandling extends Exception {
             return Message;
         }
     }
-
 }

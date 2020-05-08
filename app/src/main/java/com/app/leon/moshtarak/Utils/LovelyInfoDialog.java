@@ -69,7 +69,7 @@ public class LovelyInfoDialog extends AbsLovelyDialog<LovelyInfoDialog> {
         return setConfirmButtonText(string(text));
     }
 
-    public LovelyInfoDialog setConfirmButtonText(String text) {
+    private LovelyInfoDialog setConfirmButtonText(String text) {
         confirmButton.setText(text);
         return this;
     }

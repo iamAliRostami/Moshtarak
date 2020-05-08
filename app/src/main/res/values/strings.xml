@@ -201,4 +201,6 @@
     <string name="Why_We_Ask_For_This_Information">چرا به این اطلاعات نیاز است؟</string>
     <string name="enter_counter_number">لطفا شماره کنتور را وارد نمایید.</string>
     <string name="dont_show_again">دیگر نمایش نده!</string>
+    <string name="_09">09</string>
+    <string name="no_sms">شما در این مرحله پیامکی دریافت نکرده اید.</string>
 </resources>

@@ -33,12 +33,12 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     private TextView messageView;
     private Context context;
 
-    public AbsLovelyDialog(Context context) {
+    AbsLovelyDialog(Context context) {
         this.context = context;
         init(new AlertDialog.Builder(this.context));
     }
 
-    public AbsLovelyDialog(Context context, int theme) {
+    AbsLovelyDialog(Context context, int theme) {
         this.context = context;
         init(new AlertDialog.Builder(context, theme));
     }
@@ -80,14 +80,14 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return (T) this;
     }
 
-    public T setTopTitle(CharSequence title) {
+    T setTopTitle(CharSequence title) {
         topTitleView.setVisibility(View.VISIBLE);
         topTitleView.setText(title);
 //        topTitleView.setTextSize(context.getResources().getDimension(R.dimen.textSizeMedium));
         return (T) this;
     }
 
-    public T setTopTitleColor(int color) {
+    T setTopTitleColor(int color) {
         topTitleView.setTextColor(color);
         return (T) this;
     }
@@ -170,7 +170,7 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return dialog;
     }
 
-    public void dismiss() {
+    void dismiss() {
         dialog.dismiss();
     }
 
@@ -193,11 +193,11 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return ContextCompat.getColor(getContext(), colorRes);
     }
 
-    protected Context getContext() {
+    Context getContext() {
         return dialogView.getContext();
     }
 
-    protected <ViewClass extends View> ViewClass findView(int id) {
+    <ViewClass extends View> ViewClass findView(int id) {
         return (ViewClass) dialogView.findViewById(id);
     }
 
@@ -206,7 +206,7 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         private View.OnClickListener clickListener;
         private boolean closeOnClick;
 
-        protected ClickListenerDecorator(View.OnClickListener clickListener, boolean closeOnClick) {
+        ClickListenerDecorator(View.OnClickListener clickListener, boolean closeOnClick) {
             this.clickListener = clickListener;
             this.closeOnClick = closeOnClick;
         }

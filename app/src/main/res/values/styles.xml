@@ -6,7 +6,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/byekan</item>
+        <item name="background">@drawable/img_background</item>
+        >
+        <item name="android:windowBackground">@drawable/img_background</item>
     </style>
+
 
     <style name="bottomView">
         <item name="android:layout_width">match_parent</item>
@@ -32,6 +37,7 @@
         <item name="android:fontFamily">@font/byekan</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="background">@drawable/img_background</item>
     </style>
 
     <style name="ActionBar" parent="Theme.AppCompat">
@@ -68,5 +74,33 @@
     <style name="EditTextTintTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/text_color2</item>
     </style>
+    //TODO از اینجا
 
+    <style name="AppThemeMaterial" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textAppearanceButton">@style/TextStyle</item>
+    </style>
+
+
+    <style name="AppThemeMaterial.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppThemeMaterial.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:actionOverflowButtonStyle">@style/OverFlowButton</item>
+        <item name="android:drawablePadding">2dp</item>
+        <item name="android:fontFamily">@font/byekan</item>
+    </style>
+
+    <style name="AppThemeMaterial.NoActionBar">
+        <item name="android:fontFamily">@font/byekan</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="textAppearanceButton">@style/TextStyle</item>
+    </style>
+
+    <style name="TextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/transparent</item>
+    </style>
 </resources>

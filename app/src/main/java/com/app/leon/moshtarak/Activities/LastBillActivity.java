@@ -258,82 +258,74 @@ public class LastBillActivity extends BaseActivity {
         }
     }
 
-    class GetToken implements ICallback<SimpleMessage> {
-        @Override
-        public void execute(SimpleMessage simpleMessage) {
-            Log.e("token", simpleMessage.getMessage());
-//            pay(simpleMessage.getMessage());
-        }
-    }
-
     void fillLatBillFromCounter(LastBillInfo lastBillInfo) {
         float floatNumber;
         int intNumber;
         textViewBillId.setText(billId);
         textViewPayId.setText(payId);
         setImageBitmap(imageViewBarcode);
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getPayable()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getPayable()));
         intNumber = (int) floatNumber;
         textViewCost.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getCurrentReadingNumber()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getCurrentReadingNumber()));
         intNumber = (int) floatNumber;
         textViewNewNumber.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getPreReadingNumber()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getPreReadingNumber()));
         intNumber = (int) floatNumber;
         textViewPreNumber.setText(String.valueOf(intNumber));
         textViewNewDate.setText(lastBillInfo.getCurrentReadingDate());
         textViewPreDate.setText(lastBillInfo.getPreReadingDate());
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getRate()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getRate()));
         intNumber = (int) floatNumber;
         textViewUseAverage.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getDuration()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getDuration()));
         intNumber = (int) floatNumber;
         textViewUseLength.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getUsageM3()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getUsageM3()));
         intNumber = (int) floatNumber;
         textViewUseM3.setText(String.valueOf(intNumber));
 
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getUsageLiter()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getUsageLiter()));
         intNumber = (int) floatNumber;
         textViewUseLitr.setText(String.valueOf(intNumber));
 
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getPreDebtOrOwe()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getPreDebtOrOwe()));
         intNumber = (int) floatNumber;
         textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getBoodje()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getBoodje()));
         intNumber = (int) floatNumber;
         textViewTakalifBoodje.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getKarmozdFazelab()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getKarmozdFazelab()));
         intNumber = (int) floatNumber;
         textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getAbBaha()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getAbBaha()));
         intNumber = (int) floatNumber;
         textViewAbBaha.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getMaliat()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getMaliat()));
         intNumber = (int) floatNumber;
         textViewTax.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getMazadOlgoo()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getMazadOlgoo()));
         intNumber = (int) floatNumber;
         textViewMazadOlgoo.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getTabsare2()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getTabsare2()));
         intNumber = (int) floatNumber;
         textViewTabsare2.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getTabsare3Ab()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getTabsare3Ab()));
         intNumber = (int) floatNumber;
         textViewTabsare3Ab.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getTabsare3Fazelab()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getTabsare3Fazelab()));
         intNumber = (int) floatNumber;
         textViewTabsare3Fazelab.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getAbonmanAb()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getAbonmanAb()));
         intNumber = (int) floatNumber;
         textViewAbonmanAb.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getAbonmanFazelab()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getAbonmanFazelab()));
         intNumber = (int) floatNumber;
         textViewAbonmanFazelab.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getFasleGarm()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getFasleGarm()));
         intNumber = (int) floatNumber;
         textViewFasleGarm.setText(String.valueOf(intNumber));
-        floatNumber = Float.valueOf(Objects.requireNonNull(lastBillInfo.getJam()));
+        floatNumber = Float.parseFloat(Objects.requireNonNull(lastBillInfo.getJam()));
         intNumber = (int) floatNumber;
         textViewTotal.setText(String.valueOf(intNumber));
         textViewDate.setText(lastBillInfo.getDeadLine());
@@ -343,6 +335,14 @@ public class LastBillActivity extends BaseActivity {
         if (isPayed) {
             linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable2);
             linearLayoutCompat.setVisibility(View.GONE);
+        }
+    }
+
+    static class GetToken implements ICallback<SimpleMessage> {
+        @Override
+        public void execute(SimpleMessage simpleMessage) {
+            Log.e("token", simpleMessage.getMessage());
+//            pay(simpleMessage.getMessage());
         }
     }
 
@@ -479,17 +479,17 @@ public class LastBillActivity extends BaseActivity {
                 textViewBillId.setText(billId);
                 textViewPayId.setText(payId);//TODO Sepehr
                 setImageBitmap(imageViewBarcode);
-                //float floatNumber = Float.valueOf(lastBillInfo.getCurrentReadingNumber());TODO
-                float floatNumber = Float.valueOf(lastBillInfo.getCurrentCounterNumber());
+                //float floatNumber = Float.parseFloat(lastBillInfo.getCurrentReadingNumber());TODO
+                float floatNumber = Float.parseFloat(lastBillInfo.getCurrentCounterNumber());
                 int intNumber = (int) floatNumber;
                 textViewNewNumber.setText(String.valueOf(intNumber));
 
-//                floatNumber = Float.valueOf(lastBillInfo.getPreReadingNumber());TODO
-                floatNumber = Float.valueOf(lastBillInfo.getPreCounterNumber());
+//                floatNumber = Float.parseFloat(lastBillInfo.getPreReadingNumber());TODO
+                floatNumber = Float.parseFloat(lastBillInfo.getPreCounterNumber());
                 intNumber = (int) floatNumber;
                 textViewPreNumber.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getPayable());
+                floatNumber = Float.parseFloat(lastBillInfo.getPayable());
                 intNumber = (int) floatNumber;
                 textViewCost.setText(String.valueOf(intNumber));
 
@@ -498,58 +498,58 @@ public class LastBillActivity extends BaseActivity {
 //                textViewPreDate.setText(lastBillInfo.getPreReadingDate());TODO
                 textViewPreDate.setText(lastBillInfo.getPreCounterReadingDate());
 
-//                floatNumber = Float.valueOf(lastBillInfo.getRate());TODO
-                floatNumber = Float.valueOf(lastBillInfo.getMasrafAverage());
+//                floatNumber = Float.parseFloat(lastBillInfo.getRate());TODO
+                floatNumber = Float.parseFloat(lastBillInfo.getMasrafAverage());
                 intNumber = (int) floatNumber;
                 textViewUseAverage.setText(String.valueOf(intNumber));
 
 //                textViewUseLength.setText(lastBillInfo.getDuration());TODO
                 textViewUseLength.setText(lastBillInfo.getDays());
 
-//                floatNumber = Float.valueOf(lastBillInfo.getUsageM3());TODO
-                floatNumber = Float.valueOf(lastBillInfo.getMasraf());
+//                floatNumber = Float.parseFloat(lastBillInfo.getUsageM3());TODO
+                floatNumber = Float.parseFloat(lastBillInfo.getMasraf());
                 intNumber = (int) floatNumber;
                 textViewUseM3.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getMasrafLiter());
+                floatNumber = Float.parseFloat(lastBillInfo.getMasrafLiter());
                 intNumber = (int) floatNumber;
                 textViewUseLitr.setText(String.valueOf(intNumber));
 
-//                floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());//TODO
-                floatNumber = Float.valueOf(lastBillInfo.getAbBaha());
+//                floatNumber = Float.parseFloat(lastBillInfo.getAbBahaDetail());//TODO
+                floatNumber = Float.parseFloat(lastBillInfo.getAbBaha());
                 intNumber = (int) floatNumber;
                 textViewAbBaha.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getLavazemKahande());
+                floatNumber = Float.parseFloat(lastBillInfo.getLavazemKahande());
                 intNumber = (int) floatNumber;
                 textViewLavzemKahande.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getTaxfif());
+                floatNumber = Float.parseFloat(lastBillInfo.getTaxfif());
                 intNumber = (int) floatNumber;
                 textViewTaxfif.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getMaliat());
+                floatNumber = Float.parseFloat(lastBillInfo.getMaliat());
                 intNumber = (int) floatNumber;
                 textViewTax.setText(String.valueOf(intNumber));
 
                 textViewDate.setText(lastBillInfo.getDeadLine());
 
-//                floatNumber = Float.valueOf(lastBillInfo.getPreDebtOrOwe());TODO
-                floatNumber = Float.valueOf(lastBillInfo.getPreBedOrBes());
+//                floatNumber = Float.parseFloat(lastBillInfo.getPreDebtOrOwe());TODO
+                floatNumber = Float.parseFloat(lastBillInfo.getPreBedOrBes());
                 intNumber = (int) floatNumber;
                 textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
 
-//                floatNumber = Float.valueOf(lastBillInfo.getBoodje());TODO
-                floatNumber = Float.valueOf(lastBillInfo.getBudget());
+//                floatNumber = Float.parseFloat(lastBillInfo.getBoodje());TODO
+                floatNumber = Float.parseFloat(lastBillInfo.getBudget());
                 intNumber = (int) floatNumber;
                 textViewTakalifBoodje.setText(String.valueOf(intNumber));
 
-//                floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelabDetails());TODO
-                floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelab());
+//                floatNumber = Float.parseFloat(lastBillInfo.getKarmozdFazelabDetails());TODO
+                floatNumber = Float.parseFloat(lastBillInfo.getKarmozdFazelab());
                 intNumber = (int) floatNumber;
                 textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getJam());
+                floatNumber = Float.parseFloat(lastBillInfo.getJam());
                 intNumber = (int) floatNumber;
                 textViewTotal.setText(String.valueOf(intNumber));
 
@@ -577,59 +577,59 @@ public class LastBillActivity extends BaseActivity {
                 textViewBillId.setText(billId);
                 textViewPayId.setText(payId);
                 setImageBitmap(imageViewBarcode);
-                float floatNumber = Float.valueOf(lastBillInfo.getCurrentReadingNumber());
+                float floatNumber = Float.parseFloat(lastBillInfo.getCurrentReadingNumber());
                 int intNumber = (int) floatNumber;
                 textViewNewNumber.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getPreReadingNumber());
+                floatNumber = Float.parseFloat(lastBillInfo.getPreReadingNumber());
                 intNumber = (int) floatNumber;
                 textViewPreNumber.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getPayable());
+                floatNumber = Float.parseFloat(lastBillInfo.getPayable());
                 intNumber = (int) floatNumber;
                 textViewCost.setText(String.valueOf(intNumber));
 
                 textViewNewDate.setText(lastBillInfo.getCurrentReadingDate());
                 textViewPreDate.setText(lastBillInfo.getPreReadingDate());
 
-                floatNumber = Float.valueOf(lastBillInfo.getRate());
+                floatNumber = Float.parseFloat(lastBillInfo.getRate());
                 intNumber = (int) floatNumber;
                 textViewUseAverage.setText(String.valueOf(intNumber));
 
                 textViewUseLength.setText(lastBillInfo.getDuration());
 
-                floatNumber = Float.valueOf(lastBillInfo.getUsageM3());
+                floatNumber = Float.parseFloat(lastBillInfo.getUsageM3());
                 intNumber = (int) floatNumber;
                 textViewUseM3.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getUsageLiter());
+                floatNumber = Float.parseFloat(lastBillInfo.getUsageLiter());
                 intNumber = (int) floatNumber;
                 textViewUseLitr.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getAbBahaDetail());
+                floatNumber = Float.parseFloat(lastBillInfo.getAbBahaDetail());
                 intNumber = (int) floatNumber;
                 textViewAbBaha.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getMaliat());
+                floatNumber = Float.parseFloat(lastBillInfo.getMaliat());
                 intNumber = (int) floatNumber;
                 textViewTax.setText(String.valueOf(intNumber));
 
                 textViewDate.setText(lastBillInfo.getDeadLine());
 
-                floatNumber = Float.valueOf(lastBillInfo.getPreDebtOrOwe());
+                floatNumber = Float.parseFloat(lastBillInfo.getPreDebtOrOwe());
                 intNumber = (int) floatNumber;
                 textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getBoodje());
+                floatNumber = Float.parseFloat(lastBillInfo.getBoodje());
                 intNumber = (int) floatNumber;
                 textViewTakalifBoodje.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getKarmozdFazelabDetails());
+                floatNumber = Float.parseFloat(lastBillInfo.getKarmozdFazelabDetails());
                 intNumber = (int) floatNumber;
 
                 textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
 
-                floatNumber = Float.valueOf(lastBillInfo.getJam());
+                floatNumber = Float.parseFloat(lastBillInfo.getJam());
                 intNumber = (int) floatNumber;
                 textViewTotal.setText(String.valueOf(intNumber));
 
@@ -651,25 +651,25 @@ public class LastBillActivity extends BaseActivity {
                     linearLayoutCompat.setVisibility(View.GONE);
                 }
                 if (isFromCardex) {
-                    floatNumber = Float.valueOf(lastBillInfo.getTabsare2());
+                    floatNumber = Float.parseFloat(lastBillInfo.getTabsare2());
                     intNumber = (int) floatNumber;
                     textViewTabsare2.setText(String.valueOf(intNumber));
-                    floatNumber = Float.valueOf(lastBillInfo.getTabsare3Ab());
+                    floatNumber = Float.parseFloat(lastBillInfo.getTabsare3Ab());
                     intNumber = (int) floatNumber;
                     textViewTabsare3Ab.setText(String.valueOf(intNumber));
-                    floatNumber = Float.valueOf(lastBillInfo.getTabsare3Fazelab());
+                    floatNumber = Float.parseFloat(lastBillInfo.getTabsare3Fazelab());
                     intNumber = (int) floatNumber;
                     textViewTabsare3Fazelab.setText(String.valueOf(intNumber));
-                    floatNumber = Float.valueOf(lastBillInfo.getAbonmanAb());
+                    floatNumber = Float.parseFloat(lastBillInfo.getAbonmanAb());
                     intNumber = (int) floatNumber;
                     textViewAbonmanAb.setText(String.valueOf(intNumber));
-                    floatNumber = Float.valueOf(lastBillInfo.getAbonmanFazelab());
+                    floatNumber = Float.parseFloat(lastBillInfo.getAbonmanFazelab());
                     intNumber = (int) floatNumber;
                     textViewAbonmanFazelab.setText(String.valueOf(intNumber));
-                    floatNumber = Float.valueOf(lastBillInfo.getFasleGarm());
+                    floatNumber = Float.parseFloat(lastBillInfo.getFasleGarm());
                     intNumber = (int) floatNumber;
                     textViewFasleGarm.setText(String.valueOf(intNumber));
-                    floatNumber = Float.valueOf(lastBillInfo.getMazadOlgoo());
+                    floatNumber = Float.parseFloat(lastBillInfo.getMazadOlgoo());
                     intNumber = (int) floatNumber;
                     textViewMazadOlgoo.setText(String.valueOf(intNumber));
                 }

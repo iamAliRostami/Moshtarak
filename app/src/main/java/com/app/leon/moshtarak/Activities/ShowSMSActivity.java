@@ -4,18 +4,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.FontManager;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +31,8 @@ public class ShowSMSActivity extends AppCompatActivity {
     Context context;
     @BindView(R.id.textViewSmsLevel)
     TextView textView;
+    @BindView(R.id.textViewNoSMS)
+    TextView textViewNoSMS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +44,16 @@ public class ShowSMSActivity extends AppCompatActivity {
         fontManager.setFont(findViewById(R.id.relativeLayout));
         Intent intent = getIntent();
         sms = intent.getStringArrayListExtra("SMS");
-        textView.setText(textView.getText().toString().concat(intent.getStringExtra("SMS_LEVEL")));
+        textView.setText(textView.getText().toString().concat(Objects.requireNonNull(intent.getStringExtra("SMS_LEVEL"))));
 //        arrayAdapter = new ArrayAdapter<>(this, R.layout.sms_layout, sms);
-
+        Log.e("Size", String.valueOf(sms.size()));
+        if (sms.size() < 1)
+            textViewNoSMS.setVisibility(View.VISIBLE);
         arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
                 R.layout.sms_layout, sms) {
+            @NonNull
             @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
+            public View getView(int position, View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 TextView text = view.findViewById(android.R.id.text1);
                 Typeface typeface = Typeface.createFromAsset(context.getAssets(), "font/BYekan_3.ttf");

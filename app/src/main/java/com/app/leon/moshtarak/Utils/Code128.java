@@ -13,13 +13,11 @@ public class Code128 {
     private static final int CODE_STOP = 106;
     private static final int DIVISOR = 103;
     private String data;
-    private Context context;
     private int weight = 0;
     private int weight_sum = 0;
     private int check_sum = 0;
 
     public Code128(Context context) {
-        this.context = context;
     }
 
     public Code128(String data) {
@@ -120,15 +118,7 @@ public class Code128 {
                 canvas.drawRect(outputX, TOP_GAP, (outputX + multiple), outputHeight, barPaint);
             }
         }
-//        Resources resources = context.getResources();
-//        float scale = resources.getDisplayMetrics().density;
         bgPaint.setColor(Color.WHITE);
-//        int size = (int) (26 * scale);
-//        int size = (int) (1 * scale);
-//        bgPaint.setTextSize(size);
-//        String str = insertSpace(data);
-//        bgPaint.setTextAlign(Paint.Align.CENTER);
-//        canvas.drawText(str, width / 2, (height - 10), bgPaint);
         return bitmap;
     }
 

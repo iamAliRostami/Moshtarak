@@ -3,7 +3,6 @@ package com.app.leon.moshtarak.Utils;
 import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -72,7 +71,6 @@ public class HttpClientWrapper {
 
                 @Override
                 public void onFailure(Call<T> call, Throwable t) {
-                    Log.e("error", t.getMessage());
                     Activity activity = (Activity) context;
                     if (!activity.isFinishing()) {
                         CustomErrorHandling customErrorHandling = new CustomErrorHandling(context);

@@ -41,7 +41,6 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
         webSetting.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("file:///android_asset/help3.htm");
-//        displayFromAsset();
     }
 
 //    private void displayFromAsset() {

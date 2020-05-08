@@ -5,7 +5,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 
 import androidx.browser.customtabs.CustomTabsCallback;
 import androidx.browser.customtabs.CustomTabsClient;
@@ -51,7 +50,6 @@ public class CustomTab {
             customTabsIntent.intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             customTabsIntent.launchUrl(context, Uri.parse(url));
         } catch (Exception e) {
-            Log.e(e.toString(), e.getMessage());
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             context.startActivity(browserIntent);
         }
