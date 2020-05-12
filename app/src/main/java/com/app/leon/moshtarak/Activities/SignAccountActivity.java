@@ -131,20 +131,25 @@ public class SignAccountActivity extends BaseActivity
         buttonSign.setOnClickListener(view -> {
             View viewFocus;
             boolean cancel = false;
-            if (editTextBillId.getText().length() < 6) {
+
+            billId = Objects.requireNonNull(editTextBillId.getText()).toString();
+            while (billId.startsWith("0") && billId.length() >= 6) {
+                billId = billId.substring(1);
+            }
+
+            if (billId.length() < 6) {
                 cancel = true;
                 editTextBillId.setError(getString(R.string.error_empty));
                 viewFocus = editTextBillId;
                 viewFocus.requestFocus();
             }
-            if (editTextMobile.getText().length() < 9) {
+            if (Objects.requireNonNull(editTextMobile.getText()).length() < 9) {
                 cancel = true;
                 editTextMobile.setError(getString(R.string.error_empty));
                 view = editTextMobile;
                 view.requestFocus();
             }
             if (!cancel) {
-                billId = editTextBillId.getText().toString();
                 mobile = "09".concat(editTextMobile.getText().toString());
                 canMatch(billId, mobile);
             }
