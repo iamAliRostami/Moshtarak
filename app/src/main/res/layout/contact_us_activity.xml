@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
     android:layoutDirection="rtl"
-    tools:context="com.app.leon.moshtarak.Activities.ContactDeveloperActivity"
+    tools:context="com.app.leon.moshtarak.Activities.ContactUsActivity"
     tools:ignore="UnusedAttribute">
 
     <ScrollView

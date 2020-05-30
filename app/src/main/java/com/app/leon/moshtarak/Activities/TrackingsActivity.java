@@ -4,11 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -21,72 +17,65 @@ import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
-import com.google.android.material.textfield.TextInputEditText;
+import com.app.leon.moshtarak.databinding.TrackingsContentBinding;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class TrackingsActivity extends BaseActivity
         implements ICallback<ArrayList<TrackingDto>> {
-    @BindView(R.id.editTextTrack)
-    TextInputEditText editTextTrack;
-    @BindView(R.id.buttonSubmit)
-    Button buttonSubmit;
-    @BindView(R.id.linearLayout1)
-    LinearLayout linearLayout1;
-    @BindView(R.id.linearLayout2)
-    LinearLayout linearLayout2;
-    @BindView(R.id.listViewTrack)
-    ListView listViewTrack;
     View viewFocus;
     Context context;
-
+    TrackingsContentBinding binding;
     @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.trackings_content, findViewById(R.id.tracking_activity));
+        binding = TrackingsContentBinding.inflate(getLayoutInflater());
+        View childLayout = binding.getRoot();
         ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
-        ButterKnife.bind(this);
         context = this;
         setOnButtonSubmitClickListener();
         setEditTextTrackOnLongClickListener();
     }
 
     void setEditTextTrackOnLongClickListener() {
-        editTextTrack.setOnLongClickListener(v -> {
+        binding.editTextTrack.setOnLongClickListener(v -> {
             Object clipboardService = getSystemService(CLIPBOARD_SERVICE);
             final ClipboardManager clipboardManager = (ClipboardManager) clipboardService;
-            ClipData clipData = clipboardManager.getPrimaryClip();
-            int itemCount = clipData.getItemCount();
+            ClipData clipData = null;
+            if (clipboardManager != null) {
+                clipData = clipboardManager.getPrimaryClip();
+            }
+            int itemCount = 0;
+            if (clipData != null) {
+                itemCount = clipData.getItemCount();
+            }
             if (itemCount > 0) {
                 ClipData.Item item = clipData.getItemAt(0);
                 String text = item.getText().toString();
-                editTextTrack.setText(text);
+                binding.editTextTrack.setText(text);
             }
             return false;
         });
     }
 
     void setOnButtonSubmitClickListener() {
-        buttonSubmit.setOnClickListener(v -> {
+        binding.buttonSubmit.setOnClickListener(v -> {
             boolean cancel = false;
-            if (Objects.requireNonNull(editTextTrack.getText()).length() < 1) {
+            if (Objects.requireNonNull(binding.editTextTrack.getText()).length() < 1) {
                 cancel = true;
-                editTextTrack.setError(getString(R.string.error_empty));
-                viewFocus = editTextTrack;
+                binding.editTextTrack.setError(getString(R.string.error_empty));
+                viewFocus = binding.editTextTrack;
                 viewFocus.requestFocus();
             }
             if (!cancel) {
                 Retrofit retrofit = NetworkHelper.getInstance();
                 final IAbfaService tracking = retrofit.create(IAbfaService.class);
-                Call<ArrayList<TrackingDto>> call = tracking.getTrackings(editTextTrack.getText().toString());
+                Call<ArrayList<TrackingDto>> call = tracking.getTrackings(binding.editTextTrack.getText().toString());
                 HttpClientWrapper.callHttpAsync(call, TrackingsActivity.this, context, ProgressType.SHOW.getValue());
             }
         });
@@ -94,9 +83,9 @@ public class TrackingsActivity extends BaseActivity
 
     @Override
     public void execute(ArrayList<TrackingDto> trackingDtos) {
-        linearLayout1.setVisibility(View.GONE);
-        linearLayout2.setVisibility(View.VISIBLE);
+        binding.linearLayout1.setVisibility(View.GONE);
+        binding.linearLayout2.setVisibility(View.VISIBLE);
         TrackCustomAdapter_1 trackCustomAdapter_1 = new TrackCustomAdapter_1(context, trackingDtos);
-        listViewTrack.setAdapter(trackCustomAdapter_1);
+        binding.listViewTrack.setAdapter(trackCustomAdapter_1);
     }
 }

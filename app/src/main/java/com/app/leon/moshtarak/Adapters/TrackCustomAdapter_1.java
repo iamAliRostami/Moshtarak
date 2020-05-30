@@ -9,12 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.app.leon.moshtarak.Activities.ShowSMSActivity;
 import com.app.leon.moshtarak.Models.DbTables.TrackingDto;
 import com.app.leon.moshtarak.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class TrackCustomAdapter_1 extends ArrayAdapter<TrackingDto> {
     private ArrayList<TrackingDto> trackingDtos;
@@ -27,8 +30,9 @@ public class TrackCustomAdapter_1 extends ArrayAdapter<TrackingDto> {
         this.context = context;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View view = convertView;
         if (view == null) {
             if (position % 2 == 0)
@@ -50,12 +54,12 @@ public class TrackCustomAdapter_1 extends ArrayAdapter<TrackingDto> {
 
         linearLayout.setOnClickListener(view1 -> {
             Intent intent = new Intent(context, ShowSMSActivity.class);
-            intent.putExtra("SMS", trackingDto.getSmsList());
+            intent.putExtra("SMS", Objects.requireNonNull(trackingDto).getSmsList());
             intent.putExtra("SMS_LEVEL", " ".concat(trackingDto.getStatus()));
             context.startActivity(intent);
         });
 
-        textViewStatus.setText(trackingDto.getStatus());
+        textViewStatus.setText(Objects.requireNonNull(trackingDto).getStatus());
         textViewDate.setText(trackingDto.getDateJalali());
         textViewTime.setText(trackingDto.getTime());
 

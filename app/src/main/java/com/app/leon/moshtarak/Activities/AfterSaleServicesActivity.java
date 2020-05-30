@@ -3,17 +3,14 @@ package com.app.leon.moshtarak.Activities;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckedTextView;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
@@ -31,23 +28,16 @@ import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
+import com.app.leon.moshtarak.databinding.AfterSaleServiceContentBinding;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class AfterSaleServicesActivity extends BaseActivity {
 
-    @BindView(R.id.listViewService)
-    ListView listViewService;
-    @BindView(R.id.buttonSubmit)
-    Button buttonSubmit;
-    @BindView(R.id.editTextMobile)
-    EditText editTextMobile;
+    AfterSaleServiceContentBinding binding;
     Context context;
     SharedPreference sharedPreference;
     String billId;
@@ -57,11 +47,10 @@ public class AfterSaleServicesActivity extends BaseActivity {
 
     @Override
     protected void initialize() {
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.after_sale_service_content, findViewById(R.id.after_sale_services_activity));
+        binding = AfterSaleServiceContentBinding.inflate(getLayoutInflater());
+        View childLayout = binding.getRoot();
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
-        ButterKnife.bind(this);
         context = this;
         accessData();
     }
@@ -75,7 +64,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
         } else {
             billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
                     get(sharedPreference.getIndex());
-            editTextMobile.setText(sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
+            binding.editTextMobile.setText(sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
                     get(sharedPreference.getIndex()).replaceFirst("09", ""));
             Toast.makeText(MyApplication.getContext(), "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
             getServices();
@@ -93,24 +82,22 @@ public class AfterSaleServicesActivity extends BaseActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 R.layout.item_spinner, servicesTitle) {
             @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
+            public View getView(int position, View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 final CheckedTextView textView = view.findViewById(android.R.id.text1);
-                Typeface typeface = Typeface.createFromAsset(getAssets(), "font/BYekan_3.ttf");
-                textView.setTypeface(typeface);
                 textView.setChecked(true);
                 textView.setTextColor(getResources().getColor(R.color.black));
                 return view;
             }
         };
-        listViewService.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        listViewService.setAdapter(arrayAdapter);
+        binding.listViewService.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        binding.listViewService.setAdapter(arrayAdapter);
         setListViewServiceClickListener();
     }
 
     private void setListViewServiceClickListener() {
-        listViewService.setOnItemClickListener((adapterView, view, i, l) -> {
-            if (listViewService.isItemChecked(i)) {
+        binding.listViewService.setOnItemClickListener((adapterView, view, i, l) -> {
+            if (binding.listViewService.isItemChecked(i)) {
                 requestServices.add(servicesId.get(i));
             } else {
                 requestServices.add(servicesId.remove(i));
@@ -119,16 +106,16 @@ public class AfterSaleServicesActivity extends BaseActivity {
     }
 
     void setOnButtonSubmitClickListener() {
-        buttonSubmit.setOnClickListener(view -> {
+        binding.buttonSubmit.setOnClickListener(view -> {
             View viewFocus;
-            if (editTextMobile.getText().length() < 9) {
-                viewFocus = editTextMobile;
+            if (binding.editTextMobile.getText().length() < 9) {
+                viewFocus = binding.editTextMobile;
                 viewFocus.requestFocus();
             } else if (servicesId.size() < 1) {
                 new CustomDialog(DialogType.Green, context, context.getString(R.string.select), context.getString(R.string.dear_user),
                         context.getString(R.string.support), context.getString(R.string.accepted));
             } else {
-                sendAfterSaleServiceRequest("09".concat(editTextMobile.getText().toString()));
+                sendAfterSaleServiceRequest("09".concat(binding.editTextMobile.getText().toString()));
             }
         });
     }

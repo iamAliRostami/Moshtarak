@@ -21,7 +21,7 @@ public class FontManager {
     }
 
     private void initializeTypeface() {
-        String fontName = "font/BYekan_3.ttf";
+        String fontName = "font/my_font.ttf";
         typeface = Typeface.createFromAsset(context.getAssets(), fontName);
     }
 

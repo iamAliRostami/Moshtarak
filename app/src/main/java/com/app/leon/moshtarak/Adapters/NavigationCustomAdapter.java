@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.app.leon.moshtarak.R;
@@ -52,8 +53,9 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
         return super.getPosition(item);
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         // TODO Auto-generated method stub
         DrawerItemHolder drawerHolder;
         convertView = null;

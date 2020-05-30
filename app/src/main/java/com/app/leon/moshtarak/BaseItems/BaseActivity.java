@@ -1,7 +1,6 @@
 package com.app.leon.moshtarak.BaseItems;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,8 +35,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import io.github.inflationx.viewpump.ViewPumpContextWrapper;
-
 
 public abstract class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,10 +49,10 @@ public abstract class BaseActivity extends AppCompatActivity
 
     protected abstract void initialize();
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
-    }
+//    @Override
+//    protected void attachBaseContext(Context newBase) {
+//        super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase));
+//    }
 
     @SuppressLint({"NewApi", "RtlHardcoded", "WrongConstant"})
     @Override
@@ -63,14 +60,16 @@ public abstract class BaseActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         overridePendingTransition(R.anim.slide_up_info, R.anim.no_change);
+
         binding = BaseActivityBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        View view = binding.getRoot();
+        setContentView(view);
         initializeBase();
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        toolbar.setNavigationOnClickListener(view -> drawer.openDrawer(Gravity.START));
+        toolbar.setNavigationOnClickListener(view1 -> drawer.openDrawer(Gravity.START));
         initialize();
     }
 

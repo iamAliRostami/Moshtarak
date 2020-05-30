@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,35 +16,30 @@ import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Request;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
-import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
+import com.app.leon.moshtarak.databinding.RecoveryCodeActivityBinding;
 
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class RecoveryCodeActivity extends AppCompatActivity implements ICallback<List<Request>> {
     Context context;
     String billId;
-    @BindView(R.id.editTextSearch)
-    EditText editTextSearch;
     RecoverCodeCustomAdapter recoverCodeCustomAdapter;
-    @BindView(R.id.listViewRequest)
-    ListView listViewRequest;
+    RecoveryCodeActivityBinding binding;
 
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recovery_code_activity);
-        ButterKnife.bind(this);
+        binding = RecoveryCodeActivityBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         context = this;
         SharedPreference sharedPreference = new SharedPreference(context);
         if (!sharedPreference.checkIsNotEmpty()) {
@@ -62,7 +55,7 @@ public class RecoveryCodeActivity extends AppCompatActivity implements ICallback
     }
 
     void setOnEditTextSearchChangedListener() {
-        editTextSearch.addTextChangedListener(new TextWatcher() {
+        binding.editTextSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -75,11 +68,12 @@ public class RecoveryCodeActivity extends AppCompatActivity implements ICallback
 
             @Override
             public void afterTextChanged(Editable s) {
-                String Search = editTextSearch.getText().toString().toLowerCase(Locale.getDefault());
+                String Search = binding.editTextSearch.getText().toString().toLowerCase(Locale.getDefault());
                 recoverCodeCustomAdapter.filter(Search);
             }
         });
     }
+
     void getAllSession() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getRequests = retrofit.create(IAbfaService.class);
@@ -90,7 +84,7 @@ public class RecoveryCodeActivity extends AppCompatActivity implements ICallback
     @Override
     public void execute(List<Request> requests) {
         recoverCodeCustomAdapter = new RecoverCodeCustomAdapter(requests, context);
-        listViewRequest.setAdapter(recoverCodeCustomAdapter);
-        listViewRequest.setTextFilterEnabled(true);
+        binding.listViewRequest.setAdapter(recoverCodeCustomAdapter);
+        binding.listViewRequest.setTextFilterEnabled(true);
     }
 }

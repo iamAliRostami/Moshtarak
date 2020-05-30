@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.app.leon.moshtarak.Models.DbTables.Session;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.FontManager;
 
 import java.util.List;
 
@@ -49,9 +48,6 @@ public class SessionCustomAdapter extends BaseAdapter {
         TextView textViewModel = view.findViewById(R.id.textViewModel);
         TextView textViewOsVersion = view.findViewById(R.id.textViewOsVersion);
         TextView textViewLoginDate = view.findViewById(R.id.textViewLoginDate);
-
-        FontManager fontManager = new FontManager(context);
-        fontManager.setFont(view.findViewById(R.id.linearLayout));
 
         textViewModel.setTextAppearance(context, R.style.text_default);
         textViewOsVersion.setTextAppearance(context, R.style.text_default);

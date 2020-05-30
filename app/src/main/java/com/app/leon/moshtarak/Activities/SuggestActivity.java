@@ -3,19 +3,13 @@ package com.app.leon.moshtarak.Activities;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Build;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckedTextView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,40 +26,39 @@ import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
-import com.google.android.material.textfield.TextInputEditText;
+import com.app.leon.moshtarak.databinding.SuggestContent1Binding;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class SuggestActivity extends BaseActivity implements ICallback<SimpleMessage> {
-    @BindView(R.id.suggestSpinner)
-    Spinner spinner;
-    @BindView(R.id.radioGroupSuggest)
-    RadioGroup radioGroup;
-    @BindView(R.id.radioButtonSuggest1)
-    RadioButton radioButtonSuggest1;
-    @BindView(R.id.radioButtonSuggest2)
-    RadioButton radioButtonSuggest2;
-    @BindView(R.id.suggestEditText)
-    TextInputEditText editText;
-    @BindView(R.id.sendButton)
-    Button sendButton;
+    //    @BindView(R.id.suggestSpinner)
+//    Spinner spinner;
+//    @BindView(R.id.radioGroupSuggest)
+//    RadioGroup radioGroup;
+//    @BindView(R.id.radioButtonSuggest1)
+//    RadioButton radioButtonSuggest1;
+//    @BindView(R.id.radioButtonSuggest2)
+//    RadioButton radioButtonSuggest2;
+//    @BindView(R.id.suggestEditText)
+//    TextInputEditText editText;
+//    @BindView(R.id.sendButton)
+//    Button sendButton;
+    SuggestContent1Binding binding;
     ArrayList<String> items;
     Context context;
 
 
     @Override
     protected void initialize() {
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.suggest_content1, findViewById(R.id.suggest_activity));
+        binding = SuggestContent1Binding.inflate(getLayoutInflater());
+        View childLayout = binding.getRoot();
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
-        ButterKnife.bind(this);
+
         context = this;
         setRadioGroupOnCheckedChanged();
         setSpinnerArrayAdapter();
@@ -85,51 +78,49 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
         items.add(getString(R.string.support));
         items.add(getString(R.string.suggest));
         items.add(getString(R.string.other_));
-        spinner.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,
+        binding.suggestSpinner.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,
                 items) {
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 CheckedTextView text = view.findViewById(android.R.id.text1);
-                Typeface typeface = Typeface.createFromAsset(context.getAssets(), "font/BYekan_3.ttf");
-                text.setTypeface(typeface);
                 return view;
             }
         });
     }
 
     void setRadioGroupOnCheckedChanged() {
-        radioButtonSuggest1.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        binding.radioButtonSuggest1.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                spinner.setVisibility(View.VISIBLE);
+                binding.suggestSpinner.setVisibility(View.VISIBLE);
             }
         });
-        radioButtonSuggest2.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        binding.radioButtonSuggest2.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                spinner.setVisibility(View.GONE);
+                binding.suggestSpinner.setVisibility(View.GONE);
             }
         });
     }
 
     void setOnSendButtonClickListener() {
-        sendButton.setOnClickListener(v -> {
+        binding.sendButton.setOnClickListener(v -> {
             View viewFocus;
-            if (Objects.requireNonNull(editText.getText()).length() < 1) {
-                editText.setError(getString(R.string.error_empty));
-                viewFocus = editText;
+            if (Objects.requireNonNull(binding.suggestEditText.getText()).length() < 1) {
+                binding.suggestEditText.setError(getString(R.string.error_empty));
+                viewFocus = binding.suggestEditText;
                 viewFocus.requestFocus();
             } else {
                 int select;
-                if (radioButtonSuggest2.isChecked()) {
+                if (binding.radioButtonSuggest2.isChecked()) {
                     select = 1;
                 } else {
-                    select = spinner.getSelectedItemPosition() + 2;
+                    select = binding.suggestSpinner.getSelectedItemPosition() + 2;
                 }
                 Retrofit retrofit = NetworkHelper.getInstance();
                 final IAbfaService suggestion = retrofit.create(IAbfaService.class);
                 Call<SimpleMessage> call = suggestion.sendSuggestion(new Suggestion(
-                        String.valueOf(select), editText.getText().toString(),
+                        String.valueOf(select), binding.suggestEditText.getText().toString(),
                         String.valueOf(Build.VERSION.RELEASE), getDeviceName()));
                 HttpClientWrapper.callHttpAsync(call, SuggestActivity.this, context,
                         ProgressType.SHOW.getValue());

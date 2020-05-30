@@ -2,78 +2,53 @@ package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageButton;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.R;
-
-import java.util.Objects;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.app.leon.moshtarak.databinding.HomeContentBinding;
 
 public class HomeActivity extends BaseActivity {
-    @BindView(R.id.imageButtonSale)
-    ImageButton imageButtonSale;
-    @BindView(R.id.imageButtonLastBill)
-    ImageButton imageButtonLastBill;
-    @BindView(R.id.imageButtonKardex)
-    ImageButton imageButtonKardex;
-    @BindView(R.id.imageButtonTrain)
-    ImageButton imageButtonTrain;
-    @BindView(R.id.imageButtonMamoor)
-    ImageButton imageButtonMamoor;
-    @BindView(R.id.imageButtonSuggest)
-    ImageButton imageButtonSuggets;
-    @BindView(R.id.imageButtonTracking)
-    ImageButton imageButtonTracking;
-    @BindView(R.id.imageButtonHelp)
-    ImageButton imageButtonHelp;
-    @BindView(R.id.imageButtonSupport)
-    ImageButton imageButtonSupport;
 
     public static final int requestCodePaymentBill = 199;
+    HomeContentBinding binding;
 
     @SuppressLint({"HardwareIds", "MissingPermission", "CutPasteId"})
     @Override
     protected void initialize() {
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.home_content, findViewById(R.id.home_activity));
+        binding = HomeContentBinding.inflate(getLayoutInflater());
+        View childLayout = binding.getRoot();
         ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
-
-        ButterKnife.bind(this);
         setOnClickListener();
     }
 
     void setOnClickListener() {
-        imageButtonSale.setOnClickListener(onClickListener);
-        imageButtonLastBill.setOnClickListener(onClickListener);
-        imageButtonKardex.setOnClickListener(onClickListener);
-        imageButtonTrain.setOnClickListener(onClickListener);
-        imageButtonMamoor.setOnClickListener(onClickListener);
-        imageButtonSuggets.setOnClickListener(onClickListener);
-        imageButtonTracking.setOnClickListener(onClickListener);
-        imageButtonHelp.setOnClickListener(onClickListener);
-        imageButtonSupport.setOnClickListener(onClickListener);
+        binding.imageButtonSale.setOnClickListener(onClickListener);
+        binding.imageButtonLastBill.setOnClickListener(onClickListener);
+        binding.imageButtonKardex.setOnClickListener(onClickListener);
+        binding.imageButtonTrain.setOnClickListener(onClickListener);
+        binding.imageButtonMamoor.setOnClickListener(onClickListener);
+        binding.imageButtonSuggest.setOnClickListener(onClickListener);
+        binding.imageButtonTracking.setOnClickListener(onClickListener);
+        binding.imageButtonHelp.setOnClickListener(onClickListener);
+        binding.imageButtonSupport.setOnClickListener(onClickListener);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        imageButtonSale.setImageDrawable(null);
-        imageButtonLastBill.setImageDrawable(null);
-        imageButtonKardex.setImageDrawable(null);
-        imageButtonTrain.setImageDrawable(null);
-        imageButtonMamoor.setImageDrawable(null);
-        imageButtonSuggets.setImageDrawable(null);
-        imageButtonTracking.setImageDrawable(null);
-        imageButtonSupport.setImageDrawable(null);
-        imageButtonHelp.setImageDrawable(null);
+        binding.imageButtonSale.setImageDrawable(null);
+        binding.imageButtonLastBill.setImageDrawable(null);
+        binding.imageButtonKardex.setImageDrawable(null);
+        binding.imageButtonTrain.setImageDrawable(null);
+        binding.imageButtonMamoor.setImageDrawable(null);
+        binding.imageButtonSuggest.setImageDrawable(null);
+        binding.imageButtonTracking.setImageDrawable(null);
+        binding.imageButtonSupport.setImageDrawable(null);
+        binding.imageButtonHelp.setImageDrawable(null);
     }
 
     View.OnClickListener onClickListener = view -> {

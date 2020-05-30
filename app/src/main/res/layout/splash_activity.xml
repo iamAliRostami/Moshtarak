@@ -1,64 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_background"
+    android:orientation="vertical"
+    tools:context="com.app.leon.moshtarak.Activities.SplashActivity">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/img_background"
-        android:orientation="vertical"
-        tools:context="com.app.leon.moshtarak.Activities.SplashActivity">
+        android:layout_gravity="center"
+        android:foregroundGravity="center"
+        app:shimmer_duration="3000"
+        app:shimmer_repeat_count="0">
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmer_view_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <ImageView
+            android:id="@+id/imageViewSplashScreen"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_gravity="center"
             android:foregroundGravity="center"
-            app:shimmer_duration="3000"
-            app:shimmer_repeat_count="0">
+            android:src="@drawable/img_splash"
+            tools:ignore="ContentDescription" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <ImageView
-                android:id="@+id/imageViewSplashScreen"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_gravity="center"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        style="@style/bottomView"
+        android:foregroundGravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        tools:ignore="RtlCompat">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="2dp"
+                android:background="@color/transparent"
                 android:foregroundGravity="center"
-                android:src="@drawable/img_splash"
-                tools:ignore="ContentDescription" />
-        </com.facebook.shimmer.ShimmerFrameLayout>
+                android:src="@drawable/img_logo_footer"
+                tools:ignore="RtlCompat" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            style="@style/bottomView"
-            android:foregroundGravity="center"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            tools:ignore="RtlCompat">
-
-            <LinearLayout
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginEnd="2dp"
-                    android:background="@color/transparent"
-                    android:foregroundGravity="center"
-                    android:src="@drawable/img_logo_footer"
-                    tools:ignore="RtlCompat" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/copy_right_2"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </RelativeLayout>
-</layout>
+                android:text="@string/copy_right_2"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>

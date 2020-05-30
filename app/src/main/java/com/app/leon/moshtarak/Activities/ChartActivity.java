@@ -14,8 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.FontManager;
-import com.github.mikephil.charting.charts.HorizontalBarChart;
+import com.app.leon.moshtarak.databinding.ChartActivityBinding;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -24,16 +23,12 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class ChartActivity extends AppCompatActivity {
+    ChartActivityBinding binding;
     Context context;
-    @BindView(R.id.linearLayout)
-    LinearLayout linearLayout;
-    @BindView(R.id.horizontalChart)
-    HorizontalBarChart horizontalChart;
     Typeface typeface;
     ArrayList<String> listText = new ArrayList<>();
     ArrayList<Integer> listValue = new ArrayList<>();
@@ -43,8 +38,10 @@ public class ChartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chart_activity);
-        getSupportActionBar().setTitle(getString(R.string.chart2));
+        binding = ChartActivityBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.chart2));
         if (getIntent().getExtras() != null) {
             Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
             if (bundle1 != null) {
@@ -53,23 +50,20 @@ public class ChartActivity extends AppCompatActivity {
             }
         }
         context = this;
-        ButterKnife.bind(this);
-        FontManager fontManager = new FontManager(getApplicationContext());
-        fontManager.setFont(findViewById(R.id.constraintLayout));
-        String fontName = "font/BYekan_3.ttf";
+        String fontName = "font/my_font.ttf";
         typeface = Typeface.createFromAsset(context.getAssets(), fontName);
         customizeChartView();
         setData();
     }
 
     void customizeChartView() {
-        horizontalChart.setDrawBarShadow(false);
-        horizontalChart.setDrawValueAboveBar(true);
-        horizontalChart.getDescription().setEnabled(false);
-        horizontalChart.setPinchZoom(false);
+        binding.horizontalChart.setDrawBarShadow(false);
+        binding.horizontalChart.setDrawValueAboveBar(true);
+        binding.horizontalChart.getDescription().setEnabled(false);
+        binding.horizontalChart.setPinchZoom(false);
 
-        horizontalChart.setDrawGridBackground(true);
-        XAxis xl = horizontalChart.getXAxis();
+        binding.horizontalChart.setDrawGridBackground(true);
+        XAxis xl = binding.horizontalChart.getXAxis();
         xl.setPosition(XAxis.XAxisPosition.BOTTOM);
         xl.setTypeface(typeface);
         xl.setDrawAxisLine(true);
@@ -77,32 +71,32 @@ public class ChartActivity extends AppCompatActivity {
         xl.setGranularity(21f);
         xl.setGranularityEnabled(true);
 
-        YAxis yl = horizontalChart.getAxisLeft();
+        YAxis yl = binding.horizontalChart.getAxisLeft();
         yl.setTypeface(typeface);
         yl.setDrawAxisLine(true);
         yl.setDrawGridLines(true);
         yl.setAxisMinimum(-1f);
 
-        YAxis yr = horizontalChart.getAxisRight();
+        YAxis yr = binding.horizontalChart.getAxisRight();
         yr.setTypeface(typeface);
         yr.setDrawAxisLine(true);
         yr.setDrawGridLines(true);
         yr.setAxisMinimum(-1f);
 
-        horizontalChart.setFitBars(true);
-        horizontalChart.setScaleEnabled(false);
-        horizontalChart.animateY(2500);
-        horizontalChart.animateX(2500);
-        horizontalChart.getLegend().setEnabled(false);
-        horizontalChart.setFitBars(true);
-        horizontalChart.invalidate();
+        binding.horizontalChart.setFitBars(true);
+        binding.horizontalChart.setScaleEnabled(false);
+        binding.horizontalChart.animateY(2500);
+        binding.horizontalChart.animateX(2500);
+        binding.horizontalChart.getLegend().setEnabled(false);
+        binding.horizontalChart.setFitBars(true);
+        binding.horizontalChart.invalidate();
     }
 
     private void setData() {
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         float x = 1f;
         int margin = getResources().getDimensionPixelSize(R.dimen.activity_mid_margin);
-        linearLayout.setWeightSum(listValue.size());
+        binding.linearLayout.setWeightSum(listValue.size());
         for (int i = 0; i < listValue.size(); i++) {
             barEntries.add(new BarEntry(x, listValue.get(i)));
             x = x + 1f;
@@ -123,16 +117,16 @@ public class ChartActivity extends AppCompatActivity {
                 params.setMargins(margin, 0, margin, 0);
             textView.setLayoutParams(params);
             textView.setGravity(Gravity.CENTER);
-            linearLayout.addView(textView);
-            linearLayout.invalidate();
+            binding.linearLayout.addView(textView);
+            binding.linearLayout.invalidate();
         }
         BarDataSet bardataset = new BarDataSet(barEntries, getString(R.string.use));
         bardataset.setValueTypeface(typeface);
         BarData data = new BarData(bardataset);
         bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
-        horizontalChart.setData(data);
-        horizontalChart.animateY(2500);
-        horizontalChart.animateX(2500);
+        binding.horizontalChart.setData(data);
+        binding.horizontalChart.animateY(2500);
+        binding.horizontalChart.animateX(2500);
     }
 }
 

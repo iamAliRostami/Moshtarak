@@ -1,44 +1,38 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.R;
-
-import java.util.Objects;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.app.leon.moshtarak.databinding.UsingMethodContentBinding;
 
 public class UsingMethodActivity extends BaseActivity {
-    //    @BindView(R.id.listViewLearningUsing)
+    UsingMethodContentBinding binding;
+//    @BindView(R.id.listViewLearningUsing)
 //    ListView listViewLearningUsing;
-    @BindView(R.id.webViewLearningUsing)
-    WebView webView;
+//    @BindView(R.id.webViewLearningUsing)
+//    WebView webView;
 //    LearningCustomAdapter adapter;
 //    List<LearningCustomAdapter.DrawerItem> dataList;
 
     @SuppressLint({"SetJavaScriptEnabled", "CutPasteId"})
     @Override
     protected void initialize() {
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.using_method_content, findViewById(R.id.using_method_activity));
+        binding = UsingMethodContentBinding.inflate(getLayoutInflater());
+        View childLayout = binding.getRoot();
         ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
-        ButterKnife.bind(this);
 //        fillListViewLearningUsing();
-        WebSettings webSetting = webView.getSettings();
+        WebSettings webSetting = binding.webViewLearningUsing.getSettings();
         webSetting.setBuiltInZoomControls(true);
         webSetting.setJavaScriptEnabled(true);
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("file:///android_asset/learning.html");
+        binding.webViewLearningUsing.setWebViewClient(new WebViewClient());
+        binding.webViewLearningUsing.loadUrl("file:///android_asset/learning.html");
     }
 
 //    void fillListViewLearningUsing() {

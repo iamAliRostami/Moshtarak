@@ -6,9 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:fontFamily">@font/byekan</item>
+        <item name="android:fontFamily">@font/my_font</item>
         <item name="background">@drawable/img_background</item>
-        >
         <item name="android:windowBackground">@drawable/img_background</item>
     </style>
 
@@ -26,7 +25,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:actionOverflowButtonStyle">@style/OverFlowButton</item>
         <item name="android:drawablePadding">2dp</item>
-        <item name="android:fontFamily">@font/byekan</item>
+        <item name="android:fontFamily">@font/my_font</item>
     </style>
 
     <style name="OverFlowButton">
@@ -34,14 +33,14 @@
     </style>
 
     <style name="AppTheme.NoActionBar">
-        <item name="android:fontFamily">@font/byekan</item>
+        <item name="android:fontFamily">@font/my_font</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="background">@drawable/img_background</item>
     </style>
 
     <style name="ActionBar" parent="Theme.AppCompat">
-        <item name="android:fontFamily">@font/byekan</item>
+        <item name="android:fontFamily">@font/my_font</item>
         <item name="android:background">@color/blue1</item>
         <item name="android:titleTextStyle">@style/ActionBar.TitleTextStyle</item>
     </style>
@@ -55,7 +54,7 @@
     </style>
 
     <style name="text_default">
-        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:fontFamily">@font/my_font</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -90,11 +89,11 @@
     <style name="AppThemeMaterial.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:actionOverflowButtonStyle">@style/OverFlowButton</item>
         <item name="android:drawablePadding">2dp</item>
-        <item name="android:fontFamily">@font/byekan</item>
+        <item name="android:fontFamily">@font/my_font</item>
     </style>
 
     <style name="AppThemeMaterial.NoActionBar">
-        <item name="android:fontFamily">@font/byekan</item>
+        <item name="android:fontFamily">@font/my_font</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="textAppearanceButton">@style/TextStyle</item>

@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.app.leon.moshtarak.Activities.LastBillActivity;
 import com.app.leon.moshtarak.Models.DbTables.Kardex;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
@@ -42,7 +44,7 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
 
     @SuppressLint({"InflateParams", "DefaultLocale"})
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View viewHolder;
         if (position == 0) viewHolder = layoutInflater.inflate(R.layout.item_cardex_3, null);
@@ -59,15 +61,12 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
             TextView textViewNote = viewHolder.findViewById(R.id.textViewNote);
             ImageView imageViewInfo = viewHolder.findViewById(R.id.imageViewInfo);
             LinearLayout linearLayoutItem = viewHolder.findViewById(R.id.linearLayoutItem);
-//        FontManager fontManager = new FontManager(context);
-//        fontManager.setFont(linearLayout);
 
-
-            float floatNumber = Float.valueOf(kardex.getAmount());
+            float floatNumber = Float.parseFloat(kardex.getAmount());
             int intNumber = (int) floatNumber;
             textViewCost.setText(String.valueOf(intNumber));
             textViewNote.setText(kardex.getDescription());
-            floatNumber = Float.valueOf(kardex.getUsage());
+            floatNumber = Float.parseFloat(kardex.getUsage());
             intNumber = (int) floatNumber;
             textViewUse.setText(String.valueOf(intNumber));
 

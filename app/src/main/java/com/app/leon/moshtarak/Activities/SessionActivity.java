@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,16 +14,13 @@ import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Session;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
-import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.FontManager;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
+import com.app.leon.moshtarak.databinding.SessionActivityBinding;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
@@ -33,20 +28,17 @@ public class SessionActivity extends AppCompatActivity implements ICallback<Arra
     Context context;
     String billId;
     SessionCustomAdapter sessionCustomAdapter;
-    @BindView(R.id.listViewSession)
-    ListView listViewSession;
+    SessionActivityBinding binding;
 
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.session_activity);
-        ButterKnife.bind(this);
+        binding = SessionActivityBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         context = this;
-        RelativeLayout relativeLayout = findViewById(R.id.relativeLayout);
-        FontManager fontManager = new FontManager(context);
-        fontManager.setFont(relativeLayout);
         SharedPreference sharedPreference = new SharedPreference(context);
         if (!sharedPreference.checkIsNotEmpty()) {
             Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
@@ -70,7 +62,7 @@ public class SessionActivity extends AppCompatActivity implements ICallback<Arra
     @Override
     public void execute(ArrayList<Session> sessions) {
         sessionCustomAdapter = new SessionCustomAdapter(sessions, context);
-        listViewSession.setAdapter(sessionCustomAdapter);
-        listViewSession.setTextFilterEnabled(true);
+        binding.listViewSession.setAdapter(sessionCustomAdapter);
+        binding.listViewSession.setTextFilterEnabled(true);
     }
 }

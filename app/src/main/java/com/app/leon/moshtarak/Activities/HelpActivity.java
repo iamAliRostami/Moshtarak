@@ -1,46 +1,38 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.R;
-
-import java.util.Objects;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.app.leon.moshtarak.databinding.HelpContentBinding;
 
 public class HelpActivity extends BaseActivity //implements OnPageChangeListener, OnLoadCompleteListener {
 {
-    @BindView(R.id.webViewHelp)
-    WebView webView;
     public static final String SAMPLE_FILE = "1.pdf";
     private static final String TAG = HelpActivity.class.getSimpleName();
     //    @BindView(R.id.pdfView)
 //    PDFView pdfView;
     Integer pageNumber = 0;
     String pdfFileName;
+    HelpContentBinding binding;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void initialize() {
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.help_content, findViewById(R.id.help_activity));
+        binding = HelpContentBinding.inflate(getLayoutInflater());
+        View childLayout = binding.getRoot();
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
-        ButterKnife.bind(this);
-        WebSettings webSetting = webView.getSettings();
+        WebSettings webSetting = binding.webViewHelp.getSettings();
         webSetting.setBuiltInZoomControls(true);
         webSetting.setJavaScriptEnabled(true);
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("file:///android_asset/help3.htm");
+        binding.webViewHelp.setWebViewClient(new WebViewClient());
+        binding.webViewHelp.loadUrl("file:///android_asset/help3.htm");
     }
 
 //    private void displayFromAsset() {

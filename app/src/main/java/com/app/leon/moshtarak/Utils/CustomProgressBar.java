@@ -47,8 +47,8 @@ public final class CustomProgressBar {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View view = Objects.requireNonNull(inflater).inflate(R.layout.progress_bar, null);
         RelativeLayout relativeLayout = view.findViewById(R.id.relativeLayout);
-        FontManager fontManager = new FontManager(context);
-        fontManager.setFont(relativeLayout);
+//        FontManager fontManager = new FontManager(context);
+//        fontManager.setFont(relativeLayout);
         relativeLayout.setOnClickListener(v -> {
             dialog.dismiss();
             dialog.cancel();

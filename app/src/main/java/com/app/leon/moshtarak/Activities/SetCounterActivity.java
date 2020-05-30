@@ -8,13 +8,10 @@ import android.os.Bundle;
 import android.os.Debug;
 import android.util.DisplayMetrics;
 import android.view.Display;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -32,49 +29,28 @@ import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.LovelyTextInputDialog;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
+import com.app.leon.moshtarak.databinding.SetCounterContentBinding;
 import com.google.gson.Gson;
 
 import java.util.Objects;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class SetCounterActivity extends BaseActivity implements ICallback<LastBillInfo> {
-    @BindView(R.id.linearLayout1)
-    LinearLayout linearLayout1;
-    @BindView(R.id.linearLayout2)
-    LinearLayout linearLayout2;
-    @BindView(R.id.buttonSign)
-    Button buttonSign;
-    @BindView(R.id.editText1)
-    EditText editText1;
-    @BindView(R.id.editText2)
-    EditText editText2;
-    @BindView(R.id.editText3)
-    EditText editText3;
-    @BindView(R.id.editText4)
-    EditText editText4;
-    @BindView(R.id.editText5)
-    EditText editText5;
-    //    View viewFocus;
-//    boolean f = false;
-    //    SharedPreference sharedPreference;
     LovelyTextInputDialog lovelyTextInputDialog;
     Activity activity;
     Context context;
     String billId, number, phoneNumber;
+    SetCounterContentBinding binding;
 
     @Override
     protected void initialize() {
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-        View childLayout = Objects.requireNonNull(inflater).inflate(R.layout.set_counter_content, findViewById(R.id.set_counter_activity));
+        binding = SetCounterContentBinding.inflate(getLayoutInflater());
+        View childLayout = binding.getRoot();
         @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-
         parentLayout.addView(childLayout);
-        ButterKnife.bind(this);
         context = this;
         activity = this;
         setComponentPosition();
@@ -121,11 +97,11 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
                     s4 = editTextNumber.getText().toString();
                     editTextNumber = LovelyTextInputDialog.getEditTextNumber(5);
                     s5 = editTextNumber.getText().toString();
-                    editText1.setText(s1);
-                    editText2.setText(s2);
-                    editText3.setText(s3);
-                    editText4.setText(s4);
-                    editText5.setText(s5);
+                    binding.editText1.setText(s1);
+                    binding.editText2.setText(s2);
+                    binding.editText3.setText(s3);
+                    binding.editText4.setText(s4);
+                    binding.editText5.setText(s5);
                 })
                 .setNegativeButton(R.string.cancel, v -> {
                     InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
@@ -142,47 +118,47 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
 
     @SuppressLint("ClickableViewAccessibility")
     private void setTextChangedListener() {
-        editText1.setOnClickListener(v -> showDialog());
-        editText2.setOnClickListener(v -> showDialog());
-        editText3.setOnClickListener(v -> showDialog());
-        editText4.setOnClickListener(v -> showDialog());
-        editText5.setOnClickListener(v -> showDialog());
+        binding.editText1.setOnClickListener(v -> showDialog());
+        binding.editText2.setOnClickListener(v -> showDialog());
+        binding.editText3.setOnClickListener(v -> showDialog());
+        binding.editText4.setOnClickListener(v -> showDialog());
+        binding.editText5.setOnClickListener(v -> showDialog());
     }
 
     private void setOnButtonSignClickListener() {
-        buttonSign.setOnClickListener(view -> {
+        binding.buttonSign.setOnClickListener(view -> {
             boolean cancel = false;
             View viewFocus;
-            if (editText5.getText().length() < 1) {
+            if (binding.editText5.getText().length() < 1) {
                 cancel = true;
-                viewFocus = editText5;
+                viewFocus = binding.editText5;
                 viewFocus.requestFocus();
             }
-            if (editText4.getText().length() < 1) {
+            if (binding.editText4.getText().length() < 1) {
                 cancel = true;
-                viewFocus = editText4;
+                viewFocus = binding.editText4;
                 viewFocus.requestFocus();
             }
-            if (editText3.getText().length() < 1) {
+            if (binding.editText3.getText().length() < 1) {
                 cancel = true;
-                viewFocus = editText3;
+                viewFocus = binding.editText3;
                 viewFocus.requestFocus();
             }
 
-            if (editText2.getText().length() < 1) {
+            if (binding.editText2.getText().length() < 1) {
                 cancel = true;
-                viewFocus = editText2;
+                viewFocus = binding.editText2;
                 viewFocus.requestFocus();
             }
-            if (editText1.getText().length() < 1) {
+            if (binding.editText1.getText().length() < 1) {
                 cancel = true;
-                viewFocus = editText1;
+                viewFocus = binding.editText1;
                 viewFocus.requestFocus();
             }
             if (!cancel) {
-                number = editText1.getText().toString();
-                number = number.concat(editText2.getText().toString()).concat(editText3.getText().toString())
-                        .concat(editText4.getText().toString()).concat(editText5.getText().toString());
+                number = binding.editText1.getText().toString();
+                number = number.concat(binding.editText2.getText().toString()).concat(binding.editText3.getText().toString())
+                        .concat(binding.editText4.getText().toString()).concat(binding.editText5.getText().toString());
                 sendNumber();
             }
         });
@@ -250,21 +226,13 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
         int height = metrics.heightPixels;
-        linearLayout1.setY(height - 14 * height / 25);
-        linearLayout2.setY(height - 2 * height / 5);
+        binding.linearLayout1.setY(height - 14 * height / 25);
+        binding.linearLayout2.setY(height - 2 * height / 5);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        linearLayout1 = null;
-        linearLayout2 = null;
-        buttonSign = null;
-        editText1 = null;
-        editText2 = null;
-        editText3 = null;
-        editText4 = null;
-        editText5 = null;
         activity = null;
         context = null;
         lovelyTextInputDialog = null;

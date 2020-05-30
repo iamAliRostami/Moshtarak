@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.app.leon.moshtarak.Models.DbTables.Request;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.FontManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,8 +63,6 @@ public class RecoverCodeCustomAdapter extends BaseAdapter {
         TextView textViewParNumber = view.findViewById(R.id.textViewParNumber);
 
         LinearLayout linearLayout = view.findViewById(R.id.linearLayout);
-        FontManager fontManager = new FontManager(context);
-        fontManager.setFont(linearLayout);
         linearLayout.setOnLongClickListener(v -> {
             final ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
             ClipData clipData = ClipData.newPlainText("Source Text", textViewParNumber.getText().toString());

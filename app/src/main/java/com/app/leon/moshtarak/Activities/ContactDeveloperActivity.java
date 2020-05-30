@@ -1,38 +1,17 @@
 package com.app.leon.moshtarak.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.FontManager;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.app.leon.moshtarak.databinding.ContactDeveloperActivityBinding;
 
 public class ContactDeveloperActivity extends AppCompatActivity {
-    @BindView(R.id.imageView1)
-    ImageView imageView1;
-    @BindView(R.id.imageView2)
-    ImageView imageView2;
-    @BindView(R.id.textView1)
-    TextView textView1;
-    @BindView(R.id.linearLayout1)
-    LinearLayout linearLayout1;
-    @BindView(R.id.linearLayout2)
-    LinearLayout linearLayout2;
-    @BindView(R.id.relativeLayout)
-    RelativeLayout relativeLayout;
-    Context context;
+    ContactDeveloperActivityBinding binding;
     View.OnClickListener onClickListener = view -> {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("message/rfc822");
@@ -45,12 +24,10 @@ public class ContactDeveloperActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.contact_developer_activity);
-        ButterKnife.bind(this);
-        context = this;
-        FontManager fontManager = new FontManager(context);
-        fontManager.setFont(relativeLayout);
-        linearLayout1.setOnClickListener(onClickListener);
-        linearLayout2.setOnClickListener(onClickListener);
+        binding = ContactDeveloperActivityBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+        binding.linearLayout1.setOnClickListener(onClickListener);
+        binding.linearLayout2.setOnClickListener(onClickListener);
     }
 }
