@@ -34,10 +34,10 @@ import retrofit2.Retrofit;
 public class CardexActivity extends BaseActivity implements ICallback<ArrayList<Kardex>> {
     CardexContentBinding binding;
     KardexCustomAdapter_1 kardexCustomAdapter;
-    private Context context;
-    private String billId;
     ArrayList<Integer> yAxisData = new ArrayList<>();
     ArrayList<String> axisValues = new ArrayList<>();
+    private Context context;
+    private String billId;
 
     @Override
     protected void initialize() {

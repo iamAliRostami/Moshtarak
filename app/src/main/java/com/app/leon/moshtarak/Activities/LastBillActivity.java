@@ -45,6 +45,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class LastBillActivity extends BaseActivity {
+    public static final int requestCodePaymentBill = 199;
     LastBillContentBinding binding;
     Context context;
     String billId, payId, apiKey;
@@ -53,7 +54,6 @@ public class LastBillActivity extends BaseActivity {
     boolean isPayed = false;
     boolean isFromCardex = false;
     boolean isLastBill = false;
-    public static final int requestCodePaymentBill = 199;
 
     @Override
     protected void initialize() {
@@ -264,14 +264,6 @@ public class LastBillActivity extends BaseActivity {
         }
     }
 
-    static class GetToken implements ICallback<SimpleMessage> {
-        @Override
-        public void execute(SimpleMessage simpleMessage) {
-            Log.e("token", simpleMessage.getMessage());
-//            pay(simpleMessage.getMessage());
-        }
-    }
-
     void fillLastBillInfo() {
         if (getIntent().getExtras() != null) {
             Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());//setCounter
@@ -349,6 +341,19 @@ public class LastBillActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         binding.imageViewBarcode.setImageDrawable(null);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    static class GetToken implements ICallback<SimpleMessage> {
+        @Override
+        public void execute(SimpleMessage simpleMessage) {
+            Log.e("token", simpleMessage.getMessage());
+//            pay(simpleMessage.getMessage());
+        }
     }
 
     class ThisBill implements ICallback<LastBillInfoV2> {
@@ -594,10 +599,5 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat.setVisibility(View.GONE);
             }
         }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
     }
 }

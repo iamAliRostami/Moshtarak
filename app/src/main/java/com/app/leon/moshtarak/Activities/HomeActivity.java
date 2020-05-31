@@ -14,43 +14,6 @@ public class HomeActivity extends BaseActivity {
 
     public static final int requestCodePaymentBill = 199;
     HomeContentBinding binding;
-
-    @SuppressLint({"HardwareIds", "MissingPermission", "CutPasteId"})
-    @Override
-    protected void initialize() {
-        binding = HomeContentBinding.inflate(getLayoutInflater());
-        View childLayout = binding.getRoot();
-        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
-        parentLayout.addView(childLayout);
-        setOnClickListener();
-    }
-
-    void setOnClickListener() {
-        binding.imageButtonSale.setOnClickListener(onClickListener);
-        binding.imageButtonLastBill.setOnClickListener(onClickListener);
-        binding.imageButtonKardex.setOnClickListener(onClickListener);
-        binding.imageButtonTrain.setOnClickListener(onClickListener);
-        binding.imageButtonMamoor.setOnClickListener(onClickListener);
-        binding.imageButtonSuggest.setOnClickListener(onClickListener);
-        binding.imageButtonTracking.setOnClickListener(onClickListener);
-        binding.imageButtonHelp.setOnClickListener(onClickListener);
-        binding.imageButtonSupport.setOnClickListener(onClickListener);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        binding.imageButtonSale.setImageDrawable(null);
-        binding.imageButtonLastBill.setImageDrawable(null);
-        binding.imageButtonKardex.setImageDrawable(null);
-        binding.imageButtonTrain.setImageDrawable(null);
-        binding.imageButtonMamoor.setImageDrawable(null);
-        binding.imageButtonSuggest.setImageDrawable(null);
-        binding.imageButtonTracking.setImageDrawable(null);
-        binding.imageButtonSupport.setImageDrawable(null);
-        binding.imageButtonHelp.setImageDrawable(null);
-    }
-
     View.OnClickListener onClickListener = view -> {
         Intent intent;
         switch (view.getId()) {
@@ -92,4 +55,40 @@ public class HomeActivity extends BaseActivity {
                 break;
         }
     };
+
+    @SuppressLint({"HardwareIds", "MissingPermission", "CutPasteId"})
+    @Override
+    protected void initialize() {
+        binding = HomeContentBinding.inflate(getLayoutInflater());
+        View childLayout = binding.getRoot();
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        parentLayout.addView(childLayout);
+        setOnClickListener();
+    }
+
+    void setOnClickListener() {
+        binding.imageButtonSale.setOnClickListener(onClickListener);
+        binding.imageButtonLastBill.setOnClickListener(onClickListener);
+        binding.imageButtonKardex.setOnClickListener(onClickListener);
+        binding.imageButtonTrain.setOnClickListener(onClickListener);
+        binding.imageButtonMamoor.setOnClickListener(onClickListener);
+        binding.imageButtonSuggest.setOnClickListener(onClickListener);
+        binding.imageButtonTracking.setOnClickListener(onClickListener);
+        binding.imageButtonHelp.setOnClickListener(onClickListener);
+        binding.imageButtonSupport.setOnClickListener(onClickListener);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding.imageButtonSale.setImageDrawable(null);
+        binding.imageButtonLastBill.setImageDrawable(null);
+        binding.imageButtonKardex.setImageDrawable(null);
+        binding.imageButtonTrain.setImageDrawable(null);
+        binding.imageButtonMamoor.setImageDrawable(null);
+        binding.imageButtonSuggest.setImageDrawable(null);
+        binding.imageButtonTracking.setImageDrawable(null);
+        binding.imageButtonSupport.setImageDrawable(null);
+        binding.imageButtonHelp.setImageDrawable(null);
+    }
 }

@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/suggest_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.app.leon.moshtarak.Activities.SuggestActivity"
-    android:id="@+id/suggest_activity">
+    tools:context="com.app.leon.moshtarak.Activities.SuggestActivity">
 
     <LinearLayout
         android:id="@+id/linearLayoutHeader"
@@ -68,20 +68,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/activity_mid_margin"
         android:layout_above="@id/linearLayoutFooter"
         android:layout_below="@id/linearLayoutHeader"
-
-        android:paddingRight="@dimen/activity_mid_margin"
         android:layout_marginBottom="@dimen/activity_large_margin"
+
         android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_mid_margin"
+        android:paddingRight="@dimen/activity_mid_margin"
         tools:ignore="UselessParent">
+
         <RadioGroup
             android:id="@+id/radioGroupSuggest"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_mid_margin"
-            android:padding="@dimen/activity_mid_padding"
-            android:layout_height="wrap_content">
+            android:padding="@dimen/activity_mid_padding">
 
             <RadioButton
                 android:id="@+id/radioButtonSuggest1"
@@ -106,6 +107,7 @@
                 android:textStyle="bold" />
 
         </RadioGroup>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"

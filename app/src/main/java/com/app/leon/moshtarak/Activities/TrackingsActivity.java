@@ -30,6 +30,7 @@ public class TrackingsActivity extends BaseActivity
     View viewFocus;
     Context context;
     TrackingsContentBinding binding;
+
     @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {

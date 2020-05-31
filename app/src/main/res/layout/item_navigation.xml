@@ -17,10 +17,10 @@
                 android:id="@+id/imageViewIcon"
                 android:layout_width="70px"
                 android:layout_height="70px"
-                android:src="@drawable/img_chart"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:gravity="start" />
+                android:gravity="start"
+                android:src="@drawable/img_chart" />
 
             <TextView
                 android:id="@+id/textViewTitle"

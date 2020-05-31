@@ -33,11 +33,11 @@
             <TextView
                 android:id="@+id/textViewModel"
                 style="@style/text_default"
-                android:layout_gravity="left"
-                android:gravity="left"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:layout_weight="1"
+                android:gravity="left"
                 android:paddingLeft="@dimen/activity_large_padding"
                 android:paddingRight="@dimen/activity_large_padding"
                 android:textSize="@dimen/textSizeMedium" />
@@ -60,10 +60,10 @@
             <TextView
                 android:id="@+id/textViewOsVersion"
                 android:layout_width="0dp"
-                android:layout_gravity="left"
-                android:gravity="left"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:layout_weight="1"
+                android:gravity="left"
                 android:paddingLeft="@dimen/activity_large_padding"
                 android:paddingRight="@dimen/activity_large_padding"
                 android:textSize="@dimen/textSizeMedium" />
@@ -87,8 +87,8 @@
                 android:id="@+id/textViewLoginDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="left"
+                android:layout_weight="1"
                 android:gravity="left"
                 android:paddingLeft="@dimen/activity_large_padding"
                 android:paddingRight="@dimen/activity_large_padding"

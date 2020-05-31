@@ -25,12 +25,12 @@
 
             <EditText
                 android:id="@+id/editText5"
-                android:imeOptions="actionDone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
                 android:hint="0"
+                android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
                 android:padding="@dimen/activity_mid_padding"
@@ -38,58 +38,58 @@
 
             <EditText
                 android:id="@+id/editText4"
-                android:focusable="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
+                android:focusable="false"
                 android:hint="0"
+                android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
-                android:imeOptions="actionDone"
                 android:padding="@dimen/activity_mid_padding"
                 android:textSize="@dimen/textSizeLarge" />
 
 
             <EditText
                 android:id="@+id/editText3"
-                android:focusable="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
+                android:focusable="false"
                 android:hint="0"
+                android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
-                android:imeOptions="actionDone"
                 android:padding="@dimen/activity_mid_padding"
                 android:textSize="@dimen/textSizeLarge" />
 
             <EditText
                 android:id="@+id/editText2"
-                android:focusable="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
+                android:focusable="false"
                 android:hint="0"
+                android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
-                android:imeOptions="actionDone"
                 android:padding="@dimen/activity_mid_padding"
                 android:textSize="@dimen/textSizeLarge" />
 
             <EditText
                 android:id="@+id/editText1"
-                android:focusable="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
+                android:focusable="false"
                 android:hint="0"
+                android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
-                android:imeOptions="actionDone"
                 android:padding="@dimen/activity_mid_padding"
                 android:textSize="@dimen/textSizeLarge" />
         </LinearLayout>
