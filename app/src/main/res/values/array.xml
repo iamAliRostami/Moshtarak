@@ -10,7 +10,7 @@
         <item>@string/update</item>
         <item>@string/account</item>
         <item>@string/recovery_code</item>
-        <item>@string/connect_developer</item>
+        <item>@string/connect_abfa</item>
         <item>@string/exit</item>
     </string-array>
 

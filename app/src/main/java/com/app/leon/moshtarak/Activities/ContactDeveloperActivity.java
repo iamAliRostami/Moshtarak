@@ -15,7 +15,7 @@ public class ContactDeveloperActivity extends AppCompatActivity {
     View.OnClickListener onClickListener = view -> {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("message/rfc822");
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"ali.rostami33@gmail.com", "infoshamsaii@gmail.com", "mantera.sh@gmail.com"});
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"ali.rostami33@gmail.com", "infoshamsaii@gmail.com"});//, "mantera.sh@gmail.com"
         startActivity(Intent.createChooser(intent, "Choose an Email client :"));
     };
 

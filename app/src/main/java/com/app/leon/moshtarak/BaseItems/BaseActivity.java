@@ -18,7 +18,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.app.leon.moshtarak.Activities.BaseInfoActivity;
-import com.app.leon.moshtarak.Activities.ContactDeveloperActivity;
+import com.app.leon.moshtarak.Activities.ContactUsActivity;
 import com.app.leon.moshtarak.Activities.HomeActivity;
 import com.app.leon.moshtarak.Activities.RecoveryCodeActivity;
 import com.app.leon.moshtarak.Activities.SessionActivity;
@@ -134,7 +134,7 @@ public abstract class BaseActivity extends AppCompatActivity
                 Intent intent = new Intent(getApplicationContext(), RecoveryCodeActivity.class);
                 startActivity(intent);
             } else if (position == 7) {
-                Intent intent = new Intent(getApplicationContext(), ContactDeveloperActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ContactUsActivity.class);
                 startActivity(intent);
             } else if (position == 8) {
                 finishAffinity();

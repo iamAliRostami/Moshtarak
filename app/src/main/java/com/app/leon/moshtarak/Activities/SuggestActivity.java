@@ -145,7 +145,7 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.logout, menu);
+        getMenuInflater().inflate(R.menu.contact, menu);
         return true;
     }
 
@@ -153,7 +153,7 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_contact) {
-            Intent intent = new Intent(getApplicationContext(), ContactUsActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ContactDeveloperActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

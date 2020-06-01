@@ -73,7 +73,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/mantera_sh_gmail_com"
+                android:text="@string/infoshamsaii_gmail_com"
                 android:textColor="@color/black" />
         </LinearLayout>
 

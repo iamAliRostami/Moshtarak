@@ -36,6 +36,7 @@ public class RecoveryCodeActivity extends AppCompatActivity implements ICallback
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         super.onCreate(savedInstanceState);
         binding = RecoveryCodeActivityBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();

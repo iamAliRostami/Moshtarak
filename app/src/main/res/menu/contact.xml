@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_contact"
-            android:title="@string/connect_abfa" />
+            android:title="@string/connect_developer" />
     </group>
 
 
