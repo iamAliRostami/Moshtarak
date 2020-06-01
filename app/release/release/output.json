@@ -1,20 +1,20 @@
-[
-  {
-    "outputType": {
-      "type": "APK"
-    },
-    "apkData": {
-      "type": "MAIN",
-      "splits": [],
+{
+  "version": 1,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.app.leon.moshtarak",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "properties": [],
       "versionCode": 23,
-      "versionName": "1.0.2.09",
+      "versionName": "23",
       "enabled": true,
-      "outputFile": "app-release.apk",
-      "fullName": "release",
-      "baseName": "release",
-      "dirName": ""
-    },
-    "path": "app-release.apk",
-    "properties": {}
-  }
-]
+      "outputFile": "app-release.apk"
+    }
+  ]
+}
