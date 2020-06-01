@@ -1,11 +1,14 @@
 package com.app.leon.moshtarak;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
 
 public class MyApplication extends Application {
 
+    public static int position = 0;
+    @SuppressLint("StaticFieldLeak")
     private static Context sContext;
 
     public static Context getContext() {

@@ -1,5 +1,6 @@
 package com.app.leon.moshtarak.Adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,11 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 
 import java.util.ArrayList;
@@ -53,6 +56,7 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
         return super.getPosition(item);
     }
 
+    @SuppressLint("ViewHolder")
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
@@ -61,25 +65,20 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
         convertView = null;
         DrawerItem dItem;
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        if (position == 0) {
-            drawerHolder = new DrawerItemHolder();
-            convertView = inflater.inflate(R.layout.item_navigation_, parent, false);
-            drawerHolder.imageViewIcon = convertView.findViewById(R.id.imageViewIcon);
-            dItem = this.drawerItemList.get(position);
-            drawerHolder.imageViewIcon.setImageDrawable(dItem.drawable);
-        } else {
-            drawerHolder = new DrawerItemHolder();
-            convertView = inflater.inflate(layoutResID, parent, false);
-            drawerHolder.textViewTitle = convertView
-                    .findViewById(R.id.textViewTitle);
-            if (position == 9) {
-                drawerHolder.textViewTitle.setTextColor(context.getResources().getColor(R.color.red2));
-            }
-            drawerHolder.imageViewIcon = convertView.findViewById(R.id.imageViewIcon);
-            dItem = this.drawerItemList.get(position);
-            drawerHolder.imageViewIcon.setImageDrawable(dItem.drawable);
-            drawerHolder.textViewTitle.setText(dItem.getItemName());
+        drawerHolder = new DrawerItemHolder();
+        convertView = inflater.inflate(layoutResID, parent, false);
+        drawerHolder.textViewTitle = convertView.findViewById(R.id.textViewTitle);
+        drawerHolder.linearLayout = convertView.findViewById(R.id.linearLayoutBackground);
+        if (position == 8) {
+            drawerHolder.textViewTitle.setTextColor(context.getResources().getColor(R.color.red2));
+        } else if (position == MyApplication.position) {
+            drawerHolder.textViewTitle.setTextColor(context.getResources().getColor(R.color.white));
+            drawerHolder.linearLayout.setBackgroundColor(context.getResources().getColor(R.color.red2));
         }
+        drawerHolder.imageViewIcon = convertView.findViewById(R.id.imageViewIcon);
+        dItem = this.drawerItemList.get(position);
+        drawerHolder.imageViewIcon.setImageDrawable(dItem.drawable);
+        drawerHolder.textViewTitle.setText(dItem.getItemName());
         convertView.setTag(drawerHolder);
         return convertView;
     }
@@ -87,21 +86,15 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
     private static class DrawerItemHolder {
         TextView textViewTitle;
         ImageView imageViewIcon;
+        LinearLayout linearLayout;
     }
 
     public static class DrawerItem {
         String ItemName;
-        int imgResID;
         Drawable drawable;
 
         public DrawerItem() {
             super();
-        }
-
-        DrawerItem(String itemName, int imgResID) {
-            super();
-            this.ItemName = itemName;
-            this.imgResID = imgResID;
         }
 
         DrawerItem(String itemName, Drawable drawable) {
@@ -120,13 +113,11 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
 
         public List<NavigationCustomAdapter.DrawerItem> convertStringToList(String[] items, TypedArray imgs) {
             List<NavigationCustomAdapter.DrawerItem> drawerItems = new ArrayList<>();
-
             for (int i = 0; i < items.length; i++) {
                 drawerItems.add(new DrawerItem(items[i], imgs.getDrawable(i)));
             }
             return drawerItems;
         }
-
 
         String getItemName() {
             return ItemName;
@@ -135,14 +126,5 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
         public void setItemName(String itemName) {
             ItemName = itemName;
         }
-
-        int getImgResID() {
-            return imgResID;
-        }
-
-        public void setImgResID(int imgResID) {
-            this.imgResID = imgResID;
-        }
-
     }
 }

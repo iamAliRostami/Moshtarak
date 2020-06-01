@@ -51,6 +51,12 @@ public class SharedPreference {
         prefsEditor.apply();
     }
 
+    public void putTheme(Boolean theme) {
+        SharedPreferences.Editor prefsEditor = appPrefs.edit();
+        prefsEditor.putBoolean(SharedReferenceKeys.THEME.getValue(), theme);
+        prefsEditor.apply();
+    }
+
     public void putData(String bill_id, String mobile_number, String api_key) {
         putBillID(bill_id);
         putMobileNumber(mobile_number);
@@ -83,6 +89,10 @@ public class SharedPreference {
 
     public int getIndex() {
         return appPrefs.getInt(SharedReferenceKeys.INDEX.getValue(), 0);
+    }
+
+    public boolean getTheme() {
+        return appPrefs.getBoolean(SharedReferenceKeys.THEME.getValue(), false);
     }
 
     public void removeItem(int index) {

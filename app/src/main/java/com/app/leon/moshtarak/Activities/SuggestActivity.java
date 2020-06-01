@@ -35,22 +35,9 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class SuggestActivity extends BaseActivity implements ICallback<SimpleMessage> {
-    //    @BindView(R.id.suggestSpinner)
-//    Spinner spinner;
-//    @BindView(R.id.radioGroupSuggest)
-//    RadioGroup radioGroup;
-//    @BindView(R.id.radioButtonSuggest1)
-//    RadioButton radioButtonSuggest1;
-//    @BindView(R.id.radioButtonSuggest2)
-//    RadioButton radioButtonSuggest2;
-//    @BindView(R.id.suggestEditText)
-//    TextInputEditText editText;
-//    @BindView(R.id.sendButton)
-//    Button sendButton;
     SuggestContent1Binding binding;
     ArrayList<String> items;
     Context context;
-
 
     @Override
     protected void initialize() {

@@ -10,7 +10,8 @@ public enum SharedReferenceKeys {
     MOBILE_NUMBER("mobile_number"),
     LENGTH("length"),
     INDEX("index"),
-    API_KEY("api_key");
+    API_KEY("api_key"),
+    THEME("theme");
 
     private final String value;
 

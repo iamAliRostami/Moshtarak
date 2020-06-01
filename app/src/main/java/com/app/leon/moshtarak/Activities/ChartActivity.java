@@ -56,11 +56,14 @@ public class ChartActivity extends AppCompatActivity {
         setData();
     }
 
+    @SuppressLint("NewApi")
     void customizeChartView() {
         binding.horizontalChart.setDrawBarShadow(false);
         binding.horizontalChart.setDrawValueAboveBar(true);
         binding.horizontalChart.getDescription().setEnabled(false);
         binding.horizontalChart.setPinchZoom(false);
+        binding.horizontalChart.setBackgroundColor(getColor(R.color.gray3));
+        binding.horizontalChart.setGridBackgroundColor(getColor(R.color.gray4));
 
         binding.horizontalChart.setDrawGridBackground(true);
         XAxis xl = binding.horizontalChart.getXAxis();

@@ -2,7 +2,7 @@
 <resources>
 
     <string-array name="menu">
-        <item></item>
+        <!--        <item></item>-->
         <item>@string/home</item>
         <item>@string/portal_connect</item>
         <item>@string/base_info</item>
@@ -15,7 +15,7 @@
     </string-array>
 
     <array name="icons">
-        <item>@drawable/img_menu_logo</item>
+        <!--        <item>@drawable/img_menu_logo</item>-->
         <item>@drawable/img_home</item>
         <item>@drawable/img_connect_to_portal</item>
         <item>@drawable/img_profile</item>

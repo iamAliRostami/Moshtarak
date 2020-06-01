@@ -22,4 +22,16 @@
         android:key="length"
         android:summary="length of accounts logged in!"
         android:title="length" />
+
+    <!--    <EditTextPreference-->
+    <!--        android:defaultValue="0"-->
+    <!--        android:key="theme"-->
+    <!--        android:summary="theme"-->
+    <!--        android:title="theme" />-->
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="theme"
+        android:summary="theme"
+        android:title="theme" />
 </PreferenceScreen>

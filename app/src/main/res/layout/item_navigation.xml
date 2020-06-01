@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linearLayoutBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/milky"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/imageViewIcon"
-                android:layout_width="70px"
-                android:layout_height="70px"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:gravity="start"
-                android:src="@drawable/img_chart" />
+                android:src="@drawable/img_chart"
+                tools:ignore="ContentDescription,RtlHardcoded" />
 
             <TextView
                 android:id="@+id/textViewTitle"
@@ -32,13 +38,15 @@
                 android:padding="@dimen/activity_mid_padding"
                 android:text="@string/kardex"
                 android:textColor="@color/gray2"
-                android:textSize="@dimen/textSizeMedium" />
+                android:textSize="@dimen/textSizeMedium"
+                tools:ignore="RtlHardcoded" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/imageViewSeperator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/img_bar_" />
+            android:src="@drawable/img_bar_"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 </LinearLayout>

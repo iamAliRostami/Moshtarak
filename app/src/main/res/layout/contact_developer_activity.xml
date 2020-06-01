@@ -13,7 +13,7 @@
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="230dp"
-        app:srcCompat="@drawable/programmer_"
+        app:srcCompat="@drawable/programmer"
         tools:ignore="ContentDescription,MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-10dp" />
