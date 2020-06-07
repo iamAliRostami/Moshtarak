@@ -205,7 +205,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
-                        android:text="09"
+                        android:text="@string/_09"
                         android:textSize="@dimen/textSizeMedium" />
 
 
