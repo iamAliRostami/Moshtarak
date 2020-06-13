@@ -25,7 +25,7 @@ import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
-import com.app.leon.moshtarak.Utils.HttpClientWrapper;
+import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.AfterSaleServiceContentBinding;
@@ -126,7 +126,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
         RegisterAsDto registerAsDto = new RegisterAsDto(billId, requestServices, mobileNumber);
         Call<SimpleMessage> call = sendSupportRequest.registerAS(registerAsDto);
         SendRequest sendRequest = new SendRequest();
-        HttpClientWrapper.callHttpAsync(call, sendRequest, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, sendRequest, context, ProgressType.SHOW.getValue());
     }
 
     void getServices() {
@@ -134,7 +134,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
         final IAbfaService getServices = retrofit.create(IAbfaService.class);
         Call<ArrayList<Service>> call = getServices.getDictionary();
         GetServices getServices1 = new GetServices();
-        HttpClientWrapper.callHttpAsync(call, getServices1, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, getServices1, context, ProgressType.SHOW.getValue());
     }
 
     class GetServices implements ICallback<ArrayList<Service>> {

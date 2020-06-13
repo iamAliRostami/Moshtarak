@@ -16,29 +16,29 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.app.leon.moshtarak.Activities.LastBillActivity;
-import com.app.leon.moshtarak.Models.DbTables.Kardex;
+import com.app.leon.moshtarak.Models.DbTables.Cardex;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
-    private ArrayList<Kardex> kardexes;
+public class CardexCustomAdapter extends ArrayAdapter<Cardex> {
+    private ArrayList<Cardex> cardexes;
     private Context context;
 
-    public KardexCustomAdapter_1(ArrayList<Kardex> kardexes, Context context) {
+    public CardexCustomAdapter(ArrayList<Cardex> cardexes, Context context) {
         super(context, 0);
-        this.kardexes = kardexes;
-        for (int i = 0; i < this.kardexes.size(); i++) {
-            Kardex kardex = this.kardexes.get(i);
-            String owe = kardex.getOweDate();
-            String creditor = kardex.getCreditorDate().trim();
+        this.cardexes = cardexes;
+        for (int i = 0; i < this.cardexes.size(); i++) {
+            Cardex cardex = this.cardexes.get(i);
+            String owe = cardex.getOweDate();
+            String creditor = cardex.getCreditorDate().trim();
             if (owe == null || owe.equals("null") || TextUtils.isEmpty(owe)) {
-                kardex.setOweDate(creditor);
+                cardex.setOweDate(creditor);
             }
         }
-        Collections.sort(this.kardexes, (o1, o2) -> o2.getOweDate().compareTo(o1.getOweDate()));
+        Collections.sort(this.cardexes, (o1, o2) -> o2.getOweDate().compareTo(o1.getOweDate()));
         this.context = context;
     }
 
@@ -54,7 +54,7 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
             else
                 viewHolder = layoutInflater.inflate(R.layout.item_cardex_2, null);
 
-            Kardex kardex = kardexes.get(position);
+            Cardex cardex = cardexes.get(position);
             TextView textViewDate = viewHolder.findViewById(R.id.textViewDate);
             TextView textViewUse = viewHolder.findViewById(R.id.textViewUseM3);
             TextView textViewCost = viewHolder.findViewById(R.id.textViewCost);
@@ -62,17 +62,17 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
             ImageView imageViewInfo = viewHolder.findViewById(R.id.imageViewInfo);
             LinearLayout linearLayoutItem = viewHolder.findViewById(R.id.linearLayoutItem);
 
-            float floatNumber = Float.parseFloat(kardex.getAmount());
+            float floatNumber = Float.parseFloat(cardex.getAmount());
             int intNumber = (int) floatNumber;
             textViewCost.setText(String.valueOf(intNumber));
-            textViewNote.setText(kardex.getDescription());
-            floatNumber = Float.parseFloat(kardex.getUsage());
+            textViewNote.setText(cardex.getDescription());
+            floatNumber = Float.parseFloat(cardex.getUsage());
             intNumber = (int) floatNumber;
             textViewUse.setText(String.valueOf(intNumber));
 
-            textViewDate.setText(kardex.getOweDate());
+            textViewDate.setText(cardex.getOweDate());
 
-            if (kardex.isBill()) {
+            if (cardex.isBill()) {
                 textViewNote.setTextColor(context.getResources().getColor(R.color.colorAccentIndigo));
                 textViewCost.setTextColor(context.getResources().getColor(R.color.pink2));
                 imageViewInfo.setImageDrawable(context.getResources().getDrawable(R.drawable.img_last_bill1));
@@ -84,11 +84,11 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
             {
                 Intent intent = new Intent(context, LastBillActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString(BundleEnum.ID.getValue(), kardex.getId());
-                bundle.putString(BundleEnum.ZONE_ID.getValue(), kardex.getZoneId());
-                if (kardex.isPay())
+                bundle.putString(BundleEnum.ID.getValue(), cardex.getId());
+                bundle.putString(BundleEnum.ZONE_ID.getValue(), cardex.getZoneId());
+                if (cardex.isPay())
                     intent.putExtra(BundleEnum.THIS_BILL_PAYED.getValue(), bundle);
-                else if (kardex.isBill())
+                else if (cardex.isBill())
                     intent.putExtra(BundleEnum.THIS_BILL.getValue(), bundle);
                 context.startActivity(intent);
             });
@@ -103,7 +103,7 @@ public class KardexCustomAdapter_1 extends ArrayAdapter<Kardex> {
 
     @Override
     public int getCount() {
-        return kardexes.size();
+        return cardexes.size();
     }
 
     @Override

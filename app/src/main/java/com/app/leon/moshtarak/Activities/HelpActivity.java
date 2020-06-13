@@ -14,6 +14,7 @@ import com.app.leon.moshtarak.databinding.HelpContentBinding;
 public class HelpActivity extends BaseActivity //implements OnPageChangeListener, OnLoadCompleteListener {
 {
     public static final String SAMPLE_FILE = "1.pdf";
+    public static final String URL = "file:///android_asset/help2.htm";
     private static final String TAG = HelpActivity.class.getSimpleName();
     //    @BindView(R.id.pdfView)
 //    PDFView pdfView;
@@ -32,7 +33,7 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
         webSetting.setBuiltInZoomControls(true);
         webSetting.setJavaScriptEnabled(true);
         binding.webViewHelp.setWebViewClient(new WebViewClient());
-        binding.webViewHelp.loadUrl("file:///android_asset/help1.htm");
+        binding.webViewHelp.loadUrl(URL);
     }
 
 //    private void displayFromAsset() {

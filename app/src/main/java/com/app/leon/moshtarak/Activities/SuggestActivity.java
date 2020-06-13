@@ -7,12 +7,8 @@ import android.os.Build;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckedTextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
@@ -24,7 +20,7 @@ import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
-import com.app.leon.moshtarak.Utils.HttpClientWrapper;
+import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.databinding.SuggestContent1Binding;
 
@@ -56,8 +52,8 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
         items = new ArrayList<>();
         items.add(getString(R.string.sale));
         items.add(getString(R.string.last_bill_2));
-        items.add(getString(R.string.kardex));
         items.add(getString(R.string.cardex));
+        items.add(getString(R.string.cardex_ab));
         items.add(getString(R.string.tracking));
         items.add(getString(R.string.mamoor_1));
         items.add(getString(R.string.train));
@@ -65,16 +61,8 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
         items.add(getString(R.string.support));
         items.add(getString(R.string.suggest));
         items.add(getString(R.string.other_));
-        binding.suggestSpinner.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,
-                items) {
-            @NonNull
-            @Override
-            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                CheckedTextView text = view.findViewById(android.R.id.text1);
-                return view;
-            }
-        });
+        binding.suggestSpinner.setAdapter(new ArrayAdapter<>(context,
+                android.R.layout.simple_spinner_dropdown_item, items));
     }
 
     void setRadioGroupOnCheckedChanged() {
@@ -109,7 +97,7 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
                 Call<SimpleMessage> call = suggestion.sendSuggestion(new Suggestion(
                         String.valueOf(select), binding.suggestEditText.getText().toString(),
                         String.valueOf(Build.VERSION.RELEASE), getDeviceName()));
-                HttpClientWrapper.callHttpAsync(call, SuggestActivity.this, context,
+                HttpClientWrapperNew.callHttpAsync(call, SuggestActivity.this, context,
                         ProgressType.SHOW.getValue());
             }
         });

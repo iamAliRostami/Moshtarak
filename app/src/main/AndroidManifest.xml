@@ -73,7 +73,7 @@
             tools:ignore="InnerclassSeparator,LockedOrientationActivity" />
         <activity
             android:name=".Activities.CardexActivity"
-            android:label="@string/kardex"
+            android:label="@string/cardex"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator,LockedOrientationActivity" />
         <activity
@@ -125,7 +125,7 @@
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator,LockedOrientationActivity" />
         <activity
-            android:name=".Activities.TrackingsActivity"
+            android:name=".Activities.FollowUpActivity"
             android:label="@string/request"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator,LockedOrientationActivity" />

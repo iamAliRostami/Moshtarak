@@ -14,7 +14,7 @@ import com.app.leon.moshtarak.Models.DbTables.MemberInfo;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.HttpClientWrapper;
+import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.BaseInfoContentBinding;
@@ -27,11 +27,12 @@ public class BaseInfoActivity extends BaseActivity implements ICallback<MemberIn
     String billId;
     BaseInfoContentBinding binding;
 
+    @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
         binding = BaseInfoContentBinding.inflate(getLayoutInflater());
         View childLayout = binding.getRoot();
-        @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         context = this;
         accessData();
@@ -54,7 +55,7 @@ public class BaseInfoActivity extends BaseActivity implements ICallback<MemberIn
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getInfo = retrofit.create(IAbfaService.class);
         Call<MemberInfo> call = getInfo.getInfo(billId);
-        HttpClientWrapper.callHttpAsync(call, BaseInfoActivity.this, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, BaseInfoActivity.this, context, ProgressType.SHOW.getValue());
     }
 
     @Override

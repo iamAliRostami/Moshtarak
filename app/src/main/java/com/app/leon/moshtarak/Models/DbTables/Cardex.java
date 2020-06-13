@@ -1,6 +1,6 @@
 package com.app.leon.moshtarak.Models.DbTables;
 
-public class Kardex {
+public class Cardex {
     private String id;
     private String zoneId;
     private String preReadingDate;

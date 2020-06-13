@@ -2,7 +2,7 @@ package com.app.leon.moshtarak.Models.DbTables;
 
 import java.util.ArrayList;
 
-public class TrackingDto {
+public class FollowUpDto {
     String aidId;
     String billId;
     String dateJalali;
@@ -13,7 +13,7 @@ public class TrackingDto {
     String status;
     ArrayList<String> smsList;
 
-    public TrackingDto(String aidId, String billId, String dateJalali, String description,
+    public FollowUpDto(String aidId, String billId, String dateJalali, String description,
                        String hour, String id, String minute, String status, ArrayList<String> smsList) {
         this.aidId = aidId;
         this.billId = billId;

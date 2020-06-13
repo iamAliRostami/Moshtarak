@@ -12,21 +12,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.app.leon.moshtarak.Activities.ShowSMSActivity;
-import com.app.leon.moshtarak.Models.DbTables.TrackingDto;
+import com.app.leon.moshtarak.Models.DbTables.FollowUpDto;
 import com.app.leon.moshtarak.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
-public class TrackCustomAdapter_1 extends ArrayAdapter<TrackingDto> {
-    private ArrayList<TrackingDto> trackingDtos;
+public class FollowUpCustomAdapter extends ArrayAdapter<FollowUpDto> {
+    private ArrayList<FollowUpDto> followUpDtos;
     private Context context;
 
-    public TrackCustomAdapter_1(Context context, ArrayList<TrackingDto> trackingDtos) {
+    public FollowUpCustomAdapter(Context context, ArrayList<FollowUpDto> followUpDtos) {
         super(context, 0);
-        this.trackingDtos = trackingDtos;
-        Collections.sort(this.trackingDtos, (o1, o2) -> o2.getDateJalali().compareToIgnoreCase(o1.getDateJalali()));
+        this.followUpDtos = followUpDtos;
+        Collections.sort(this.followUpDtos, (o1, o2) -> o2.getDateJalali().compareToIgnoreCase(o1.getDateJalali()));
         this.context = context;
     }
 
@@ -40,7 +40,7 @@ public class TrackCustomAdapter_1 extends ArrayAdapter<TrackingDto> {
             else
                 view = LayoutInflater.from(context).inflate(R.layout.item_track_, parent, false);
         }
-        TrackingDto trackingDto = getItem(position);
+        FollowUpDto followUpDto = getItem(position);
 
         TextView textViewStatus;
         TextView textViewDate;
@@ -54,26 +54,26 @@ public class TrackCustomAdapter_1 extends ArrayAdapter<TrackingDto> {
 
         linearLayout.setOnClickListener(view1 -> {
             Intent intent = new Intent(context, ShowSMSActivity.class);
-            intent.putExtra("SMS", Objects.requireNonNull(trackingDto).getSmsList());
-            intent.putExtra("SMS_LEVEL", " ".concat(trackingDto.getStatus()));
+            intent.putExtra("SMS", Objects.requireNonNull(followUpDto).getSmsList());
+            intent.putExtra("SMS_LEVEL", " ".concat(followUpDto.getStatus()));
             context.startActivity(intent);
         });
 
-        textViewStatus.setText(Objects.requireNonNull(trackingDto).getStatus());
-        textViewDate.setText(trackingDto.getDateJalali());
-        textViewTime.setText(trackingDto.getTime());
+        textViewStatus.setText(Objects.requireNonNull(followUpDto).getStatus());
+        textViewDate.setText(followUpDto.getDateJalali());
+        textViewTime.setText(followUpDto.getTime());
 
         return view;
     }
 
     @Override
     public int getCount() {
-        return trackingDtos.size();
+        return followUpDtos.size();
     }
 
     @Override
-    public TrackingDto getItem(int position) {
-        return trackingDtos.get(position);
+    public FollowUpDto getItem(int position) {
+        return followUpDtos.get(position);
     }
 
     @Override

@@ -37,7 +37,7 @@
                 android:layout_marginRight="@dimen/activity_large_margin"
                 android:gravity="end|center_vertical"
                 android:padding="@dimen/activity_large_padding"
-                android:text="@string/cardex"
+                android:text="@string/cardex_ab"
                 android:textColor="@color/gray2"
                 android:textSize="@dimen/textSizeMedium" />
         </LinearLayout>

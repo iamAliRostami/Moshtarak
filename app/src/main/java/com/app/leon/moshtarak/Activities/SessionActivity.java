@@ -14,7 +14,7 @@ import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Session;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
-import com.app.leon.moshtarak.Utils.HttpClientWrapper;
+import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.SessionActivityBinding;
@@ -56,7 +56,7 @@ public class SessionActivity extends AppCompatActivity implements ICallback<Arra
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getSessions = retrofit.create(IAbfaService.class);
         Call<ArrayList<Session>> call = getSessions.getSessions(billId);
-        HttpClientWrapper.callHttpAsync(call, SessionActivity.this, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, SessionActivity.this, context, ProgressType.SHOW.getValue());
     }
 
     @Override

@@ -16,7 +16,7 @@ import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Request;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
-import com.app.leon.moshtarak.Utils.HttpClientWrapper;
+import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.RecoveryCodeActivityBinding;
@@ -79,7 +79,7 @@ public class RecoveryCodeActivity extends AppCompatActivity implements ICallback
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getRequests = retrofit.create(IAbfaService.class);
         Call<List<Request>> call = getRequests.getAllRequests(billId);
-        HttpClientWrapper.callHttpAsync(call, RecoveryCodeActivity.this, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, RecoveryCodeActivity.this, context, ProgressType.SHOW.getValue());
     }
 
     @Override

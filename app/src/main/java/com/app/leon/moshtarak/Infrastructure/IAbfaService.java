@@ -1,6 +1,7 @@
 package com.app.leon.moshtarak.Infrastructure;
 
-import com.app.leon.moshtarak.Models.DbTables.Kardex;
+import com.app.leon.moshtarak.Models.DbTables.Cardex;
+import com.app.leon.moshtarak.Models.DbTables.FollowUpDto;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
 import com.app.leon.moshtarak.Models.DbTables.Login;
@@ -11,7 +12,6 @@ import com.app.leon.moshtarak.Models.DbTables.Request;
 import com.app.leon.moshtarak.Models.DbTables.Service;
 import com.app.leon.moshtarak.Models.DbTables.Session;
 import com.app.leon.moshtarak.Models.DbTables.Suggestion;
-import com.app.leon.moshtarak.Models.DbTables.TrackingDto;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ public interface IAbfaService {
     );
 
     @GET("/MoshtarakinApi/Bill/GetKardex/{billId}")
-    Call<ArrayList<Kardex>> getKardex(
+    Call<ArrayList<Cardex>> getKardex(
             @Path("billId") String billId
     );
 
@@ -96,7 +96,7 @@ public interface IAbfaService {
 
 
     @GET("/MoshtarakinApi/RequestManager/GetTrackings/{trackNumber}")
-    Call<ArrayList<TrackingDto>> getTrackings(
+    Call<ArrayList<FollowUpDto>> getTrackings(
             @Path("trackNumber") String trackNumber
     );
 

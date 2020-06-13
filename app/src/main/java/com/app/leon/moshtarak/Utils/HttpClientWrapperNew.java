@@ -3,7 +3,6 @@ package com.app.leon.moshtarak.Utils;
 import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,15 +21,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HttpClientWrapper {
-    private HttpClientWrapper() {
+public class HttpClientWrapperNew {
+    private HttpClientWrapperNew() {
     }
 
-    public static <T> void callHttpAsync(Call<T> call, final ICallback callback, final Context context, int dialogType) {
+    public static <T> void callHttpAsync(Call<T> call, final ICallback<T> callback, final Context context, int dialogType) {
         callHttpAsync(call, callback, context, dialogType, ErrorHandlerType.ordinary);
     }
 
-    public static <T> void callHttpAsync(Call<T> call, final ICallback callback, final Context context, int dialogType, final ErrorHandlerType errorHandlerType) {
+    public static <T> void callHttpAsync(Call<T> call, final ICallback<T> callback, final Context context, int dialogType, final ErrorHandlerType errorHandlerType) {
         CustomProgressBar progressBar = new CustomProgressBar();
         if (dialogType == ProgressType.SHOW.getValue() || dialogType == ProgressType.SHOW_CANCELABLE.getValue()) {
             progressBar.show(context, context.getString(R.string.waiting), true);
@@ -42,45 +41,43 @@ public class HttpClientWrapper {
                 public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
                     try {
                         if (response.isSuccessful()) {
-                            T responseT = response.body();
-                            callback.execute(responseT);
+                            callback.execute(response.body());
                         } else {
                             try {
-                                Log.e("Error", "1");
-                                JSONObject jsonObject = new JSONObject(Objects.requireNonNull(response.errorBody()).string());
-                                error[0] = jsonObject.getString(context.getString(R.string.message));
+                                if (checkRespond(response)) {
+                                    JSONObject jsonObject = new JSONObject(Objects.requireNonNull(response.errorBody()).string());
+                                    error[0] = jsonObject.getString(context.getString(R.string.message));
+                                } else {
+                                    error[0] = new CustomErrorHandling(context).getErrorMessage(response.code(), errorHandlerType);
+                                }
                             } catch (Exception e) {
-                                Log.e("Error", "2");
-                                CustomErrorHandling customErrorHandling = new CustomErrorHandling(context);
-                                error[0] = customErrorHandling.getErrorMessage(response.code(), errorHandlerType);
+                                error[0] = new CustomErrorHandling(context).getErrorMessage(response.code(), errorHandlerType);
                             }
                             new CustomDialog(DialogType.Yellow, context, error[0], context.getString(R.string.dear_user),
                                     context.getString(R.string.error), context.getString(R.string.accepted));
                         }
-                        progressBar.getDialog().dismiss();
                     } catch (Exception e) {
                         try {
-                            Log.e("Error", "3");
-                            JSONObject jsonObject = new JSONObject(Objects.requireNonNull(response.errorBody()).string());
-                            error[0] = jsonObject.getString(context.getString(R.string.message));
+                            if (checkRespond(response)) {
+                                JSONObject jsonObject = new JSONObject(Objects.requireNonNull(response.errorBody()).string());
+                                error[0] = jsonObject.getString(context.getString(R.string.message));
+                            } else {
+                                error[0] = new CustomErrorHandling(context).getErrorMessage(response.code(), errorHandlerType);
+                            }
                         } catch (Exception e1) {
-                            Log.e("Error", "4");
-                            CustomErrorHandling customErrorHandling = new CustomErrorHandling(context);
-                            error[0] = customErrorHandling.getErrorMessage(response.code(), errorHandlerType);
+                            error[0] = new CustomErrorHandling(context).getErrorMessage(response.code(), errorHandlerType);
                         }
                         new CustomDialog(DialogType.Yellow, context, error[0], context.getString(R.string.dear_user),
                                 context.getString(R.string.error), context.getString(R.string.accepted));
-                        progressBar.getDialog().dismiss();
                     }
+                    progressBar.getDialog().dismiss();
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<T> call, @NonNull Throwable t) {
                     Activity activity = (Activity) context;
-                    Log.e("Error", "5");
                     if (!activity.isFinishing()) {
-                        CustomErrorHandling customErrorHandling = new CustomErrorHandling(context);
-                        error[0] = customErrorHandling.getErrorMessageTotal(t);
+                        error[0] = new CustomErrorHandling(context).getErrorMessageTotal(t);
                         new CustomDialog(DialogType.Red, context, error[0], context.getString(R.string.dear_user),
                                 context.getString(R.string.error), context.getString(R.string.accepted));
                     }
@@ -97,5 +94,11 @@ public class HttpClientWrapper {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         return Objects.requireNonNull(cm).getActiveNetworkInfo() != null &&
                 Objects.requireNonNull(cm.getActiveNetworkInfo()).isConnectedOrConnecting();
+    }
+
+    private static boolean checkRespond(Response<?> response) {
+        return response.code() != 404 && response.code() != 401 &&
+                response.code() != 405 && response.code() != 406 &&
+                response.code() != 400 && response.code() != 500;
     }
 }

@@ -25,7 +25,7 @@ import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.HttpClientWrapper;
+import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.LovelyTextInputDialog;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
@@ -183,7 +183,7 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService sendNumber = retrofit.create(IAbfaService.class);
         Call<LastBillInfo> call = sendNumber.sendNumber(billId, number, "09".concat(phoneNumber), 4);
-        HttpClientWrapper.callHttpAsync(call, SetCounterActivity.this, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, SetCounterActivity.this, context, ProgressType.SHOW.getValue());
     }
 
     @Override
@@ -226,8 +226,9 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
         int height = metrics.heightPixels;
-        binding.linearLayout1.setY(height - 14 * height / 25);
-        binding.linearLayout2.setY(height - 2 * height / 5);
+
+        binding.linearLayout1.setY((float) (height - (double) 14 * height / 25));
+        binding.linearLayout2.setY((float) (height - (double) 2 * height / 5));
     }
 
     @Override

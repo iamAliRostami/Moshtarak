@@ -36,7 +36,7 @@
                 android:layout_marginRight="@dimen/activity_mid_margin"
                 android:gravity="end|center_vertical"
                 android:padding="@dimen/activity_mid_padding"
-                android:text="@string/kardex"
+                android:text="@string/cardex"
                 android:textColor="@color/gray2"
                 android:textSize="@dimen/textSizeMedium"
                 tools:ignore="RtlHardcoded" />

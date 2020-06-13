@@ -18,7 +18,7 @@ import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
-import com.app.leon.moshtarak.Utils.HttpClientWrapper;
+import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.SaleContentBinding;
@@ -75,12 +75,10 @@ public class SaleActivity extends BaseActivity
         else if (binding.radioButtonService2.isChecked())
             registerNewDto.setSelectedServices(new String[]{"1", "2"});
         Call<SimpleMessage> call = SendRegisterRequest.registerNew(registerNewDto);
-//        Call<SimpleMessage> call = SendRegisterRequest.test();
-        HttpClientWrapper.callHttpAsync(call, SaleActivity.this, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, SaleActivity.this, context, ProgressType.SHOW.getValue());
     }
 
     private void setButtonNavigationOnClickListener() {
-//        sendRequest();
         binding.buttonNavigation.setOnClickListener(view1 -> {
             View view;
             boolean cancel = false;

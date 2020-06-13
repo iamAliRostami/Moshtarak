@@ -31,7 +31,7 @@ import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
 import com.app.leon.moshtarak.Utils.CustomTab;
-import com.app.leon.moshtarak.Utils.HttpClientWrapper;
+import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.LastBillContentBinding;
@@ -79,7 +79,7 @@ public class LastBillActivity extends BaseActivity {
         final IAbfaService getToken = retrofit.create(IAbfaService.class);
         Call<SimpleMessage> call = getToken.getToken(apiKey);
         GetToken getToken1 = new GetToken();
-        HttpClientWrapper.callHttpAsync(call, getToken1, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, getToken1, context, ProgressType.SHOW.getValue());
     }
 
     void pay(String simpleMessage) {
@@ -298,7 +298,7 @@ public class LastBillActivity extends BaseActivity {
                             bundle3.getString(BundleEnum.ZONE_ID.getValue()));
                 }
                 ThisBill thisBill = new ThisBill();
-                HttpClientWrapper.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
+                HttpClientWrapperNew.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
             }
         } else {
             isLastBill = true;
@@ -308,7 +308,7 @@ public class LastBillActivity extends BaseActivity {
             String base64 = new String(encodeValue);
             Call<LastBillInfoV2> call = getThisBillInfo.getLastBillInfo(billId, base64.substring(0, base64.length() - 1));
             ThisBill thisBill = new ThisBill();
-            HttpClientWrapper.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
+            HttpClientWrapperNew.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
         }
         if (isPayed)
             binding.textViewIsPayed.setText(context.getString(R.string.payed_2));

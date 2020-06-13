@@ -27,7 +27,7 @@ import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
-import com.app.leon.moshtarak.Utils.HttpClientWrapper;
+import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.SignAccountContent1Binding;
@@ -181,7 +181,7 @@ public class SignAccountActivity extends BaseActivity
 
         Call<Login> call = canMatch.register(new Login(billId, base64, serial, getVersionInfo(),
                 String.valueOf(Build.VERSION.RELEASE), mobile, getDeviceName()));
-        HttpClientWrapper.callHttpAsync(call, SignAccountActivity.this, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, SignAccountActivity.this, context, ProgressType.SHOW.getValue());
     }
 
     @Override
