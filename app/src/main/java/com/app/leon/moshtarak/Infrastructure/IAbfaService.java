@@ -96,7 +96,7 @@ public interface IAbfaService {
 
 
     @GET("/MoshtarakinApi/RequestManager/GetTrackings/{trackNumber}")
-    Call<ArrayList<FollowUpDto>> getTrackings(
+    Call<ArrayList<FollowUpDto>> followingUp(
             @Path("trackNumber") String trackNumber
     );
 

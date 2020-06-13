@@ -98,7 +98,7 @@ public class HttpClientWrapperNew {
 
     private static boolean checkRespond(Response<?> response) {
         return response.code() != 404 && response.code() != 401 &&
-                response.code() != 405 && response.code() != 406 &&
-                response.code() != 400 && response.code() != 500;
+                response.code() != 405 && response.code() != 406;
+//        response.code() != 400 && response.code() != 500;
     }
 }
