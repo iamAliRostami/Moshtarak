@@ -90,6 +90,60 @@ public class HttpClientWrapperNew {
         }
     }
 
+
+    public static <T> void callHttpAsync(Call<T> call, final ICallback<T> callback, final Context context) {
+        CustomProgressBar progressBar = new CustomProgressBar();
+        progressBar.show(context, context.getString(R.string.waiting), true);
+        if (isOnline(context)) {
+            final String[] error = new String[1];
+            call.enqueue(new Callback<T>() {
+                @Override
+                public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
+                    try {
+                        if (response.isSuccessful()) {
+                            callback.execute(response.body());
+                        } else {
+                            try {
+                                JSONObject jsonObject = new JSONObject(Objects.requireNonNull(response.errorBody()).string());
+                                error[0] = jsonObject.getString(context.getString(R.string.message));
+                            } catch (Exception e) {
+                                error[0] = new CustomErrorHandling(context).getErrorMessage(response.code(), ErrorHandlerType.ordinary);
+                            }
+                            new CustomDialog(DialogType.Yellow, context, error[0], context.getString(R.string.dear_user),
+                                    context.getString(R.string.error), context.getString(R.string.accepted));
+                        }
+                    } catch (Exception e) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(Objects.requireNonNull(response.errorBody()).string());
+                            error[0] = jsonObject.getString(context.getString(R.string.message));
+
+                        } catch (Exception e1) {
+                            error[0] = new CustomErrorHandling(context).getErrorMessage(response.code(), ErrorHandlerType.ordinary);
+                        }
+                        new CustomDialog(DialogType.Yellow, context, error[0], context.getString(R.string.dear_user),
+                                context.getString(R.string.error), context.getString(R.string.accepted));
+                    }
+                    progressBar.getDialog().dismiss();
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<T> call, @NonNull Throwable t) {
+                    Activity activity = (Activity) context;
+                    if (!activity.isFinishing()) {
+                        error[0] = new CustomErrorHandling(context).getErrorMessageTotal(t);
+                        new CustomDialog(DialogType.Red, context, error[0], context.getString(R.string.dear_user),
+                                context.getString(R.string.error), context.getString(R.string.accepted));
+                    }
+                    progressBar.getDialog().dismiss();
+                }
+            });
+        } else {
+            progressBar.getDialog().dismiss();
+            Toast.makeText(context, R.string.turn_internet_on, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
     private static boolean isOnline(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         return Objects.requireNonNull(cm).getActiveNetworkInfo() != null &&

@@ -13,7 +13,6 @@ import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.FollowUpDto;
-import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
@@ -76,7 +75,7 @@ public class FollowUpActivity extends BaseActivity implements ICallback<ArrayLis
                 Retrofit retrofit = NetworkHelper.getInstance();
                 final IAbfaService tracking = retrofit.create(IAbfaService.class);
                 Call<ArrayList<FollowUpDto>> call = tracking.followingUp(binding.editTextFollowUp.getText().toString());
-                HttpClientWrapperNew.callHttpAsync(call, FollowUpActivity.this, context, ProgressType.SHOW.getValue());
+                HttpClientWrapperNew.callHttpAsync(call, FollowUpActivity.this, context);
             }
         });
     }
