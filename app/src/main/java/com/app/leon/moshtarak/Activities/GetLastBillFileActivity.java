@@ -130,7 +130,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
 
     @SuppressLint("SdCardPath")
     void createImagePrintable() {
-        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.bill); // the original file yourimage.jpg i added in resources
+        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.bill_1); // the original file yourimage.jpg i added in resources
         Bitmap dest = Bitmap.createBitmap(src.getWidth(), src.getHeight(), Bitmap.Config.ARGB_8888);
         String text = " تست تست";
 
@@ -141,41 +141,81 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         cs.drawBitmap(src, 0f, 0f, null);
 
         tPaint.setColor(Color.BLUE);
-        float xCoordinate = (float) src.getWidth() * 54 / 100;
-        float yCoordinate = (float) src.getHeight() * 17 / 100;
+        float xCoordinate = (float) src.getWidth() * 55 / 100;
+        float yCoordinate = (float) src.getHeight() * 20 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 21 / 100;
+        yCoordinate = (float) src.getHeight() * 24 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 25 / 100;
+        yCoordinate = (float) src.getHeight() * 55 / 200;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 31 / 100;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 35 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
 
 
         tPaint.setColor(getResources().getColor(R.color.green2));
-        xCoordinate = (float) src.getWidth() * 1 / 12;
-        yCoordinate = (float) src.getHeight() * 18 / 100;
+        xCoordinate = (float) src.getWidth() * 1 / 11;
+        yCoordinate = (float) src.getHeight() * 22 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 23 / 100;
+        yCoordinate = (float) src.getHeight() * 55 / 200;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 33 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
 
         tPaint.setColor(getResources().getColor(R.color.orange1));
-        xCoordinate = (float) src.getWidth() * 27 / 40;//31/40
-        yCoordinate = (float) src.getHeight() * 48 / 100;
+        xCoordinate = (float) src.getWidth() * 55 / 80;//27/40
+        yCoordinate = (float) src.getHeight() * 53 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 52 / 100;
+        yCoordinate = (float) src.getHeight() * 113 / 200;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 121 / 200;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 64 / 100;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 67 / 100;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 71 / 100;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 75 / 100;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 79 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
 
         tPaint.setColor(getResources().getColor(R.color.red4));
-        xCoordinate = (float) src.getWidth() * 7 / 20;
-        yCoordinate = (float) src.getHeight() * 48 / 100;
+        xCoordinate = (float) src.getWidth() * 29 / 80;
+        yCoordinate = (float) src.getHeight() * 53 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 52 / 100;
+        yCoordinate = (float) src.getHeight() * 113 / 200;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 121 / 200;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 64 / 100;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 67 / 100;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 71 / 100;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 75 / 100;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 79 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
 
         tPaint.setColor(getResources().getColor(R.color.pink2));
-        xCoordinate = (float) src.getWidth() * 1 / 40;
-        yCoordinate = (float) src.getHeight() * 48 / 100;
+        xCoordinate = (float) src.getWidth() * 3 / 80;
+        yCoordinate = (float) src.getHeight() * 53 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 52 / 100;
+        yCoordinate = (float) src.getHeight() * 113 / 200;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 121 / 200;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 64 / 100;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 67 / 100;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 71 / 100;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 75 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
 
         Code128 code = new Code128(context);
