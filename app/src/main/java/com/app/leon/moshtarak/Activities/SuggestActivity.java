@@ -35,11 +35,12 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
     ArrayList<String> items;
     Context context;
 
+    @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
         binding = SuggestContent1Binding.inflate(getLayoutInflater());
         View childLayout = binding.getRoot();
-        @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
 
         context = this;

@@ -10,6 +10,8 @@ import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -55,11 +57,12 @@ public class LastBillActivity extends BaseActivity {
     boolean isFromCardex = false;
     boolean isLastBill = false;
 
+    @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
         binding = LastBillContentBinding.inflate(getLayoutInflater());
         View childLayout = binding.getRoot();
-        @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         context = this;
         accessData();
@@ -599,5 +602,23 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat.setVisibility(View.GONE);
             }
         }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (isLastBill)
+            getMenuInflater().inflate(R.menu.bill, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.nav_bill) {
+            Intent intent = new Intent(getApplicationContext(), GetLastBillFileActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

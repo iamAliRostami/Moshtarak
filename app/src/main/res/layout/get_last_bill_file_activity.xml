@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_background"
-    tools:context="com.app.leon.moshtarak.Activities.ShowSMSActivity">
+    tools:context=".Activities.GetLastBillFileActivity">
 
     <LinearLayout
         android:id="@+id/linearLayoutHeader"
@@ -66,49 +64,49 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_above="@id/linearLayoutFooter"
         android:layout_below="@id/linearLayoutHeader"
-        tools:ignore="UselessParent">
+        android:layout_margin="@dimen/activity_mid_margin"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textViewSmsLevel"
+        <ImageView
+            android:id="@+id/imageViewLastBill"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/activity_mid_margin"
+            android:layout_weight="1"
+            android:background="@drawable/border_blue"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_large_margin"
-            android:layout_marginTop="@dimen/activity_mid_margin"
             android:layout_marginRight="@dimen/activity_large_margin"
-            android:layout_marginBottom="@dimen/activity_mid_margin"
-            android:background="@drawable/border_blue_2"
-            android:gravity="center"
-            android:padding="@dimen/activity_mid_padding"
-            android:text="@string/sms_level"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <TextView
-            android:id="@+id/textViewNoSMS"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_large_margin"
-            android:layout_marginTop="@dimen/activity_mid_margin"
-            android:layout_marginRight="@dimen/activity_large_margin"
-            android:layout_marginBottom="@dimen/activity_mid_margin"
-            android:background="@drawable/border_blue_3"
-            android:gravity="center"
-            android:padding="@dimen/activity_large_padding"
-            android:text="@string/no_sms"
-            android:textColor="@color/black"
-            android:visibility="gone" />
+            <Button
+                android:id="@+id/buttonShare"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:background="@drawable/border_blue_1"
+                android:text="@string/share"
+                android:textColor="@color/white"
+                tools:ignore="ButtonStyle" />
 
-        <ListView
-            android:id="@+id/listViewSMS"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/activity_large_margin"
-            android:layout_marginTop="@dimen/activity_mid_padding"
-            android:layout_marginRight="@dimen/activity_large_margin"
-            android:layout_marginBottom="@dimen/activity_mid_margin" />
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:background="@drawable/border_blue_3"
+                android:text="@string/save"
+                android:textColor="@color/blue2"
+                tools:ignore="ButtonStyle" />
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
