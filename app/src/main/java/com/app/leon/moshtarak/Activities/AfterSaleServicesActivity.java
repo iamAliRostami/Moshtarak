@@ -36,7 +36,6 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class AfterSaleServicesActivity extends BaseActivity {
-
     AfterSaleServiceContentBinding binding;
     Context context;
     SharedPreference sharedPreference;
@@ -45,11 +44,12 @@ public class AfterSaleServicesActivity extends BaseActivity {
     private ArrayList<String> servicesId = new ArrayList<>();
     private ArrayList<String> requestServices = new ArrayList<>();
 
+    @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
         binding = AfterSaleServiceContentBinding.inflate(getLayoutInflater());
         View childLayout = binding.getRoot();
-        @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         context = this;
         accessData();
@@ -65,8 +65,9 @@ public class AfterSaleServicesActivity extends BaseActivity {
             billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
                     get(sharedPreference.getIndex());
             binding.editTextMobile.setText(sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
-                    get(sharedPreference.getIndex()).replaceFirst("09", ""));
-            Toast.makeText(MyApplication.getContext(), "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
+                    get(sharedPreference.getIndex()).replaceFirst(getString(R.string.number_zero), ""));
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(billId),
+                    Toast.LENGTH_LONG).show();
             getServices();
             setOnButtonSubmitClickListener();
         }

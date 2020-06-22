@@ -221,7 +221,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         yCoordinate = (float) src.getHeight() * 79 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
 
-        tPaint.setColor(getResources().getColor(R.color.pink2));
+        tPaint.setColor(getResources().getColor(R.color.pink3));
         xCoordinate = (float) src.getWidth() * 3 / 80;
         yCoordinate = (float) src.getHeight() * 53 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
@@ -320,7 +320,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         yCoordinate = (float) src.getHeight() * 292 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
 
-        tPaint.setColor(getResources().getColor(R.color.pink2));
+        tPaint.setColor(getResources().getColor(R.color.pink3));
         yCoordinate = (float) src.getHeight() * 318 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
         yCoordinate = (float) src.getHeight() * 327 / 400;
