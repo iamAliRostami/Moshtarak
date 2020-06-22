@@ -242,8 +242,8 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         String barcode = "90182736451627384958273847";
         code.setData(barcode);
         xCoordinate = (float) src.getWidth() / 10;
-        yCoordinate = (float) src.getHeight() * 90 / 100;
-        cs.drawBitmap(code.getBitmap(src.getWidth() * 8 / 10, src.getHeight() / 15), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 85 / 100;
+        cs.drawBitmap(code.getBitmap(src.getWidth() * 8 / 10, src.getHeight() / 10), xCoordinate, yCoordinate, tPaint);
 
 //        binding.imageViewLastBill.setImageBitmap(dest);
         bitmapBill = dest;
@@ -340,7 +340,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         String barcode = "90182736451627384958273847";
         code.setData(barcode);
         xCoordinate = (float) src.getWidth() / 10;
-        yCoordinate = (float) src.getHeight() * 96 / 100;
+        yCoordinate = (float) src.getHeight() * 191 / 200;
         cs.drawBitmap(code.getBitmap(src.getWidth() * 8 / 10, src.getHeight() / 30), xCoordinate, yCoordinate, tPaint);
 
         binding.imageViewLastBill.setImageBitmap(dest);
