@@ -26,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
 import com.app.leon.moshtarak.Utils.CustomProgressBar;
@@ -42,12 +43,12 @@ import java.util.Date;
 import java.util.Objects;
 
 public class GetLastBillFileActivity extends AppCompatActivity {
-    static String child = "bill";
-    String imageUrl = "http://crm.abfaesfahan.ir/assets/imgs/bigger.png", imageName;
+    private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 626;
     GetLastBillFileActivityBinding binding;
-    private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 626;// int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 101;
+    String imageName;
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND = 621;
     Context context;
+    Bitmap bitmapBill;
 
     @SuppressLint("SimpleDateFormat")
     @Override
@@ -97,17 +98,34 @@ public class GetLastBillFileActivity extends AppCompatActivity {
     }
 
     void sendImage() {
-        Bitmap bitmap = ((BitmapDrawable) binding.imageViewLastBill.getDrawable()).getBitmap();
+        CustomProgressBar customProgressBar = new CustomProgressBar();
+        customProgressBar.show(context, getString(R.string.waiting), true, dialog -> {
+            Toast.makeText(MyApplication.getContext(),
+                    MyApplication.getContext().getString(R.string.canceled),
+                    Toast.LENGTH_LONG).show();
+            customProgressBar.getDialog().dismiss();
+        });
+//        Bitmap bitmap = ((BitmapDrawable) binding.imageViewLastBill.getDrawable()).getBitmap();
+        Bitmap bitmap = bitmapBill;
         Intent share = new Intent(Intent.ACTION_SEND);
         share.setType("image/jpeg");
+//        share.setType("application/pdf");
         share.putExtra(Intent.EXTRA_STREAM, getImageUri(bitmap, Bitmap.CompressFormat.JPEG, 100));
         startActivity(Intent.createChooser(share, getString(R.string.send_to)));
+        customProgressBar.getDialog().dismiss();
     }
 
     void saveImage() {
-        Bitmap bitmap = ((BitmapDrawable) binding.imageViewLastBill.getDrawable()).getBitmap();
-        Intent share = new Intent(Intent.ACTION_SEND);
-        share.setType("image/jpeg");
+//        Bitmap bitmap = ((BitmapDrawable) binding.imageViewLastBill.getDrawable()).getBitmap();
+        CustomProgressBar customProgressBar = new CustomProgressBar();
+        customProgressBar.show(context, getString(R.string.waiting), true, dialog -> {
+            Toast.makeText(MyApplication.getContext(),
+                    MyApplication.getContext().getString(R.string.canceled),
+                    Toast.LENGTH_LONG).show();
+            customProgressBar.getDialog().dismiss();
+        });
+
+        Bitmap bitmap = bitmapBill;
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         File f = new File(Environment.getExternalStoragePublicDirectory(
@@ -120,6 +138,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        customProgressBar.getDialog().dismiss();
     }
 
     public Uri getImageUri(Bitmap src, Bitmap.CompressFormat format, int quality) {
@@ -156,7 +175,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
 
 
         tPaint.setColor(getResources().getColor(R.color.green2));
-        xCoordinate = (float) src.getWidth() / 11;
+        xCoordinate = (float) src.getWidth() / 10;
         yCoordinate = (float) src.getHeight() * 22 / 100;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
         yCoordinate = (float) src.getHeight() * 55 / 200;
@@ -226,12 +245,13 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         yCoordinate = (float) src.getHeight() * 90 / 100;
         cs.drawBitmap(code.getBitmap(src.getWidth() * 8 / 10, src.getHeight() / 15), xCoordinate, yCoordinate, tPaint);
 
-        binding.imageViewLastBill.setImageBitmap(dest);
+//        binding.imageViewLastBill.setImageBitmap(dest);
+        bitmapBill = dest;
     }
 
     @SuppressLint("SdCardPath")
     void createImageToShow() {
-        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.bill_2); // the original file yourimage.jpg i added in resources
+        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.bill_3); // the original file yourimage.jpg i added in resources
         Bitmap dest = Bitmap.createBitmap(src.getWidth(), src.getHeight(), Bitmap.Config.ARGB_8888);
         String text = " تست تست";
 
@@ -244,84 +264,84 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         tPaint.setColor(Color.BLUE);
         float xCoordinate = (float) src.getWidth() / 10;
 
-        float yCoordinate = (float) src.getHeight() * 26 / 400;
+        float yCoordinate = (float) src.getHeight() * 18 / 400;
+        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 26 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
         yCoordinate = (float) src.getHeight() * 33 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 41 / 400;
+        yCoordinate = (float) src.getHeight() * 40 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 48 / 400;
-        cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 55 / 400;
+        yCoordinate = (float) src.getHeight() * 47 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
 
 
         tPaint.setColor(getResources().getColor(R.color.green2));
-        yCoordinate = (float) src.getHeight() * 77 / 400;
+        yCoordinate = (float) src.getHeight() * 71 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 89 / 400;
+        yCoordinate = (float) src.getHeight() * 82 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 100 / 400;
+        yCoordinate = (float) src.getHeight() * 94 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
 
         tPaint.setColor(getResources().getColor(R.color.orange1));
-        yCoordinate = (float) src.getHeight() * 130 / 400;
+        yCoordinate = (float) src.getHeight() * 124 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 139 / 400;
+        yCoordinate = (float) src.getHeight() * 134 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 149 / 400;
+        yCoordinate = (float) src.getHeight() * 144 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 159 / 400;
+        yCoordinate = (float) src.getHeight() * 154 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 168 / 400;
+        yCoordinate = (float) src.getHeight() * 163 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 177 / 400;
+        yCoordinate = (float) src.getHeight() * 173 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 187 / 400;
+        yCoordinate = (float) src.getHeight() * 183 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 197 / 400;
+        yCoordinate = (float) src.getHeight() * 193 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
 
         tPaint.setColor(getResources().getColor(R.color.red4));
-        yCoordinate = (float) src.getHeight() * 226 / 400;
+        yCoordinate = (float) src.getHeight() * 222 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 236 / 400;
+        yCoordinate = (float) src.getHeight() * 232 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 245 / 400;
+        yCoordinate = (float) src.getHeight() * 242 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 256 / 400;
+        yCoordinate = (float) src.getHeight() * 252 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 264 / 400;
+        yCoordinate = (float) src.getHeight() * 262 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 275 / 400;
+        yCoordinate = (float) src.getHeight() * 272 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 285 / 400;
+        yCoordinate = (float) src.getHeight() * 282 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 295 / 400;
+        yCoordinate = (float) src.getHeight() * 292 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
 
         tPaint.setColor(getResources().getColor(R.color.pink2));
-        yCoordinate = (float) src.getHeight() * 320 / 400;
+        yCoordinate = (float) src.getHeight() * 318 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 328 / 400;
+        yCoordinate = (float) src.getHeight() * 327 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 336 / 400;
+        yCoordinate = (float) src.getHeight() * 335 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
         yCoordinate = (float) src.getHeight() * 344 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 354 / 400;
+        yCoordinate = (float) src.getHeight() * 352 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 362 / 400;
+        yCoordinate = (float) src.getHeight() * 361 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 370 / 400;
+        yCoordinate = (float) src.getHeight() * 369 / 400;
         cs.drawText(text, xCoordinate, yCoordinate, tPaint);
 
         Code128 code = new Code128(context);
         String barcode = "90182736451627384958273847";
         code.setData(barcode);
         xCoordinate = (float) src.getWidth() / 10;
-        yCoordinate = (float) src.getHeight() * 97 / 100;
-        cs.drawBitmap(code.getBitmap(src.getWidth() * 8 / 10, src.getHeight() / 50), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 96 / 100;
+        cs.drawBitmap(code.getBitmap(src.getWidth() * 8 / 10, src.getHeight() / 30), xCoordinate, yCoordinate, tPaint);
 
         binding.imageViewLastBill.setImageBitmap(dest);
     }
