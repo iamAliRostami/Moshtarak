@@ -15,6 +15,7 @@ public enum BundleEnum {
     COUNTER_STATE_POSITION("counterStatePosition"),
     COUNTER_STATE_CODE("counterStatePosition"),
     LAST_BILL_FROM_COUNTER("last_bill_from_counter"),
+    LAST_BILL_TO_FILE("last_bill_from_counter"),
     ID("id"),
     IS_PAYED("is_payed"),
     ZONE_ID("zone_id"),

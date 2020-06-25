@@ -2,6 +2,7 @@ package com.app.leon.moshtarak.Activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,7 +19,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,19 +28,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.app.leon.moshtarak.Infrastructure.IAbfaService;
-import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
-import com.app.leon.moshtarak.Models.Enums.ProgressType;
-import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
-import com.app.leon.moshtarak.MyApplication;
+import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
 import com.app.leon.moshtarak.Utils.CustomProgressBar;
-import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
-import com.app.leon.moshtarak.Utils.NetworkHelper;
-import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.GetLastBillFileActivityBinding;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -52,18 +47,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-import retrofit2.Call;
-import retrofit2.Retrofit;
-
 public class GetLastBillFileActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 626;
+    private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND = 621;
     GetLastBillFileActivityBinding binding;
     String imageName, billId, payId;
-    private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND = 621;
     Context context;
     Bitmap bitmapBill;
     Code128 code128;
     Paint tPaint;
+    LastBillInfoV2 lastBillInfo;
 
     @SuppressLint("SimpleDateFormat")
     @Override
@@ -85,7 +78,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         tPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), "font/my_font.ttf"));
         tPaint.setStyle(Paint.Style.FILL);
 
-        fillLastBillInfo();
+        new ThisBill(context).execute();
         binding.buttonShare.setOnClickListener(v -> {
             if (Build.VERSION.SDK_INT >= 23) {
                 if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -104,26 +97,26 @@ public class GetLastBillFileActivity extends AppCompatActivity {
             if (Build.VERSION.SDK_INT >= 23) {
                 if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED) {
-                    saveImage();
+                    new SaveImages(context, bitmapBill).execute();
                 } else {
                     ActivityCompat.requestPermissions(this,
                             new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                             REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION);
                 }
             } else {
-                saveImage();
+                new SaveImages(context, bitmapBill).execute();
             }
         });
     }
 
     void sendImage() {
-        CustomProgressBar customProgressBar = new CustomProgressBar();
-        customProgressBar.show(context, getString(R.string.waiting), true, dialog -> {
-            Toast.makeText(MyApplication.getContext(),
-                    MyApplication.getContext().getString(R.string.canceled),
-                    Toast.LENGTH_LONG).show();
-            customProgressBar.getDialog().dismiss();
-        });
+//        CustomProgressBar customProgressBar = new CustomProgressBar();
+//        customProgressBar.show(context, getString(R.string.waiting), true, dialog -> {
+//            Toast.makeText(MyApplication.getContext(),
+//                    MyApplication.getContext().getString(R.string.canceled),
+//                    Toast.LENGTH_LONG).show();
+//            customProgressBar.getDialog().dismiss();
+//        });
 //        Bitmap bitmap = ((BitmapDrawable) binding.imageViewLastBill.getDrawable()).getBitmap();
         Bitmap bitmap = bitmapBill;
         Intent share = new Intent(Intent.ACTION_SEND);
@@ -131,33 +124,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
 //        share.setType("application/pdf");
         share.putExtra(Intent.EXTRA_STREAM, getImageUri(bitmap, Bitmap.CompressFormat.JPEG, 100));
         startActivity(Intent.createChooser(share, getString(R.string.send_to)));
-        customProgressBar.getDialog().dismiss();
-    }
-
-    void saveImage() {
-//        Bitmap bitmap = ((BitmapDrawable) binding.imageViewLastBill.getDrawable()).getBitmap();
-        CustomProgressBar customProgressBar = new CustomProgressBar();
-        customProgressBar.show(context, getString(R.string.waiting), true, dialog -> {
-            Toast.makeText(MyApplication.getContext(),
-                    MyApplication.getContext().getString(R.string.canceled),
-                    Toast.LENGTH_LONG).show();
-            customProgressBar.getDialog().dismiss();
-        });
-
-        Bitmap bitmap = bitmapBill;
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        File f = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES) + File.separator + imageName);
-        try {
-            f.createNewFile();
-            FileOutputStream fo = new FileOutputStream(f);
-            fo.write(bytes.toByteArray());
-            Toast.makeText(context, R.string.saved, Toast.LENGTH_LONG).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        customProgressBar.getDialog().dismiss();
+//        customProgressBar.getDialog().dismiss();
     }
 
     public Uri getImageUri(Bitmap src, Bitmap.CompressFormat format, int quality) {
@@ -292,9 +259,10 @@ public class GetLastBillFileActivity extends AppCompatActivity {
 
         xCoordinate = (float) src.getWidth() / 10;
         yCoordinate = (float) src.getHeight() * 85 / 100;
-        cs.drawBitmap(code128.getBitmap(src.getWidth() * 8 / 10, src.getHeight() / 10), xCoordinate, yCoordinate, tPaint);
-
-//        binding.imageViewLastBill.setImageBitmap(dest);
+        float finalXCoordinate = xCoordinate;
+        float finalYCoordinate = yCoordinate;
+        cs.drawBitmap(code128.getBitmap(src.getWidth() * 8 / 10,
+                src.getHeight() / 10), finalXCoordinate, finalYCoordinate, tPaint);
         bitmapBill = dest;
     }
 
@@ -420,24 +388,15 @@ public class GetLastBillFileActivity extends AppCompatActivity {
 
         xCoordinate = (float) src.getWidth() / 10;
         yCoordinate = (float) src.getHeight() * 191 / 200;
-        cs.drawBitmap(code128.getBitmap(src.getWidth() * 8 / 10, src.getHeight() / 30), xCoordinate, yCoordinate, tPaint);
-
-        binding.imageViewLastBill.setImageBitmap(dest);
+        float finalYCoordinate = yCoordinate;
+        float finalXCoordinate = xCoordinate;
+        cs.drawBitmap(code128.getBitmap(src.getWidth() * 8 / 10,
+                src.getHeight() / 30), finalXCoordinate, finalYCoordinate, tPaint);
+        runOnUiThread(() -> {
+            binding.imageViewLastBill.setImageBitmap(dest);
+        });
     }
 
-    void fillLastBillInfo() {
-        SharedPreference sharedPreference = new SharedPreference(context);
-        billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
-                get(sharedPreference.getIndex());
-        Toast.makeText(MyApplication.getContext(), "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
-        Retrofit retrofit = NetworkHelper.getInstance();
-        final IAbfaService getThisBillInfo = retrofit.create(IAbfaService.class);
-        byte[] encodeValue = Base64.encode(billId.getBytes(), Base64.DEFAULT);
-        String base64 = new String(encodeValue);
-        Call<LastBillInfoV2> call = getThisBillInfo.getLastBillInfo(billId, base64.substring(0, base64.length() - 1));
-        ThisBill thisBill = new ThisBill();
-        HttpClientWrapperNew.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
-    }
 
     Code128 setCode128() {
         Code128 code = new Code128(this);
@@ -454,25 +413,15 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         return code;
     }
 
-    class ThisBill implements ICallback<LastBillInfoV2> {
-        @SuppressLint("DefaultLocale")
-        @Override
-        public void execute(LastBillInfoV2 lastBillInfo) {
-            payId = lastBillInfo.getPayId();
-            code128 = setCode128();
-            createImageToShow(lastBillInfo);
-            createImagePrintable(lastBillInfo);
-        }
-
-    }
-
     @SuppressLint("SimpleDateFormat")
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                saveImage();
+//                saveImage();
+                new SaveImages(context, bitmapBill).execute();
             } else {
                 Toast.makeText(context, R.string.no_access, Toast.LENGTH_LONG).show();
             }
@@ -482,6 +431,100 @@ public class GetLastBillFileActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(context, R.string.no_access, Toast.LENGTH_LONG).show();
             }
+        }
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    class SaveImages extends AsyncTask<Object, Object, Object> {
+        CustomProgressBar customProgressBar;
+        ProgressDialog progressDialog;
+        Bitmap bitmap;
+        Context context;
+
+        public SaveImages(Context context, Bitmap bitmap) {
+            this.progressDialog = new ProgressDialog(context);
+            this.bitmap = bitmap;
+            this.context = context;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+        }
+
+        @Override
+        protected Object doInBackground(Object... objects) {
+            saveImage();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            progressDialog.dismiss();
+            progressDialog.cancel();
+        }
+
+        void saveImage() {
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            File f = new File(Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_PICTURES) + File.separator + imageName);
+            try {
+                f.createNewFile();
+                FileOutputStream fo = new FileOutputStream(f);
+                fo.write(bytes.toByteArray());
+                runOnUiThread(() -> Toast.makeText(context, R.string.saved, Toast.LENGTH_LONG).show());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    class ThisBill extends AsyncTask<Object, Object, Object> {
+        CustomProgressBar customProgressBar;
+        ProgressDialog progressDialog;
+        Context context;
+        LastBillInfoV2 lastBillInfoV2;
+
+        public ThisBill(Context context) {
+            this.context = context;
+            this.progressDialog = new ProgressDialog(context);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            progressDialog.dismiss();
+        }
+
+        @Override
+        protected Object doInBackground(Object... objects) {
+            if (getIntent().getExtras() != null) {
+                Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());//setCounter
+                if (bundle1 != null) {
+                    String json = bundle1.getString(BundleEnum.LAST_BILL_TO_FILE.getValue());
+                    Gson gson = new GsonBuilder().create();
+                    lastBillInfoV2 = gson.fromJson(json, LastBillInfoV2.class);
+                    billId = lastBillInfoV2.getBillId();
+                    payId = lastBillInfoV2.getPayId();
+
+                    code128 = setCode128();
+
+                    lastBillInfo = lastBillInfoV2;
+                    createImagePrintable(lastBillInfo);
+                    createImageToShow(lastBillInfo);
+                }
+            }
+            return null;
         }
     }
 

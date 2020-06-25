@@ -55,6 +55,7 @@ public class LastBillActivity extends BaseActivity {
     boolean isPayed = false;
     boolean isFromCardex = false;
     boolean isLastBill = false;
+    static LastBillInfoV2 lastBillInfo;
 
     @SuppressLint("CutPasteId")
     @Override
@@ -358,10 +359,35 @@ public class LastBillActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.nav_bill) {
+            Gson gson = new Gson();
+            String json = gson.toJson(lastBillInfo);
+            Bundle bundle = new Bundle();
+            bundle.putString(BundleEnum.LAST_BILL_TO_FILE.getValue(), json);
+            Intent intent = new Intent(getApplicationContext(), GetLastBillFileActivity.class);
+            intent.putExtra(BundleEnum.DATA.getValue(), bundle);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (isLastBill)
+            getMenuInflater().inflate(R.menu.bill, menu);
+        return true;
+    }
+
     class ThisBill implements ICallback<LastBillInfoV2> {
         @SuppressLint("DefaultLocale")
         @Override
         public void execute(LastBillInfoV2 lastBillInfo) {
+
+            LastBillActivity.lastBillInfo = lastBillInfo;
             androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat;
             if (isFromCardex && isPayed) {
                 //اگر از کاردکس بود و پرداخت شده بود
@@ -601,23 +627,5 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat.setVisibility(View.GONE);
             }
         }
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (isLastBill)
-            getMenuInflater().inflate(R.menu.bill, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.nav_bill) {
-            Intent intent = new Intent(getApplicationContext(), GetLastBillFileActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
