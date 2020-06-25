@@ -1,10 +1,10 @@
 package com.app.leon.moshtarak.Utils;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.app.leon.moshtarak.Activities.HomeActivity;
 import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 
@@ -35,8 +34,9 @@ public final class CustomProgressBar {
             Toast.makeText(MyApplication.getContext(),
                     MyApplication.getContext().getString(R.string.canceled),
                     Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(context, HomeActivity.class);
-            context.startActivity(intent);
+//            Intent intent = new Intent(context, HomeActivity.class);
+//            context.startActivity(intent);
+            ((Activity) context).finish();
         });
     }
 

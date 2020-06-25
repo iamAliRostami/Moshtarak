@@ -10,6 +10,11 @@ public class MyApplication extends Application {
     public static int position = 0;
     @SuppressLint("StaticFieldLeak")
     private static Context sContext;
+    public static final String fontName = "font/my_font.ttf";
+
+    public static String getFontName() {
+        return fontName;
+    }
 
     public static Context getContext() {
         return sContext;
@@ -19,12 +24,5 @@ public class MyApplication extends Application {
     public void onCreate() {
         sContext = getApplicationContext();
         super.onCreate();
-//        ViewPump.init(ViewPump.builder()
-//                .addInterceptor(new CalligraphyInterceptor(
-//                        new CalligraphyConfig.Builder()
-//                                .setDefaultFontPath("font/my_font.ttf")
-//                                .setFontAttrId(R.attr.fontPath)
-//                                .build()))
-//                .build());
     }
 }

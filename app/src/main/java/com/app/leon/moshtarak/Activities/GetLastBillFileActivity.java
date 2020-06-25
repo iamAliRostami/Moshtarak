@@ -2,7 +2,6 @@ package com.app.leon.moshtarak.Activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -30,6 +29,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
+import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
 import com.app.leon.moshtarak.Utils.CustomProgressBar;
@@ -75,22 +75,25 @@ public class GetLastBillFileActivity extends AppCompatActivity {
                 format(new Date())).concat(".jpg");
         tPaint = new Paint();
         tPaint.setTextSize(100);
-        tPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), "font/my_font.ttf"));
+        tPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), MyApplication.getFontName()));
         tPaint.setStyle(Paint.Style.FILL);
 
         new ThisBill(context).execute();
+
         binding.buttonShare.setOnClickListener(v -> {
             if (Build.VERSION.SDK_INT >= 23) {
                 if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED) {
-                    sendImage();
+//                    sendImage();
+                    new SendImages(context, bitmapBill).execute();
                 } else {
                     ActivityCompat.requestPermissions(this,
                             new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                             REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND);
                 }
             } else {
-                sendImage();
+                new SendImages(context, bitmapBill).execute();
+//                sendImage();
             }
         });
         binding.buttonSave.setOnClickListener(v -> {
@@ -107,24 +110,6 @@ public class GetLastBillFileActivity extends AppCompatActivity {
                 new SaveImages(context, bitmapBill).execute();
             }
         });
-    }
-
-    void sendImage() {
-//        CustomProgressBar customProgressBar = new CustomProgressBar();
-//        customProgressBar.show(context, getString(R.string.waiting), true, dialog -> {
-//            Toast.makeText(MyApplication.getContext(),
-//                    MyApplication.getContext().getString(R.string.canceled),
-//                    Toast.LENGTH_LONG).show();
-//            customProgressBar.getDialog().dismiss();
-//        });
-//        Bitmap bitmap = ((BitmapDrawable) binding.imageViewLastBill.getDrawable()).getBitmap();
-        Bitmap bitmap = bitmapBill;
-        Intent share = new Intent(Intent.ACTION_SEND);
-        share.setType("image/jpeg");
-//        share.setType("application/pdf");
-        share.putExtra(Intent.EXTRA_STREAM, getImageUri(bitmap, Bitmap.CompressFormat.JPEG, 100));
-        startActivity(Intent.createChooser(share, getString(R.string.send_to)));
-//        customProgressBar.getDialog().dismiss();
     }
 
     public Uri getImageUri(Bitmap src, Bitmap.CompressFormat format, int quality) {
@@ -288,7 +273,6 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         yCoordinate = (float) src.getHeight() * 47 / 400;
         cs.drawText(lastBillInfo.getDeadLine(), xCoordinate, yCoordinate, tPaint);
 
-
         tPaint.setColor(getResources().getColor(R.color.green2));
         yCoordinate = (float) src.getHeight() * 71 / 400;
         floatNumber = Float.parseFloat(lastBillInfo.getMasraf());
@@ -392,26 +376,9 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         float finalXCoordinate = xCoordinate;
         cs.drawBitmap(code128.getBitmap(src.getWidth() * 8 / 10,
                 src.getHeight() / 30), finalXCoordinate, finalYCoordinate, tPaint);
-        runOnUiThread(() -> {
-            binding.imageViewLastBill.setImageBitmap(dest);
-        });
+        runOnUiThread(() -> binding.imageViewLastBill.setImageBitmap(dest));
     }
 
-
-    Code128 setCode128() {
-        Code128 code = new Code128(this);
-        String barcode = "";
-        for (int count = 0; count < 13 - billId.length(); count++) {
-            barcode = barcode.concat("0");
-        }
-        barcode = barcode.concat(billId);
-        for (int count = 0; count < 13 - payId.length(); count++) {
-            barcode = barcode.concat("0");
-        }
-        barcode = barcode.concat(payId);
-        code.setData(barcode);
-        return code;
-    }
 
     @SuppressLint("SimpleDateFormat")
     @Override
@@ -420,37 +387,42 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                saveImage();
                 new SaveImages(context, bitmapBill).execute();
             } else {
                 Toast.makeText(context, R.string.no_access, Toast.LENGTH_LONG).show();
             }
         } else if (requestCode == REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                sendImage();
+                new SendImages(context, bitmapBill).execute();
+//                sendImage();
             } else {
                 Toast.makeText(context, R.string.no_access, Toast.LENGTH_LONG).show();
             }
         }
     }
 
+
     @SuppressLint("StaticFieldLeak")
     class SaveImages extends AsyncTask<Object, Object, Object> {
         CustomProgressBar customProgressBar;
-        ProgressDialog progressDialog;
         Bitmap bitmap;
         Context context;
 
         public SaveImages(Context context, Bitmap bitmap) {
-            this.progressDialog = new ProgressDialog(context);
             this.bitmap = bitmap;
             this.context = context;
+            this.customProgressBar = new CustomProgressBar();
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog.show();
+            customProgressBar.show(context, getString(R.string.waiting), false, dialog -> {
+                Toast.makeText(MyApplication.getContext(),
+                        MyApplication.getContext().getString(R.string.canceled),
+                        Toast.LENGTH_LONG).show();
+                customProgressBar.getDialog().dismiss();
+            });
         }
 
         @Override
@@ -462,8 +434,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
-            progressDialog.dismiss();
-            progressDialog.cancel();
+            customProgressBar.getDialog().dismiss();
         }
 
         void saveImage() {
@@ -472,10 +443,11 @@ public class GetLastBillFileActivity extends AppCompatActivity {
             File f = new File(Environment.getExternalStoragePublicDirectory(
                     Environment.DIRECTORY_PICTURES) + File.separator + imageName);
             try {
-                f.createNewFile();
-                FileOutputStream fo = new FileOutputStream(f);
-                fo.write(bytes.toByteArray());
-                runOnUiThread(() -> Toast.makeText(context, R.string.saved, Toast.LENGTH_LONG).show());
+                if (f.createNewFile()) {
+                    FileOutputStream fo = new FileOutputStream(f);
+                    fo.write(bytes.toByteArray());
+                    runOnUiThread(() -> Toast.makeText(context, R.string.saved, Toast.LENGTH_LONG).show());
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -483,33 +455,82 @@ public class GetLastBillFileActivity extends AppCompatActivity {
     }
 
     @SuppressLint("StaticFieldLeak")
-    class ThisBill extends AsyncTask<Object, Object, Object> {
+    class SendImages extends AsyncTask<Object, Object, Object> {
         CustomProgressBar customProgressBar;
-        ProgressDialog progressDialog;
+        Bitmap bitmap;
         Context context;
-        LastBillInfoV2 lastBillInfoV2;
 
-        public ThisBill(Context context) {
+        public SendImages(Context context, Bitmap bitmap) {
+            this.bitmap = bitmap;
             this.context = context;
-            this.progressDialog = new ProgressDialog(context);
+            this.customProgressBar = new CustomProgressBar();
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog.show();
+            customProgressBar.show(context, getString(R.string.waiting), false, dialog -> {
+                Toast.makeText(MyApplication.getContext(),
+                        MyApplication.getContext().getString(R.string.canceled),
+                        Toast.LENGTH_LONG).show();
+                customProgressBar.getDialog().dismiss();
+            });
+        }
+
+        @Override
+        protected Object doInBackground(Object... objects) {
+            sendImage();
+            return null;
         }
 
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
-            progressDialog.dismiss();
+            customProgressBar.getDialog().dismiss();
+        }
+
+        void sendImage() {
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.setType("image/jpeg");
+//        share.setType("application/pdf");
+            share.putExtra(Intent.EXTRA_STREAM, getImageUri(bitmap, Bitmap.CompressFormat.JPEG, 100));
+            startActivity(Intent.createChooser(share, getString(R.string.send_to)));
+        }
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    class ThisBill extends AsyncTask<Object, Object, Object> {
+        CustomProgressBar customProgressBar;
+        Context context;
+        LastBillInfoV2 lastBillInfoV2;
+
+        public ThisBill(Context context) {
+            this.context = context;
+            customProgressBar = new CustomProgressBar();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            customProgressBar.show(context, getString(R.string.waiting), false, dialog -> {
+                Toast.makeText(MyApplication.getContext(),
+                        MyApplication.getContext().getString(R.string.canceled),
+                        Toast.LENGTH_LONG).show();
+                customProgressBar.getDialog().dismiss();
+                finish();
+            });
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            customProgressBar.getDialog().dismiss();
         }
 
         @Override
         protected Object doInBackground(Object... objects) {
             if (getIntent().getExtras() != null) {
-                Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());//setCounter
+                Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
                 if (bundle1 != null) {
                     String json = bundle1.getString(BundleEnum.LAST_BILL_TO_FILE.getValue());
                     Gson gson = new GsonBuilder().create();
@@ -525,6 +546,21 @@ public class GetLastBillFileActivity extends AppCompatActivity {
                 }
             }
             return null;
+        }
+
+        Code128 setCode128() {
+            Code128 code = new Code128(context);
+            String barcode = "";
+            for (int count = 0; count < 13 - billId.length(); count++) {
+                barcode = barcode.concat("0");
+            }
+            barcode = barcode.concat(billId);
+            for (int count = 0; count < 13 - payId.length(); count++) {
+                barcode = barcode.concat("0");
+            }
+            barcode = barcode.concat(payId);
+            code.setData(barcode);
+            return code;
         }
     }
 

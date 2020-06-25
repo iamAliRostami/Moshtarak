@@ -79,10 +79,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-
                     android:background="@color/transparent"
                     android:padding="2dp"
-
                     android:src="@drawable/img_kardex" />
 
                 <TextView
@@ -99,7 +97,6 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="0dp"
-
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
@@ -110,11 +107,7 @@
                     android:id="@+id/imageButtonMamoor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-
                     android:background="@color/transparent"
-                    android:padding="2dp"
-
                     android:src="@drawable/img_mamoor" />
 
                 <TextView
@@ -149,10 +142,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-
                     android:background="@color/transparent"
                     android:padding="2dp"
-
                     android:src="@drawable/img_sale" />
 
                 <TextView
@@ -181,7 +172,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-
                     android:background="@color/transparent"
                     android:padding="2dp"
 
@@ -285,10 +275,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-
                     android:background="@color/transparent"
                     android:padding="2dp"
-
                     android:src="@drawable/img_train" />
 
                 <TextView
