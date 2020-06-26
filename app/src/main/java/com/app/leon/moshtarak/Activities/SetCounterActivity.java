@@ -4,10 +4,10 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Debug;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -220,18 +220,18 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     }
 
     void setComponentPosition() {
-//        WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-//        Display display = Objects.requireNonNull(wm).getDefaultDisplay();
-//        DisplayMetrics metrics = new DisplayMetrics();
-//        display.getMetrics(metrics);
-//        int height = metrics.heightPixels;
-//
-//        binding.linearLayout1.setY((float) (height - (double) 14 * height / 27));
-//        binding.linearLayout2.setY((float) (height - (double) 2 * height / 5));
+        WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = Objects.requireNonNull(wm).getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+        int height = metrics.heightPixels;
 
-        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.img_water_meter);
-        binding.linearLayout1.setY((float) (44 * src.getHeight() / 27));
-        binding.linearLayout2.setY((float) (58 * src.getHeight() / 27));
+        binding.linearLayout1.setY((float) (height - (double) 16 * height / 27));
+        binding.linearLayout2.setY((float) (height - (double) 2 * height / 5));
+
+//        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.img_water_meter);
+//        binding.linearLayout1.setY((float) (44 * src.getHeight() / 27));
+//        binding.linearLayout2.setY((float) (58 * src.getHeight() / 27));
 
     }
 
