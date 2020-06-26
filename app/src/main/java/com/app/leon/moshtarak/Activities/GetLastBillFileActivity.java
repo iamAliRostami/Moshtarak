@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Debug;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
@@ -592,6 +593,27 @@ public class GetLastBillFileActivity extends AppCompatActivity {
             code.setData(barcode);
             return code;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        context = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 
     @SuppressLint("StaticFieldLeak")

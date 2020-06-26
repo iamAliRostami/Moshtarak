@@ -12,7 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:id="@+id/linearLayout1"
@@ -21,7 +22,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            tools:ignore="RtlCompat">
+            tools:ignore="ObsoleteLayoutParam,RtlCompat">
 
             <EditText
                 android:id="@+id/editText5"
@@ -29,12 +30,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
-                android:hint="0"
+                android:hint="@string/number_zero"
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
                 android:padding="@dimen/activity_mid_padding"
-                android:textSize="@dimen/textSizeLarge" />
+                android:textSize="@dimen/textSizeLarge"
+                tools:ignore="Autofill,RtlHardcoded" />
 
             <EditText
                 android:id="@+id/editText4"
@@ -43,12 +45,13 @@
                 android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
                 android:focusable="false"
-                android:hint="0"
+                android:hint="@string/number_zero"
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
                 android:padding="@dimen/activity_mid_padding"
-                android:textSize="@dimen/textSizeLarge" />
+                android:textSize="@dimen/textSizeLarge"
+                tools:ignore="Autofill,RtlHardcoded" />
 
 
             <EditText
@@ -58,12 +61,13 @@
                 android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
                 android:focusable="false"
-                android:hint="0"
+                android:hint="@string/number_zero"
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
                 android:padding="@dimen/activity_mid_padding"
-                android:textSize="@dimen/textSizeLarge" />
+                android:textSize="@dimen/textSizeLarge"
+                tools:ignore="Autofill,RtlHardcoded" />
 
             <EditText
                 android:id="@+id/editText2"
@@ -72,12 +76,13 @@
                 android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
                 android:focusable="false"
-                android:hint="0"
+                android:hint="@string/number_zero"
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
                 android:padding="@dimen/activity_mid_padding"
-                android:textSize="@dimen/textSizeLarge" />
+                android:textSize="@dimen/textSizeLarge"
+                tools:ignore="Autofill,RtlHardcoded" />
 
             <EditText
                 android:id="@+id/editText1"
@@ -86,12 +91,13 @@
                 android:layout_marginRight="@dimen/activity_mid_margin"
                 android:background="@drawable/border_gray_"
                 android:focusable="false"
-                android:hint="0"
+                android:hint="@string/number_zero"
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
                 android:padding="@dimen/activity_mid_padding"
-                android:textSize="@dimen/textSizeLarge" />
+                android:textSize="@dimen/textSizeLarge"
+                tools:ignore="Autofill,RtlHardcoded" />
         </LinearLayout>
 
         <LinearLayout

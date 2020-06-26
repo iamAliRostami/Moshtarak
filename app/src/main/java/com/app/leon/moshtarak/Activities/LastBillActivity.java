@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -344,11 +345,28 @@ public class LastBillActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         binding.imageViewBarcode.setImageDrawable(null);
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 
     static class GetToken implements ICallback<SimpleMessage> {
@@ -628,4 +646,6 @@ public class LastBillActivity extends BaseActivity {
             }
         }
     }
+
+
 }
