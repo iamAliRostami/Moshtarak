@@ -65,7 +65,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
             billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
                     get(sharedPreference.getIndex());
             binding.editTextMobile.setText(sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
-                    get(sharedPreference.getIndex()).replaceFirst(getString(R.string.number_zero), ""));
+                    get(sharedPreference.getIndex()).replaceFirst(getString(R.string._09), ""));
             Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(billId),
                     Toast.LENGTH_LONG).show();
             getServices();

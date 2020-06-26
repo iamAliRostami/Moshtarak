@@ -17,6 +17,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -66,15 +67,22 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         context = this;
+
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+
         initialize();
     }
 
     @SuppressLint("SimpleDateFormat")
     void initialize() {
+
+        Log.e("size", getFontSize(context));
         imageName = "bill_".concat((new SimpleDateFormat("yyyyMMdd_HHmmss")).
                 format(new Date())).concat(".jpg");
         tPaint = new Paint();
-        tPaint.setTextSize(100);
+        tPaint.setTextSize(33);
+
         tPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), MyApplication.getFontName()));
         tPaint.setStyle(Paint.Style.FILL);
 
@@ -84,7 +92,6 @@ public class GetLastBillFileActivity extends AppCompatActivity {
             if (Build.VERSION.SDK_INT >= 23) {
                 if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED) {
-//                    sendImage();
                     new SendImages(context, bitmapBill).execute();
                 } else {
                     ActivityCompat.requestPermissions(this,
@@ -92,10 +99,10 @@ public class GetLastBillFileActivity extends AppCompatActivity {
                             REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND);
                 }
             } else {
-                new SendImages(context, bitmapBill).execute();
-//                sendImage();
+                Toast.makeText(context, R.string.error_android_version, Toast.LENGTH_LONG).show();
             }
         });
+
         binding.buttonSave.setOnClickListener(v -> {
             if (Build.VERSION.SDK_INT >= 23) {
                 if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -107,9 +114,33 @@ public class GetLastBillFileActivity extends AppCompatActivity {
                             REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION);
                 }
             } else {
-                new SaveImages(context, bitmapBill).execute();
+                try {
+                    new SaveImages(context, bitmapBill).execute();
+                } catch (Exception e) {
+                    Toast.makeText(context, R.string.error_preparing, Toast.LENGTH_LONG).show();
+                }
             }
         });
+    }
+
+    String getFontSize(Context context) {
+        float density = context.getResources().getDisplayMetrics().density;
+        if (density >= 4.0) {
+            return "xxxhdpi";
+        }
+        if (density >= 3.0) {
+            return "xxhdpi";
+        }
+        if (density >= 2.0) {
+            return "xhdpi";
+        }
+        if (density >= 1.5) {
+            return "hdpi";
+        }
+        if (density >= 1.0) {
+            return "mdpi";
+        }
+        return "ldpi";
     }
 
     public Uri getImageUri(Bitmap src, Bitmap.CompressFormat format, int quality) {
@@ -255,7 +286,8 @@ public class GetLastBillFileActivity extends AppCompatActivity {
     void createImageToShow(LastBillInfoV2 lastBillInfo) {
         float floatNumber;
         int intNumber;
-        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.bill_3); // the original file yourimage.jpg i added in resources
+
+        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.bill_2);
         Bitmap dest = Bitmap.createBitmap(src.getWidth(), src.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas cs = new Canvas(dest);
         cs.drawBitmap(src, 0f, 0f, null);
@@ -379,7 +411,6 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         runOnUiThread(() -> binding.imageViewLastBill.setImageBitmap(dest));
     }
 
-
     @SuppressLint("SimpleDateFormat")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
@@ -394,13 +425,11 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         } else if (requestCode == REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 new SendImages(context, bitmapBill).execute();
-//                sendImage();
             } else {
                 Toast.makeText(context, R.string.no_access, Toast.LENGTH_LONG).show();
             }
         }
     }
-
 
     @SuppressLint("StaticFieldLeak")
     class SaveImages extends AsyncTask<Object, Object, Object> {
@@ -450,6 +479,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+                runOnUiThread(() -> Toast.makeText(context, R.string.error_preparing, Toast.LENGTH_LONG).show());
             }
         }
     }
@@ -541,8 +571,8 @@ public class GetLastBillFileActivity extends AppCompatActivity {
                     code128 = setCode128();
 
                     lastBillInfo = lastBillInfoV2;
-                    createImagePrintable(lastBillInfo);
                     createImageToShow(lastBillInfo);
+                    createImagePrintable(lastBillInfo);
                 }
             }
             return null;

@@ -1,6 +1,7 @@
 package com.app.leon.moshtarak.Utils;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -79,6 +80,7 @@ public class CustomDialog {
                 .setPositiveButton(ButtonText, v -> {
                     Intent intent = new Intent(context, HomeActivity.class);
                     context.startActivity(intent);
+                    ((Activity) context).finish();
                 });
         lovelyStandardDialog.show();
     }
@@ -91,6 +93,7 @@ public class CustomDialog {
                 .setPositiveButton(buttonText, v -> {
                     Intent intent = new Intent(context, HomeActivity.class);
                     context.startActivity(intent);
+                    ((Activity) context).finish();
                 })
                 .show();
     }
@@ -103,6 +106,7 @@ public class CustomDialog {
                 .setPositiveButton(buttonText, v -> {
                     Intent intent = new Intent(context, HomeActivity.class);
                     context.startActivity(intent);
+                    ((Activity) context).finish();
                 })
                 .show();
     }

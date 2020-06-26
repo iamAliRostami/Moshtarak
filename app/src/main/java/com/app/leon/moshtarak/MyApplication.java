@@ -1,11 +1,13 @@
 package com.app.leon.moshtarak;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.content.Context;
 
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
 
-public class MyApplication extends Application {
+
+public class MyApplication extends MultiDexApplication {
 
     public static int position = 0;
     @SuppressLint("StaticFieldLeak")
@@ -24,5 +26,11 @@ public class MyApplication extends Application {
     public void onCreate() {
         sContext = getApplicationContext();
         super.onCreate();
+    }
+
+    @Override
+    protected void attachBaseContext(Context context) {
+        super.attachBaseContext(context);
+        MultiDex.install(this);
     }
 }

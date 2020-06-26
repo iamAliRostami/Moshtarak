@@ -26,7 +26,7 @@
             android:layout_below="@+id/progress_bar"
             android:layout_centerHorizontal="true"
             android:textColor="@color/black"
-            android:textSize="@dimen/textSizeLarge_" />
+            android:textSize="@dimen/textSizeHuge" />
 
     </RelativeLayout>
 

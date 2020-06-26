@@ -11,8 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
+import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.databinding.ChartActivityBinding;
 import com.github.mikephil.charting.components.XAxis;
@@ -50,8 +52,7 @@ public class ChartActivity extends AppCompatActivity {
             }
         }
         context = this;
-        String fontName = "font/my_font.ttf";
-        typeface = Typeface.createFromAsset(context.getAssets(), fontName);
+        typeface = Typeface.createFromAsset(context.getAssets(), MyApplication.getFontName());
         customizeChartView();
         setData();
     }
@@ -62,8 +63,13 @@ public class ChartActivity extends AppCompatActivity {
         binding.horizontalChart.setDrawValueAboveBar(true);
         binding.horizontalChart.getDescription().setEnabled(false);
         binding.horizontalChart.setPinchZoom(false);
-        binding.horizontalChart.setBackgroundColor(getColor(R.color.gray3));
-        binding.horizontalChart.setGridBackgroundColor(getColor(R.color.gray4));
+//        binding.horizontalChart.setBackgroundColor(getColor(R.color.gray3));
+//        binding.horizontalChart.setGridBackgroundColor(getColor(R.color.gray4));
+
+        binding.horizontalChart.setBackgroundColor(ContextCompat.getColor(MyApplication.getContext()
+                , R.color.gray3));
+        binding.horizontalChart.setGridBackgroundColor(ContextCompat.getColor(MyApplication.getContext()
+                , R.color.gray4));
 
         binding.horizontalChart.setDrawGridBackground(true);
         XAxis xl = binding.horizontalChart.getXAxis();

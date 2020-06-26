@@ -216,7 +216,6 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         String json = gson.toJson(lastBillInfo);
         bundle.putString(BundleEnum.LAST_BILL_FROM_COUNTER.getValue(), json);
         intent.putExtra(BundleEnum.DATA.getValue(), bundle);
-//        intent.putExtra();
         startActivity(intent);
     }
 

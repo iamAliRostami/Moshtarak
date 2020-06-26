@@ -16,7 +16,7 @@
     <string name="mamoor_2">اعلام کارکرد کنتور</string>
     <string name="train">آموزش</string>
     <string name="help">راهنما</string>
-    <string name="support">خدمات پس از فروش</string>
+    <string name="support">خدمات پس ازفروش</string>
     <string name="support_1">خدمات مورد نیاز</string>
     <string name="suggest">انتقادات پیشنهادات</string>
     <string name="suggest_1">گزارش خطای برنامه</string>
@@ -219,5 +219,7 @@
     <string name="send_to">ارسال به</string>
     <string name="save">ذخیره</string>
     <string name="saved">ذخیره سازی با موفقیت انجام شد</string>
+    <string name="error_preparing">مشکلی در فرآیند آماده سازی روی داده است</string>
+    <string name="error_android_version">نسخه اندروید شما این ویژگی را پشتیبانی نمی کند</string>
 
 </resources>

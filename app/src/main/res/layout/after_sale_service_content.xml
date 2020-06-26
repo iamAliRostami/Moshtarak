@@ -117,7 +117,7 @@
                 android:layout_marginTop="@dimen/activity_mid_margin"
                 android:layout_marginEnd="@dimen/activity_mid_margin"
                 android:layout_marginBottom="@dimen/activity_mid_margin"
-                android:text="09"
+                android:text="@string/_09"
                 android:textSize="@dimen/textSizeMedium"
                 tools:ignore="RtlHardcoded" />
 
