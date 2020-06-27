@@ -42,6 +42,7 @@ public class CardexCustomAdapter extends ArrayAdapter<Cardex> {
         this.context = context;
     }
 
+    @NonNull
     @SuppressLint({"InflateParams", "DefaultLocale"})
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
@@ -73,9 +74,12 @@ public class CardexCustomAdapter extends ArrayAdapter<Cardex> {
             textViewDate.setText(cardex.getOweDate());
 
             if (cardex.isBill()) {
-                textViewNote.setTextColor(context.getResources().getColor(R.color.colorAccentIndigo));
-                textViewCost.setTextColor(context.getResources().getColor(R.color.pink2));
-                imageViewInfo.setImageDrawable(context.getResources().getDrawable(R.drawable.img_last_bill1));
+                textViewNote.setTextColor(
+                        context.getResources().getColor(R.color.colorAccentIndigo));
+                textViewCost.setTextColor(
+                        context.getResources().getColor(R.color.pink2));
+                imageViewInfo.setImageDrawable(
+                        context.getResources().getDrawable(R.drawable.img_last_bill1));
 //                imageViewInfo.setImageDrawable(context.getResources().getDrawable(R.drawable.cash_payment));
 //                src = "@drawable/cash_payment"
 

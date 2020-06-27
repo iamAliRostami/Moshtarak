@@ -11,8 +11,6 @@ import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.databinding.HomeContentBinding;
 
 public class HomeActivity extends BaseActivity {
-
-    public static final int requestCodePaymentBill = 199;
     HomeContentBinding binding;
     View.OnClickListener onClickListener = view -> {
         Intent intent;

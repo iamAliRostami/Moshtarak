@@ -45,8 +45,10 @@ public class SaleActivity extends BaseActivity
         sharedPreference = new SharedPreference(context);
 
         if (sharedPreference.checkIsNotEmpty()) {
-            binding.editTextMobile.setText(sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
-                    get(sharedPreference.getIndex()).replaceFirst("09", ""));
+            binding.editTextMobile.setText(sharedPreference.getArrayList(
+                    SharedReferenceKeys.MOBILE_NUMBER.getValue()).
+                    get(sharedPreference.getIndex()).replaceFirst(
+                    getString(R.string._09), ""));
         }
         View view = binding.radioGroupService;
         view.requestFocus();
@@ -65,17 +67,22 @@ public class SaleActivity extends BaseActivity
     private void sendRequest() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService SendRegisterRequest = retrofit.create(IAbfaService.class);
-        registerNewDto = new RegisterNewDto(binding.editTextBillId.getText().toString(), binding.editTextName.getText().toString()
-                , binding.editTextFamily.getText().toString(), binding.editTextFatherName.getText().toString(),
-                binding.editTextNationNumber.getText().toString(), "09".concat(binding.editTextMobile.getText().toString()),
-                binding.editTextPhoneNumber.getText().toString(), binding.editTextAddress.getText().toString(),
+        registerNewDto = new RegisterNewDto(binding.editTextBillId.getText().toString(),
+                binding.editTextName.getText().toString(),
+                binding.editTextFamily.getText().toString(),
+                binding.editTextFatherName.getText().toString(),
+                binding.editTextNationNumber.getText().toString(),
+                getString(R.string._09).concat(binding.editTextMobile.getText().toString()),
+                binding.editTextPhoneNumber.getText().toString(),
+                binding.editTextAddress.getText().toString(),
                 binding.editTextPostalCode.getText().toString(), "4");
         if (binding.radioButtonService1.isChecked())
             registerNewDto.setSelectedServices(new String[]{"1"});
         else if (binding.radioButtonService2.isChecked())
             registerNewDto.setSelectedServices(new String[]{"1", "2"});
         Call<SimpleMessage> call = SendRegisterRequest.registerNew(registerNewDto);
-        HttpClientWrapperNew.callHttpAsync(call, SaleActivity.this, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, SaleActivity.this, context,
+                ProgressType.SHOW.getValue());
     }
 
     private void setButtonNavigationOnClickListener() {

@@ -13,13 +13,14 @@ import com.app.leon.moshtarak.databinding.HelpContentBinding;
 
 public class HelpActivity extends BaseActivity //implements OnPageChangeListener, OnLoadCompleteListener {
 {
-    public static final String SAMPLE_FILE = "1.pdf";
-    public static final String URL = "file:///android_asset/help2.htm";
-    private static final String TAG = HelpActivity.class.getSimpleName();
-    //    @BindView(R.id.pdfView)
+//    public static final String SAMPLE_FILE = "1.pdf";
+//    private static final String TAG = HelpActivity.class.getSimpleName();
+//    @BindView(R.id.pdfView)
 //    PDFView pdfView;
-    Integer pageNumber = 0;
-    String pdfFileName;
+//    Integer pageNumber = 0;
+//    String pdfFileName;
+
+    public static final String URL = "file:///android_asset/help2.htm";
     HelpContentBinding binding;
 
     @SuppressLint("SetJavaScriptEnabled")

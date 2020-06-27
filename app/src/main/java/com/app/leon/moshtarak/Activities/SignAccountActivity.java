@@ -48,11 +48,12 @@ public class SignAccountActivity extends BaseActivity
     SharedPreference sharedPreference;
     ArrayList<String> items = new ArrayList<>();
 
+    @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
         binding = SignAccountContent1Binding.inflate(getLayoutInflater());
         View childLayout = binding.getRoot();
-        @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         context = this;
         sharedPreference = new SharedPreference(context);
@@ -79,8 +80,8 @@ public class SignAccountActivity extends BaseActivity
             items = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue());
         }
         if (items.size() > 0) {
-            binding.spinnerAccounts.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,
-                    items) {
+            binding.spinnerAccounts.setAdapter(new ArrayAdapter<String>(context,
+                    android.R.layout.simple_spinner_dropdown_item, items) {
                 @NonNull
                 @Override
                 public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -181,7 +182,8 @@ public class SignAccountActivity extends BaseActivity
 
         Call<Login> call = canMatch.register(new Login(billId, base64, serial, getVersionInfo(),
                 String.valueOf(Build.VERSION.RELEASE), mobile, getDeviceName()));
-        HttpClientWrapperNew.callHttpAsync(call, SignAccountActivity.this, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, SignAccountActivity.this, context,
+                ProgressType.SHOW.getValue());
     }
 
     @Override
@@ -193,9 +195,8 @@ public class SignAccountActivity extends BaseActivity
 
         } else {
             sharedPreference.putDataArray(mobile, billId, login.getApiKey());
-            new CustomDialog(DialogType.GreenRedirect, SignAccountActivity.this, getString(R.string.you_are_signed),
-                    getString(R.string.dear_user), getString(R.string.login),
-                    getString(R.string.accepted));
+            new CustomDialog(DialogType.GreenRedirect, SignAccountActivity.this,
+                    getString(R.string.you_are_signed), getString(R.string.dear_user), getString(R.string.login), getString(R.string.accepted));
         }
     }
 

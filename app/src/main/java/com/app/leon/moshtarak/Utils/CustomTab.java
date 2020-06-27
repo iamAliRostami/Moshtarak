@@ -27,17 +27,18 @@ public class CustomTab {
 
     private void ShowCustomTab() {
         try {
-            CustomTabsClient.bindCustomTabsService(context, "com.android.chrome", new CustomTabsServiceConnection() {
-                @Override
-                public void onCustomTabsServiceConnected(ComponentName name, CustomTabsClient client) {
-                    mClient = client;
-                    mClient.warmup(0);
-                    CustomTabsSession session = mClient.newSession(new CustomTabsCallback());
-                    session.mayLaunchUrl(Uri.parse(url), null, null);
-                }
+            CustomTabsClient.bindCustomTabsService(context, "com.android.chrome",
+                    new CustomTabsServiceConnection() {
+                        @Override
+                        public void onCustomTabsServiceConnected(ComponentName name, CustomTabsClient client) {
+                            mClient = client;
+                            mClient.warmup(0);
+                            CustomTabsSession session = mClient.newSession(new CustomTabsCallback());
+                            session.mayLaunchUrl(Uri.parse(url), null, null);
+                        }
 
-                @Override
-                public void onServiceDisconnected(ComponentName name) {
+                        @Override
+                        public void onServiceDisconnected(ComponentName name) {
                     mClient = null;
                 }
             });

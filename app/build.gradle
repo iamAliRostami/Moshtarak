@@ -107,7 +107,6 @@ dependencies {
     implementation project(path: ':pecpayment-release')
     implementation 'com.mcxiaoke.volley:library:1.0.19'
 
-//    implementation 'gun0912.ted:tedpermission:1.0.3'
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 //    releaseImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 }

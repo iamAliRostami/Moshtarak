@@ -111,7 +111,8 @@ public class NavigationCustomAdapter extends ArrayAdapter<NavigationCustomAdapte
             this.drawable = drawable;
         }
 
-        public List<NavigationCustomAdapter.DrawerItem> convertStringToList(String[] items, TypedArray imgs) {
+        public List<NavigationCustomAdapter.DrawerItem> convertStringToList(String[] items,
+                                                                            TypedArray imgs) {
             List<NavigationCustomAdapter.DrawerItem> drawerItems = new ArrayList<>();
             for (int i = 0; i < items.length; i++) {
                 drawerItems.add(new DrawerItem(items[i], imgs.getDrawable(i)));

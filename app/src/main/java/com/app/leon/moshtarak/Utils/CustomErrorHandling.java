@@ -8,9 +8,8 @@ import com.app.leon.moshtarak.R;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.IOException;
-import java.io.InterruptedIOException;
 import java.lang.annotation.Annotation;
-import java.net.SocketTimeoutException;
+import java.util.Objects;
 
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
@@ -30,7 +29,7 @@ public class CustomErrorHandling extends Exception {
             Converter<ResponseBody, APIError> converter =
                     NetworkHelper.getInstance().responseBodyConverter(APIError.class, new Annotation[0]);
             APIError error;
-            error = converter.convert(response.errorBody());
+            error = converter.convert(Objects.requireNonNull(response.errorBody()));
             return error;
         } catch (IOException e) {
             return new APIError();
@@ -55,10 +54,6 @@ public class CustomErrorHandling extends Exception {
         if (throwable instanceof IOException) {
             errorMessage = context.getString(R.string.error_IO);
             return errorMessage;
-        } else if (throwable instanceof SocketTimeoutException) {
-            errorMessage = context.getString(R.string.error_Socket);
-        } else if (throwable instanceof InterruptedIOException) {
-            errorMessage = context.getString(R.string.error_disconnected);
         } else {
             errorMessage = context.getString(R.string.error_other);
         }

@@ -51,6 +51,7 @@ public class LearningCustomAdapter extends ArrayAdapter<LearningCustomAdapter.Dr
         return super.getPosition(item);
     }
 
+    @NonNull
     @SuppressLint("ViewHolder")
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {

@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.app.leon.moshtarak.MyApplication;
+
 import java.util.Stack;
 
 public class FontManager {
@@ -21,7 +23,7 @@ public class FontManager {
     }
 
     private void initializeTypeface() {
-        String fontName = "font/my_font.ttf";
+        String fontName = MyApplication.getFontName();
         typeface = Typeface.createFromAsset(context.getAssets(), fontName);
     }
 
