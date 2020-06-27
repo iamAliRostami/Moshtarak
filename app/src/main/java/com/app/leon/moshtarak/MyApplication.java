@@ -13,6 +13,7 @@ public class MyApplication extends MultiDexApplication {
     @SuppressLint("StaticFieldLeak")
     private static Context sContext;
     public static final String fontName = "font/my_font.ttf";
+//    private RefWatcher refWatcher;
 
     public static String getFontName() {
         return fontName;
@@ -22,10 +23,22 @@ public class MyApplication extends MultiDexApplication {
         return sContext;
     }
 
+//    public static RefWatcher getRefWatcher(Context context) {
+//        MyApplication application = (MyApplication) context.getApplicationContext();
+//        return application.refWatcher;
+//    }
+
     @Override
     public void onCreate() {
-        sContext = getApplicationContext();
         super.onCreate();
+        sContext = getApplicationContext();
+
+//        if (BuildConfig.DEBUG) {
+//            if (LeakCanary.isInAnalyzerProcess(this)) {
+//                return;
+//            }
+//            refWatcher = LeakCanary.install(this);
+//        }
     }
 
     @Override
