@@ -64,6 +64,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
     Bitmap bitmapBill;
     Code128 code128;
     Paint tPaint;
+    int small = 24, medium = 33, large = 70, huge = 100;
     static LastBillInfoV2 lastBillInfo;
 
     @SuppressLint("SimpleDateFormat")
@@ -84,7 +85,6 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         imageName = "bill_".concat((new SimpleDateFormat("yyyyMMdd_HHmmss")).
                 format(new Date())).concat(".jpg");
         tPaint = new Paint();
-        tPaint.setTextSize(33);
 
         tPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), MyApplication.getFontName()));
         tPaint.setStyle(Paint.Style.FILL);
@@ -143,11 +143,13 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         Canvas cs = new Canvas(dest);
         cs.drawBitmap(src, 0f, 0f, null);
 
-        tPaint.setTextSize(100);
+        tPaint.setTextSize(large);
         tPaint.setColor(Color.BLUE);
         float xCoordinate = (float) src.getWidth() * 55 / 100;
         float yCoordinate = (float) src.getHeight() * 20 / 100;
         cs.drawText(lastBillInfo.getFullName(), xCoordinate, yCoordinate, tPaint);
+
+        tPaint.setTextSize(huge);
         yCoordinate = (float) src.getHeight() * 24 / 100;
         cs.drawText(lastBillInfo.getBillId(), xCoordinate, yCoordinate, tPaint);
         yCoordinate = (float) src.getHeight() * 55 / 200;
@@ -235,6 +237,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         intNumber = (int) floatNumber;
         cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
 
+        tPaint.setTextSize(large);
         tPaint.setColor(getResources().getColor(R.color.pink3));
         xCoordinate = (float) src.getWidth() * 3 / 80;
         yCoordinate = (float) src.getHeight() * 53 / 100;
@@ -242,6 +245,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         yCoordinate = (float) src.getHeight() * 113 / 200;
         floatNumber = Float.parseFloat(lastBillInfo.getAhadMaskooni());
         intNumber = (int) floatNumber;
+        tPaint.setTextSize(huge);
         cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
         yCoordinate = (float) src.getHeight() * 121 / 200;
         floatNumber = Float.parseFloat(lastBillInfo.getAhadNonMaskooni());
@@ -278,9 +282,11 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         cs.drawBitmap(src, 0f, 0f, null);
 
         tPaint.setColor(Color.BLUE);
+        tPaint.setTextSize(small);
         float xCoordinate = (float) src.getWidth() / 10;
         float yCoordinate = (float) src.getHeight() * 18 / 400;
         cs.drawText(lastBillInfo.getFullName(), xCoordinate, yCoordinate, tPaint);
+        tPaint.setTextSize(medium);
         yCoordinate = (float) src.getHeight() * 26 / 400;
         cs.drawText(lastBillInfo.getBillId(), xCoordinate, yCoordinate, tPaint);
         yCoordinate = (float) src.getHeight() * 33 / 400;
@@ -366,10 +372,13 @@ public class GetLastBillFileActivity extends AppCompatActivity {
 
         tPaint.setColor(getResources().getColor(R.color.pink3));
         yCoordinate = (float) src.getHeight() * 318 / 400;
+
+        tPaint.setTextSize(small);
         cs.drawText(lastBillInfo.getKarbariTitle(), xCoordinate, yCoordinate, tPaint);
         yCoordinate = (float) src.getHeight() * 327 / 400;
         floatNumber = Float.parseFloat(lastBillInfo.getAhadMaskooni());
         intNumber = (int) floatNumber;
+        tPaint.setTextSize(medium);
         cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
         yCoordinate = (float) src.getHeight() * 335 / 400;
         floatNumber = Float.parseFloat(lastBillInfo.getAhadNonMaskooni());
