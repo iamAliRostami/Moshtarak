@@ -24,7 +24,8 @@ public class HomeActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.imageButtonLastBill:
-                intent = new Intent(getApplicationContext(), LastBillActivity.class);
+//                intent = new Intent(getApplicationContext(), LastBillActivity.class);
+                intent = new Intent(getApplicationContext(), GetLastBillFileActivity.class);
                 startActivity(intent);
                 break;
             case R.id.imageButtonKardex:
