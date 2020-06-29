@@ -20,15 +20,15 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
 //    Integer pageNumber = 0;
 //    String pdfFileName;
 
-    public static final String URL = "file:///android_asset/help2.htm";
+    public static final String URL = "file:///android_asset/help1.htm";
     HelpContentBinding binding;
 
-    @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint({"SetJavaScriptEnabled", "CutPasteId"})
     @Override
     protected void initialize() {
         binding = HelpContentBinding.inflate(getLayoutInflater());
         View childLayout = binding.getRoot();
-        @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         WebSettings webSetting = binding.webViewHelp.getSettings();
         webSetting.setBuiltInZoomControls(true);
