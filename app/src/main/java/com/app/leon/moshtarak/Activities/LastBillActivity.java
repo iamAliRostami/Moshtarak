@@ -43,12 +43,12 @@ import com.google.gson.GsonBuilder;
 
 import java.util.Objects;
 
-import ir.pec.mpl.pecpayment.view.PaymentInitiator;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class LastBillActivity extends BaseActivity {
     public static final int requestCodePaymentBill = 199;
+    static LastBillInfoV2 lastBillInfo;
     LastBillContentBinding binding;
     Context context;
     String billId, payId, apiKey;
@@ -56,7 +56,6 @@ public class LastBillActivity extends BaseActivity {
     boolean isPayed = false;
     boolean isFromCardex = false;
     boolean isLastBill = false;
-    static LastBillInfoV2 lastBillInfo;
 
     @SuppressLint("CutPasteId")
     @Override
@@ -68,7 +67,6 @@ public class LastBillActivity extends BaseActivity {
         context = this;
         accessData();
         binding.textViewCost.setOnClickListener(view -> {
-//            getToken();
             if (!isPayed) {
                 new CustomTab(address, LastBillActivity.this);
             } else
@@ -275,14 +273,6 @@ public class LastBillActivity extends BaseActivity {
         Debug.getNativeHeapAllocatedSize();
     }
 
-    static class GetToken implements ICallback<SimpleMessage> {
-        @Override
-        public void execute(SimpleMessage simpleMessage) {
-            Log.e("token", simpleMessage.getMessage());
-//            pay(simpleMessage.getMessage());
-        }
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -298,12 +288,19 @@ public class LastBillActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (isLastBill)
             getMenuInflater().inflate(R.menu.bill, menu);
         return true;
+    }
+
+    static class GetToken implements ICallback<SimpleMessage> {
+        @Override
+        public void execute(SimpleMessage simpleMessage) {
+            Log.e("token", simpleMessage.getMessage());
+//            pay(simpleMessage.getMessage());
+        }
     }
 
     class ThisBill implements ICallback<LastBillInfoV2> {
@@ -553,97 +550,97 @@ public class LastBillActivity extends BaseActivity {
         }
     }
 
-    void getToken() {
-        Retrofit retrofit = NetworkHelper.getInstance();
-        final IAbfaService getToken = retrofit.create(IAbfaService.class);
-        Call<SimpleMessage> call = getToken.getToken(apiKey);
-        GetToken getToken1 = new GetToken();
-        HttpClientWrapperNew.callHttpAsync(call, getToken1, context, ProgressType.SHOW.getValue());
-    }
-
-    void pay(String simpleMessage) {
-        Intent intent = new Intent(LastBillActivity.this, PaymentInitiator.class);
-        intent.putExtra("Type", "2");
-        intent.putExtra("Token", simpleMessage);
-        startActivityForResult(intent, requestCodePaymentBill);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == requestCodePaymentBill) {
-            getPaymentResultCode(resultCode, data);
-        }
-    }
-
-    private void getPaymentResultCode(int resultCode, Intent data) {
+//    void getToken() {
+//        Retrofit retrofit = NetworkHelper.getInstance();
+//        final IAbfaService getToken = retrofit.create(IAbfaService.class);
+//        Call<SimpleMessage> call = getToken.getToken(apiKey);
+//        GetToken getToken1 = new GetToken();
+//        HttpClientWrapperNew.callHttpAsync(call, getToken1, context, ProgressType.SHOW.getValue());
+//    }
 //
-//        if (G.onMplResult != null) {
-//            G.onMplResult.onResult(false);
+//    void pay(String simpleMessage) {
+//        Intent intent = new Intent(LastBillActivity.this, PaymentInitiator.class);
+//        intent.putExtra("Type", "2");
+//        intent.putExtra("Token", simpleMessage);
+//        startActivityForResult(intent, requestCodePaymentBill);
+//    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == requestCodePaymentBill) {
+//            getPaymentResultCode(resultCode, data);
 //        }
-
-        String enData = "", message = "", status = "0";
-        int errorType = 0, orderId = 0;
-
-        switch (resultCode) {
-            case 1:// payment ok
-                enData = data.getStringExtra("enData");
-                message = data.getStringExtra("message");
-                status = String.valueOf(data.getIntExtra("status", 0));
-                break;
-            case 2://payment error
-                errorType = data.getIntExtra("errorType", 0);
-                orderId = data.getIntExtra("OrderID", 0);
-                break;
-            case 3://bill payment ok
-                enData = data.getStringExtra("enData");
-                message = data.getStringExtra("message");
-                status = String.valueOf(data.getIntExtra("status", 0));
-                break;
-            case 4://bill payment error
-                errorType = data.getIntExtra("errorType", 0);
-                break;
-            case 5://internal error payment
-                errorType = data.getIntExtra("errorType", 0);
-                orderId = data.getIntExtra("OrderID", 0);
-                break;
-            case 6://internal error bill
-                errorType = data.getIntExtra("errorType", 0);
-                break;
-            case 9:// internal error charge
-                errorType = data.getIntExtra("errorType", 0);
-                break;
-        }
-        if (errorType != 0) {
-            showErrorTypeMpl(errorType);
-        }
-    }
-
-    private void showErrorTypeMpl(int errorType) {
-        String message = "";
-        switch (errorType) {
-            case 2:
-                message = getString(R.string.time_out_error);
-                break;
-            case 1000:
-                message = getString(R.string.connection_error);
-                break;
-            case 1001:
-                message = getString(R.string.server_error);
-                break;
-            case 1002:
-                message = getString(R.string.network_error);
-                break;
-            case 201:
-                message = getString(R.string.dialog_canceled);
-                break;
-            case 2334:
-                message = getString(R.string.device_root);
-                break;
-        }
-
-        if (message.length() > 0) {
-//            HelperError.showSnackMessage(message, false);
-        }
-    }
+//    }
+//
+//    private void getPaymentResultCode(int resultCode, Intent data) {
+////
+////        if (G.onMplResult != null) {
+////            G.onMplResult.onResult(false);
+////        }
+//
+//        String enData = "", message = "", status = "0";
+//        int errorType = 0, orderId = 0;
+//
+//        switch (resultCode) {
+//            case 1:// payment ok
+//                enData = data.getStringExtra("enData");
+//                message = data.getStringExtra("message");
+//                status = String.valueOf(data.getIntExtra("status", 0));
+//                break;
+//            case 2://payment error
+//                errorType = data.getIntExtra("errorType", 0);
+//                orderId = data.getIntExtra("OrderID", 0);
+//                break;
+//            case 3://bill payment ok
+//                enData = data.getStringExtra("enData");
+//                message = data.getStringExtra("message");
+//                status = String.valueOf(data.getIntExtra("status", 0));
+//                break;
+//            case 4://bill payment error
+//                errorType = data.getIntExtra("errorType", 0);
+//                break;
+//            case 5://internal error payment
+//                errorType = data.getIntExtra("errorType", 0);
+//                orderId = data.getIntExtra("OrderID", 0);
+//                break;
+//            case 6://internal error bill
+//                errorType = data.getIntExtra("errorType", 0);
+//                break;
+//            case 9:// internal error charge
+//                errorType = data.getIntExtra("errorType", 0);
+//                break;
+//        }
+//        if (errorType != 0) {
+//            showErrorTypeMpl(errorType);
+//        }
+//    }
+//
+//    private void showErrorTypeMpl(int errorType) {
+//        String message = "";
+//        switch (errorType) {
+//            case 2:
+//                message = getString(R.string.time_out_error);
+//                break;
+//            case 1000:
+//                message = getString(R.string.connection_error);
+//                break;
+//            case 1001:
+//                message = getString(R.string.server_error);
+//                break;
+//            case 1002:
+//                message = getString(R.string.network_error);
+//                break;
+//            case 201:
+//                message = getString(R.string.dialog_canceled);
+//                break;
+//            case 2334:
+//                message = getString(R.string.device_root);
+//                break;
+//        }
+//
+//        if (message.length() > 0) {
+////            HelperError.showSnackMessage(message, false);
+//        }
+//    }
 }

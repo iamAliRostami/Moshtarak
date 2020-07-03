@@ -33,6 +33,8 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
         WebSettings webSetting = binding.webViewHelp.getSettings();
         webSetting.setBuiltInZoomControls(true);
         webSetting.setJavaScriptEnabled(true);
+
+        binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         binding.webViewHelp.setWebViewClient(new WebViewClient());
         binding.webViewHelp.loadUrl(URL);
     }

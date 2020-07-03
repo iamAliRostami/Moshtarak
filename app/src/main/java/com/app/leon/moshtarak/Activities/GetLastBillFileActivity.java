@@ -58,6 +58,7 @@ import retrofit2.Retrofit;
 public class GetLastBillFileActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 626;
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND = 621;
+    static LastBillInfoV2 lastBillInfo;
     GetLastBillFileActivityBinding binding;
     String imageName, billId, payId;
     Context context;
@@ -65,7 +66,6 @@ public class GetLastBillFileActivity extends AppCompatActivity {
     Code128 code128;
     Paint tPaint;
     int small = 24, medium = 33, large = 70, huge = 100;
-    static LastBillInfoV2 lastBillInfo;
 
     @SuppressLint("SimpleDateFormat")
     @Override
@@ -439,50 +439,6 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("StaticFieldLeak")
-    class SendImages extends AsyncTask<Object, Object, Object> {
-        CustomProgressBar customProgressBar;
-        Bitmap bitmap;
-        Context context;
-
-        public SendImages(Context context, Bitmap bitmap) {
-            this.bitmap = bitmap;
-            this.context = context;
-            this.customProgressBar = new CustomProgressBar();
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            customProgressBar.show(context, getString(R.string.waiting), false, dialog -> {
-                Toast.makeText(MyApplication.getContext(),
-                        MyApplication.getContext().getString(R.string.canceled),
-                        Toast.LENGTH_LONG).show();
-                customProgressBar.getDialog().dismiss();
-            });
-        }
-
-        @Override
-        protected Object doInBackground(Object... objects) {
-            sendImage();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Object o) {
-            super.onPostExecute(o);
-            customProgressBar.getDialog().dismiss();
-        }
-
-        void sendImage() {
-            Intent share = new Intent(Intent.ACTION_SEND);
-            share.setType("image/jpeg");
-//        share.setType("application/pdf");
-            share.putExtra(Intent.EXTRA_STREAM, getImageUri(bitmap, Bitmap.CompressFormat.JPEG, 100));
-            startActivity(Intent.createChooser(share, getString(R.string.send_to)));
-        }
-    }
-
     void fillLastBillInfo() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getThisBillInfo = retrofit.create(IAbfaService.class);
@@ -527,6 +483,50 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
         Debug.getNativeHeapAllocatedSize();
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    class SendImages extends AsyncTask<Object, Object, Object> {
+        CustomProgressBar customProgressBar;
+        Bitmap bitmap;
+        Context context;
+
+        public SendImages(Context context, Bitmap bitmap) {
+            this.bitmap = bitmap;
+            this.context = context;
+            this.customProgressBar = new CustomProgressBar();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            customProgressBar.show(context, getString(R.string.waiting), false, dialog -> {
+                Toast.makeText(MyApplication.getContext(),
+                        MyApplication.getContext().getString(R.string.canceled),
+                        Toast.LENGTH_LONG).show();
+                customProgressBar.getDialog().dismiss();
+            });
+        }
+
+        @Override
+        protected Object doInBackground(Object... objects) {
+            sendImage();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            customProgressBar.getDialog().dismiss();
+        }
+
+        void sendImage() {
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.setType("image/jpeg");
+//        share.setType("application/pdf");
+            share.putExtra(Intent.EXTRA_STREAM, getImageUri(bitmap, Bitmap.CompressFormat.JPEG, 100));
+            startActivity(Intent.createChooser(share, getString(R.string.send_to)));
+        }
     }
 
     @SuppressLint("StaticFieldLeak")

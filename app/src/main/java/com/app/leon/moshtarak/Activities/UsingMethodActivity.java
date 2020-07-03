@@ -31,6 +31,9 @@ public class UsingMethodActivity extends BaseActivity {
         WebSettings webSetting = binding.webViewLearningUsing.getSettings();
         webSetting.setBuiltInZoomControls(true);
         webSetting.setJavaScriptEnabled(true);
+
+
+        binding.webViewLearningUsing.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         binding.webViewLearningUsing.setWebViewClient(new WebViewClient());
         binding.webViewLearningUsing.loadUrl("file:///android_asset/learning.html");
     }

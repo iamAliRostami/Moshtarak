@@ -4,7 +4,6 @@
     <string name="navigation_drawer_close">بستن منو</string>
 
     <string name="sale">فروش انشعاب</string>
-    <string name="sale_1">ورود اطلاعات</string>
     <string name="last_bill_1">مشاهده قبض و پرداخت</string>
     <string name="last_bill_2">آخرین قبض</string>
     <string name="cardex">صورتحساب</string>
@@ -17,9 +16,7 @@
     <string name="train">آموزش</string>
     <string name="help">راهنما</string>
     <string name="support">خدمات پس ازفروش</string>
-    <string name="support_1">خدمات مورد نیاز</string>
     <string name="suggest">انتقادات پیشنهادات</string>
-    <string name="suggest_1">گزارش خطای برنامه</string>
 
     <string name="login">ثبت</string>
 
@@ -43,15 +40,10 @@
     <string name="use_date">مدت مصرف</string>
     <string name="cost">مبلغ</string>
     <string name="note">شرح</string>
-    <string name="get_cardex">قبض</string>
     <string name="pay_Date">مهلت پرداخت</string>
-    <string name="pay_cardex">پرداخت</string>
     <string name="base_info">اطلاعات انشعاب</string>
-    <string name="edit">اصلاحات</string>
     <string name="file_number">ردیف</string>
-    <string name="account_number">شماره اشتراک</string>
     <string name="dear_user">مشترک گرامی!</string>
-    <string name="input_message">به منظور سهولت در استفاده ازخدمات نرم افزار و جلوگیری از تکرار و ورود، شماره پرونده و اشتراک خود را وارد نموده و برای بار اول اطلاعات مروبط به پرونده را تکمیل و تایید نمایید.</string>
     <string name="account_">اشتراک</string>
     <string name="id_bill">شناسه قبض</string>
     <string name="id_bill_neighbour">شناسه همسایه</string>
@@ -67,18 +59,9 @@
     <string name="total">جمع کل</string>
     <string name="debt">بدهی آب بها</string>
     <string name="logout">خروج از حساب کاربری</string>
-    <string name="title_activity_home">خانه</string>
-    <string name="title_activity_base_info">اطلاعات پایه</string>
-    <string name="title_activity_last_bill">آخرین قبض</string>
-    <string name="title_activity_sign_account">ثبت اشتراک</string>
-    <string name="title_activity_kardex">صورت حساب</string>
     <string name="title_activity_learning">آموزش</string>
-    <string name="title_activity_learning_method">روش های صحیح مصرف</string>
-    <string name="title_activity_counter">اعلام کارکرد کنتور</string>
 
-    <string name="copy_right_1">copyright 2017 by H.G.K co</string>
     <string name="copy_right_2">شبکه تارنما سپاهان</string>
-    <string name="webserviceAddress">http://81.90.148.25/ApiSimafa</string>
     <string name="you_are_signed"> شماره اشتراک شما در سامانه ثبت گردید</string>
     <string name="accepted">ادامه</string>
     <string name="logout_successful">با موفقیت از حساب کاربری خود خارج شدید.</string>
@@ -87,18 +70,8 @@
 
     <string name="all_field_should_filled">همه فیلدها باید پر شود.</string>
     <string name="error_empty">این فیلد باید پر شود.</string>
-    <string name="error_empty_all">همه فیلد ها خالی است.</string>
-    <string name="error_short_length">.این فیلد کوتاه است</string>
-    <string name="error_similar">شماره پرونده و شماره اشتراک مطابق نیستند.</string>
     <string name="error_IO">خطا در جابجای اطلاعات، لطفا مجدد تلاش کنید</string>
-    <string name="error_Socket">خطادر ارتباط با سرور، لطفا تنظیمات شبکه خود را بررسی و مجدد تلاش کنید</string>
     <string name="error_other">جهت ارتباط با پشتیبانی; علت خطا:</string>
-    <string name="error_disconnected">برقراری ارتباط حین جابجایی اطلاعات با خطا مواجه شد</string>
-    <string name="error_is_not_match">نام کاربری و گذرواژه با یکدیگر مطابقت ندارند</string>
-    <string name="error_passwords_is_not_match">گذرواژه و تکرار آن با یکدیکر مطابق نیستند</string>
-    <string name="error_in_record_voice">در ضبظ صدا مشکلی به وجود آمد</string>
-    <string name="error_in_play_voice">در پخش صدا مشکلی به وجود آمد</string>
-    <string name="error_in_format">فرمت وارد نشده نادرست است</string>
     <string name="error_internal">خطای داخلی سرور، با پشتیبان تماس حاصل فرمایید</string>
     <string name="error_input">ورودی های خود را چک کنید</string>
     <string name="error_change_server">سرور در حال تغییرات است، لطفا منتظر بمانید و در صورت برطرف نشدن مشکل با پشتیبان تماس حاصل فرماید</string>
@@ -107,31 +80,11 @@
     <string name="error_not_update2">همکار گرامی لطفا چهت دریافت آخرین نسخه اپلیکیشن با راهبر تماس حاصل فرمایید</string>
     <string name="error_not_auth">مجوز های شما باطل شده است، از برنامه خارج و مجددا وارد شوید</string>
 
-    <string name="time_out_error">time out error</string>
-    <string name="connection_error">no connection error</string>
-    <string name="server_error">server error</string>
-    <string name="network_error">network error</string>
-    <string name="dialog_canceled">Request canceled</string>
-    <string name="device_root">device root</string>
-    <string name="phone_number_is_not_valid">phone number is not valid</string>
-
-    <string name="permission_not_completed">بستن برنامه</string>
-    <string name="force_close">مجوز ها کامل نیست</string>
-    <string name="call_operator">"لطفا با پشتیبانی سیستم تماس حاصل فرمایید"</string>
-    <string name="loading_getting_info">در حال ارتباط بارگذاری اطلاعات</string>
-    <string name="loading_connecting">ارتباط با سرور</string>
     <string name="water_resource">منابع آب منطقه</string>
     <string name="using_method">روش های صحیح مصرف</string>
     <string name="method_control">روش های کنترل نشتی</string>
     <string name="reduce_component">تجهیزات کاهنده</string>
-    <string name="method_bath">روش صحیح مصرف اب حمام</string>
-    <string name="method_washing">روش صرفه جویی در مصرف شستشو</string>
-    <string name="method_wc">روش صحیح مصرف آب سرویس بهداشتی</string>
-    <string name="method_watering">روش صحیح مصرف آب برای آبیاری</string>
-    <string name="method_pool">روش صحیح استفاده از استخر</string>
-    <string name="method_planet">گیاهان مقاوم با نیاز کم آبی</string>
     <string name="sign">ثبت</string>
-    <string name="webServiceAddress">http://37.191.92.130/</string>
     <string name="message">message</string>
     <string name="dash">-</string>
     <string name="pay_id">شناسه پرداخت</string>
@@ -142,8 +95,6 @@
     <string name="takalife_boodje">تکالیف بودجه</string>
     <string name="lavazeme_kahande">لوازم کاهنده</string>
     <string name="maliat">مالیات و عوارض</string>
-    <string name="abonman">آبونمان</string>
-    <string name="other">سایر هزینه ها</string>
     <string name="other_">سایر</string>
     <string name="pay">مبلغ قابل پرداخت</string>
     <string name="phone_number">تلفن ثابت</string>
@@ -166,7 +117,6 @@
     <string name="status">وضعیت:</string>
     <string name="time">ساعت:</string>
     <string name="date_1">تاریخ:</string>
-    <string name="payed_1">لطفاً روی قبوض صادره تَپ کنید.</string>
     <string name="payed_2">قبض پرداخت شده</string>
     <string name="tabsare2">تبصره 2</string>
     <string name="tabsare3Ab">تبصره 3 آب</string>
@@ -175,13 +125,10 @@
     <string name="abonmanFazelab">آبونمان فاضلاب</string>
     <string name="fasleGarm">فصل گرم</string>
     <string name="mazadOlgoo">مازاد الگو</string>
-    <string name="karmozdFazelabDetails">جزئیات کارمزد فاضلاب</string>
-    <string name="abbaha_Details">جزئیات آب بها</string>
     <string name="send_feedback">ارسال بازخورد</string>
     <string name="enter">توضیحات را وارد کنید…</string>
     <string name="sms_level">فهرست پیامک های ارسالی در مرحله</string>
     <string name="programmer_team">تیم توسعه دهنده شبکه تارنما سپاهان</string>
-    <string name="access">لطفا دسترسی تماس را به برنامه اضافه نمایید</string>
     <string name="search">جستجو</string>
     <string name="title">عنوان:</string>
     <string name="request_date_ask">تاریخ درخواست:</string>
@@ -194,7 +141,6 @@
     <string name="pay_type_title">نحوه پرداخت</string>
     <string name="pay_date">تاریخ پرداخت</string>
     <string name="bank_title">نام بانک</string>
-    <string name="nation_number_error">شماره ملی باید 10 رقم باشد</string>
     <string name="confirm">تایید</string>
     <string name="cancel">ردکردن</string>
     <string name="canceled">عملیات متوقف شد.</string>
@@ -221,5 +167,6 @@
     <string name="saved">ذخیره سازی با موفقیت انجام شد</string>
     <string name="error_preparing">مشکلی در فرآیند آماده سازی روی داده است</string>
     <string name="error_android_version">نسخه اندروید شما این ویژگی را پشتیبانی نمی کند</string>
+    <string name="number_zero">0</string>
 
 </resources>

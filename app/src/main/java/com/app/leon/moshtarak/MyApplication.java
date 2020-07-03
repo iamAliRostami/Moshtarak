@@ -9,10 +9,10 @@ import androidx.multidex.MultiDexApplication;
 
 public class MyApplication extends MultiDexApplication {
 
+    public static final String fontName = "font/my_font.ttf";
     public static int position = 0;
     @SuppressLint("StaticFieldLeak")
     private static Context sContext;
-    public static final String fontName = "font/my_font.ttf";
 //    private RefWatcher refWatcher;
 
     public static String getFontName() {

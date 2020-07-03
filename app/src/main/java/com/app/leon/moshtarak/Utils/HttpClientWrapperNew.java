@@ -90,7 +90,6 @@ public class HttpClientWrapperNew {
         }
     }
 
-
     public static <T> void callHttpAsync(Call<T> call, final ICallback<T> callback, final Context context) {
         CustomProgressBar progressBar = new CustomProgressBar();
         progressBar.show(context, context.getString(R.string.waiting), true);

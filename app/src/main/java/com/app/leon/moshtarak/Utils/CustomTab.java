@@ -39,9 +39,9 @@ public class CustomTab {
 
                         @Override
                         public void onServiceDisconnected(ComponentName name) {
-                    mClient = null;
-                }
-            });
+                            mClient = null;
+                        }
+                    });
             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
             builder.setToolbarColor(context.getResources().getColor(R.color.colorPrimaryDark));
             builder.setStartAnimations(context, R.anim.slide_up_info, R.anim.no_change);
