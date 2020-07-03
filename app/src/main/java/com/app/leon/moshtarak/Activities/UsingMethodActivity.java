@@ -28,9 +28,8 @@ public class UsingMethodActivity extends BaseActivity {
         ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
 //        fillListViewLearningUsing();
-        WebSettings webSetting = binding.webViewLearningUsing.getSettings();
-        webSetting.setBuiltInZoomControls(true);
-        webSetting.setJavaScriptEnabled(true);
+        binding.webViewLearningUsing.getSettings().setBuiltInZoomControls(true);
+        binding.webViewLearningUsing.getSettings().setJavaScriptEnabled(true);
 
 
         binding.webViewLearningUsing.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
