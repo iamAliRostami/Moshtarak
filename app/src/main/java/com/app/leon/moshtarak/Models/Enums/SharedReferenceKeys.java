@@ -11,6 +11,7 @@ public enum SharedReferenceKeys {
     LENGTH("length"),
     INDEX("index"),
     API_KEY("api_key"),
+    CACHE("cache"),
     THEME("theme");
 
     private final String value;

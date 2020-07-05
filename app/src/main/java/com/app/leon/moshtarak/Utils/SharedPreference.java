@@ -57,6 +57,12 @@ public class SharedPreference {
         prefsEditor.apply();
     }
 
+    public void putCache(Boolean cache) {
+        SharedPreferences.Editor prefsEditor = appPrefs.edit();
+        prefsEditor.putBoolean(SharedReferenceKeys.CACHE.getValue(), cache);
+        prefsEditor.apply();
+    }
+
     public void putData(String bill_id, String mobile_number, String api_key) {
         putBillID(bill_id);
         putMobileNumber(mobile_number);
@@ -93,6 +99,10 @@ public class SharedPreference {
 
     public boolean getTheme() {
         return appPrefs.getBoolean(SharedReferenceKeys.THEME.getValue(), false);
+    }
+
+    public boolean getCache() {
+        return appPrefs.getBoolean(SharedReferenceKeys.CACHE.getValue(), false);
     }
 
     public void removeItem(int index) {

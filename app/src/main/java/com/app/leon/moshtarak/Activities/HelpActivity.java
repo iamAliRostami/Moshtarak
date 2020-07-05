@@ -1,14 +1,22 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.HelpContentBinding;
 
 public class HelpActivity extends BaseActivity //implements OnPageChangeListener, OnLoadCompleteListener {
@@ -20,8 +28,11 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
 //    Integer pageNumber = 0;
 //    String pdfFileName;
 
-    public static final String URL = "file:///android_asset/help1.htm";
+    public static final String URL = "file:///android_asset/n_help.html";
     HelpContentBinding binding;
+    ProgressDialog progressDialog;
+    SharedPreference sharedPreference;
+    Context context;
 
     @SuppressLint({"SetJavaScriptEnabled", "CutPasteId"})
     @Override
@@ -30,13 +41,84 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
         View childLayout = binding.getRoot();
         ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
-        binding.webViewHelp.getSettings().setBuiltInZoomControls(true);
+        context = this;
+        sharedPreference = new SharedPreference(context);
+
+        progressDialog = new ProgressDialog(HelpActivity.this);
+        progressDialog.setMessage(getString(R.string.waiting));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        binding.webViewHelp.setWebChromeClient(new HelpWebChromeClient());
+
         binding.webViewHelp.getSettings().setJavaScriptEnabled(true);
-        binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
-        binding.webViewHelp.setWebViewClient(new WebViewClient());
-        binding.webViewHelp.loadUrl(URL);
+        binding.webViewHelp.getSettings().setBuiltInZoomControls(true);
+
+        if (sharedPreference.getCache()) {
+            Log.e("cache", "exist!");
+            binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
+        } else {
+            Log.e("cache", "not exist!");
+            binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+        }
+        binding.webViewHelp.setWebViewClient(new HelpWebViewClient());
+        binding.webViewHelp.loadUrl(getString(R.string.abfa_site));
+//        binding.webViewHelp.loadUrl("www.google.com");
+//        binding.webViewHelp.loadUrl(URL);
+
     }
 
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Log.e("back", "here");
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {// && binding.webViewHelp.canGoBack()) {
+            finish();
+//            binding.webViewHelp.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.e("onBackPressed", "here");
+        super.onBackPressed();
+    }
+
+    private class HelpWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            sharedPreference.putCache(true);
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+        }
+
+        @Override
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            Toast.makeText(HelpActivity.this, getString(R.string.error).concat(" : ")
+                    .concat(getString(R.string.error_IO)), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private class HelpWebChromeClient extends WebChromeClient {
+        public void onProgressChanged(WebView view, int progress) {
+            setTitle(getString(R.string.waiting));
+            setProgress(progress * 100);
+            Log.e("progress ", String.valueOf(progress));
+            if (progress >= 70) {
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+            }
+            if (progress == 100)
+                setTitle(R.string.help);
+        }
+    }
 //    private void displayFromAsset() {
 //        pdfFileName = HelpActivity.SAMPLE_FILE;
 //        pdfView.fromAsset(SAMPLE_FILE)
