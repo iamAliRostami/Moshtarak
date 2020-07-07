@@ -37,7 +37,7 @@ android {
         }
         debug {
             debuggable true
-            minifyEnabled true
+            minifyEnabled false
 //            applicationIdSuffix '.debug'
         }
     }
@@ -72,6 +72,7 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.android.support:multidex:1.0.3'
     //noinspection GradleCompatible
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     //noinspection GradleCompatible
@@ -103,6 +104,5 @@ dependencies {
 
 //    implementation project(path: ':pecpayment-release')
 //    implementation 'com.mcxiaoke.volley:library:1.0.19'
-
 }
 apply plugin: 'com.google.gms.google-services'

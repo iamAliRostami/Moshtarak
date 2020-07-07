@@ -51,11 +51,11 @@ public abstract class BaseActivity extends AppCompatActivity
             sharedPreference.putTheme(!sharedPreference.getTheme());
             if (sharedPreference.getTheme()) {
                 binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(
-                        MyApplication.getContext(), R.drawable.night));
+                        MyApplication.getContext(), R.drawable.night_drawer));
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             } else {
                 binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(
-                        MyApplication.getContext(), R.drawable.day));
+                        MyApplication.getContext(), R.drawable.day_drawer));
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
         }
@@ -161,13 +161,13 @@ public abstract class BaseActivity extends AppCompatActivity
     private void initializeImageViewSwitch() {
         if (sharedPreference.getTheme()) {
             binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(MyApplication.getContext()
-                    , R.drawable.night)
+                    , R.drawable.night_drawer)
             );
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
-//            binding.imageViewSwitch.setImageDrawable(getDrawable(R.drawable.day));//TODO
+//            binding.imageViewSwitch.setImageDrawable(getDrawable(R.drawable.day_drawer));//TODO
             binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(MyApplication.getContext()
-                    , R.drawable.day)
+                    , R.drawable.day_drawer)
             );
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }

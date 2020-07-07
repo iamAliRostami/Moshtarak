@@ -610,7 +610,7 @@ public class GetLastBillFileActivity extends AppCompatActivity {
         @Override
         public void execute(LastBillInfoV2 lastBillInfo) {
             payId = lastBillInfo.getPayId();
-
+            Log.e("error", payId);
             code128 = setCode128();
 
             GetLastBillFileActivity.lastBillInfo = lastBillInfo;

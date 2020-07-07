@@ -16,14 +16,14 @@
 
     <array name="icons">
         <!--        <item>@drawable/img_menu_logo</item>-->
-        <item>@drawable/img_home</item>
-        <item>@drawable/img_connect_to_portal</item>
-        <item>@drawable/img_profile</item>
-        <item>@drawable/img_transactions</item>
-        <item>@drawable/img_update</item>
-        <item>@drawable/img_registration</item>
-        <item>@drawable/img_recovery_code</item>
-        <item>@drawable/img_contact_us</item>
-        <item>@drawable/img_exit</item>
+        <item>@drawable/img_home_drawer</item>
+        <item>@drawable/img_connect_to_portal_drawer</item>
+        <item>@drawable/img_profile_drawer</item>
+        <item>@drawable/img_transactions_drawer</item>
+        <item>@drawable/img_update_drawer</item>
+        <item>@drawable/img_registration_drawer</item>
+        <item>@drawable/img_recovery_code_drawer</item>
+        <item>@drawable/img_contact_us_drawer</item>
+        <item>@drawable/img_exit_drawer</item>
     </array>
 </resources>
