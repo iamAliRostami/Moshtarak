@@ -35,7 +35,7 @@
         </provider>
 
         <activity
-            android:name=".Activities.GetLastBillFileActivity"
+            android:name=".Activities.LastBillFileActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.ChartActivity"

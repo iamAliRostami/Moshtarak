@@ -281,7 +281,7 @@ public class LastBillActivity extends BaseActivity {
             String json = gson.toJson(lastBillInfo);
             Bundle bundle = new Bundle();
             bundle.putString(BundleEnum.LAST_BILL_TO_FILE.getValue(), json);
-            Intent intent = new Intent(getApplicationContext(), GetLastBillFileActivity.class);
+            Intent intent = new Intent(getApplicationContext(), LastBillFileActivity.class);
             intent.putExtra(BundleEnum.DATA.getValue(), bundle);
             startActivity(intent);
         }

@@ -110,7 +110,7 @@
     <string name="water_branch">انشعاب آب</string>
     <string name="water_and_fa_branch">انشعاب آب و فاضلاب</string>
     <string name="submit">ثبت</string>
-    <string name="select">لطفا یکی از خدمات را انتخاب کنید</string>
+    <string name="select">لطفا حداقل یکی از خدمات را انتخاب فرمایید</string>
     <string name="error_report">گزارش خطا</string>
     <string name="request">پیگیری درخواست</string>
     <string name="track_number">شماره پیگیری:</string>

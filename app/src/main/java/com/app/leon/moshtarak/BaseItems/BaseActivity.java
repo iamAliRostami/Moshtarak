@@ -1,13 +1,11 @@
 package com.app.leon.moshtarak.BaseItems;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -17,17 +15,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.app.leon.moshtarak.Activities.BaseInfoActivity;
-import com.app.leon.moshtarak.Activities.ContactUsActivity;
-import com.app.leon.moshtarak.Activities.HomeActivity;
-import com.app.leon.moshtarak.Activities.RecoveryCodeActivity;
-import com.app.leon.moshtarak.Activities.SessionActivity;
-import com.app.leon.moshtarak.Activities.SignAccountActivity;
 import com.app.leon.moshtarak.Adapters.NavigationCustomAdapter;
 import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.CustomTab;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.BaseActivityBinding;
 import com.google.android.material.navigation.NavigationView;
@@ -39,7 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     public Toolbar toolbar;
     DrawerLayout drawer;
-    ListView drawerList;
+    RecyclerView recyclerView;
     NavigationCustomAdapter adapter;
     List<NavigationCustomAdapter.DrawerItem> dataList;
     BaseActivityBinding binding;
@@ -105,52 +98,13 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @SuppressLint("RtlHardcoded")
     void setOnDrawerItemClick() {
-        drawerList.setOnItemClickListener((adapterView, view, position, id) -> {
-            MyApplication.position = position;
-            if (position == 0) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
-                finish();
-            } else if (position == 1) {
-                new CustomTab(getString(R.string.abfa_site), BaseActivity.this);
-            } else if (position == 2) {
-                Intent intent = new Intent(getApplicationContext(), BaseInfoActivity.class);
-                startActivity(intent);
-            } else if (position == 3) {
-                Intent intent = new Intent(getApplicationContext(), SessionActivity.class);
-                startActivity(intent);
-            } else if (position == 4) {
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("bazaar://details?id=" + getPackageName())));
-                } catch (android.content.ActivityNotFoundException e) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://cafebazaar.ir/app/details?id=" + getPackageName())));
-                }
-//                try {
-//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
-//                } catch (android.content.ActivityNotFoundException e) {
-//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
-//                }
-            } else if (position == 5) {
-                Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
-                startActivity(intent);
-            } else if (position == 6) {
-                Intent intent = new Intent(getApplicationContext(), RecoveryCodeActivity.class);
-                startActivity(intent);
-            } else if (position == 7) {
-                Intent intent = new Intent(getApplicationContext(), ContactUsActivity.class);
-                startActivity(intent);
-            } else if (position == 8) {
-                finishAffinity();
-            }
-            drawer.closeDrawer(GravityCompat.START);
-        });
     }
 
     private void initializeBase() {
         sharedPreference = new SharedPreference(this);
         toolbar = findViewById(R.id.toolbar);
         drawer = binding.drawerLayout;
-        drawerList = binding.rightDrawer;
+        recyclerView = binding.recyclerView;
         dataList = new ArrayList<>();
         fillDrawerListView();
         setOnDrawerItemClick();
@@ -183,12 +137,30 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     void fillDrawerListView() {
-        dataList = new NavigationCustomAdapter.DrawerItem().convertStringToList(
+        dataList = NavigationCustomAdapter.DrawerItem.createItemList(
                 getResources().getStringArray(R.array.menu), getResources().obtainTypedArray(R.array.icons));
         if (sharedPreference.checkIsNotEmpty())
             dataList.get(5).setItemName(getString(R.string.change_account));
-        adapter = new NavigationCustomAdapter(this, R.layout.item_navigation, dataList);
-        drawerList.setAdapter(adapter);
+        adapter = new NavigationCustomAdapter(this, dataList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                drawer.closeDrawer(GravityCompat.START);
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
     }
 
 //    public void setItemsColor(ViewGroup viewTree, int selected) {

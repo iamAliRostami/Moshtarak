@@ -64,7 +64,8 @@ public class AfterSaleServicesActivity extends BaseActivity {
         } else {
             billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
                     get(sharedPreference.getIndex());
-            binding.editTextMobile.setText(sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
+            binding.editTextMobile.setText(sharedPreference.getArrayList(
+                    SharedReferenceKeys.MOBILE_NUMBER.getValue()).
                     get(sharedPreference.getIndex()).replaceFirst(getString(R.string._09), ""));
             Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(billId),
                     Toast.LENGTH_LONG).show();
@@ -101,7 +102,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
             if (binding.listViewService.isItemChecked(i)) {
                 requestServices.add(servicesId.get(i));
             } else {
-                requestServices.add(servicesId.remove(i));
+                requestServices.remove(servicesId.get(i));
             }
         });
     }
@@ -112,11 +113,12 @@ public class AfterSaleServicesActivity extends BaseActivity {
             if (binding.editTextMobile.getText().length() < 9) {
                 viewFocus = binding.editTextMobile;
                 viewFocus.requestFocus();
-            } else if (servicesId.size() < 1) {
-                new CustomDialog(DialogType.Green, context, context.getString(R.string.select), context.getString(R.string.dear_user),
-                        context.getString(R.string.support), context.getString(R.string.accepted));
+            } else if (requestServices.size() < 1) {
+                new CustomDialog(DialogType.Yellow, context, context.getString(R.string.select),
+                        context.getString(R.string.dear_user), context.getString(R.string.support), context.getString(R.string.accepted));
             } else {
-                sendAfterSaleServiceRequest("09".concat(binding.editTextMobile.getText().toString()));
+                sendAfterSaleServiceRequest(getString(R.string._09).concat(
+                        binding.editTextMobile.getText().toString()));
             }
         });
     }
