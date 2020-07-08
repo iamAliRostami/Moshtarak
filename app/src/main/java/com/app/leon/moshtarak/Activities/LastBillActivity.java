@@ -87,7 +87,8 @@ public class LastBillActivity extends BaseActivity {
                     get(sharedPreference.getIndex());
             apiKey = sharedPreference.getArrayList(SharedReferenceKeys.API_KEY.getValue()).
                     get(sharedPreference.getIndex());
-            Toast.makeText(MyApplication.getContext(), "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).
+                    concat(billId), Toast.LENGTH_LONG).show();
             fillLastBillInfo();
         }
     }
@@ -164,7 +165,8 @@ public class LastBillActivity extends BaseActivity {
         binding.textViewTotal.setText(String.valueOf(intNumber));
         binding.textViewDate.setText(lastBillInfo.getDeadLine());
 
-        androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable1);
+        androidx.appcompat.widget.LinearLayoutCompat linearLayoutCompat =
+                findViewById(R.id.linearLayoutCompatPayable1);
         linearLayoutCompat.setVisibility(View.GONE);
         if (isPayed) {
             linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable2);
@@ -206,7 +208,8 @@ public class LastBillActivity extends BaseActivity {
                             bundle3.getString(BundleEnum.ZONE_ID.getValue()));
                 }
                 ThisBill thisBill = new ThisBill();
-                HttpClientWrapperNew.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
+                HttpClientWrapperNew.callHttpAsync(call, thisBill, context,
+                        ProgressType.SHOW.getValue());
             }
         } else {
             isLastBill = true;
@@ -214,7 +217,8 @@ public class LastBillActivity extends BaseActivity {
             final IAbfaService getThisBillInfo = retrofit.create(IAbfaService.class);
             byte[] encodeValue = Base64.encode(billId.getBytes(), Base64.DEFAULT);
             String base64 = new String(encodeValue);
-            Call<LastBillInfoV2> call = getThisBillInfo.getLastBillInfo(billId, base64.substring(0, base64.length() - 1));
+            Call<LastBillInfoV2> call = getThisBillInfo.getLastBillInfo(billId, base64.substring(0,
+                    base64.length() - 1));
             ThisBill thisBill = new ThisBill();
             HttpClientWrapperNew.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
         }

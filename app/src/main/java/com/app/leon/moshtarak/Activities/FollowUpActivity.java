@@ -74,7 +74,8 @@ public class FollowUpActivity extends BaseActivity implements ICallback<ArrayLis
             if (!cancel) {
                 Retrofit retrofit = NetworkHelper.getInstance();
                 final IAbfaService tracking = retrofit.create(IAbfaService.class);
-                Call<ArrayList<FollowUpDto>> call = tracking.followingUp(binding.editTextFollowUp.getText().toString());
+                Call<ArrayList<FollowUpDto>> call = tracking.followingUp(
+                        binding.editTextFollowUp.getText().toString());
                 HttpClientWrapperNew.callHttpAsync(call, FollowUpActivity.this, context);
             }
         });

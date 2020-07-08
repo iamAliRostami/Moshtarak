@@ -55,21 +55,25 @@ public class BaseInfoActivity extends BaseActivity implements ICallback<MemberIn
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getInfo = retrofit.create(IAbfaService.class);
         Call<MemberInfo> call = getInfo.getInfo(billId);
-        HttpClientWrapperNew.callHttpAsync(call, BaseInfoActivity.this, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, BaseInfoActivity.this, context,
+                ProgressType.SHOW.getValue());
     }
 
     @Override
     public void execute(MemberInfo memberInfo) {
         binding.textViewId.setText(memberInfo.getBillId());
-        binding.textViewFile.setText(memberInfo.getRadif().substring(0, memberInfo.getRadif().indexOf(".")));
+        binding.textViewFile.setText(memberInfo.getRadif().substring(0,
+                memberInfo.getRadif().indexOf(".")));
         binding.textViewAccount.setText(memberInfo.getEshterak());
-        int ahad = Integer.parseInt(memberInfo.getDomesticUnit()) + Integer.parseInt(memberInfo.getNonDomesticUnit());
+        int ahad = Integer.parseInt(memberInfo.getDomesticUnit()) +
+                Integer.parseInt(memberInfo.getNonDomesticUnit());
         binding.textViewAhad.setText(String.valueOf(ahad));
         binding.textViewBranchRadius.setText(memberInfo.getQotr());
         binding.textViewCapacity.setText(memberInfo.getCapacity());
         binding.textViewDebt.setText(memberInfo.getMande());
         binding.textViewSiphonRadius.setText(memberInfo.getSiphon());
         binding.textViewUser.setText(memberInfo.getKarbari());
-        binding.textViewName.setText(memberInfo.getFirstName().trim().concat(" ").concat(memberInfo.getSureName().trim()));
+        binding.textViewName.setText(memberInfo.getFirstName().trim().concat(" ").
+                concat(memberInfo.getSureName().trim()));
     }
 }

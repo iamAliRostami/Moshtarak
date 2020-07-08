@@ -70,7 +70,8 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
         } else {
             billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
                     get(sharedPreference.getIndex());
-            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(billId), Toast.LENGTH_LONG).show();
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(billId),
+                    Toast.LENGTH_LONG).show();
             fillCardex();
         }
     }
@@ -79,7 +80,8 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getKardex = retrofit.create(IAbfaService.class);
         Call<ArrayList<Cardex>> call = getKardex.getKardex(billId);
-        HttpClientWrapperNew.callHttpAsync(call, CardexActivity.this, context, ProgressType.SHOW.getValue());
+        HttpClientWrapperNew.callHttpAsync(call, CardexActivity.this, context,
+                ProgressType.SHOW.getValue());
     }
 
     @Override
@@ -92,7 +94,8 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
             axisValues.add(cardexes.get(i).getOweDate());
         }
         LayoutInflater inflater = getLayoutInflater();
-        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.cardex_header, binding.listViewCardex, false);
+        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.cardex_header,
+                binding.listViewCardex, false);
         binding.listViewCardex.addHeaderView(header, null, false);
     }
 }
