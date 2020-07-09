@@ -2,6 +2,7 @@ package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Debug;
 import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -89,5 +90,20 @@ public class HomeActivity extends BaseActivity {
         binding.imageButtonTracking.setImageDrawable(null);
         binding.imageButtonSupport.setImageDrawable(null);
         binding.imageButtonHelp.setImageDrawable(null);
+        binding = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+//        binding = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }

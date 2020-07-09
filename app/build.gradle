@@ -14,6 +14,7 @@ android {
     compileSdkVersion 30
     defaultConfig {
         applicationId "com.app.leon.moshtarak"
+        vectorDrawables.useSupportLibrary = true
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 25
@@ -79,6 +80,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.3.0-alpha01'
     //noinspection GradleCompatible
 //    implementation 'com.android.support:design:26.1.0'
+
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:23.2.0'
     implementation 'com.android.support:support-annotations:28.0.0'
     androidTestImplementation 'androidx.annotation:annotation:1.1.0'
 

@@ -2,6 +2,7 @@ package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Debug;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -403,5 +404,29 @@ public class SaleActivity extends BaseActivity
         setEditTextBillIdChangedListener();
         setEditTextPostalCodeChangedListener();
         setEditTextAddressChangedListener();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        binding = null;
+        context = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        context = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }

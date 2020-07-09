@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/suggest_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_background"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.app.leon.moshtarak.Activities.SuggestActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:adjustViewBounds="true"
+            android:background="@color/transparent"
+            android:padding="@dimen/activity_mid_padding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_text_header"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutFooter"
+        style="@style/bottomView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:foregroundGravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        tools:ignore="RtlCompat">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="2dp"
+                android:background="@color/transparent"
+                android:foregroundGravity="center"
+                android:src="@drawable/img_logo_footer"
+                tools:ignore="RtlCompat" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/copy_right_2"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/linearLayoutFooter"
+        android:layout_below="@id/linearLayoutHeader"
+        android:layout_marginBottom="@dimen/activity_large_margin"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_mid_margin"
+        android:paddingRight="@dimen/activity_mid_margin"
+        tools:ignore="UselessParent">
+
+        <RadioGroup
+            android:id="@+id/radioGroupSuggest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_mid_margin"
+            android:padding="@dimen/activity_mid_padding">
+
+            <RadioButton
+                android:id="@+id/radioButtonSuggest1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/error_report"
+                android:textSize="@dimen/textSizeMedium"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/suggestSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/radioButtonSuggest2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/suggest"
+                android:textSize="@dimen/textSizeMedium"
+                android:textStyle="bold" />
+
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:background="@drawable/border_"
+            android:gravity="top"
+            android:hint="@string/enter"
+            android:padding="@dimen/activity_large_padding">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/suggestEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:layout_marginLeft="@dimen/activity_mid_margin"
+                android:layout_marginTop="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
+                android:layout_marginBottom="@dimen/activity_mid_margin"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:maxLength="280" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_large_margin"
+            android:layout_marginTop="@dimen/activity_mid_margin"
+            android:layout_marginRight="@dimen/activity_large_margin"
+            android:background="@drawable/border_yellow_"
+            android:text="@string/send_feedback"
+            android:textSize="@dimen/textSizeMedium"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+</RelativeLayout>

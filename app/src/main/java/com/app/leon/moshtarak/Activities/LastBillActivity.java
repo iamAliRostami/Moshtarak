@@ -252,7 +252,7 @@ public class LastBillActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding.imageViewBarcode.setImageDrawable(null);
+        binding = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
@@ -262,6 +262,8 @@ public class LastBillActivity extends BaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        binding.imageViewBarcode.setImageDrawable(null);
+        binding = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

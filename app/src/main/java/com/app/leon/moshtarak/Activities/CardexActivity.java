@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,5 +98,31 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
         ViewGroup header = (ViewGroup) inflater.inflate(R.layout.cardex_header,
                 binding.listViewCardex, false);
         binding.listViewCardex.addHeaderView(header, null, false);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        cardexCustomAdapter = null;
+        yAxisData = null;
+        axisValues = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        binding = null;
+        cardexCustomAdapter = null;
+        yAxisData = null;
+        axisValues = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.Log;
 import android.view.View;
 
@@ -66,5 +67,29 @@ public class ContactUsActivity extends AppCompatActivity {
         binding.linearLayout3.setOnClickListener(onClickListener);
         binding.linearLayout4.setOnClickListener(onClickListener);
         binding.linearLayout5.setOnClickListener(onClickListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        binding = null;
+        context = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        context = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -64,5 +65,30 @@ public class SessionActivity extends AppCompatActivity implements ICallback<Arra
         sessionCustomAdapter = new SessionCustomAdapter(sessions, context);
         binding.listViewSession.setAdapter(sessionCustomAdapter);
         binding.listViewSession.setTextFilterEnabled(true);
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        binding = null;
+        context = null;
+        sessionCustomAdapter = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        context = null;
+        sessionCustomAdapter = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }

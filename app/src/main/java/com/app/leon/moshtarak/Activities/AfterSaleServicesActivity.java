@@ -3,6 +3,7 @@ package com.app.leon.moshtarak.Activities;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Debug;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -153,5 +154,35 @@ public class AfterSaleServicesActivity extends BaseActivity {
             new CustomDialog(DialogType.Green, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
                     context.getString(R.string.support), context.getString(R.string.accepted));
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        binding = null;
+        context = null;
+        sharedPreference = null;
+        servicesId = null;
+        servicesTitle = null;
+        requestServices = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        context = null;
+        sharedPreference = null;
+        servicesId = null;
+        servicesTitle = null;
+        requestServices = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }

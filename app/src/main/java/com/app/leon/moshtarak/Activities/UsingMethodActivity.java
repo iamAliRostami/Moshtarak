@@ -1,6 +1,7 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
+import android.os.Debug;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebViewClient;
@@ -37,6 +38,27 @@ public class UsingMethodActivity extends BaseActivity {
         binding.webViewLearningUsing.loadUrl("file:///android_asset/learning.html");
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        binding = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
 //    void fillListViewLearningUsing() {
 //        dataList = new ArrayList<>();
 //        dataList.add(new LearningCustomAdapter.DrawerItem(getString(R.string.method_bath), R.drawable.btn_read));

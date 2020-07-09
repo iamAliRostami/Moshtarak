@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class ChartActivity extends AppCompatActivity {
     Typeface typeface;
     ArrayList<String> listText = new ArrayList<>();
     ArrayList<Integer> listValue = new ArrayList<>();
+
 
     @SuppressLint("NewApi")
     @Override
@@ -136,6 +138,32 @@ public class ChartActivity extends AppCompatActivity {
         binding.horizontalChart.setData(data);
         binding.horizontalChart.animateY(2500);
         binding.horizontalChart.animateX(2500);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        binding = null;
+        context = null;
+        listText = null;
+        listValue = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        context = null;
+        listText = null;
+        listValue = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }
 

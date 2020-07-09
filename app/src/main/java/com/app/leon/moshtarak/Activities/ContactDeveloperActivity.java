@@ -2,6 +2,7 @@ package com.app.leon.moshtarak.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -31,5 +32,27 @@ public class ContactDeveloperActivity extends AppCompatActivity {
         setContentView(view);
         binding.linearLayout1.setOnClickListener(onClickListener);
         binding.linearLayout2.setOnClickListener(onClickListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        binding.imageView1.setImageDrawable(null);
+        binding.imageView2.setImageDrawable(null);
+        binding = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }

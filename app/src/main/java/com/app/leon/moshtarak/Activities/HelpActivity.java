@@ -3,6 +3,7 @@ package com.app.leon.moshtarak.Activities;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.Debug;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -118,6 +119,30 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
             if (progress == 100)
                 setTitle(R.string.help);
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        binding = null;
+        context = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        context = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 //    private void displayFromAsset() {
 //        pdfFileName = HelpActivity.SAMPLE_FILE;

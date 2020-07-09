@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Debug;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +23,7 @@ import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
-import com.app.leon.moshtarak.databinding.SuggestContent1Binding;
+import com.app.leon.moshtarak.databinding.SuggestContentBinding;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -31,14 +32,14 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class SuggestActivity extends BaseActivity implements ICallback<SimpleMessage> {
-    SuggestContent1Binding binding;
+    SuggestContentBinding binding;
     ArrayList<String> items;
     Context context;
 
     @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
-        binding = SuggestContent1Binding.inflate(getLayoutInflater());
+        binding = SuggestContentBinding.inflate(getLayoutInflater());
         View childLayout = binding.getRoot();
         ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
@@ -146,5 +147,30 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        binding = null;
+        context = null;
+        items = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        context = null;
+        items = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }

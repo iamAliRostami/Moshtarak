@@ -3,6 +3,7 @@ package com.app.leon.moshtarak.Activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -66,20 +67,33 @@ public class SplashActivity extends Activity {
         finish();
     }
 
+
     @Override
     protected void onStop() {
         super.onStop();
+        binding.imageViewSplashScreen.setImageDrawable(null);
         binding = null;
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        binding = null;
+
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     @Override

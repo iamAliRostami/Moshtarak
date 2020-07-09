@@ -469,8 +469,8 @@ public class LastBillFileActivity extends AppCompatActivity {
         super.onDestroy();
         context = null;
         bitmapBill = null;
-        binding.imageViewLastBill.setImageDrawable(null);
         lastBillInfo = null;
+        binding = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
@@ -484,6 +484,7 @@ public class LastBillFileActivity extends AppCompatActivity {
         bitmapBill = null;
         binding.imageViewLastBill.setImageDrawable(null);
         lastBillInfo = null;
+        binding = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
@@ -608,6 +609,7 @@ public class LastBillFileActivity extends AppCompatActivity {
         }
     }
 
+
     @SuppressLint("StaticFieldLeak")
     class ThisBill extends AsyncTask<Object, Object, Object> {
         CustomProgressBar customProgressBar;
@@ -673,4 +675,6 @@ public class LastBillFileActivity extends AppCompatActivity {
             return code;
         }
     }
+
+
 }

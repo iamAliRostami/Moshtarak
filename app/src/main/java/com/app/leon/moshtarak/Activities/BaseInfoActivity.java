@@ -3,6 +3,7 @@ package com.app.leon.moshtarak.Activities;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Debug;
 import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -75,5 +76,27 @@ public class BaseInfoActivity extends BaseActivity implements ICallback<MemberIn
         binding.textViewUser.setText(memberInfo.getKarbari());
         binding.textViewName.setText(memberInfo.getFirstName().trim().concat(" ").
                 concat(memberInfo.getSureName().trim()));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        context = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        binding = null;
+        context = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }

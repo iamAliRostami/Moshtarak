@@ -1,7 +1,6 @@
 package com.app.leon.moshtarak.Activities;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +38,6 @@ import retrofit2.Retrofit;
 
 public class SetCounterActivity extends BaseActivity implements ICallback<LastBillInfo> {
     LovelyTextInputDialog lovelyTextInputDialog;
-    Activity activity;
     Context context;
     String billId, number, phoneNumber;
     SetCounterContentBinding binding;
@@ -52,7 +50,6 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         parentLayout.addView(childLayout);
         context = this;
-        activity = this;
         setComponentPosition();
         accessData();
 //        sharedPreference = new SharedPreference(context);
@@ -238,10 +235,9 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        activity = null;
         context = null;
         lovelyTextInputDialog = null;
-
+        binding = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
@@ -252,7 +248,8 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     protected void onStop() {
         super.onStop();
         lovelyTextInputDialog = null;
-
+        context = null;
+        binding = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

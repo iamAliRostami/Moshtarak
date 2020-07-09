@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -87,5 +88,29 @@ public class RecoveryCodeActivity extends AppCompatActivity implements ICallback
         recoverCodeCustomAdapter = new RecoverCodeCustomAdapter(requests, context);
         binding.listViewRequest.setAdapter(recoverCodeCustomAdapter);
         binding.listViewRequest.setTextFilterEnabled(true);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        binding = null;
+        context = null;
+        recoverCodeCustomAdapter = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        context = null;
+        recoverCodeCustomAdapter = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }

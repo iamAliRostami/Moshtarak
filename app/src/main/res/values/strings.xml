@@ -168,5 +168,15 @@
     <string name="error_preparing">مشکلی در فرآیند آماده سازی روی داده است</string>
     <string name="error_android_version">نسخه اندروید شما این ویژگی را پشتیبانی نمی کند</string>
     <string name="number_zero">0</string>
+    <string name="setad_phone">تلفن ستاد:</string>
+    <string name="setad_phone_number">031-36680030</string>
+    <string name="fax">نمابر:</string>
+    <string name="fax_namber">031-36689586</string>
+    <string name="abfa_email_address">info@abfaisfahan.ir</string>
+    <string name="email">ایمیل:</string>
+    <string name="user_service">تلفن خدمات مشترکین:</string>
+    <string name="user_service_phone">1522</string>
+    <string name="accident_phone">تلفن حوادث:</string>
+    <string name="accident_phone_number">122</string>
 
 </resources>
