@@ -18,7 +18,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.HelpContentBinding;
 
 import java.io.File;
@@ -27,18 +26,47 @@ import java.util.Objects;
 
 public class HelpActivity extends BaseActivity //implements OnPageChangeListener, OnLoadCompleteListener {
 {
-//    public static final String SAMPLE_FILE = "1.pdf";
-//    private static final String TAG = HelpActivity.class.getSimpleName();
-//    @BindView(R.id.pdfView)
-//    PDFView pdfView;
-//    Integer pageNumber = 0;
-//    String pdfFileName;
-
-    public static final String URL = "file:///android_asset/n_help.html";
     HelpContentBinding binding;
     ProgressDialog progressDialog;
-    SharedPreference sharedPreference;
+    //    SharedPreference sharedPreference;
     Context context;
+
+    @SuppressLint({"SetJavaScriptEnabled", "CutPasteId"})
+    @Override
+    protected void initialize() {
+        binding = HelpContentBinding.inflate(getLayoutInflater());
+        View childLayout = binding.getRoot();
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        parentLayout.addView(childLayout);
+        context = this;
+        clearCacheFolder(context.getCacheDir(), 1);
+//        sharedPreference = new SharedPreference(context);
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage(getString(R.string.waiting));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        binding.webViewHelp.setWebChromeClient(new HelpWebChromeClient());
+
+        binding.webViewHelp.getSettings().setJavaScriptEnabled(true);
+        binding.webViewHelp.getSettings().setBuiltInZoomControls(true);
+        binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+//        if (sharedPreference.getCache()) {
+//            Log.e("cache", "exist!");
+//            binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
+////            binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+//        } else {
+//            Log.e("cache", "not exist!");
+//            binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+//        }
+        binding.webViewHelp.setWebViewClient(new HelpWebViewClient());
+//        binding.webViewHelp.loadUrl(getString(R.string.abfa_site));
+        binding.webViewHelp.loadUrl(getString(R.string.help_url));
+
+//        binding.webViewHelp.loadUrl("www.google.com");
+//        binding.webViewHelp.loadUrl(URL);
+
+    }
 
     static int clearCacheFolder(final File dir, final int numDays) {
         int deletedFiles = 0;
@@ -76,42 +104,6 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
     public void onBackPressed() {
         Log.e("onBackPressed", "here");
         super.onBackPressed();
-    }
-
-    @SuppressLint({"SetJavaScriptEnabled", "CutPasteId"})
-    @Override
-    protected void initialize() {
-        binding = HelpContentBinding.inflate(getLayoutInflater());
-        View childLayout = binding.getRoot();
-        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
-        parentLayout.addView(childLayout);
-        context = this;
-        clearCacheFolder(context.getCacheDir(), 1);
-        sharedPreference = new SharedPreference(context);
-
-        progressDialog = new ProgressDialog(HelpActivity.this);
-        progressDialog.setMessage(getString(R.string.waiting));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-        binding.webViewHelp.setWebChromeClient(new HelpWebChromeClient());
-
-        binding.webViewHelp.getSettings().setJavaScriptEnabled(true);
-        binding.webViewHelp.getSettings().setBuiltInZoomControls(true);
-        binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-//        if (sharedPreference.getCache()) {
-//            Log.e("cache", "exist!");
-//            binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
-////            binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-//        } else {
-//            Log.e("cache", "not exist!");
-//            binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
-//        }
-        binding.webViewHelp.setWebViewClient(new HelpWebViewClient());
-        binding.webViewHelp.loadUrl(getString(R.string.abfa_site));
-
-//        binding.webViewHelp.loadUrl("www.google.com");
-//        binding.webViewHelp.loadUrl(URL);
-
     }
 
     private class HelpWebChromeClient extends WebChromeClient {
@@ -174,43 +166,4 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
         Runtime.getRuntime().maxMemory();
         Debug.getNativeHeapAllocatedSize();
     }
-//    private void displayFromAsset() {
-//        pdfFileName = HelpActivity.SAMPLE_FILE;
-//        pdfView.fromAsset(SAMPLE_FILE)
-//                .defaultPage(pageNumber)
-//                .enableSwipe(true)
-//                .swipeHorizontal(false)
-//                .onPageChange(this)
-//                .enableAnnotationRendering(true)
-//                .onLoad(this)
-//                .scrollHandle(new DefaultScrollHandle(this))
-//                .load();
-//    }
-//
-//
-//    @Override
-//    public void onPageChanged(int page, int pageCount) {
-//        pageNumber = page;
-//        setTitle(String.format("%s %s / %s", getString(R.string.help), page + 1, pageCount));
-//
-//    }
-//
-//
-//    @Override
-//    public void loadComplete(int nbPages) {
-//        PdfDocument.Meta meta = pdfView.getDocumentMeta();
-//        printBookmarksTree(pdfView.getTableOfContents(), "-");
-//
-//    }
-//
-//    public void printBookmarksTree(List<PdfDocument.Bookmark> tree, String sep) {
-//        for (PdfDocument.Bookmark b : tree) {
-//
-//            Log.e(TAG, String.format("%s %s, p %d", sep, b.getTitle(), b.getPageIdx()));
-//
-//            if (b.hasChildren()) {
-//                printBookmarksTree(b.getChildren(), sep + "-");
-//            }
-//        }
-//    }
 }

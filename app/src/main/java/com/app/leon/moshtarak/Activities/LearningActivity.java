@@ -14,11 +14,12 @@ import com.app.leon.moshtarak.databinding.LearningContentBinding;
 public class LearningActivity extends BaseActivity {
     LearningContentBinding binding;
 
+    @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
         binding = LearningContentBinding.inflate(getLayoutInflater());
         View childLayout = binding.getRoot();
-        @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         setImageButtonsClickListener();
     }

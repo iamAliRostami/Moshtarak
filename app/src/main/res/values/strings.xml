@@ -178,5 +178,7 @@
     <string name="user_service_phone">1522</string>
     <string name="accident_phone">تلفن حوادث:</string>
     <string name="accident_phone_number">122</string>
+    <string name="help_url">http://crm.abfaesfahan.ir/android/help</string>
+    <string name="using_method_url">http://crm.abfaesfahan.ir/android/learn</string>
 
 </resources>

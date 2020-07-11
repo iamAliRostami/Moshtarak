@@ -1,10 +1,11 @@
 package com.app.leon.moshtarak.BaseItems;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -18,9 +19,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.app.leon.moshtarak.Activities.BaseInfoActivity;
+import com.app.leon.moshtarak.Activities.ContactUsActivity;
+import com.app.leon.moshtarak.Activities.HomeActivity;
+import com.app.leon.moshtarak.Activities.RecoveryCodeActivity;
+import com.app.leon.moshtarak.Activities.SessionActivity;
+import com.app.leon.moshtarak.Activities.SignAccountActivity;
 import com.app.leon.moshtarak.Adapters.NavigationCustomAdapter;
 import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.Utils.CustomTab;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.BaseActivityBinding;
 import com.google.android.material.navigation.NavigationView;
@@ -98,6 +106,60 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @SuppressLint("RtlHardcoded")
     void setOnDrawerItemClick() {
+        recyclerView.addOnItemTouchListener(
+                new NavigationCustomAdapter.RecyclerItemClickListener(MyApplication.getContext(),
+                        recyclerView, new NavigationCustomAdapter.RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        drawer.closeDrawer(GravityCompat.START);
+
+
+                        MyApplication.position = position;
+                        if (position == 0) {
+                            Intent intent = new Intent(MyApplication.getContext(), HomeActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else if (position == 1) {
+                            new CustomTab(getString(R.string.abfa_site), MyApplication.getContext());
+                        } else if (position == 2) {
+                            Intent intent = new Intent(MyApplication.getContext(), BaseInfoActivity.class);
+                            startActivity(intent);
+                        } else if (position == 3) {
+                            Intent intent = new Intent(MyApplication.getContext(), SessionActivity.class);
+                            startActivity(intent);
+                        } else if (position == 4) {
+                            try {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("bazaar://details?id=" + getPackageName())));
+                            } catch (android.content.ActivityNotFoundException e) {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://cafebazaar.ir/app/details?id=" + getPackageName())));
+                            }
+//                try {
+//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
+//                } catch (android.content.ActivityNotFoundException e) {
+//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
+//                }
+                        } else if (position == 5) {
+                            Intent intent = new Intent(MyApplication.getContext(), SignAccountActivity.class);
+                            startActivity(intent);
+                        } else if (position == 6) {
+                            Intent intent = new Intent(MyApplication.getContext(), RecoveryCodeActivity.class);
+                            startActivity(intent);
+                        } else if (position == 7) {
+                            Intent intent = new Intent(MyApplication.getContext(), ContactUsActivity.class);
+                            startActivity(intent);
+                        } else if (position == 8) {
+                            finishAffinity();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
     }
 
     private void initializeBase() {
@@ -144,23 +206,7 @@ public abstract class BaseActivity extends AppCompatActivity
         adapter = new NavigationCustomAdapter(this, dataList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
-        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                drawer.closeDrawer(GravityCompat.START);
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
+        recyclerView.setNestedScrollingEnabled(true);
     }
 
 //    public void setItemsColor(ViewGroup viewTree, int selected) {

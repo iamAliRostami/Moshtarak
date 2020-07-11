@@ -1,12 +1,11 @@
 package com.app.leon.moshtarak.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -16,15 +15,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.app.leon.moshtarak.Activities.BaseInfoActivity;
-import com.app.leon.moshtarak.Activities.ContactUsActivity;
-import com.app.leon.moshtarak.Activities.HomeActivity;
-import com.app.leon.moshtarak.Activities.RecoveryCodeActivity;
-import com.app.leon.moshtarak.Activities.SessionActivity;
-import com.app.leon.moshtarak.Activities.SignAccountActivity;
 import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.CustomTab;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,25 +91,13 @@ public class NavigationCustomAdapter extends
             this.drawable = drawable;
         }
 
-        public List<NavigationCustomAdapter.DrawerItem> convertStringToList(String[] items,
-                                                                            TypedArray imgs) {
-            List<NavigationCustomAdapter.DrawerItem> drawerItems = new ArrayList<>();
-            for (int i = 0; i < items.length; i++) {
-                drawerItems.add(new DrawerItem(items[i], imgs.getDrawable(i)));
-            }
-            return drawerItems;
-        }
-
-        String getItemName() {
-            return ItemName;
-        }
 
         public void setItemName(String itemName) {
             ItemName = itemName;
         }
     }
 
-    public class DrawerItemHolder extends RecyclerView.ViewHolder {
+    static class DrawerItemHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle;
         ImageView imageViewIcon;
         LinearLayout linearLayout;
@@ -127,45 +107,53 @@ public class NavigationCustomAdapter extends
             this.textViewTitle = viewItem.findViewById(R.id.textViewTitle);
             this.imageViewIcon = viewItem.findViewById(R.id.imageViewIcon);
             this.linearLayout = viewItem.findViewById(R.id.linearLayoutBackground);
-            viewItem.setOnClickListener(view -> {
-                int position = getAdapterPosition();
-                MyApplication.position = position;
-                if (position == 0) {
-                    Intent intent = new Intent(context, HomeActivity.class);
-                    context.startActivity(intent);
-                    ((Activity) context).finish();
-                } else if (position == 1) {
-                    new CustomTab(context.getString(R.string.abfa_site), context);
-                } else if (position == 2) {
-                    Intent intent = new Intent(context, BaseInfoActivity.class);
-                    context.startActivity(intent);
-                } else if (position == 3) {
-                    Intent intent = new Intent(context, SessionActivity.class);
-                    context.startActivity(intent);
-                } else if (position == 4) {
-                    try {
-                        context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("bazaar://details?id=" + context.getPackageName())));
-                    } catch (android.content.ActivityNotFoundException e) {
-                        context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://cafebazaar.ir/app/details?id=" + context.getPackageName())));
+        }
+    }
+
+    public static class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
+        GestureDetector mGestureDetector;
+        private OnItemClickListener mListener;
+
+        public RecyclerItemClickListener(Context context, final RecyclerView recyclerView, OnItemClickListener listener) {
+            mListener = listener;
+            mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
+                    if (child != null && mListener != null) {
+                        mListener.onLongItemClick(child, recyclerView.getChildAdapterPosition(child));
                     }
-//                try {
-//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
-//                } catch (android.content.ActivityNotFoundException e) {
-//                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
-//                }
-                } else if (position == 5) {
-                    Intent intent = new Intent(context, SignAccountActivity.class);
-                    context.startActivity(intent);
-                } else if (position == 6) {
-                    Intent intent = new Intent(context, RecoveryCodeActivity.class);
-                    context.startActivity(intent);
-                } else if (position == 7) {
-                    Intent intent = new Intent(context, ContactUsActivity.class);
-                    context.startActivity(intent);
-                } else if (position == 8) {
-                    ((Activity) context).finishAffinity();
                 }
             });
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
+            View childView = view.findChildViewUnder(e.getX(), e.getY());
+            if (childView != null && mListener != null && mGestureDetector.onTouchEvent(e)) {
+                mListener.onItemClick(childView, view.getChildAdapterPosition(childView));
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(@NonNull RecyclerView view, @NonNull MotionEvent motionEvent) {
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+        }
+
+        public interface OnItemClickListener {
+            void onItemClick(View view, int position);
+
+            void onLongItemClick(View view, int position);
         }
     }
 }
