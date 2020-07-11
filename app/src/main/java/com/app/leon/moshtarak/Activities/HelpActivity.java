@@ -24,11 +24,9 @@ import java.io.File;
 import java.util.Date;
 import java.util.Objects;
 
-public class HelpActivity extends BaseActivity //implements OnPageChangeListener, OnLoadCompleteListener {
-{
+public class HelpActivity extends BaseActivity {
     HelpContentBinding binding;
     ProgressDialog progressDialog;
-    //    SharedPreference sharedPreference;
     Context context;
 
     @SuppressLint({"SetJavaScriptEnabled", "CutPasteId"})
@@ -40,8 +38,6 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
         parentLayout.addView(childLayout);
         context = this;
         clearCacheFolder(context.getCacheDir(), 1);
-//        sharedPreference = new SharedPreference(context);
-
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage(getString(R.string.waiting));
         progressDialog.setCancelable(false);
@@ -51,21 +47,8 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
         binding.webViewHelp.getSettings().setJavaScriptEnabled(true);
         binding.webViewHelp.getSettings().setBuiltInZoomControls(true);
         binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-//        if (sharedPreference.getCache()) {
-//            Log.e("cache", "exist!");
-//            binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
-////            binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-//        } else {
-//            Log.e("cache", "not exist!");
-//            binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
-//        }
         binding.webViewHelp.setWebViewClient(new HelpWebViewClient());
-//        binding.webViewHelp.loadUrl(getString(R.string.abfa_site));
         binding.webViewHelp.loadUrl(getString(R.string.help_url));
-
-//        binding.webViewHelp.loadUrl("www.google.com");
-//        binding.webViewHelp.loadUrl(URL);
-
     }
 
     static int clearCacheFolder(final File dir, final int numDays) {
@@ -73,11 +56,11 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
         if (dir != null && dir.isDirectory()) {
             try {
                 for (File child : Objects.requireNonNull(dir.listFiles())) {
-                    //first delete subdirectories recursively
                     if (child.isDirectory()) {
                         deletedFiles += clearCacheFolder(child, numDays);
                     }
-                    if (child.lastModified() < new Date().getTime() - numDays * DateUtils.DAY_IN_MILLIS) {
+                    if (child.lastModified() < new Date().getTime() -
+                            numDays * DateUtils.DAY_IN_MILLIS) {
                         if (child.delete()) {
                             deletedFiles++;
                         }
@@ -90,21 +73,6 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
         return deletedFiles;
     }
 
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        Log.e("back", "here");
-        if ((keyCode == KeyEvent.KEYCODE_BACK)) {// && binding.webViewHelp.canGoBack()) {
-            finish();
-//            binding.webViewHelp.goBack();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-
-    @Override
-    public void onBackPressed() {
-        Log.e("onBackPressed", "here");
-        super.onBackPressed();
-    }
 
     private class HelpWebChromeClient extends WebChromeClient {
         public void onProgressChanged(WebView view, int progress) {
@@ -121,6 +89,19 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
         }
     }
 
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            finish();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     private class HelpWebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -130,14 +111,14 @@ public class HelpActivity extends BaseActivity //implements OnPageChangeListener
 
         @Override
         public void onPageFinished(WebView view, String url) {
-//            sharedPreference.putCache(true);
             if (progressDialog.isShowing()) {
                 progressDialog.dismiss();
             }
         }
 
         @Override
-        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+        public void onReceivedError(WebView view, int errorCode, String description,
+                                    String failingUrl) {
             Toast.makeText(HelpActivity.this, getString(R.string.error).concat(" : ")
                     .concat(getString(R.string.error_IO)), Toast.LENGTH_SHORT).show();
         }

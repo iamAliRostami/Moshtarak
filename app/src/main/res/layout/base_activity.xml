@@ -32,7 +32,6 @@
             android:id="@+id/recycler_view"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:layout_above="@id/imageViewSwitch"
             android:layout_below="@id/imageViewHeader"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,10 +50,12 @@
 
         <ImageView
             android:id="@+id/imageViewSwitch"
-            android:layout_width="280dp"
-            android:layout_height="30dp"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/day_drawer"
-            tools:ignore="ContentDescription" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_above="@id/recycler_view"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
+            android:src="@drawable/dark_mode"
+            tools:ignore="ContentDescription,RtlHardcoded" />
     </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -14,7 +14,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -50,12 +49,8 @@ public abstract class BaseActivityOld extends AppCompatActivity
         public void onClick(View v) {
             sharedPreference.putTheme(!sharedPreference.getTheme());
             if (sharedPreference.getTheme()) {
-                binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(
-                        MyApplication.getContext(), R.drawable.night_drawer));
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             } else {
-                binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(
-                        MyApplication.getContext(), R.drawable.day_drawer));
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
         }
@@ -160,15 +155,12 @@ public abstract class BaseActivityOld extends AppCompatActivity
     @SuppressLint("NewApi")
     private void initializeImageViewSwitch() {
         if (sharedPreference.getTheme()) {
-            binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(MyApplication.getContext()
-                    , R.drawable.night_drawer)
-            );
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
-//            binding.imageViewSwitch.setImageDrawable(getDrawable(R.drawable.day_drawer));//TODO
-            binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(MyApplication.getContext()
-                    , R.drawable.day_drawer)
-            );
+            //TODO
+//            binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(MyApplication.getContext()
+//                    , R.drawable.mode)
+//            );
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
         binding.imageViewSwitch.setOnClickListener(onImageSwitcherClickListener);

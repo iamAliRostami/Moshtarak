@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Debug;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -57,7 +58,6 @@ public class UsingMethodActivity extends BaseActivity {
         View childLayout = binding.getRoot();
         ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
-//        fillListViewLearningUsing();
         context = this;
         clearCacheFolder(context.getCacheDir(), 1);
 
@@ -65,15 +65,15 @@ public class UsingMethodActivity extends BaseActivity {
         progressDialog.setMessage(getString(R.string.waiting));
         progressDialog.setCancelable(false);
         progressDialog.show();
+
         binding.webViewLearningUsing.setWebChromeClient(new UsingMethodWebChromeClient());
         binding.webViewLearningUsing.getSettings().setBuiltInZoomControls(true);
         binding.webViewLearningUsing.getSettings().setJavaScriptEnabled(true);
-
-
         binding.webViewLearningUsing.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         binding.webViewLearningUsing.setWebViewClient(new UsingMethodWebViewClient());
         binding.webViewLearningUsing.loadUrl(getString(R.string.using_method_url));
     }
+
 
     private class UsingMethodWebChromeClient extends WebChromeClient {
         public void onProgressChanged(WebView view, int progress) {
@@ -99,7 +99,6 @@ public class UsingMethodActivity extends BaseActivity {
 
         @Override
         public void onPageFinished(WebView view, String url) {
-//            sharedPreference.putCache(true);
             if (progressDialog.isShowing()) {
                 progressDialog.dismiss();
             }
@@ -110,6 +109,19 @@ public class UsingMethodActivity extends BaseActivity {
             Toast.makeText(UsingMethodActivity.this, getString(R.string.error).concat(" : ")
                     .concat(getString(R.string.error_IO)), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            finish();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     @Override
