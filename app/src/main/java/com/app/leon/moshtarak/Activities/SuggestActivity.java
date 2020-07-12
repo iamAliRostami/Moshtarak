@@ -152,9 +152,6 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
     @Override
     protected void onStop() {
         super.onStop();
-        binding = null;
-        context = null;
-        items = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

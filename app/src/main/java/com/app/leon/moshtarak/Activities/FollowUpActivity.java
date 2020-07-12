@@ -93,9 +93,6 @@ public class FollowUpActivity extends BaseActivity implements ICallback<ArrayLis
     @Override
     protected void onStop() {
         super.onStop();
-        binding = null;
-        context = null;
-
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
@@ -107,7 +104,6 @@ public class FollowUpActivity extends BaseActivity implements ICallback<ArrayLis
         super.onDestroy();
         binding = null;
         context = null;
-
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

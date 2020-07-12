@@ -52,10 +52,6 @@ public class ShowSMSActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        binding = null;
-        context = null;
-        arrayAdapter = null;
-        sms = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

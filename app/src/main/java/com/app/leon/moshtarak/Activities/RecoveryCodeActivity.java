@@ -93,9 +93,6 @@ public class RecoveryCodeActivity extends AppCompatActivity implements ICallback
     @Override
     protected void onStop() {
         super.onStop();
-        binding = null;
-        context = null;
-        recoverCodeCustomAdapter = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

@@ -71,9 +71,6 @@ public class SplashActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        binding.imageViewSplashScreen.setImageDrawable(null);
-        binding = null;
-
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
@@ -83,6 +80,7 @@ public class SplashActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        binding.imageViewSplashScreen.setImageDrawable(null);
         binding = null;
 
         Runtime.getRuntime().totalMemory();

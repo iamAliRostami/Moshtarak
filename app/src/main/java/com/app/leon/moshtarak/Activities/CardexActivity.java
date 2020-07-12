@@ -116,10 +116,6 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     @Override
     protected void onStop() {
         super.onStop();
-        binding = null;
-        cardexCustomAdapter = null;
-        yAxisData = null;
-        axisValues = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

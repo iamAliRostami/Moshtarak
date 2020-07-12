@@ -72,9 +72,6 @@ public class ContactUsActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        binding = null;
-        context = null;
-
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

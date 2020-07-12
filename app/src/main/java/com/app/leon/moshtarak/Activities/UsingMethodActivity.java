@@ -127,8 +127,6 @@ public class UsingMethodActivity extends BaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        binding = null;
-
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

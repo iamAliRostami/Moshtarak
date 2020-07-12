@@ -88,8 +88,6 @@ public class LastBillFileActivity extends AppCompatActivity {
 
         tPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), MyApplication.getFontName()));
         tPaint.setStyle(Paint.Style.FILL);
-
-//        new ThisBill(context).execute();
         accessData();
 
         binding.buttonShare.setOnClickListener(v -> {
@@ -480,11 +478,6 @@ public class LastBillFileActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        context = null;
-        bitmapBill = null;
-        binding.imageViewLastBill.setImageDrawable(null);
-        lastBillInfo = null;
-        binding = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

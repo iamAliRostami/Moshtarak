@@ -34,7 +34,8 @@
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
-                android:padding="@dimen/activity_mid_padding"
+                android:paddingLeft="@dimen/activity_mid_padding"
+                android:paddingRight="@dimen/activity_mid_padding"
                 android:textSize="@dimen/textSizeLarge"
                 tools:ignore="Autofill,RtlHardcoded" />
 
@@ -49,7 +50,8 @@
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
-                android:padding="@dimen/activity_mid_padding"
+                android:paddingLeft="@dimen/activity_mid_padding"
+                android:paddingRight="@dimen/activity_mid_padding"
                 android:textSize="@dimen/textSizeLarge"
                 tools:ignore="Autofill,RtlHardcoded" />
 
@@ -65,7 +67,8 @@
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
-                android:padding="@dimen/activity_mid_padding"
+                android:paddingLeft="@dimen/activity_mid_padding"
+                android:paddingRight="@dimen/activity_mid_padding"
                 android:textSize="@dimen/textSizeLarge"
                 tools:ignore="Autofill,RtlHardcoded" />
 
@@ -80,7 +83,8 @@
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
-                android:padding="@dimen/activity_mid_padding"
+                android:paddingLeft="@dimen/activity_mid_padding"
+                android:paddingRight="@dimen/activity_mid_padding"
                 android:textSize="@dimen/textSizeLarge"
                 tools:ignore="Autofill,RtlHardcoded" />
 
@@ -95,7 +99,8 @@
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="1"
-                android:padding="@dimen/activity_mid_padding"
+                android:paddingLeft="@dimen/activity_mid_padding"
+                android:paddingRight="@dimen/activity_mid_padding"
                 android:textSize="@dimen/textSizeLarge"
                 tools:ignore="Autofill,RtlHardcoded" />
         </LinearLayout>

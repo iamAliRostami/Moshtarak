@@ -143,10 +143,6 @@ public class ChartActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        binding = null;
-        context = null;
-        listText = null;
-        listValue = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

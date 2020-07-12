@@ -159,12 +159,6 @@ public class AfterSaleServicesActivity extends BaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        binding = null;
-        context = null;
-        sharedPreference = null;
-        servicesId = null;
-        servicesTitle = null;
-        requestServices = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

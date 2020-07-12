@@ -247,9 +247,6 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     @Override
     protected void onStop() {
         super.onStop();
-        lovelyTextInputDialog = null;
-        context = null;
-        binding = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

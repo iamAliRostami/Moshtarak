@@ -71,9 +71,6 @@ public class SessionActivity extends AppCompatActivity implements ICallback<Arra
     @Override
     protected void onStop() {
         super.onStop();
-        binding = null;
-        context = null;
-        sessionCustomAdapter = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

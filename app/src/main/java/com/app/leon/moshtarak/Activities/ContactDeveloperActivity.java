@@ -37,9 +37,6 @@ public class ContactDeveloperActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        binding.imageView1.setImageDrawable(null);
-        binding.imageView2.setImageDrawable(null);
-        binding = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
