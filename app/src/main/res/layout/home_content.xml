@@ -14,20 +14,17 @@
     tools:context="com.app.leon.moshtarak.Activities.HomeActivity"
     tools:ignore="RtlHardcoded,UnusedAttribute">
 
+    <include layout="@layout/footer" />
+
+    <include layout="@layout/header" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayoutFooter"
+        android:layout_below="@+id/linearLayoutHeader"
         android:orientation="vertical"
         android:paddingTop="3dp">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="2dp"
-            android:background="@color/transparent"
-            android:padding="@dimen/activity_mid_padding"
-            android:src="@drawable/img_text_header" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -322,37 +319,6 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            style="@style/bottomView"
-            android:foregroundGravity="center"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            tools:ignore="RtlCompat">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginEnd="2dp"
-                    android:background="@color/transparent"
-                    android:foregroundGravity="center"
-                    android:src="@drawable/img_logo_footer"
-                    tools:ignore="RtlCompat" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/copy_right_2"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </RelativeLayout>
