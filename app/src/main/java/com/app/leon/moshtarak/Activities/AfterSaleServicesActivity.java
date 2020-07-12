@@ -169,7 +169,6 @@ public class AfterSaleServicesActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         binding = null;
-        context = null;
         sharedPreference = null;
         servicesId = null;
         servicesTitle = null;

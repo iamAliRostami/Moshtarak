@@ -67,15 +67,10 @@ public class HttpClientWrapperNew {
                         } catch (Exception e1) {
                             error[0] = new CustomErrorHandling(context).getErrorMessage(response.code(), errorHandlerType);
                         }
-                        new CustomDialog(DialogType.Yellow, context, error[0], context.getString(R.string.dear_user),
-                                context.getString(R.string.error), context.getString(R.string.accepted));
-//                        ((Activity)context).runOnUiThread(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                new CustomDialog(DialogType.Yellow, context, error[0], context.getString(R.string.dear_user),
-//                                        context.getString(R.string.error), context.getString(R.string.accepted));
-//                            }
-//                        });
+//                        new CustomDialog(DialogType.Yellow, context, error[0], context.getString(R.string.dear_user),
+//                                context.getString(R.string.error), context.getString(R.string.accepted));
+                        ((Activity) context).runOnUiThread(() -> new CustomDialog(DialogType.Yellow, context, error[0], context.getString(R.string.dear_user),
+                                context.getString(R.string.error), context.getString(R.string.accepted)));
                     }
                     progressBar.getDialog().dismiss();
                 }

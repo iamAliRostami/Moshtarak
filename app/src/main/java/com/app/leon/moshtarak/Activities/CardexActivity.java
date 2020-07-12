@@ -40,11 +40,12 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     private Context context;
     private String billId;
 
+    @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
         binding = CardexContentBinding.inflate(getLayoutInflater());
         View childLayout = binding.getRoot();
-        @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         context = this;
         accessData();
@@ -87,13 +88,15 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
 
     @Override
     public void execute(ArrayList<Cardex> cardexes) {
+        for (int i = 1; i < cardexes.size(); i++) {
+            if (cardexes.get(i).getOweDate() != null) {
+                float floatNumber = Float.parseFloat(cardexes.get(i).getUsage());
+                yAxisData.add(0, (int) floatNumber);
+                axisValues.add(cardexes.get(i).getOweDate());
+            }
+        }
         cardexCustomAdapter = new CardexCustomAdapter(cardexes, context);
         binding.listViewCardex.setAdapter(cardexCustomAdapter);
-        for (int i = 0; i < cardexes.size(); i++) {
-            float floatNumber = Float.parseFloat(cardexes.get(i).getUsage());
-            yAxisData.add((int) floatNumber);
-            axisValues.add(cardexes.get(i).getOweDate());
-        }
         LayoutInflater inflater = getLayoutInflater();
         ViewGroup header = (ViewGroup) inflater.inflate(R.layout.cardex_header,
                 binding.listViewCardex, false);

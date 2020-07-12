@@ -65,7 +65,7 @@ public class LastBillFileActivity extends AppCompatActivity {
     Bitmap bitmapBill;
     Code128 code128;
     Paint tPaint;
-    int small = 24, medium = 33, large = 70, huge = 100;
+    int small = 14, medium = 20, large = 70, huge = 100;
 
     @SuppressLint("SimpleDateFormat")
     @Override
@@ -432,7 +432,8 @@ public class LastBillFileActivity extends AppCompatActivity {
         } else {
             billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
                     get(sharedPreference.getIndex());
-            Toast.makeText(MyApplication.getContext(), "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(billId),
+                    Toast.LENGTH_LONG).show();
             fillLastBillInfo();
         }
     }
