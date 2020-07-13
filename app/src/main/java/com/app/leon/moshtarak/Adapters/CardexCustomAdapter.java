@@ -38,8 +38,8 @@ public class CardexCustomAdapter extends ArrayAdapter<Cardex> {
                 cardex.setOweDate(creditor);
             }
         }
-        this.cardexes.add(0, new Cardex());
         Collections.sort(this.cardexes, (o1, o2) -> o2.getOweDate().compareTo(o1.getOweDate()));
+        this.cardexes.add(0, new Cardex());
         this.context = context;
     }
 

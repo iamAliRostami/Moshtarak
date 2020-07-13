@@ -88,13 +88,14 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
 
     @Override
     public void execute(ArrayList<Cardex> cardexes) {
-        for (int i = 1; i < cardexes.size(); i++) {
+        for (int i = 0; i < cardexes.size(); i++) {
             if (cardexes.get(i).getOweDate() != null) {
                 float floatNumber = Float.parseFloat(cardexes.get(i).getUsage());
                 yAxisData.add(0, (int) floatNumber);
                 axisValues.add(cardexes.get(i).getOweDate());
             }
         }
+//        Log.e("size", String.valueOf(yAxisData.size()));
         cardexCustomAdapter = new CardexCustomAdapter(cardexes, context);
         binding.listViewCardex.setAdapter(cardexCustomAdapter);
         LayoutInflater inflater = getLayoutInflater();
