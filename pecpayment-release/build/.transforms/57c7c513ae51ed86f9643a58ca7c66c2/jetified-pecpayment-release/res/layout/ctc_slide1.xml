@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/all_theme"
+    android:layoutDirection="ltr"
+    android:background="#00FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/slot1Layout"
+        android:background="@drawable/dialog_bg_pec"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+
+
+        <ScrollView
+            android:id="@+id/totalscroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dialog_content"
+                android:orientation="vertical"
+                android:measureWithLargestChild="false">
+
+                <TextView
+                    android:id="@+id/destPanCTC"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/allowed_banks"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content" />
+                <!--<TextView-->
+                    <!--android:gravity="center_vertical|center_horizontal"-->
+                    <!--android:text="@string/allowed_banks_desc"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:layout_height="wrap_content" />-->
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/md_grey_200"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_ctc_banks"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="4dp"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/md_grey_200"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"/>
+                <LinearLayout
+                    android:id="@+id/bad_bank_warning"
+                    android:orientation="horizontal"
+                    android:gravity="right"
+                    android:visibility="gone"
+                    android:layout_marginRight="22dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/bad_bank_warning"
+                        android:layout_width="match_parent"
+                        android:textColor="@color/md_red_500"
+                        android:textSize="10dp"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:src="@drawable/warning_sign"
+                        android:layout_height="35dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="22dp"
+                        android:layout_marginRight="22dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/md_grey_200">
+
+
+
+                        <AutoCompleteTextView
+                            android:id="@+id/c1_pan"
+                            android:layout_width="match_parent"
+                            android:inputType="number"
+                            android:layout_gravity="left|center"
+                            android:maxLength="19"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:background="@color/md_grey_200"
+                            style="@style/all_theme"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:hint="@string/card_id_1"
+                            android:imeOptions="flagNoExtractUi"
+                            android:layout_height="35dp">
+                            <requestFocus />
+                        </AutoCompleteTextView>
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="left|center"
+                            android:gravity="center"
+                            android:background="@color/md_grey_200"
+                            android:id="@+id/bank_pic_source"
+                            android:padding="3dp" />
+
+                        <ImageButton
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="right|center"
+                            android:gravity="center"
+                            android:background="@color/md_grey_200"
+                            android:id="@+id/clear"
+                            android:src="@drawable/ic_delall"
+                            android:padding="10dp" />
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                    android:id="@+id/pin2_layout"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:orientation="horizontal"
+                    android:background="@color/md_grey_200">
+
+                        <EditText
+                            android:id="@+id/password_field"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:ems="10"
+                            android:inputType="numberPassword"
+                            android:textColorHint="@color/md_grey_700"
+                            android:padding="7dp"
+                            android:background="@color/md_grey_200"
+                            android:gravity="center"
+                            android:hint="@string/second_pass"
+                            android:layout_gravity="left|top"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:enabled="true"
+                            android:clickable="true"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:singleLine="true"
+                            android:textColor="#5e5e5e" />
+
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/cvv2_layout"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:background="@color/md_white_1000">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="left"
+                        android:background="@color/md_white_1000">
+
+                        <EditText
+                            android:id="@+id/year_field"
+                            android:layout_width="54dp"
+                            android:layout_height="35dp"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            android:maxLength="2"
+                            android:padding="7dp"
+                            android:background="@color/md_grey_200"
+                            android:gravity="center"
+                            android:hint="@string/year"
+                            android:layout_gravity="left|top"
+                            android:textSize="16dp"
+                            android:textColorHint="@color/md_grey_700"
+                            android:textStyle="bold"
+                            android:enabled="true"
+                            android:clickable="true"
+                            android:layout_marginRight="5dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:singleLine="true"
+                            android:textColor="#5e5e5e" />
+
+
+                        <TextView
+                            android:id="@+id/seprator"
+                            android:layout_width="20dp"
+                            android:layout_height="35dp"
+                            android:ems="10"
+                            android:background="@color/md_white_1000"
+                            android:gravity="center"
+                            android:hint="@string/month"
+                            android:layout_gravity="right|top"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:text="/"
+                            android:layout_marginRight="5dp"
+
+                            android:singleLine="true"
+                            android:textColor="#5e5e5e" />
+
+                        <EditText
+                            android:id="@+id/month_field"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:maxLength="2"
+                            android:ems="10"
+                            android:inputType="numberDecimal"
+                            android:textColorHint="@color/md_grey_700"
+                            android:padding="7dp"
+                            android:background="@color/md_grey_200"
+                            android:gravity="center"
+                            android:hint="@string/month"
+                            android:layout_gravity="right|top"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:enabled="true"
+                            android:clickable="true"
+                            android:layout_marginRight="5dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:singleLine="true"
+                            android:textColor="#5e5e5e" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+
+                        android:background="@color/md_white_1000">
+
+
+                        <EditText
+                            android:id="@+id/cvv2_field"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:ems="10"
+                            android:inputType="numberPassword"
+                            android:padding="7dp"
+                            android:background="@color/md_grey_200"
+                            android:gravity="center"
+                            android:hint="@string/cvv2"
+                            android:layout_gravity="right|top"
+                            android:textSize="16dp"
+                            android:maxLength="6"
+                            android:textStyle="bold"
+                            android:enabled="true"
+                            android:clickable="true"
+                            android:paddingLeft="8dp"
+                            android:textColorHint="@color/md_grey_700"
+                            android:singleLine="true"
+                            android:textColor="#5e5e5e" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/md_grey_200">
+
+
+
+                    <AutoCompleteTextView
+                        android:id="@+id/c2_pan"
+                        android:layout_width="match_parent"
+                        android:inputType="number"
+                        android:layout_gravity="left|center"
+                        android:maxLength="19"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:background="@color/md_grey_200"
+                        style="@style/all_theme"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:hint="@string/card_id_2"
+                        android:imeOptions="flagNoExtractUi"
+                        android:layout_height="35dp"/>
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="left|center"
+                        android:gravity="center"
+                        android:background="@color/md_grey_200"
+                        android:id="@+id/bank_pic_dest"
+                        android:padding="3dp" />
+
+                    <ImageButton
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="right|center"
+                        android:gravity="center"
+                        android:background="@color/md_grey_200"
+                        android:id="@+id/clear_dest"
+                        android:src="@drawable/ic_delall"
+                        android:padding="10dp" />
+
+                </FrameLayout>
+                <EditText
+                    android:id="@+id/amount_ctc"
+                    android:layout_width="match_parent"
+                    android:inputType="number"
+                    android:layout_gravity="left|center"
+                    android:maxLength="19"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:background="@color/md_grey_200"
+                    style="@style/all_theme"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:hint="@string/amount_ctc"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginBottom="20dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <Button
+                        android:text="@string/inq_btn"
+                        android:padding="10dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="5dp"
+                        android:paddingLeft="8dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:background="@drawable/dialog_button_bg_pec"
+                        android:id="@+id/InquiryBtn"
+                        android:textColor="@color/md_white_1000"
+                        android:textStyle="normal|bold"
+                        android:textSize="14dp"
+                        android:layout_width="135dp"
+                        android:layout_height="42dp" />
+
+                    <Button
+                        android:id="@+id/exitBtn"
+                        android:padding="10dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:paddingRight="8dp"
+                        android:background="@drawable/dialog_button_cancle_bg_pec"
+                        android:scaleType="fitCenter"
+                        android:text="@string/cancel_txt"
+                        android:textColor="#000"
+                        android:textStyle="normal|bold"
+                        android:textSize="14dp"
+                        android:layout_width="135dp"
+                        android:layout_height="42dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/slot1Layout"
+        android:layout_height="250dp">
+
+    </LinearLayout>
+
+</RelativeLayout>

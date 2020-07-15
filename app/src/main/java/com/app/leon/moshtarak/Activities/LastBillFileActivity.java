@@ -48,6 +48,7 @@ import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.LastBillFileActivityBinding;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.top.lib.mpl.view.PaymentInitiator;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -55,7 +56,6 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import ir.pec.mpl.pecpayment.view.PaymentInitiator;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
@@ -662,15 +662,20 @@ public class LastBillFileActivity extends AppCompatActivity {
                 break;
             case 2://payment error
             case 5://internal error payment
+                enData = data.getStringExtra("enData");
                 errorType = data.getIntExtra("errorType", 0);
                 orderId = data.getIntExtra("OrderID", 0);
                 break;
             case 4://bill payment error
             case 6://internal error bill
             case 9:// internal error charge
+                enData = data.getStringExtra("enData");
                 errorType = data.getIntExtra("errorType", 0);
                 break;
         }
+        Log.e("status", status);
+        Log.e("message", message);
+//        Log.e("enData", enData);
         if (errorType != 0) {
             showErrorTypeMpl(errorType);
         } else {

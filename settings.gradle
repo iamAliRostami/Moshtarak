@@ -1,1 +1,3 @@
-include ':app', ':pecpayment-release'
+include ':pecpayment-release'
+include ':pecpayment-release'
+include ':app'

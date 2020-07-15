@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/all_theme"
+    android:layoutDirection="ltr"
+    android:background="#00FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_bg_pec"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+
+
+        <ScrollView
+            android:id="@+id/totalscroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dialog_content"
+                android:orientation="vertical"
+                android:measureWithLargestChild="false">
+
+                <!--<FrameLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:gravity="left"-->
+                <!--android:layout_marginTop="4dp"-->
+                <!--android:layout_marginLeft="30dp"-->
+                <!--android:layout_marginRight="30dp">-->
+
+
+                <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:visibility="visible"-->
+                <!--android:id="@+id/bill_layout">-->
+
+
+
+
+                <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_gravity="center">-->
+
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="ریال "-->
+                <!--android:textSize="15sp"-->
+                <!--android:id="@+id/rial_text"-->
+                <!--android:textColor="#000000" />-->
+
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/bill_price"-->
+                <!--style="@style/all_theme"-->
+                <!--android:textSize="21sp"-->
+                <!--android:text="100"-->
+                <!--android:layout_marginLeft="6dp"-->
+                <!--android:textColor="#0b4692" />-->
+
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/bill_price"-->
+                <!--android:id="@+id/price_text"-->
+                <!--android:textSize="15sp"-->
+                <!--android:layout_marginLeft="6dp"-->
+                <!--android:textColor="#010000" />-->
+                <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
+                <!--</FrameLayout>-->
+
+                <!--<FrameLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+
+                <!--<RelativeLayout-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/txtPG"-->
+                <!--android:text="واریز به کارت "-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:textColor="#000000"-->
+                <!--android:paddingTop="8dp"-->
+                <!--android:maxWidth="140dp" />-->
+
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/destNamePG"-->
+                <!--android:text="مسعود براتی"-->
+                <!--android:layout_toLeftOf="@+id/txtPG"-->
+                <!--android:textColor="#093b55"-->
+                <!--android:paddingTop="8dp"-->
+                <!--android:maxWidth="140dp" />-->
+
+
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="ملی۱۴۸۹"-->
+                <!--android:textColor="#134d90"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:id="@+id/destPanPG"-->
+                <!--android:paddingTop="8dp" />-->
+
+                <!--</RelativeLayout>-->
+
+                <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="2px"-->
+                <!--android:background="@color/md_grey_200"-->
+                <!--android:layout_gravity="bottom"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginRight="20dp"/>-->
+
+                <!--</FrameLayout>-->
+
+
+                <!--<FrameLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:gravity="right"-->
+
+                <!--android:layout_marginLeft="30dp"-->
+                <!--android:layout_marginRight="30dp"-->
+                <!--android:layout_marginTop="15dp">-->
+
+
+                <!--</FrameLayout>-->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="27dp"
+                    android:layout_marginTop="27dp"
+                    android:background="@color/md_grey_200">
+
+
+
+                    <AutoCompleteTextView
+                        android:id="@+id/pan"
+                        android:layout_width="match_parent"
+                        android:inputType="number"
+                        android:layout_gravity="left|center"
+                        android:maxLength="19"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:background="@drawable/mpl_txt_bg"
+                        style="@style/all_theme"
+                        android:textSize="16dp"
+                        android:enabled="false"
+                        android:textStyle="bold"
+                        android:hint="@string/card_id"
+                        android:layout_height="45dp">
+                        <requestFocus />
+                    </AutoCompleteTextView>
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="left|center"
+                        android:gravity="center"
+                        android:id="@+id/bank_pic"
+                        android:padding="3dp" />
+
+                </FrameLayout>
+
+
+                <com.top.lib.mpl.view.customView.KeyboardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/PassKey"/>
+
+
+                <!--<EditText-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:inputType="numberDecimal"-->
+                <!--android:ems="10"-->
+                <!--android:padding="7dp"-->
+                <!--android:layout_marginRight="30dp"-->
+                <!--android:background="@color/md_grey_200"-->
+                <!--android:layout_marginLeft="30dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginBottom="40dp"-->
+                <!--android:id="@+id/secondPassEditTxt"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:password="true"-->
+                <!--android:gravity="center"-->
+                <!--android:hint="@string/second_pass" />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="27dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:id="@+id/TSPLayout_ctc">
+
+
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:text="اطلاعات کارت را در درگاه بانک پارسیان\n ذخیره کن"
+                        android:id="@+id/tsptxt"
+                        android:textColor="#1E88E5"
+                        android:textStyle="normal"
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:breakStrategy="simple"
+                        android:textAlignment="center"
+                        android:layout_width="wrap_content" />
+
+                    <CheckBox
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:id="@+id/user_tsp_ctc"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="27dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:id="@+id/RuleLayout">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:text="راهنمای رمز پویا"
+                        android:id="@+id/harimInfoBtn"
+                        android:textColor="#1E88E5"
+                        android:textStyle="normal"
+                        android:textSize="14dp"
+                        android:breakStrategy="simple"
+                        android:textAlignment="center"
+                        android:layout_width="wrap_content" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/Certificate"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="3dp"
+                        android:src="@drawable/certificate"
+                        />
+                    <CheckBox
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:id="@+id/rulesConf"
+                        android:visibility="gone"
+                        android:checked="true"
+                        />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingRight="27dp"
+                    android:paddingLeft="27dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center">
+                    <Button
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:background="@drawable/mpl_cancel_pay_btn"
+                        android:textColor="@color/md_white_1000"
+                        android:text="انصراف"
+                        android:layout_marginRight="13dp"
+                        android:id="@+id/exitBtn"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:padding="10dp"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:id="@+id/Paybutton"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:padding="10dp"
+                        android:background="@drawable/mpl_pay_btn"
+                        android:textColor="@color/md_white_1000"
+                        android:text="@string/pecpay_lib_pay"
+                        android:layout_weight="2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>
