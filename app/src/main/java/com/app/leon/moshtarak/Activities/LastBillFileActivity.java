@@ -33,11 +33,14 @@ import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
+import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
+import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
+import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.CustomProgressBar;
 import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
@@ -52,15 +55,18 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import ir.pec.mpl.pecpayment.view.PaymentInitiator;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
 public class LastBillFileActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 626;
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND = 621;
+    private static final int REQUEST_CODE_PAYMENT_BILL = 199;
+
     static LastBillInfoV2 lastBillInfo;
     LastBillFileActivityBinding binding;
-    String imageName, billId, payId;
+    String imageName, billId, payId, apiKey;
     Context context;
     Bitmap bitmapBill;
     Code128 code128;
@@ -80,38 +86,15 @@ public class LastBillFileActivity extends AppCompatActivity {
         initialize();
     }
 
-    @SuppressLint("SimpleDateFormat")
-    void initialize() {
-        imageName = "bill_".concat((new SimpleDateFormat("yyyyMMdd_HHmmss")).
-                format(new Date())).concat(".jpg");
-        tPaint = new Paint();
-
-        tPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), MyApplication.getFontName()));
-        tPaint.setStyle(Paint.Style.FILL);
-        accessData();
-
-        binding.buttonShare.setOnClickListener(v -> {
-            if (Build.VERSION.SDK_INT >= 23) {
-                if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        == PackageManager.PERMISSION_GRANTED) {
-                    new SendImages(context, bitmapBill).execute();
-                } else {
-                    ActivityCompat.requestPermissions(this,
-                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND);
-                }
-            } else {
-                Toast.makeText(context, R.string.error_android_version, Toast.LENGTH_LONG).show();
-            }
-        });
-
-        binding.buttonSave.setOnClickListener(v -> {
+    View.OnClickListener onClickListenerSave = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
             if (Build.VERSION.SDK_INT >= 23) {
                 if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         == PackageManager.PERMISSION_GRANTED) {
                     new SaveImages(context, bitmapBill).execute();
                 } else {
-                    ActivityCompat.requestPermissions(this,
+                    ActivityCompat.requestPermissions(LastBillFileActivity.this,
                             new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                             REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION);
                 }
@@ -122,13 +105,59 @@ public class LastBillFileActivity extends AppCompatActivity {
                     Toast.makeText(context, R.string.error_preparing, Toast.LENGTH_LONG).show();
                 }
             }
-        });
+        }
+    };
+    View.OnClickListener onClickListenerShare = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if (Build.VERSION.SDK_INT >= 23) {
+                if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        == PackageManager.PERMISSION_GRANTED) {
+                    new SendImages(context, bitmapBill).execute();
+                } else {
+                    ActivityCompat.requestPermissions(LastBillFileActivity.this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND);
+                }
+            } else {
+                Toast.makeText(context, R.string.error_android_version, Toast.LENGTH_LONG).show();
+            }
+        }
+    };
+    View.OnClickListener onClickListenerPay = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if (!lastBillInfo.isPayed()) {
+                getToken();
+            } else
+                Toast.makeText(MyApplication.getContext(),
+                        MyApplication.getContext().getString(R.string.payed_2),
+                        Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    @SuppressLint("SimpleDateFormat")
+    void initialize() {
+        imageName = "bill_".concat((new SimpleDateFormat("yyyyMMdd_HHmmss")).
+                format(new Date())).concat(".jpg");
+        tPaint = new Paint();
+        tPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), MyApplication.getFontName()));
+        tPaint.setStyle(Paint.Style.FILL);
+        accessData();
+        onClickListener();
+    }
+
+    void onClickListener() {
+        binding.buttonShare.setOnClickListener(onClickListenerShare);
+        binding.buttonSave.setOnClickListener(onClickListenerSave);
+        binding.buttonPay.setOnClickListener(onClickListenerPay);
     }
 
     public Uri getImageUri(Bitmap src, Bitmap.CompressFormat format, int quality) {
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         src.compress(format, quality, os);
-        String path = MediaStore.Images.Media.insertImage(getContentResolver(), src, "bill", null);
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), src, "bill",
+                null);
         return Uri.parse(path);
     }
 
@@ -432,6 +461,8 @@ public class LastBillFileActivity extends AppCompatActivity {
         } else {
             billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
                     get(sharedPreference.getIndex());
+            apiKey = sharedPreference.getArrayList(SharedReferenceKeys.API_KEY.getValue()).
+                    get(sharedPreference.getIndex());
             Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(billId),
                     Toast.LENGTH_LONG).show();
             fillLastBillInfo();
@@ -444,7 +475,7 @@ public class LastBillFileActivity extends AppCompatActivity {
         byte[] encodeValue = Base64.encode(billId.getBytes(), Base64.DEFAULT);
         String base64 = new String(encodeValue);
         Call<LastBillInfoV2> call = getThisBillInfo.getLastBillInfo(billId, base64.substring(0, base64.length() - 1));
-        ThisBill1 thisBill = new LastBillFileActivity.ThisBill1();
+        ThisBill thisBill = new ThisBill();
         HttpClientWrapperNew.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
     }
 
@@ -590,7 +621,94 @@ public class LastBillFileActivity extends AppCompatActivity {
         }
     }
 
-    class ThisBill1 implements ICallback<LastBillInfoV2> {
+    void getToken() {
+        Retrofit retrofit = NetworkHelper.getInstance();
+        final IAbfaService getToken = retrofit.create(IAbfaService.class);
+        Call<SimpleMessage> call = getToken.getToken(apiKey);
+        GetToken getToken1 = new GetToken();
+        HttpClientWrapperNew.callHttpAsync(call, getToken1, context, ProgressType.SHOW.getValue());
+    }
+
+    void pay(String simpleMessage) {
+        Intent intent = new Intent(LastBillFileActivity.this, PaymentInitiator.class);
+        intent.putExtra("Type", "1");
+        intent.putExtra("Token", simpleMessage);
+        startActivityForResult(intent, REQUEST_CODE_PAYMENT_BILL);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_PAYMENT_BILL) {
+            getPaymentResultCode(resultCode, data);
+        }
+    }
+
+    private void getPaymentResultCode(int resultCode, Intent data) {
+//
+//        if (G.onMplResult != null) {
+//            G.onMplResult.onResult(false);
+//        }
+
+        String enData = "", message = "", status = "0";
+        int errorType = 0, orderId = 0;
+
+        switch (resultCode) {
+            case 1:// payment ok
+            case 3://bill payment ok
+                enData = data.getStringExtra("enData");
+                message = data.getStringExtra("message");
+                status = String.valueOf(data.getIntExtra("status", 0));
+                break;
+            case 2://payment error
+            case 5://internal error payment
+                errorType = data.getIntExtra("errorType", 0);
+                orderId = data.getIntExtra("OrderID", 0);
+                break;
+            case 4://bill payment error
+            case 6://internal error bill
+            case 9:// internal error charge
+                errorType = data.getIntExtra("errorType", 0);
+                break;
+        }
+        if (errorType != 0) {
+            showErrorTypeMpl(errorType);
+        } else {
+            new CustomDialog(DialogType.Yellow, context, message, context.getString(R.string.dear_user),
+                    context.getString(R.string.pay), context.getString(R.string.accepted));
+        }
+    }
+
+    private void showErrorTypeMpl(int errorType) {
+        String message = "";
+        switch (errorType) {
+            case 2:
+                message = getString(R.string.time_out_error);
+                break;
+            case 1000:
+                message = getString(R.string.connection_error);
+                break;
+            case 1001:
+                message = getString(R.string.server_error);
+                break;
+            case 1002:
+                message = getString(R.string.network_error);
+                break;
+            case 201:
+                message = getString(R.string.dialog_canceled);
+                break;
+            case 2334:
+                message = getString(R.string.device_root);
+                break;
+        }
+
+        if (message.length() > 0) {
+            Log.e("Error", message);
+            Toast.makeText(MyApplication.getContext(), message, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    class ThisBill implements ICallback<LastBillInfoV2> {
         @SuppressLint("DefaultLocale")
         @Override
         public void execute(LastBillInfoV2 lastBillInfo) {
@@ -603,14 +721,20 @@ public class LastBillFileActivity extends AppCompatActivity {
         }
     }
 
+    class GetToken implements ICallback<SimpleMessage> {
+        @Override
+        public void execute(SimpleMessage simpleMessage) {
+            pay(simpleMessage.getMessage());
+        }
+    }
 
     @SuppressLint("StaticFieldLeak")
-    class ThisBill extends AsyncTask<Object, Object, Object> {
+    class ThisBillOld extends AsyncTask<Object, Object, Object> {
         CustomProgressBar customProgressBar;
         Context context;
         LastBillInfoV2 lastBillInfoV2;
 
-        public ThisBill(Context context) {
+        public ThisBillOld(Context context) {
             this.context = context;
             customProgressBar = new CustomProgressBar();
         }

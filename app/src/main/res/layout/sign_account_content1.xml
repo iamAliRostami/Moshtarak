@@ -55,13 +55,13 @@
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/activity_large_margin"
-                            android:layout_marginRight="@dimen/activity_large_margin"
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:text="@string/id_bill"
-                            android:textSize="@dimen/textSizeMedium" />
+                            android:textSize="@dimen/textSizeSmall" />
 
                         <Spinner
                             android:id="@+id/spinnerAccounts"
@@ -80,7 +80,7 @@
                         android:background="@drawable/border_yellow_"
                         android:text="@string/change_account"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/textSizeMedium" />
+                        android:textSize="@dimen/textSizeSmall" />
 
                     <Button
                         android:id="@+id/buttonLogOut"
@@ -90,7 +90,7 @@
                         android:background="@drawable/border_red_"
                         android:text="@string/logout"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/textSizeMedium" />
+                        android:textSize="@dimen/textSizeSmall" />
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/id_bill"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textSize="@dimen/textSizeSmall" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -127,7 +127,7 @@
                     android:layout_marginLeft="@dimen/activity_large_margin"
                     android:layout_marginRight="@dimen/activity_large_margin"
                     android:text="@string/mobile_number"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textSize="@dimen/textSizeSmall" />
 
                 <LinearLayout
                     android:id="@+id/linearLayoutMobile"
@@ -168,7 +168,7 @@
                         android:layout_marginStart="@dimen/activity_mid_margin"
                         android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:text="@string/_09"
-                        android:textSize="@dimen/textSizeMedium" />
+                        android:textSize="@dimen/textSizeSmall" />
 
 
                 </LinearLayout>
@@ -180,7 +180,6 @@
                     android:layout_margin="@dimen/activity_mid_margin"
                     android:gravity="center"
                     android:text="@string/Why_We_Ask_For_This_Information"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/blue5" />
 
                 <Button
@@ -191,7 +190,7 @@
                     android:background="@drawable/border_green_"
                     android:text="@string/login"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textSize="@dimen/textSizeSmall" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

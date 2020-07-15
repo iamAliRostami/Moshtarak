@@ -111,7 +111,7 @@ dependencies {
 //    implementation 'com.google.firebase:firebase-core:17.4.3'
 //    implementation 'com.google.firebase:firebase-firestore:21.4.3'
 
-//    implementation project(path: ':pecpayment-release')
-//    implementation 'com.mcxiaoke.volley:library:1.0.19'
+    implementation project(path: ':pecpayment-release')
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -66,7 +66,7 @@
                             android:layout_marginEnd="25dp"
                             android:gravity="center"
                             android:padding="6dp"
-                            android:text="@string/pay"
+                            android:text="@string/pay_cost"
                             android:textColor="@color/green2"
                             android:textSize="@dimen/textSizeMedium"
                             tools:ignore="RtlCompat" />
@@ -730,7 +730,7 @@
                         android:text="@string/abonmanAb"
                         android:textColor="@color/green2"
                         android:textSize="@dimen/textSizeMedium"
-                        tools:ignore="RtlCompat" />
+                        tools:ignore="RtlCompat,TooManyViews" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/textViewAbonmanAb"
@@ -1073,7 +1073,7 @@
                         android:paddingTop="6dp"
                         android:paddingRight="6dp"
                         android:paddingBottom="6dp"
-                        android:text="@string/pay"
+                        android:text="@string/pay_cost"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         tools:ignore="RtlHardcoded,RtlSymmetry" />

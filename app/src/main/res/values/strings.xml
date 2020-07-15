@@ -16,7 +16,7 @@
     <string name="train">آموزش</string>
     <string name="help">راهنما</string>
     <string name="support">خدمات پس ازفروش</string>
-    <string name="suggest">انتقادات پیشنهادات</string>
+    <string name="suggest">انتقادات و پیشنهادها</string>
 
     <string name="login">ثبت</string>
 
@@ -79,6 +79,14 @@
     <string name="error_not_update1">همکار گرامی لطفا نسخه به روز شده اپلیکیشن را از منوی تنظیمات  بخش به روز رسانی دریافت نمایید</string>
     <string name="error_not_update2">همکار گرامی لطفا چهت دریافت آخرین نسخه اپلیکیشن با راهبر تماس حاصل فرمایید</string>
     <string name="error_not_auth">مجوز های شما باطل شده است، از برنامه خارج و مجددا وارد شوید</string>
+    <string name="error_preparing">مشکلی در فرآیند آماده سازی روی داده است</string>
+    <string name="error_android_version">نسخه اندروید شما این ویژگی را پشتیبانی نمی کند</string>
+    <string name="time_out_error">پاسخی دریافت نشد</string>
+    <string name="connection_error">خطا در جابجای اطلاعات، لطفا مجدد تلاش کنید</string>
+    <string name="server_error">سرور در حال تغییرات است، لطفا منتظر بمانید</string>
+    <string name="network_error">خطا در جابجای اطلاعات، لطفا مجدد تلاش کنید</string>
+    <string name="dialog_canceled">پرداخت لغو شد</string>
+    <string name="device_root">دستگاه شما روت شده است</string>
 
     <string name="water_resource">منابع آب منطقه</string>
     <string name="using_method">روش های صحیح مصرف</string>
@@ -96,7 +104,7 @@
     <string name="lavazeme_kahande">لوازم کاهنده</string>
     <string name="maliat">مالیات و عوارض</string>
     <string name="other_">سایر</string>
-    <string name="pay">مبلغ قابل پرداخت</string>
+    <string name="pay_cost">مبلغ قابل پرداخت</string>
     <string name="phone_number">تلفن ثابت</string>
     <string name="mobile_number">تلفن همراه</string>
     <string name="address">نشانی</string>
@@ -165,13 +173,11 @@
     <string name="send_to">ارسال به</string>
     <string name="save">ذخیره</string>
     <string name="saved">ذخیره سازی با موفقیت انجام شد</string>
-    <string name="error_preparing">مشکلی در فرآیند آماده سازی روی داده است</string>
-    <string name="error_android_version">نسخه اندروید شما این ویژگی را پشتیبانی نمی کند</string>
     <string name="number_zero">0</string>
     <string name="setad_phone">تلفن ستاد:</string>
-    <string name="setad_phone_number">031-36680030</string>
+    <string name="setad_phone_number">031–36680030</string>
     <string name="fax">نمابر:</string>
-    <string name="fax_namber">031-36689586</string>
+    <string name="fax_namber">031–36689586</string>
     <string name="abfa_email_address">info@abfaisfahan.ir</string>
     <string name="email">ایمیل:</string>
     <string name="user_service">تلفن خدمات مشترکین:</string>
@@ -181,5 +187,6 @@
     <string name="help_url">http://crm.abfaesfahan.ir/android/help</string>
     <string name="using_method_url">http://crm.abfaesfahan.ir/android/learn</string>
     <string name="_000000000">000000000</string>
+    <string name="pay">پرداخت</string>
 
 </resources>
