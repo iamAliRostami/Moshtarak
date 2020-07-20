@@ -94,7 +94,6 @@
     <string name="reduce_component">تجهیزات کاهنده</string>
     <string name="sign">ثبت</string>
     <string name="message">message</string>
-    <string name="dash">-</string>
     <string name="pay_id">شناسه پرداخت</string>
     <string name="pre_number">شماره قبلی قرائت</string>
     <string name="now_number">شماره فعلی قرائت</string>
@@ -154,6 +153,7 @@
     <string name="canceled">عملیات متوقف شد.</string>
     <string name="Why_We_Ask_For_This_Information">چرا به این اطلاعات نیاز است؟</string>
     <string name="enter_counter_number">لطفا شماره کنتور را وارد نمایید.</string>
+    <string name="enter_counter_number_method">\nدرصورتیکه طول شماره کنتور کمتر از 5 است، از سمت چپ صفر وارد کنید.</string>
     <string name="dont_show_again">دیگر نمایش نده!</string>
     <string name="_09">09</string>
     <string name="no_sms">شما در این مرحله پیامکی دریافت نکرده اید.</string>
@@ -188,5 +188,6 @@
     <string name="using_method_url">http://crm.abfaesfahan.ir/android/learn</string>
     <string name="_000000000">000000000</string>
     <string name="pay">پرداخت</string>
+    <string name="dash">" - "</string>
 
 </resources>

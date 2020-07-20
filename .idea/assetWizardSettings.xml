@@ -29,8 +29,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_untitled_4" />
-                            <entry key="sourceFile" value="F:\Android\AndroidStudioProjects\Moshtarak\Untitled-4.svg" />
+                            <entry key="outputName" value="border_bill_blue3" />
+                            <entry key="sourceFile" value="F:\Android\AndroidStudioProjects\Moshtarak\app\src\main\res\drawable\border_bill.svg" />
                           </map>
                         </option>
                       </PersistentState>

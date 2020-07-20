@@ -134,7 +134,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_blue"
+                    android:background="@drawable/border_blue_2"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -298,7 +298,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
-                android:background="@drawable/border_blue"
+                android:background="@drawable/border_blue_2"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -482,7 +482,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
-                android:background="@drawable/border_green"
+                android:background="@drawable/border_green_1"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -923,7 +923,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
-                android:background="@drawable/border_orange"
+                android:background="@drawable/border_orange_1"
                 android:orientation="vertical"
                 android:visibility="visible">
 
@@ -1054,7 +1054,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
-                android:background="@drawable/border_orange_"
+                android:background="@drawable/border_orange_2"
                 android:orientation="vertical"
                 android:visibility="visible">
 

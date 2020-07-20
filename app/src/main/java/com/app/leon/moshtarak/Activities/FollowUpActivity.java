@@ -86,7 +86,8 @@ public class FollowUpActivity extends BaseActivity implements ICallback<ArrayLis
     public void execute(ArrayList<FollowUpDto> followUpDtos) {
         binding.linearLayout1.setVisibility(View.GONE);
         binding.linearLayout2.setVisibility(View.VISIBLE);
-        FollowUpCustomAdapter followUpCustomAdapter = new FollowUpCustomAdapter(context, followUpDtos);
+        FollowUpCustomAdapter followUpCustomAdapter =
+                new FollowUpCustomAdapter(context, followUpDtos);
         binding.listViewFollowUp.setAdapter(followUpCustomAdapter);
     }
 

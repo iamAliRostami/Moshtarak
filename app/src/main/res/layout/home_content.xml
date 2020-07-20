@@ -23,8 +23,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/linearLayoutFooter"
         android:layout_below="@+id/linearLayoutHeader"
-        android:orientation="vertical"
-        android:paddingTop="3dp">
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -46,9 +45,9 @@
                     android:id="@+id/imageButtonLastBill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+
                     android:background="@color/transparent"
-                    android:padding="2dp"
+
                     android:src="@drawable/img_last_bill"
                     app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
@@ -75,9 +74,9 @@
                     android:id="@+id/imageButtonKardex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+
                     android:background="@color/transparent"
-                    android:padding="2dp"
+
                     android:src="@drawable/img_kardex" />
 
                 <TextView
@@ -138,9 +137,9 @@
                     android:id="@+id/imageButtonSale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+
                     android:background="@color/transparent"
-                    android:padding="2dp"
+
                     android:src="@drawable/img_sale" />
 
                 <TextView
@@ -168,9 +167,9 @@
                     android:id="@+id/imageButtonSupport"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+
                     android:background="@color/transparent"
-                    android:padding="2dp"
+
 
                     android:src="@drawable/img_support" />
 
@@ -199,10 +198,10 @@
                     android:id="@+id/imageButtonTracking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+
 
                     android:background="@color/transparent"
-                    android:padding="2dp"
+
 
                     android:src="@drawable/img_tracking" />
 
@@ -240,10 +239,10 @@
                     android:id="@+id/imageButtonHelp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+
 
                     android:background="@color/transparent"
-                    android:padding="2dp"
+
 
                     android:src="@drawable/img_help" />
 
@@ -271,9 +270,9 @@
                     android:id="@+id/imageButtonTrain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+
                     android:background="@color/transparent"
-                    android:padding="2dp"
+
                     android:src="@drawable/img_train" />
 
                 <TextView
@@ -300,10 +299,10 @@
                     android:id="@+id/imageButtonSuggest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+
 
                     android:background="@color/transparent"
-                    android:padding="2dp"
+
 
                     android:src="@drawable/img_suggest" />
 

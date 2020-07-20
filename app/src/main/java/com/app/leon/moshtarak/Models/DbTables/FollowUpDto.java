@@ -12,7 +12,7 @@ public class FollowUpDto {
     String minute;
     String status;
     ArrayList<String> smsList;
-
+    int stateCode;
     public FollowUpDto(String aidId, String billId, String dateJalali, String description,
                        String hour, String id, String minute, String status, ArrayList<String> smsList) {
         this.aidId = aidId;
@@ -24,6 +24,14 @@ public class FollowUpDto {
         this.minute = minute;
         this.status = status;
         this.smsList = smsList;
+    }
+
+    public int getStateCode() {
+        return stateCode;
+    }
+
+    public void setStateCode(int stateCode) {
+        this.stateCode = stateCode;
     }
 
     public String getAidId() {

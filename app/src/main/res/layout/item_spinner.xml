@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
 
     android:layout_height="?android:attr/listPreferredItemHeightSmall"
-    android:background="@drawable/border_gray_"
+    android:background="@drawable/border_gray_4"
     android:checkMark="?android:attr/listChoiceIndicatorMultiple"
     android:gravity="center_vertical"
     android:paddingStart="?android:attr/listPreferredItemPaddingStart"

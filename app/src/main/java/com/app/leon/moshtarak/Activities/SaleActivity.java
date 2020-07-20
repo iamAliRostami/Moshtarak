@@ -156,8 +156,8 @@ public class SaleActivity extends BaseActivity
     private void setEditTextNameOnFocusChangeListener() {
         binding.editTextName.setOnFocusChangeListener((view1, b) -> {
             if (b) {
-                binding.editTextName.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                binding.linearLayoutName.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                binding.editTextName.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
+                binding.linearLayoutName.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
                 binding.textViewName.setTextColor(getResources().getColor(R.color.orange2));
             } else {
                 binding.editTextName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
@@ -170,8 +170,8 @@ public class SaleActivity extends BaseActivity
     private void setEditTextFamilyOnFocusChangeListener() {
         binding.editTextFamily.setOnFocusChangeListener((view1, b) -> {
             if (b) {
-                binding.editTextFamily.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                binding.linearLayoutFamily.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                binding.editTextFamily.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
+                binding.linearLayoutFamily.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
                 binding.textViewFamily.setTextColor(getResources().getColor(R.color.orange2));
             } else {
                 binding.editTextFamily.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
@@ -184,8 +184,8 @@ public class SaleActivity extends BaseActivity
     private void setEditTextFatherNameOnFocusChangeListener() {
         binding.editTextFatherName.setOnFocusChangeListener((view1, b) -> {
             if (b) {
-                binding.editTextFatherName.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                binding.linearLayoutFatherName.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                binding.editTextFatherName.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
+                binding.linearLayoutFatherName.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
                 binding.textViewFatherName.setTextColor(getResources().getColor(R.color.orange2));
             } else {
                 binding.editTextFatherName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
@@ -198,8 +198,8 @@ public class SaleActivity extends BaseActivity
     private void setEditTextNationNumberOnFocusChangeListener() {
         binding.editTextNationNumber.setOnFocusChangeListener((view1, b) -> {
             if (b) {
-                binding.editTextNationNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                binding.linearLayoutNationNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                binding.editTextNationNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
+                binding.linearLayoutNationNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
                 binding.textViewNationNumber.setTextColor(getResources().getColor(R.color.orange2));
             } else {
                 binding.editTextNationNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
@@ -212,8 +212,8 @@ public class SaleActivity extends BaseActivity
     private void setEditTextPhoneNumberOnFocusChangeListener() {
         binding.editTextPhoneNumber.setOnFocusChangeListener((view1, b) -> {
             if (b) {
-                binding.editTextPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                binding.linearLayoutPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                binding.editTextPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
+                binding.linearLayoutPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
                 binding.textViewPhoneNumber.setTextColor(getResources().getColor(R.color.orange2));
             } else {
                 binding.editTextPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
@@ -226,8 +226,8 @@ public class SaleActivity extends BaseActivity
     private void setEditTextMobileOnFocusChangeListener() {
         binding.editTextMobile.setOnFocusChangeListener((view1, b) -> {
             if (b) {
-                binding.editTextMobile.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                binding.linearLayoutMobile.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                binding.editTextMobile.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
+                binding.linearLayoutMobile.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
                 binding.textViewMobile.setTextColor(getResources().getColor(R.color.orange2));
             } else {
                 binding.editTextMobile.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
@@ -240,8 +240,8 @@ public class SaleActivity extends BaseActivity
     private void setEditTextPostalCodeOnFocusChangeListener() {
         binding.editTextPostalCode.setOnFocusChangeListener((view1, b) -> {
             if (b) {
-                binding.editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                binding.linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                binding.editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
+                binding.linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
                 binding.textViewPostalCode.setTextColor(getResources().getColor(R.color.orange2));
             } else {
                 binding.editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
@@ -254,8 +254,8 @@ public class SaleActivity extends BaseActivity
     private void setEditTextBillIdOnFocusChangeListener() {
         binding.editTextBillId.setOnFocusChangeListener((view1, b) -> {
             if (b) {
-                binding.editTextBillId.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                binding.linearLayoutBillId.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                binding.editTextBillId.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
+                binding.linearLayoutBillId.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
                 binding.textViewBillId.setTextColor(getResources().getColor(R.color.orange2));
             } else {
                 binding.editTextBillId.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
@@ -268,8 +268,8 @@ public class SaleActivity extends BaseActivity
     private void setEditTextAddressOnFocusChangeListener() {
         binding.editTextAddress.setOnFocusChangeListener((view, b) -> {
             if (b) {
-                binding.editTextAddress.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                binding.linearLayoutAddress.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                binding.editTextAddress.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
+                binding.linearLayoutAddress.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
                 binding.textViewAddress.setTextColor(getResources().getColor(R.color.orange2));
             } else {
                 binding.editTextAddress.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
@@ -358,8 +358,8 @@ public class SaleActivity extends BaseActivity
     private void setEditTextPostalCodeChangedListener() {
         binding.editTextPostalCode.setOnFocusChangeListener((view1, b) -> {
             if (b) {
-                binding.editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
-                binding.linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_));
+                binding.editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
+                binding.linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
                 binding.textViewPostalCode.setTextColor(getResources().getColor(R.color.orange2));
             } else {
                 binding.editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));

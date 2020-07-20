@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
     android:orientation="vertical"
-    android:textDirection="rtl">
+    android:textDirection="rtl"
+    tools:ignore="UnusedAttribute">
 
     <include layout="@layout/view_color_area" />
 
@@ -42,7 +44,8 @@
                     android:inputType="number"
                     android:maxLength="1"
                     android:textColor="?android:textColorSecondary"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textSize="@dimen/textSizeMedium"
+                    tools:ignore="Autofill,LabelFor" />
 
                 <EditText
                     android:id="@+id/editTextNumber4"
@@ -56,7 +59,8 @@
                     android:inputType="number"
                     android:maxLength="1"
                     android:textColor="?android:textColorSecondary"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textSize="@dimen/textSizeMedium"
+                    tools:ignore="Autofill,LabelFor" />
 
 
                 <EditText
@@ -71,7 +75,8 @@
                     android:inputType="number"
                     android:maxLength="1"
                     android:textColor="?android:textColorSecondary"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textSize="@dimen/textSizeMedium"
+                    tools:ignore="Autofill,LabelFor" />
 
 
                 <EditText
@@ -86,7 +91,8 @@
                     android:inputType="number"
                     android:maxLength="1"
                     android:textColor="?android:textColorSecondary"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textSize="@dimen/textSizeMedium"
+                    tools:ignore="Autofill,LabelFor" />
 
                 <EditText
                     android:id="@+id/editTextNumber1"
@@ -100,7 +106,8 @@
                     android:inputType="number"
                     android:maxLength="1"
                     android:textColor="?android:textColorSecondary"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textSize="@dimen/textSizeMedium"
+                    tools:ignore="Autofill,LabelFor" />
             </LinearLayout>
 
             <TextView

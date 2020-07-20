@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray"
+                    android:background="@drawable/border_gray_1"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="@dimen/activity_mid_padding">
@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_"
+                    android:background="@drawable/border_gray_4"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
@@ -131,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_"
+                    android:background="@drawable/border_gray_4"
                     android:orientation="horizontal"
                     android:textStyle="bold"
                     android:weightSum="2">
@@ -201,7 +201,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_"
+                    android:background="@drawable/border_gray_4"
                     android:orientation="horizontal"
                     android:textStyle="bold"
                     android:weightSum="2">
@@ -270,7 +270,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_"
+                    android:background="@drawable/border_gray_4"
                     android:orientation="horizontal"
                     android:textStyle="bold"
                     android:weightSum="2">
@@ -338,7 +338,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_"
+                    android:background="@drawable/border_gray_4"
                     android:orientation="horizontal"
                     android:weightSum="2">
 

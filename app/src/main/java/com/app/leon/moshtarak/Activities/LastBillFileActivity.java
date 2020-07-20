@@ -71,21 +71,7 @@ public class LastBillFileActivity extends AppCompatActivity {
     Bitmap bitmapBill;
     Code128 code128;
     Paint tPaint;
-    int small = 14, medium = 20, large = 70, huge = 100;
-
-    @SuppressLint("SimpleDateFormat")
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = LastBillFileActivityBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
-        context = this;
-        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-        StrictMode.setVmPolicy(builder.build());
-        initialize();
-    }
-
+    int small = 40, medium = 50, large = 70, huge = 100;
     View.OnClickListener onClickListenerSave = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -135,6 +121,20 @@ public class LastBillFileActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
         }
     };
+
+    @SuppressLint("SimpleDateFormat")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = LastBillFileActivityBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+        context = this;
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        initialize();
+    }
+
 
     @SuppressLint("SimpleDateFormat")
     void initialize() {
@@ -631,7 +631,7 @@ public class LastBillFileActivity extends AppCompatActivity {
 
     void pay(String simpleMessage) {
         Intent intent = new Intent(LastBillFileActivity.this, PaymentInitiator.class);
-        intent.putExtra("Type", "1");
+        intent.putExtra("Type", "2");
         intent.putExtra("Token", simpleMessage);
         startActivityForResult(intent, REQUEST_CODE_PAYMENT_BILL);
     }
@@ -722,7 +722,8 @@ public class LastBillFileActivity extends AppCompatActivity {
 
             LastBillFileActivity.lastBillInfo = lastBillInfo;
             createImageToShow(lastBillInfo);
-            createImagePrintable(lastBillInfo);
+            if (Build.VERSION.SDK_INT >= 23)
+                createImagePrintable(lastBillInfo);
         }
     }
 
@@ -777,7 +778,8 @@ public class LastBillFileActivity extends AppCompatActivity {
 
                     lastBillInfo = lastBillInfoV2;
                     createImageToShow(lastBillInfo);
-                    createImagePrintable(lastBillInfo);
+                    if (Build.VERSION.SDK_INT >= 23)
+                        createImagePrintable(lastBillInfo);
                 }
             }
             return null;
@@ -798,6 +800,4 @@ public class LastBillFileActivity extends AppCompatActivity {
             return code;
         }
     }
-
-
 }

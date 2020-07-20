@@ -560,7 +560,7 @@ public class LastBillActivity extends BaseActivity {
 
     void pay(String simpleMessage) {
         Intent intent = new Intent(LastBillActivity.this, PaymentInitiator.class);
-        intent.putExtra("Type", "1");
+        intent.putExtra("Type", "2");
         intent.putExtra("Token", simpleMessage);
         startActivityForResult(intent, REQUEST_CODE_PAYMENT_BILL);
     }

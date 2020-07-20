@@ -61,7 +61,8 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         lovelyTextInputDialog = new LovelyTextInputDialog(this, R.style.EditTextTintTheme)
                 .setTopColorRes(R.color.orange1)
                 .setTitle(R.string.dear_user)
-                .setMessage(getString(R.string.enter_counter_number))
+                .setMessage(getString(R.string.enter_counter_number).concat(
+                        getString(R.string.enter_counter_number_method)))
                 .setCancelable(false)
                 .setInputFilter(R.string.all_field_should_filled, text -> {
                     EditText editTextNumber = LovelyTextInputDialog.getEditTextNumber(1);
@@ -171,7 +172,7 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
             billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
                     get(sharedPreference.getIndex());
             phoneNumber = sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
-                    get(sharedPreference.getIndex()).replaceFirst("09", "");
+                    get(sharedPreference.getIndex()).replaceFirst(getString(R.string._09), "");
             Toast.makeText(MyApplication.getContext(), "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
         }
     }
@@ -179,8 +180,10 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     private void sendNumber() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService sendNumber = retrofit.create(IAbfaService.class);
-        Call<LastBillInfo> call = sendNumber.sendNumber(billId, number, "09".concat(phoneNumber), 4);
-        HttpClientWrapperNew.callHttpAsync(call, SetCounterActivity.this, context, ProgressType.SHOW.getValue());
+        Call<LastBillInfo> call = sendNumber.sendNumber(billId, number, getString(R.string._09).
+                concat(phoneNumber), 4);
+        HttpClientWrapperNew.callHttpAsync(call, SetCounterActivity.this, context,
+                ProgressType.SHOW.getValue());
     }
 
     @Override

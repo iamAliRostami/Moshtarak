@@ -103,7 +103,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border_gray_">
+                    android:background="@drawable/border_gray_4">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextBillId"
@@ -142,7 +142,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/border_gray_">
+                        android:background="@drawable/border_gray_4">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/editTextMobile"
@@ -187,7 +187,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_green_"
+                    android:background="@drawable/border_green_2"
                     android:text="@string/login"
                     android:textColor="@color/white"
                     android:textSize="@dimen/textSizeSmall" />

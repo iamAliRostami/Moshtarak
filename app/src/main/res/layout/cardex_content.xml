@@ -27,7 +27,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/border_blue_2"
+            android:layout_marginLeft="@dimen/activity_mid_margin"
+            android:layout_marginRight="@dimen/activity_mid_margin"
+            android:background="@drawable/border_blue_1"
             android:gravity="center"
             android:orientation="horizontal">
 

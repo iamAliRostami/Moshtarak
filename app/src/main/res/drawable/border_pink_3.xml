@@ -9,6 +9,6 @@
         android:top="3dp" />
     <solid android:color="@color/transparent" />
     <stroke
-        android:width="2dp"
-        android:color="@color/blue2" />
+        android:width="@dimen/activity_mid_padding"
+        android:color="@color/pink3" />
 </shape>

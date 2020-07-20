@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/border_blue"
+        android:background="@drawable/border_blue_2"
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
