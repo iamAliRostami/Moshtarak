@@ -48,6 +48,12 @@ public interface IAbfaService {
             @Path("billId") String billId
     );
 
+    @GET("/MoshtarakinApi/V2/Bill/GetKardex/{api}/{billId}")
+    Call<ArrayList<Cardex>> getKardex(
+            @Path("billId") String billId,
+            @Path("api") String apiKey
+    );
+
     @GET("/MoshtarakinApi/Bill/GetKardex/{billId}")
     Call<ArrayList<Cardex>> getKardex(
             @Path("billId") String billId

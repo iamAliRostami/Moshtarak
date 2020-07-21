@@ -44,6 +44,7 @@
     <string name="base_info">اطلاعات انشعاب</string>
     <string name="file_number">ردیف</string>
     <string name="dear_user">مشترک گرامی!</string>
+    <string name="dear_user_">مشترک گرامی</string>
     <string name="account_">اشتراک</string>
     <string name="id_bill">شناسه قبض</string>
     <string name="id_bill_neighbour">شناسه همسایه</string>
@@ -153,7 +154,7 @@
     <string name="canceled">عملیات متوقف شد.</string>
     <string name="Why_We_Ask_For_This_Information">چرا به این اطلاعات نیاز است؟</string>
     <string name="enter_counter_number">لطفا شماره کنتور را وارد نمایید.</string>
-    <string name="enter_counter_number_method">\nدرصورتیکه طول شماره کنتور کمتر از 5 است، از سمت چپ صفر وارد کنید.</string>
+    <string name="enter_counter_number_method">\nدر صورتیکه شماره کنتور کمتر از 5 رقم است، از سمت چپ صفر وارد نمایید.</string>
     <string name="dont_show_again">دیگر نمایش نده!</string>
     <string name="_09">09</string>
     <string name="no_sms">شما در این مرحله پیامکی دریافت نکرده اید.</string>
@@ -162,6 +163,7 @@
     <string name="infoshamsaii_gmail_com">infoshamsaii@gmail.com</string>
     <string name="sepehr_shamsaei">سپهر شمسایی</string>
     <string name="abfa_site">https://www.abfaesfahan.ir</string>
+    <string name="mellat_site">https://bill.bpm.bankmellat.ir/bpgwchannel/</string>
     <string name="waiting">لطفا صبر کنید…</string>
     <string name="turn_internet_on">اینترنت وصل نیست، اینترنت وایفای یا همراه خود را روشن کنید.</string>
     <string name="active_user">اشتراک فعال:\n</string>
@@ -189,5 +191,29 @@
     <string name="_000000000">000000000</string>
     <string name="pay">پرداخت</string>
     <string name="dash">" - "</string>
+    <string name="bill_summary">خلاصه قبض</string>
+    <string name="bill_pay">شناسه پرداخت</string>
+    <string name="bill_id">شناسه قبض</string>
+    <string name="bill_water_pay">بهای آب مصرفی</string>
+    <string name="bill_fazelab_pay">بهای دفع فاضلاب</string>
+    <string name="bill_budget">تکلیف قانون بودجه</string>
+    <string name="bill_bedehi">بدهی قبلی</string>
+    <string name="bill_radif">شماره ردیف</string>
+    <string name="bill_barge">شماره برگه</string>
+    <string name="bill_account">شماره اشتراک</string>
+    <string name="bill_pre_date">تاریخ قرائت پیشین</string>
+    <string name="bill_now_date">تاریخ قرائت کنونی</string>
+    <string name="bill_days_number">تعداد روز</string>
+    <string name="bill_pre_number">شماره قبلی قرائت</string>
+    <string name="bill_now_number">شماره کنونی کنتور</string>
+    <string name="bill_ahad_maskooni">آحاد مسکونی</string>
+    <string name="bill_ahad_non_maskooni">آحاد غیرمسکونی</string>
+    <string name="bill_zarfiat">ظرفیت قراردادی</string>
+    <string name="bill_qotr_branch">قطر انشعاب</string>
+    <string name="bill_counter_vaziat">وضعیت کنتور</string>
+    <string name="bill_info">اطلاعات مصرف</string>
+    <string name="bill_exp">شرح اقلام</string>
+    <string name="bill_read_info">اطلاعات قرائت</string>
+    <string name="bill_branch_info">اطلاعات انشعاب</string>
 
 </resources>

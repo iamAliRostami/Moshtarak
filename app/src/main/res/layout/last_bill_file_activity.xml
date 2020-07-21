@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.LastBillFileActivity">
+    android:layoutDirection="rtl"
+    tools:context=".Activities.LastBillFileActivity"
+    tools:ignore="UnusedAttribute">
 
     <include layout="@layout/footer" />
 
@@ -19,7 +21,9 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:ignore="InefficientWeight">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,6 +38,14 @@
                     android:background="@drawable/border_blue_3"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/bill_summary"
+                        android:textSize="@dimen/textSizeLarge" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -45,14 +57,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_blue_2" />
+                            android:background="@drawable/border_bill_blue_3"
+                            android:gravity="center"
+                            android:text="@string/dear_user_"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_blue_1" />
+                            android:background="@drawable/border_bill_blue_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/blue1" />
 
                     </LinearLayout>
 
@@ -67,14 +89,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_blue_2" />
+                            android:background="@drawable/border_bill_blue_3"
+                            android:gravity="center"
+                            android:text="@string/bill_id"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_blue_1" />
+                            android:background="@drawable/border_bill_blue_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/blue1" />
 
                     </LinearLayout>
 
@@ -89,14 +121,25 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_blue_2" />
+                            android:background="@drawable/border_bill_blue_3"
+                            android:gravity="center"
+                            android:text="@string/bill_pay"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
 
                         <TextView
+                            android:id="@+id/texView3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_blue_1" />
+                            android:background="@drawable/border_bill_blue_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/blue1" />
 
                     </LinearLayout>
 
@@ -111,14 +154,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_blue_2" />
+                            android:background="@drawable/border_bill_blue_3"
+                            android:gravity="center"
+                            android:text="@string/pay_cost"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_blue_1" />
+                            android:background="@drawable/border_bill_blue_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/blue1" />
 
                     </LinearLayout>
 
@@ -133,14 +186,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_blue_2" />
+                            android:background="@drawable/border_bill_blue_3"
+                            android:gravity="center"
+                            android:text="@string/pay_Date"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView5"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_blue_1" />
+                            android:background="@drawable/border_bill_blue_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/blue1" />
 
                     </LinearLayout>
 
@@ -153,6 +216,14 @@
                     android:background="@drawable/border_green_3"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/bill_info"
+                        android:textSize="@dimen/textSizeLarge" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -164,14 +235,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_green_2" />
+                            android:background="@drawable/border_bill_green_3"
+                            android:gravity="center"
+                            android:text="@string/use_m_3"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView6"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_green_1" />
+                            android:background="@drawable/border_bill_green_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/green2" />
 
                     </LinearLayout>
 
@@ -186,14 +267,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_green_2" />
+                            android:background="@drawable/border_bill_green_3"
+                            android:gravity="center"
+                            android:text="@string/use_litr"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView7"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_green_1" />
+                            android:background="@drawable/border_bill_green_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/green2" />
 
                     </LinearLayout>
 
@@ -208,14 +299,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_green_2" />
+                            android:background="@drawable/border_bill_green_3"
+                            android:gravity="center"
+                            android:text="@string/use_average"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView8"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_green_1" />
+                            android:background="@drawable/border_bill_green_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/green2" />
 
                     </LinearLayout>
 
@@ -229,6 +330,14 @@
                     android:background="@drawable/border_orange_3"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/bill_exp"
+                        android:textSize="@dimen/textSizeLarge" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -240,14 +349,57 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_2" />
+                            android:background="@drawable/border_bill_orange_3"
+                            android:gravity="center"
+                            android:text="@string/bill_water_pay"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/texView9"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_bill_orange_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/orange1" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        tools:ignore="UselessParent">
+
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_1" />
+                            android:background="@drawable/border_bill_orange_3"
+                            android:gravity="center"
+                            android:text="@string/bill_fazelab_pay"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/texView10"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_bill_orange_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/orange1" />
 
                     </LinearLayout>
 
@@ -262,14 +414,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_2" />
+                            android:background="@drawable/border_bill_orange_3"
+                            android:gravity="center"
+                            android:text="@string/maliat"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView11"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_1" />
+                            android:background="@drawable/border_bill_orange_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/orange1" />
 
                     </LinearLayout>
 
@@ -284,14 +446,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_2" />
+                            android:background="@drawable/border_bill_orange_3"
+                            android:gravity="center"
+                            android:text="@string/bill_budget"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView12"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_1" />
+                            android:background="@drawable/border_bill_orange_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/orange1" />
 
                     </LinearLayout>
 
@@ -306,14 +478,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_2" />
+                            android:background="@drawable/border_bill_orange_3"
+                            android:gravity="center"
+                            android:text="@string/lavazeme_kahande"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView13"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_1" />
+                            android:background="@drawable/border_bill_orange_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/orange1" />
 
                     </LinearLayout>
 
@@ -328,14 +510,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_2" />
+                            android:background="@drawable/border_bill_orange_3"
+                            android:gravity="center"
+                            android:text="@string/total"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView14"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_1" />
+                            android:background="@drawable/border_bill_orange_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/orange1" />
 
                     </LinearLayout>
 
@@ -350,14 +542,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_2" />
+                            android:background="@drawable/border_bill_orange_3"
+                            android:gravity="center"
+                            android:text="@string/taxfif"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView15"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_1" />
+                            android:background="@drawable/border_bill_orange_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/orange1" />
 
                     </LinearLayout>
 
@@ -372,36 +574,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_2" />
+                            android:background="@drawable/border_bill_orange_3"
+                            android:gravity="center"
+                            android:text="@string/bill_bedehi"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView16"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_1" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:orientation="horizontal"
-                        android:weightSum="2"
-                        tools:ignore="UselessParent">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_2" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_bill_orange_1" />
+                            android:background="@drawable/border_bill_orange_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/orange1" />
 
                     </LinearLayout>
 
@@ -415,6 +605,14 @@
                     android:background="@drawable/border_brown_3"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/bill_read_info"
+                        android:textSize="@dimen/textSizeLarge" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -426,14 +624,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_2" />
+                            android:background="@drawable/border_bill_brown_3"
+                            android:gravity="center"
+                            android:text="@string/bill_radif"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView17"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_1" />
+                            android:background="@drawable/border_bill_brown_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/brown" />
 
                     </LinearLayout>
 
@@ -448,14 +656,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_2" />
+                            android:background="@drawable/border_bill_brown_3"
+                            android:gravity="center"
+                            android:text="@string/bill_barge"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView18"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_1" />
+                            android:background="@drawable/border_bill_brown_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/brown" />
 
                     </LinearLayout>
 
@@ -470,14 +688,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_2" />
+                            android:background="@drawable/border_bill_brown_3"
+                            android:gravity="center"
+                            android:text="@string/bill_account"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView19"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_1" />
+                            android:background="@drawable/border_bill_brown_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/brown" />
 
                     </LinearLayout>
 
@@ -492,14 +720,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_2" />
+                            android:background="@drawable/border_bill_brown_3"
+                            android:gravity="center"
+                            android:text="@string/bill_pre_date"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView20"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_1" />
+                            android:background="@drawable/border_bill_brown_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/brown" />
 
                     </LinearLayout>
 
@@ -514,14 +752,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_2" />
+                            android:background="@drawable/border_bill_brown_3"
+                            android:gravity="center"
+                            android:text="@string/bill_now_date"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView21"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_1" />
+                            android:background="@drawable/border_bill_brown_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/brown" />
 
                     </LinearLayout>
 
@@ -536,14 +784,25 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_2" />
+                            android:background="@drawable/border_bill_brown_3"
+                            android:gravity="center"
+                            android:text="@string/bill_days_number"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView22"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_1" />
+                            android:background="@drawable/border_bill_brown_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/brown"
+                            tools:ignore="TooManyViews" />
 
                     </LinearLayout>
 
@@ -558,14 +817,26 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_2" />
+                            android:background="@drawable/border_bill_brown_3"
+                            android:gravity="center"
+                            android:text="@string/bill_pre_number"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            tools:ignore="TooManyViews" />
 
                         <TextView
+                            android:id="@+id/texView23"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_1" />
+                            android:background="@drawable/border_bill_brown_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/brown"
+                            tools:ignore="TooManyViews" />
 
                     </LinearLayout>
 
@@ -580,14 +851,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_2" />
+                            android:background="@drawable/border_bill_brown_3"
+                            android:gravity="center"
+                            android:text="@string/bill_now_number"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView24"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_brown_1" />
+                            android:background="@drawable/border_bill_brown_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/brown" />
 
                     </LinearLayout>
 
@@ -601,6 +882,14 @@
                     android:background="@drawable/border_pink_3"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/bill_branch_info"
+                        android:textSize="@dimen/textSizeLarge" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -612,14 +901,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_2" />
+                            android:background="@drawable/border_bill_pink_3"
+                            android:gravity="center"
+                            android:text="@string/user"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView25"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_1" />
+                            android:background="@drawable/border_bill_pink_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/pink3" />
 
                     </LinearLayout>
 
@@ -634,14 +933,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_2" />
+                            android:background="@drawable/border_bill_pink_3"
+                            android:gravity="center"
+                            android:text="@string/bill_ahad_maskooni"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView26"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_1" />
+                            android:background="@drawable/border_bill_pink_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/pink3" />
 
                     </LinearLayout>
 
@@ -656,14 +965,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_2" />
+                            android:background="@drawable/border_bill_pink_3"
+                            android:gravity="center"
+                            android:text="@string/bill_ahad_non_maskooni"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView27"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_1" />
+                            android:background="@drawable/border_bill_pink_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/pink3" />
 
                     </LinearLayout>
 
@@ -678,14 +997,57 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_2" />
+                            android:background="@drawable/border_bill_pink_3"
+                            android:gravity="center"
+                            android:text="@string/bill_zarfiat"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/texView28"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_bill_pink_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/pink3" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        tools:ignore="UselessParent">
+
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_1" />
+                            android:background="@drawable/border_bill_pink_3"
+                            android:gravity="center"
+                            android:text="@string/bill_qotr_branch"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/texView29"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_bill_pink_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/pink3" />
 
                     </LinearLayout>
 
@@ -700,14 +1062,24 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_2" />
+                            android:background="@drawable/border_bill_pink_3"
+                            android:gravity="center"
+                            android:text="@string/siphon_radius"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView30"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_1" />
+                            android:background="@drawable/border_bill_pink_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/pink3" />
 
                     </LinearLayout>
 
@@ -719,146 +1091,94 @@
                         android:weightSum="2"
                         tools:ignore="UselessParent">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_2" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_1" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:orientation="horizontal"
-                        android:weightSum="2"
-                        tools:ignore="UselessParent">
+                            android:background="@drawable/border_bill_pink_3"
+                            android:gravity="center"
+                            android:text="@string/bill_counter_vaziat"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/texView31"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_2" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_bill_pink_1" />
+                            android:background="@drawable/border_bill_pink_4"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:textColor="@color/pink3" />
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="3">
 
-                    <Button
-                        android:id="@+id/buttonShare"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:background="@drawable/border_blue_1"
-                        android:text="@string/share"
-                        android:textColor="@color/white"
-                        tools:ignore="ButtonStyle" />
-
-                    <Button
-                        android:id="@+id/buttonSave"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:background="@drawable/border_blue_2"
-                        android:text="@string/save"
-                        android:textColor="@color/blue2"
-                        tools:ignore="ButtonStyle" />
-
-                    <Button
-                        android:id="@+id/buttonPay"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:background="@drawable/border_blue_1"
-                        android:text="@string/pay"
-                        android:textColor="@color/white"
-                        tools:ignore="ButtonStyle" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/imageViewLastBill"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerCrop"
-                    android:scrollbars="vertical"
-                    android:src="@drawable/bill_2"
-                    tools:ignore="ContentDescription" />
             </LinearLayout>
         </ScrollView>
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/border_blue_2"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:visibility="gone">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-        </ScrollView>
+            <Button
+                android:id="@+id/buttonShare"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:background="@drawable/border_blue_1"
+                android:text="@string/share"
+                android:textColor="@color/white"
+                tools:ignore="ButtonStyle" />
 
-        <!--        <LinearLayout-->
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:background="@drawable/border_blue_2"
+                android:text="@string/save"
+                android:textColor="@color/blue2"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/buttonPay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:background="@drawable/border_blue_1"
+                android:text="@string/pay"
+                android:textColor="@color/white"
+                tools:ignore="ButtonStyle" />
+
+        </LinearLayout>
+
+        <!--        <ScrollView-->
         <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="horizontal"-->
-        <!--            android:weightSum="3">-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:background="@drawable/border_blue_3"-->
+        <!--            android:scrollbarAlwaysDrawVerticalTrack="true"-->
+        <!--            android:visibility="gone">-->
 
-        <!--            <Button-->
-        <!--                android:id="@+id/buttonShare"-->
-        <!--                android:layout_width="0dp"-->
+        <!--            <ImageView-->
+        <!--                android:id="@+id/imageViewLastBill"-->
+        <!--                android:layout_width="match_parent"-->
         <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_margin="@dimen/activity_mid_margin"-->
-        <!--                android:layout_weight="1"-->
-        <!--                android:background="@drawable/border_blue_1"-->
-        <!--                android:text="@string/share"-->
-        <!--                android:textColor="@color/white"-->
-        <!--                tools:ignore="ButtonStyle" />-->
-
-        <!--            <Button-->
-        <!--                android:id="@+id/buttonSave"-->
-        <!--                android:layout_width="0dp"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_margin="@dimen/activity_mid_margin"-->
-        <!--                android:layout_weight="1"-->
-        <!--                android:background="@drawable/border_blue_2"-->
-        <!--                android:text="@string/save"-->
-        <!--                android:textColor="@color/blue2"-->
-        <!--                tools:ignore="ButtonStyle" />-->
-
-        <!--            <Button-->
-        <!--                android:id="@+id/buttonPay"-->
-        <!--                android:layout_width="0dp"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_margin="@dimen/activity_mid_margin"-->
-        <!--                android:layout_weight="1"-->
-        <!--                android:background="@drawable/border_blue_1"-->
-        <!--                android:text="@string/pay"-->
-        <!--                android:textColor="@color/white"-->
-        <!--                tools:ignore="ButtonStyle" />-->
-
-        <!--        </LinearLayout>-->
+        <!--                android:adjustViewBounds="true"-->
+        <!--                android:scaleType="centerCrop"-->
+        <!--                android:scrollbars="vertical"-->
+        <!--                tools:ignore="ContentDescription" />-->
+        <!--        </ScrollView>-->
     </LinearLayout>
 </RelativeLayout>

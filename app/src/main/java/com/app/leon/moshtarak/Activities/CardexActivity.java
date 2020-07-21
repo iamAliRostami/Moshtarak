@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,7 +82,11 @@ public class CardexActivity extends BaseActivity implements ICallback<ArrayList<
     void fillCardex() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getKardex = retrofit.create(IAbfaService.class);
-        Call<ArrayList<Cardex>> call = getKardex.getKardex(billId);
+        byte[] encodeValue = Base64.encode(billId.getBytes(), Base64.DEFAULT);
+        String base64 = new String(encodeValue);
+
+        Call<ArrayList<Cardex>> call = getKardex.getKardex(billId, base64.substring(0,
+                base64.length() - 1));
         HttpClientWrapperNew.callHttpAsync(call, CardexActivity.this, context,
                 ProgressType.SHOW.getValue());
     }

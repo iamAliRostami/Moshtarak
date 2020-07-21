@@ -115,6 +115,11 @@ public class LastBillFileActivity extends AppCompatActivity {
         public void onClick(View view) {
             if (!lastBillInfo.isPayed()) {
                 getToken();
+//                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.sibche.aspardproject.app");
+//                if (launchIntent != null) {
+//                    startActivity(launchIntent);//null pointer check in case package name was not found
+//                } else
+//                    new CustomTab(getString(R.string.mellat_site), MyApplication.getContext());
             } else
                 Toast.makeText(MyApplication.getContext(),
                         MyApplication.getContext().getString(R.string.payed_2),
@@ -298,139 +303,44 @@ public class LastBillFileActivity extends AppCompatActivity {
         bitmapBill = dest;
     }
 
-    @SuppressLint("SdCardPath")
-    void createImageToShow(LastBillInfoV2 lastBillInfo) {
-        float floatNumber;
-        int intNumber;
+    void fillTextView(LastBillInfoV2 lastBillInfo) {
+        binding.texView1.setText(lastBillInfo.getFullName());
+        binding.texView2.setText(lastBillInfo.getBillId());
+        binding.texView3.setText(lastBillInfo.getPayId());
+        binding.texView4.setText(lastBillInfo.getPayable());
+        binding.texView5.setText(lastBillInfo.getDeadLine());
 
-        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.bill_2);
-        Bitmap dest = Bitmap.createBitmap(src.getWidth(), src.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas cs = new Canvas(dest);
-        cs.drawBitmap(src, 0f, 0f, null);
+        binding.texView6.setText(lastBillInfo.getMasraf());
+        binding.texView7.setText(lastBillInfo.getMasrafLiter());
+        binding.texView8.setText(lastBillInfo.getMasrafAverage());
 
-        tPaint.setColor(Color.BLUE);
-        tPaint.setTextSize(small);
-        float xCoordinate = (float) src.getWidth() / 10;
-        float yCoordinate = (float) src.getHeight() * 18 / 400;
-        cs.drawText(lastBillInfo.getFullName(), xCoordinate, yCoordinate, tPaint);
-        tPaint.setTextSize(medium);
-        yCoordinate = (float) src.getHeight() * 26 / 400;
-        cs.drawText(lastBillInfo.getBillId(), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 33 / 400;
-        cs.drawText(lastBillInfo.getPayId(), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 40 / 400;
-        cs.drawText(lastBillInfo.getPayable(), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 47 / 400;
-        cs.drawText(lastBillInfo.getDeadLine(), xCoordinate, yCoordinate, tPaint);
+        binding.texView9.setText(lastBillInfo.getAbBaha());
+        binding.texView10.setText(lastBillInfo.getKarmozdFazelab());
+        binding.texView11.setText(lastBillInfo.getMaliat());
+        binding.texView12.setText(lastBillInfo.getBudget());
+        binding.texView13.setText(lastBillInfo.getLavazemKahande());
+        binding.texView14.setText(lastBillInfo.getJam());
+        binding.texView15.setText(lastBillInfo.getTaxfif());
+        binding.texView16.setText(lastBillInfo.getPreBedOrBes());
 
-        tPaint.setColor(getResources().getColor(R.color.green2));
-        yCoordinate = (float) src.getHeight() * 71 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getMasraf());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 82 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getMasrafLiter());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 94 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getMasrafAverage());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        binding.texView17.setText(lastBillInfo.getRadif());
+        binding.texView18.setText(lastBillInfo.getBarge());
+        binding.texView19.setText(lastBillInfo.getEshterak());
+        binding.texView20.setText(lastBillInfo.getPreCounterReadingDate());
+        binding.texView21.setText(lastBillInfo.getCurrentCounterReadingDate());
+        binding.texView22.setText(lastBillInfo.getDays());
+        binding.texView23.setText(lastBillInfo.getPreCounterNumber());
+        binding.texView24.setText(lastBillInfo.getCurrentCounterNumber());
 
-        tPaint.setColor(getResources().getColor(R.color.orange1));
-        yCoordinate = (float) src.getHeight() * 124 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getAbBaha());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 134 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getKarmozdFazelab());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 144 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getMaliat());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 154 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getBudget());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 163 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getLavazemKahande());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 173 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getJam());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 183 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getTaxfif());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 193 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getPreBedOrBes());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-
-        tPaint.setColor(getResources().getColor(R.color.brown));
-        yCoordinate = (float) src.getHeight() * 222 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getRadif());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 232 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getBarge());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 242 / 400;
-        cs.drawText(lastBillInfo.getEshterak(), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 252 / 400;
-        cs.drawText(lastBillInfo.getPreCounterReadingDate(), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 262 / 400;
-        cs.drawText(lastBillInfo.getCurrentCounterReadingDate(), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 272 / 400;//
-        cs.drawText(lastBillInfo.getDays(), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 282 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getPreCounterNumber());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 292 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getCurrentCounterNumber());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-
-        tPaint.setColor(getResources().getColor(R.color.pink3));
-        yCoordinate = (float) src.getHeight() * 318 / 400;
-
-        tPaint.setTextSize(small);
-        cs.drawText(lastBillInfo.getKarbariTitle(), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 327 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getAhadMaskooni());
-        intNumber = (int) floatNumber;
-        tPaint.setTextSize(medium);
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 335 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getAhadNonMaskooni());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 344 / 400;
-        floatNumber = Float.parseFloat(lastBillInfo.getZarfiatQarardadi());
-        intNumber = (int) floatNumber;
-        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 352 / 400;
-        cs.drawText(lastBillInfo.getQotr(), xCoordinate, yCoordinate, tPaint);
-
-        yCoordinate = (float) src.getHeight() * 361 / 400;
-        cs.drawText(lastBillInfo.getQotrSifoon(), xCoordinate, yCoordinate, tPaint);
-        yCoordinate = (float) src.getHeight() * 369 / 400;
-        cs.drawText(lastBillInfo.getCounterStateId(), xCoordinate, yCoordinate, tPaint);
-
-        xCoordinate = (float) src.getWidth() / 10;
-        yCoordinate = (float) src.getHeight() * 191 / 200;
-        float finalYCoordinate = yCoordinate;
-        float finalXCoordinate = xCoordinate;
-        cs.drawBitmap(code128.getBitmap(src.getWidth() * 8 / 10,
-                src.getHeight() / 30), finalXCoordinate, finalYCoordinate, tPaint);
-        runOnUiThread(() -> binding.imageViewLastBill.setImageBitmap(dest));
+        binding.texView25.setText(lastBillInfo.getKarbariTitle());
+        binding.texView26.setText(lastBillInfo.getAhadMaskooni());
+        binding.texView27.setText(lastBillInfo.getAhadNonMaskooni());
+        binding.texView28.setText(lastBillInfo.getZarfiatQarardadi());
+        binding.texView29.setText(lastBillInfo.getQotr());
+        binding.texView30.setText(lastBillInfo.getQotrSifoon());
+        binding.texView31.setText(lastBillInfo.getCounterStateId());
     }
+
 
     @SuppressLint("SimpleDateFormat")
     @Override
@@ -713,6 +623,147 @@ public class LastBillFileActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SdCardPath")
+    void createImageToShow(LastBillInfoV2 lastBillInfo) {
+        float floatNumber;
+        int intNumber;
+
+        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.bill_1);
+        Bitmap dest = Bitmap.createBitmap(src.getWidth(), src.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas cs = new Canvas(dest);
+        cs.drawBitmap(src, 0f, 0f, null);
+
+        tPaint.setColor(Color.BLUE);
+        tPaint.setTextSize(small);
+        float xCoordinate = (float) src.getWidth() / 10;
+        float yCoordinate = (float) src.getHeight() * 18 / 400;
+        cs.drawText(lastBillInfo.getFullName(), xCoordinate, yCoordinate, tPaint);
+        tPaint.setTextSize(medium);
+        yCoordinate = (float) src.getHeight() * 26 / 400;
+        cs.drawText(lastBillInfo.getBillId(), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 33 / 400;
+        cs.drawText(lastBillInfo.getPayId(), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 40 / 400;
+        cs.drawText(lastBillInfo.getPayable(), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 47 / 400;
+        cs.drawText(lastBillInfo.getDeadLine(), xCoordinate, yCoordinate, tPaint);
+
+        tPaint.setColor(getResources().getColor(R.color.green2));
+        yCoordinate = (float) src.getHeight() * 71 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getMasraf());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 82 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getMasrafLiter());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 94 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getMasrafAverage());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+
+        tPaint.setColor(getResources().getColor(R.color.orange1));
+        yCoordinate = (float) src.getHeight() * 124 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getAbBaha());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 134 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getKarmozdFazelab());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 144 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getMaliat());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 154 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getBudget());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 163 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getLavazemKahande());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 173 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getJam());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 183 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getTaxfif());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 193 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getPreBedOrBes());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+
+        tPaint.setColor(getResources().getColor(R.color.brown));
+        yCoordinate = (float) src.getHeight() * 222 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getRadif());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 232 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getBarge());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 242 / 400;
+        cs.drawText(lastBillInfo.getEshterak(), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 252 / 400;
+        cs.drawText(lastBillInfo.getPreCounterReadingDate(), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 262 / 400;
+        cs.drawText(lastBillInfo.getCurrentCounterReadingDate(), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 272 / 400;//
+        cs.drawText(lastBillInfo.getDays(), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 282 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getPreCounterNumber());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 292 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getCurrentCounterNumber());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+
+        tPaint.setColor(getResources().getColor(R.color.pink3));
+        yCoordinate = (float) src.getHeight() * 318 / 400;
+
+        tPaint.setTextSize(small);
+        cs.drawText(lastBillInfo.getKarbariTitle(), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 327 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getAhadMaskooni());
+        intNumber = (int) floatNumber;
+        tPaint.setTextSize(medium);
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 335 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getAhadNonMaskooni());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 344 / 400;
+        floatNumber = Float.parseFloat(lastBillInfo.getZarfiatQarardadi());
+        intNumber = (int) floatNumber;
+        cs.drawText(String.valueOf(intNumber), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 352 / 400;
+        cs.drawText(lastBillInfo.getQotr(), xCoordinate, yCoordinate, tPaint);
+
+        yCoordinate = (float) src.getHeight() * 361 / 400;
+        cs.drawText(lastBillInfo.getQotrSifoon(), xCoordinate, yCoordinate, tPaint);
+        yCoordinate = (float) src.getHeight() * 369 / 400;
+        cs.drawText(lastBillInfo.getCounterStateId(), xCoordinate, yCoordinate, tPaint);
+
+        xCoordinate = (float) src.getWidth() / 10;
+        yCoordinate = (float) src.getHeight() * 191 / 200;
+        float finalYCoordinate = yCoordinate;
+        float finalXCoordinate = xCoordinate;
+        cs.drawBitmap(code128.getBitmap(src.getWidth() * 8 / 10,
+                src.getHeight() / 30), finalXCoordinate, finalYCoordinate, tPaint);
+//        runOnUiThread(() -> binding.imageViewLastBill.setImageBitmap(dest));
+    }
+
+    class GetToken implements ICallback<SimpleMessage> {
+        @Override
+        public void execute(SimpleMessage simpleMessage) {
+            pay(simpleMessage.getMessage());
+        }
+    }
+
     class ThisBill implements ICallback<LastBillInfoV2> {
         @SuppressLint("DefaultLocale")
         @Override
@@ -721,16 +772,10 @@ public class LastBillFileActivity extends AppCompatActivity {
             code128 = setCode128();
 
             LastBillFileActivity.lastBillInfo = lastBillInfo;
-            createImageToShow(lastBillInfo);
+
+            fillTextView(lastBillInfo);
             if (Build.VERSION.SDK_INT >= 23)
                 createImagePrintable(lastBillInfo);
-        }
-    }
-
-    class GetToken implements ICallback<SimpleMessage> {
-        @Override
-        public void execute(SimpleMessage simpleMessage) {
-            pay(simpleMessage.getMessage());
         }
     }
 
@@ -777,7 +822,8 @@ public class LastBillFileActivity extends AppCompatActivity {
                     code128 = setCode128();
 
                     lastBillInfo = lastBillInfoV2;
-                    createImageToShow(lastBillInfo);
+//                    createImageToShow(lastBillInfo);
+                    fillTextView(lastBillInfo);
                     if (Build.VERSION.SDK_INT >= 23)
                         createImagePrintable(lastBillInfo);
                 }
