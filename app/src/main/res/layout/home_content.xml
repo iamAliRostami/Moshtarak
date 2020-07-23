@@ -6,9 +6,6 @@
     android:id="@+id/home_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="right"
-    android:foregroundGravity="right"
-    android:gravity="right"
     android:layoutDirection="rtl"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.app.leon.moshtarak.Activities.HomeActivity"
@@ -23,99 +20,100 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/linearLayoutFooter"
         android:layout_below="@+id/linearLayoutHeader"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="3">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center">
 
-
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageView
                     android:id="@+id/imageButtonLastBill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_above="@+id/textViewLastBill"
+                    android:layout_centerInParent="true"
                     android:background="@color/transparent"
-
                     android:src="@drawable/img_last_bill"
-                    app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+                    tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/textViewLastBill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:gravity="center_horizontal|bottom"
+                    android:layout_centerInParent="true"
                     android:text="@string/last_bill_2"
                     android:textColor="@color/black1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </RelativeLayout>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center">
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageView
                     android:id="@+id/imageButtonKardex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_above="@+id/textViewKardex"
+                    android:layout_centerInParent="true"
                     android:background="@color/transparent"
-
-                    android:src="@drawable/img_kardex" />
+                    android:src="@drawable/img_kardex"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/textViewKardex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:gravity="center_horizontal|bottom"
+                    android:layout_centerInParent="true"
                     android:text="@string/cardex"
                     android:textColor="@color/black1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </RelativeLayout>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center">
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageView
                     android:id="@+id/imageButtonMamoor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_above="@id/textViewMamoor"
+                    android:layout_centerInParent="true"
                     android:background="@color/transparent"
-                    android:src="@drawable/img_mamoor" />
+                    android:src="@drawable/img_mamoor"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/textViewMamoor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:gravity="center_horizontal|bottom"
+                    android:layout_centerInParent="true"
                     android:text="@string/mamoor_2"
                     android:textColor="@color/black1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </RelativeLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -123,99 +121,96 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center">
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageView
                     android:id="@+id/imageButtonSale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_above="@id/textViewSale"
+                    android:layout_centerInParent="true"
                     android:background="@color/transparent"
-
-                    android:src="@drawable/img_sale" />
+                    android:src="@drawable/img_sale"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/textViewSale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:gravity="center_horizontal|bottom"
+                    android:layout_centerInParent="true"
                     android:text="@string/sale"
                     android:textColor="@color/black1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </RelativeLayout>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:gravity="center">
 
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageView
                     android:id="@+id/imageButtonSupport"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_above="@id/textViewSupport"
+                    android:layout_centerInParent="true"
                     android:background="@color/transparent"
-
-
-                    android:src="@drawable/img_support" />
+                    android:src="@drawable/img_support"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/textViewSupport"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:gravity="center_horizontal|bottom"
+                    android:layout_centerInParent="true"
                     android:text="@string/support"
                     android:textColor="@color/black1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
 
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </RelativeLayout>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center">
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageView
                     android:id="@+id/imageButtonTracking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-
+                    android:layout_above="@+id/textViewTracking"
+                    android:layout_centerInParent="true"
                     android:background="@color/transparent"
-
-
-                    android:src="@drawable/img_tracking" />
+                    android:src="@drawable/img_tracking"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/textViewTracking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:gravity="center_horizontal|bottom"
+                    android:layout_centerInParent="true"
                     android:text="@string/tracking"
                     android:textColor="@color/black1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </RelativeLayout>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -224,41 +219,40 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center">
 
-                android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageView
                     android:id="@+id/imageButtonHelp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-
+                    android:layout_above="@id/textViewHelp"
+                    android:layout_centerInParent="true"
                     android:background="@color/transparent"
-
-
-                    android:src="@drawable/img_help" />
+                    android:src="@drawable/img_help"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/textViewHelp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_gravity="center_horizontal|bottom"
                     android:gravity="center_horizontal|bottom"
                     android:text="@string/help"
                     android:textColor="@color/black1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </RelativeLayout>
 
-
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -266,56 +260,53 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageView
                     android:id="@+id/imageButtonTrain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_above="@+id/textViewTrain"
+                    android:layout_centerInParent="true"
                     android:background="@color/transparent"
-
-                    android:src="@drawable/img_train" />
+                    android:src="@drawable/img_train"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/textViewTrain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:gravity="center_horizontal|bottom"
+                    android:layout_centerInParent="true"
                     android:text="@string/train"
                     android:textColor="@color/black1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </RelativeLayout>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center">
 
-                android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageView
                     android:id="@+id/imageButtonSuggest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-
+                    android:layout_above="@id/textViewSuggest"
+                    android:layout_centerInParent="true"
                     android:background="@color/transparent"
-
-
-                    android:src="@drawable/img_suggest" />
+                    android:src="@drawable/img_suggest"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
+                    android:id="@+id/textViewSuggest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:gravity="center_horizontal|bottom"
+                    android:layout_centerInParent="true"
                     android:text="@string/suggest"
                     android:textColor="@color/black1"
-                    android:textSize="@dimen/textSizeSmall"
-                    android:textStyle="bold" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    android:textSize="@dimen/textSizeSmall" />
+            </RelativeLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>

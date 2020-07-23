@@ -17,39 +17,48 @@ public class HomeActivity extends BaseActivity {
         Intent intent;
         switch (view.getId()) {
             case R.id.imageButtonSuggest:
+            case R.id.textViewSuggest:
                 intent = new Intent(getApplicationContext(), SuggestActivity.class);
                 startActivity(intent);
                 break;
             case R.id.imageButtonTrain:
+            case R.id.textViewTrain:
                 intent = new Intent(getApplicationContext(), LearningActivity.class);
                 startActivity(intent);
                 break;
             case R.id.imageButtonLastBill:
+            case R.id.textViewLastBill:
 //                intent = new Intent(getApplicationContext(), LastBillActivity.class);
                 intent = new Intent(getApplicationContext(), LastBillFileActivity.class);
                 startActivity(intent);
                 break;
             case R.id.imageButtonKardex:
+            case R.id.textViewKardex:
                 intent = new Intent(getApplicationContext(), CardexActivity.class);
                 startActivity(intent);
                 break;
             case R.id.imageButtonTracking:
+            case R.id.textViewTracking:
                 intent = new Intent(getApplicationContext(), FollowUpActivity.class);
                 startActivity(intent);
                 break;
             case R.id.imageButtonMamoor:
+            case R.id.textViewMamoor:
                 intent = new Intent(getApplicationContext(), SetCounterActivity.class);
                 startActivity(intent);
                 break;
             case R.id.imageButtonSale:
+            case R.id.textViewSale:
                 intent = new Intent(getApplicationContext(), SaleActivity.class);
                 startActivity(intent);
                 break;
             case R.id.imageButtonHelp:
+            case R.id.textViewHelp:
                 intent = new Intent(getApplicationContext(), HelpActivity.class);
                 startActivity(intent);
                 break;
             case R.id.imageButtonSupport:
+            case R.id.textViewSupport:
                 intent = new Intent(getApplicationContext(), AfterSaleServicesActivity.class);
                 startActivity(intent);
                 break;

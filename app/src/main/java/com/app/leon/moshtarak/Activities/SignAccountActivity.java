@@ -173,10 +173,11 @@ public class SignAccountActivity extends BaseActivity
         });
     }
 
+    @SuppressLint("HardwareIds")
     void canMatch(String billId, String mobile) {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService canMatch = retrofit.create(IAbfaService.class);
-        @SuppressLint("HardwareIds") String serial = String.valueOf(Build.SERIAL);
+        String serial = String.valueOf(Build.SERIAL);
 
         byte[] encodeValue = Base64.encode(billId.getBytes(), Base64.DEFAULT);
         String base64 = new String(encodeValue);

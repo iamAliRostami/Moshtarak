@@ -119,6 +119,7 @@ public class HelpActivity extends BaseActivity {
         @Override
         public void onReceivedError(WebView view, int errorCode, String description,
                                     String failingUrl) {
+            Log.e("error", description);
             Toast.makeText(HelpActivity.this, getString(R.string.error).concat(" : ")
                     .concat(getString(R.string.error_IO)), Toast.LENGTH_SHORT).show();
         }

@@ -42,6 +42,7 @@ import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
 import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.CustomProgressBar;
+import com.app.leon.moshtarak.Utils.CustomTab;
 import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
@@ -114,12 +115,12 @@ public class LastBillFileActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             if (!lastBillInfo.isPayed()) {
-                getToken();
+//                getToken();
 //                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.sibche.aspardproject.app");
 //                if (launchIntent != null) {
 //                    startActivity(launchIntent);//null pointer check in case package name was not found
 //                } else
-//                    new CustomTab(getString(R.string.mellat_site), MyApplication.getContext());
+                new CustomTab(getString(R.string.mellat_site), MyApplication.getContext());
             } else
                 Toast.makeText(MyApplication.getContext(),
                         MyApplication.getContext().getString(R.string.payed_2),

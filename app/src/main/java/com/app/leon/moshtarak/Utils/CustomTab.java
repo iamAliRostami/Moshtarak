@@ -52,7 +52,9 @@ public class CustomTab {
             customTabsIntent.intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             customTabsIntent.launchUrl(context, Uri.parse(url));
         } catch (Exception e) {
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW);
+            browserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            browserIntent.setData(Uri.parse(url));
             context.startActivity(browserIntent);
         }
 
