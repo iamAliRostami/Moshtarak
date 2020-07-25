@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
     android:layoutDirection="rtl"
-    tools:context="com.app.leon.moshtarak.Activities.RecoveryCodeActivity"
+    tools:context="com.app.leon.moshtarak.activities.RecoveryCodeActivity"
     tools:ignore="UnusedAttribute">
 
     <include layout="@layout/footer" />

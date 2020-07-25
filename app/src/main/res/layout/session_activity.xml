@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
-    tools:context="com.app.leon.moshtarak.Activities.SessionActivity"
+    tools:context="com.app.leon.moshtarak.activities.SessionActivity"
     tools:ignore="UnusedAttribute">
 
     <include layout="@layout/footer" />

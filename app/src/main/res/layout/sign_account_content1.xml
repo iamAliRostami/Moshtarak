@@ -8,7 +8,7 @@
     android:background="@drawable/img_background"
     android:layoutDirection="rtl"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.app.leon.moshtarak.Activities.SignAccountActivity"
+    tools:context="com.app.leon.moshtarak.activities.SignAccountActivity"
     tools:ignore="UnusedAttribute">
 
     <include layout="@layout/footer" />

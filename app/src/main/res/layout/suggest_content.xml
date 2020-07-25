@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.app.leon.moshtarak.Activities.SuggestActivity">
+    tools:context="com.app.leon.moshtarak.activities.SuggestActivity">
 
     <include layout="@layout/footer" />
 
