@@ -30,6 +30,7 @@ public enum BundleEnum {
     DATA("data"),
     BILL_ID("bill_id"),
     PAY_ID("pay_id"),
+    PAY_VIEW_MODEL("pay_view_model"),
     NEW("new"),
     PRE("pre"),
     AB_BAHA("ab_baha"),

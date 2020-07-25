@@ -1,4 +1,4 @@
-package com.app.leon.moshtarak.Adapters;
+package com.app.leon.moshtarak.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.app.leon.moshtarak.Activities.ShowSMSActivity;
 import com.app.leon.moshtarak.Models.DbTables.FollowUpDto;
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.activities.ShowSMSActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;

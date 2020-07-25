@@ -1,4 +1,4 @@
-package com.app.leon.moshtarak.Adapters;
+package com.app.leon.moshtarak.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;

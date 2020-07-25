@@ -17,17 +17,17 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.app.leon.moshtarak.Activities.BaseInfoActivity;
-import com.app.leon.moshtarak.Activities.ContactUsActivity;
-import com.app.leon.moshtarak.Activities.HomeActivity;
-import com.app.leon.moshtarak.Activities.RecoveryCodeActivity;
-import com.app.leon.moshtarak.Activities.SessionActivity;
-import com.app.leon.moshtarak.Activities.SignAccountActivity;
-import com.app.leon.moshtarak.Adapters.NavigationCustomAdapterOld;
 import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomTab;
 import com.app.leon.moshtarak.Utils.SharedPreference;
+import com.app.leon.moshtarak.activities.BaseInfoActivity;
+import com.app.leon.moshtarak.activities.ContactUsActivity;
+import com.app.leon.moshtarak.activities.HomeActivity;
+import com.app.leon.moshtarak.activities.RecoveryCodeActivity;
+import com.app.leon.moshtarak.activities.SessionActivity;
+import com.app.leon.moshtarak.activities.SignAccountActivity;
+import com.app.leon.moshtarak.adapters.NavigationCustomAdapterOld;
 import com.app.leon.moshtarak.databinding.BaseActivityOldBinding;
 import com.google.android.material.navigation.NavigationView;
 

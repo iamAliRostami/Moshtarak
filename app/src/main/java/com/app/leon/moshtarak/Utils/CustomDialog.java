@@ -5,9 +5,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.app.leon.moshtarak.Activities.HomeActivity;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.activities.HomeActivity;
 
 public class CustomDialog {
     @SuppressLint("StaticFieldLeak")

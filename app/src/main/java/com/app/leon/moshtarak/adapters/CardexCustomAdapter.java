@@ -1,4 +1,4 @@
-package com.app.leon.moshtarak.Adapters;
+package com.app.leon.moshtarak.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,10 +15,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.app.leon.moshtarak.Activities.LastBillActivity;
 import com.app.leon.moshtarak.Models.DbTables.Cardex;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.R;
+import com.app.leon.moshtarak.activities.LastBillActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;

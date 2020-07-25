@@ -1,4 +1,4 @@
-package com.app.leon.moshtarak.Adapters;
+package com.app.leon.moshtarak.adapters;
 
 import android.content.Context;
 import android.content.res.TypedArray;
