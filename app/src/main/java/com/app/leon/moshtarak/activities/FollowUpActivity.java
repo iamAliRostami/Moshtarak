@@ -1,4 +1,4 @@
-package com.app.leon.moshtarak.Activities;
+package com.app.leon.moshtarak.activities;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
@@ -9,7 +9,6 @@ import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.app.leon.moshtarak.Adapters.FollowUpCustomAdapter;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
@@ -17,6 +16,7 @@ import com.app.leon.moshtarak.Models.DbTables.FollowUpDto;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
+import com.app.leon.moshtarak.adapters.FollowUpCustomAdapter;
 import com.app.leon.moshtarak.databinding.FollowUpContentBinding;
 
 import java.util.ArrayList;

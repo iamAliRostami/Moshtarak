@@ -1,4 +1,4 @@
-package com.app.leon.moshtarak.Activities;
+package com.app.leon.moshtarak.activities;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -72,7 +72,6 @@ public class HelpActivity extends BaseActivity {
         }
         return deletedFiles;
     }
-
 
     private class HelpWebChromeClient extends WebChromeClient {
         public void onProgressChanged(WebView view, int progress) {
