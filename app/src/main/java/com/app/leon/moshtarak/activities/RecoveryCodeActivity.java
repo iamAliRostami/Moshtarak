@@ -1,4 +1,4 @@
-package com.app.leon.moshtarak.Activities;
+package com.app.leon.moshtarak.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,7 +11,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.app.leon.moshtarak.Adapters.RecoverCodeCustomAdapter;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Models.DbTables.Request;
@@ -20,6 +19,7 @@ import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
+import com.app.leon.moshtarak.adapters.RecoverCodeCustomAdapter;
 import com.app.leon.moshtarak.databinding.RecoveryCodeActivityBinding;
 
 import java.util.List;
