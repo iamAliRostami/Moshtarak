@@ -1,4 +1,4 @@
-package com.app.leon.moshtarak.Activities;
+package com.app.leon.moshtarak.activities;
 
 
 import android.annotation.SuppressLint;
