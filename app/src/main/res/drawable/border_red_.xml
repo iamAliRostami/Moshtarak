@@ -1,11 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <corners android:radius="10dp" />
-    <padding
-        android:bottom="3dp"
-        android:left="3dp"
-        android:right="3dp"
-        android:top="3dp" />
-    <solid android:color="@color/red2" />
-</shape>
+<component name="libraryTable">
+    <library name="Gradle: androidx.databinding:databinding-adapters:4.0.1@aar">
+        <CLASSES>
+            <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eb6d9396332fcb64ccb4c1f61c80f690/databinding-adapters-4.0.1/AndroidManifest.xml" />
+            <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/

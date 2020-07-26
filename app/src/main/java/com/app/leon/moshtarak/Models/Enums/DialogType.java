@@ -1,15 +1,2 @@
-package com.app.leon.moshtarak.Models.Enums;
+package com.app.leon.moshtarak.activities;
 
-/**
- * Created by Leon on 1/10/2018.
- */
-
-public enum DialogType {
-    Green,
-    Blue,
-    Yellow,
-    Red,
-    GreenRedirect,
-    YellowRedirect,
-    RedRedirect,
-}

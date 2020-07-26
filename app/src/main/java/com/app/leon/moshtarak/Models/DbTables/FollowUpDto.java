@@ -13,6 +13,7 @@ public class FollowUpDto {
     String status;
     ArrayList<String> smsList;
     int stateCode;
+
     public FollowUpDto(String aidId, String billId, String dateJalali, String description,
                        String hour, String id, String minute, String status, ArrayList<String> smsList) {
         this.aidId = aidId;

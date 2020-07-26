@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <corners android:radius="10dp" />
-    <padding
-        android:bottom="3dp"
-        android:left="3dp"
-        android:right="3dp"
-        android:top="3dp" />
-    <solid android:color="@color/gray1" />
+package com.leon.nestools;
 
-    <stroke
-        android:width="2dp"
-        android:color="@color/gray1" />
-</shape>
+    import android.os.Bundle;import android.view.Window;import android.view.WindowManager;
+
+    import androidx.appcompat.app.AppCompatActivity;
+
+    import com.leon.nestools.databinding.SplashActivityBinding;
+
+    public class SplashActivity extends AppCompatActivity {
+
+    SplashActivityBinding binding;private boolean splashLoaded = false;
+
+    @Overrideprotected void onCreate(Bundle savedInstanceStat

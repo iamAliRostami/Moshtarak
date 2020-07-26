@@ -1,70 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearLayoutItem"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:scrollbars="horizontal">
+package com.app.leon.moshtarak.fragments;
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_mid_margin"
-        android:orientation="horizontal"
-        android:weightSum="4">
+    import android.annotation.SuppressLint;import android.content.Context;import android.os.Bundle;import android.util.DisplayMetrics;import android.view.Display;import android.view.LayoutInflater;import android.view.View;import android.view.ViewGroup;import android.view.WindowManager;
 
+    import androidx.annotation.NonNull;import androidx.annotation.Nullable;import androidx.fragment.app.DialogFragment;
 
-        <TextView
-            android:id="@+id/textViewDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/activity_mid_margin"
-            android:text="@string/date"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+    import com.app.leon.moshtarak.Models.Enums.BundleEnum;import com.app.leon.moshtarak.R;import com.app.leon.moshtarak.databinding.PayFragmentBinding;import com.google.gson.Gson;import com.google.gson.GsonBuilder;
 
-        <TextView
-            android:id="@+id/textViewUseM3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/activity_mid_margin"
-            android:text="@string/use"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+    import java.util.Objects;
 
-        <TextView
-            android:id="@+id/textViewCost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/activity_mid_margin"
-            android:text="@string/cost"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+    public class PayFragment extends DialogFragment {
 
-        <TextView
-            android:id="@+id/textViewNote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@dimen/activity_mid_margin"
-            android:text="@string/note"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+    private PayViewModel mViewModel;PayFragmentBinding binding;View view;
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center" />
-    </LinearLayout>
-</LinearLayout>
+    public static PayFragment newInstance(PayViewModel payViewModel) {PayFragment payFragment = new PayFragment();Bundle bundle = new Bundle();Gson gson = new Gson();String json = gson.toJson(payViewModel);bundle.putString(BundleEnum.PAY_VIEW_MODEL.getValue(), json);payFragment.setArguments(bundle);return payFragment;}
+
+    @Overridepublic View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,@Nullable Bundle savedInstanceState) {binding = PayFragmentBinding.inflate(inflater, container, false);binding.setPayViewModel(mViewModel);view = binding.getRoot();initialize();return view;}
+
+    @SuppressLint("SetJavaScriptEnabled")void initialize() {binding.webViewPay.getSettings().setJavaScriptEnabled(true);binding.webViewPay.getSettings().setBuiltInZoomControls(true);binding.webViewPay.loadUrl(getString(R.string.mellat_site));}
+
+    @Overridepublic void onCreate(@Nullable Bundle savedInstanceState) {super.onCreate(savedInstanceState);if (getArguments() != null) {String json = getArguments().getString(BundleEnum.PAY_VIEW_MODEL.getValue());Gson gson = new GsonBuilder().create();mViewModel = gson.fromJson(json, PayViewModel.class);}}
+
+    @Overridepublic void onResume() {WindowManager wm = (WindowManager) Objects.requireNonNull(getActivity()).getSystemService(Context.WINDOW_SERVICE);Display display = Objects.requireNonNull(wm).getDefaultDisplay();DisplayMetrics metrics = new DisplayMetrics();display.getMetrics(metrics);int height = metrics.heightPix
