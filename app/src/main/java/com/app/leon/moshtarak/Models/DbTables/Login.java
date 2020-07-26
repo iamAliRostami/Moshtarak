@@ -1,107 +1,151 @@
-<?xml version="1.0"encoding="UTF-8"?>
-<project version="4">
-<component name="AndroidGradleBuildConfiguration">
-<option name="SYNC_PROJECT_BEFORE_BUILD"value="true"/>
-<option name="COMMAND_LINE_OPTIONS"value="--stacktrace"/>
-</component>
-<component name="AndroidLayouts">
-<shared>
-<config>
-<device id="pixel_c"/>
-<device id="pixel"/>
-<device id="Nexus 10"/>
-<device id="Nexus 7"/>
-<device id="Nexus 5X"/>
-<device id="Nexus 7 2013"/>
-<device id="Nexus 9"/>
-<device id="pixel_3_xl"/>
-<device id="pixel_2"/>
-<device id="Nexus 6P"/>
-</config>
-</shared>
-</component>
-<component name="AndroidLogFilters">
-<option name="TOOL_WINDOW_CONFIGURED_FILTER"value="Show only selected application"/>
-</component>
-<component name="AvailableLibraryUpdateStorage">
-<library-updates>
-<library-update>
-<group-id>androidx.test.espresso</group-id>
-<name>espresso-core</name>
-<version>3.3.0-alpha02</version>
-<repository>Google</repository>
-</library-update>
-<library-update>
-<group-id>com.google.android.gms</group-id>
-<name>play-services-location</name>
-<version>17.0.0</version>
-<repository>Google,Google Repository</repository>
-</library-update>
-<library-update>
-<group-id>androidx.test</group-id>
-<name>runner</name>
-<version>1.3.0-alpha02</version>
-<repository>Google</repository>
-</library-update>
-<library-update>
-<group-id>androidx.cardview</group-id>
-<name>cardview</name>
-<version>1.0.0</version>
-<repository>Google</repository>
-</library-update>
-<library-update>
-<group-id>androidx.legacy</group-id>
-<name>legacy-support-v4</name>
-<version>1.0.0</version>
-<repository>Google</repository>
-</library-update>
-<library-update>
-<group-id>androidx.recyclerview</group-id>
-<name>recyclerview</name>
-<version>1.1.0-beta01</version>
-<repository>Google</repository>
-</library-update>
-<library-update>
-<group-id>com.jakewharton</group-id>
-<name>butterknife-compiler</name>
-<version>10.1.0</version>
-<repository>JCenter</repository>
-</library-update>
-<library-update>
-<group-id>androidx.browser</group-id>
-<name>browser</name>
-<version>1.0.0</version>
-<repository>Google</repository>
-</library-update>
-<library-update>
-<group-id>com.google.code.gson</group-id>
-<name>gson</name>
-<version>2.8.5</version>
-<repository>JCenter</repository>
-</library-update>
-<library-update>
-<group-id>com.jakewharton</group-id>
-<name>butterknife</name>
-<version>10.1.0</version>
-<repository>JCenter</repository>
-</library-update>
-<library-update>
-<group-id>com.squareup.retrofit2</group-id>
-<name>converter-gson</name>
-<version>2.6.0</version>
-<repository>JCenter</repository>
-</library-update>
-<library-update>
-<group-id>com.google.android.material</group-id>
-<name>material</name>
-<version>1.1.0-alpha08</version>
-<repository>Google</repository>
-</library-update>
-<library-update>
-<group-id>com.google.firebase</group-id>
-<name>firebase-auth</name>
-<version>18.1.0</version>
-<repository>Google,Google Repository</repository>
-</library-update>
-<library-update>
- 
+package com.app.leon.moshtarak.Models.DbTables;
+
+public class Login {
+    String billId;
+    String billIdCoded;
+    String eshterak;
+    String nationalId;
+    String buildSerial;
+    String appVersion;
+    String osVersion;
+    String mobile;
+    String phoneModel;
+    String apiKey;
+    String nameAndFamily;
+    String message;
+    int errorCode;
+
+
+    public Login(String billId, String billIdCoded, String buildSerial, String appVersion,
+                 String osVersion, String mobile, String phoneModel) {
+        this.billId = billId;
+        this.apiKey = billIdCoded;
+        this.buildSerial = buildSerial;
+        this.appVersion = appVersion;
+        this.osVersion = osVersion;
+        this.mobile = mobile;
+        this.phoneModel = phoneModel;
+    }
+
+    public Login(String billId, String eshterak, String nationalId, String buildSerial,
+                 String appVersion, String osVersion, String mobile, String phoneModel) {
+        this.billId = billId;
+        this.eshterak = eshterak;
+        this.nationalId = nationalId;
+        this.buildSerial = buildSerial;
+        this.appVersion = appVersion;
+        this.osVersion = osVersion;
+        this.mobile = mobile;
+        this.phoneModel = phoneModel;
+    }
+
+    public Login(String apiKey, String nameAndFamily, String message) {
+        this.apiKey = apiKey;
+        this.nameAndFamily = nameAndFamily;
+        this.message = message;
+    }
+
+    public String getBillIdCoded() {
+        return billIdCoded;
+    }
+
+    public void setBillIdCoded(String billIdCoded) {
+        this.billIdCoded = billIdCoded;
+    }
+
+    public int getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
+    }
+
+    public String getNameAndFamily() {
+        return nameAndFamily;
+    }
+
+    public void setNameAndFamily(String nameAndFamily) {
+        this.nameAndFamily = nameAndFamily;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getBillId() {
+        return billId;
+    }
+
+    public void setBillId(String billId) {
+        this.billId = billId;
+    }
+
+    public String getEshterak() {
+        return eshterak;
+    }
+
+    public void setEshterak(String eshterak) {
+        this.eshterak = eshterak;
+    }
+
+    public String getNationalId() {
+        return nationalId;
+    }
+
+    public void setNationalId(String nationalId) {
+        this.nationalId = nationalId;
+    }
+
+    public String getBuildSerial() {
+        return buildSerial;
+    }
+
+    public void setBuildSerial(String buildSerial) {
+        this.buildSerial = buildSerial;
+    }
+
+    public String getAppVersion() {
+        return appVersion;
+    }
+
+    public void setAppVersion(String appVersion) {
+        this.appVersion = appVersion;
+    }
+
+    public String getOsVersion() {
+        return osVersion;
+    }
+
+    public void setOsVersion(String osVersion) {
+        this.osVersion = osVersion;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getPhoneModel() {
+        return phoneModel;
+    }
+
+    public void setPhoneModel(String phoneModel) {
+        this.phoneModel = phoneModel;
+    }
+}

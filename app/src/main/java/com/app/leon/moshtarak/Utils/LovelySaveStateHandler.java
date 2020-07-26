@@ -1,39 +1,45 @@
-package com.leon.nestools;
+package com.app.leon.moshtarak.Utils;
 
-import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
+import android.util.SparseArray;
 
-import androidx.appcompat.app.AppCompatActivity;
+import java.lang.ref.WeakReference;
 
-import com.leon.nestools.databinding.MainActivityBinding;
+public class LovelySaveStateHandler {
 
-public class MainActivity extends AppCompatActivity {
-    MainActivityBinding binding;
-    ProgressDialog progressDialog;
-    Context context;
-    View view;
+    private static final String KEY_DIALOG_ID = "idCustom";
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = MainActivityBinding.inflate(getLayoutInflater());
-        view = binding.getRoot();
-        setContentView(R.layout.main_activity);
-        initialize();
+    private SparseArray<WeakReference<AbsLovelyDialog<?>>> handledDialogs;
+
+    public LovelySaveStateHandler() {
+        handledDialogs = new SparseArray<>();
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
-    void initialize() {
-        context = this;
-        progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage(getString(R.string.waiting));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-        binding.webView.setWebChromeClient(new WebChromeClient());
-        binding.webView.getSettings().setJavaScriptEnabled(true);
-        binding.webView.getSettings().setBuiltInZoomControls(true);
-//        binding.webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-//        WebSettings settings = binding.webView.getSettings()
+    public static boolean wasDialogOnScreen(Bundle savedInstanceState) {
+        return savedInstanceState.keySet().contains(KEY_DIALOG_ID);
+    }
+
+    public static int getSavedDialogId(Bundle savedInstanceState) {
+        return savedInstanceState.getInt(KEY_DIALOG_ID, -1);
+    }
+
+    public void saveInstanceState(Bundle outState) {
+        for (int index = handledDialogs.size() - 1; index >= 0; index--) {
+            WeakReference<AbsLovelyDialog<?>> dialogRef = handledDialogs.valueAt(index);
+            if (dialogRef.get() == null) {
+                handledDialogs.remove(index);
+                continue;
+            }
+            AbsLovelyDialog<?> dialog = dialogRef.get();
+            if (dialog.isShowing()) {
+                dialog.onSaveInstanceState(outState);
+                outState.putInt(KEY_DIALOG_ID, handledDialogs.keyAt(index));
+                return;
+            }
+        }
+    }
+
+    void handleDialogStateSave(int id, AbsLovelyDialog<?> dialog) {
+        handledDialogs.put(id, new WeakReference<AbsLovelyDialog<?>>(dialog));
+    }
+}

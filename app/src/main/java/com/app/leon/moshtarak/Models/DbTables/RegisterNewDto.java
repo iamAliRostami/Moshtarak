@@ -1,79 +1,110 @@
-/*
- * Copyright (C) 2016 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-package androidx.annotation;
+package com.app.leon.moshtarak.Models.DbTables;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
+public class RegisterNewDto {
+    private String neighbourBillId;
+    private String firstName;
+    private String sureName;
+    private String fatherName;
+    private String nationalId;
+    private String[] selectedServices;
+    private String mobile;
+    private String phoneNumber;
+    private String address;
+    private String postalCode;
+    private String requestOrigin;
 
-import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
-import static java.lang.annotation.ElementType.CONSTRUCTOR;
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.PACKAGE;
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.CLASS;
+    public RegisterNewDto(String neighbourBillId, String firstName, String sureName,
+                          String fatherName, String nationalId, String mobile, String phoneNumber,
+                          String address, String postalCode, String requestOrigin) {
+        this.neighbourBillId = neighbourBillId;
+        this.firstName = firstName;
+        this.sureName = sureName;
+        this.fatherName = fatherName;
+        this.nationalId = nationalId;
+        this.mobile = mobile;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.postalCode = postalCode;
+        this.requestOrigin = requestOrigin;
+    }
 
-/**
- * Denotes that the annotated element should only be accessed from within a
- * specific scope (as defined by {@link Scope}).
- * <p>
- * Example of restricting usage within a library (based on gradle group ID):
- * <pre><code>
- *   &#64;RestrictTo(GROUP_ID)
- *   public void resetPaddingToInitialValues() { ...
- * </code></pre>
- * Example of restricting usage to tests:
- * <pre><code>
- *   &#64;RestrictScope(TESTS)
- *   public abstract int getUserId();
- * </code></pre>
- * Example of restricting usage to subclasses:
- * <pre><code>
- *   &#64;RestrictScope(SUBCLASSES)
- *   public void onDrawForeground(Canvas canvas) { ...
- * </code></pre>
- */
-@Retention(CLASS)
-@Target({ANNOTATION_TYPE, TYPE, METHOD, CONSTRUCTOR, FIELD, PACKAGE})
-public @interface RestrictTo {
+    public String getNeighbourBillId() {
+        return neighbourBillId;
+    }
 
-    /**
-     * The scope to which usage should be restricted.
-     */
-    Scope[] value();
+    public void setNeighbourBillId(String neighbourBillId) {
+        this.neighbourBillId = neighbourBillId;
+    }
 
-    enum Scope {
-        /**
-         * Restrict usage to code within the same library (e.g. the same
-         * gradle group ID and artifact ID).
-         */
-        LIBRARY,
+    public String getFirstName() {
+        return firstName;
+    }
 
-        /**
-         * Restrict usage to code within the same group of libraries.
-         * This corresponds to the gradle group ID.
-         */
-        LIBRARY_GROUP,
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-/**
- * Restrict usage to code within packages whose groups share
- * the same library group prefix up to the last ".", so for
- * example libraries foo.bar:lib1 and foo.baz:lib2 share
- * the prefix "foo." and so they can use each other's
- * apis that are restricted to this scope. Similarly for
- * com.foo.bar:lib1 and com.foo.baz:lib2 where they share
- * "com.foo.". Library com.bar.qux:lib3 however will not
- * be able to use the restricted api because it only
+    public String getSureName() {
+        return sureName;
+    }
+
+    public void setSureName(String sureName) {
+        this.sureName = sureName;
+    }
+
+    public String getFatherName() {
+        return fatherName;
+    }
+
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
+    }
+
+    public String getNationalId() {
+        return nationalId;
+    }
+
+    public void setNationalId(String nationalId) {
+        this.nationalId = nationalId;
+    }
+
+    public String[] getSelectedServices() {
+        return selectedServices;
+    }
+
+    public void setSelectedServices(String[] selectedServices) {
+        this.selectedServices = selectedServices;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+}

@@ -1,3 +1,14 @@
-package com.leon.nestools;
-
-    import android.util.SparseArray;import android.util.SparseIntArray;import android.view.View;import androidx.databinding.DataBinderMapper;import androidx.databinding.DataBindingComponent;import androidx.databinding.ViewDataBinding;import java.lang.Integer;import java.lang.Object;import java.lang.Override;import java.lang.RuntimeException;import java.lang.String;import java.util.ArrayList;import java.util.HashM
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="14dp" />
+    <padding
+        android:bottom="3dp"
+        android:left="3dp"
+        android:right="3dp"
+        android:top="3dp" />
+    <solid android:color="@color/transparent" />
+    <stroke
+        android:width="2dp"
+        android:color="@color/orange2" />
+</shape>

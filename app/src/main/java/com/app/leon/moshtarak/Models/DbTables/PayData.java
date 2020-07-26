@@ -1,16 +1,31 @@
-package com.leon.nestools;
+package com.app.leon.moshtarak.Models.DbTables;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.view.View;
+public class PayData {
+    short Status;
+    int Message;
+    String Token;
 
-import androidx.appcompat.app.AppCompatActivity;
+    public short getStatus() {
+        return Status;
+    }
 
-import com.leon.nestools.databinding.MainActivityBinding;
+    public void setStatus(short status) {
+        Status = status;
+    }
 
-public class MainActivity extends AppCompatActivity {
-    MainActivityBinding binding;
-    ProgressDialog progressDialog;
-    Context context;
-    View view;
+    public int getMessage() {
+        return Message;
+    }
 
+    public void setMessage(int message) {
+        Message = message;
+    }
+
+    public String getToken() {
+        return Token;
+    }
+
+    public void setToken(String token) {
+        Token = token;
+    }
+}

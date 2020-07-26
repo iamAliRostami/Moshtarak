@@ -1,21 +1,31 @@
-package com.leon.nestools;
+package com.app.leon.moshtarak.Models.DbTables;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
+public class Session {
+    private String registerDayJalali;
+    private String osVersion;
+    private String phoneModel;
 
-import androidx.appcompat.app.AppCompatActivity;
+    public String getRegisterDayJalali() {
+        return registerDayJalali;
+    }
 
-import com.leon.nestools.databinding.MainActivityBinding;
+    public void setRegisterDayJalali(String registerDayJalali) {
+        this.registerDayJalali = registerDayJalali;
+    }
 
-public class MainActivity extends AppCompatActivity {
-    MainActivityBinding binding;
-    ProgressDialog progressDialog;
-    Context context;
-    View view;
+    public String getOsVersion() {
+        return osVersion;
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = MainActivityBinding.inflate(getLayoutInf
+    public void setOsVersion(String osVersion) {
+        this.osVersion = osVersion;
+    }
+
+    public String getPhoneModel() {
+        return phoneModel;
+    }
+
+    public void setPhoneModel(String phoneModel) {
+        this.phoneModel = phoneModel;
+    }
+}

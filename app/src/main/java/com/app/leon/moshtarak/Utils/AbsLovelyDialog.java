@@ -1,144 +1,231 @@
-<?xml version="1.0"encoding="UTF-8"?>
-<project version="4">
-<component name="AndroidLayouts">
-<shared>
-<config />
-</shared>
-</component>
-<component name="ChangeListManager">
-<list default="true"id="2eeb2e83-e4a1-482b-adb3-adfa9736d456"name="Default Changelist"comment=""/>
-<option name="SHOW_DIALOG"value="false"/>
-<option name="HIGHLIGHT_CONFLICTS"value="true"/>
-<option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST"value="false"/>
-<option name="LAST_RESOLUTION"value="IGNORE"/>
-</component>
-<component name="ExecutionTargetManager"SELECTED_TARGET="192.168.43.77:5555"/>
-<component name="ExternalProjectsData">
-<projectState path="$PROJECT_DIR$">
-<ProjectState />
-</projectState>
-</component>
-<component name="ExternalProjectsManager">
-<system id="GRADLE">
-<state>
-<projects_view />
-</state>
-</system>
-</component>
-<component name="ProjectId"id="1f8YET6uwYm4AjZgPDLoN4YXR7o"/>
-<component name="ProjectViewState">
-<option name="hideEmptyMiddlePackages"value="true"/>
-<option name="showExcludedFiles"value="true"/>
-<option name="showLibraryContents"value="true"/>
-</component>
-<component name="PropertiesComponent">
-<property name="RunOnceActivity.ShowReadmeOnStart"value="true"/>
-<property name="android.project.structure.last.selected"value="SDK Location"/>
-<property name="android.project.structure.proportion"value="0.15"/>
-<property name="android.sdk.path"value="$PROJECT_DIR$/../../sdk"/>
-<property name="last_directory_selection"value="$PROJECT_DIR$/app/src/main/res/drawable"/>
-<property name="last_opened_file_path"value="$PROJECT_DIR$/app/src/main/res/xml"/>
-<property name="project.structure.last.edited"value="SDK Location"/>
-<property name="project.structure.proportion"value="0.17"/>
-<property name="project.structure.side.proportion"value="0.0"/>
-<property name="settings.editor.selected.configurable"value="AndroidSdkUpdater"/>
-</component>
-<component name="RecentsManager">
-<key name="android.template.-1712731446">
-<recent name="com.leon.nestools"/>
-</key>
-<key name="CopyFile.RECENT_KEYS">
-<recent name="F:\Android\AndroidStudioProjects\Nestools\app\src\main\res\xml"/>
-<recent name="F:\Android\AndroidStudioProjects\Nestools\app\src\main\res\drawable"/>
-</key>
-</component>
-<component name="RunManager">
-<configuration name="&lt;template&gt;"type="Applet"default="true"selected="false">
-<option name="MAIN_CLASS_NAME"/>
-<option name="HTML_FILE_NAME"/>
-<option name="HTML_USED"value="false"/>
-<option name="WIDTH"value="400"/>
-<option name="HEIGHT"value="300"/>
-<option name="POLICY_FILE"value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy"/>
-<option name="VM_PARAMETERS"/>
-</configuration>
-<configuration default="true"type="JUnit"factoryName="JUnit">
-<extension name="coverage"enabled="false"merge="false"sample_coverage="true"runner="idea"/>
-<module name=""/>
-<option name="ALTERNATIVE_JRE_PATH_ENABLED"value="false"/>
-<option name="ALTERNATIVE_JRE_PATH"/>
-<option name="PACKAGE_NAME"/>
-<option name="MAIN_CLASS_NAME"/>
-<option name="METHOD_NAME"/>
-<option name="TEST_OBJECT"value="class"/>
-<option name="VM_PARAMETERS"value="-ea"/>
-<option name="PARAMETERS"/>
-<option name="WORKING_DIRECTORY"value="$MODULE_DIR$"/>
-<option name="ENV_VARIABLES"/>
-<option name="PASS_PARENT_ENVS"value="true"/>
-<option name="TEST_SEARCH_SCOPE">
-<value defaultName="singleModule"/>
-</option>
-<envs />
-<patterns />
-<method />
-</configuration>
-<configuration name="&lt;template&gt;"type="#org.jetbrains.idea.devkit.run.PluginConfigurationType"default="true"selected="false">
-<option name="VM_PARAMETERS"value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea"/>
-</configuration>
-<configuration default="true"type="AndroidJUnit"factoryName="Android JUnit">
-<option name="TEST_OBJECT"value="class"/>
-<option name="WORKING_DIRECTORY"value="$MODULE_DIR$"/>
-<method v="2">
-<option name="Android.Gradle.BeforeRunTask"enabled="true"/>
-</method>
-</configuration>
-<configuration name="app"type="AndroidRunConfigurationType"factoryName="Android App"activateToolWindowBeforeRun="false">
-<module name="app"/>
-<option name="DEPLOY"value="true"/>
-<option name="DEPLOY_APK_FROM_BUNDLE"value="false"/>
-<option name="DEPLOY_AS_INSTANT"value="false"/>
-<option name="ARTIFACT_NAME"value=""/>
-<option name="PM_INSTALL_OPTIONS"value=""/>
-<option name="DYNAMIC_FEATURES_DISABLED_LIST"value=""/>
-<option name="ACTIVITY_EXTRA_FLAGS"value=""/>
-<option name="MODE"value="default_activity"/>
-<option name="CLEAR_LOGCAT"value="false"/>
-<option name="SHOW_LOGCAT_AUTOMATICALLY"value="false"/>
-<option name="SKIP_NOOP_APK_INSTALLATIONS"value="true"/>
-<option name="FORCE_STOP_RUNNING_APP"value="true"/>
-<option name="TARGET_SELECTION_MODE"value="DEVICE_AND_SNAPSHOT_COMBO_BOX"/>
-<option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID"value="-1"/>
-<option name="SELECTED_CLOUD_MATRIX_PROJECT_ID"value=""/>
-<option name="DEBUGGER_TYPE"value="Auto"/>
-<Auto>
-<option name="USE_JAVA_AWARE_DEBUGGER"value="false"/>
-<option name="SHOW_STATIC_VARS"value="true"/>
-<option name="WORKING_DIR"value=""/>
-<option name="TARGET_LOGGING_CHANNELS"value="lldb process:gdb-remote packets"/>
-<option name="SHOW_OPTIMIZED_WARNING"value="true"/>
-</Auto>
-<Hybrid>
-<option name="USE_JAVA_AWARE_DEBUGGER"value="false"/>
-<option name="SHOW_STATIC_VARS"value="true"/>
-<option name="WORKING_DIR"value=""/>
-<option name="TARGET_LOGGING_CHANNELS"value="lldb process:gdb-remote packets"/>
-<option name="SHOW_OPTIMIZED_WARNING"value="true"/>
-</Hybrid>
-<Java />
-<Native>
-<option name="USE_JAVA_AWARE_DEBUGGER"value="false"/>
-<option name="SHOW_STATIC_VARS"value="true"/>
-<option name="WORKING_DIR"value=""/>
-<option name="TARGET_LOGGING_CHANNELS"value="lldb process:gdb-remote packets"/>
-<option name="SHOW_OPTIMIZED_WARNING"value="true"/>
-</Native>
-<Profilers>
-<option name="ADVANCED_PROFILING_ENABLED"value="false"/>
-<option name="STARTUP_CPU_PROFILING_ENABLED"value="false"/>
-<option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME"value="Sample Java Methods"/>
-</Profilers>
-<option name="DEEP_LINK"value=""/>
-<option name="ACTIVITY_CLASS"value=""/>
-<method v="2">
-<option name="Android.Grad
+package com.app.leon.moshtarak.Utils;
+
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+
+import com.app.leon.moshtarak.R;
+
+public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
+
+    private static final String KEY_SAVED_STATE_TOKEN = "key_saved_state_token";
+
+    private Dialog dialog;
+    private View dialogView;
+
+    private ImageView iconView;
+    private TextView topTitleView;
+    private TextView titleView;
+    private TextView messageView;
+    private Context context;
+
+    AbsLovelyDialog(Context context) {
+        this.context = context;
+        init(new AlertDialog.Builder(this.context));
+    }
+
+    AbsLovelyDialog(Context context, int theme) {
+        this.context = context;
+        init(new AlertDialog.Builder(context, theme));
+    }
+
+    private void init(AlertDialog.Builder dialogBuilder) {
+        dialogView = LayoutInflater.from(dialogBuilder.getContext()).inflate(getLayout(), null);
+        dialog = dialogBuilder.setView(dialogView).create();
+
+        iconView = findView(R.id.ld_icon);
+        titleView = findView(R.id.ld_title);
+        messageView = findView(R.id.ld_message);
+        topTitleView = findView(R.id.ld_top_title);
+    }
+
+    @LayoutRes
+    protected abstract int getLayout();
+
+    public T setMessage(@StringRes int message) {
+        return setMessage(string(message));
+    }
+
+    public T setMessage(CharSequence message) {
+        messageView.setVisibility(View.VISIBLE);
+        messageView.setText(message);
+        return (T) this;
+    }
+
+    public T setTitle(@StringRes int title) {
+        return setTitle(string(title));
+    }
+
+    public T setTopTitle(@StringRes int title) {
+        return setTopTitle(string(title));
+    }
+
+    public T setTitle(CharSequence title) {
+        titleView.setVisibility(View.VISIBLE);
+        titleView.setText(title);
+        return (T) this;
+    }
+
+    T setTopTitle(CharSequence title) {
+        topTitleView.setVisibility(View.VISIBLE);
+        topTitleView.setText(title);
+//        topTitleView.setTextSize(context.getResources().getDimension(R.dimen.textSizeMedium));
+        return (T) this;
+    }
+
+    T setTopTitleColor(int color) {
+        topTitleView.setTextColor(color);
+        return (T) this;
+    }
+
+    public T setIcon(Bitmap bitmap) {
+        iconView.setVisibility(View.VISIBLE);
+        iconView.setImageBitmap(bitmap);
+        return (T) this;
+    }
+
+    public T setIcon(Drawable drawable) {
+        iconView.setVisibility(View.VISIBLE);
+        iconView.setImageDrawable(drawable);
+        return (T) this;
+    }
+
+    public T setIcon(@DrawableRes int iconRes) {
+        iconView.setVisibility(View.VISIBLE);
+        iconView.setImageResource(iconRes);
+        return (T) this;
+    }
+
+    public T setIconTintColor(int iconTintColor) {
+        iconView.setColorFilter(iconTintColor);
+        return (T) this;
+    }
+
+    public T setTitleGravity(int gravity) {
+        titleView.setGravity(gravity);
+        return (T) this;
+    }
+
+    public T setMessageGravity(int gravity) {
+        messageView.setGravity(gravity);
+        return (T) this;
+    }
+
+    public T setTopColor(@ColorInt int topColor) {
+        findView(R.id.ld_color_area).setBackgroundColor(topColor);
+        return (T) this;
+    }
+
+    public T setTopColorRes(@ColorRes int topColoRes) {
+        return setTopColor(color(topColoRes));
+    }
+
+    /*
+     * You should call method saveInstanceState on handler object and then use saved info to restore
+     * your dialog in onRestoreInstanceState. Static methods wasDialogOnScreen and getDialogId will
+     * help you in this.
+     */
+    public T setInstanceStateHandler(int id, LovelySaveStateHandler handler) {
+        handler.handleDialogStateSave(id, this);
+        return (T) this;
+    }
+
+    public T setCancelable(boolean cancelable) {
+        dialog.setCancelable(cancelable);
+        return (T) this;
+    }
+
+    public T setSavedInstanceState(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            boolean hasSavedStateHere =
+                    savedInstanceState.keySet().contains(KEY_SAVED_STATE_TOKEN) &&
+                            savedInstanceState.getSerializable(KEY_SAVED_STATE_TOKEN) == getClass();
+            if (hasSavedStateHere) {
+                restoreState(savedInstanceState);
+            }
+        }
+        return (T) this;
+    }
+
+    public Dialog show() {
+        dialog.show();
+        return dialog;
+    }
+
+    public Dialog create() {
+        return dialog;
+    }
+
+    void dismiss() {
+        dialog.dismiss();
+    }
+
+    void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable(KEY_SAVED_STATE_TOKEN, getClass());
+    }
+
+    void restoreState(Bundle savedState) {
+    }
+
+    boolean isShowing() {
+        return dialog != null && dialog.isShowing();
+    }
+
+    protected String string(@StringRes int res) {
+        return dialogView.getContext().getString(res);
+    }
+
+    protected int color(@ColorRes int colorRes) {
+        return ContextCompat.getColor(getContext(), colorRes);
+    }
+
+    Context getContext() {
+        return dialogView.getContext();
+    }
+
+    <ViewClass extends View> ViewClass findView(int id) {
+        return (ViewClass) dialogView.findViewById(id);
+    }
+
+    protected class ClickListenerDecorator implements View.OnClickListener {
+
+        private View.OnClickListener clickListener;
+        private boolean closeOnClick;
+
+        ClickListenerDecorator(View.OnClickListener clickListener, boolean closeOnClick) {
+            this.clickListener = clickListener;
+            this.closeOnClick = closeOnClick;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (clickListener != null) {
+                if (clickListener instanceof LovelyDialogCompat.DialogOnClickListenerAdapter) {
+                    LovelyDialogCompat.DialogOnClickListenerAdapter listener =
+                            (LovelyDialogCompat.DialogOnClickListenerAdapter) clickListener;
+                    listener.onClick(dialog, v.getId());
+                } else {
+                    clickListener.onClick(v);
+                }
+            }
+            if (closeOnClick) {
+                dismiss();
+            }
+        }
+    }
+}
+

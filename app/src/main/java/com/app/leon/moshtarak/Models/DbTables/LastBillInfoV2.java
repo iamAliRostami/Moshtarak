@@ -1,410 +1,685 @@
-/*
- * Copyright (C) 2014 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.app.leon.moshtarak.Models.DbTables;
 
-package androidx.appcompat.app;
+public class LastBillInfoV2 {
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.os.Bundle;
-import android.view.MenuInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 
-import androidx.annotation.CallSuper;
-import androidx.annotation.IdRes;
-import androidx.annotation.IntDef;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RestrictTo;
-import androidx.annotation.StyleRes;
-import androidx.appcompat.widget.Toolbar;
-import androidx.collection.ArraySet;
-import androidx.core.view.WindowCompat;
-import androidx.fragment.app.FragmentActivity;
+    String id;
+    String zoneId;
+    String zoneTitle;
+    String fullName;
+    String karbariId;
+    String karbariTitle;
+    String ahadMaskooni;
+    String ahadNonMaskooni;
+    String zarfiatQarardadi;
+    String qotrId;
+    String qotr;
+    String qotrSifoonId;
+    String qotrSifoon;
+    String counterStateId;
+    String eshterak;
+    String barge;
+    String preCounterReadingDate;
+    String currentCounterReadingDate;
+    String preCounterNumber;
+    String currentCounterNumber;
+    String masraf;
+    String masrafLiter;
+    String masrafAverage;
+    String budget;
+    String lavazemKahande;
+    String taxfif;
+    String preBedOrBes;
+    String days;
+    String barCode;
+    String payDate;
+    String payBankId;
+    String payBank;
+    String payType;
+    private String preReadingDate;
+    private String currentReadingDate;
+    private String duration;
+    private String preReadingNumber;
+    private String currentReadingNumber;
+    private String usageM3;
+    private String usageLiter;
+    private String rate;
+    private String abBaha;
+    private String karmozdFazelab;
+    private String maliat;
+    private String boodje;
+    private String jam;
+    private String preDebtOrOwe;
+    private String payable;
+    private String persianPayable;
+    private String deadLine;
+    private String bargeNumber;
+    private String ehsterak;
+    private String radif;
+    private String billId;
+    private String payId;
+    private boolean isPayed;
+    private String abBahaDetail;
+    private String tabsare2;
+    private String tabsare3Ab;
+    private String tabsare3Fazelab;
+    private String abonmanAb;
+    private String abonmanFazelab;
+    private String fasleGarm;
+    private String mazadOlgoo;
+    private String karmozdFazelabDetails;
+    private String payableReadable;
+    private String bankId;
+    private String bankTitle;
+    private String payDay;
+    private String payTypeId;
+    private String payTypeTitle;
+    private float amount;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.ref.WeakReference;
-
-import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX;
-
-/**
- * This class represents a delegate which you can use to extend AppCompat's support to any
- * {@link android.app.Activity}.
- *
- * <p>When using an {@link AppCompatDelegate}, you should call the following methods instead of the
- * {@link android.app.Activity} method of the same name:</p>
- * <ul>
- *     <li>{@link #addContentView(android.view.View, android.view.ViewGroup.LayoutParams)}</li>
- *     <li>{@link #setContentView(int)}</li>
- *     <li>{@link #setContentView(android.view.View)}</li>
- *     <li>{@link #setContentView(android.view.View, android.view.ViewGroup.LayoutParams)}</li>
- *     <li>{@link #requestWindowFeature(int)}</li>
- *     <li>{@link #hasWindowFeature(int)}</li>
- *     <li>{@link #invalidateOptionsMenu()}</li>
- *     <li>{@link #startSupportActionMode(androidx.appcompat.view.ActionMode.Callback)}</li>
- *     <li>{@link #setSupportActionBar(androidx.appcompat.widget.Toolbar)}</li>
- *     <li>{@link #getSupportActionBar()}</li>
- *     <li>{@link #getMenuInflater()}</li>
- *     <li>{@link #findViewById(int)}</li>
- * </ul>
- *
- * <p>The following methods should be called from the {@link android.app.Activity} method of the
- * same name:</p>
- * <ul>
- *     <li>{@link #onCreate(android.os.Bundle)}</li>
- *     <li>{@link #onPostCreate(android.os.Bundle)}</li>
- *     <li>{@link #onConfigurationChanged(android.content.res.Configuration)}</li>
- *     <li>{@link #onStart()}</li>
- *     <li>{@link #onStop()}</li>
- *     <li>{@link #onPostResume()}</li>
- *     <li>{@link #onSaveInstanceState(Bundle)}</li>
- *     <li>{@link #setTitle(CharSequence)}</li>
- *     <li>{@link #onStop()}</li>
- *     <li>{@link #onDestroy()}</li>
- * </ul>
- *
- * <p>An {@link Activity} can only be linked with one {@link AppCompatDelegate} instance,
- * therefore the instance returned from {@link #create(Activity, AppCompatCallback)} should be
- * retained until the Activity is destroyed.</p>
- */
-public abstract class AppCompatDelegate {
-    /**
-     * Mode which uses the system's night mode setting to determine if it is night or not.
-     *
-     * @see #setLocalNightMode(int)
-     */
-    public static final int MODE_NIGHT_FOLLOW_SYSTEM = -1;
-    /**
-     * Night mode which switches between dark and light mode depending on the time of day
-     * (dark at night, light in the day).
-     *
-     * <p>The calculation used to determine whether it is night or not makes use of the location
-     * APIs (if this app has the necessary permissions). This allows us to generate accurate
-     * sunrise and sunset times. If this app does not have permission to access the location APIs
-     * then we use hardcoded times which will be less accurate.</p>
-     *
-     * @deprecated Automatic switching of dark/light based on the current time is deprecated.
-     * Considering using an explicit setting, or {@link #MODE_NIGHT_AUTO_BATTERY}.
-     */
-    @Deprecated
-    public static final int MODE_NIGHT_AUTO_TIME = 0;
-    /**
-     * @deprecated Use {@link AppCompatDelegate#MODE_NIGHT_AUTO_TIME} instead
-     */
-    @SuppressWarnings("deprecation")
-    @Deprecated
-    public static final int MODE_NIGHT_AUTO = MODE_NIGHT_AUTO_TIME;
-    /**
-     * Night mode which uses always uses a light mode, enabling {@code notnight} qualified
-     * resources regardless of the time.
-     *
-     * @see #setLocalNightMode(int)
-     */
-    public static final int MODE_NIGHT_NO = 1;
-    /**
-     * Night mode which uses always uses a dark mode, enabling {@code night} qualified
-     * resources regardless of the time.
-     *
-     * @see #setLocalNightMode(int)
-     */
-    public static final int MODE_NIGHT_YES = 2;
-    /**
-     * Night mode which uses a dark mode when the system's 'Battery Saver' feature is enabled,
-     * otherwise it uses a 'light mode'. This mode can help the device to decrease power usage,
-     * depending on the display technology in the device.
-     *
-     * <em>Please note: this mode should only be used when running on devices which do not
-     * provide a similar device-wide setting.</em>
-     *
-     * @see #setLocalNightMode(int)
-     */
-    public static final int MODE_NIGHT_AUTO_BATTERY = 3;
-    /**
-     * An unspecified mode for night mode. This is primarily used with
-     * {@link #setLocalNightMode(int)}, to allow the default night mode to be used.
-     * If both the default and local night modes are set to this value, then the default value of
-     * {@link #MODE_NIGHT_FOLLOW_SYSTEM} is applied.
-     *
-     * @see AppCompatDelegate#setDefaultNightMode(int)
-     */
-    public static final int MODE_NIGHT_UNSPECIFIED = -100;
-    /**
-     * Flag for enabling the support Action Bar.
-     *
-     * <p>This is enabled by default for some devices. The Action Bar replaces the title bar and
-     * provides an alternate location for an on-screen menu button on some devices.
-     */
-    public static final int FEATURE_SUPPORT_ACTION_BAR = 100 + WindowCompat.FEATURE_ACTION_BAR;
-    /**
-     * Flag for requesting an support Action Bar that overlays window content.
-     * Normally an Action Bar will sit in the space above window content, but if this
-     * feature is requested along with {@link #FEATURE_SUPPORT_ACTION_BAR} it will be layered over
-     * the window content itself. This is useful if you would like your app to have more control
-     * over how the Action Bar is displayed, such as letting application content scroll beneath
-     * an Action Bar with a transparent background or otherwise displaying a transparent/translucent
-     * Action Bar over application content.
-     *
-     * <p>This mode is especially useful with {@code View.SYSTEM_UI_FLAG_FULLSCREEN}, which allows
-     * you to seamlessly hide the action bar in conjunction with other screen decorations.
-     * When an ActionBar is in this mode it will adjust the insets provided to
-     * {@link View#fitSystemWindows(android.graphics.Rect) View.fitSystemWindows(Rect)}
-     * to include the content covered by the action bar, so you can do layout within
-     * that space.
-     */
-    public static final int FEATURE_SUPPORT_ACTION_BAR_OVERLAY =
-            100 + WindowCompat.FEATURE_ACTION_BAR_OVERLAY;
-    /**
-     * Flag for specifying the behavior of action modes when an Action Bar is not present.
-     * If overlay is enabled, the action mode UI will be allowed to cover existing window content.
-     */
-    public static final int FEATURE_ACTION_MODE_OVERLAY = WindowCompat.FEATURE_ACTION_MODE_OVERLAY;
-    static final boolean DEBUG = true;
-    static final String TAG = "AppCompatDelegate";
-    private static final ArraySet<WeakReference<AppCompatDelegate>> sActiveDelegates =
-            new ArraySet<>();
-    private static final Object sActiveDelegatesLock = new Object();
-    @NightMode
-    private static int sDefaultNightMode = MODE_NIGHT_UNSPECIFIED;
-
-    /**
-     * Private constructor
-     */
-    AppCompatDelegate() {
+    public LastBillInfoV2(String preReadingDate, String currentReadingDate, String duration,
+                          String preReadingNumber, String currentReadingNumber, String usageM3,
+                          String usageLiter, String rate, String abBaha, String karmozdFazelab,
+                          String maliat, String boodje, String jam, String preDebtOrOwe,
+                          String payable, String persianPayable, String deadLine, String bargeNumber,
+                          String ehsterak, String radif, String billId, String payId, boolean isPayed) {
+        this.preReadingDate = preReadingDate;
+        this.currentReadingDate = currentReadingDate;
+        this.duration = duration;
+        this.preReadingNumber = preReadingNumber;
+        this.currentReadingNumber = currentReadingNumber;
+        this.usageM3 = usageM3;
+        this.usageLiter = usageLiter;
+        this.rate = rate;
+        this.abBaha = abBaha;
+        this.karmozdFazelab = karmozdFazelab;
+        this.maliat = maliat;
+        this.boodje = boodje;
+        this.jam = jam;
+        this.preDebtOrOwe = preDebtOrOwe;
+        this.payable = payable;
+        this.persianPayable = persianPayable;
+        this.deadLine = deadLine;
+        this.bargeNumber = bargeNumber;
+        this.ehsterak = ehsterak;
+        this.radif = radif;
+        this.billId = billId;
+        this.payId = payId;
+        this.isPayed = isPayed;
     }
 
-    /**
-     * Create an {@link androidx.appcompat.app.AppCompatDelegate} to use with {@code activity}.
-     *
-     * @param callback An optional callback for AppCompat specific events
-     */
-    @NonNull
-    public static AppCompatDelegate create(@NonNull Activity activity,
-                                           @Nullable AppCompatCallback callback) {
-        return new AppCompatDelegateImpl(activity, callback);
+    public float getAmount() {
+        return amount;
     }
 
-    /**
-     * Create an {@link androidx.appcompat.app.AppCompatDelegate} to use with {@code dialog}.
-     *
-     * @param callback An optional callback for AppCompat specific events
-     */
-    @NonNull
-    public static AppCompatDelegate create(@NonNull Dialog dialog,
-                                           @Nullable AppCompatCallback callback) {
-        return new AppCompatDelegateImpl(dialog, callback);
+    public void setAmount(float amount) {
+        this.amount = amount;
     }
 
-    /**
-     * Create an {@link androidx.appcompat.app.AppCompatDelegate} to use with a {@code context}
-     * and a {@code window}.
-     *
-     * @param callback An optional callback for AppCompat specific events
-     */
-    @NonNull
-    public static AppCompatDelegate create(@NonNull Context context, @NonNull Window window,
-                                           @Nullable AppCompatCallback callback) {
-        return new AppCompatDelegateImpl(context, window, callback);
+    public boolean isPayed() {
+        return isPayed;
     }
 
-    /**
-     * Create an {@link androidx.appcompat.app.AppCompatDelegate} to use with a {@code context}
-     * and hosted by an {@code Activity}.
-     *
-     * @param callback An optional callback for AppCompat specific events
-     */
-    @NonNull
-    public static AppCompatDelegate create(@NonNull Context context, @NonNull Activity activity,
-                                           @Nullable AppCompatCallback callback) {
-        return new AppCompatDelegateImpl(context, activity, callback);
+    public void setPayed(boolean payed) {
+        isPayed = payed;
     }
 
-    /**
-     * Support library version of {@link Activity#getActionBar}.
-     *
-     * @return AppCompat's action bar, or null if it does not have one.
-     */
-    @Nullable
-    public abstract ActionBar getSupportActionBar();
-
-    /**
-     * Set a {@link Toolbar} to act as the {@link ActionBar} for this delegate.
-     *
-     * <p>When set to a non-null value the {@link #getSupportActionBar()} ()} method will return
-     * an {@link ActionBar} object that can be used to control the given toolbar as if it were
-     * a traditional window decor action bar. The toolbar's menu will be populated with the
-     * Activity's options menu and the navigation button will be wired through the standard
-     * {@link android.R.id#home home} menu select action.</p>
-     *
-     * <p>In order to use a Toolbar within the Activity's window content the application
-     * must not request the window feature
-     * {@link AppCompatDelegate#FEATURE_SUPPORT_ACTION_BAR FEATURE_SUPPORT_ACTION_BAR}.</p>
-     *
-     * @param toolbar Toolbar to set as the Activity's action bar, or {@code null} to clear it
-     */
-    public abstract void setSupportActionBar(@Nullable Toolbar toolbar);
-
-    /**
-     * Return the value of this call from your {@link Activity#getMenuInflater()}
-     */
-    public abstract MenuInflater getMenuInflater();
-
-    /**
-     * Should be called from {@link Activity#onCreate Activity.onCreate()}.
-     *
-     * <p>This should be called before {@code super.onCreate()} as so:</p>
-     * <pre class="prettyprint">
-     * protected void onCreate(Bundle savedInstanceState) {
-     *     getDelegate().onCreate(savedInstanceState);
-     *     super.onCreate(savedInstanceState);
-     *     // ...
-     * }
-     * </pre>
-     */
-    public abstract void onCreate(Bundle savedInstanceState);
-
-    /**
-     * Should be called from {@link Activity#onPostCreate(android.os.Bundle)}
-     */
-    public abstract void onPostCreate(Bundle savedInstanceState);
-
-    /**
-     * Should be called from
-     * {@link Activity#onConfigurationChanged}
-     */
-    public abstract void onConfigurationChanged(Configuration newConfig);
-
-    /**
-     * Should be called from {@link Activity#onStart()} Activity.onStart()}
-     */
-    public abstract void onStart();
-
-    /**
-     * Should be called from {@link Activity#onStop Activity.onStop()}
-     */
-    public abstract void onStop();
-
-    /**
-     * Should be called from {@link Activity#onPostResume()}
-     */
-    public abstract void onPostResume();
-
-    /**
-     * This should be called from {@link Activity#setTheme(int)} to notify AppCompat of what
-     * the current theme resource id is.
-     */
-    public void setTheme(@StyleRes int themeResId) {
+    public String getPreReadingDate() {
+        return preReadingDate;
     }
 
-    /**
-     * Finds a view that was identified by the id attribute from the XML that
-     * was processed in {@link #onCreate}.
-     *
-     * @return The view if found or null otherwise.
-     */
-    @SuppressWarnings("TypeParameterUnusedInFormals")
-    @Nullable
-    public abstract <T extends View> T findViewById(@IdRes int id);
-
-    /**
-     * Should be called instead of {@link Activity#setContentView(android.view.View)}}
-     */
-    public abstract void setContentView(View v);
-
-    /**
-     * Should be called instead of {@link Activity#setContentView(int)}}
-     */
-    public abstract void setContentView(@LayoutRes int resId);
-
-    /**
-     * Should be called instead of
-     * {@link Activity#setContentView(android.view.View, android.view.ViewGroup.LayoutParams)}}
-     */
-    public abstract void setContentView(View v, ViewGroup.LayoutParams lp);
-
-    /**
-     * Should be called instead of
-     * {@link Activity#addContentView(android.view.View, android.view.ViewGroup.LayoutParams)}}
-     */
-    public abstract void addContentView(View v, ViewGroup.LayoutParams lp);
-
-    /**
-     * @deprecated use {@link #attachBaseContext2(Context)} instead.
-     */
-    @Deprecated
-    public void attachBaseContext(Context context) {
+    public void setPreReadingDate(String preReadingDate) {
+        this.preReadingDate = preReadingDate;
     }
 
-    /**
-     * Should be called from {@link Activity#attachBaseContext(Context)}.
-     */
-    @NonNull
-    @CallSuper
-    public Context attachBaseContext2(@NonNull Context context) {
-        attachBaseContext(context);
-        return context;
+    public String getCurrentReadingDate() {
+        return currentReadingDate;
     }
 
-    /**
-     * Should be called from {@link Activity#onTitleChanged(CharSequence, int)}}
-     */
-    public abstract void setTitle(@Nullable CharSequence title);
-
-    /**
-     * Should be called from {@link Activity#invalidateOptionsMenu()}} or
-     * {@link FragmentActivity#supportInvalidateOptionsMenu()}.
-     */
-    public abstract void invalidateOptionsMenu();
-
-    /**
-     * Should be called from {@link Activity#onDestroy()}
-     */
-    public abstract void onDestroy();
-
-    /**
-     * Returns an {@link ActionBarDrawerToggle.Delegate} which can be returned from your Activity
-     * if it implements {@link ActionBarDrawerToggle.DelegateProvider}.
-     */
-    @Nullable
-    public abstract ActionBarDrawerToggle.Delegate getDrawerToggleDelegate();
-
-    /**
-     * @hide
-     */
-    @SuppressWarnings("deprecation")
-    @RestrictTo(LIBRARY_GROUP_PREFIX)
-    @IntDef({MODE_NIGHT_NO, MODE_NIGHT_YES, MODE_NIGHT_AUTO_TIME, MODE_NIGHT_FOLLOW_SYSTEM,
-            MODE_NIGHT_UNSPECIFIED, MODE_NIGHT_AUTO_BATTERY})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface NightMode {
+    public void setCurrentReadingDate(String currentReadingDate) {
+        this.currentReadingDate = currentReadingDate;
     }
 
-    @IntDef({MODE_NIGHT_NO, MODE_NIGHT_YES, MODE_NIGHT_FOLLOW_SYSTEM})
-    @Retention(RetentionPolicy.SOURCE)
-    @interface ApplyableNightMode {
+    public String getDuration() {
+        return duration;
     }
 
-/**
- * Enable extended window features.  This should be called instead of
- * {@link android.app.Activity#requestWindowFeature(int)} or
- * {@link android.view.Window#requestFeature getWindow().requestFeature()}.
- *
- * @param featureId The desired feature as defi
-n
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public String getPreReadingNumber() {
+        return preReadingNumber;
+    }
+
+    public void setPreReadingNumber(String preReadingNumber) {
+        this.preReadingNumber = preReadingNumber;
+    }
+
+    public String getCurrentReadingNumber() {
+        return currentReadingNumber;
+    }
+
+    public void setCurrentReadingNumber(String currentReadingNumber) {
+        this.currentReadingNumber = currentReadingNumber;
+    }
+
+    public String getUsageM3() {
+        return usageM3;
+    }
+
+    public void setUsageM3(String usageM3) {
+        this.usageM3 = usageM3;
+    }
+
+    public String getUsageLiter() {
+        return usageLiter;
+    }
+
+    public void setUsageLiter(String usageLiter) {
+        this.usageLiter = usageLiter;
+    }
+
+    public String getRate() {
+        return rate;
+    }
+
+    public void setRate(String rate) {
+        this.rate = rate;
+    }
+
+    public String getAbBaha() {
+        return abBaha;
+    }
+
+    public void setAbBaha(String abBaha) {
+        this.abBaha = abBaha;
+    }
+
+    public String getKarmozdFazelab() {
+        return karmozdFazelab;
+    }
+
+    public void setKarmozdFazelab(String karmozdFazelab) {
+        this.karmozdFazelab = karmozdFazelab;
+    }
+
+    public String getMaliat() {
+        return maliat;
+    }
+
+    public void setMaliat(String maliat) {
+        this.maliat = maliat;
+    }
+
+    public String getBoodje() {
+        return boodje;
+    }
+
+    public void setBoodje(String boodje) {
+        this.boodje = boodje;
+    }
+
+    public String getJam() {
+        return jam;
+    }
+
+    public void setJam(String jam) {
+        this.jam = jam;
+    }
+
+    public String getPreDebtOrOwe() {
+        return preDebtOrOwe;
+    }
+
+    public void setPreDebtOrOwe(String preDebtOrOwe) {
+        this.preDebtOrOwe = preDebtOrOwe;
+    }
+
+    public String getPayable() {
+        return payable;
+    }
+
+    public void setPayable(String payable) {
+        this.payable = payable;
+    }
+
+    public String getPersianPayable() {
+        return persianPayable;
+    }
+
+    public void setPersianPayable(String persianPayable) {
+        this.persianPayable = persianPayable;
+    }
+
+    public String getDeadLine() {
+        return deadLine;
+    }
+
+    public void setDeadLine(String deadLine) {
+        this.deadLine = deadLine;
+    }
+
+    public String getBargeNumber() {
+        return bargeNumber;
+    }
+
+    public void setBargeNumber(String bargeNumber) {
+        this.bargeNumber = bargeNumber;
+    }
+
+    public String getEhsterak() {
+        return ehsterak;
+    }
+
+    public void setEhsterak(String ehsterak) {
+        this.ehsterak = ehsterak;
+    }
+
+    public String getRadif() {
+        return radif;
+    }
+
+    public void setRadif(String radif) {
+        this.radif = radif;
+    }
+
+    public String getBillId() {
+        return billId;
+    }
+
+    public void setBillId(String billId) {
+        this.billId = billId;
+    }
+
+    public String getPayId() {
+        return payId;
+    }
+
+    public void setPayId(String payId) {
+        this.payId = payId;
+    }
+
+    public String getAbBahaDetail() {
+        return abBahaDetail;
+    }
+
+    public void setAbBahaDetail(String abBahaDetail) {
+        this.abBahaDetail = abBahaDetail;
+    }
+
+    public String getTabsare2() {
+        return tabsare2;
+    }
+
+    public void setTabsare2(String tabsare2) {
+        this.tabsare2 = tabsare2;
+    }
+
+    public String getTabsare3Ab() {
+        return tabsare3Ab;
+    }
+
+    public void setTabsare3Ab(String tabsare3Ab) {
+        this.tabsare3Ab = tabsare3Ab;
+    }
+
+    public String getTabsare3Fazelab() {
+        return tabsare3Fazelab;
+    }
+
+    public void setTabsare3Fazelab(String tabsare3Fazelab) {
+        this.tabsare3Fazelab = tabsare3Fazelab;
+    }
+
+    public String getAbonmanAb() {
+        return abonmanAb;
+    }
+
+    public void setAbonmanAb(String abonmanAb) {
+        this.abonmanAb = abonmanAb;
+    }
+
+    public String getAbonmanFazelab() {
+        return abonmanFazelab;
+    }
+
+    public void setAbonmanFazelab(String abonmanFazelab) {
+        this.abonmanFazelab = abonmanFazelab;
+    }
+
+    public String getFasleGarm() {
+        return fasleGarm;
+    }
+
+    public void setFasleGarm(String fasleGarm) {
+        this.fasleGarm = fasleGarm;
+    }
+
+    public String getMazadOlgoo() {
+        return mazadOlgoo;
+    }
+
+    public void setMazadOlgoo(String mazadOlgoo) {
+        this.mazadOlgoo = mazadOlgoo;
+    }
+
+    public String getKarmozdFazelabDetails() {
+        return karmozdFazelabDetails;
+    }
+
+    public void setKarmozdFazelabDetails(String karmozdFazelabDetails) {
+        this.karmozdFazelabDetails = karmozdFazelabDetails;
+    }
+
+    public String getPayableReadable() {
+        return payableReadable;
+    }
+
+    public void setPayableReadable(String payableReadable) {
+        this.payableReadable = payableReadable;
+    }
+
+    public String getBankId() {
+        return bankId;
+    }
+
+    public void setBankId(String bankId) {
+        this.bankId = bankId;
+    }
+
+    public String getBankTitle() {
+        return bankTitle;
+    }
+
+    public void setBankTitle(String bankTitle) {
+        this.bankTitle = bankTitle;
+    }
+
+    public String getPayDay() {
+        return payDay;
+    }
+
+    public void setPayDay(String payDay) {
+        this.payDay = payDay;
+    }
+
+    public String getPayTypeId() {
+        return payTypeId;
+    }
+
+    public void setPayTypeId(String payTypeId) {
+        this.payTypeId = payTypeId;
+    }
+
+    public String getPayTypeTitle() {
+        return payTypeTitle;
+    }
+
+    public void setPayTypeTitle(String payTypeTitle) {
+        this.payTypeTitle = payTypeTitle;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getZoneId() {
+        return zoneId;
+    }
+
+    public void setZoneId(String zoneId) {
+        this.zoneId = zoneId;
+    }
+
+    public String getZoneTitle() {
+        return zoneTitle;
+    }
+
+    public void setZoneTitle(String zoneTitle) {
+        this.zoneTitle = zoneTitle;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getKarbariId() {
+        return karbariId;
+    }
+
+    public void setKarbariId(String karbariId) {
+        this.karbariId = karbariId;
+    }
+
+    public String getKarbariTitle() {
+        return karbariTitle;
+    }
+
+    public void setKarbariTitle(String karbariTitle) {
+        this.karbariTitle = karbariTitle;
+    }
+
+    public String getAhadMaskooni() {
+        return ahadMaskooni;
+    }
+
+    public void setAhadMaskooni(String ahadMaskooni) {
+        this.ahadMaskooni = ahadMaskooni;
+    }
+
+    public String getAhadNonMaskooni() {
+        return ahadNonMaskooni;
+    }
+
+    public void setAhadNonMaskooni(String ahadNonMaskooni) {
+        this.ahadNonMaskooni = ahadNonMaskooni;
+    }
+
+    public String getZarfiatQarardadi() {
+        return zarfiatQarardadi;
+    }
+
+    public void setZarfiatQarardadi(String zarfiatQarardadi) {
+        this.zarfiatQarardadi = zarfiatQarardadi;
+    }
+
+    public String getQotrId() {
+        return qotrId;
+    }
+
+    public void setQotrId(String qotrId) {
+        this.qotrId = qotrId;
+    }
+
+    public String getQotr() {
+        return qotr;
+    }
+
+    public void setQotr(String qotr) {
+        this.qotr = qotr;
+    }
+
+    public String getQotrSifoonId() {
+        return qotrSifoonId;
+    }
+
+    public void setQotrSifoonId(String qotrSifoonId) {
+        this.qotrSifoonId = qotrSifoonId;
+    }
+
+    public String getQotrSifoon() {
+        return qotrSifoon;
+    }
+
+    public void setQotrSifoon(String qotrSifoon) {
+        this.qotrSifoon = qotrSifoon;
+    }
+
+    public String getCounterStateId() {
+        return counterStateId;
+    }
+
+    public void setCounterStateId(String counterStateId) {
+        this.counterStateId = counterStateId;
+    }
+
+    public String getEshterak() {
+        return eshterak;
+    }
+
+    public void setEshterak(String eshterak) {
+        this.eshterak = eshterak;
+    }
+
+    public String getBarge() {
+        return barge;
+    }
+
+    public void setBarge(String barge) {
+        this.barge = barge;
+    }
+
+    public String getPreCounterReadingDate() {
+        return preCounterReadingDate;
+    }
+
+    public void setPreCounterReadingDate(String preCounterReadingDate) {
+        this.preCounterReadingDate = preCounterReadingDate;
+    }
+
+    public String getCurrentCounterReadingDate() {
+        return currentCounterReadingDate;
+    }
+
+    public void setCurrentCounterReadingDate(String currentCounterReadingDate) {
+        this.currentCounterReadingDate = currentCounterReadingDate;
+    }
+
+    public String getPreCounterNumber() {
+        return preCounterNumber;
+    }
+
+    public void setPreCounterNumber(String preCounterNumber) {
+        this.preCounterNumber = preCounterNumber;
+    }
+
+    public String getCurrentCounterNumber() {
+        return currentCounterNumber;
+    }
+
+    public void setCurrentCounterNumber(String currentCounterNumber) {
+        this.currentCounterNumber = currentCounterNumber;
+    }
+
+    public String getMasraf() {
+        return masraf;
+    }
+
+    public void setMasraf(String masraf) {
+        this.masraf = masraf;
+    }
+
+    public String getMasrafLiter() {
+        return masrafLiter;
+    }
+
+    public void setMasrafLiter(String masrafLiter) {
+        this.masrafLiter = masrafLiter;
+    }
+
+    public String getMasrafAverage() {
+        return masrafAverage;
+    }
+
+    public void setMasrafAverage(String masrafAverage) {
+        this.masrafAverage = masrafAverage;
+    }
+
+    public String getBudget() {
+        return budget;
+    }
+
+    public void setBudget(String budget) {
+        this.budget = budget;
+    }
+
+    public String getLavazemKahande() {
+        return lavazemKahande;
+    }
+
+    public void setLavazemKahande(String lavazemKahande) {
+        this.lavazemKahande = lavazemKahande;
+    }
+
+    public String getTaxfif() {
+        return taxfif;
+    }
+
+    public void setTaxfif(String taxfif) {
+        this.taxfif = taxfif;
+    }
+
+    public String getPreBedOrBes() {
+        return preBedOrBes;
+    }
+
+    public void setPreBedOrBes(String preBedOrBes) {
+        this.preBedOrBes = preBedOrBes;
+    }
+
+    public String getDays() {
+        return days;
+    }
+
+    public void setDays(String days) {
+        this.days = days;
+    }
+
+    public String getBarCode() {
+        return barCode;
+    }
+
+    public void setBarCode(String barCode) {
+        this.barCode = barCode;
+    }
+
+    public String getPayDate() {
+        return payDate;
+    }
+
+    public void setPayDate(String payDate) {
+        this.payDate = payDate;
+    }
+
+    public String getPayBankId() {
+        return payBankId;
+    }
+
+    public void setPayBankId(String payBankId) {
+        this.payBankId = payBankId;
+    }
+
+    public String getPayBank() {
+        return payBank;
+    }
+
+    public void setPayBank(String payBank) {
+        this.payBank = payBank;
+    }
+
+    public String getPayType() {
+        return payType;
+    }
+
+    public void setPayType(String payType) {
+        this.payType = payType;
+    }
+}

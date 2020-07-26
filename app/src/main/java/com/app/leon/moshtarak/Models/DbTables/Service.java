@@ -1,13 +1,27 @@
-<?xml version="1.0"encoding="UTF-8"?>
-<project version="4">
-<component name="AndroidLayouts">
-<shared>
-<config />
-</shared>
-</component>
-<component name="ChangeListManager">
-<list default="true"id="2eeb2e83-e4a1-482b-adb3-adfa9736d456"name="Default Changelist"comment=""/>
-<option name="SHOW_DIALOG"value="false"/>
-<option name="HIGHLIGHT_CONFLICTS"value="true"/>
-<option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST"value="false"/>
-<option name="LAST_RESOLUTION"
+package com.app.leon.moshtarak.Models.DbTables;
+
+public class Service {
+    private String id;
+    private String title;
+
+    public Service(String id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+}
