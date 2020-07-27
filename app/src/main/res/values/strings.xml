@@ -65,27 +65,26 @@
     <string name="copy_right_2">شبکه تارنما سپاهان</string>
     <string name="you_are_signed"> شماره اشتراک شما در سامانه ثبت گردید</string>
     <string name="accepted">ادامه</string>
-    <string name="logout_successful">با موفقیت از حساب کاربری خود خارج شدید.</string>
+    <string name="logout_successful">از حساب کاربری خود خارج شدید.</string>
     <string name="change_successful">تغییر حساب کاربری با موفقیت انجام شد.</string>
     <string name="error">خطا</string>
 
     <string name="all_field_should_filled">همه فیلدها باید پر شود.</string>
     <string name="error_empty">این فیلد باید پر شود.</string>
-    <string name="error_IO">خطا در جابجای اطلاعات، لطفا مجدد تلاش کنید</string>
-    <string name="error_other">جهت ارتباط با پشتیبانی; علت خطا:</string>
-    <string name="error_internal">خطای داخلی سرور، با پشتیبان تماس حاصل فرمایید</string>
-    <string name="error_input">ورودی های خود را چک کنید</string>
-    <string name="error_change_server">سرور در حال تغییرات است، لطفا منتظر بمانید و در صورت برطرف نشدن مشکل با پشتیبان تماس حاصل فرماید</string>
-    <string name="error_user_password">نام کاربری و گذرواژه در سیستم موجود نیست، لطفا در ورود اطلاعات دقت قرمایید</string>
-    <string name="error_not_update1">همکار گرامی لطفا نسخه به روز شده اپلیکیشن را از منوی تنظیمات  بخش به روز رسانی دریافت نمایید</string>
-    <string name="error_not_update2">همکار گرامی لطفا چهت دریافت آخرین نسخه اپلیکیشن با راهبر تماس حاصل فرمایید</string>
-    <string name="error_not_auth">مجوز های شما باطل شده است، از برنامه خارج و مجددا وارد شوید</string>
+    <string name="error_bill_id">شناسه قبض صحیح نمیباشد.</string>
+    <string name="error_connection">خطا در جابجایی اطلاعات، لطفا مجدد تلاش کنید.</string>
+    <string name="error_other">در حال حاضر خدمات مقدور نمیباشد، لطفا مجددا تلاش فرمایید.</string>
+    <string name="error_internal">با عرض پوزش، سرور در حال به روزرسانی، لطفا دقایقی دیگر امتحان فرمایید.</string>
+    <string name="error_input">ورودی های خود را چک کنید.</string>
+    <string name="error_change_server">سرور در حال تغییرات است، لطفا منتظر بمانید و در صورت برطرف نشدن مشکل با پشتیبان تماس حاصل فرمایید.</string>
+    <string name="error_user_password">نام کاربری و گذرواژه در سیستم موجود نیست، لطفا در ورود اطلاعات دقت قرمایید.</string>
+    <string name="error_not_update">لطفا نسخه به روز شده اپلیکیشن را از فهرست فوری، بخش به روز رسانی دریافت نمایید.</string>
+    <string name="error_not_update2">همکار گرامی لطفا چهت دریافت آخرین نسخه اپلیکیشن با راهبر تماس حاصل فرمایید.</string>
+    <string name="error_not_auth">مجوز های شما باطل شده است، از برنامه خارج و مجددا وارد شوید.</string>
     <string name="error_preparing">مشکلی در فرآیند آماده سازی روی داده است</string>
     <string name="error_android_version">نسخه اندروید شما این ویژگی را پشتیبانی نمی کند</string>
     <string name="time_out_error">پاسخی دریافت نشد</string>
-    <string name="connection_error">خطا در جابجای اطلاعات، لطفا مجدد تلاش کنید</string>
     <string name="server_error">سرور در حال تغییرات است، لطفا منتظر بمانید</string>
-    <string name="network_error">خطا در جابجای اطلاعات، لطفا مجدد تلاش کنید</string>
     <string name="dialog_canceled">پرداخت لغو شد</string>
     <string name="device_root">دستگاه شما روت شده است</string>
 
@@ -215,5 +214,7 @@
     <string name="bill_exp">شرح اقلام</string>
     <string name="bill_read_info">اطلاعات قرائت</string>
     <string name="bill_branch_info">اطلاعات انشعاب</string>
+
+    <string name="why_we_need">اطلاعات کاربری جهت تطبیق با اطلاعات ثبت شده در سامانه و جلوگیری از هر گونه سوء استفاده احتمالی از اطلاعات شماست.\nاین اطلاعات به صورت محرمانه نزد ما خواهد ماند.\n</string>
 
 </resources>

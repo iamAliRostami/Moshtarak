@@ -13,7 +13,8 @@ public class CustomDialog {
     @SuppressLint("StaticFieldLeak")
     private static LovelyStandardDialog lovelyStandardDialog;
 
-    public CustomDialog(DialogType choose, Context context, String message, String title, String top, String buttonText) {
+    public CustomDialog(DialogType choose, Context context, String message, String title, String top,
+                        String buttonText) {
         lovelyStandardDialog = new LovelyStandardDialog(context)
                 .setTitle(title)
                 .setMessage(message)

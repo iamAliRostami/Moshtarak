@@ -120,7 +120,7 @@ public class HelpActivity extends BaseActivity {
                                     String failingUrl) {
             Log.e("error", description);
             Toast.makeText(HelpActivity.this, getString(R.string.error).concat(" : ")
-                    .concat(getString(R.string.error_IO)), Toast.LENGTH_SHORT).show();
+                    .concat(getString(R.string.error_connection)), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -42,7 +42,6 @@ import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
 import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.CustomProgressBar;
-import com.app.leon.moshtarak.Utils.CustomTab;
 import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
@@ -56,7 +55,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -73,7 +71,8 @@ public class LastBillFileActivity extends AppCompatActivity {
     Bitmap bitmapBill;
     Code128 code128;
     Paint tPaint;
-    int small = 40, medium = 50, large = 70, huge = 100;
+    //    int small = 40, medium = 50, large = 70, huge = 100;
+    int small = 40, medium = 50, large = 23, huge = 33;
     View.OnClickListener onClickListenerSave = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -116,12 +115,12 @@ public class LastBillFileActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             if (!lastBillInfo.isPayed()) {
-//                getToken();
+                getToken();
 //                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.sibche.aspardproject.app");
 //                if (launchIntent != null) {
 //                    startActivity(launchIntent);//null pointer check in case package name was not found
 //                } else
-                new CustomTab(getString(R.string.mellat_site), MyApplication.getContext());
+//                new CustomTab(getString(R.string.mellat_site), MyApplication.getContext());
 
 //                FragmentManager fragmentManager = getSupportFragmentManager();
 //                PayFragment payFragment = PayFragment.newInstance(new PayViewModel(lastBillInfo.getBillId(), lastBillInfo.getPayId()));
@@ -179,6 +178,7 @@ public class LastBillFileActivity extends AppCompatActivity {
         int intNumber;
         Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.bill_1); // the original file yourimage.jpg i added in resources
         Bitmap dest = Bitmap.createBitmap(src.getWidth(), src.getHeight(), Bitmap.Config.ARGB_8888);
+//        Bitmap dest = Bitmap.createBitmap(100, 200, Bitmap.Config.ARGB_8888);
         Canvas cs = new Canvas(dest);
         cs.drawBitmap(src, 0f, 0f, null);
 
@@ -590,9 +590,6 @@ public class LastBillFileActivity extends AppCompatActivity {
                 errorType = data.getIntExtra("errorType", 0);
                 break;
         }
-        Log.e("status", status);
-        Log.e("message", Objects.requireNonNull(message));
-        Log.e("enData", Objects.requireNonNull(enData));
         if (errorType != 0) {
             showErrorTypeMpl(errorType);
         } else {
@@ -608,13 +605,13 @@ public class LastBillFileActivity extends AppCompatActivity {
                 message = getString(R.string.time_out_error);
                 break;
             case 1000:
-                message = getString(R.string.connection_error);
+                message = getString(R.string.error_connection);
                 break;
             case 1001:
                 message = getString(R.string.server_error);
                 break;
             case 1002:
-                message = getString(R.string.network_error);
+                message = getString(R.string.error_connection);
                 break;
             case 201:
                 message = getString(R.string.dialog_canceled);

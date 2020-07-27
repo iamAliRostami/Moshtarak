@@ -615,13 +615,13 @@ public class LastBillActivity extends BaseActivity {
                 message = getString(R.string.time_out_error);
                 break;
             case 1000:
-                message = getString(R.string.connection_error);
+                message = getString(R.string.error_connection);
                 break;
             case 1001:
                 message = getString(R.string.server_error);
                 break;
             case 1002:
-                message = getString(R.string.network_error);
+                message = getString(R.string.error_connection);
                 break;
             case 201:
                 message = getString(R.string.dialog_canceled);

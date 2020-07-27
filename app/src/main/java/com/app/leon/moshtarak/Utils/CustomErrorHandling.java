@@ -20,7 +20,7 @@ public class CustomErrorHandling extends Exception {
     private static Context context;
     private int ErrorCode;
 
-    CustomErrorHandling(Context context) {
+    public CustomErrorHandling(Context context) {
         CustomErrorHandling.context = context;
     }
 
@@ -49,10 +49,10 @@ public class CustomErrorHandling extends Exception {
         return "";
     }
 
-    String getErrorMessageTotal(Throwable throwable) {
+    public String getErrorMessageTotal(Throwable throwable) {
         String errorMessage;
         if (throwable instanceof IOException) {
-            errorMessage = context.getString(R.string.error_IO);
+            errorMessage = context.getString(R.string.error_connection);
             return errorMessage;
         } else {
             errorMessage = context.getString(R.string.error_other);
@@ -71,7 +71,7 @@ public class CustomErrorHandling extends Exception {
         } else if (httpResponseCode == 401) {
             errorMessage = context.getString(R.string.error_not_auth);
         } else if (httpResponseCode == 405) {
-            errorMessage = context.getString(R.string.error_not_update1);
+            errorMessage = context.getString(R.string.error_not_update);
         } else if (httpResponseCode == 406) {
             errorMessage = context.getString(R.string.error_not_update2);
         }
@@ -89,7 +89,7 @@ public class CustomErrorHandling extends Exception {
         } else if (httpResponseCode == 401) {
             errorMessage = context.getString(R.string.error_user_password);
         } else if (httpResponseCode == 405) {
-            errorMessage = context.getString(R.string.error_not_update1);
+            errorMessage = context.getString(R.string.error_not_update);
         } else if (httpResponseCode == 406) {
             errorMessage = context.getString(R.string.error_not_update2);
         }

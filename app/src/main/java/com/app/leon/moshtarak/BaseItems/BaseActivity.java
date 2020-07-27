@@ -50,12 +50,8 @@ public abstract class BaseActivity extends AppCompatActivity
         public void onClick(View v) {
             sharedPreference.putTheme(!sharedPreference.getTheme());
             if (sharedPreference.getTheme()) {
-//                binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(
-//                        MyApplication.getContext(), R.drawable.night_drawer));
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             } else {
-//                binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(
-//                        MyApplication.getContext(), R.drawable.mode));
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
         }
