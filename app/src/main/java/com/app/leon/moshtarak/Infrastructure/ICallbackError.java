@@ -1,5 +1,5 @@
 package com.app.leon.moshtarak.Infrastructure;
 
-public interface ICallbackError<T> {
-    void execute(Throwable t);
+public interface ICallbackError {
+    void executeError(Throwable t);
 }
