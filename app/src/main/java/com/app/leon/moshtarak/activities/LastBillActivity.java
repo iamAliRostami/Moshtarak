@@ -1,6 +1,5 @@
 package com.app.leon.moshtarak.activities;
 
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +23,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
+import com.app.leon.moshtarak.Infrastructure.ICallbackError;
+import com.app.leon.moshtarak.Infrastructure.ICallbackIncomplete;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
@@ -35,7 +36,8 @@ import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
 import com.app.leon.moshtarak.Utils.CustomDialog;
-import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
+import com.app.leon.moshtarak.Utils.CustomErrorHandlingNew;
+import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.LastBillContentBinding;
@@ -46,6 +48,7 @@ import com.top.lib.mpl.view.PaymentInitiator;
 import java.util.Objects;
 
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class LastBillActivity extends BaseActivity {
@@ -185,11 +188,9 @@ public class LastBillActivity extends BaseActivity {
                 String json = bundle1.getString(BundleEnum.LAST_BILL_FROM_COUNTER.getValue());
                 Gson gson = new GsonBuilder().create();
                 LastBillInfo lastBillInfo = gson.fromJson(json, LastBillInfo.class);
-
                 billId = lastBillInfo.getBillId();
                 payId = lastBillInfo.getPayId();
                 isPayed = lastBillInfo.isPayed();
-
                 fillLatBillFromCounter(lastBillInfo);
             } else {
                 isFromCardex = true;
@@ -209,9 +210,10 @@ public class LastBillActivity extends BaseActivity {
                             bundle3.getString(BundleEnum.ID.getValue()),
                             bundle3.getString(BundleEnum.ZONE_ID.getValue()));
                 }
-                ThisBill thisBill = new ThisBill();
-                HttpClientWrapperNew.callHttpAsync(call, thisBill, context,
-                        ProgressType.SHOW.getValue());
+                GetBill bill = new GetBill();
+                GetError error = new GetError();
+                GetBillIncomplete incomplete = new GetBillIncomplete();
+                HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, bill, incomplete, error);
             }
         } else {
             isLastBill = true;
@@ -221,8 +223,10 @@ public class LastBillActivity extends BaseActivity {
             String base64 = new String(encodeValue);
             Call<LastBillInfoV2> call = getThisBillInfo.getLastBillInfo(billId, base64.substring(0,
                     base64.length() - 1));
-            ThisBill thisBill = new ThisBill();
-            HttpClientWrapperNew.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
+            GetBill bill = new GetBill();
+            GetError error = new GetError();
+            GetBillIncomplete incomplete = new GetBillIncomplete();
+            HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, bill, incomplete, error);
         }
         if (isPayed)
             binding.textViewIsPayed.setText(context.getString(R.string.payed_2));
@@ -251,11 +255,45 @@ public class LastBillActivity extends BaseActivity {
         imageView.setImageBitmap(bitmap);
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.nav_bill) {
+            Gson gson = new Gson();
+            String json = gson.toJson(lastBillInfo);
+            Bundle bundle = new Bundle();
+            bundle.putString(BundleEnum.LAST_BILL_TO_FILE.getValue(), json);
+            Intent intent = new Intent(getApplicationContext(), LastBillFileActivity.class);
+            intent.putExtra(BundleEnum.DATA.getValue(), bundle);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (isLastBill)
+            getMenuInflater().inflate(R.menu.bill, menu);
+        return true;
+    }
+
+    void getToken() {
+        Retrofit retrofit = NetworkHelper.getInstance();
+        final IAbfaService service = retrofit.create(IAbfaService.class);
+        Call<SimpleMessage> call = service.getToken(apiKey);
+        GetToken token = new GetToken();
+        GetTokenIncomplete incomplete = new GetTokenIncomplete();
+        GetError error = new GetError();
+        HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, token,
+                incomplete, error);
+//        HttpClientWrapperNew.callHttpAsync(call, token, context, ProgressType.SHOW.getValue());
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         binding.imageViewBarcode.setImageDrawable(null);
-        binding = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
@@ -280,30 +318,7 @@ public class LastBillActivity extends BaseActivity {
         Debug.getNativeHeapAllocatedSize();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.nav_bill) {
-            Gson gson = new Gson();
-            String json = gson.toJson(lastBillInfo);
-            Bundle bundle = new Bundle();
-            bundle.putString(BundleEnum.LAST_BILL_TO_FILE.getValue(), json);
-            Intent intent = new Intent(getApplicationContext(), LastBillFileActivity.class);
-            intent.putExtra(BundleEnum.DATA.getValue(), bundle);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (isLastBill)
-            getMenuInflater().inflate(R.menu.bill, menu);
-        return true;
-    }
-
-
-    class ThisBill implements ICallback<LastBillInfoV2> {
+    class GetBill implements ICallback<LastBillInfoV2> {
         @SuppressLint("DefaultLocale")
         @Override
         public void execute(LastBillInfoV2 lastBillInfo) {
@@ -524,20 +539,20 @@ public class LastBillActivity extends BaseActivity {
                     binding.textViewMazadOlgoo.setText(String.valueOf(intNumber));
                 }
             }
-            if (isFromCardex) {
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompatIDS);
-                linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable1);
-                linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable2);
-                linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPay);
-                linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompatTaxfif);
-                linearLayoutCompat.setVisibility(View.GONE);
-                linearLayoutCompat = findViewById(R.id.linearLayoutCompatKahande);
-                linearLayoutCompat.setVisibility(View.GONE);
-            }
+//            if (isFromCardex) {
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatIDS);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable1);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPayable2);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatPay);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatTaxfif);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//                linearLayoutCompat = findViewById(R.id.linearLayoutCompatKahande);
+//                linearLayoutCompat.setVisibility(View.GONE);
+//            }
             if (isPayed) {
                 binding.textViewIsPayed.setText(context.getString(R.string.payed_2));
                 linearLayoutCompat = findViewById(R.id.linearLayoutCompatIDS);
@@ -548,14 +563,6 @@ public class LastBillActivity extends BaseActivity {
                 linearLayoutCompat.setVisibility(View.GONE);
             }
         }
-    }
-
-    void getToken() {
-        Retrofit retrofit = NetworkHelper.getInstance();
-        final IAbfaService getToken = retrofit.create(IAbfaService.class);
-        Call<SimpleMessage> call = getToken.getToken(apiKey);
-        GetToken getToken1 = new GetToken();
-        HttpClientWrapperNew.callHttpAsync(call, getToken1, context, ProgressType.SHOW.getValue());
     }
 
     void pay(String simpleMessage) {
@@ -640,6 +647,42 @@ public class LastBillActivity extends BaseActivity {
         @Override
         public void execute(SimpleMessage simpleMessage) {
             pay(simpleMessage.getMessage());
+        }
+    }
+
+    class GetBillIncomplete implements ICallbackIncomplete<LastBillInfoV2> {
+        @Override
+        public void executeIncomplete(Response<LastBillInfoV2> response) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageDefault(response);
+            new CustomDialog(DialogType.YellowRedirect, context, error,
+                    context.getString(R.string.dear_user),
+                    context.getString(R.string.login),
+                    context.getString(R.string.accepted));
+        }
+    }
+
+    class GetTokenIncomplete implements ICallbackIncomplete<SimpleMessage> {
+        @Override
+        public void executeIncomplete(Response<SimpleMessage> response) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageDefault(response);
+            new CustomDialog(DialogType.Yellow, context, error,
+                    context.getString(R.string.dear_user),
+                    context.getString(R.string.login),
+                    context.getString(R.string.accepted));
+        }
+    }
+
+    class GetError implements ICallbackError {
+        @Override
+        public void executeError(Throwable t) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageTotal(t);
+            new CustomDialog(DialogType.Yellow, context, error,
+                    context.getString(R.string.dear_user),
+                    context.getString(R.string.login),
+                    context.getString(R.string.accepted));
         }
     }
 }

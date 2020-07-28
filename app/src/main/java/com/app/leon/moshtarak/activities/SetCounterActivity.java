@@ -190,27 +190,6 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     public void execute(LastBillInfo lastBillInfo) {
         Intent intent = new Intent(getApplicationContext(), LastBillActivity.class);
         Bundle bundle = new Bundle();
-//        bundle.putString(BundleEnum.BILL_ID.getValue(), lastBillInfo.getBillId());
-//        bundle.putString(BundleEnum.PAY_ID.getValue(), lastBillInfo.getPayId());
-//        bundle.putString(BundleEnum.NEW.getValue(), lastBillInfo.getCurrentReadingNumber());
-//        bundle.putString(BundleEnum.PRE.getValue(), lastBillInfo.getPreReadingNumber());
-//        bundle.putString(BundleEnum.AB_BAHA.getValue(), lastBillInfo.getAbBaha());
-//        bundle.putString(BundleEnum.TAX.getValue(), lastBillInfo.getMaliat());
-//        bundle.putString(BundleEnum.DATE.getValue(), lastBillInfo.getDeadLine());
-//        bundle.putString(BundleEnum.COST.getValue(), lastBillInfo.getPayable());
-//
-//        bundle.putString(BundleEnum.USE.getValue(), lastBillInfo.getUsageM3());
-//        bundle.putString(BundleEnum.USAGE_LITER.getValue(), lastBillInfo.getUsageLiter());
-//        bundle.putString(BundleEnum.USE_LENGTH.getValue(), lastBillInfo.getDuration());
-//        bundle.putString(BundleEnum.USE_AVERAGE.getValue(), lastBillInfo.getRate());
-//        bundle.putString(BundleEnum.PRE_READING_DATE.getValue(), lastBillInfo.getPreReadingDate());
-//        bundle.putString(BundleEnum.CURRENT_READING_DATE.getValue(), lastBillInfo.getCurrentReadingDate());
-//
-//        bundle.putString(BundleEnum.PRE_DEBT_OR_OWE.getValue(), lastBillInfo.getPreDebtOrOwe());
-//        bundle.putString(BundleEnum.TAKALIF_BOODJE.getValue(), lastBillInfo.getBoodje());
-//        bundle.putString(BundleEnum.KARMOZDE_FAZELAB.getValue(), lastBillInfo.getKarmozdFazelab());
-//
-//        bundle.putBoolean(BundleEnum.IS_PAYED.getValue(), lastBillInfo.isPayed());
 
         Gson gson = new Gson();
         String json = gson.toJson(lastBillInfo);

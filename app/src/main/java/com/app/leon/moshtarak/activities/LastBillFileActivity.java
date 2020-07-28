@@ -31,6 +31,8 @@ import androidx.core.app.ActivityCompat;
 
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
+import com.app.leon.moshtarak.Infrastructure.ICallbackError;
+import com.app.leon.moshtarak.Infrastructure.ICallbackIncomplete;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
@@ -41,13 +43,12 @@ import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
 import com.app.leon.moshtarak.Utils.CustomDialog;
+import com.app.leon.moshtarak.Utils.CustomErrorHandlingNew;
 import com.app.leon.moshtarak.Utils.CustomProgressBar;
-import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
+import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.LastBillFileActivityBinding;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.top.lib.mpl.view.PaymentInitiator;
 
 import java.io.ByteArrayOutputStream;
@@ -57,13 +58,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class LastBillFileActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 626;
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND = 621;
     private static final int REQUEST_CODE_PAYMENT_BILL = 199;
-
+    SharedPreference sharedPreference;
     static LastBillInfoV2 lastBillInfo;
     LastBillFileActivityBinding binding;
     String imageName, billId, payId, apiKey;
@@ -116,16 +118,7 @@ public class LastBillFileActivity extends AppCompatActivity {
         public void onClick(View view) {
             if (!lastBillInfo.isPayed()) {
                 getToken();
-//                Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.sibche.aspardproject.app");
-//                if (launchIntent != null) {
-//                    startActivity(launchIntent);//null pointer check in case package name was not found
-//                } else
 //                new CustomTab(getString(R.string.mellat_site), MyApplication.getContext());
-
-//                FragmentManager fragmentManager = getSupportFragmentManager();
-//                PayFragment payFragment = PayFragment.newInstance(new PayViewModel(lastBillInfo.getBillId(), lastBillInfo.getPayId()));
-//                payFragment.show(fragmentManager, "fragmentManager");
-
             } else
                 Toast.makeText(MyApplication.getContext(),
                         MyApplication.getContext().getString(R.string.payed_2),
@@ -178,7 +171,6 @@ public class LastBillFileActivity extends AppCompatActivity {
         int intNumber;
         Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.bill_1); // the original file yourimage.jpg i added in resources
         Bitmap dest = Bitmap.createBitmap(src.getWidth(), src.getHeight(), Bitmap.Config.ARGB_8888);
-//        Bitmap dest = Bitmap.createBitmap(100, 200, Bitmap.Config.ARGB_8888);
         Canvas cs = new Canvas(dest);
         cs.drawBitmap(src, 0f, 0f, null);
 
@@ -348,7 +340,6 @@ public class LastBillFileActivity extends AppCompatActivity {
         binding.texView31.setText(lastBillInfo.getCounterStateId());
     }
 
-
     @SuppressLint("SimpleDateFormat")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
@@ -370,7 +361,7 @@ public class LastBillFileActivity extends AppCompatActivity {
     }
 
     private void accessData() {
-        SharedPreference sharedPreference = new SharedPreference(context);
+        sharedPreference = new SharedPreference(context);
         if (!sharedPreference.checkIsNotEmpty()) {
             Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
             startActivity(intent);
@@ -391,9 +382,13 @@ public class LastBillFileActivity extends AppCompatActivity {
         final IAbfaService getThisBillInfo = retrofit.create(IAbfaService.class);
         byte[] encodeValue = Base64.encode(billId.getBytes(), Base64.DEFAULT);
         String base64 = new String(encodeValue);
-        Call<LastBillInfoV2> call = getThisBillInfo.getLastBillInfo(billId, base64.substring(0, base64.length() - 1));
-        ThisBill thisBill = new ThisBill();
-        HttpClientWrapperNew.callHttpAsync(call, thisBill, context, ProgressType.SHOW.getValue());
+        Call<LastBillInfoV2> call = getThisBillInfo.getLastBillInfo(billId, base64.substring(0,
+                base64.length() - 1));
+        GetBill bill = new GetBill();
+        GetBillIncomplete incomplete = new GetBillIncomplete();
+        GetError error = new GetError();
+        HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, bill,
+                incomplete, error);
     }
 
     Code128 setCode128() {
@@ -411,27 +406,6 @@ public class LastBillFileActivity extends AppCompatActivity {
         return code;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        context = null;
-        bitmapBill = null;
-        lastBillInfo = null;
-        binding = null;
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
-    }
 
     @SuppressLint("StaticFieldLeak")
     class SendImages extends AsyncTask<Object, Object, Object> {
@@ -471,7 +445,6 @@ public class LastBillFileActivity extends AppCompatActivity {
         void sendImage() {
             Intent share = new Intent(Intent.ACTION_SEND);
             share.setType("image/jpeg");
-//        share.setType("application/pdf");
             share.putExtra(Intent.EXTRA_STREAM, getImageUri(bitmap, Bitmap.CompressFormat.JPEG, 100));
             startActivity(Intent.createChooser(share, getString(R.string.send_to)));
         }
@@ -513,7 +486,6 @@ public class LastBillFileActivity extends AppCompatActivity {
         }
 
         void saveImage() {
-//            String root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).toString() + "/Camera/Your_Directory_Name";
             String root = Environment.getExternalStoragePublicDirectory(
                     Environment.DIRECTORY_PICTURES).toString() + File.separator + getString(R.string.app_name);
             File myDir = new File(root);
@@ -540,16 +512,19 @@ public class LastBillFileActivity extends AppCompatActivity {
 
     void getToken() {
         Retrofit retrofit = NetworkHelper.getInstance();
-        final IAbfaService getToken = retrofit.create(IAbfaService.class);
-        Call<SimpleMessage> call = getToken.getToken(apiKey);
-        GetToken getToken1 = new GetToken();
-        HttpClientWrapperNew.callHttpAsync(call, getToken1, context, ProgressType.SHOW.getValue());
+        final IAbfaService service = retrofit.create(IAbfaService.class);
+        Call<SimpleMessage> call = service.getToken(apiKey);
+        GetToken token = new GetToken();
+        GetTokenIncomplete incomplete = new GetTokenIncomplete();
+        GetError error = new GetError();
+        HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, token,
+                incomplete, error);
     }
 
     void pay(String simpleMessage) {
         Intent intent = new Intent(LastBillFileActivity.this, PaymentInitiator.class);
-        intent.putExtra("Type", "2");
-        intent.putExtra("Token", simpleMessage);
+        intent.putExtra(BundleEnum.TYPE.getValue(), "2");
+        intent.putExtra(BundleEnum.TOKEN.getValue(), simpleMessage);
         startActivityForResult(intent, REQUEST_CODE_PAYMENT_BILL);
     }
 
@@ -562,11 +537,6 @@ public class LastBillFileActivity extends AppCompatActivity {
     }
 
     private void getPaymentResultCode(int resultCode, Intent data) {
-//
-//        if (G.onMplResult != null) {
-//            G.onMplResult.onResult(false);
-//        }
-
         String enData = "", message = "", status = "0";
         int errorType = 0, orderId = 0;
 
@@ -605,13 +575,11 @@ public class LastBillFileActivity extends AppCompatActivity {
                 message = getString(R.string.time_out_error);
                 break;
             case 1000:
+            case 1002:
                 message = getString(R.string.error_connection);
                 break;
             case 1001:
                 message = getString(R.string.server_error);
-                break;
-            case 1002:
-                message = getString(R.string.error_connection);
                 break;
             case 201:
                 message = getString(R.string.dialog_canceled);
@@ -620,9 +588,7 @@ public class LastBillFileActivity extends AppCompatActivity {
                 message = getString(R.string.device_root);
                 break;
         }
-
         if (message.length() > 0) {
-            Log.e("Error", message);
             Toast.makeText(MyApplication.getContext(), message, Toast.LENGTH_LONG).show();
         }
     }
@@ -768,86 +734,76 @@ public class LastBillFileActivity extends AppCompatActivity {
         }
     }
 
-    class ThisBill implements ICallback<LastBillInfoV2> {
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bitmapBill = null;
+        lastBillInfo = null;
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    class GetBill implements ICallback<LastBillInfoV2> {
         @SuppressLint("DefaultLocale")
         @Override
         public void execute(LastBillInfoV2 lastBillInfo) {
             payId = lastBillInfo.getPayId();
             code128 = setCode128();
-
             LastBillFileActivity.lastBillInfo = lastBillInfo;
-
             fillTextView(lastBillInfo);
             if (Build.VERSION.SDK_INT >= 23)
                 createImagePrintable(lastBillInfo);
         }
     }
 
-    @SuppressLint("StaticFieldLeak")
-    class ThisBillOld extends AsyncTask<Object, Object, Object> {
-        CustomProgressBar customProgressBar;
-        Context context;
-        LastBillInfoV2 lastBillInfoV2;
-
-        public ThisBillOld(Context context) {
-            this.context = context;
-            customProgressBar = new CustomProgressBar();
-        }
-
+    class GetBillIncomplete implements ICallbackIncomplete<LastBillInfoV2> {
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            customProgressBar.show(context, getString(R.string.waiting), false, dialog -> {
-                Toast.makeText(MyApplication.getContext(),
-                        MyApplication.getContext().getString(R.string.canceled),
-                        Toast.LENGTH_LONG).show();
-                customProgressBar.getDialog().dismiss();
-                finish();
-            });
+        public void executeIncomplete(Response<LastBillInfoV2> response) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageDefault(response);
+            if (response.code() == 404) {
+                error = getString(R.string.error_register_again);
+                sharedPreference.removeItem(sharedPreference.getIndex());
+            }
+            new CustomDialog(DialogType.YellowRedirect, context, error,
+                    context.getString(R.string.dear_user),
+                    context.getString(R.string.login),
+                    context.getString(R.string.accepted));
         }
+    }
 
+    class GetTokenIncomplete implements ICallbackIncomplete<SimpleMessage> {
         @Override
-        protected void onPostExecute(Object o) {
-            super.onPostExecute(o);
-            customProgressBar.getDialog().dismiss();
+        public void executeIncomplete(Response<SimpleMessage> response) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageDefault(response);
+            new CustomDialog(DialogType.Yellow, context, error,
+                    context.getString(R.string.dear_user),
+                    context.getString(R.string.login),
+                    context.getString(R.string.accepted));
         }
+    }
 
+    class GetError implements ICallbackError {
         @Override
-        protected Object doInBackground(Object... objects) {
-            if (getIntent().getExtras() != null) {
-                Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
-                if (bundle1 != null) {
-                    String json = bundle1.getString(BundleEnum.LAST_BILL_TO_FILE.getValue());
-                    Gson gson = new GsonBuilder().create();
-                    lastBillInfoV2 = gson.fromJson(json, LastBillInfoV2.class);
-                    billId = lastBillInfoV2.getBillId();
-                    payId = lastBillInfoV2.getPayId();
-
-                    code128 = setCode128();
-
-                    lastBillInfo = lastBillInfoV2;
-//                    createImageToShow(lastBillInfo);
-                    fillTextView(lastBillInfo);
-                    if (Build.VERSION.SDK_INT >= 23)
-                        createImagePrintable(lastBillInfo);
-                }
-            }
-            return null;
-        }
-
-        Code128 setCode128() {
-            Code128 code = new Code128(context);
-            String barcode = "";
-            for (int count = 0; count < 13 - billId.length(); count++) {
-                barcode = barcode.concat("0");
-            }
-            barcode = barcode.concat(billId);
-            for (int count = 0; count < 13 - payId.length(); count++) {
-                barcode = barcode.concat("0");
-            }
-            barcode = barcode.concat(payId);
-            code.setData(barcode);
-            return code;
+        public void executeError(Throwable t) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageTotal(t);
+            new CustomDialog(DialogType.Yellow, context, error,
+                    context.getString(R.string.dear_user),
+                    context.getString(R.string.login),
+                    context.getString(R.string.accepted));
         }
     }
 }

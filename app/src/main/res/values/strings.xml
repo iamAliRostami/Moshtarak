@@ -216,5 +216,6 @@
     <string name="bill_branch_info">اطلاعات انشعاب</string>
 
     <string name="why_we_need">اطلاعات کاربری جهت تطبیق با اطلاعات ثبت شده در سامانه و جلوگیری از هر گونه سوء استفاده احتمالی از اطلاعات شماست.\nاین اطلاعات به صورت محرمانه نزد ما خواهد ماند.\n</string>
+    <string name="error_register_again">لطفا از حساب خود خارج و مجددا وارد شوید.</string>
 
 </resources>

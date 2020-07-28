@@ -81,8 +81,6 @@ public class CardexCustomAdapter extends ArrayAdapter<Cardex> {
                         context.getResources().getColor(R.color.pink2));
                 imageViewInfo.setImageDrawable(
                         context.getResources().getDrawable(R.drawable.img_last_bill1));
-//                imageViewInfo.setImageDrawable(context.getResources().getDrawable(R.drawable.cash_payment));
-//                src = "@drawable/cash_payment"
 
             }
             linearLayoutItem.setOnClickListener(view ->

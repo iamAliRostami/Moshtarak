@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
-import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +17,6 @@ import com.app.leon.moshtarak.databinding.ContactUsActivityBinding;
 
 public class ContactUsActivity extends AppCompatActivity {
     Context context;
-
     ContactUsActivityBinding binding;
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -42,13 +40,11 @@ public class ContactUsActivity extends AppCompatActivity {
             intent.setData(Uri.parse("tel:".concat(phone)));
             if (ActivityCompat.checkSelfPermission(context,
                     Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                Log.e("call permission :", "Denied");
                 intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
                 startActivity(intent);
                 return;
             }
             startActivity(intent);
-
         }
     };
 
@@ -81,9 +77,6 @@ public class ContactUsActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding = null;
-        context = null;
-
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

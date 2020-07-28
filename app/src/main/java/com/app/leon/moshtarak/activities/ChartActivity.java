@@ -28,14 +28,12 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.Objects;
 
-
 public class ChartActivity extends AppCompatActivity {
     ChartActivityBinding binding;
     Context context;
     Typeface typeface;
     ArrayList<String> listText = new ArrayList<>();
     ArrayList<Integer> listValue = new ArrayList<>();
-
 
     @SuppressLint("NewApi")
     @Override
@@ -65,8 +63,6 @@ public class ChartActivity extends AppCompatActivity {
         binding.horizontalChart.setDrawValueAboveBar(true);
         binding.horizontalChart.getDescription().setEnabled(false);
         binding.horizontalChart.setPinchZoom(false);
-//        binding.horizontalChart.setBackgroundColor(getColor(R.color.gray3));
-//        binding.horizontalChart.setGridBackgroundColor(getColor(R.color.gray4));
 
         binding.horizontalChart.setBackgroundColor(ContextCompat.getColor(MyApplication.getContext()
                 , R.color.gray3));
@@ -152,7 +148,6 @@ public class ChartActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding = null;
         listText = null;
         listValue = null;
         Runtime.getRuntime().totalMemory();
