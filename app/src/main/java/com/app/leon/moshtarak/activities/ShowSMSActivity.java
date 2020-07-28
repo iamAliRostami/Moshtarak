@@ -34,18 +34,6 @@ public class ShowSMSActivity extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter<>(this, R.layout.sms_layout, sms);
         if (sms.size() < 1)
             binding.textViewNoSMS.setVisibility(View.VISIBLE);
-//        arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
-//                R.layout.sms_layout, sms) {
-//            @NonNull
-//            @Override
-//            public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-//                View view = super.getView(position, convertView, parent);
-//                TextView text = view.findViewById(android.R.id.text1);
-////                Typeface typeface = Typeface.createFromAsset(context.getAssets(), "font/my_font.ttf");
-////                text.setTypeface(typeface);
-//                return view;
-//            }
-//        };
         binding.listViewSMS.setAdapter(arrayAdapter);
     }
 
@@ -61,8 +49,6 @@ public class ShowSMSActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding = null;
-        context = null;
         arrayAdapter = null;
         sms = null;
         Runtime.getRuntime().totalMemory();

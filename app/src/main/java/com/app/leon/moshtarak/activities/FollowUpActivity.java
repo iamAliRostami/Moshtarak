@@ -109,6 +109,10 @@ public class FollowUpActivity extends BaseActivity {
         public void executeIncomplete(Response<ArrayList<FollowUpDto>> response) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
+            if (response.code() == 404) {
+                CustomErrorHandlingNew.APIError apiError = customErrorHandlingNew.parseError(response);
+                error = apiError.message();
+            }
             new CustomDialog(DialogType.Yellow, context, error,
                     context.getString(R.string.dear_user),
                     context.getString(R.string.login),

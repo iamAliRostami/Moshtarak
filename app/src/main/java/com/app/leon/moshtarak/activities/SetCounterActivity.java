@@ -18,13 +18,18 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
+import com.app.leon.moshtarak.Infrastructure.ICallbackError;
+import com.app.leon.moshtarak.Infrastructure.ICallbackIncomplete;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
+import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
-import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
+import com.app.leon.moshtarak.Utils.CustomDialog;
+import com.app.leon.moshtarak.Utils.CustomErrorHandlingNew;
+import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.LovelyTextInputDialog;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
@@ -34,9 +39,10 @@ import com.google.gson.Gson;
 import java.util.Objects;
 
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class SetCounterActivity extends BaseActivity implements ICallback<LastBillInfo> {
+public class SetCounterActivity extends BaseActivity {
     LovelyTextInputDialog lovelyTextInputDialog;
     Context context;
     String billId, number, phoneNumber;
@@ -182,20 +188,53 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
         final IAbfaService sendNumber = retrofit.create(IAbfaService.class);
         Call<LastBillInfo> call = sendNumber.sendNumber(billId, number, getString(R.string._09).
                 concat(phoneNumber), 4);
-        HttpClientWrapperNew.callHttpAsync(call, SetCounterActivity.this, context,
-                ProgressType.SHOW.getValue());
+        SetCounter setCounter = new SetCounter();
+        SetCounterIncomplete incomplete = new SetCounterIncomplete();
+        GetError error = new GetError();
+        HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, setCounter, incomplete, error);
     }
 
-    @Override
-    public void execute(LastBillInfo lastBillInfo) {
-        Intent intent = new Intent(getApplicationContext(), LastBillActivity.class);
-        Bundle bundle = new Bundle();
+    class SetCounter implements ICallback<LastBillInfo> {
+        @Override
+        public void execute(LastBillInfo lastBillInfo) {
+            Intent intent = new Intent(getApplicationContext(), LastBillActivity.class);
+            Bundle bundle = new Bundle();
 
-        Gson gson = new Gson();
-        String json = gson.toJson(lastBillInfo);
-        bundle.putString(BundleEnum.LAST_BILL_FROM_COUNTER.getValue(), json);
-        intent.putExtra(BundleEnum.DATA.getValue(), bundle);
-        startActivity(intent);
+            Gson gson = new Gson();
+            String json = gson.toJson(lastBillInfo);
+            bundle.putString(BundleEnum.LAST_BILL_FROM_COUNTER.getValue(), json);
+            intent.putExtra(BundleEnum.DATA.getValue(), bundle);
+            startActivity(intent);
+        }
+    }
+
+    class SetCounterIncomplete implements ICallbackIncomplete<LastBillInfo> {
+        @Override
+        public void executeIncomplete(Response<LastBillInfo> response) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageDefault(response);
+
+            if (response.code() == 400) {
+                CustomErrorHandlingNew.APIError apiError = customErrorHandlingNew.parseError(response);
+                error = apiError.message();
+            }
+            new CustomDialog(DialogType.Yellow, context, error,
+                    context.getString(R.string.dear_user),
+                    context.getString(R.string.login),
+                    context.getString(R.string.accepted));
+        }
+    }
+
+    class GetError implements ICallbackError {
+        @Override
+        public void executeError(Throwable t) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageTotal(t);
+            new CustomDialog(DialogType.Yellow, context, error,
+                    context.getString(R.string.dear_user),
+                    context.getString(R.string.login),
+                    context.getString(R.string.accepted));
+        }
     }
 
     void setComponentPosition() {
@@ -217,9 +256,6 @@ public class SetCounterActivity extends BaseActivity implements ICallback<LastBi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        context = null;
-        lovelyTextInputDialog = null;
-        binding = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

@@ -15,13 +15,16 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
+import com.app.leon.moshtarak.Infrastructure.ICallbackError;
+import com.app.leon.moshtarak.Infrastructure.ICallbackIncomplete;
 import com.app.leon.moshtarak.Models.DbTables.Suggestion;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
-import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
+import com.app.leon.moshtarak.Utils.CustomErrorHandlingNew;
+import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.databinding.SuggestContentBinding;
 
@@ -29,9 +32,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class SuggestActivity extends BaseActivity implements ICallback<SimpleMessage> {
+public class SuggestActivity extends BaseActivity {
     SuggestContentBinding binding;
     ArrayList<String> items;
     Context context;
@@ -99,8 +103,11 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
                 Call<SimpleMessage> call = suggestion.sendSuggestion(new Suggestion(
                         String.valueOf(select), binding.suggestEditText.getText().toString(),
                         String.valueOf(Build.VERSION.RELEASE), getDeviceName()));
-                HttpClientWrapperNew.callHttpAsync(call, SuggestActivity.this, context,
-                        ProgressType.SHOW.getValue());
+                Suggest suggest = new Suggest();
+                SuggestIncomplete incomplete = new SuggestIncomplete();
+                GetError error = new GetError();
+                HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context,
+                        suggest, incomplete, error);
             }
         });
     }
@@ -127,10 +134,36 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
         }
     }
 
-    @Override
-    public void execute(SimpleMessage simpleMessage) {
-        new CustomDialog(DialogType.Yellow, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
-                context.getString(R.string.suggest), context.getString(R.string.accepted));
+    class Suggest implements ICallback<SimpleMessage> {
+        @Override
+        public void execute(SimpleMessage simpleMessage) {
+            new CustomDialog(DialogType.Yellow, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
+                    context.getString(R.string.suggest), context.getString(R.string.accepted));
+        }
+    }
+
+    class SuggestIncomplete implements ICallbackIncomplete<SimpleMessage> {
+        @Override
+        public void executeIncomplete(Response<SimpleMessage> response) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageDefault(response);
+            new CustomDialog(DialogType.Yellow, context, error,
+                    context.getString(R.string.dear_user),
+                    context.getString(R.string.login),
+                    context.getString(R.string.accepted));
+        }
+    }
+
+    class GetError implements ICallbackError {
+        @Override
+        public void executeError(Throwable t) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageTotal(t);
+            new CustomDialog(DialogType.Yellow, context, error,
+                    context.getString(R.string.dear_user),
+                    context.getString(R.string.login),
+                    context.getString(R.string.accepted));
+        }
     }
 
     @Override
@@ -161,10 +194,7 @@ public class SuggestActivity extends BaseActivity implements ICallback<SimpleMes
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding = null;
-        context = null;
         items = null;
-
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

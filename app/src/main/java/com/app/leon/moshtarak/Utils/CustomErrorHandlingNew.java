@@ -3,9 +3,14 @@ package com.app.leon.moshtarak.Utils;
 import android.content.Context;
 
 import com.app.leon.moshtarak.R;
+import com.google.gson.JsonSyntaxException;
 
 import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.util.Objects;
 
+import okhttp3.ResponseBody;
+import retrofit2.Converter;
 import retrofit2.Response;
 
 public class CustomErrorHandlingNew {
@@ -19,7 +24,6 @@ public class CustomErrorHandlingNew {
         String errorMessage;
         if (throwable instanceof IOException) {
             errorMessage = context.getString(R.string.error_connection);
-            return errorMessage;
         } else {
             errorMessage = context.getString(R.string.error_other);
         }
@@ -27,7 +31,7 @@ public class CustomErrorHandlingNew {
     }
 
     public <T> String getErrorMessageDefault(Response<T> response) {
-        String errorMessage = "";
+        String errorMessage;
         int code = response.code();
         if (code >= 500 && code < 600) {
             errorMessage = context.getString(R.string.error_internal);
@@ -39,5 +43,37 @@ public class CustomErrorHandlingNew {
             errorMessage = context.getString(R.string.error_other);
         }
         return errorMessage;
+    }
+
+    public APIError parseError(Response<?> response) {
+        try {
+            Converter<ResponseBody, APIError> converter =
+                    NetworkHelper.getInstance().responseBodyConverter(APIError.class, new Annotation[0]);
+            APIError error;
+            error = converter.convert(Objects.requireNonNull(response.errorBody()));
+            return error;
+        } catch (IOException e) {
+            return new APIError();
+        } catch (JsonSyntaxException e) {
+            return new APIError();
+        } catch (Exception e) {
+            return new APIError();
+        }
+    }
+
+    public static class APIError {
+        private int errorCode;
+        private String message;
+
+        APIError() {
+        }
+
+        public int status() {
+            return errorCode;
+        }
+
+        public String message() {
+            return message;
+        }
     }
 }

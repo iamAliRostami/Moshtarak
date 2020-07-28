@@ -33,6 +33,7 @@ public class BaseInfoActivity extends BaseActivity {
     Context context;
     String billId;
     BaseInfoContentBinding binding;
+    SharedPreference sharedPreference;
 
     @SuppressLint("CutPasteId")
     @Override
@@ -46,7 +47,7 @@ public class BaseInfoActivity extends BaseActivity {
     }
 
     private void accessData() {
-        SharedPreference sharedPreference = new SharedPreference(context);
+        sharedPreference = new SharedPreference(context);
         if (!sharedPreference.checkIsNotEmpty()) {
             Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
             startActivity(intent);
@@ -95,6 +96,10 @@ public class BaseInfoActivity extends BaseActivity {
         public void executeIncomplete(Response<MemberInfo> response) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
+            if (response.code() == 404) {
+                error = getString(R.string.error_register_again);
+                sharedPreference.removeItem(sharedPreference.getIndex());
+            }
             new CustomDialog(DialogType.Yellow, context, error,
                     context.getString(R.string.dear_user),
                     context.getString(R.string.login),

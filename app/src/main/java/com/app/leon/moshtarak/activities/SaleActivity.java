@@ -12,6 +12,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
+import com.app.leon.moshtarak.Infrastructure.ICallbackError;
+import com.app.leon.moshtarak.Infrastructure.ICallbackIncomplete;
 import com.app.leon.moshtarak.Models.DbTables.RegisterNewDto;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
@@ -19,16 +21,17 @@ import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.CustomDialog;
-import com.app.leon.moshtarak.Utils.HttpClientWrapperNew;
+import com.app.leon.moshtarak.Utils.CustomErrorHandlingNew;
+import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.databinding.SaleContentBinding;
 
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class SaleActivity extends BaseActivity
-        implements ICallback<SimpleMessage> {
+public class SaleActivity extends BaseActivity {
     SaleContentBinding binding;
     Context context;
     RegisterNewDto registerNewDto;
@@ -59,12 +62,6 @@ public class SaleActivity extends BaseActivity
         SetEditTextChangedListener();
     }
 
-    @Override
-    public void execute(SimpleMessage simpleMessage) {
-        new CustomDialog(DialogType.GreenRedirect, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
-                context.getString(R.string.buy), context.getString(R.string.accepted));
-    }
-
     private void sendRequest() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService SendRegisterRequest = retrofit.create(IAbfaService.class);
@@ -82,8 +79,44 @@ public class SaleActivity extends BaseActivity
         else if (binding.radioButtonService2.isChecked())
             registerNewDto.setSelectedServices(new String[]{"1", "2"});
         Call<SimpleMessage> call = SendRegisterRequest.registerNew(registerNewDto);
-        HttpClientWrapperNew.callHttpAsync(call, SaleActivity.this, context,
-                ProgressType.SHOW.getValue());
+        SaleRequest saleRequest = new SaleRequest();
+        SaleRequestIncomplete incomplete = new SaleRequestIncomplete();
+        GetError error = new GetError();
+        HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, saleRequest, incomplete, error);
+    }
+
+    class SaleRequest implements ICallback<SimpleMessage> {
+        @Override
+        public void execute(SimpleMessage simpleMessage) {
+            new CustomDialog(DialogType.GreenRedirect, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
+                    context.getString(R.string.buy), context.getString(R.string.accepted));
+        }
+    }
+
+    class SaleRequestIncomplete implements ICallbackIncomplete<SimpleMessage> {
+        @Override
+        public void executeIncomplete(Response<SimpleMessage> response) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageDefault(response);
+            if (response.code() == 400)
+                error = getString(R.string.error_billid_incorrect);
+            new CustomDialog(DialogType.Yellow, context, error,
+                    context.getString(R.string.dear_user),
+                    context.getString(R.string.login),
+                    context.getString(R.string.accepted));
+        }
+    }
+
+    class GetError implements ICallbackError {
+        @Override
+        public void executeError(Throwable t) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageTotal(t);
+            new CustomDialog(DialogType.Yellow, context, error,
+                    context.getString(R.string.dear_user),
+                    context.getString(R.string.login),
+                    context.getString(R.string.accepted));
+        }
     }
 
     private void setButtonNavigationOnClickListener() {
@@ -418,9 +451,6 @@ public class SaleActivity extends BaseActivity
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding = null;
-        context = null;
-
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
