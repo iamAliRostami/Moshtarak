@@ -39,6 +39,12 @@ public class SharedPreference {
         prefsEditor.apply();
     }
 
+    private void putName(String name) {
+        SharedPreferences.Editor prefsEditor = appPrefs.edit();
+        prefsEditor.putString(SharedReferenceKeys.NAME.getValue(), name);
+        prefsEditor.apply();
+    }
+
     private void putLength(int length) {
         SharedPreferences.Editor prefsEditor = appPrefs.edit();
         prefsEditor.putInt(SharedReferenceKeys.LENGTH.getValue(), length);
@@ -89,6 +95,10 @@ public class SharedPreference {
         return appPrefs.getString(SharedReferenceKeys.API_KEY.getValue(), "");
     }
 
+    public String getName() {
+        return appPrefs.getString(SharedReferenceKeys.NAME.getValue(), "");
+    }
+
     public int getLength() {
         return appPrefs.getInt(SharedReferenceKeys.LENGTH.getValue(), 0);
     }
@@ -111,14 +121,17 @@ public class SharedPreference {
             ArrayList<String> billIds = getArrayList(SharedReferenceKeys.BILL_ID.getValue());
             ArrayList<String> apiKeys = getArrayList(SharedReferenceKeys.API_KEY.getValue());
             ArrayList<String> mobileNumbers = getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue());
+            ArrayList<String> name = getArrayList(SharedReferenceKeys.NAME.getValue());
 
             billIds.remove(index);
             mobileNumbers.remove(index);
             apiKeys.remove(index);
+            name.remove(index);
 
             saveArrayList(billIds, SharedReferenceKeys.BILL_ID.getValue());
             saveArrayList(mobileNumbers, SharedReferenceKeys.MOBILE_NUMBER.getValue());
             saveArrayList(apiKeys, SharedReferenceKeys.API_KEY.getValue());
+            saveArrayList(name, SharedReferenceKeys.NAME.getValue());
 
             length = length - 1;
             index = length - 1;
@@ -144,23 +157,27 @@ public class SharedPreference {
         return gson.fromJson(json, type);
     }
 
-    public void putDataArray(String mobileNumber, String billId, String apiKey) {
+    public void putDataArray(String mobileNumber, String billId, String apiKey, String name) {
         int length = getLength();
         ArrayList<String> billIds = new ArrayList<>();
         ArrayList<String> apiKeys = new ArrayList<>();
         ArrayList<String> mobileNumbers = new ArrayList<>();
+        ArrayList<String> names = new ArrayList<>();
         if (length > 0) {
             billIds = getArrayList(SharedReferenceKeys.BILL_ID.getValue());
             apiKeys = getArrayList(SharedReferenceKeys.API_KEY.getValue());
             mobileNumbers = getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue());
+            names = getArrayList(SharedReferenceKeys.NAME.getValue());
         }
         billIds.add(billId);
         apiKeys.add(apiKey);
         mobileNumbers.add(mobileNumber);
+        names.add(name);
 
         saveArrayList(billIds, SharedReferenceKeys.BILL_ID.getValue());
         saveArrayList(mobileNumbers, SharedReferenceKeys.MOBILE_NUMBER.getValue());
         saveArrayList(apiKeys, SharedReferenceKeys.API_KEY.getValue());
+        saveArrayList(names, SharedReferenceKeys.NAME.getValue());
         putIndex(length);
         length = length + 1;
         putLength(length);

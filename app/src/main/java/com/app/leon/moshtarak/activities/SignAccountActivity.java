@@ -76,7 +76,7 @@ public class SignAccountActivity extends BaseActivity {
 
     void fillSpinner() {
         if (sharedPreference.getLength() > 0) {
-            items = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue());
+            items = sharedPreference.getArrayList(SharedReferenceKeys.NAME.getValue());
         }
         if (items.size() > 0) {
             binding.spinnerAccounts.setAdapter(new ArrayAdapter<>(context,
@@ -224,7 +224,7 @@ public class SignAccountActivity extends BaseActivity {
                         getString(R.string.dear_user), getString(R.string.login),
                         getString(R.string.accepted));
             } else {
-                sharedPreference.putDataArray(mobile, billId, login.getApiKey());
+                sharedPreference.putDataArray(mobile, billId, login.getApiKey(), login.getNameAndFamily());
                 new CustomDialog(DialogType.GreenRedirect, SignAccountActivity.this,
                         getString(R.string.you_are_signed), getString(R.string.dear_user), getString(R.string.login), getString(R.string.accepted));
             }
