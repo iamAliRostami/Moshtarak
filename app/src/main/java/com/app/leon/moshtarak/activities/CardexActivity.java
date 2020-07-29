@@ -111,11 +111,12 @@ public class CardexActivity extends BaseActivity {
                 }
             }
             cardexCustomAdapter = new CardexCustomAdapter(cardexes, context);
-            binding.listViewCardex.setAdapter(cardexCustomAdapter);
             LayoutInflater inflater = getLayoutInflater();
             ViewGroup header = (ViewGroup) inflater.inflate(R.layout.cardex_header,
                     binding.listViewCardex, false);
             binding.listViewCardex.addHeaderView(header, null, false);
+            binding.listViewCardex.setAdapter(cardexCustomAdapter);
+            cardexCustomAdapter.notifyDataSetChanged();
         }
     }
 

@@ -9,9 +9,15 @@
     tools:context="com.app.leon.moshtarak.activities.ContactUsActivity"
     tools:ignore="UnusedAttribute">
 
+    <include layout="@layout/footer" />
+
+    <include layout="@layout/header" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/linearLayoutFooter"
+        android:layout_below="@id/linearLayoutHeader"
         tools:ignore="UselessParent">
 
         <LinearLayout
@@ -229,6 +235,14 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/textSizeMedium" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:foregroundGravity="center"
+                android:gravity="center" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

@@ -585,7 +585,8 @@ public class LastBillActivity extends BaseActivity {
 //            G.onMplResult.onResult(false);
 //        }
 
-        String enData = "", message = "", status = "0";
+        String enData = "", message = "";
+        int status = 0;
         int errorType = 0, orderId = 0;
 
         switch (resultCode) {
@@ -593,7 +594,7 @@ public class LastBillActivity extends BaseActivity {
             case 3://bill payment ok
                 enData = data.getStringExtra("enData");
                 message = data.getStringExtra("message");
-                status = String.valueOf(data.getIntExtra("status", 0));
+                status = data.getIntExtra("status", 0);
                 break;
             case 2://payment error
             case 5://internal error payment
@@ -608,9 +609,16 @@ public class LastBillActivity extends BaseActivity {
         }
         if (errorType != 0) {
             showErrorTypeMpl(errorType);
+        } else if (resultCode == 1 || resultCode == 3) {
+            new CustomDialog(DialogType.Green, LastBillActivity.this, message,
+                    LastBillActivity.this.getString(R.string.dear_user),
+                    LastBillActivity.this.getString(R.string.pay),
+                    LastBillActivity.this.getString(R.string.accepted));
         } else {
-            new CustomDialog(DialogType.Yellow, context, message, context.getString(R.string.dear_user),
-                    context.getString(R.string.pay), context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, LastBillActivity.this, message,
+                    LastBillActivity.this.getString(R.string.dear_user),
+                    LastBillActivity.this.getString(R.string.pay),
+                    LastBillActivity.this.getString(R.string.accepted));
         }
     }
 

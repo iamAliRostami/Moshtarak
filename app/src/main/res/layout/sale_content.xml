@@ -52,7 +52,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="@string/name"
-                            android:textColor="@color/black1"
+                            android:textColor="@color/text_color_1"
                             android:textSize="@dimen/textSizeMedium"
                             android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="@string/family"
-                            android:textColor="@color/black1"
+                            android:textColor="@color/text_color_1"
                             android:textSize="@dimen/textSizeMedium"
                             android:textStyle="bold" />
 
@@ -148,7 +148,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="@string/father_name"
-                            android:textColor="@color/black1"
+                            android:textColor="@color/text_color_1"
                             android:textSize="@dimen/textSizeMedium"
                             android:textStyle="bold" />
 
@@ -191,7 +191,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="@string/nation_number"
-                            android:textColor="@color/black1"
+                            android:textColor="@color/text_color_1"
                             android:textSize="@dimen/textSizeMedium"
                             android:textStyle="bold" />
 
@@ -245,7 +245,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="@string/phone_number"
-                            android:textColor="@color/black1"
+                            android:textColor="@color/text_color_1"
                             android:textSize="@dimen/textSizeMedium"
                             android:textStyle="bold" />
 
@@ -289,7 +289,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="@string/mobile_number"
-                            android:textColor="@color/black1"
+                            android:textColor="@color/text_color_1"
                             android:textSize="@dimen/textSizeMedium"
                             android:textStyle="bold" />
 
@@ -356,7 +356,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="@string/id_bill_neighbour"
-                            android:textColor="@color/black1"
+                            android:textColor="@color/text_color_1"
                             android:textSize="@dimen/textSizeMedium"
                             android:textStyle="bold" />
 
@@ -395,7 +395,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="@string/postal_code"
-                            android:textColor="@color/black1"
+                            android:textColor="@color/text_color_1"
                             android:textSize="@dimen/textSizeMedium"
                             android:textStyle="bold" />
 
@@ -437,7 +437,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="@string/service"
-                        android:textColor="@color/black1"
+                        android:textColor="@color/text_color_1"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -490,7 +490,7 @@
                         android:layout_gravity="center"
                         android:maxLength="50"
                         android:text="@string/address"
-                        android:textColor="@color/black1"
+                        android:textColor="@color/text_color_1"
                         android:textSize="@dimen/textSizeLarge"
                         android:textStyle="bold" />
 

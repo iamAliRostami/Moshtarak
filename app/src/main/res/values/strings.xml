@@ -143,6 +143,7 @@
     <string name="copy_in_clipboard">شماره پیگیری در کلیپ بورد ذخیره شد</string>
     <string name="mobile_model">مدل گوشی:</string>
     <string name="os_version">نسخه اندروید:</string>
+    <string name="version">نسخه </string>
     <string name="login_date">تاریخ ورود:</string>
     <string name="rial">ریال</string>
     <string name="pay_type_title">نحوه پرداخت</string>

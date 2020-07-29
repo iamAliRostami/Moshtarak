@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/last_bill_2"
-                    android:textColor="@color/black1"
+                    android:textColor="@color/text_color_1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/cardex"
-                    android:textColor="@color/black1"
+                    android:textColor="@color/text_color_1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
 
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/mamoor_2"
-                    android:textColor="@color/black1"
+                    android:textColor="@color/text_color_1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/sale"
-                    android:textColor="@color/black1"
+                    android:textColor="@color/text_color_1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
 
@@ -176,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/support"
-                    android:textColor="@color/black1"
+                    android:textColor="@color/text_color_1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
 
@@ -206,7 +206,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/tracking"
-                    android:textColor="@color/black1"
+                    android:textColor="@color/text_color_1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
 
@@ -247,7 +247,7 @@
                     android:layout_gravity="center_horizontal|bottom"
                     android:gravity="center_horizontal|bottom"
                     android:text="@string/help"
-                    android:textColor="@color/black1"
+                    android:textColor="@color/text_color_1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -276,7 +276,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/train"
-                    android:textColor="@color/black1"
+                    android:textColor="@color/text_color_1"
                     android:textSize="@dimen/textSizeSmall"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -304,7 +304,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/suggest"
-                    android:textColor="@color/black1"
+                    android:textColor="@color/text_color_1"
                     android:textSize="@dimen/textSizeSmall" />
             </RelativeLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>

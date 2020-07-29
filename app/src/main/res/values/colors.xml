@@ -35,6 +35,6 @@
     <color name="red3">#ff3600</color>
     <color name="brown">#7d4908</color>
 
-    <color name="black1">#4d4d4d</color>
-    <color name="text_color2">#575757</color>
+    <color name="text_color_1">#4d4d4d</color>
+    <color name="text_color_2">#575757</color>
 </resources>

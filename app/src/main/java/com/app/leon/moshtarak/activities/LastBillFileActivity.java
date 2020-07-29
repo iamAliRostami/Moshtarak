@@ -505,7 +505,6 @@ public class LastBillFileActivity extends AppCompatActivity {
                 e.printStackTrace();
                 runOnUiThread(() -> Toast.makeText(context, R.string.error_preparing, Toast.LENGTH_LONG).show());
             }
-
             MediaScannerConnection.scanFile(context, new String[]{file.getPath()}, new String[]{"image/jpeg"}, null);
         }
     }
@@ -537,7 +536,8 @@ public class LastBillFileActivity extends AppCompatActivity {
     }
 
     private void getPaymentResultCode(int resultCode, Intent data) {
-        String enData = "", message = "", status = "0";
+        String enData = "", message = "";
+        int status = 0;
         int errorType = 0, orderId = 0;
 
         switch (resultCode) {
@@ -545,7 +545,7 @@ public class LastBillFileActivity extends AppCompatActivity {
             case 3://bill payment ok
                 enData = data.getStringExtra("enData");
                 message = data.getStringExtra("message");
-                status = String.valueOf(data.getIntExtra("status", 0));
+                status = data.getIntExtra("status", 0);
                 break;
             case 2://payment error
             case 5://internal error payment
@@ -562,9 +562,17 @@ public class LastBillFileActivity extends AppCompatActivity {
         }
         if (errorType != 0) {
             showErrorTypeMpl(errorType);
+        } else if (resultCode == 1 || resultCode == 3) {
+            new CustomDialog(DialogType.Yellow, LastBillFileActivity.this, message,
+                    LastBillFileActivity.this.getString(R.string.dear_user),
+                    LastBillFileActivity.this.getString(R.string.pay),
+                    LastBillFileActivity.this.getString(R.string.accepted));
+
         } else {
-            new CustomDialog(DialogType.Yellow, context, message, context.getString(R.string.dear_user),
-                    context.getString(R.string.pay), context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, LastBillFileActivity.this, message,
+                    LastBillFileActivity.this.getString(R.string.dear_user),
+                    LastBillFileActivity.this.getString(R.string.pay),
+                    LastBillFileActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -734,23 +742,6 @@ public class LastBillFileActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
-    }
 
     class GetBill implements ICallback<LastBillInfoV2> {
         @SuppressLint("DefaultLocale")
@@ -803,5 +794,23 @@ public class LastBillFileActivity extends AppCompatActivity {
                     LastBillFileActivity.this.getString(R.string.login),
                     LastBillFileActivity.this.getString(R.string.accepted));
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
     }
 }

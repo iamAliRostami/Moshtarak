@@ -4,15 +4,18 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.databinding.ContactUsActivityBinding;
 
 public class ContactUsActivity extends AppCompatActivity {
@@ -57,12 +60,24 @@ public class ContactUsActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         context = this;
-
+        Log.e("version", getVersionInfo());
+        binding.textViewVersion.setText(getString(R.string.version).concat(getVersionInfo()));
         binding.linearLayout1.setOnClickListener(onClickListener);
         binding.linearLayout2.setOnClickListener(onClickListener);
         binding.linearLayout3.setOnClickListener(onClickListener);
         binding.linearLayout4.setOnClickListener(onClickListener);
         binding.linearLayout5.setOnClickListener(onClickListener);
+    }
+
+    private String getVersionInfo() {
+        String versionName = "";
+        try {
+            PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            versionName = packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return versionName;
     }
 
     @Override

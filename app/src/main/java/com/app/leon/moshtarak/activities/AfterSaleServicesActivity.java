@@ -186,7 +186,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
     class SendRequest implements ICallback<SimpleMessage> {
         @Override
         public void execute(SimpleMessage simpleMessage) {
-            new CustomDialog(DialogType.Green, AfterSaleServicesActivity.this, simpleMessage.getMessage(),
+            new CustomDialog(DialogType.GreenRedirect, AfterSaleServicesActivity.this, simpleMessage.getMessage(),
                     AfterSaleServicesActivity.this.getString(R.string.dear_user),
                     AfterSaleServicesActivity.this.getString(R.string.support),
                     AfterSaleServicesActivity.this.getString(R.string.accepted));

@@ -195,7 +195,7 @@ public class SaleActivity extends BaseActivity {
             } else {
                 binding.editTextName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
                 binding.linearLayoutName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewName.setTextColor(getResources().getColor(R.color.black1));
+                binding.textViewName.setTextColor(getResources().getColor(R.color.text_color_1));
             }
         });
     }
@@ -209,7 +209,7 @@ public class SaleActivity extends BaseActivity {
             } else {
                 binding.editTextFamily.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
                 binding.linearLayoutFamily.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewFamily.setTextColor(getResources().getColor(R.color.black1));
+                binding.textViewFamily.setTextColor(getResources().getColor(R.color.text_color_1));
             }
         });
     }
@@ -223,7 +223,7 @@ public class SaleActivity extends BaseActivity {
             } else {
                 binding.editTextFatherName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
                 binding.linearLayoutFatherName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewFatherName.setTextColor(getResources().getColor(R.color.black1));
+                binding.textViewFatherName.setTextColor(getResources().getColor(R.color.text_color_1));
             }
         });
     }
@@ -237,7 +237,7 @@ public class SaleActivity extends BaseActivity {
             } else {
                 binding.editTextNationNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
                 binding.linearLayoutNationNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewNationNumber.setTextColor(getResources().getColor(R.color.black1));
+                binding.textViewNationNumber.setTextColor(getResources().getColor(R.color.text_color_1));
             }
         });
     }
@@ -251,7 +251,7 @@ public class SaleActivity extends BaseActivity {
             } else {
                 binding.editTextPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
                 binding.linearLayoutPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewPhoneNumber.setTextColor(getResources().getColor(R.color.black1));
+                binding.textViewPhoneNumber.setTextColor(getResources().getColor(R.color.text_color_1));
             }
         });
     }
@@ -265,7 +265,7 @@ public class SaleActivity extends BaseActivity {
             } else {
                 binding.editTextMobile.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
                 binding.linearLayoutMobile.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewMobile.setTextColor(getResources().getColor(R.color.black1));
+                binding.textViewMobile.setTextColor(getResources().getColor(R.color.text_color_1));
             }
         });
     }
@@ -279,7 +279,7 @@ public class SaleActivity extends BaseActivity {
             } else {
                 binding.editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
                 binding.linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewPostalCode.setTextColor(getResources().getColor(R.color.black1));
+                binding.textViewPostalCode.setTextColor(getResources().getColor(R.color.text_color_1));
             }
         });
     }
@@ -293,7 +293,7 @@ public class SaleActivity extends BaseActivity {
             } else {
                 binding.editTextBillId.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
                 binding.linearLayoutBillId.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewBillId.setTextColor(getResources().getColor(R.color.black1));
+                binding.textViewBillId.setTextColor(getResources().getColor(R.color.text_color_1));
             }
         });
     }
@@ -307,7 +307,7 @@ public class SaleActivity extends BaseActivity {
             } else {
                 binding.editTextAddress.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
                 binding.linearLayoutAddress.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewAddress.setTextColor(getResources().getColor(R.color.black1));
+                binding.textViewAddress.setTextColor(getResources().getColor(R.color.text_color_1));
             }
         });
     }
@@ -397,7 +397,7 @@ public class SaleActivity extends BaseActivity {
             } else {
                 binding.editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
                 binding.linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewPostalCode.setTextColor(getResources().getColor(R.color.black1));
+                binding.textViewPostalCode.setTextColor(getResources().getColor(R.color.text_color_1));
             }
         });
     }

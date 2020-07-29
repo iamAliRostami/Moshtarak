@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
+import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Infrastructure.ICallbackError;
 import com.app.leon.moshtarak.Infrastructure.ICallbackIncomplete;
+import com.app.leon.moshtarak.Models.DbTables.Counter;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
@@ -186,8 +188,11 @@ public class SetCounterActivity extends BaseActivity {
     private void sendNumber() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService sendNumber = retrofit.create(IAbfaService.class);
-        Call<LastBillInfo> call = sendNumber.sendNumber(billId, number, getString(R.string._09).
-                concat(phoneNumber), 4);
+        byte[] encodeValue = Base64.encode(billId.getBytes(), Base64.DEFAULT);
+        String base64 = new String(encodeValue);
+        Call<LastBillInfo> call = sendNumber.sendNumber(base64.substring(0,
+                base64.length() - 1), new Counter(billId, number, getString(R.string._09).
+                concat(phoneNumber), 4));
         SetCounter setCounter = new SetCounter();
         SetCounterIncomplete incomplete = new SetCounterIncomplete();
         GetError error = new GetError();
@@ -213,8 +218,7 @@ public class SetCounterActivity extends BaseActivity {
         public void executeIncomplete(Response<LastBillInfo> response) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
-
-            if (response.code() == 400) {
+            if (response.code() == 416) {
                 CustomErrorHandlingNew.APIError apiError = customErrorHandlingNew.parseError(response);
                 error = apiError.message();
             }

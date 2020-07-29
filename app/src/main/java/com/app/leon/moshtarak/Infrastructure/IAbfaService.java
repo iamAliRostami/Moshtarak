@@ -1,6 +1,7 @@
 package com.app.leon.moshtarak.Infrastructure;
 
 import com.app.leon.moshtarak.Models.DbTables.Cardex;
+import com.app.leon.moshtarak.Models.DbTables.Counter;
 import com.app.leon.moshtarak.Models.DbTables.FollowUpDto;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
@@ -83,12 +84,20 @@ public interface IAbfaService {
             @Query("zoneId") String zoneId
     );
 
-    @POST("/MoshtarakinApi/Bill/GenerateBill")
+    //    @POST("/MoshtarakinApi/Bill/GenerateBill")
+    @POST("/MoshtarakinApi/V2/Bill/GenerateBill/{apiKey}")
     Call<LastBillInfo> sendNumber(
-            @Query("billId") String billId,
-            @Query("counterclaim") String counterclaim,
-            @Query("notificationMobile") String notificationMobile,
-            @Query("requestOrigin") int requestOrigin
+//            @Query("billId") String billId,
+//            @Query("apiKey") String apiKey,
+//            @Query("counterclaim") String counterclaim,
+//            @Query("notificationMobile") String notificationMobile,
+//            @Query("requestOrigin") int requestOrigin
+            @Path("apiKey") String apiKey,
+            @Body Counter counter
+//            @Query("billId") String billId,
+//            @Query("counterclaim") String counterclaim,
+//            @Query("notificationMobile") String notificationMobile,
+//            @Query("requestOrigin") int requestOrigin
     );
 
     @PUT("/MoshtarakinApi/RequestManager/RegisterNew")

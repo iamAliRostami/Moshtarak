@@ -137,7 +137,7 @@ public class SuggestActivity extends BaseActivity {
     class Suggest implements ICallback<SimpleMessage> {
         @Override
         public void execute(SimpleMessage simpleMessage) {
-            new CustomDialog(DialogType.Yellow, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
+            new CustomDialog(DialogType.YellowRedirect, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
                     context.getString(R.string.suggest), context.getString(R.string.accepted));
         }
     }

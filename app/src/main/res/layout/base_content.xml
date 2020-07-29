@@ -10,4 +10,4 @@
     android:paddingBottom="0dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".BaseItems.BaseActivity"
-    tools:showIn="@layout/base_app_bar"></androidx.constraintlayout.widget.ConstraintLayout>
+    tools:showIn="@layout/base_app_bar" />
