@@ -8,7 +8,4 @@
         android:right="3dp"
         android:top="3dp" />
     <solid android:color="@color/yellow1" />
-    <stroke
-        android:width="2dp"
-        android:color="@color/yellow1" />
 </shape>

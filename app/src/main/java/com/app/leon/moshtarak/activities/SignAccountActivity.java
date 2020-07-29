@@ -62,7 +62,7 @@ public class SignAccountActivity extends BaseActivity {
             Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.change_account));
             change = true;
         } else {
-            binding.buttonSign.setText(getResources().getString(R.string.account));
+            binding.buttonSign.setText(getResources().getString(R.string.login));
             binding.linearLayoutAccounts.setVisibility(View.GONE);
             Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.account));
         }

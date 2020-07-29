@@ -87,17 +87,8 @@ public interface IAbfaService {
     //    @POST("/MoshtarakinApi/Bill/GenerateBill")
     @POST("/MoshtarakinApi/V2/Bill/GenerateBill/{apiKey}")
     Call<LastBillInfo> sendNumber(
-//            @Query("billId") String billId,
-//            @Query("apiKey") String apiKey,
-//            @Query("counterclaim") String counterclaim,
-//            @Query("notificationMobile") String notificationMobile,
-//            @Query("requestOrigin") int requestOrigin
             @Path("apiKey") String apiKey,
             @Body Counter counter
-//            @Query("billId") String billId,
-//            @Query("counterclaim") String counterclaim,
-//            @Query("notificationMobile") String notificationMobile,
-//            @Query("requestOrigin") int requestOrigin
     );
 
     @PUT("/MoshtarakinApi/RequestManager/RegisterNew")

@@ -184,7 +184,7 @@ public abstract class BaseActivity extends AppCompatActivity
         dataList = NavigationCustomAdapter.DrawerItem.createItemList(
                 getResources().getStringArray(R.array.menu), getResources().obtainTypedArray(R.array.icons));
         if (sharedPreference.checkIsNotEmpty())
-            dataList.get(5).setItemName(getString(R.string.change_account));
+            dataList.get(5).setItemName(getString(R.string.change_account_));
         adapter = new NavigationCustomAdapter(this, dataList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));

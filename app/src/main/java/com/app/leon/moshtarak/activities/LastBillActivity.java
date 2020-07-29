@@ -70,7 +70,7 @@ public class LastBillActivity extends BaseActivity {
         parentLayout.addView(childLayout);
         context = this;
         accessData();
-        binding.textViewCost.setOnClickListener(view -> {
+        binding.linearLayoutCompatPay.setOnClickListener(view -> {
             if (!isPayed) {
 //                new CustomTab(address, LastBillActivity.this);
                 getToken();
