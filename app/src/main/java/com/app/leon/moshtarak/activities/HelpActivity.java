@@ -136,9 +136,6 @@ public class HelpActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding = null;
-        context = null;
-
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

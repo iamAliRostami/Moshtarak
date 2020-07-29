@@ -218,10 +218,10 @@ public class SetCounterActivity extends BaseActivity {
                 CustomErrorHandlingNew.APIError apiError = customErrorHandlingNew.parseError(response);
                 error = apiError.message();
             }
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, SetCounterActivity.this, error,
+                    SetCounterActivity.this.getString(R.string.dear_user),
+                    SetCounterActivity.this.getString(R.string.login),
+                    SetCounterActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -230,10 +230,10 @@ public class SetCounterActivity extends BaseActivity {
         public void executeError(Throwable t) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.YellowRedirect, SetCounterActivity.this, error,
+                    SetCounterActivity.this.getString(R.string.dear_user),
+                    SetCounterActivity.this.getString(R.string.login),
+                    SetCounterActivity.this.getString(R.string.accepted));
         }
     }
 

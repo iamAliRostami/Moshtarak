@@ -18,7 +18,8 @@ public class SharedPreference {
 
     public SharedPreference(Context context) {
         this.context = context;
-        appPrefs = this.context.getSharedPreferences("com.app.leon.moshtarak.user_preferences", MODE_PRIVATE);
+//        appPrefs = this.context.getSharedPreferences("com.app.leon.moshtarak.user_preferences", MODE_PRIVATE);
+        appPrefs = this.context.getSharedPreferences("com.app.leon.moshtarak.users_preferences", MODE_PRIVATE);
     }
 
     private void putBillID(String bill_id) {

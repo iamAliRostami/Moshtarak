@@ -97,13 +97,13 @@ public class BaseInfoActivity extends BaseActivity {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
             if (response.code() == 404) {
-                error = getString(R.string.error_register_again);
+                error = BaseInfoActivity.this.getString(R.string.error_register_again);
                 sharedPreference.removeItem(sharedPreference.getIndex());
             }
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.YellowRedirect, BaseInfoActivity.this, error,
+                    BaseInfoActivity.this.getString(R.string.dear_user),
+                    BaseInfoActivity.this.getString(R.string.login),
+                    BaseInfoActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -112,10 +112,10 @@ public class BaseInfoActivity extends BaseActivity {
         public void executeError(Throwable t) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.YellowRedirect, BaseInfoActivity.this, error,
+                    BaseInfoActivity.this.getString(R.string.dear_user),
+                    BaseInfoActivity.this.getString(R.string.login),
+                    BaseInfoActivity.this.getString(R.string.accepted));
         }
     }
 

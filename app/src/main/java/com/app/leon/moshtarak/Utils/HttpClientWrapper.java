@@ -1,5 +1,6 @@
 package com.app.leon.moshtarak.Utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.widget.Toast;
@@ -36,15 +37,15 @@ public class HttpClientWrapper {
                     if (response.isSuccessful()) {
                         callback.execute(response.body());
                     } else {
-                        callbackIncomplete.executeIncomplete(response);
+                        ((Activity) context).runOnUiThread(() -> callbackIncomplete.executeIncomplete(response));
                     }
                     progressBar.getDialog().dismiss();
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<T> call, @NonNull Throwable t) {
+                    ((Activity) context).runOnUiThread(() -> callbackError.executeError(t));
                     progressBar.getDialog().dismiss();
-                    callbackError.executeError(t);
                 }
             });
         } else {

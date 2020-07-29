@@ -107,10 +107,10 @@ public class RecoveryCodeActivity extends AppCompatActivity {
         public void executeIncomplete(Response<List<Request>> response) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, RecoveryCodeActivity.this, error,
+                    RecoveryCodeActivity.this.getString(R.string.dear_user),
+                    RecoveryCodeActivity.this.getString(R.string.login),
+                    RecoveryCodeActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -119,10 +119,10 @@ public class RecoveryCodeActivity extends AppCompatActivity {
         public void executeError(Throwable t) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.YellowRedirect, RecoveryCodeActivity.this, error,
+                    RecoveryCodeActivity.this.getString(R.string.dear_user),
+                    RecoveryCodeActivity.this.getString(R.string.login),
+                    RecoveryCodeActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -138,7 +138,6 @@ public class RecoveryCodeActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        recoverCodeCustomAdapter = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

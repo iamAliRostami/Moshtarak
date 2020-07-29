@@ -147,10 +147,10 @@ public class SuggestActivity extends BaseActivity {
         public void executeIncomplete(Response<SimpleMessage> response) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, SuggestActivity.this, error,
+                    SuggestActivity.this.getString(R.string.dear_user),
+                    SuggestActivity.this.getString(R.string.login),
+                    SuggestActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -159,10 +159,10 @@ public class SuggestActivity extends BaseActivity {
         public void executeError(Throwable t) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, SuggestActivity.this, error,
+                    SuggestActivity.this.getString(R.string.dear_user),
+                    SuggestActivity.this.getString(R.string.login),
+                    SuggestActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -194,7 +194,6 @@ public class SuggestActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        items = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

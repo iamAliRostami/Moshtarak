@@ -164,10 +164,10 @@ public class AfterSaleServicesActivity extends BaseActivity {
         public void executeIncomplete(Response<ArrayList<Service>> response) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.YellowRedirect, AfterSaleServicesActivity.this, error,
+                    AfterSaleServicesActivity.this.getString(R.string.dear_user),
+                    AfterSaleServicesActivity.this.getString(R.string.login),
+                    AfterSaleServicesActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -176,19 +176,20 @@ public class AfterSaleServicesActivity extends BaseActivity {
         public void executeIncomplete(Response<SimpleMessage> response) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, AfterSaleServicesActivity.this, error,
+                    AfterSaleServicesActivity.this.getString(R.string.dear_user),
+                    AfterSaleServicesActivity.this.getString(R.string.login),
+                    AfterSaleServicesActivity.this.getString(R.string.accepted));
         }
     }
 
     class SendRequest implements ICallback<SimpleMessage> {
         @Override
         public void execute(SimpleMessage simpleMessage) {
-            new CustomDialog(DialogType.Green, context, simpleMessage.getMessage(),
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.support), context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Green, AfterSaleServicesActivity.this, simpleMessage.getMessage(),
+                    AfterSaleServicesActivity.this.getString(R.string.dear_user),
+                    AfterSaleServicesActivity.this.getString(R.string.support),
+                    AfterSaleServicesActivity.this.getString(R.string.accepted));
         }
 
     }
@@ -198,10 +199,10 @@ public class AfterSaleServicesActivity extends BaseActivity {
         public void executeError(Throwable t) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.YellowRedirect, AfterSaleServicesActivity.this, error,
+                    AfterSaleServicesActivity.this.getString(R.string.dear_user),
+                    AfterSaleServicesActivity.this.getString(R.string.login),
+                    AfterSaleServicesActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -217,9 +218,6 @@ public class AfterSaleServicesActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        servicesId = null;
-        servicesTitle = null;
-        requestServices = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

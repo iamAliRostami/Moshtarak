@@ -90,16 +90,6 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding.imageButtonSale.setImageDrawable(null);
-        binding.imageButtonLastBill.setImageDrawable(null);
-        binding.imageButtonKardex.setImageDrawable(null);
-        binding.imageButtonTrain.setImageDrawable(null);
-        binding.imageButtonMamoor.setImageDrawable(null);
-        binding.imageButtonSuggest.setImageDrawable(null);
-        binding.imageButtonTracking.setImageDrawable(null);
-        binding.imageButtonSupport.setImageDrawable(null);
-        binding.imageButtonHelp.setImageDrawable(null);
-        binding = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

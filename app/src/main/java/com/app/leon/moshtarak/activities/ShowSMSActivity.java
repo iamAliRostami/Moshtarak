@@ -49,8 +49,6 @@ public class ShowSMSActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        arrayAdapter = null;
-        sms = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

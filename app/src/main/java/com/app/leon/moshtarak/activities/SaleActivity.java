@@ -100,10 +100,10 @@ public class SaleActivity extends BaseActivity {
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
             if (response.code() == 400)
                 error = getString(R.string.error_billid_incorrect);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, SaleActivity.this, error,
+                    SaleActivity.this.getString(R.string.dear_user),
+                    SaleActivity.this.getString(R.string.login),
+                    SaleActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -112,10 +112,10 @@ public class SaleActivity extends BaseActivity {
         public void executeError(Throwable t) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.YellowRedirect, SaleActivity.this, error,
+                    SaleActivity.this.getString(R.string.dear_user),
+                    SaleActivity.this.getString(R.string.login),
+                    SaleActivity.this.getString(R.string.accepted));
         }
     }
 

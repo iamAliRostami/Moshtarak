@@ -144,10 +144,7 @@ public abstract class BaseActivity extends AppCompatActivity
                         } else if (position == 8) {
                             finishAffinity();
                         }
-
-
                     }
-
                     @Override
                     public void onLongItemClick(View view, int position) {
                         // do whatever
@@ -170,15 +167,8 @@ public abstract class BaseActivity extends AppCompatActivity
     @SuppressLint("NewApi")
     private void initializeImageViewSwitch() {
         if (sharedPreference.getTheme()) {
-//            binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(MyApplication.getContext()
-//                    , R.drawable.night_drawer)
-//            );
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
-//            binding.imageViewSwitch.setImageDrawable(getDrawable(R.drawable.mode));//TODO
-//            binding.imageViewSwitch.setImageDrawable(ContextCompat.getDrawable(MyApplication.getContext()
-//                    , R.drawable.mode)
-//            );
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
         binding.imageViewSwitch.setOnClickListener(onImageSwitcherClickListener);
@@ -188,8 +178,6 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        dataList = null;
-        adapter = null;
     }
 
     void fillDrawerListView() {
@@ -202,26 +190,5 @@ public abstract class BaseActivity extends AppCompatActivity
         recyclerView.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));
         recyclerView.setNestedScrollingEnabled(true);
     }
-
-//    public void setItemsColor(ViewGroup viewTree, int selected) {
-//        Stack<ViewGroup> stackOfViewGroup = new Stack<>();
-//        stackOfViewGroup.push(viewTree);
-//        while (!stackOfViewGroup.isEmpty()) {
-//            ViewGroup tree = stackOfViewGroup.pop();
-//            for (int i = 0; i < tree.getChildCount() - 1; i++) {
-//                View child = tree.getChildAt(i);
-//                if (child instanceof ViewGroup) {
-//                    stackOfViewGroup.push((ViewGroup) child);
-//                } else if (child instanceof TextView) {
-//                    if (child.getId() == R.id.textViewTitle) {
-//                        ((TextView) child).setTextColor(getResources().getColor(R.color.gray2));
-//                    }
-//                }
-//            }
-//        }
-//        View view = drawerList.getChildAt(selected);
-//        TextView textView = view.findViewById(R.id.textViewTitle);
-//        textView.setTextColor(getResources().getColor(R.color.white));
-//    }
 }
 

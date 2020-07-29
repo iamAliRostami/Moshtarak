@@ -148,8 +148,6 @@ public class ChartActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        listText = null;
-        listValue = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

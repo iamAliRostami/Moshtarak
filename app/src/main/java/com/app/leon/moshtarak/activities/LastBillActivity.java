@@ -293,7 +293,6 @@ public class LastBillActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding.imageViewBarcode.setImageDrawable(null);
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
@@ -622,13 +621,11 @@ public class LastBillActivity extends BaseActivity {
                 message = getString(R.string.time_out_error);
                 break;
             case 1000:
+            case 1002:
                 message = getString(R.string.error_connection);
                 break;
             case 1001:
                 message = getString(R.string.server_error);
-                break;
-            case 1002:
-                message = getString(R.string.error_connection);
                 break;
             case 201:
                 message = getString(R.string.dialog_canceled);
@@ -653,36 +650,36 @@ public class LastBillActivity extends BaseActivity {
     class GetBillIncomplete implements ICallbackIncomplete<LastBillInfoV2> {
         @Override
         public void executeIncomplete(Response<LastBillInfoV2> response) {
-            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(getApplicationContext());
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
-            new CustomDialog(DialogType.YellowRedirect, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.YellowRedirect, LastBillActivity.this, error,
+                    LastBillActivity.this.getString(R.string.dear_user),
+                    LastBillActivity.this.getString(R.string.login),
+                    LastBillActivity.this.getString(R.string.accepted));
         }
     }
 
     class GetTokenIncomplete implements ICallbackIncomplete<SimpleMessage> {
         @Override
         public void executeIncomplete(Response<SimpleMessage> response) {
-            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(getApplicationContext());
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, LastBillActivity.this, error,
+                    LastBillActivity.this.getString(R.string.dear_user),
+                    LastBillActivity.this.getString(R.string.login),
+                    LastBillActivity.this.getString(R.string.accepted));
         }
     }
 
     class GetError implements ICallbackError {
         @Override
         public void executeError(Throwable t) {
-            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(getApplicationContext());
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, LastBillActivity.this, error,
+                    LastBillActivity.this.getString(R.string.dear_user),
+                    LastBillActivity.this.getString(R.string.login),
+                    LastBillActivity.this.getString(R.string.accepted));
         }
     }
 }

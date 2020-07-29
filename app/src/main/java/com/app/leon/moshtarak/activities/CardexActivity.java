@@ -125,13 +125,13 @@ public class CardexActivity extends BaseActivity {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
             if (response.code() == 400) {
-                error = getString(R.string.error_register_again);
+                error = CardexActivity.this.getString(R.string.error_register_again);
                 sharedPreference.removeItem(sharedPreference.getIndex());
             }
-            new CustomDialog(DialogType.YellowRedirect, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.YellowRedirect, CardexActivity.this, error,
+                    CardexActivity.this.getString(R.string.dear_user),
+                    CardexActivity.this.getString(R.string.login),
+                    CardexActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -140,19 +140,16 @@ public class CardexActivity extends BaseActivity {
         public void executeError(Throwable t) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.YellowRedirect, CardexActivity.this, error,
+                    CardexActivity.this.getString(R.string.dear_user),
+                    CardexActivity.this.getString(R.string.login),
+                    CardexActivity.this.getString(R.string.accepted));
         }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        cardexCustomAdapter = null;
-        yAxisData = null;
-        axisValues = null;
         Runtime.getRuntime().totalMemory();
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();

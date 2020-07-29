@@ -29,7 +29,7 @@ import com.app.leon.moshtarak.Utils.CustomErrorHandlingNew;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
-import com.app.leon.moshtarak.databinding.SignAccountContent1Binding;
+import com.app.leon.moshtarak.databinding.SignAccountContentBinding;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -39,7 +39,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class SignAccountActivity extends BaseActivity {
-    SignAccountContent1Binding binding;
+    SignAccountContentBinding binding;
     String billId, mobile;
     View viewFocus;
     Context context;
@@ -50,7 +50,7 @@ public class SignAccountActivity extends BaseActivity {
     @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
-        binding = SignAccountContent1Binding.inflate(getLayoutInflater());
+        binding = SignAccountContentBinding.inflate(getLayoutInflater());
         View childLayout = binding.getRoot();
         ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
@@ -239,10 +239,10 @@ public class SignAccountActivity extends BaseActivity {
             if (response.code() == 400) {
                 error = getString(R.string.error_bill_id);
             }
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, SignAccountActivity.this, error,
+                    SignAccountActivity.this.getString(R.string.dear_user),
+                    SignAccountActivity.this.getString(R.string.login),
+                    SignAccountActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -251,10 +251,10 @@ public class SignAccountActivity extends BaseActivity {
         public void executeError(Throwable t) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, SignAccountActivity.this, error,
+                    SignAccountActivity.this.getString(R.string.dear_user),
+                    SignAccountActivity.this.getString(R.string.login),
+                    SignAccountActivity.this.getString(R.string.accepted));
         }
     }
 

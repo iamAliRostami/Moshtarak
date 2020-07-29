@@ -113,10 +113,10 @@ public class FollowUpActivity extends BaseActivity {
                 CustomErrorHandlingNew.APIError apiError = customErrorHandlingNew.parseError(response);
                 error = apiError.message();
             }
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.Yellow, FollowUpActivity.this, error,
+                    FollowUpActivity.this.getString(R.string.dear_user),
+                    FollowUpActivity.this.getString(R.string.login),
+                    FollowUpActivity.this.getString(R.string.accepted));
         }
     }
 
@@ -125,10 +125,10 @@ public class FollowUpActivity extends BaseActivity {
         public void executeError(Throwable t) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
-            new CustomDialog(DialogType.Yellow, context, error,
-                    context.getString(R.string.dear_user),
-                    context.getString(R.string.login),
-                    context.getString(R.string.accepted));
+            new CustomDialog(DialogType.YellowRedirect, FollowUpActivity.this, error,
+                    FollowUpActivity.this.getString(R.string.dear_user),
+                    FollowUpActivity.this.getString(R.string.login),
+                    FollowUpActivity.this.getString(R.string.accepted));
         }
     }
 
