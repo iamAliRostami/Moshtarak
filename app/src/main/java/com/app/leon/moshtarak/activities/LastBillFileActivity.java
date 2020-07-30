@@ -554,7 +554,7 @@ public class LastBillFileActivity extends AppCompatActivity {
         int errorType = 0, orderId = 0;
 
         switch (resultCode) {
-            case 1:// payment ok
+            case 1://payment ok
             case 3://bill payment ok
                 enData = data.getStringExtra("enData");
                 message = data.getStringExtra("message");
