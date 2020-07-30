@@ -58,7 +58,9 @@
                     android:hint="@string/bill_id"
                     android:inputType="number"
                     android:maxLength="13"
-                    android:textSize="@dimen/textSizeSmall"
+                    android:paddingTop="@dimen/activity_medium_padding"
+                    android:paddingBottom="@dimen/activity_medium_padding"
+                    android:textSize="@dimen/textSizeMedium"
                     tools:ignore="Autofill" />
 
                 <!--                <TextView-->
@@ -91,7 +93,9 @@
                         android:inputType="number"
                         android:lines="1"
                         android:maxLength="9"
-                        android:textSize="@dimen/textSizeSmall"
+                        android:paddingTop="@dimen/activity_medium_padding"
+                        android:paddingBottom="@dimen/activity_medium_padding"
+                        android:textSize="@dimen/textSizeMedium"
                         tools:ignore="Autofill" />
 
                     <TextView
