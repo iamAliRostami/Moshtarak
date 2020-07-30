@@ -306,21 +306,21 @@ public class LastBillFileActivity extends AppCompatActivity {
         binding.texView1.setText(lastBillInfo.getFullName());
         binding.texView2.setText(lastBillInfo.getBillId());
         binding.texView3.setText(lastBillInfo.getPayId());
-        binding.texView4.setText(lastBillInfo.getPayable());
+        binding.texView4.setText(getNumberSeparator(lastBillInfo.getPayable()));
         binding.texView5.setText(lastBillInfo.getDeadLine());
 
         binding.texView6.setText(lastBillInfo.getMasraf());
         binding.texView7.setText(lastBillInfo.getMasrafLiter());
         binding.texView8.setText(lastBillInfo.getMasrafAverage());
 
-        binding.texView9.setText(lastBillInfo.getAbBaha());
-        binding.texView10.setText(lastBillInfo.getKarmozdFazelab());
-        binding.texView11.setText(lastBillInfo.getMaliat());
-        binding.texView12.setText(lastBillInfo.getBudget());
-        binding.texView13.setText(lastBillInfo.getLavazemKahande());
-        binding.texView14.setText(lastBillInfo.getJam());
-        binding.texView15.setText(lastBillInfo.getTaxfif());
-        binding.texView16.setText(lastBillInfo.getPreBedOrBes());
+        binding.texView9.setText(getNumberSeparator(lastBillInfo.getAbBaha()));
+        binding.texView10.setText(getNumberSeparator(lastBillInfo.getKarmozdFazelab()));
+        binding.texView11.setText(getNumberSeparator(lastBillInfo.getMaliat()));
+        binding.texView12.setText(getNumberSeparator(lastBillInfo.getBudget()));
+        binding.texView13.setText(getNumberSeparator(lastBillInfo.getLavazemKahande()));
+        binding.texView14.setText(getNumberSeparator(lastBillInfo.getJam()));
+        binding.texView15.setText(getNumberSeparator(lastBillInfo.getTaxfif()));
+        binding.texView16.setText(getNumberSeparator(lastBillInfo.getPreBedOrBes()));
 
         binding.texView17.setText(lastBillInfo.getRadif());
         binding.texView18.setText(lastBillInfo.getBarge());
@@ -338,6 +338,17 @@ public class LastBillFileActivity extends AppCompatActivity {
         binding.texView29.setText(lastBillInfo.getQotr());
         binding.texView30.setText(lastBillInfo.getQotrSifoon());
         binding.texView31.setText(lastBillInfo.getCounterStateId());
+    }
+
+    @SuppressLint("DefaultLocale")
+    public String getNumberSeparator(String number) {
+        String s = null;
+        try {
+            s = String.format("%,d", Long.parseLong(number));
+        } catch (NumberFormatException e) {
+            s = number;
+        }
+        return s;
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -371,7 +382,9 @@ public class LastBillFileActivity extends AppCompatActivity {
                     get(sharedPreference.getIndex());
             apiKey = sharedPreference.getArrayList(SharedReferenceKeys.API_KEY.getValue()).
                     get(sharedPreference.getIndex());
-            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(billId),
+            String name = sharedPreference.getArrayList(SharedReferenceKeys.NAME.getValue()).
+                    get(sharedPreference.getIndex());
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(name),
                     Toast.LENGTH_LONG).show();
             fillLastBillInfo();
         }
@@ -549,26 +562,34 @@ public class LastBillFileActivity extends AppCompatActivity {
                 break;
             case 2://payment error
             case 5://internal error payment
-                enData = data.getStringExtra("enData");
-                errorType = data.getIntExtra("errorType", 0);
-                orderId = data.getIntExtra("OrderID", 0);
-                break;
             case 4://bill payment error
             case 6://internal error bill
             case 9:// internal error charge
-                enData = data.getStringExtra("enData");
                 errorType = data.getIntExtra("errorType", 0);
                 break;
         }
+        Log.e("resultCode", String.valueOf(resultCode));
+        Log.e("status", String.valueOf(status));
+        Log.e("errorType", String.valueOf(errorType));
+        if (message != null) {
+            Log.e("message", message);
+        }
+
         if (errorType != 0) {
             showErrorTypeMpl(errorType);
-        } else if (resultCode == 1 || resultCode == 3) {
-            new CustomDialog(DialogType.Yellow, LastBillFileActivity.this, message,
+        } else if ((resultCode == 1 || resultCode == 3) && status == 0) {
+            new CustomDialog(DialogType.Green, LastBillFileActivity.this, message,
                     LastBillFileActivity.this.getString(R.string.dear_user),
                     LastBillFileActivity.this.getString(R.string.pay),
                     LastBillFileActivity.this.getString(R.string.accepted));
 
         } else {
+            if (status < -32755 || status == -130 || status == 6 || (status >= 18 && status <= 32) ||
+                    status == 66 || (status >= 87 && status <= 89) || (status >= 95)) {
+                message = LastBillFileActivity.this.getString(R.string.error_unknown)
+                        .concat(LastBillFileActivity.this.getString(R.string.error_code)
+                                .concat(String.valueOf(status)));
+            }
             new CustomDialog(DialogType.Yellow, LastBillFileActivity.this, message,
                     LastBillFileActivity.this.getString(R.string.dear_user),
                     LastBillFileActivity.this.getString(R.string.pay),
@@ -584,7 +605,7 @@ public class LastBillFileActivity extends AppCompatActivity {
                 break;
             case 1000:
             case 1002:
-                message = getString(R.string.error_connection);
+                message = getString(R.string.error_other);
                 break;
             case 1001:
                 message = getString(R.string.server_error);
@@ -595,6 +616,8 @@ public class LastBillFileActivity extends AppCompatActivity {
             case 2334:
                 message = getString(R.string.device_root);
                 break;
+            default:
+                message = getString(R.string.error_unknown);
         }
         if (message.length() > 0) {
             Toast.makeText(MyApplication.getContext(), message, Toast.LENGTH_LONG).show();

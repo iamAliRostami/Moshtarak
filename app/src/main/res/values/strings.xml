@@ -75,6 +75,8 @@
     <string name="error_empty">این فیلد باید پر شود.</string>
     <string name="error_bill_id">شناسه قبض صحیح نمیباشد.</string>
     <string name="error_connection">خطا در جابجایی اطلاعات، لطفا مجدد تلاش کنید.</string>
+    <string name="error_unknown">خطای ناشناخته رخ داده است.</string>
+    <string name="error_code">\nکد خطا:</string>
     <string name="error_other">در حال حاضر خدمات مقدور نمیباشد، لطفا مجددا تلاش فرمایید.</string>
     <string name="error_internal">با عرض پوزش، سرور در حال به روزرسانی، لطفا دقایقی دیگر امتحان فرمایید.</string>
     <string name="error_input">ورودی های خود را چک کنید.</string>
@@ -169,7 +171,7 @@
     <string name="waiting">لطفا صبر کنید…</string>
     <string name="turn_internet_on">اینترنت وصل نیست، اینترنت وایفای یا همراه خود را روشن کنید.</string>
     <string name="active_user">اشتراک فعال:\n</string>
-    <string name="active_user_">اشتراک فعال</string>
+    <string name="active_user_">اشتراک فعال:</string>
 
     <string name="get_last_bill_file">دریافت آخرین قبض</string>
     <string name="share">اشتراک گذاری</string>

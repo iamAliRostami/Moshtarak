@@ -80,7 +80,9 @@ public class CardexActivity extends BaseActivity {
         } else {
             billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
                     get(sharedPreference.getIndex());
-            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(billId),
+            String name = sharedPreference.getArrayList(SharedReferenceKeys.NAME.getValue()).
+                    get(sharedPreference.getIndex());
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(name),
                     Toast.LENGTH_LONG).show();
             fillCardex();
         }

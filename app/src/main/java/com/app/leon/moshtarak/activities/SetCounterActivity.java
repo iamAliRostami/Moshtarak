@@ -181,7 +181,10 @@ public class SetCounterActivity extends BaseActivity {
                     get(sharedPreference.getIndex());
             phoneNumber = sharedPreference.getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue()).
                     get(sharedPreference.getIndex()).replaceFirst(getString(R.string._09), "");
-            Toast.makeText(MyApplication.getContext(), "اشتراک فعال:\n".concat(billId), Toast.LENGTH_LONG).show();
+            String name = sharedPreference.getArrayList(SharedReferenceKeys.NAME.getValue()).
+                    get(sharedPreference.getIndex());
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(name),
+                    Toast.LENGTH_LONG).show();
         }
     }
 

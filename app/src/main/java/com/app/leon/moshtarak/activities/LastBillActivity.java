@@ -92,8 +92,10 @@ public class LastBillActivity extends BaseActivity {
                     get(sharedPreference.getIndex());
             apiKey = sharedPreference.getArrayList(SharedReferenceKeys.API_KEY.getValue()).
                     get(sharedPreference.getIndex());
-            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).
-                    concat(billId), Toast.LENGTH_LONG).show();
+            String name = sharedPreference.getArrayList(SharedReferenceKeys.NAME.getValue()).
+                    get(sharedPreference.getIndex());
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(name),
+                    Toast.LENGTH_LONG).show();
             fillLastBillInfo();
         }
     }
@@ -342,13 +344,11 @@ public class LastBillActivity extends BaseActivity {
                 payId = lastBillInfo.getPayId().trim();
                 binding.textViewBillId.setText(billId);
                 binding.textViewPayId.setText(payId);//TODO Sepehr
-                setImageBitmap(binding.imageViewBarcode);
-                //float floatNumber = Float.parseFloat(lastBillInfo.getCurrentReadingNumber());TODO
+//                setImageBitmap(binding.imageViewBarcode);
                 float floatNumber = Float.parseFloat(lastBillInfo.getCurrentCounterNumber());
                 int intNumber = (int) floatNumber;
                 binding.textViewNewNumber.setText(String.valueOf(intNumber));
 
-//                floatNumber = Float.parseFloat(lastBillInfo.getPreReadingNumber());TODO
                 floatNumber = Float.parseFloat(lastBillInfo.getPreCounterNumber());
                 intNumber = (int) floatNumber;
                 binding.textViewPreNumber.setText(String.valueOf(intNumber));
@@ -357,20 +357,15 @@ public class LastBillActivity extends BaseActivity {
                 intNumber = (int) floatNumber;
                 binding.textViewCost.setText(String.valueOf(intNumber));
 
-//                binding.textViewNewDate.setText(lastBillInfo.getCurrentReadingDate());TODO
                 binding.textViewNewDate.setText(lastBillInfo.getCurrentCounterReadingDate());
-//                binding.textViewPreDate.setText(lastBillInfo.getPreReadingDate());TODO
                 binding.textViewPreDate.setText(lastBillInfo.getPreCounterReadingDate());
 
-//                floatNumber = Float.parseFloat(lastBillInfo.getRate());TODO
                 floatNumber = Float.parseFloat(lastBillInfo.getMasrafAverage());
                 intNumber = (int) floatNumber;
                 binding.textViewUseAverage.setText(String.valueOf(intNumber));
 
-//                binding.textViewUseLength.setText(lastBillInfo.getDuration());TODO
                 binding.textViewUseLength.setText(lastBillInfo.getDays());
 
-//                floatNumber = Float.parseFloat(lastBillInfo.getUsageM3());TODO
                 floatNumber = Float.parseFloat(lastBillInfo.getMasraf());
                 intNumber = (int) floatNumber;
                 binding.textViewUseM3.setText(String.valueOf(intNumber));
@@ -379,7 +374,6 @@ public class LastBillActivity extends BaseActivity {
                 intNumber = (int) floatNumber;
                 binding.textViewUseLitr.setText(String.valueOf(intNumber));
 
-//                floatNumber = Float.parseFloat(lastBillInfo.getAbBahaDetail());//TODO
                 floatNumber = Float.parseFloat(lastBillInfo.getAbBaha());
                 intNumber = (int) floatNumber;
                 binding.textViewAbBaha.setText(String.valueOf(intNumber));
@@ -398,17 +392,14 @@ public class LastBillActivity extends BaseActivity {
 
                 binding.textViewDate.setText(lastBillInfo.getDeadLine());
 
-//                floatNumber = Float.parseFloat(lastBillInfo.getPreDebtOrOwe());TODO
                 floatNumber = Float.parseFloat(lastBillInfo.getPreBedOrBes());
                 intNumber = (int) floatNumber;
                 binding.textViewPreDebtOrOwe.setText(String.valueOf(intNumber));
 
-//                floatNumber = Float.parseFloat(lastBillInfo.getBoodje());TODO
                 floatNumber = Float.parseFloat(lastBillInfo.getBudget());
                 intNumber = (int) floatNumber;
                 binding.textViewTakalifBoodje.setText(String.valueOf(intNumber));
 
-//                floatNumber = Float.parseFloat(lastBillInfo.getKarmozdFazelabDetails());TODO
                 floatNumber = Float.parseFloat(lastBillInfo.getKarmozdFazelab());
                 intNumber = (int) floatNumber;
                 binding.textViewKarmozdeFazelab.setText(String.valueOf(intNumber));
@@ -438,8 +429,8 @@ public class LastBillActivity extends BaseActivity {
                 Log.e("status", "From Cardex, not payed Or New Counter");
                 billId = lastBillInfo.getBillId().trim();
                 payId = lastBillInfo.getPayId().trim();
-                binding.textViewBillId.setText(billId);
-                binding.textViewPayId.setText(payId);
+//                binding.textViewBillId.setText(billId);
+//                binding.textViewPayId.setText(payId);
                 setImageBitmap(binding.imageViewBarcode);
                 float floatNumber = Float.parseFloat(lastBillInfo.getCurrentReadingNumber());
                 int intNumber = (int) floatNumber;
@@ -478,7 +469,7 @@ public class LastBillActivity extends BaseActivity {
                 intNumber = (int) floatNumber;
                 binding.textViewTax.setText(String.valueOf(intNumber));
 
-                binding.textViewDate.setText(lastBillInfo.getDeadLine());
+//                binding.textViewDate.setText(lastBillInfo.getDeadLine());
 
                 floatNumber = Float.parseFloat(lastBillInfo.getPreDebtOrOwe());
                 intNumber = (int) floatNumber;

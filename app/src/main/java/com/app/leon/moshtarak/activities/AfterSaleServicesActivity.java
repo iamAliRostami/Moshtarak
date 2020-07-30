@@ -72,7 +72,9 @@ public class AfterSaleServicesActivity extends BaseActivity {
             binding.editTextMobile.setText(sharedPreference.getArrayList(
                     SharedReferenceKeys.MOBILE_NUMBER.getValue()).
                     get(sharedPreference.getIndex()).replaceFirst(getString(R.string._09), ""));
-            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(billId),
+            String name = sharedPreference.getArrayList(SharedReferenceKeys.NAME.getValue()).
+                    get(sharedPreference.getIndex());
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(name),
                     Toast.LENGTH_LONG).show();
             getServices();
             setOnButtonSubmitClickListener();

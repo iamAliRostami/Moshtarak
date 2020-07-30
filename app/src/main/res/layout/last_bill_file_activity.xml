@@ -106,7 +106,8 @@
                             android:background="@drawable/border_bill_blue_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/blue1" />
+                            android:textColor="@color/blue1"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -139,7 +140,8 @@
                             android:background="@drawable/border_bill_blue_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/blue1" />
+                            android:textColor="@color/blue1"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -171,7 +173,8 @@
                             android:background="@drawable/border_bill_blue_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/blue1" />
+                            android:textColor="@color/blue1"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -203,7 +206,8 @@
                             android:background="@drawable/border_bill_blue_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/blue1" />
+                            android:textColor="@color/blue1"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -252,7 +256,8 @@
                             android:background="@drawable/border_bill_green_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/green2" />
+                            android:textColor="@color/green2"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -284,7 +289,8 @@
                             android:background="@drawable/border_bill_green_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/green2" />
+                            android:textColor="@color/green2"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -316,7 +322,8 @@
                             android:background="@drawable/border_bill_green_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/green2" />
+                            android:textColor="@color/green2"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -366,7 +373,8 @@
                             android:background="@drawable/border_bill_orange_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/orange1" />
+                            android:textColor="@color/orange1"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -399,7 +407,8 @@
                             android:background="@drawable/border_bill_orange_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/orange1" />
+                            android:textColor="@color/orange1"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -431,7 +440,8 @@
                             android:background="@drawable/border_bill_orange_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/orange1" />
+                            android:textColor="@color/orange1"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -463,7 +473,8 @@
                             android:background="@drawable/border_bill_orange_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/orange1" />
+                            android:textColor="@color/orange1"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -495,7 +506,8 @@
                             android:background="@drawable/border_bill_orange_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/orange1" />
+                            android:textColor="@color/orange1"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -527,7 +539,8 @@
                             android:background="@drawable/border_bill_orange_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/orange1" />
+                            android:textColor="@color/orange1"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -559,7 +572,8 @@
                             android:background="@drawable/border_bill_orange_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/orange1" />
+                            android:textColor="@color/orange1"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -591,7 +605,8 @@
                             android:background="@drawable/border_bill_orange_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/orange1" />
+                            android:textColor="@color/orange1"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -641,7 +656,8 @@
                             android:background="@drawable/border_bill_brown_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/brown" />
+                            android:textColor="@color/brown"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -673,7 +689,8 @@
                             android:background="@drawable/border_bill_brown_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/brown" />
+                            android:textColor="@color/brown"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -705,7 +722,8 @@
                             android:background="@drawable/border_bill_brown_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/brown" />
+                            android:textColor="@color/brown"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -737,7 +755,8 @@
                             android:background="@drawable/border_bill_brown_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/brown" />
+                            android:textColor="@color/brown"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -769,7 +788,8 @@
                             android:background="@drawable/border_bill_brown_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/brown" />
+                            android:textColor="@color/brown"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -802,6 +822,7 @@
                             android:gravity="center"
                             android:textAlignment="center"
                             android:textColor="@color/brown"
+                            android:textSize="@dimen/textSizeMedium"
                             tools:ignore="TooManyViews" />
 
                     </LinearLayout>
@@ -836,6 +857,7 @@
                             android:gravity="center"
                             android:textAlignment="center"
                             android:textColor="@color/brown"
+                            android:textSize="@dimen/textSizeMedium"
                             tools:ignore="TooManyViews" />
 
                     </LinearLayout>
@@ -868,7 +890,8 @@
                             android:background="@drawable/border_bill_brown_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/brown" />
+                            android:textColor="@color/brown"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -950,7 +973,8 @@
                             android:background="@drawable/border_bill_pink_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/pink3" />
+                            android:textColor="@color/pink3"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -982,7 +1006,8 @@
                             android:background="@drawable/border_bill_pink_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/pink3" />
+                            android:textColor="@color/pink3"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -1014,7 +1039,8 @@
                             android:background="@drawable/border_bill_pink_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/pink3" />
+                            android:textColor="@color/pink3"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -1047,7 +1073,8 @@
                             android:background="@drawable/border_bill_pink_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/pink3" />
+                            android:textColor="@color/pink3"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -1079,7 +1106,8 @@
                             android:background="@drawable/border_bill_pink_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/pink3" />
+                            android:textColor="@color/pink3"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
@@ -1112,7 +1140,8 @@
                             android:background="@drawable/border_bill_pink_4"
                             android:gravity="center"
                             android:textAlignment="center"
-                            android:textColor="@color/pink3" />
+                            android:textColor="@color/pink3"
+                            android:textSize="@dimen/textSizeMedium" />
 
                     </LinearLayout>
 
