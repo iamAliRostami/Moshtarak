@@ -38,9 +38,8 @@ public class PayFragment extends DialogFragment {
                              @Nullable Bundle savedInstanceState) {
         binding = PayFragmentBinding.inflate(inflater, container, false);
         binding.setPayViewModel(mViewModel);
-        view = binding.getRoot();
         initialize();
-        return view;
+        return binding.getRoot();
     }
 
     @SuppressLint("SetJavaScriptEnabled")
