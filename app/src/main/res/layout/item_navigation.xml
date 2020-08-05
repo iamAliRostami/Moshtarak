@@ -38,7 +38,7 @@
                 android:padding="@dimen/activity_mid_padding"
                 android:text="@string/cardex"
                 android:textColor="@color/gray2"
-                android:textSize="@dimen/textSizeMedium"
+                android:textSize="@dimen/textSizeSmall"
                 tools:ignore="RtlHardcoded" />
         </LinearLayout>
 
