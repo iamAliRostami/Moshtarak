@@ -19,7 +19,7 @@ android {
         targetSdkVersion 30
         versionCode 29
         versionName "1.1.7"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.register_item_popup.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 //        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -75,16 +75,17 @@ dependencies {
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta8'
     //noinspection GradleCompatible
-    androidTestImplementation 'androidx.test:runner:1.3.0-rc01'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-rc01'
+    androidTestImplementation 'androidx.register_item_popup:runner:1.3.0-rc01'
+    androidTestImplementation 'androidx.register_item_popup.espresso:espresso-core:3.3.0-rc01'
     //noinspection GradleCompatible
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.android.support:multidex:1.0.3'
     //noinspection GradleCompatible
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    //noinspection GradleCompatible
-    implementation 'com.google.android.material:material:1.3.0-alpha01'
+    //noinspection GradleDependency,GradleCompatible
+    implementation 'com.google.android.material:material:1.3.0-alpha02'
+//    implementation'com.github.devdhar04:MaterialSpinner:v0.1.2'
     //noinspection GradleCompatible
 //    implementation 'com.android.support:design:26.1.0'
 

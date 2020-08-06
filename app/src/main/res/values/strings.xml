@@ -23,13 +23,16 @@
     <string name="portal_connect">اتصال به پرتال</string>
     <string name="session">دستگاه های فعال</string>
     <string name="update">به روزرسانی</string>
-    <string name="account">ثبت کاربر جدید</string>
-    <string name="change_account_">تغییر حساب کاربری</string>
-    <!--    <string name="logout">خروج از حساب کاربری</string>-->
+
+    <!--    <string name="account">ثبت کاربر جدید</string>-->
+    <string name="account">ثبت انشعاب اول</string>
+    <string name="change_account_">تغییر یا افزودن انشعاب</string>
     <string name="change_account">تغییر حساب</string>
-    <string name="logout">خروج از حساب</string>
-    <string name="login">ثبت حساب کاربری</string>
-    <string name="add_account">افزودن حساب کاربری</string>
+    <!--    <string name="logout">خروج از حساب کاربری</string>-->
+    <string name="logout">خروج از انشعاب</string>
+    <string name="login">ثبت انشعاب</string>
+    <string name="add_account">افزودن انشعاب</string>
+
     <string name="recovery_code">بازیابی کد رهگیری</string>
     <string name="connect_abfa">ارتباط با آبفا</string>
     <string name="connect_developer">ارتباط با پشتیبان</string>
@@ -171,7 +174,7 @@
     <string name="waiting">لطفا صبر کنید…</string>
     <string name="turn_internet_on">اینترنت وصل نیست، اینترنت وایفای یا همراه خود را روشن کنید.</string>
     <string name="active_user">اشتراک فعال:\n</string>
-    <string name="active_user_">اشتراک فعال:</string>
+    <string name="active_user_">اشتراک فعال شما</string>
 
     <string name="get_last_bill_file">دریافت آخرین قبض</string>
     <string name="share">اشتراک گذاری</string>

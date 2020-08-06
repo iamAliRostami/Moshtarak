@@ -21,7 +21,8 @@
         <item>@drawable/img_profile_drawer</item>
         <item>@drawable/img_transactions_drawer</item>
         <item>@drawable/img_update_drawer</item>
-        <item>@drawable/img_registration_drawer</item>
+        <!--        <item>@drawable/img_registration_drawer</item>-->
+        <item>@drawable/img_multi_user</item>
         <item>@drawable/img_recovery_code_drawer</item>
         <item>@drawable/img_contact_us_drawer</item>
         <item>@drawable/img_exit_drawer</item>

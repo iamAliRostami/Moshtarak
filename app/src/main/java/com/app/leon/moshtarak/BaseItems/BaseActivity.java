@@ -182,7 +182,8 @@ public abstract class BaseActivity extends AppCompatActivity
 
     void fillDrawerListView() {
         dataList = NavigationCustomAdapter.DrawerItem.createItemList(
-                getResources().getStringArray(R.array.menu), getResources().obtainTypedArray(R.array.icons));
+                getResources().getStringArray(R.array.menu), getResources().obtainTypedArray(
+                        R.array.icons));
         if (sharedPreference.checkIsNotEmpty())
             dataList.get(5).setItemName(getString(R.string.change_account_));
         adapter = new NavigationCustomAdapter(this, dataList);

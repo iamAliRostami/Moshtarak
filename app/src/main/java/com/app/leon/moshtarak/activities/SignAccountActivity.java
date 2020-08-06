@@ -9,10 +9,14 @@ import android.os.Debug;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.transition.Slide;
+import androidx.transition.Transition;
+import androidx.transition.TransitionManager;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
@@ -46,6 +50,7 @@ public class SignAccountActivity extends BaseActivity {
     boolean change = false;
     SharedPreference sharedPreference;
     ArrayList<String> items = new ArrayList<>();
+    ArrayList<String> itemsBillId = new ArrayList<>();
 
     @SuppressLint("CutPasteId")
     @Override
@@ -56,15 +61,18 @@ public class SignAccountActivity extends BaseActivity {
         parentLayout.addView(childLayout);
         context = this;
         sharedPreference = new SharedPreference(context);
+
         if (sharedPreference.checkIsNotEmpty()) {
-            binding.buttonSign.setText(getResources().getString(R.string.add_account));
-            binding.linearLayoutAccounts.setVisibility(View.VISIBLE);
             Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.change_account));
-            change = true;
+            binding.buttonSign.setText(getResources().getString(R.string.add_account));
+            binding.linearLayoutChange.setVisibility(View.GONE);
+//            binding.linearLayoutAccounts.setVisibility(View.VISIBLE);
+            setLinearLayoutAddOnClickListener();
         } else {
+            Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.account));
             binding.buttonSign.setText(getResources().getString(R.string.login));
             binding.linearLayoutAccounts.setVisibility(View.GONE);
-            Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.account));
+            binding.imageViewAdd.setVisibility(View.GONE);
         }
         setButtonLogOutClickListener();
         setButtonContinueClickListener();
@@ -77,12 +85,31 @@ public class SignAccountActivity extends BaseActivity {
     void fillSpinner() {
         if (sharedPreference.getLength() > 0) {
             items = sharedPreference.getArrayList(SharedReferenceKeys.NAME.getValue());
+            itemsBillId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue());
         }
         if (items.size() > 0) {
-            binding.spinnerAccounts.setAdapter(new ArrayAdapter<>(context,
-                    android.R.layout.simple_spinner_dropdown_item, items));
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(context,
+                    R.layout.register_item, android.R.id.text1, items);
+            arrayAdapter.setDropDownViewResource(R.layout.register_item_popup);
+            binding.spinnerAccounts.setAdapter(arrayAdapter);
             binding.spinnerAccounts.setSelection(sharedPreference.getIndex());
         }
+    }
+
+    void setLinearLayoutAddOnClickListener() {
+        binding.linearLayoutAdd.setOnClickListener(view -> {
+            Transition transition = new Slide(Gravity.BOTTOM);
+            transition.setDuration(600);
+            transition.addTarget(binding.linearLayoutChange);
+            TransitionManager.beginDelayedTransition(binding.linearLayoutTotal, transition);
+            binding.linearLayoutChange.setVisibility(change ? View.GONE : View.VISIBLE);
+            binding.imageViewAdd.animate().alpha(0.0f);
+            binding.imageViewAdd.setImageDrawable(change ?
+                    context.getResources().getDrawable(R.drawable.img_plus_1) :
+                    context.getResources().getDrawable(R.drawable.img_minus_1));
+            binding.imageViewAdd.animate().alpha(1.0f);
+            change = !change;
+        });
     }
 
     void setTextViewOnClickListener() {
@@ -112,8 +139,8 @@ public class SignAccountActivity extends BaseActivity {
                 view.requestFocus();
             }
             if (!cancel) {
-                for (int i = 0; i < items.size(); i++) {
-                    if (billId.equals(items.get(i))) {
+                for (int i = 0; i < itemsBillId.size(); i++) {
+                    if (billId.equals(itemsBillId.get(i))) {
                         sharedPreference.putIndex(i);
                         new CustomDialog(DialogType.YellowRedirect, SignAccountActivity.this,
                                 getString(R.string.change_successful), getString(R.string.dear_user), getString(R.string.change_account),
@@ -256,6 +283,7 @@ public class SignAccountActivity extends BaseActivity {
                     SignAccountActivity.this.getString(R.string.login),
                     SignAccountActivity.this.getString(R.string.accepted));
         }
+
     }
 
     @Override
