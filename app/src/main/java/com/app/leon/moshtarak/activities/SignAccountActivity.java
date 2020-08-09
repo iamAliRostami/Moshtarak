@@ -88,6 +88,7 @@ public class SignAccountActivity extends BaseActivity {
             itemsBillId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue());
         }
         if (items.size() > 0) {
+            //TODO
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(context,
                     R.layout.register_item, android.R.id.text1, items);
             arrayAdapter.setDropDownViewResource(R.layout.register_item_popup);

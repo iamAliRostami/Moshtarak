@@ -162,7 +162,7 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     }
 
     public Dialog show() {
-        dialog.show();
+        dialog.show();//TODO
         return dialog;
     }
 

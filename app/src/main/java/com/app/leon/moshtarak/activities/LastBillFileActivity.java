@@ -115,7 +115,7 @@ public class LastBillFileActivity extends AppCompatActivity {
     };
     View.OnClickListener onClickListenerPay = new View.OnClickListener() {
         @Override
-        public void onClick(View view) {
+        public void onClick(View view) {//TODO
             if (!lastBillInfo.isPayed()) {
                 getToken();
 //                new CustomTab(getString(R.string.mellat_site), MyApplication.getContext());
@@ -342,7 +342,7 @@ public class LastBillFileActivity extends AppCompatActivity {
 
     @SuppressLint("DefaultLocale")
     public String getNumberSeparator(String number) {
-        String s = null;
+        String s;
         try {
             s = String.format("%,d", Long.parseLong(number));
         } catch (NumberFormatException e) {
