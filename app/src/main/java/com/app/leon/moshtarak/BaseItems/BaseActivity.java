@@ -67,7 +67,7 @@ public abstract class BaseActivity extends AppCompatActivity
         View view = binding.getRoot();
         setContentView(view);
         initializeBase();
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);//TODO
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle
                 (this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
