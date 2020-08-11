@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -46,7 +47,6 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     private void init(AlertDialog.Builder dialogBuilder) {
         dialogView = LayoutInflater.from(dialogBuilder.getContext()).inflate(getLayout(), null);
         dialog = dialogBuilder.setView(dialogView).create();
-
         iconView = findView(R.id.ld_icon);
         titleView = findView(R.id.ld_title);
         messageView = findView(R.id.ld_message);
@@ -162,7 +162,11 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
     }
 
     public Dialog show() {
-        dialog.show();//TODO
+        try {
+            dialog.show();//TODO
+        } catch (Exception e) {
+            Log.e("Error in Dialog", e.toString());
+        }
         return dialog;
     }
 

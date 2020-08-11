@@ -32,7 +32,6 @@ public class MyApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         sContext = getApplicationContext();
-
 //        if (BuildConfig.DEBUG) {
 //            if (LeakCanary.isInAnalyzerProcess(this)) {
 //                return;
