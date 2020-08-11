@@ -6,20 +6,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".BaseItems.BaseActivity">
+    android:layoutDirection="rtl"
+    tools:context=".BaseItems.BaseActivity"
+    tools:ignore="UnusedAttribute">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:titleTextAppearance="@style/Toolbar.TitleText">
+
+                <ImageView
+                    android:id="@+id/imageViewAction"
+                    android:layout_width="?attr/actionBarSize"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:padding="@dimen/activity_mid_padding"
+                    android:src="@drawable/img_action"
+                    tools:ignore="ContentDescription,RtlHardcoded" />
+            </androidx.appcompat.widget.Toolbar>
+        </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/base_content" />

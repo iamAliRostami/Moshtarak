@@ -5,8 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
@@ -49,13 +52,35 @@ public class SetCounterActivity extends BaseActivity {
     Context context;
     String billId, number, phoneNumber;
     SetCounterContentBinding binding;
+    TextWatcher textWatcher = new TextWatcher() {
+        private int previousLength;
 
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            previousLength = charSequence.length();
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            boolean backSpace = previousLength > editable.length();
+            if (backSpace) {
+                Log.e("textWatcher", "back");
+            }
+        }
+    };
+
+    @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
         binding = SetCounterContentBinding.inflate(getLayoutInflater());
         View childLayout = binding.getRoot();
-        @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         parentLayout.addView(childLayout);
         context = this;
         setComponentPosition();
@@ -88,6 +113,7 @@ public class SetCounterActivity extends BaseActivity {
                     editTextNumber = LovelyTextInputDialog.getEditTextNumber(5);
                     return editTextNumber.getText().length() >= 1;
                 })
+                .addTextWatcher(textWatcher)
                 .setConfirmButton(R.string.confirm, text -> {
                     InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 //                    imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
@@ -109,7 +135,7 @@ public class SetCounterActivity extends BaseActivity {
                     binding.editText4.setText(s4);
                     binding.editText5.setText(s5);
                 })
-                .setNegativeButton(R.string.cancel, v -> {
+                .setNegativeButton(R.string.back, v -> {
                     InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 //                    imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                     Objects.requireNonNull(imm).toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);

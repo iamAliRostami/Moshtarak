@@ -80,6 +80,7 @@ public class CustomDialog {
                 .setPositiveButton(ButtonText, v -> {
                     Intent intent = new Intent(context, HomeActivity.class);
                     context.startActivity(intent);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     ((Activity) context).finish();
                 });
         lovelyStandardDialog.show();
@@ -92,6 +93,7 @@ public class CustomDialog {
                 .setTopColorRes(R.color.yellow1)
                 .setPositiveButton(buttonText, v -> {
                     Intent intent = new Intent(context, HomeActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     context.startActivity(intent);
                     ((Activity) context).finish();
                 })
@@ -105,6 +107,7 @@ public class CustomDialog {
                 .setButtonsBackground(R.drawable.border_red_2)
                 .setPositiveButton(buttonText, v -> {
                     Intent intent = new Intent(context, HomeActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     context.startActivity(intent);
                     ((Activity) context).finish();
                 })

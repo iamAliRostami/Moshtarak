@@ -20,9 +20,8 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_above="@id/linearLayoutFooter"
-        android:layout_below="@id/linearLayoutHeader"
         android:visibility="gone"
         tools:ignore="UselessParent">
 
@@ -215,9 +214,8 @@
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_above="@id/linearLayoutFooter"
-        android:layout_below="@id/linearLayoutHeader"
         tools:ignore="UselessParent">
 
         <androidx.appcompat.widget.LinearLayoutCompat

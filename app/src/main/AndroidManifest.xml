@@ -39,21 +39,19 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ChartActivity"
+            android:label="@string/chart2"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".activities.RecoveryCodeActivity"
             android:label="@string/recovery_code"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden"
             tools:ignore="InnerclassSeparator,LockedOrientationActivity" />
         <activity
             android:name=".activities.SessionActivity"
             android:label="@string/session"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
             tools:ignore="InnerclassSeparator,LockedOrientationActivity" />
         <activity
             android:name=".activities.SplashActivity"
@@ -73,7 +71,6 @@
             android:name=".activities.ContactUsActivity"
             android:label="@string/connect_abfa"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
             tools:ignore="InnerclassSeparator,LockedOrientationActivity" />
         <activity
             android:name=".activities.HelpActivity"

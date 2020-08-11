@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -66,9 +67,11 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
             }
         });
         editText2.addTextChangedListener(new TextWatcher() {
+//            private int previousLength;
+
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+//                previousLength = charSequence.length();
             }
 
             @Override
@@ -82,6 +85,10 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
                     viewFocus = editText3;
                     viewFocus.requestFocus();
                 }
+//                boolean backSpace = previousLength > editable.length();
+//                if (backSpace) {
+//                    Log.e("textWatcher", "back");
+//                }
             }
         });
         editText3.addTextChangedListener(new TextWatcher() {
@@ -120,6 +127,55 @@ public class LovelyTextInputDialog extends AbsLovelyDialog<LovelyTextInputDialog
                     viewFocus = editText5;
                     viewFocus.requestFocus();
                 }
+            }
+        });
+
+        editText2.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (i == KeyEvent.KEYCODE_DEL) {
+                    if (editText2.getText().length() < 1) {
+                        viewFocus = editText1;
+                        viewFocus.requestFocus();
+                    }
+                }
+                return false;
+            }
+        });
+        editText3.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (i == KeyEvent.KEYCODE_DEL) {
+                    if (editText3.getText().length() < 1) {
+                        viewFocus = editText2;
+                        viewFocus.requestFocus();
+                    }
+                }
+                return false;
+            }
+        });
+        editText4.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (i == KeyEvent.KEYCODE_DEL) {
+                    if (editText4.getText().length() < 1) {
+                        viewFocus = editText3;
+                        viewFocus.requestFocus();
+                    }
+                }
+                return false;
+            }
+        });
+        editText5.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (i == KeyEvent.KEYCODE_DEL) {
+                    if (editText5.getText().length() < 1) {
+                        viewFocus = editText4;
+                        viewFocus.requestFocus();
+                    }
+                }
+                return false;
             }
         });
 

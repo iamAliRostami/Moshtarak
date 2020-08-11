@@ -31,6 +31,7 @@
         android:foregroundGravity="center"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
+        android:visibility="gone"
         tools:ignore="RtlCompat">
 
         <LinearLayout

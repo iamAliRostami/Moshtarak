@@ -1,24 +1,22 @@
 package com.app.leon.moshtarak.activities;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Debug;
-import android.util.Log;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 
+import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.databinding.ContactUsActivityBinding;
 
-public class ContactUsActivity extends AppCompatActivity {
+public class ContactUsActivity extends BaseActivity {
     Context context;
     ContactUsActivityBinding binding;
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -51,16 +49,24 @@ public class ContactUsActivity extends AppCompatActivity {
         }
     };
 
-    @SuppressLint("NewApi")
+//    @SuppressLint("NewApi")
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+//        super.onCreate(savedInstanceState);
+//        binding = ContactUsActivityBinding.inflate(getLayoutInflater());
+//        View view = binding.getRoot();
+//        setContentView(view);
+//        context = this;
+//    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-        super.onCreate(savedInstanceState);
+    protected void initialize() {
         binding = ContactUsActivityBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
+        View childLayout = binding.getRoot();
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        parentLayout.addView(childLayout);
         context = this;
-        Log.e("version", getVersionInfo());
         binding.textViewVersion.setText(getString(R.string.version).concat(getVersionInfo()));
         binding.linearLayout1.setOnClickListener(onClickListener);
         binding.linearLayout2.setOnClickListener(onClickListener);

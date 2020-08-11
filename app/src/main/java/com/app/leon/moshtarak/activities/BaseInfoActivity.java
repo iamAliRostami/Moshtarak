@@ -72,6 +72,7 @@ public class BaseInfoActivity extends BaseActivity {
     }
 
     class GetInfo implements ICallback<MemberInfo> {
+        @SuppressLint("DefaultLocale")
         @Override
         public void execute(MemberInfo memberInfo) {
             binding.textViewId.setText(memberInfo.getBillId());
@@ -83,7 +84,13 @@ public class BaseInfoActivity extends BaseActivity {
             binding.textViewAhad.setText(String.valueOf(ahad));
             binding.textViewBranchRadius.setText(memberInfo.getQotr());
             binding.textViewCapacity.setText(memberInfo.getCapacity());
-            binding.textViewDebt.setText(memberInfo.getMande());
+            String s;
+            try {
+                s = String.format("%,d", Long.parseLong(memberInfo.getMande()));
+            } catch (NumberFormatException e) {
+                s = memberInfo.getMande();
+            }
+            binding.textViewDebt.setText(s);
             binding.textViewSiphonRadius.setText(memberInfo.getSiphon());
             binding.textViewUser.setText(memberInfo.getKarbari());
             binding.textViewName.setText(memberInfo.getFirstName().trim().concat(" ").

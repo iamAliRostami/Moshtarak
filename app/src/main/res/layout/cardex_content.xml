@@ -27,8 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_mid_margin"
-            android:layout_marginRight="@dimen/activity_mid_margin"
+            android:layout_margin="@dimen/activity_mid_margin"
             android:background="@drawable/border_blue_1"
             android:gravity="center"
             android:orientation="horizontal">
@@ -128,6 +127,7 @@
             android:divider="@null"
             android:dividerHeight="1dp"
             android:padding="@dimen/activity_mid_padding"
+            tools:listitem="@layout/item_cardex_2"
             android:scrollbars="vertical" />
         <!--<androidx.recyclerview.widget.RecyclerView-->
         <!--android:id="@+id/recyclerViewCardex"-->

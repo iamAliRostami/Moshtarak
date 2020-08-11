@@ -76,7 +76,11 @@ public class RecoverCodeCustomAdapter extends BaseAdapter {
         textViewTitle.setText(request.getRequestTitles());
         textViewRequestDateAsk.setText(request.getRequestDateAsk());
         textViewRequestRegister.setText(request.getRequestDateRegister());
-        textViewParNumber.setText(request.getRequestParNumber());
+        String parNumber = request.getRequestParNumber();
+        while (parNumber.startsWith("0")) {
+            parNumber = parNumber.replaceFirst(context.getString(R.string.number_zero), "");
+        }
+        textViewParNumber.setText(parNumber);
 
         return view;
     }

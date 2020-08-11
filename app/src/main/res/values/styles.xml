@@ -12,7 +12,7 @@
 
     <style name="bottomView">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_height">20dp</item>
         <item name="android:background">@color/footer</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_marginBottom">0dp</item>
@@ -23,7 +23,10 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:actionOverflowButtonStyle">@style/OverFlowButton</item>
         <item name="android:drawablePadding">2dp</item>
-        <item name="android:fontFamily">@font/my_font</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">@dimen/textSizeSmall</item>
     </style>
 
     <style name="OverFlowButton">
@@ -43,7 +46,7 @@
 
     <style name="text_default">
         <item name="android:fontFamily">@font/my_font</item>
-        <item name="android:textStyle">bold</item>
+        <!--        <item name="android:textStyle">bold</item>-->
     </style>
 
     <style name="NewDialog" parent="Theme.AppCompat">

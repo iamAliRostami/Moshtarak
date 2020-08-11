@@ -5,7 +5,7 @@
 
     <string name="sale">فروش انشعاب</string>
     <string name="last_bill_1">مشاهده قبض و پرداخت</string>
-    <string name="last_bill_2">آخرین قبض</string>
+    <string name="last_bill_2">پرداخت قبض</string>
     <string name="cardex">صورتحساب</string>
     <string name="cardex_ab">صورت حساب آب بها</string>
     <string name="chart1">مشاهده نمودار مصرف</string>
@@ -16,7 +16,7 @@
     <string name="train">آموزش</string>
     <string name="help">راهنما</string>
     <string name="support">خدمات پس ازفروش</string>
-    <string name="suggest">انتقادهاوپیشنهادها</string>
+    <string name="suggest">انتقاد و پیشنهاد</string>
 
 
     <string name="home">خانه</string>
@@ -33,7 +33,7 @@
     <string name="login">ثبت انشعاب</string>
     <string name="add_account">افزودن انشعاب</string>
 
-    <string name="recovery_code">بازیابی کد رهگیری</string>
+    <string name="recovery_code">درخواست های قبلی</string>
     <string name="connect_abfa">ارتباط با آبفا</string>
     <string name="connect_developer">ارتباط با پشتیبان</string>
     <string name="exit">خروج از برنامه</string>
@@ -227,5 +227,6 @@
     <string name="why_we_need">اطلاعات کاربری جهت تطبیق با اطلاعات ثبت شده در سامانه و جلوگیری از هر گونه سوء استفاده احتمالی از اطلاعات شماست.\nاین اطلاعات به صورت محرمانه نزد ما خواهد ماند.\n</string>
     <string name="error_register_again">لطفا از حساب خود خارج و مجددا وارد شوید.</string>
     <string name="error_billid_incorrect">شناسه قبض همسایه صحیح نیست</string>
+    <string name="back">بازگشت</string>
 
 </resources>

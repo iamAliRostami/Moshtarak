@@ -1,14 +1,13 @@
 package com.app.leon.moshtarak.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Debug;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Infrastructure.IAbfaService;
 import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Infrastructure.ICallbackError;
@@ -32,20 +31,18 @@ import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class SessionActivity extends AppCompatActivity {
+public class SessionActivity extends BaseActivity {
     Context context;
     String billId;
     SessionCustomAdapter sessionCustomAdapter;
     SessionActivityBinding binding;
 
-    @SuppressLint("NewApi")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-        super.onCreate(savedInstanceState);
+    protected void initialize() {
         binding = SessionActivityBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
+        View childLayout = binding.getRoot();
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        parentLayout.addView(childLayout);
         context = this;
         SharedPreference sharedPreference = new SharedPreference(context);
         if (!sharedPreference.checkIsNotEmpty()) {
@@ -57,7 +54,6 @@ public class SessionActivity extends AppCompatActivity {
                     get(sharedPreference.getIndex());
             getAllSession();
         }
-
     }
 
     void getAllSession() {

@@ -114,14 +114,17 @@ public abstract class BaseActivity extends AppCompatActivity
                             startActivity(intent);
                             finish();
                         } else if (position == 1) {
-                            new CustomTab(getString(R.string.abfa_site), MyApplication.getContext());
+                            Intent intent = new Intent(MyApplication.getContext(), SignAccountActivity.class);
+                            startActivity(intent);
                         } else if (position == 2) {
+                            new CustomTab(getString(R.string.abfa_site), MyApplication.getContext());
+                        } else if (position == 3) {
                             Intent intent = new Intent(MyApplication.getContext(), BaseInfoActivity.class);
                             startActivity(intent);
-                        } else if (position == 3) {
+                        } else if (position == 4) {
                             Intent intent = new Intent(MyApplication.getContext(), SessionActivity.class);
                             startActivity(intent);
-                        } else if (position == 4) {
+                        } else if (position == 5) {
                             try {
                                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("bazaar://details?id=" + getPackageName())));
                             } catch (android.content.ActivityNotFoundException e) {
@@ -132,9 +135,6 @@ public abstract class BaseActivity extends AppCompatActivity
 //                } catch (android.content.ActivityNotFoundException e) {
 //                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
 //                }
-                        } else if (position == 5) {
-                            Intent intent = new Intent(MyApplication.getContext(), SignAccountActivity.class);
-                            startActivity(intent);
                         } else if (position == 6) {
                             Intent intent = new Intent(MyApplication.getContext(), RecoveryCodeActivity.class);
                             startActivity(intent);
@@ -145,6 +145,7 @@ public abstract class BaseActivity extends AppCompatActivity
                             finishAffinity();
                         }
                     }
+
                     @Override
                     public void onLongItemClick(View view, int position) {
                         // do whatever
@@ -185,7 +186,7 @@ public abstract class BaseActivity extends AppCompatActivity
                 getResources().getStringArray(R.array.menu), getResources().obtainTypedArray(
                         R.array.icons));
         if (sharedPreference.checkIsNotEmpty())
-            dataList.get(5).setItemName(getString(R.string.change_account_));
+            dataList.get(1).setItemName(getString(R.string.change_account_));
         adapter = new NavigationCustomAdapter(this, dataList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MyApplication.getContext()));

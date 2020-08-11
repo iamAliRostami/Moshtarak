@@ -11,9 +11,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
+import com.app.leon.moshtarak.BaseItems.BaseActivity;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
@@ -26,24 +27,39 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class ChartActivity extends AppCompatActivity {
+public class ChartActivity extends BaseActivity {
     ChartActivityBinding binding;
     Context context;
     Typeface typeface;
     ArrayList<String> listText = new ArrayList<>();
     ArrayList<Integer> listValue = new ArrayList<>();
 
-    @SuppressLint("NewApi")
+//    @SuppressLint("NewApi")
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+//        super.onCreate(savedInstanceState);
+//        View view = binding.getRoot();
+//        setContentView(view);
+//        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.chart2));
+//
+//    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-        super.onCreate(savedInstanceState);
+    protected void initialize() {
         binding = ChartActivityBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.chart2));
+        View childLayout = binding.getRoot();
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        parentLayout.addView(childLayout);
+        context = this;
+        typeface = Typeface.createFromAsset(context.getAssets(), MyApplication.getFontName());
+        accessData();
+        customizeChartView();
+        setData();
+    }
+
+    private void accessData() {
         if (getIntent().getExtras() != null) {
             Bundle bundle1 = getIntent().getBundleExtra(BundleEnum.DATA.getValue());
             if (bundle1 != null) {
@@ -51,10 +67,6 @@ public class ChartActivity extends AppCompatActivity {
                 listValue = bundle1.getIntegerArrayList(BundleEnum.USE.getValue());
             }
         }
-        context = this;
-        typeface = Typeface.createFromAsset(context.getAssets(), MyApplication.getFontName());
-        customizeChartView();
-        setData();
     }
 
     @SuppressLint("NewApi")

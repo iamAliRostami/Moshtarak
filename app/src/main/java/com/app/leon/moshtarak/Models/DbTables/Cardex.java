@@ -10,7 +10,7 @@ public class Cardex {
     private String currentReadingNumber;
     private String usage;
     private String oweDate;
-    private String amount;
+    private int amount;
     private String deadLine;
     private String creditorDate;
     private String creditorAmount;
@@ -84,11 +84,11 @@ public class Cardex {
         this.oweDate = oweDate;
     }
 
-    public String getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 

@@ -64,9 +64,16 @@ public class CardexCustomAdapter extends ArrayAdapter<Cardex> {
             ImageView imageViewInfo = viewHolder.findViewById(R.id.imageViewInfo);
             LinearLayout linearLayoutItem = viewHolder.findViewById(R.id.linearLayoutItem);
 
-            float floatNumber = Float.parseFloat(cardex.getAmount());
-            int intNumber = (int) floatNumber;
-            textViewCost.setText(String.valueOf(intNumber));
+            float floatNumber;//= Float.parseFloat(cardex.getAmount());
+            int intNumber;//= (int) floatNumber;
+//            textViewCost.setText(String.valueOf(intNumber));
+            String s;
+            try {
+                s = String.format("%,d", Long.parseLong(String.valueOf(cardex.getAmount())));
+            } catch (NumberFormatException e) {
+                s = String.valueOf(cardex.getAmount());
+            }
+            textViewCost.setText(s);
             textViewNote.setText(cardex.getDescription());
             floatNumber = Float.parseFloat(cardex.getUsage());
             intNumber = (int) floatNumber;

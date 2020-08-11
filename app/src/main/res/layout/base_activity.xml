@@ -22,10 +22,12 @@
 
         <ImageView
             android:id="@+id/imageViewHeader"
-            android:layout_width="280dp"
-            android:layout_height="170dp"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/activity_mid_margin"
+            android:layout_marginBottom="@dimen/activity_large_padding"
             android:src="@drawable/img_menu_logo"
             tools:ignore="ContentDescription" />
 

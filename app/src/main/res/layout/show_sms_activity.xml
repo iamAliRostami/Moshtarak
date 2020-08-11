@@ -15,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/linearLayoutFooter"
-        android:layout_below="@id/linearLayoutHeader"
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
@@ -57,6 +56,7 @@
             android:layout_marginLeft="@dimen/activity_large_margin"
             android:layout_marginTop="@dimen/activity_mid_padding"
             android:layout_marginRight="@dimen/activity_large_margin"
-            android:layout_marginBottom="@dimen/activity_mid_margin" />
+            android:layout_marginBottom="@dimen/activity_mid_margin"
+            tools:listitem="@layout/item_sms" />
     </LinearLayout>
 </RelativeLayout>
