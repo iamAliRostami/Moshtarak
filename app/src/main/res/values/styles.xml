@@ -62,7 +62,7 @@
     </style>
 
     <style name="EditTextTintTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">@color/text_color_2</item>
+        <item name="colorAccent">@color/text_color_1</item>
     </style>
     //TODO از اینجا
 

@@ -3,18 +3,20 @@
     <color name="colorPrimary">#0C374D</color>
     <color name="colorPrimaryDark">#093145</color>
     <color name="colorAccent">#B56F87</color>
+    <color name="footer">@color/colorPrimaryIndigoDark</color>
     <color name="transparent">#00000000</color>
+    <color name="text_color_1">#D2D1D1</color>
+    <color name="text_color_2">#575757</color>
+    <color name="white">#FFF</color>
+    <color name="milky">#0C374D</color>
+    <color name="black">#000</color>
+
 
     <color name="colorPrimaryIndigoDark">#093145</color>
     <color name="colorAccentIndigo">#BE7305</color>
 
-    <color name="white">#FFF</color>
-    <color name="milky">#0C374D</color>
-    <color name="black">#000</color>
-    <color name="textColor">#EEE</color>
 
     <color name="grayDark">#575757</color>
-    <color name="footer">@color/colorPrimaryIndigoDark</color>
 
     <color name="green2">#4E9333</color>
     <color name="green3">#114D11</color>
@@ -38,6 +40,4 @@
     <color name="red3">#953217</color>
     <color name="brown">#7d4908</color>
 
-    <color name="text_color_1">#D8D8D8D8</color>
-    <color name="text_color_2">#575757</color>
 </resources>

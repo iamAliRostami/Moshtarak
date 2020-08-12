@@ -77,7 +77,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/border_green_2"
                 android:text="@string/submit"
-                android:textColor="@color/textColor"
+                android:textColor="@color/text_color_2"
                 android:textSize="@dimen/textSizeLarge"
                 android:textStyle="bold" />
         </LinearLayout>

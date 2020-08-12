@@ -24,7 +24,7 @@
             android:gravity="center"
             android:padding="@dimen/activity_mid_margin"
             android:text="@string/date"
-            android:textColor="@color/text_color_2"
+            android:textColor="@color/text_color_1"
             android:textStyle="bold" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:gravity="center"
             android:padding="@dimen/activity_mid_margin"
             android:text="@string/use"
-            android:textColor="@color/text_color_2"
+            android:textColor="@color/text_color_1"
             android:textStyle="bold" />
 
         <TextView
@@ -48,7 +48,7 @@
             android:gravity="center"
             android:padding="@dimen/activity_mid_margin"
             android:text="@string/cost"
-            android:textColor="@color/text_color_2"
+            android:textColor="@color/text_color_1"
             android:textStyle="bold" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:gravity="center"
             android:padding="@dimen/activity_mid_margin"
             android:text="@string/note"
-            android:textColor="@color/text_color_2"
+            android:textColor="@color/text_color_1"
             android:textStyle="bold" />
 
         <ImageView

@@ -527,7 +527,7 @@
             android:background="@drawable/border_green_2"
             android:focusable="true"
             android:text="@string/buy"
-            android:textColor="@color/textColor"
+            android:textColor="@color/text_color_2"
             android:textSize="@dimen/textSizeLarge"
             android:textStyle="bold" />
     </LinearLayout>
