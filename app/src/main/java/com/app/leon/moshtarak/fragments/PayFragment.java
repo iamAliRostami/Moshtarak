@@ -62,7 +62,6 @@ public class PayFragment extends DialogFragment {
     @Override
     public void onResume() {
         WindowManager.LayoutParams params = getDialog().getWindow().getAttributes();
-
         params.width = ViewGroup.LayoutParams.MATCH_PARENT;
         params.height = ViewGroup.LayoutParams.MATCH_PARENT;
         getDialog().getWindow().setAttributes(params);

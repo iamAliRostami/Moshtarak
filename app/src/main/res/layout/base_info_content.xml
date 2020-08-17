@@ -5,8 +5,10 @@
     android:id="@+id/base_info_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="rtl"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.app.leon.moshtarak.activities.BaseInfoActivity">
+    tools:context="com.app.leon.moshtarak.activities.BaseInfoActivity"
+    tools:ignore="UnusedAttribute">
 
     <include layout="@layout/header" />
 
@@ -17,12 +19,16 @@
         android:layout_height="match_parent"
         android:layout_above="@id/linearLayoutFooter"
         android:layout_below="@id/linearLayoutHeader"
+        android:gravity="center"
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_large_margin"
+            android:background="@drawable/border_gray_2"
+            android:padding="@dimen/activity_medium_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -32,39 +38,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_1"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/activity_mid_padding">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/name"
-                        android:textColor="@color/blue2"
-                        android:textSize="@dimen/textSizeMedium"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:gravity="center"
-                        android:padding="@dimen/activity_mid_padding"
-                        android:text=""
-                        android:textColor="@color/red3"
-                        android:textSize="@dimen/textSizeMedium"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_4"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
@@ -73,8 +48,46 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_1"
+                        android:gravity="center"
+                        android:text="@string/name"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewName"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_mid_margin"
+                        android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_2"
+                        android:gravity="center"
+                        android:text="@string/dash"
+                        android:textColor="@color/blue5"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold"
+                        tools:ignore="RtlCompat" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_1"
+                        android:gravity="center"
                         android:text="@string/id_bill"
-                        android:textColor="@color/blue2"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -83,11 +96,12 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_2"
+                        android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/green3"
+                        android:textColor="@color/blue5"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -98,40 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
 
-                    <TextView
-                        android:layout_width="0px"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:text="@string/file_number"
-                        android:textColor="@color/blue2"
-                        android:textSize="@dimen/textSizeMedium"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewFile"
-                        android:layout_width="0px"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
-                        android:layout_marginBottom="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:text="@string/dash"
-                        android:textColor="@color/green3"
-                        android:textSize="@dimen/textSizeMedium"
-                        android:textStyle="bold"
-                        tools:ignore="RtlCompat" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_mid_margin"
-                    android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_4"
                     android:orientation="horizontal"
                     android:textStyle="bold"
                     android:weightSum="2">
@@ -141,8 +122,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_1"
+                        android:gravity="center"
                         android:text="@string/account_"
-                        android:textColor="@color/blue2"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -151,16 +134,52 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_2"
+                        android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/green3"
+                        android:textColor="@color/blue5"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_3"
+                        android:gravity="center"
+                        android:text="@string/file_number"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewFile"
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_mid_margin"
+                        android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_4"
+                        android:gravity="center"
+                        android:text="@string/dash"
+                        android:textColor="@color/blue1"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold"
+                        tools:ignore="RtlCompat" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -176,8 +195,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_3"
+                        android:gravity="center"
                         android:text="@string/user"
-                        android:textColor="@color/blue2"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -186,11 +207,12 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_4"
+                        android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/green3"
+                        android:textColor="@color/blue1"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -201,7 +223,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_4"
+
                     android:orientation="horizontal"
                     android:textStyle="bold"
                     android:weightSum="2">
@@ -211,8 +233,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_3"
+                        android:gravity="center"
                         android:text="@string/formal_capacity"
-                        android:textColor="@color/blue2"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -221,11 +245,12 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_4"
+                        android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/green3"
+                        android:textColor="@color/blue1"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -245,8 +270,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_3"
+                        android:gravity="center"
                         android:text="@string/ahad"
-                        android:textColor="@color/blue2"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -255,11 +282,12 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_4"
+                        android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/green3"
+                        android:textColor="@color/blue1"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -270,7 +298,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_4"
+
                     android:orientation="horizontal"
                     android:textStyle="bold"
                     android:weightSum="2">
@@ -280,8 +308,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_3"
+                        android:gravity="center"
                         android:text="@string/branch_radius"
-                        android:textColor="@color/blue2"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -290,11 +320,12 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_4"
+                        android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/green3"
+                        android:textColor="@color/blue1"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -313,8 +344,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_3"
+                        android:gravity="center"
                         android:text="@string/siphon_radius"
-                        android:textColor="@color/blue2"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -323,11 +356,12 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_4"
+                        android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/green3"
+                        android:textColor="@color/blue1"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -338,7 +372,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_mid_margin"
                     android:layout_marginRight="@dimen/activity_mid_margin"
-                    android:background="@drawable/border_gray_4"
+
                     android:orientation="horizontal"
                     android:weightSum="2">
 
@@ -347,8 +381,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_3"
+                        android:gravity="center"
                         android:text="@string/debt"
-                        android:textColor="@color/blue2"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -357,11 +393,12 @@
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
-                        android:layout_marginEnd="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
+                        android:background="@drawable/border_bill_blue_4"
+                        android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/green3"
+                        android:textColor="@color/blue1"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />

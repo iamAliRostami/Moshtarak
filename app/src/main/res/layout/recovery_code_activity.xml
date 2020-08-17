@@ -23,23 +23,43 @@
         android:orientation="vertical"
         tools:ignore="MissingConstraints,RtlHardcoded">
 
-        <EditText
-            android:id="@+id/editTextSearch"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_mid_margin"
-            android:background="@drawable/border_gray_2"
-            android:hint="@string/search"
-            android:maxLines="1"
-            android:padding="@dimen/activity_mid_padding"
-            tools:ignore="Autofill,TextFields" />
+            android:background="@drawable/border_black_white_background"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_mid_margin"
+                android:layout_weight="1"
+                android:background="@drawable/border_white"
+                android:hint="@string/search"
+                android:maxLines="1"
+                android:padding="@dimen/activity_mid_padding"
+                tools:ignore="Autofill,TextFields" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/activity_mid_margin"
+                android:layout_marginRight="@dimen/activity_mid_margin"
+                android:src="@drawable/img_magnifying"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/listViewRequest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/activity_mid_margin"
+            android:background="@drawable/border_gray_2"
             android:divider="@null"
-            android:dividerHeight="0dp" />
+            android:dividerHeight="0dp"
+            tools:listitem="@layout/item_recovery_code" />
     </LinearLayout>
 </RelativeLayout>
