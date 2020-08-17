@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0C374D</color>
-    <color name="colorPrimaryDark">#093145</color>
+    <color name="colorPrimary">#203c56</color>
+    <color name="colorPrimaryDark">#132F4A</color>
     <color name="colorAccent">#B56F87</color>
     <color name="footer">@color/colorPrimaryIndigoDark</color>
     <color name="transparent">#00000000</color>

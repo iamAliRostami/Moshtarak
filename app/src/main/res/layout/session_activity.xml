@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/linearLayoutFooter"
-        android:layout_margin="@dimen/activity_mid_margin"
+        android:layout_margin="@dimen/activity_large_padding"
         android:background="@drawable/border_gray_2"
         android:divider="@null"
         android:dividerHeight="0dp"
