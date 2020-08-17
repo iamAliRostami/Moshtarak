@@ -22,6 +22,7 @@
     <color name="yellow1">#ff9c00</color>
     <color name="blue1">#2061C8</color>
     <color name="blue2">#52A8CC</color>
+    <color name="blue3">#062c68</color>
     <color name="blue5">#0000EE</color>
 
     <color name="pink1">#A275AA</color>
@@ -35,5 +36,4 @@
     <color name="red2">#ff3000</color>
     <color name="red3">#ff3600</color>
     <color name="brown">#7d4908</color>
-
 </resources>

@@ -20,26 +20,32 @@
         android:layout_height="match_parent"
         android:layout_above="@id/linearLayoutFooter"
         android:layout_below="@id/linearLayoutHeader"
-        android:layout_margin="@dimen/activity_mid_margin"
-
+        android:layout_marginLeft="@dimen/activity_large_margin"
+        android:layout_marginTop="@dimen/activity_mid_margin"
+        android:layout_marginRight="@dimen/activity_large_margin"
+        android:layout_marginBottom="@dimen/activity_mid_margin"
         android:orientation="vertical">
 
         <ListView
             android:id="@+id/listViewService"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_margin="@dimen/activity_large_padding"
             android:layout_weight="1"
+            android:background="@drawable/border_gray_2"
             android:divider="@null"
-            android:dividerHeight="@dimen/activity_mid_margin" />
+            android:dividerHeight="@dimen/activity_mid_margin"
+            tools:listitem="@layout/item_after_sale" />
 
         <LinearLayout
             android:id="@+id/linearLayoutMobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_large_margin"
+            android:layout_marginLeft="@dimen/activity_large_padding"
             android:layout_marginTop="@dimen/activity_mid_margin"
-            android:layout_marginRight="@dimen/activity_large_margin"
+            android:layout_marginRight="@dimen/activity_large_padding"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
             android:background="@drawable/border_gray_4"
             android:gravity="center"
             android:orientation="horizontal">
@@ -55,7 +61,8 @@
                 android:inputType="number"
                 android:lines="1"
                 android:maxLength="9"
-                android:padding="@dimen/activity_mid_padding" />
+                android:padding="@dimen/activity_mid_padding"
+                tools:ignore="Autofill" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -65,7 +65,7 @@
                         android:background="@drawable/border_bill_blue_2"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/blue3"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -101,7 +101,7 @@
                         android:background="@drawable/border_bill_blue_2"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/blue3"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -139,7 +139,7 @@
                         android:background="@drawable/border_bill_blue_2"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/blue3"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />

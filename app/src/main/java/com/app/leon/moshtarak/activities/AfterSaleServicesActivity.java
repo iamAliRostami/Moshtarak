@@ -32,6 +32,7 @@ import com.app.leon.moshtarak.Utils.CustomErrorHandlingNew;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
+import com.app.leon.moshtarak.adapters.AfterSaleAdapter;
 import com.app.leon.moshtarak.databinding.AfterSaleServiceContentBinding;
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
     private ArrayList<String> servicesTitle = new ArrayList<>();
     private ArrayList<String> servicesId = new ArrayList<>();
     private ArrayList<String> requestServices = new ArrayList<>();
+    AfterSaleAdapter afterSaleAdapter;
 
     @SuppressLint("CutPasteId")
     @Override
@@ -89,34 +91,53 @@ public class AfterSaleServicesActivity extends BaseActivity {
             }
         }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
-                R.layout.item_spinner, servicesTitle) {
+                R.layout.item_after_sale, android.R.id.text1, servicesTitle) {
             @Override
             public View getView(int position, View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 final CheckedTextView textView = view.findViewById(android.R.id.text1);
-                textView.setChecked(true);
+                textView.setChecked(false);
                 textView.setTextColor(getResources().getColor(R.color.black));
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        textView.setChecked(!textView.isChecked());
+                    }
+                });
                 return view;
             }
         };
+        afterSaleAdapter = new AfterSaleAdapter(context, servicesTitle);
         binding.listViewService.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        binding.listViewService.setAdapter(arrayAdapter);
+//        binding.listViewService.setAdapter(arrayAdapter);
+        binding.listViewService.setAdapter(afterSaleAdapter);
         setListViewServiceClickListener();
     }
 
     private void setListViewServiceClickListener() {
         binding.listViewService.setOnItemClickListener((adapterView, view, i, l) -> {
-            if (binding.listViewService.isItemChecked(i)) {
-                requestServices.add(servicesId.get(i));
-            } else {
-                requestServices.remove(servicesId.get(i));
-            }
+//            if (binding.listViewService.isItemChecked(i)) {
+//                requestServices.add(servicesId.get(i));
+//            } else {
+//                requestServices.remove(servicesId.get(i));
+//            }
+//            if (afterSaleAdapter.selected.get(i)) {
+//                requestServices.add(servicesId.get(i));
+//            } else {
+//                requestServices.remove(servicesId.get(i));
+//            }
         });
     }
 
     void setOnButtonSubmitClickListener() {
         binding.buttonSubmit.setOnClickListener(view -> {
             View viewFocus;
+            for (int i = 0; i < afterSaleAdapter.selected.size(); i++)
+                if (afterSaleAdapter.selected.get(i)) {
+                    requestServices.add(servicesId.get(i));
+                } else {
+                    requestServices.remove(servicesId.get(i));
+                }
             if (binding.editTextMobile.getText().length() < 9) {
                 viewFocus = binding.editTextMobile;
                 viewFocus.requestFocus();
@@ -188,12 +209,12 @@ public class AfterSaleServicesActivity extends BaseActivity {
     class SendRequest implements ICallback<SimpleMessage> {
         @Override
         public void execute(SimpleMessage simpleMessage) {
-            new CustomDialog(DialogType.GreenRedirect, AfterSaleServicesActivity.this, simpleMessage.getMessage(),
+            new CustomDialog(DialogType.GreenRedirect, AfterSaleServicesActivity.this,
+                    simpleMessage.getMessage(),
                     AfterSaleServicesActivity.this.getString(R.string.dear_user),
                     AfterSaleServicesActivity.this.getString(R.string.support),
                     AfterSaleServicesActivity.this.getString(R.string.accepted));
         }
-
     }
 
     class GetError implements ICallbackError {
