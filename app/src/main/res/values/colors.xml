@@ -36,4 +36,11 @@
     <color name="red2">#ff3000</color>
     <color name="red3">#ff3600</color>
     <color name="brown">#7d4908</color>
+
+    <color name="color_1">#FFFFFF</color>
+    <color name="color_2">#e0e0e0</color>
+    <color name="color_3">#000000</color>
+    <color name="color_4">#00368c</color>
+    <color name="color_5">#062c68</color>
+    <color name="color_6">#2061C8</color>
 </resources>

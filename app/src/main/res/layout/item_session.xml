@@ -23,7 +23,7 @@
             tools:ignore="UselessParent">
 
             <TextView
-                android:textColor="?colorPrimary"
+                android:textColor="@color/color_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/activity_large_padding"
@@ -32,7 +32,7 @@
                 android:textSize="@dimen/textSizeMedium" />
 
             <TextView
-                android:textColor="?colorPrimary"
+                android:textColor="@color/color_4"
                 android:id="@+id/textViewModel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

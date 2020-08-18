@@ -6,7 +6,7 @@
     <color name="footer">@color/colorPrimaryIndigoDark</color>
     <color name="transparent">#00000000</color>
     <color name="text_color_1">#D2D1D1</color>
-    <color name="text_color_2">#575757</color>
+    <color name="text_color_2">#9A9A9A</color>
     <color name="white">#FFF</color>
     <color name="milky">#0C374D</color>
     <color name="black">#000</color>
@@ -41,4 +41,10 @@
     <color name="red3">#953217</color>
     <color name="brown">#7d4908</color>
 
+    <color name="color_1">#203c56</color>
+    <color name="color_2">#132F4A</color>
+    <color name="color_3">#9A9A9A</color>
+    <color name="color_4">#9A9A9A</color>
+    <color name="color_5">#d8d8d8</color>
+    <color name="color_6">#9a9a9a</color>
 </resources>

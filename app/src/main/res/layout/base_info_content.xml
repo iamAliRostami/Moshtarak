@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_large_margin"
-            android:background="@drawable/border_gray_2"
+            android:background="@drawable/new_border_gray_1"
             android:padding="@dimen/activity_medium_padding">
 
             <LinearLayout
@@ -48,10 +48,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_1"
+                        android:background="@drawable/border_bill_blue_5"
                         android:gravity="center"
                         android:text="@string/name"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_2"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -62,10 +62,10 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_2"
+                        android:background="@drawable/border_bill_blue_6"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/blue3"
+                        android:textColor="@color/color_5"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -84,10 +84,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_1"
+                        android:background="@drawable/border_bill_blue_5"
                         android:gravity="center"
                         android:text="@string/id_bill"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_2"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -98,10 +98,10 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_2"
+                        android:background="@drawable/border_bill_blue_6"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/blue3"
+                        android:textColor="@color/color_5"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -122,10 +122,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_1"
+                        android:background="@drawable/border_bill_blue_5"
                         android:gravity="center"
                         android:text="@string/account_"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_2"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -136,10 +136,10 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_2"
+                        android:background="@drawable/border_bill_blue_6"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/blue3"
+                        android:textColor="@color/color_5"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -158,10 +158,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_3"
+                        android:background="@drawable/border_bill_blue_7"
                         android:gravity="center"
                         android:text="@string/file_number"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_2"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -172,10 +172,10 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_4"
+                        android:background="@drawable/border_bill_blue_8"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/blue1"
+                        android:textColor="@color/color_6"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -195,10 +195,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_3"
+                        android:background="@drawable/border_bill_blue_7"
                         android:gravity="center"
                         android:text="@string/user"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_2"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -209,10 +209,10 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_4"
+                        android:background="@drawable/border_bill_blue_8"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/blue1"
+                        android:textColor="@color/color_6"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -233,10 +233,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_3"
+                        android:background="@drawable/border_bill_blue_7"
                         android:gravity="center"
                         android:text="@string/formal_capacity"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_2"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -247,10 +247,10 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_4"
+                        android:background="@drawable/border_bill_blue_8"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/blue1"
+                        android:textColor="@color/color_6"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -270,10 +270,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_3"
+                        android:background="@drawable/border_bill_blue_7"
                         android:gravity="center"
                         android:text="@string/ahad"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_2"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -284,10 +284,10 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_4"
+                        android:background="@drawable/border_bill_blue_8"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/blue1"
+                        android:textColor="@color/color_6"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -308,10 +308,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_3"
+                        android:background="@drawable/border_bill_blue_7"
                         android:gravity="center"
                         android:text="@string/branch_radius"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_2"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -322,10 +322,10 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_4"
+                        android:background="@drawable/border_bill_blue_8"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/blue1"
+                        android:textColor="@color/color_6"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -344,10 +344,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_3"
+                        android:background="@drawable/border_bill_blue_7"
                         android:gravity="center"
                         android:text="@string/siphon_radius"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_2"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -358,10 +358,10 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_4"
+                        android:background="@drawable/border_bill_blue_8"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/blue1"
+                        android:textColor="@color/color_6"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
@@ -381,10 +381,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_3"
+                        android:background="@drawable/border_bill_blue_7"
                         android:gravity="center"
                         android:text="@string/debt"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_2"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
@@ -395,10 +395,10 @@
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
                         android:layout_weight="1"
-                        android:background="@drawable/border_bill_blue_4"
+                        android:background="@drawable/border_bill_blue_8"
                         android:gravity="center"
                         android:text="@string/dash"
-                        android:textColor="@color/blue1"
+                        android:textColor="@color/color_6"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />

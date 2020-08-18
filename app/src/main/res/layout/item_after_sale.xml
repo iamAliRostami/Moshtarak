@@ -18,6 +18,7 @@
         android:background="@drawable/border_white"
         android:checkMark="?android:attr/listChoiceIndicatorMultiple"
         android:gravity="center_vertical"
+        android:textColor="@color/color_4"
         android:padding="@dimen/activity_large_padding"
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
         tools:ignore="RedundantNamespace,RtlCompat" />
