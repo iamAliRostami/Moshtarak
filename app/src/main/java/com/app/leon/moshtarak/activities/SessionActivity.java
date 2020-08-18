@@ -69,9 +69,14 @@ public class SessionActivity extends BaseActivity {
     class GetSession implements ICallback<ArrayList<Session>> {
         @Override
         public void execute(ArrayList<Session> sessions) {
-            sessionCustomAdapter = new SessionCustomAdapter(sessions, context);
-            binding.listViewSession.setAdapter(sessionCustomAdapter);
-            binding.listViewSession.setTextFilterEnabled(true);
+            if (sessions.size() > 0) {
+                sessionCustomAdapter = new SessionCustomAdapter(sessions, context);
+                binding.listViewSession.setAdapter(sessionCustomAdapter);
+                binding.listViewSession.setTextFilterEnabled(true);
+            } else {
+                binding.listViewSession.setVisibility(View.GONE);
+                binding.textViewNotFound.setVisibility(View.VISIBLE);
+            }
         }
     }
 

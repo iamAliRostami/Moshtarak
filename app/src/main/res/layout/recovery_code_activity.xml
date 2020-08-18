@@ -13,6 +13,7 @@
     <include layout="@layout/header" />
 
     <LinearLayout
+        android:id="@+id/linearLayoutRecoveryCode"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_above="@id/linearLayoutFooter"
@@ -62,4 +63,14 @@
             android:dividerHeight="0dp"
             tools:listitem="@layout/item_recovery_code" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewNotFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/error_not_found"
+        android:textSize="@dimen/textSizeLarge"
+        android:visibility="gone" />
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Debug;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -65,7 +66,7 @@ public class RecoveryCodeActivity extends BaseActivity {
         } else {
             billId = sharedPreference.getArrayList(SharedReferenceKeys.BILL_ID.getValue()).
                     get(sharedPreference.getIndex());
-            getAllSession();
+            getAllRequests();
         }
         setOnEditTextSearchChangedListener();
     }
@@ -84,37 +85,52 @@ public class RecoveryCodeActivity extends BaseActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String Search = binding.editTextSearch.getText().toString().toLowerCase(Locale.getDefault());
-                recoverCodeCustomAdapter.filter(Search);
+                if (recoverCodeCustomAdapter != null) {
+                    String Search = binding.editTextSearch.getText().toString().toLowerCase(Locale.getDefault());
+                    recoverCodeCustomAdapter.filter(Search);
+                }
             }
         });
     }
 
-    void getAllSession() {
+    void getAllRequests() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService getRequests = retrofit.create(IAbfaService.class);
-        Call<List<Request>> call = getRequests.getAllRequests(billId);
-        GetSession session = new GetSession();
-        GetSessionIncomplete incomplete = new GetSessionIncomplete();
+        byte[] encodeValue = Base64.encode(billId.getBytes(), Base64.DEFAULT);
+        String base64 = new String(encodeValue);
+        Call<List<Request>> call = getRequests.getAllRequests(billId, base64.substring(0,
+                base64.length() - 1));
+        GetRequests session = new GetRequests();
+        GetRequestsIncomplete incomplete = new GetRequestsIncomplete();
         GetError error = new GetError();
         HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, session, incomplete, error);
     }
 
-    class GetSession implements ICallback<List<Request>> {
+    class GetRequests implements ICallback<List<Request>> {
         @Override
         public void execute(List<Request> requests) {
-            recoverCodeCustomAdapter = new RecoverCodeCustomAdapter(requests, context);
-            binding.listViewRequest.setAdapter(recoverCodeCustomAdapter);
-            binding.listViewRequest.setTextFilterEnabled(true);
+            if (requests.size() > 0) {
+                recoverCodeCustomAdapter = new RecoverCodeCustomAdapter(requests, context);
+                binding.listViewRequest.setAdapter(recoverCodeCustomAdapter);
+                binding.listViewRequest.setTextFilterEnabled(true);
+            } else {
+                binding.linearLayoutRecoveryCode.setVisibility(View.GONE);
+                binding.textViewNotFound.setVisibility(View.VISIBLE);
+            }
         }
     }
 
-    class GetSessionIncomplete implements ICallbackIncomplete<List<Request>> {
+    class GetRequestsIncomplete implements ICallbackIncomplete<List<Request>> {
         @Override
         public void executeIncomplete(Response<List<Request>> response) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
-            new CustomDialog(DialogType.Yellow, RecoveryCodeActivity.this, error,
+            if (response.code() == 204) {
+                error = RecoveryCodeActivity.this.getString(R.string.error_not_found);
+                binding.linearLayoutRecoveryCode.setVisibility(View.GONE);
+                binding.textViewNotFound.setVisibility(View.VISIBLE);
+            }
+            new CustomDialog(DialogType.YellowRedirect, RecoveryCodeActivity.this, error,
                     RecoveryCodeActivity.this.getString(R.string.dear_user),
                     RecoveryCodeActivity.this.getString(R.string.login),
                     RecoveryCodeActivity.this.getString(R.string.accepted));

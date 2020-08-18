@@ -112,13 +112,18 @@ public class CardexActivity extends BaseActivity {
                     axisValues.add(cardexes.get(i).getOweDate());
                 }
             }
-            cardexCustomAdapter = new CardexCustomAdapter(cardexes, context);
-            LayoutInflater inflater = getLayoutInflater();
-            ViewGroup header = (ViewGroup) inflater.inflate(R.layout.cardex_header,
-                    binding.listViewCardex, false);
-            binding.listViewCardex.addHeaderView(header, null, false);
-            binding.listViewCardex.setAdapter(cardexCustomAdapter);
-            cardexCustomAdapter.notifyDataSetChanged();
+            if (cardexes.size() > 0) {
+                cardexCustomAdapter = new CardexCustomAdapter(cardexes, context);
+                LayoutInflater inflater = getLayoutInflater();
+                ViewGroup header = (ViewGroup) inflater.inflate(R.layout.cardex_header,
+                        binding.listViewCardex, false);
+                binding.listViewCardex.addHeaderView(header, null, false);
+                binding.listViewCardex.setAdapter(cardexCustomAdapter);
+                cardexCustomAdapter.notifyDataSetChanged();
+            } else {
+                binding.linearLayoutList.setVisibility(View.GONE);
+                binding.textViewNotFound.setVisibility(View.VISIBLE);
+            }
         }
     }
 

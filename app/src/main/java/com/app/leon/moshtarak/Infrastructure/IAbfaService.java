@@ -49,6 +49,12 @@ public interface IAbfaService {
             @Path("billId") String billId
     );
 
+    @GET("/MoshtarakinApi/V2/Member/GetInfo/{api}/{billId}")
+    Call<MemberInfo> getInfo(
+            @Path("billId") String billId,
+            @Path("api") String apiKey
+    );
+
     @GET("/MoshtarakinApi/V2/Bill/GetKardex/{api}/{billId}")
     Call<ArrayList<Cardex>> getKardex(
             @Path("billId") String billId,
@@ -109,6 +115,12 @@ public interface IAbfaService {
     @POST("/MoshtarakinApi/SuggestionManager/SetSuggestion")
     Call<SimpleMessage> sendSuggestion(//type , message, OS Version, Phone model
                                        @Body Suggestion suggestionInput
+    );
+
+    @GET("/MoshtarakinApi/V2/RequestManager/GetAll/{api}/{billId}")
+    Call<List<Request>> getAllRequests(
+            @Path("billId") String billId,
+            @Path("api") String apiKey
     );
 
     @GET("/MoshtarakinApi/Member/GetAllRequests?")

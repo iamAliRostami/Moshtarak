@@ -303,41 +303,41 @@ public class LastBillFileActivity extends AppCompatActivity {
     }
 
     void fillTextView(LastBillInfoV2 lastBillInfo) {
-        binding.texView1.setText(lastBillInfo.getFullName());
-        binding.texView2.setText(lastBillInfo.getBillId());
-        binding.texView3.setText(lastBillInfo.getPayId());
-        binding.texView4.setText(getNumberSeparator(lastBillInfo.getPayable()));
-        binding.texView5.setText(lastBillInfo.getDeadLine());
+        binding.textView1.setText(lastBillInfo.getFullName());
+        binding.textView2.setText(lastBillInfo.getBillId());
+        binding.textView3.setText(lastBillInfo.getPayId());
+        binding.textView4.setText(getNumberSeparator(lastBillInfo.getPayable()));
+        binding.textView5.setText(lastBillInfo.getDeadLine());
 
-        binding.texView6.setText(lastBillInfo.getMasraf());
-        binding.texView7.setText(lastBillInfo.getMasrafLiter());
-        binding.texView8.setText(lastBillInfo.getMasrafAverage());
+        binding.textView6.setText(lastBillInfo.getMasraf());
+        binding.textView7.setText(lastBillInfo.getMasrafLiter());
+        binding.textView8.setText(lastBillInfo.getMasrafAverage());
 
-        binding.texView9.setText(getNumberSeparator(lastBillInfo.getAbBaha()));
-        binding.texView10.setText(getNumberSeparator(lastBillInfo.getKarmozdFazelab()));
-        binding.texView11.setText(getNumberSeparator(lastBillInfo.getMaliat()));
-        binding.texView12.setText(getNumberSeparator(lastBillInfo.getBudget()));
-        binding.texView13.setText(getNumberSeparator(lastBillInfo.getLavazemKahande()));
-        binding.texView14.setText(getNumberSeparator(lastBillInfo.getJam()));
-        binding.texView15.setText(getNumberSeparator(lastBillInfo.getTaxfif()));
-        binding.texView16.setText(getNumberSeparator(lastBillInfo.getPreBedOrBes()));
+        binding.textView9.setText(getNumberSeparator(lastBillInfo.getAbBaha()));
+        binding.textView10.setText(getNumberSeparator(lastBillInfo.getKarmozdFazelab()));
+        binding.textView11.setText(getNumberSeparator(lastBillInfo.getMaliat()));
+        binding.textView12.setText(getNumberSeparator(lastBillInfo.getBudget()));
+        binding.textView13.setText(getNumberSeparator(lastBillInfo.getLavazemKahande()));
+        binding.textView14.setText(getNumberSeparator(lastBillInfo.getJam()));
+        binding.textView15.setText(getNumberSeparator(lastBillInfo.getTaxfif()));
+        binding.textView16.setText(getNumberSeparator(lastBillInfo.getPreBedOrBes()));
 
-        binding.texView17.setText(lastBillInfo.getRadif());
-        binding.texView18.setText(lastBillInfo.getBarge());
-        binding.texView19.setText(lastBillInfo.getEshterak());
-        binding.texView20.setText(lastBillInfo.getPreCounterReadingDate());
-        binding.texView21.setText(lastBillInfo.getCurrentCounterReadingDate());
-        binding.texView22.setText(lastBillInfo.getDays());
-        binding.texView23.setText(lastBillInfo.getPreCounterNumber());
-        binding.texView24.setText(lastBillInfo.getCurrentCounterNumber());
+        binding.textView17.setText(lastBillInfo.getRadif());
+        binding.textView18.setText(lastBillInfo.getBarge());
+        binding.textView19.setText(lastBillInfo.getEshterak());
+        binding.textView20.setText(lastBillInfo.getPreCounterReadingDate());
+        binding.textView21.setText(lastBillInfo.getCurrentCounterReadingDate());
+        binding.textView22.setText(lastBillInfo.getDays());
+        binding.textView23.setText(lastBillInfo.getPreCounterNumber());
+        binding.textView24.setText(lastBillInfo.getCurrentCounterNumber());
 
-        binding.texView25.setText(lastBillInfo.getKarbariTitle());
-        binding.texView26.setText(lastBillInfo.getAhadMaskooni());
-        binding.texView27.setText(lastBillInfo.getAhadNonMaskooni());
-        binding.texView28.setText(lastBillInfo.getZarfiatQarardadi());
-        binding.texView29.setText(lastBillInfo.getQotr());
-        binding.texView30.setText(lastBillInfo.getQotrSifoon());
-        binding.texView31.setText(lastBillInfo.getCounterStateId());
+        binding.textView25.setText(lastBillInfo.getKarbariTitle());
+        binding.textView26.setText(lastBillInfo.getAhadMaskooni());
+        binding.textView27.setText(lastBillInfo.getAhadNonMaskooni());
+        binding.textView28.setText(lastBillInfo.getZarfiatQarardadi());
+        binding.textView29.setText(lastBillInfo.getQotr());
+        binding.textView30.setText(lastBillInfo.getQotrSifoon());
+        binding.textView31.setText(lastBillInfo.getCounterStateId());
     }
 
     @SuppressLint("DefaultLocale")
@@ -770,6 +770,7 @@ public class LastBillFileActivity extends AppCompatActivity {
         @SuppressLint("DefaultLocale")
         @Override
         public void execute(LastBillInfoV2 lastBillInfo) {
+
             payId = lastBillInfo.getPayId();
             code128 = setCode128();
             LastBillFileActivity.lastBillInfo = lastBillInfo;
@@ -782,15 +783,19 @@ public class LastBillFileActivity extends AppCompatActivity {
     class GetBillIncomplete implements ICallbackIncomplete<LastBillInfoV2> {
         @Override
         public void executeIncomplete(Response<LastBillInfoV2> response) {
+            binding.textViewNotFound.setVisibility(View.VISIBLE);
+            binding.linearLayoutBill.setVisibility(View.GONE);
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
             if (response.code() == 404) {
                 error = LastBillFileActivity.this.getString(R.string.error_register_again);
                 sharedPreference.removeItem(sharedPreference.getIndex());
+            } else if (response.code() == 204) {
+                error = LastBillFileActivity.this.getString(R.string.error_not_found);
             }
             new CustomDialog(DialogType.YellowRedirect, LastBillFileActivity.this, error,
                     LastBillFileActivity.this.getString(R.string.dear_user),
-                    LastBillFileActivity.this.getString(R.string.login),
+                    LastBillFileActivity.this.getString(R.string.last_bill_2),
                     LastBillFileActivity.this.getString(R.string.accepted));
         }
     }

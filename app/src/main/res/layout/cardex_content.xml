@@ -16,6 +16,7 @@
     <include layout="@layout/header" />
 
     <LinearLayout
+        android:id="@+id/linearLayoutList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/linearLayoutFooter"
@@ -49,74 +50,7 @@
                 android:text="@string/chart1"
                 android:textColor="@color/white"
                 android:textSize="@dimen/textSizeLarge" />
-
-            <!--            <ImageView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="match_parent"-->
-            <!--                android:layout_margin="@dimen/activity_mid_margin"-->
-            <!--                android:src="@drawable/img_chart"-->
-            <!--                tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry" />-->
         </LinearLayout>
-
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_margin="@dimen/activity_mid_margin"-->
-        <!--            android:orientation="horizontal"-->
-        <!--            android:weightSum="4">-->
-
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/textViewDate"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_margin="@dimen/activity_mid_margin"-->
-        <!--                android:layout_weight="1"-->
-        <!--                android:gravity="center"-->
-        <!--                android:padding="@dimen/activity_mid_margin"-->
-        <!--                android:text="@string/date"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                android:textStyle="bold" />-->
-        <!--            <TextView-->
-        <!--                android:id="@+id/textViewUseM3"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_margin="@dimen/activity_mid_margin"-->
-        <!--                android:layout_weight="1"-->
-        <!--                android:gravity="center"-->
-        <!--                android:padding="@dimen/activity_mid_margin"-->
-        <!--                android:text="@string/use"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                android:textStyle="bold" />-->
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/textViewCost"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_margin="@dimen/activity_mid_margin"-->
-        <!--                android:layout_weight="1"-->
-        <!--                android:gravity="center"-->
-        <!--                android:padding="@dimen/activity_mid_margin"-->
-        <!--                android:text="@string/cost"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                android:textStyle="bold" />-->
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/textViewNote"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_margin="@dimen/activity_mid_margin"-->
-        <!--                android:layout_weight="1"-->
-        <!--                android:gravity="center"-->
-        <!--                android:padding="@dimen/activity_mid_margin"-->
-        <!--                android:text="@string/note"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                android:textStyle="bold" />-->
-        <!--            <ImageView-->
-        <!--                android:layout_width="30dp"-->
-        <!--                android:layout_height="30dp"-->
-        <!--                android:layout_gravity="center" />-->
-        <!--        </LinearLayout>-->
 
         <ListView
             android:id="@+id/listViewCardex"
@@ -127,16 +61,17 @@
             android:divider="@null"
             android:dividerHeight="1dp"
             android:padding="@dimen/activity_mid_padding"
-            tools:listitem="@layout/item_cardex_2"
-            android:scrollbars="vertical" />
-        <!--<androidx.recyclerview.widget.RecyclerView-->
-        <!--android:id="@+id/recyclerViewCardex"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="@dimen/activity_mid_margin"-->
-        <!--android:divider="@null"-->
-        <!--android:dividerHeight="0dp"-->
-        <!--android:scrollbars="vertical" />-->
+            android:scrollbars="vertical"
+            tools:listitem="@layout/item_cardex_2" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textViewNotFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/error_not_found"
+        android:textSize="@dimen/textSizeLarge"
+        android:visibility="gone" />
 </RelativeLayout>

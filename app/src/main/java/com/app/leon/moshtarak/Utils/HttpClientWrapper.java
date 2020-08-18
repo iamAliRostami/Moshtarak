@@ -34,7 +34,9 @@ public class HttpClientWrapper {
             call.enqueue(new Callback<T>() {
                 @Override
                 public void onResponse(@NonNull Call<T> call, @NonNull Response<T> response) {
-                    if (response.isSuccessful()) {
+                    if (response.code() == 204) {
+                        ((Activity) context).runOnUiThread(() -> callbackIncomplete.executeIncomplete(response));
+                    } else if (response.isSuccessful()) {
                         callback.execute(response.body());
                     } else {
                         ((Activity) context).runOnUiThread(() -> callbackIncomplete.executeIncomplete(response));

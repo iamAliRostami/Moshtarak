@@ -22,4 +22,14 @@
         android:divider="@null"
         android:dividerHeight="0dp"
         tools:listitem="@layout/item_session" />
+
+    <TextView
+        android:id="@+id/textViewNotFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/error_not_found"
+        android:textSize="@dimen/textSizeLarge"
+        android:visibility="gone" />
 </RelativeLayout>

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Debug;
+import android.util.Base64;
 import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -62,7 +63,9 @@ public class BaseInfoActivity extends BaseActivity {
     private void fillInfo() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService service = retrofit.create(IAbfaService.class);
-        Call<MemberInfo> call = service.getInfo(billId);
+        byte[] encodeValue = Base64.encode(billId.getBytes(), Base64.DEFAULT);
+        String base64 = new String(encodeValue);
+        Call<MemberInfo> call = service.getInfo(billId, base64.substring(0, base64.length() - 1));
         GetInfo getInfo = new GetInfo();
         GetInfoIncomplete incomplete = new GetInfoIncomplete();
         GetError getError = new GetError();

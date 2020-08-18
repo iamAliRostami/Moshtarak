@@ -164,7 +164,7 @@
     <string name="enter_counter_number_method">\nدر صورتیکه شماره کنتور کمتر از 5 رقم است، از سمت چپ صفر وارد نمایید.</string>
     <string name="dont_show_again">دیگر نمایش نده!</string>
     <string name="_09">09</string>
-    <string name="no_sms">شما در این مرحله پیامکی دریافت نکرده اید.</string>
+    <string name="no_sms">در این مرحله پیامکی دریافت نکرده اید.</string>
     <string name="ali_rostami33_gmail_com">ali.rostami33@gmail.com</string>
     <string name="ali_rostami">علی رستمی</string>
     <string name="infoshamsaii_gmail_com">infoshamsaii@gmail.com</string>
@@ -227,6 +227,7 @@
     <string name="why_we_need">اطلاعات کاربری جهت تطبیق با اطلاعات ثبت شده در سامانه و جلوگیری از هر گونه سوء استفاده احتمالی از اطلاعات شماست.\nاین اطلاعات به صورت محرمانه نزد ما خواهد ماند.\n</string>
     <string name="error_register_again">لطفا از حساب خود خارج و مجددا وارد شوید.</string>
     <string name="error_billid_incorrect">شناسه قبض همسایه صحیح نیست</string>
+    <string name="error_not_found">موردی یافت نشد.</string>
     <string name="back">بازگشت</string>
 
 </resources>
