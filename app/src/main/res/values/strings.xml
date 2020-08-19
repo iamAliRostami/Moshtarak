@@ -173,8 +173,9 @@
     <string name="mellat_site">https://bill.bpm.bankmellat.ir/bpgwchannel/</string>
     <string name="waiting">لطفا صبر کنید…</string>
     <string name="turn_internet_on">اینترنت وصل نیست، اینترنت وایفای یا همراه خود را روشن کنید.</string>
-    <string name="active_user">اشتراک فعال:\n</string>
-    <string name="active_user_">اشتراک فعال شما</string>
+    <string name="active_user_1">اشتراک های شما</string>
+    <string name="active_user_2">اشتراک فعال شما</string>
+    <string name="active_user_3">اشتراک فعال:\n</string>
 
     <string name="get_last_bill_file">دریافت آخرین قبض</string>
     <string name="share">اشتراک گذاری</string>
@@ -202,6 +203,7 @@
     <string name="bill_summary">خلاصه قبض</string>
     <string name="bill_pay">شناسه پرداخت</string>
     <string name="bill_id">شناسه قبض</string>
+    <string name="alias">نام مستعار</string>
     <string name="bill_water_pay">بهای آب مصرفی</string>
     <string name="bill_fazelab_pay">بهای دفع فاضلاب</string>
     <string name="bill_budget">تکلیف قانون بودجه</string>

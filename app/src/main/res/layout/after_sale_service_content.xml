@@ -18,6 +18,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/linearLayoutAfterSale"
         android:layout_above="@id/linearLayoutFooter"
         android:layout_below="@id/linearLayoutHeader"
         android:layout_marginLeft="@dimen/activity_large_margin"
@@ -89,4 +90,14 @@
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewNotFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/error_not_found"
+        android:textSize="@dimen/textSizeLarge"
+        android:visibility="gone" />
 </RelativeLayout>

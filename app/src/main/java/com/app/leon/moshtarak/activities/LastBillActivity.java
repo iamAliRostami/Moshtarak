@@ -84,7 +84,7 @@ public class LastBillActivity extends BaseActivity {
     private void accessData() {
         SharedPreference sharedPreference = new SharedPreference(context);
         if (!sharedPreference.checkIsNotEmpty()) {
-            Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
+            Intent intent = new Intent(getApplicationContext(), RegisterAccountActivity.class);
             startActivity(intent);
             finish();
         } else {
@@ -94,7 +94,7 @@ public class LastBillActivity extends BaseActivity {
                     get(sharedPreference.getIndex());
             String name = sharedPreference.getArrayList(SharedReferenceKeys.NAME.getValue()).
                     get(sharedPreference.getIndex());
-            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(name),
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user_3).concat(name),
                     Toast.LENGTH_LONG).show();
             fillLastBillInfo();
         }

@@ -26,8 +26,8 @@ import com.app.leon.moshtarak.activities.BaseInfoActivity;
 import com.app.leon.moshtarak.activities.ContactUsActivity;
 import com.app.leon.moshtarak.activities.HomeActivity;
 import com.app.leon.moshtarak.activities.RecoveryCodeActivity;
+import com.app.leon.moshtarak.activities.RegisterAccountActivity;
 import com.app.leon.moshtarak.activities.SessionActivity;
-import com.app.leon.moshtarak.activities.SignAccountActivity;
 import com.app.leon.moshtarak.adapters.NavigationCustomAdapter;
 import com.app.leon.moshtarak.databinding.BaseActivityBinding;
 import com.google.android.material.navigation.NavigationView;
@@ -114,7 +114,7 @@ public abstract class BaseActivity extends AppCompatActivity
                             startActivity(intent);
                             finish();
                         } else if (position == 1) {
-                            Intent intent = new Intent(MyApplication.getContext(), SignAccountActivity.class);
+                            Intent intent = new Intent(MyApplication.getContext(), RegisterAccountActivity.class);
                             startActivity(intent);
                         } else if (position == 2) {
                             new CustomTab(getString(R.string.abfa_site), MyApplication.getContext());

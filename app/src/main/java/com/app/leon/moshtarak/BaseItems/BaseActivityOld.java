@@ -25,8 +25,8 @@ import com.app.leon.moshtarak.activities.BaseInfoActivity;
 import com.app.leon.moshtarak.activities.ContactUsActivity;
 import com.app.leon.moshtarak.activities.HomeActivity;
 import com.app.leon.moshtarak.activities.RecoveryCodeActivity;
+import com.app.leon.moshtarak.activities.RegisterAccountActivity;
 import com.app.leon.moshtarak.activities.SessionActivity;
-import com.app.leon.moshtarak.activities.SignAccountActivity;
 import com.app.leon.moshtarak.adapters.NavigationCustomAdapterOld;
 import com.app.leon.moshtarak.databinding.BaseActivityOldBinding;
 import com.google.android.material.navigation.NavigationView;
@@ -126,7 +126,7 @@ public abstract class BaseActivityOld extends AppCompatActivity
 //                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
 //                }
             } else if (position == 5) {
-                Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterAccountActivity.class);
                 startActivity(intent);
             } else if (position == 6) {
                 Intent intent = new Intent(getApplicationContext(), RecoveryCodeActivity.class);

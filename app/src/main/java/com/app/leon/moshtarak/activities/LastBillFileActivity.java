@@ -73,6 +73,7 @@ public class LastBillFileActivity extends AppCompatActivity {
     Bitmap bitmapBill;
     Code128 code128;
     Paint tPaint;
+    boolean isBill = true;
     //    int small = 40, medium = 50, large = 70, huge = 100;
     int small = 40, medium = 50, large = 23, huge = 33;
     View.OnClickListener onClickListenerSave = new View.OnClickListener() {
@@ -374,7 +375,7 @@ public class LastBillFileActivity extends AppCompatActivity {
     private void accessData() {
         sharedPreference = new SharedPreference(context);
         if (!sharedPreference.checkIsNotEmpty()) {
-            Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
+            Intent intent = new Intent(getApplicationContext(), RegisterAccountActivity.class);
             startActivity(intent);
             finish();
         } else {
@@ -384,7 +385,7 @@ public class LastBillFileActivity extends AppCompatActivity {
                     get(sharedPreference.getIndex());
             String name = sharedPreference.getArrayList(SharedReferenceKeys.NAME.getValue()).
                     get(sharedPreference.getIndex());
-            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(name),
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user_3).concat(name),
                     Toast.LENGTH_LONG).show();
             fillLastBillInfo();
         }
@@ -770,7 +771,6 @@ public class LastBillFileActivity extends AppCompatActivity {
         @SuppressLint("DefaultLocale")
         @Override
         public void execute(LastBillInfoV2 lastBillInfo) {
-
             payId = lastBillInfo.getPayId();
             code128 = setCode128();
             LastBillFileActivity.lastBillInfo = lastBillInfo;
@@ -815,6 +815,11 @@ public class LastBillFileActivity extends AppCompatActivity {
     class GetError implements ICallbackError {
         @Override
         public void executeError(Throwable t) {
+            if (isBill) {
+                binding.textViewNotFound.setVisibility(View.VISIBLE);
+                binding.linearLayoutBill.setVisibility(View.GONE);
+                isBill = false;
+            }
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
             new CustomDialog(DialogType.YellowRedirect, LastBillFileActivity.this, error,

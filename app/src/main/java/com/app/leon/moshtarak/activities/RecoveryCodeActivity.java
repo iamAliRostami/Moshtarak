@@ -60,7 +60,7 @@ public class RecoveryCodeActivity extends BaseActivity {
         context = this;
         SharedPreference sharedPreference = new SharedPreference(context);
         if (!sharedPreference.checkIsNotEmpty()) {
-            Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
+            Intent intent = new Intent(getApplicationContext(), RegisterAccountActivity.class);
             startActivity(intent);
             finish();
         } else {

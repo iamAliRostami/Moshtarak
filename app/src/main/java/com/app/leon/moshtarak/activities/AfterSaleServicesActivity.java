@@ -5,13 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Debug;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
@@ -50,6 +46,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
     private ArrayList<String> servicesId = new ArrayList<>();
     private ArrayList<String> requestServices = new ArrayList<>();
     AfterSaleAdapter afterSaleAdapter;
+    boolean isList = true;
 
     @SuppressLint("CutPasteId")
     @Override
@@ -65,7 +62,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
     private void accessData() {
         sharedPreference = new SharedPreference(context);
         if (!sharedPreference.checkIsNotEmpty()) {
-            Intent intent = new Intent(getApplicationContext(), SignAccountActivity.class);
+            Intent intent = new Intent(getApplicationContext(), RegisterAccountActivity.class);
             startActivity(intent);
             finish();
         } else {
@@ -76,7 +73,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
                     get(sharedPreference.getIndex()).replaceFirst(getString(R.string._09), ""));
             String name = sharedPreference.getArrayList(SharedReferenceKeys.NAME.getValue()).
                     get(sharedPreference.getIndex());
-            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user).concat(name),
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user_3).concat(name),
                     Toast.LENGTH_LONG).show();
             getServices();
             setOnButtonSubmitClickListener();
@@ -90,42 +87,14 @@ public class AfterSaleServicesActivity extends BaseActivity {
                 servicesId.add(service.getId());
             }
         }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
-                R.layout.item_after_sale, android.R.id.text1, servicesTitle) {
-            @Override
-            public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                final CheckedTextView textView = view.findViewById(android.R.id.text1);
-                textView.setChecked(false);
-                textView.setTextColor(getResources().getColor(R.color.black));
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        textView.setChecked(!textView.isChecked());
-                    }
-                });
-                return view;
-            }
-        };
         afterSaleAdapter = new AfterSaleAdapter(context, servicesTitle);
         binding.listViewService.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-//        binding.listViewService.setAdapter(arrayAdapter);
         binding.listViewService.setAdapter(afterSaleAdapter);
         setListViewServiceClickListener();
     }
 
     private void setListViewServiceClickListener() {
         binding.listViewService.setOnItemClickListener((adapterView, view, i, l) -> {
-//            if (binding.listViewService.isItemChecked(i)) {
-//                requestServices.add(servicesId.get(i));
-//            } else {
-//                requestServices.remove(servicesId.get(i));
-//            }
-//            if (afterSaleAdapter.selected.get(i)) {
-//                requestServices.add(servicesId.get(i));
-//            } else {
-//                requestServices.remove(servicesId.get(i));
-//            }
         });
     }
 
@@ -185,6 +154,8 @@ public class AfterSaleServicesActivity extends BaseActivity {
     class GetServicesIncomplete implements ICallbackIncomplete<ArrayList<Service>> {
         @Override
         public void executeIncomplete(Response<ArrayList<Service>> response) {
+            binding.linearLayoutAfterSale.setVisibility(View.GONE);
+            binding.textViewNotFound.setVisibility(View.VISIBLE);
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
             new CustomDialog(DialogType.YellowRedirect, AfterSaleServicesActivity.this, error,
@@ -220,6 +191,11 @@ public class AfterSaleServicesActivity extends BaseActivity {
     class GetError implements ICallbackError {
         @Override
         public void executeError(Throwable t) {
+            if (isList) {
+                binding.linearLayoutAfterSale.setVisibility(View.GONE);
+                binding.textViewNotFound.setVisibility(View.VISIBLE);
+                isList = false;
+            }
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
             new CustomDialog(DialogType.YellowRedirect, AfterSaleServicesActivity.this, error,

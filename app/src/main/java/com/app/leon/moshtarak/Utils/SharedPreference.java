@@ -18,8 +18,9 @@ public class SharedPreference {
 
     public SharedPreference(Context context) {
         this.context = context;
+        appPrefs = this.context.getSharedPreferences("com.app.leon.moshtarak.new_user_preferences", MODE_PRIVATE);
 //        appPrefs = this.context.getSharedPreferences("com.app.leon.moshtarak.user_preferences", MODE_PRIVATE);
-        appPrefs = this.context.getSharedPreferences("com.app.leon.moshtarak.users_preferences", MODE_PRIVATE);
+//        appPrefs = this.context.getSharedPreferences("com.app.leon.moshtarak.users_preferences", MODE_PRIVATE);
     }
 
     private void putBillID(String bill_id) {
@@ -43,6 +44,12 @@ public class SharedPreference {
     private void putName(String name) {
         SharedPreferences.Editor prefsEditor = appPrefs.edit();
         prefsEditor.putString(SharedReferenceKeys.NAME.getValue(), name);
+        prefsEditor.apply();
+    }
+
+    private void putAlias(String alias) {
+        SharedPreferences.Editor prefsEditor = appPrefs.edit();
+        prefsEditor.putString(SharedReferenceKeys.ALIAS.getValue(), alias);
         prefsEditor.apply();
     }
 
@@ -100,6 +107,10 @@ public class SharedPreference {
         return appPrefs.getString(SharedReferenceKeys.NAME.getValue(), "");
     }
 
+    public String getAlias() {
+        return appPrefs.getString(SharedReferenceKeys.ALIAS.getValue(), "");
+    }
+
     public int getLength() {
         return appPrefs.getInt(SharedReferenceKeys.LENGTH.getValue(), 0);
     }
@@ -123,16 +134,19 @@ public class SharedPreference {
             ArrayList<String> apiKeys = getArrayList(SharedReferenceKeys.API_KEY.getValue());
             ArrayList<String> mobileNumbers = getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue());
             ArrayList<String> name = getArrayList(SharedReferenceKeys.NAME.getValue());
+            ArrayList<String> alias = getArrayList(SharedReferenceKeys.ALIAS.getValue());
 
             billIds.remove(index);
             mobileNumbers.remove(index);
             apiKeys.remove(index);
             name.remove(index);
+            alias.remove(index);
 
             saveArrayList(billIds, SharedReferenceKeys.BILL_ID.getValue());
             saveArrayList(mobileNumbers, SharedReferenceKeys.MOBILE_NUMBER.getValue());
             saveArrayList(apiKeys, SharedReferenceKeys.API_KEY.getValue());
             saveArrayList(name, SharedReferenceKeys.NAME.getValue());
+            saveArrayList(alias, SharedReferenceKeys.ALIAS.getValue());
 
             length = length - 1;
             index = length - 1;
@@ -158,27 +172,32 @@ public class SharedPreference {
         return gson.fromJson(json, type);
     }
 
-    public void putDataArray(String mobileNumber, String billId, String apiKey, String name) {
+    public void putDataArray(String mobileNumber, String billId, String apiKey, String name,
+                             String alias) {
         int length = getLength();
         ArrayList<String> billIds = new ArrayList<>();
         ArrayList<String> apiKeys = new ArrayList<>();
         ArrayList<String> mobileNumbers = new ArrayList<>();
         ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> aliasArrayList = new ArrayList<>();
         if (length > 0) {
             billIds = getArrayList(SharedReferenceKeys.BILL_ID.getValue());
             apiKeys = getArrayList(SharedReferenceKeys.API_KEY.getValue());
             mobileNumbers = getArrayList(SharedReferenceKeys.MOBILE_NUMBER.getValue());
             names = getArrayList(SharedReferenceKeys.NAME.getValue());
+            aliasArrayList = getArrayList(SharedReferenceKeys.ALIAS.getValue());
         }
         billIds.add(billId);
         apiKeys.add(apiKey);
         mobileNumbers.add(mobileNumber);
         names.add(name);
+        aliasArrayList.add(alias);
 
         saveArrayList(billIds, SharedReferenceKeys.BILL_ID.getValue());
         saveArrayList(mobileNumbers, SharedReferenceKeys.MOBILE_NUMBER.getValue());
         saveArrayList(apiKeys, SharedReferenceKeys.API_KEY.getValue());
         saveArrayList(names, SharedReferenceKeys.NAME.getValue());
+        saveArrayList(aliasArrayList, SharedReferenceKeys.ALIAS.getValue());
         putIndex(length);
         length = length + 1;
         putLength(length);

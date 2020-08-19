@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/activity_large_padding"
+    android:background="@drawable/border_white"
+    android:layoutDirection="rtl"
+    android:orientation="horizontal"
+    android:padding="@dimen/activity_medium_padding"
+    tools:ignore="UnusedAttribute">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/account_"
+        android:textColor="@color/text_color_1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/delete_enable"
+        tools:ignore="ContentDescription" />
+</LinearLayout>

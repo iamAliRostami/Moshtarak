@@ -58,7 +58,7 @@ public class AfterSaleAdapter extends BaseAdapter {
         public CheckedTextView checkBox;
 
         public CheckBoxViewHolder(View view) {
-            this.checkBox = (CheckedTextView) view.findViewById(android.R.id.text1);
+            this.checkBox = view.findViewById(android.R.id.text1);
         }
     }
 }
