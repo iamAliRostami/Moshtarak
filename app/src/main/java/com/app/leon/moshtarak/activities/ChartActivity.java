@@ -34,6 +34,7 @@ public class ChartActivity extends BaseActivity {
     Typeface typeface;
     ArrayList<String> listText = new ArrayList<>();
     ArrayList<Integer> listValue = new ArrayList<>();
+
     @Override
     protected void initialize() {
         binding = ChartActivityBinding.inflate(getLayoutInflater());
@@ -65,9 +66,9 @@ public class ChartActivity extends BaseActivity {
         binding.horizontalChart.setPinchZoom(false);
 
         binding.horizontalChart.setBackgroundColor(ContextCompat.getColor(MyApplication.getContext()
-                , R.color.gray3));
+                , R.color.color_9));
         binding.horizontalChart.setGridBackgroundColor(ContextCompat.getColor(MyApplication.getContext()
-                , R.color.gray4));
+                , R.color.color_8));
 
         binding.horizontalChart.setDrawGridBackground(true);
         XAxis xl = binding.horizontalChart.getXAxis();

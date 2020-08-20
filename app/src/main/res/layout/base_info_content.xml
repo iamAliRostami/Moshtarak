@@ -66,7 +66,7 @@
                         android:gravity="center"
                         android:text="@string/dash"
                         android:textColor="@color/color_5"
-                        android:textSize="@dimen/textSizeMedium"
+                        android:textSize="@dimen/textSizeSmall"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>
@@ -213,7 +213,7 @@
                         android:gravity="center"
                         android:text="@string/dash"
                         android:textColor="@color/color_6"
-                        android:textSize="@dimen/textSizeMedium"
+                        android:textSize="@dimen/textSizeSmall"
                         android:textStyle="bold"
                         tools:ignore="RtlCompat" />
                 </LinearLayout>

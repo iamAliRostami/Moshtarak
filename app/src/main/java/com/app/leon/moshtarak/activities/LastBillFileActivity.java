@@ -385,7 +385,11 @@ public class LastBillFileActivity extends AppCompatActivity {
                     get(sharedPreference.getIndex());
             String name = sharedPreference.getArrayList(SharedReferenceKeys.NAME.getValue()).
                     get(sharedPreference.getIndex());
-            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user_3).concat(name),
+
+            String alias = sharedPreference.getArrayList(SharedReferenceKeys.ALIAS.getValue()).
+                    get(sharedPreference.getIndex());
+            Toast.makeText(MyApplication.getContext(), getString(R.string.active_user_3).concat(
+                    alias.length() > 0 ? alias : name),
                     Toast.LENGTH_LONG).show();
             fillLastBillInfo();
         }
