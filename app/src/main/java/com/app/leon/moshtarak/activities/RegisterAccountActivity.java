@@ -91,10 +91,13 @@ public class RegisterAccountActivity extends BaseActivity {
             index = sharedPreference.getIndex();
         }
         if (title.size() > 0) {
-            binding.textViewName.setText(alias.get(index).length() > 0 ? alias.get(index) : title.get(index));
+//            binding.textViewName.setText(alias.get(index).length() > 0 ? alias.get(index) : title.get(index));
+            binding.textViewName.setText(title.get(index));
+            binding.textViewAlias.setText(alias.get(index).length() > 0 ? alias.get(index) : title.get(index));
+            binding.textViewBillId.setText(billIds.get(index));
             if (title.size() > 1) {
                 RegisterAccountAdapter registerAccountAdapter = new RegisterAccountAdapter(
-                        title, alias, index, context);
+                        title, alias, billIds, index, context);
                 binding.listViewAccount.setAdapter(registerAccountAdapter);
             }
         }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.leon.moshtarak.Models.Enums.DialogType;
@@ -20,18 +21,21 @@ public class RegisterAccountAdapter extends BaseAdapter {
 
     public ArrayList<String> title;
     public ArrayList<String> alias;
+    public ArrayList<String> billIds;
     SharedPreference sharedPreference;
     int index;
     LayoutInflater inflater;
     Context context;
 
     public RegisterAccountAdapter(ArrayList<String> title, ArrayList<String> alias,
-                                  int index, Context context) {
+                                  ArrayList<String> billIds, int index, Context context) {
         this.title = title;
         this.alias = alias;
         this.index = index;
+        this.billIds = billIds;
         title.remove(this.index);
         alias.remove(this.index);
+        billIds.remove(this.index);
         this.context = context;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         sharedPreference = new SharedPreference(context);
@@ -43,12 +47,16 @@ public class RegisterAccountAdapter extends BaseAdapter {
         View convertView = view;
         if (convertView == null)
             convertView = inflater.inflate(R.layout.register_account_item, null);
-        TextView textView = convertView.findViewById(R.id.textViewName);
+        TextView textViewName = convertView.findViewById(R.id.textViewName);
+        TextView textViewAlias = convertView.findViewById(R.id.textViewAlias);
+        TextView textViewBillId = convertView.findViewById(R.id.textViewBillId);
+        LinearLayout linearLayout = convertView.findViewById(R.id.linearLayoutChange);
         ImageView imageView = convertView.findViewById(R.id.imageViewDelete);
-        textView.setText(title.get(i));
-        if (alias.get(i).length() > 0)
-            textView.setText(alias.get(i));
-        textView.setOnClickListener(view1 -> {
+        textViewName.setText(title.get(i));
+        textViewAlias.setText(alias.get(i).length() > 0 ? alias.get(i) : title.get(i));
+//        if (alias.get(i).length() > 0)
+        textViewBillId.setText(billIds.get(i));
+        linearLayout.setOnClickListener(view1 -> {
             new CustomDialog(DialogType.YellowRedirect, context,
                     context.getString(R.string.change_successful),
                     context.getString(R.string.dear_user),

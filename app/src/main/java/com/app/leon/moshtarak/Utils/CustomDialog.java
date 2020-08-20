@@ -77,10 +77,11 @@ public class CustomDialog {
                 .setTopColorRes(R.color.green2)
                 .setTopTitleColor(context.getResources().getColor(R.color.white))
                 .setButtonsBackground(R.drawable.border_green_2)
+                .setCancelable(false)
                 .setPositiveButton(ButtonText, v -> {
                     Intent intent = new Intent(context, HomeActivity.class);
                     context.startActivity(intent);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     ((Activity) context).finish();
                 });
         lovelyStandardDialog.show();
@@ -91,9 +92,10 @@ public class CustomDialog {
                 .setTopTitleColor(context.getResources().getColor(R.color.white))
                 .setButtonsBackground(R.drawable.border_yellow_2)
                 .setTopColorRes(R.color.yellow1)
+                .setCancelable(false)
                 .setPositiveButton(buttonText, v -> {
                     Intent intent = new Intent(context, HomeActivity.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     context.startActivity(intent);
                     ((Activity) context).finish();
                 })
@@ -105,9 +107,10 @@ public class CustomDialog {
                 .setTopColorRes(R.color.red1)
                 .setTopTitleColor(context.getResources().getColor(R.color.white))
                 .setButtonsBackground(R.drawable.border_red_2)
+                .setCancelable(false)
                 .setPositiveButton(buttonText, v -> {
                     Intent intent = new Intent(context, HomeActivity.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     context.startActivity(intent);
                     ((Activity) context).finish();
                 })

@@ -34,18 +34,6 @@ public class ChartActivity extends BaseActivity {
     Typeface typeface;
     ArrayList<String> listText = new ArrayList<>();
     ArrayList<Integer> listValue = new ArrayList<>();
-
-//    @SuppressLint("NewApi")
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-//        super.onCreate(savedInstanceState);
-//        View view = binding.getRoot();
-//        setContentView(view);
-//        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.chart2));
-//
-//    }
-
     @Override
     protected void initialize() {
         binding = ChartActivityBinding.inflate(getLayoutInflater());

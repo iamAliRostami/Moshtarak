@@ -203,7 +203,7 @@
     <string name="bill_summary">خلاصه قبض</string>
     <string name="bill_pay">شناسه پرداخت</string>
     <string name="bill_id">شناسه قبض</string>
-    <string name="alias">نام مستعار</string>
+    <string name="alias">عنوان (اختیاری)</string>
     <string name="bill_water_pay">بهای آب مصرفی</string>
     <string name="bill_fazelab_pay">بهای دفع فاضلاب</string>
     <string name="bill_budget">تکلیف قانون بودجه</string>
