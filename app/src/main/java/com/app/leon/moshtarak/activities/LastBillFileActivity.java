@@ -140,7 +140,6 @@ public class LastBillFileActivity extends AppCompatActivity {
         initialize();
     }
 
-
     @SuppressLint("SimpleDateFormat")
     void initialize() {
         imageName = "bill_".concat((new SimpleDateFormat("yyyyMMdd_HHmmss")).
@@ -156,6 +155,14 @@ public class LastBillFileActivity extends AppCompatActivity {
         binding.buttonShare.setOnClickListener(onClickListenerShare);
         binding.buttonSave.setOnClickListener(onClickListenerSave);
         binding.buttonPay.setOnClickListener(onClickListenerPay);
+
+        binding.imageViewShare.setOnClickListener(onClickListenerShare);
+        binding.imageViewSave.setOnClickListener(onClickListenerSave);
+        binding.imageViewPay.setOnClickListener(onClickListenerPay);
+
+        binding.linearLayoutShare.setOnClickListener(onClickListenerShare);
+        binding.linearLayoutSave.setOnClickListener(onClickListenerSave);
+        binding.linearLayoutPay.setOnClickListener(onClickListenerPay);
     }
 
     public Uri getImageUri(Bitmap src, Bitmap.CompressFormat format, int quality) {

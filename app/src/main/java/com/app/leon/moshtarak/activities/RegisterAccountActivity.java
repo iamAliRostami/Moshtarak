@@ -175,7 +175,7 @@ public class RegisterAccountActivity extends BaseActivity {
             sharedPreference.removeItem(index);
             new CustomDialog(DialogType.YellowRedirect, RegisterAccountActivity.this,
                     getString(R.string.logout_successful), getString(R.string.dear_user), getString(R.string.logout),
-                    getString(R.string.accepted));
+                    getString(R.string.back_home));
         });
     }
 

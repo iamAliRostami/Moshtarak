@@ -1,5 +1,6 @@
 package com.app.leon.moshtarak.Utils;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -80,6 +81,7 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return (T) this;
     }
 
+    @SuppressLint("ResourceAsColor")
     T setTopTitle(CharSequence title) {
         topTitleView.setVisibility(View.VISIBLE);
         topTitleView.setText(title);
@@ -87,9 +89,17 @@ public abstract class AbsLovelyDialog<T extends AbsLovelyDialog> {
         return (T) this;
     }
 
-    T setTopTitleColor(int color) {
-        topTitleView.setTextColor(color);
+    //    public T setTopTitleColor(int color) {
+//        topTitleView.setTextColor(color);
+//        return (T) this;
+//    }
+    public T setTopTitleColor(@ColorInt int topColor) {
+        ((TextView) findView(R.id.ld_top_title)).setTextColor(topColor);
         return (T) this;
+    }
+
+    public T setTopTitleColorRes(@ColorRes int topColoRes) {
+        return setTopTitleColor(color(topColoRes));
     }
 
     public T setIcon(Bitmap bitmap) {

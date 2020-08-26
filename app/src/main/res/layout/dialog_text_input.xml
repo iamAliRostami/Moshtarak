@@ -145,6 +145,7 @@
             android:background="@drawable/border_green_2"
             android:gravity="center"
             android:text="@string/confirm"
+            android:textColor="@color/white"
             android:textSize="@dimen/textSizeMedium"
             android:textStyle="bold" />
 
@@ -159,6 +160,7 @@
             android:background="@drawable/border_red_2"
             android:gravity="center"
             android:text="@string/cancel"
+            android:textColor="@color/white"
             android:textSize="@dimen/textSizeMedium"
             android:textStyle="bold" />
 

@@ -61,16 +61,17 @@ public class RegisterAccountAdapter extends BaseAdapter {
                     context.getString(R.string.change_successful),
                     context.getString(R.string.dear_user),
                     context.getString(R.string.change_account),
-                    context.getString(R.string.accepted));
+                    context.getString(R.string.back_home));
             sharedPreference.putIndex(i < index ? i : i + 1);
         });
         imageView.setOnClickListener(view12 -> {
             sharedPreference.removeItem(i < index ? i : i + 1);
             new CustomDialog(DialogType.YellowRedirect, context,
-                    context.getString(R.string.logout_successful),
+//                    context.getString(R.string.logout_successful),
+                    context.getString(R.string.delete_successful),
                     context.getString(R.string.dear_user),
                     context.getString(R.string.logout),
-                    context.getString(R.string.accepted));
+                    context.getString(R.string.back_home));
         });
 //        if (index == i) {
 //            convertView.setVisibility(View.GONE);

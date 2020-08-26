@@ -44,10 +44,14 @@
     <color name="color_5">#062c68</color>
     <color name="color_6">#2061C8</color>
     <color name="color_7">#EDEBEB</color>
-
     <color name="color_8">#AAA8A8</color>
     <color name="color_9">#595656</color>
-
-    <!--    <color name="color_9">#e0e0e0</color>-->
-    <!--    <color name="color_9">#565050</color>-->
+    <color name="color_10">#595656</color>
+    <color name="color_11">#00368c</color>
+    <color name="color_12">#4d4d4d</color>
+    <color name="color_13">#e0e0e0</color>
+    <color name="color_14">#FFFFFF</color>
+    <color name="color_15">#132F4A</color>
+    <color name="color_16">#132F4A</color>
+    <color name="color_17">@color/colorPrimary</color>
 </resources>

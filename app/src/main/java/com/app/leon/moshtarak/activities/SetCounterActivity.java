@@ -91,8 +91,10 @@ public class SetCounterActivity extends BaseActivity {
     }
 
     void showDialog() {
-        lovelyTextInputDialog = new LovelyTextInputDialog(this, R.style.EditTextTintTheme)
+        lovelyTextInputDialog = new LovelyTextInputDialog(this/*, R.style.EditTextTintTheme*/)
                 .setTopColorRes(R.color.orange1)
+                .setTopTitleColorRes(R.color.white)
+                .setTopTitle(R.string.mamoor_2)
                 .setTitle(R.string.dear_user)
                 .setMessage(getString(R.string.enter_counter_number).concat(
                         getString(R.string.enter_counter_number_method)))
@@ -215,6 +217,7 @@ public class SetCounterActivity extends BaseActivity {
             Toast.makeText(MyApplication.getContext(), getString(R.string.active_user_3).concat(
                     alias.length() > 0 ? alias : name),
                     Toast.LENGTH_LONG).show();
+            showDialog();
         }
     }
 

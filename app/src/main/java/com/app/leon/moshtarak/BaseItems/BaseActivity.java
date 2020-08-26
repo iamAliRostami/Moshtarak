@@ -69,7 +69,8 @@ public abstract class BaseActivity extends AppCompatActivity
         initializeBase();
         setSupportActionBar(toolbar);//TODO
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle
-                (this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+                (this, drawer, toolbar, R.string.navigation_drawer_open,
+                        R.string.navigation_drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -90,8 +91,30 @@ public abstract class BaseActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+
         }
     }
+
+//    boolean doubleBackToExitPressedOnce = false;
+//    @Override
+//    public void onBackPressed() {
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            if (doubleBackToExitPressedOnce) {
+//                HttpClientWrapper.call.cancel();
+//                super.onBackPressed();
+//            }
+//            this.doubleBackToExitPressedOnce = true;
+//            Toast.makeText(this, "برای خروج دوباره بازگشت را بزنید.", Toast.LENGTH_SHORT).show();
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    doubleBackToExitPressedOnce = false;
+//                }
+//            }, 2000);
+//        }
+//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

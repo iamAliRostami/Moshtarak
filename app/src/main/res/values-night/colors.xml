@@ -25,7 +25,7 @@
     <color name="yellow1">#F57F17</color>
 
     <color name="blue1">#1A237E</color>
-    <color name="blue2">#017D82</color>
+    <color name="blue2">#006064</color>
     <color name="blue3">#004ecc</color>
     <color name="blue5">#0000EE</color>
 
@@ -50,4 +50,12 @@
     <color name="color_7">#132F4A</color>
     <color name="color_8">#595656</color>
     <color name="color_9">#565050</color>
+    <color name="color_10">#203c56</color>
+    <color name="color_11">#D2D1D1</color>
+    <color name="color_12">#9A9A9A</color>
+    <color name="color_13">#203c56</color>
+    <color name="color_14">#132F4A</color>
+    <color name="color_15">#132F4A</color>
+    <color name="color_16">#132F4A</color>
+    <color name="color_17">@color/white</color>
 </resources>

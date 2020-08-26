@@ -64,8 +64,10 @@ public class RecoverCodeCustomAdapter extends BaseAdapter {
 
         LinearLayout linearLayout = view.findViewById(R.id.linearLayout);
         linearLayout.setOnLongClickListener(v -> {
-            final ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
-            ClipData clipData = ClipData.newPlainText("Source Text", textViewParNumber.getText().toString());
+            final ClipboardManager clipboardManager =
+                    (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
+            ClipData clipData = ClipData.newPlainText("Source Text",
+                    textViewParNumber.getText().toString());
             if (clipboardManager != null) {
                 clipboardManager.setPrimaryClip(clipData);
             }

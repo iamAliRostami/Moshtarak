@@ -62,7 +62,13 @@
     </style>
 
     <style name="EditTextTintTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">@color/text_color_1</item>
+        <item name="colorAccent">@color/red1</item>
+    </style>
+
+    <style name="progressBar" parent="@style/AppTheme.NoActionBar">
+        <item name="colorAccent">@color/color_13</item>
+        <item name="colorPrimary">?colorPrimary</item>
+        <item name="colorPrimaryDark">?colorPrimaryDark</item>
     </style>
     //TODO از اینجا
 

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Debug;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -30,6 +31,8 @@ import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 import com.app.leon.moshtarak.adapters.AfterSaleAdapter;
 import com.app.leon.moshtarak.databinding.AfterSaleServiceContentBinding;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -158,6 +161,7 @@ public class AfterSaleServicesActivity extends BaseActivity {
             binding.textViewNotFound.setVisibility(View.VISIBLE);
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
+
             new CustomDialog(DialogType.YellowRedirect, AfterSaleServicesActivity.this, error,
                     AfterSaleServicesActivity.this.getString(R.string.dear_user),
                     AfterSaleServicesActivity.this.getString(R.string.login),
@@ -170,6 +174,16 @@ public class AfterSaleServicesActivity extends BaseActivity {
         public void executeIncomplete(Response<SimpleMessage> response) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
+            if (response.code() == 400) {
+                if (response.errorBody() != null) {
+                    try {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        error = jObjError.getString("message");
+                    } catch (Exception e) {
+                        Log.e("error", e.toString());
+                    }
+                }
+            }
             new CustomDialog(DialogType.Yellow, AfterSaleServicesActivity.this, error,
                     AfterSaleServicesActivity.this.getString(R.string.dear_user),
                     AfterSaleServicesActivity.this.getString(R.string.login),

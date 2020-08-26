@@ -24,7 +24,7 @@
         android:layout_below="@id/linearLayoutHeader"
         android:layout_gravity="center"
         android:layout_margin="@dimen/activity_large_padding"
-        android:background="@drawable/new_border_gray_2"
+        android:background="@drawable/new_border_gray_3"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -82,7 +82,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
-                        android:background="@drawable/border_white"
+                        android:background="@drawable/new_border_white_2"
                         android:gravity="center"
                         android:hint="@string/alias"
                         android:inputType="text"
@@ -90,6 +90,8 @@
                         android:maxLines="1"
                         android:paddingTop="@dimen/activity_medium_padding"
                         android:paddingBottom="@dimen/activity_medium_padding"
+                        android:textColor="@color/color_4"
+                        android:textColorHint="@color/color_4"
                         android:textSize="@dimen/textSizeMedium"
                         tools:ignore="Autofill,TextFields" />
 
@@ -99,13 +101,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
-                        android:background="@drawable/border_white"
+                        android:background="@drawable/new_border_white_2"
                         android:gravity="center"
                         android:hint="@string/bill_id"
                         android:inputType="number"
                         android:maxLength="13"
                         android:paddingTop="@dimen/activity_medium_padding"
                         android:paddingBottom="@dimen/activity_medium_padding"
+                        android:textColor="@color/color_4"
+                        android:textColorHint="@color/color_4"
                         android:textSize="@dimen/textSizeMedium"
                         tools:ignore="Autofill" />
 
@@ -116,7 +120,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="@dimen/activity_mid_margin"
                         android:layout_marginBottom="@dimen/activity_mid_margin"
-                        android:background="@drawable/border_white"
+                        android:background="@drawable/new_border_white_2"
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:paddingTop="@dimen/activity_medium_padding"
@@ -128,12 +132,14 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/border_white"
+                            android:background="@drawable/new_border_white_2"
                             android:gravity="center"
                             android:hint="@string/mobile_number"
                             android:inputType="number"
                             android:lines="1"
                             android:maxLength="9"
+                            android:textColor="@color/color_4"
+                            android:textColorHint="@color/color_4"
                             android:textSize="@dimen/textSizeMedium"
                             tools:ignore="Autofill" />
 
@@ -143,6 +149,7 @@
                             android:layout_marginStart="@dimen/activity_mid_margin"
                             android:layout_marginEnd="@dimen/activity_mid_margin"
                             android:text="@string/_09"
+                            android:textColor="@color/color_4"
                             android:textSize="@dimen/textSizeMedium" />
                     </LinearLayout>
 
@@ -196,14 +203,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_large_padding"
+                android:layout_marginTop="@dimen/activity_medium_padding"
                 android:layout_marginRight="@dimen/activity_large_padding"
-                android:background="@drawable/new_border_gray_1"
+                android:background="@drawable/new_border_gray_3"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/activity_large_padding"
+                    android:layout_marginTop="@dimen/activity_large_padding"
+                    android:layout_marginBottom="@dimen/activity_large_padding"
                     android:layoutDirection="rtl"
                     android:orientation="horizontal"
                     tools:ignore="UnusedAttribute">
@@ -211,15 +220,15 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/activity_mid_margin"
+                        android:layout_gravity="top"
+                        android:layout_marginLeft="@dimen/activity_large_padding"
                         android:src="@drawable/img_blue_tick"
                         tools:ignore="ContentDescription,RtlHardcoded" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/border_white"
+                        android:background="@drawable/new_border_white_2"
                         android:gravity="center"
                         android:layoutDirection="rtl"
                         android:orientation="horizontal"
@@ -232,15 +241,6 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/textViewAlias"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:text="@string/alias"
-                                android:textColor="@color/color_4"
-                                android:textSize="@dimen/textSizeMedium" />
 
                             <TextView
                                 android:id="@+id/textViewName"
@@ -249,7 +249,17 @@
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:text="@string/name"
-                                android:textColor="@color/color_4"
+                                android:textColor="@color/color_11"
+                                android:textSize="@dimen/textSizeMedium" />
+
+                            <TextView
+                                android:id="@+id/textViewAlias"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="@string/alias"
+                                android:textColor="@color/color_11"
                                 android:textSize="@dimen/textSizeMedium" />
 
                             <TextView
@@ -259,7 +269,7 @@
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:text="@string/bill_id"
-                                android:textColor="@color/color_4"
+                                android:textColor="@color/color_11"
                                 android:textSize="@dimen/textSizeMedium" />
 
                         </LinearLayout>

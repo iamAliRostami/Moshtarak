@@ -33,7 +33,7 @@
             android:layout_height="0dp"
             android:layout_margin="@dimen/activity_large_padding"
             android:layout_weight="1"
-            android:background="@drawable/new_border_gray_1"
+            android:background="@drawable/new_border_gray_3"
             android:divider="@null"
             android:dividerHeight="@dimen/activity_mid_margin"
             tools:listitem="@layout/item_after_sale" />

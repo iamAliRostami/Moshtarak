@@ -70,6 +70,7 @@
     <string name="copy_right_2">شبکه تارنما سپاهان</string>
     <string name="you_are_signed"> شماره اشتراک شما در سامانه ثبت گردید</string>
     <string name="accepted">ادامه</string>
+    <string name="back_home">بازگشت به خانه</string>
     <string name="logout_successful">از حساب کاربری خود خارج شدید.</string>
     <string name="change_successful">تغییر حساب کاربری با موفقیت انجام شد.</string>
     <string name="error">خطا</string>
@@ -127,7 +128,8 @@
     <string name="select">لطفا حداقل یکی از خدمات را انتخاب فرمایید</string>
     <string name="error_report">گزارش خطا</string>
     <string name="request">پیگیری درخواست</string>
-    <string name="track_number">شماره پیگیری:</string>
+    <string name="track_number_1">شماره پیگیری:</string>
+    <string name="track_number_2">شماره پیگیری</string>
     <string name="status">وضعیت:</string>
     <string name="time">ساعت:</string>
     <string name="date_1">تاریخ:</string>
@@ -178,7 +180,7 @@
     <string name="active_user_3">اشتراک فعال:\n</string>
 
     <string name="get_last_bill_file">دریافت آخرین قبض</string>
-    <string name="share">اشتراک گذاری</string>
+    <string name="share">هم رسانی</string>
     <string name="no_access">دسترسی به حافظه لغو شده است.</string>
 
     <string name="send_to">ارسال به</string>
@@ -231,5 +233,8 @@
     <string name="error_billid_incorrect">شناسه قبض همسایه صحیح نیست</string>
     <string name="error_not_found">موردی یافت نشد.</string>
     <string name="back">بازگشت</string>
+    <string name="enter_pursue">شماره پیگیری را وارد فرمایید.</string>
+    <string name="see_more_info">مشاهده جزئیات</string>
+    <string name="delete_successful">حذف حساب کاربری با موفقیت انجام شد.</string>
 
 </resources>

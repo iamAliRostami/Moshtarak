@@ -22,16 +22,13 @@
             android:id="@+id/textViewSmsLevel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_large_margin"
-            android:layout_marginTop="@dimen/activity_mid_margin"
-            android:layout_marginRight="@dimen/activity_large_margin"
-            android:layout_marginBottom="@dimen/activity_mid_margin"
-            android:background="@drawable/border_blue_1"
+            android:layout_margin="@dimen/activity_large_margin"
             android:gravity="center"
             android:padding="@dimen/activity_mid_padding"
             android:text="@string/sms_level"
-            android:textColor="@color/black"
+            android:textColor="@color/color_4"
             android:textStyle="bold" />
+        <!--        android:background="@drawable/border_blue_1"-->
 
         <TextView
             android:id="@+id/textViewNoSMS"
@@ -42,21 +39,26 @@
             android:layout_marginTop="@dimen/activity_mid_margin"
             android:layout_marginRight="@dimen/activity_large_margin"
             android:layout_marginBottom="@dimen/activity_mid_margin"
-            android:background="@drawable/border_blue_2"
+            android:background="@drawable/new_border_gray_2"
             android:gravity="center"
             android:padding="@dimen/activity_large_padding"
             android:text="@string/no_sms"
-            android:textColor="@color/black"
+            android:textColor="@color/color_4"
             android:visibility="gone" />
 
         <ListView
             android:id="@+id/listViewSMS"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_large_margin"
             android:layout_marginTop="@dimen/activity_mid_padding"
             android:layout_marginRight="@dimen/activity_large_margin"
             android:layout_marginBottom="@dimen/activity_mid_margin"
+            android:background="@drawable/new_border_white_2"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:paddingTop="@dimen/activity_medium_padding"
+            android:paddingBottom="@dimen/activity_medium_padding"
             tools:listitem="@layout/item_sms" />
     </LinearLayout>
 </RelativeLayout>

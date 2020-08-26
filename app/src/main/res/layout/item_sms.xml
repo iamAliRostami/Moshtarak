@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@android:id/text1"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/activity_mid_margin"
-    android:background="@drawable/border_blue_2"
-    android:gravity="center_vertical"
-    android:minHeight="?android:attr/listPreferredItemHeightSmall"
-    android:padding="@dimen/activity_mid_padding"
-    android:textColor="@color/black" />
+    android:padding="@dimen/activity_large_padding">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@android:id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_medium_padding"
+        android:background="@drawable/new_border_gray_3"
+        android:gravity="center_vertical"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:padding="@dimen/activity_large_padding"
+        android:textColor="@color/color_4"
+        tools:ignore="RedundantNamespace" />
+</RelativeLayout>

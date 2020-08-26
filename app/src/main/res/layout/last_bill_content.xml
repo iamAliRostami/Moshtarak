@@ -18,11 +18,11 @@
     <include layout="@layout/header" />
 
     <ScrollView
+        android:visibility="gone"
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/linearLayoutFooter"
-        android:visibility="gone"
         tools:ignore="UselessParent">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -54,7 +54,7 @@
                         <ImageView
                             android:layout_width="50dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/cash_payment"
+                            android:src="@drawable/payment_cash"
                             tools:ignore="ContentDescription" />
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -100,7 +100,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/pay_date"
+                        android:src="@drawable/payment_date"
                         tools:ignore="ContentDescription" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -139,7 +139,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/pay_method"
+                        android:src="@drawable/payment_method"
                         tools:ignore="ContentDescription" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -179,7 +179,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/bank_branch"
+                        android:src="@drawable/payment_bank_branch"
                         tools:ignore="ContentDescription" />
 
                     <androidx.appcompat.widget.AppCompatTextView

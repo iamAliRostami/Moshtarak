@@ -23,15 +23,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="vertical">
+            android:layout_margin="@dimen/activity_large_margin"
+            android:background="@drawable/new_border_gray_3"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_large_padding"
+            android:paddingTop="@dimen/activity_large_margin"
+            android:paddingRight="@dimen/activity_large_padding"
+            android:paddingBottom="@dimen/activity_large_padding">
 
             <LinearLayout
                 android:id="@+id/linearLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:background="@drawable/border_red_1"
+                android:layout_marginTop="@dimen/activity_medium_padding"
+                android:layout_marginBottom="@dimen/activity_medium_padding"
+                android:background="@drawable/new_border_white_2"
                 android:gravity="center"
                 android:orientation="horizontal"
                 tools:ignore="UseCompoundDrawables">
@@ -39,7 +46,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/img_sos"
+                    android:src="@drawable/contact_us_img_sos"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -47,11 +54,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:padding="@dimen/activity_mid_padding"
                     android:text="@string/accident_phone"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textColor="@color/color_11"
+                    android:textSize="@dimen/textSizeMedium"
+                    tools:ignore="RtlHardcoded" />
 
                 <TextView
                     style="@style/text_bold"
@@ -63,7 +71,7 @@
                     android:paddingTop="@dimen/activity_mid_padding"
                     android:paddingBottom="@dimen/activity_mid_padding"
                     android:text="@string/accident_phone_number"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_11"
                     android:textSize="@dimen/textSizeMedium" />
             </LinearLayout>
 
@@ -72,8 +80,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:background="@drawable/border_green_1"
+                android:layout_marginTop="@dimen/activity_medium_padding"
+                android:layout_marginBottom="@dimen/activity_medium_padding"
+                android:background="@drawable/new_border_white_2"
                 android:gravity="center"
                 android:orientation="horizontal"
                 tools:ignore="UseCompoundDrawables">
@@ -81,7 +90,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/img_support_"
+                    android:src="@drawable/contact_us_img_support"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -89,11 +98,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:padding="@dimen/activity_mid_padding"
                     android:text="@string/user_service"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textColor="@color/color_11"
+                    android:textSize="@dimen/textSizeMedium"
+                    tools:ignore="RtlHardcoded" />
 
                 <TextView
                     style="@style/text_bold"
@@ -105,7 +115,7 @@
                     android:paddingTop="@dimen/activity_mid_padding"
                     android:paddingBottom="@dimen/activity_mid_padding"
                     android:text="@string/user_service_phone"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_11"
                     android:textSize="@dimen/textSizeMedium" />
             </LinearLayout>
 
@@ -114,8 +124,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:background="@drawable/border_yellow_1"
+                android:layout_marginTop="@dimen/activity_medium_padding"
+                android:layout_marginBottom="@dimen/activity_medium_padding"
+                android:background="@drawable/new_border_white_2"
                 android:gravity="center"
                 android:orientation="horizontal"
                 tools:ignore="UseCompoundDrawables">
@@ -123,7 +134,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/img_phone"
+                    android:src="@drawable/contact_us_img_phone"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -131,11 +142,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:padding="@dimen/activity_mid_padding"
                     android:text="@string/setad_phone"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textColor="@color/color_11"
+                    android:textSize="@dimen/textSizeMedium"
+                    tools:ignore="RtlHardcoded" />
 
                 <TextView
                     style="@style/text_bold"
@@ -147,7 +159,7 @@
                     android:paddingTop="@dimen/activity_mid_padding"
                     android:paddingBottom="@dimen/activity_mid_padding"
                     android:text="@string/setad_phone_number"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_11"
                     android:textSize="@dimen/textSizeMedium" />
             </LinearLayout>
 
@@ -156,8 +168,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:background="@drawable/border_blue_2"
+                android:layout_marginTop="@dimen/activity_medium_padding"
+                android:layout_marginBottom="@dimen/activity_medium_padding"
+                android:background="@drawable/new_border_white_2"
                 android:gravity="center"
                 android:orientation="horizontal"
                 tools:ignore="UseCompoundDrawables">
@@ -165,7 +178,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/img_email"
+                    android:src="@drawable/contact_us_img_email"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -173,11 +186,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:padding="@dimen/activity_mid_padding"
                     android:text="@string/email"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textColor="@color/color_11"
+                    android:textSize="@dimen/textSizeMedium"
+                    tools:ignore="RtlHardcoded" />
 
                 <TextView
                     style="@style/text_bold"
@@ -189,7 +203,7 @@
                     android:paddingTop="@dimen/activity_mid_padding"
                     android:paddingBottom="@dimen/activity_mid_padding"
                     android:text="@string/abfa_email_address"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_11"
                     android:textSize="@dimen/textSizeMedium" />
             </LinearLayout>
 
@@ -198,8 +212,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/activity_mid_margin"
-                android:background="@drawable/border_"
+                android:layout_marginTop="@dimen/activity_medium_padding"
+                android:layout_marginBottom="@dimen/activity_medium_padding"
+                android:background="@drawable/new_border_white_2"
                 android:gravity="center"
                 android:orientation="horizontal"
                 tools:ignore="UseCompoundDrawables">
@@ -207,7 +222,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
-                    android:src="@drawable/img_fax"
+                    android:src="@drawable/contact_us_img_fax"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -215,11 +230,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:padding="@dimen/activity_mid_padding"
                     android:text="@string/fax"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeMedium" />
+                    android:textColor="@color/color_11"
+                    android:textSize="@dimen/textSizeMedium"
+                    tools:ignore="RtlHardcoded" />
 
                 <TextView
                     style="@style/text_bold"
@@ -231,7 +247,7 @@
                     android:paddingTop="@dimen/activity_mid_padding"
                     android:paddingBottom="@dimen/activity_mid_padding"
                     android:text="@string/fax_namber"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_11"
                     android:textSize="@dimen/textSizeMedium" />
             </LinearLayout>
 

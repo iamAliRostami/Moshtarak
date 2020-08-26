@@ -88,6 +88,7 @@
             android:layout_marginRight="@dimen/activity_large_margin"
             android:background="@drawable/border_yellow_"
             android:text="@string/send_feedback"
+            android:textColor="@color/white"
             android:textSize="@dimen/textSizeMedium"
             android:textStyle="bold" />
 

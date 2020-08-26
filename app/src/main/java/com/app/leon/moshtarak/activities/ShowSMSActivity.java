@@ -30,10 +30,14 @@ public class ShowSMSActivity extends AppCompatActivity {
         context = this;
         Intent intent = getIntent();
         sms = intent.getStringArrayListExtra("SMS");
-        binding.textViewSmsLevel.setText(binding.textViewSmsLevel.getText().toString().concat(Objects.requireNonNull(intent.getStringExtra("SMS_LEVEL"))));
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.item_sms, sms);
-        if (sms.size() < 1)
+        binding.textViewSmsLevel.setText(binding.textViewSmsLevel.getText().toString().concat(
+                Objects.requireNonNull(intent.getStringExtra("SMS_LEVEL"))));
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.item_sms,
+                android.R.id.text1, sms);
+        if (sms.size() < 1) {
             binding.textViewNoSMS.setVisibility(View.VISIBLE);
+            binding.listViewSMS.setVisibility(View.GONE);
+        }
         binding.listViewSMS.setAdapter(arrayAdapter);
     }
 

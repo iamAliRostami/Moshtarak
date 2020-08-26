@@ -53,6 +53,7 @@ public class HttpClientWrapper {
         } else {
             progressBar.getDialog().dismiss();
             Toast.makeText(context, R.string.turn_internet_on, Toast.LENGTH_SHORT).show();
+            ((Activity) context).finish();
         }
 
     }

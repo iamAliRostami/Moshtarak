@@ -4,8 +4,8 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:alpha="0.4"
-    android:background="?attr/colorPrimaryDark">
+    android:alpha="0.3"
+    android:background="@color/color_12">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +17,8 @@
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:theme="@style/progressBar" />
 
         <TextView
             android:id="@+id/textView_title"
@@ -25,7 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/progress_bar"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/black"
+            android:text="@string/waiting"
+            android:textColor="@color/color_14"
             android:textSize="@dimen/textSizeHuge" />
 
     </RelativeLayout>

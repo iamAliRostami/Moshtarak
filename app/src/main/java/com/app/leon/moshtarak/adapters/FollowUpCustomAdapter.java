@@ -1,5 +1,6 @@
 package com.app.leon.moshtarak.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -31,16 +32,18 @@ public class FollowUpCustomAdapter extends ArrayAdapter<FollowUpDto> {
         this.context = context;
     }
 
+    @SuppressLint("ViewHolder")
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View view = convertView;
         FollowUpHolder followUpHolder;
-        if (position % 2 == 0) {
-            view = LayoutInflater.from(context).inflate(R.layout.item_track, parent, false);
-        } else {
-            view = LayoutInflater.from(context).inflate(R.layout.item_track_, parent, false);
-        }
+        view = LayoutInflater.from(context).inflate(R.layout.item_track_new, parent, false);
+//        if (position % 2 == 0) {
+//            view = LayoutInflater.from(context).inflate(R.layout.item_track, parent, false);
+//        } else {
+//            view = LayoutInflater.from(context).inflate(R.layout.item_track_, parent, false);
+//        }
         FollowUpDto followUpDto = getItem(position);
         followUpHolder = new FollowUpHolder(view, followUpDto);
         view.setTag(followUpHolder);
