@@ -16,15 +16,17 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:scrollbars="horizontal"
+        android:weightSum="4"
         tools:ignore="UselessParent">
 
         <TextView
             android:id="@+id/textViewDate"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_mid_margin"
             android:layout_marginEnd="@dimen/activity_mid_margin"
             android:layout_marginBottom="@dimen/activity_mid_margin"
+            android:gravity="center"
             android:layout_weight="1"
             android:maxLines="1"
             android:text="@string/date"
@@ -33,22 +35,24 @@
 
         <TextView
             android:id="@+id/textViewUseM3"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_mid_margin"
             android:layout_marginEnd="@dimen/activity_mid_margin"
             android:layout_marginBottom="@dimen/activity_mid_margin"
             android:layout_weight="1"
             android:maxLines="1"
+            android:gravity="center"
             android:text="@string/use"
             android:textColor="@color/orange2"
             tools:ignore="RtlCompat" />
 
         <TextView
             android:id="@+id/textViewCost"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_mid_margin"
+            android:gravity="center"
             android:layout_marginEnd="@dimen/activity_mid_margin"
             android:layout_marginBottom="@dimen/activity_mid_margin"
             android:layout_weight="1"
@@ -59,12 +63,13 @@
 
         <TextView
             android:id="@+id/textViewNote"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_mid_margin"
             android:layout_marginEnd="@dimen/activity_mid_margin"
             android:layout_marginBottom="@dimen/activity_mid_margin"
             android:layout_weight="1"
+            android:gravity="center"
             android:maxLines="1"
             android:text="@string/note"
             android:textColor="@color/pink2"

@@ -51,17 +51,19 @@
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
+            android:layout_marginTop="@dimen/activity_mid_margin"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
             android:background="@drawable/border_"
             android:orientation="horizontal"
-            android:padding="@dimen/activity_mid_padding"
-            android:weightSum="2">
+            android:paddingTop="@dimen/activity_mid_padding"
+            android:paddingBottom="@dimen/activity_mid_padding"
+            android:weightSum="5">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="center"
                 android:text="@string/sepehr_shamsaei"
                 android:textColor="@color/black"
@@ -71,7 +73,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:gravity="center"
                 android:text="@string/infoshamsaii_gmail_com"
                 android:textColor="@color/black" />
@@ -81,17 +83,19 @@
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
+            android:layout_marginTop="@dimen/activity_mid_margin"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
             android:background="@drawable/border_"
             android:orientation="horizontal"
-            android:padding="@dimen/activity_mid_padding"
-            android:weightSum="2">
+            android:paddingTop="@dimen/activity_mid_padding"
+            android:paddingBottom="@dimen/activity_mid_padding"
+            android:weightSum="5">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="center"
                 android:text="@string/ali_rostami"
                 android:textColor="@color/black"
@@ -101,7 +105,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:gravity="center"
                 android:text="@string/ali_rostami33_gmail_com"
                 android:textColor="@color/black" />

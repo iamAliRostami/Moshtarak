@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.app.leon.moshtarak.BaseItems.BaseActivity;
+import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.databinding.HomeContentBinding;
 
@@ -72,6 +73,7 @@ public class HomeActivity extends BaseActivity {
         View childLayout = binding.getRoot();
         ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
+        MyApplication.isHome = true;
         setOnClickListener();
     }
 
@@ -85,6 +87,18 @@ public class HomeActivity extends BaseActivity {
         binding.imageButtonTracking.setOnClickListener(onClickListener);
         binding.imageButtonHelp.setOnClickListener(onClickListener);
         binding.imageButtonSupport.setOnClickListener(onClickListener);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MyApplication.isHome = true;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        MyApplication.isHome = true;
     }
 
     @Override

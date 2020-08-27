@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -66,6 +68,8 @@ public abstract class BaseActivity extends AppCompatActivity
         binding = BaseActivityBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        MyApplication.isHome = false;
+        MyApplication.doubleBackToExitPressedOnce = false;
         initializeBase();
         setSupportActionBar(toolbar);//TODO
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle
@@ -84,37 +88,23 @@ public abstract class BaseActivity extends AppCompatActivity
 
     protected abstract void initialize();
 
-    @SuppressLint("RtlHardcoded")
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
-
+            if (!MyApplication.isHome) {
+                super.onBackPressed();
+            } else {
+                if (MyApplication.doubleBackToExitPressedOnce) {
+                    super.onBackPressed();
+                }
+                MyApplication.doubleBackToExitPressedOnce = true;
+                Toast.makeText(this, R.string.press_back_again, Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(() -> MyApplication.doubleBackToExitPressedOnce = false, 2000);
+            }
         }
     }
-
-//    boolean doubleBackToExitPressedOnce = false;
-//    @Override
-//    public void onBackPressed() {
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            if (doubleBackToExitPressedOnce) {
-//                HttpClientWrapper.call.cancel();
-//                super.onBackPressed();
-//            }
-//            this.doubleBackToExitPressedOnce = true;
-//            Toast.makeText(this, "برای خروج دوباره بازگشت را بزنید.", Toast.LENGTH_SHORT).show();
-//            new Handler().postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    doubleBackToExitPressedOnce = false;
-//                }
-//            }, 2000);
-//        }
-//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

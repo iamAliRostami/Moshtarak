@@ -236,5 +236,6 @@
     <string name="enter_pursue">شماره پیگیری را وارد فرمایید.</string>
     <string name="see_more_info">مشاهده جزئیات</string>
     <string name="delete_successful">حذف حساب کاربری با موفقیت انجام شد.</string>
+    <string name="press_back_again">برای خروج دوباره بازگشت را بزنید.</string>
 
 </resources>

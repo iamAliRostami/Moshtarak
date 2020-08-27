@@ -9,6 +9,8 @@ import androidx.multidex.MultiDexApplication;
 
 public class MyApplication extends MultiDexApplication {
 
+    public static boolean isHome = false;
+    public static boolean doubleBackToExitPressedOnce = false;
     public static final String fontName = "font/my_font.ttf";
     public static int position = 0;
     @SuppressLint("StaticFieldLeak")

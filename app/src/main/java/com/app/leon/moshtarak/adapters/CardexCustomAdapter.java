@@ -74,12 +74,12 @@ public class CardexCustomAdapter extends ArrayAdapter<Cardex> {
                 s = String.valueOf(cardex.getAmount());
             }
             textViewCost.setText(s);
-            textViewNote.setText(cardex.getDescription());
+            textViewNote.setText(cardex.getDescription().trim());
             floatNumber = Float.parseFloat(cardex.getUsage());
             intNumber = (int) floatNumber;
             textViewUse.setText(String.valueOf(intNumber));
 
-            textViewDate.setText(cardex.getOweDate());
+            textViewDate.setText(cardex.getOweDate().trim());
 
             if (cardex.isBill()) {
                 textViewNote.setTextColor(
@@ -102,10 +102,10 @@ public class CardexCustomAdapter extends ArrayAdapter<Cardex> {
                     intent.putExtra(BundleEnum.THIS_BILL.getValue(), bundle);
                 context.startActivity(intent);
             });
-            textViewCost.setGravity(1);
-            textViewNote.setGravity(1);
-            textViewDate.setGravity(1);
-            textViewUse.setGravity(1);
+//            textViewCost.setGravity(1);
+//            textViewNote.setGravity(1);
+//            textViewDate.setGravity(1);
+//            textViewUse.setGravity(1);
         }
         return viewHolder;
     }
