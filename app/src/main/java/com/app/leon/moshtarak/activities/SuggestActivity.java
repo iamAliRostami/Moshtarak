@@ -68,18 +68,20 @@ public class SuggestActivity extends BaseActivity {
         items.add(getString(R.string.suggest));
         items.add(getString(R.string.other_));
         binding.suggestSpinner.setAdapter(new ArrayAdapter<>(context,
-                android.R.layout.simple_spinner_dropdown_item, items));
+                R.layout.item_suggest, items));
     }
 
     void setRadioGroupOnCheckedChanged() {
         binding.radioButtonSuggest1.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 binding.suggestSpinner.setVisibility(View.VISIBLE);
+                binding.textViewErrorSection.setVisibility(View.VISIBLE);
             }
         });
         binding.radioButtonSuggest2.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 binding.suggestSpinner.setVisibility(View.GONE);
+                binding.textViewErrorSection.setVisibility(View.GONE);
             }
         });
     }
@@ -87,9 +89,9 @@ public class SuggestActivity extends BaseActivity {
     void setOnSendButtonClickListener() {
         binding.sendButton.setOnClickListener(v -> {
             View viewFocus;
-            if (Objects.requireNonNull(binding.suggestEditText.getText()).length() < 1) {
-                binding.suggestEditText.setError(getString(R.string.error_empty));
-                viewFocus = binding.suggestEditText;
+            if (Objects.requireNonNull(binding.editTextSuggest.getText()).length() < 1) {
+                binding.editTextSuggest.setError(getString(R.string.error_empty));
+                viewFocus = binding.editTextSuggest;
                 viewFocus.requestFocus();
             } else {
                 int select;
@@ -101,7 +103,7 @@ public class SuggestActivity extends BaseActivity {
                 Retrofit retrofit = NetworkHelper.getInstance();
                 final IAbfaService suggestion = retrofit.create(IAbfaService.class);
                 Call<SimpleMessage> call = suggestion.sendSuggestion(new Suggestion(
-                        String.valueOf(select), binding.suggestEditText.getText().toString(),
+                        String.valueOf(select), binding.editTextSuggest.getText().toString(),
                         String.valueOf(Build.VERSION.RELEASE), getDeviceName()));
                 Suggest suggest = new Suggest();
                 SuggestIncomplete incomplete = new SuggestIncomplete();

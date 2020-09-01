@@ -116,9 +116,11 @@ public class LastBillFileActivity extends AppCompatActivity {
     };
     View.OnClickListener onClickListenerPay = new View.OnClickListener() {
         @Override
-        public void onClick(View view) {//TODO
+        public void onClick(View view) {
+            //TODO
             if (!lastBillInfo.isPayed()) {
                 getToken();
+                //TODO
 //                new CustomTab(getString(R.string.mellat_site), MyApplication.getContext());
             } else
                 Toast.makeText(MyApplication.getContext(),

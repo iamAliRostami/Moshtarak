@@ -237,5 +237,7 @@
     <string name="see_more_info">مشاهده جزئیات</string>
     <string name="delete_successful">حذف حساب کاربری با موفقیت انجام شد.</string>
     <string name="press_back_again">برای خروج دوباره بازگشت را بزنید.</string>
+    <string name="error_section">در چه بخشی خطا وجود دارد؟</string>
+    <string name="select_suggest">در صورتی که انتقاد یا پیشنهادی دارید، یک گزینه را انتخاب کنید.</string>
 
 </resources>

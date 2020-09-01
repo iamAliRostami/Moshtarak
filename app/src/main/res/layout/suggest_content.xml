@@ -6,8 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
+    android:layoutDirection="rtl"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.app.leon.moshtarak.activities.SuggestActivity">
+    tools:context="com.app.leon.moshtarak.activities.SuggestActivity"
+    tools:ignore="UnusedAttribute">
 
     <include layout="@layout/footer" />
 
@@ -18,18 +20,28 @@
         android:layout_height="match_parent"
         android:layout_above="@id/linearLayoutFooter"
         android:layout_below="@id/linearLayoutHeader"
-        android:layout_marginBottom="@dimen/activity_large_margin"
+        android:layout_margin="@dimen/activity_large_margin"
         android:orientation="vertical"
         android:paddingLeft="@dimen/activity_mid_margin"
         android:paddingRight="@dimen/activity_mid_margin"
         tools:ignore="UselessParent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_suggest"
+            android:textColor="@color/color_5"
+            android:textSize="@dimen/textSizeSmall" />
+
         <RadioGroup
             android:id="@+id/radioGroupSuggest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_mid_margin"
-            android:padding="@dimen/activity_mid_padding">
+            android:layout_marginTop="@dimen/activity_mid_margin"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/activity_mid_padding"
+            android:paddingBottom="@dimen/activity_mid_padding">
 
             <RadioButton
                 android:id="@+id/radioButtonSuggest1"
@@ -37,61 +49,74 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="@string/error_report"
+                android:textColor="@color/color_5"
                 android:textSize="@dimen/textSizeMedium"
                 android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/suggestSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
             <RadioButton
                 android:id="@+id/radioButtonSuggest2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/suggest"
+                android:textColor="@color/color_5"
                 android:textSize="@dimen/textSizeMedium"
                 android:textStyle="bold" />
 
         </RadioGroup>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <TextView
+            android:id="@+id/textViewErrorSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_mid_margin"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
+            android:text="@string/error_section"
+            android:textColor="@color/color_5"
+            android:textSize="@dimen/textSizeSmall" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_mid_margin"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
+            android:background="@drawable/new_border_gray_1">
+
+            <Spinner
+                android:id="@+id/suggestSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextSuggest"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="top"
+            android:layout_marginTop="@dimen/activity_mid_margin"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
             android:layout_weight="1"
-            android:background="@drawable/border_"
+            android:background="@drawable/new_border_gray_1"
             android:gravity="top"
             android:hint="@string/enter"
-            android:padding="@dimen/activity_large_padding">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/suggestEditText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="top"
-                android:layout_marginLeft="@dimen/activity_mid_margin"
-                android:layout_marginTop="@dimen/activity_mid_margin"
-                android:layout_marginRight="@dimen/activity_mid_margin"
-                android:layout_marginBottom="@dimen/activity_mid_margin"
-                android:gravity="top"
-                android:inputType="textMultiLine"
-                android:maxLength="280" />
-        </com.google.android.material.textfield.TextInputLayout>
+            android:inputType="textMultiLine"
+            android:maxLength="280"
+            android:padding="@dimen/activity_mid_padding"
+            android:textColor="@color/color_4"
+            android:textColorHint="@color/color_4"
+            tools:ignore="Autofill" />
 
         <Button
             android:id="@+id/sendButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_large_margin"
             android:layout_marginTop="@dimen/activity_mid_margin"
-            android:layout_marginRight="@dimen/activity_large_margin"
-            android:background="@drawable/border_yellow_"
+            android:background="@drawable/new_border_green_2"
             android:text="@string/send_feedback"
-            android:textColor="@color/white"
+            android:textColor="@color/green2"
             android:textSize="@dimen/textSizeMedium"
             android:textStyle="bold" />
-
 
     </LinearLayout>
 </RelativeLayout>
