@@ -54,4 +54,5 @@
     <color name="color_15">#132F4A</color>
     <color name="color_16">#132F4A</color>
     <color name="color_17">@color/colorPrimary</color>
+    <color name="color_18">#2061C8</color>
 </resources>

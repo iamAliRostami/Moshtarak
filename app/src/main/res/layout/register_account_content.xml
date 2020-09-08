@@ -91,7 +91,7 @@
                         android:paddingTop="@dimen/activity_medium_padding"
                         android:paddingBottom="@dimen/activity_medium_padding"
                         android:textColor="@color/color_4"
-                        android:textColorHint="@color/color_4"
+                        android:textColorHint="@color/color_18"
                         android:textSize="@dimen/textSizeMedium"
                         tools:ignore="Autofill,TextFields" />
 
@@ -109,7 +109,7 @@
                         android:paddingTop="@dimen/activity_medium_padding"
                         android:paddingBottom="@dimen/activity_medium_padding"
                         android:textColor="@color/color_4"
-                        android:textColorHint="@color/color_4"
+                        android:textColorHint="@color/color_18"
                         android:textSize="@dimen/textSizeMedium"
                         tools:ignore="Autofill" />
 
@@ -139,7 +139,7 @@
                             android:lines="1"
                             android:maxLength="9"
                             android:textColor="@color/color_4"
-                            android:textColorHint="@color/color_4"
+                            android:textColorHint="@color/color_18"
                             android:textSize="@dimen/textSizeMedium"
                             tools:ignore="Autofill" />
 

@@ -190,7 +190,6 @@
                     android:layout_marginRight="@dimen/activity_mid_margin"
                     android:orientation="horizontal"
                     android:textStyle="bold"
-
                     android:weightSum="5">
 
                     <TextView

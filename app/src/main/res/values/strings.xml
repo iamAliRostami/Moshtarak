@@ -76,7 +76,7 @@
     <string name="error">خطا</string>
 
     <string name="all_field_should_filled">همه فیلدها باید پر شود.</string>
-    <string name="error_empty">این فیلد باید پر شود.</string>
+    <string name="error_empty">این فیلد باید به درستی پر شود.</string>
     <string name="error_bill_id">شناسه قبض صحیح نمیباشد.</string>
     <string name="error_connection">خطا در جابجایی اطلاعات، لطفا مجدد تلاش کنید.</string>
     <string name="error_unknown">خطای ناشناخته رخ داده است.</string>

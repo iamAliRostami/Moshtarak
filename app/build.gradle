@@ -17,8 +17,8 @@ android {
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 33
-        versionName "1.1.8"
+        versionCode 36
+        versionName "1.1.9"
         testInstrumentationRunner "androidx.register_item_popup.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

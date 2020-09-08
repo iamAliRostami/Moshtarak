@@ -39,11 +39,12 @@ public class SaleActivity extends BaseActivity {
     View viewFocus;
 
 
+    @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
         binding = SaleContentBinding.inflate(getLayoutInflater());
         View childLayout = binding.getRoot();
-        @SuppressLint("CutPasteId") ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
         parentLayout.addView(childLayout);
         context = this;
         sharedPreference = new SharedPreference(context);
@@ -57,7 +58,6 @@ public class SaleActivity extends BaseActivity {
         View view = binding.radioGroupService;
         view.requestFocus();
         binding.radioButtonService1.setChecked(true);
-        setEditTextOnFocusChangeListener();
         setButtonNavigationOnClickListener();
         SetEditTextChangedListener();
     }
@@ -124,46 +124,55 @@ public class SaleActivity extends BaseActivity {
             View view;
             boolean cancel = false;
             if (binding.editTextAddress.getText().length() < 1) {
+                binding.editTextAddress.setError(getString(R.string.error_empty));
                 view = binding.editTextAddress;
                 view.requestFocus();
                 cancel = true;
             }
             if (binding.editTextBillId.getText().length() < 6) {
+                binding.editTextBillId.setError(getString(R.string.error_empty));
                 view = binding.editTextBillId;
                 view.requestFocus();
                 cancel = true;
             }
             if (binding.editTextPostalCode.getText().length() < 10) {
+                binding.editTextPostalCode.setError(getString(R.string.error_empty));
                 view = binding.editTextPostalCode;
                 view.requestFocus();
                 cancel = true;
             }
             if (binding.editTextMobile.getText().length() < 9) {
+                binding.editTextMobile.setError(getString(R.string.error_empty));
                 view = binding.editTextMobile;
                 view.requestFocus();
                 cancel = true;
             }
             if (binding.editTextPhoneNumber.getText().length() < 8) {
+                binding.editTextPhoneNumber.setError(getString(R.string.error_empty));
                 view = binding.editTextPhoneNumber;
                 view.requestFocus();
                 cancel = true;
             }
             if (binding.editTextNationNumber.getText().length() < 10) {
+                binding.editTextNationNumber.setError(getString(R.string.error_empty));
                 view = binding.editTextNationNumber;
                 view.requestFocus();
                 cancel = true;
             }
             if (binding.editTextFatherName.getText().length() < 1) {
+                binding.editTextFatherName.setError(getString(R.string.error_empty));
                 view = binding.editTextFatherName;
                 view.requestFocus();
                 cancel = true;
             }
             if (binding.editTextFamily.getText().length() < 1) {
+                binding.editTextFamily.setError(getString(R.string.error_empty));
                 view = binding.editTextFamily;
                 view.requestFocus();
                 cancel = true;
             }
             if (binding.editTextName.getText().length() < 1) {
+                binding.editTextName.setError(getString(R.string.error_empty));
                 view = binding.editTextName;
                 view.requestFocus();
                 cancel = true;
@@ -172,154 +181,6 @@ public class SaleActivity extends BaseActivity {
                 sendRequest();
             }
         });
-    }
-
-    private void setEditTextOnFocusChangeListener() {
-        setEditTextNameOnFocusChangeListener();
-        setEditTextFamilyOnFocusChangeListener();
-        setEditTextFatherNameOnFocusChangeListener();
-        setEditTextNationNumberOnFocusChangeListener();
-        setEditTextPhoneNumberOnFocusChangeListener();
-        setEditTextMobileOnFocusChangeListener();
-        setEditTextPostalCodeOnFocusChangeListener();
-        setEditTextBillIdOnFocusChangeListener();
-        setEditTextAddressOnFocusChangeListener();
-    }
-
-    private void setEditTextNameOnFocusChangeListener() {
-        binding.editTextName.setOnFocusChangeListener((view1, b) -> {
-            if (b) {
-                binding.editTextName.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.linearLayoutName.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.textViewName.setTextColor(getResources().getColor(R.color.orange2));
-            } else {
-                binding.editTextName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.linearLayoutName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewName.setTextColor(getResources().getColor(R.color.text_color_1));
-            }
-        });
-    }
-
-    private void setEditTextFamilyOnFocusChangeListener() {
-        binding.editTextFamily.setOnFocusChangeListener((view1, b) -> {
-            if (b) {
-                binding.editTextFamily.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.linearLayoutFamily.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.textViewFamily.setTextColor(getResources().getColor(R.color.orange2));
-            } else {
-                binding.editTextFamily.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.linearLayoutFamily.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewFamily.setTextColor(getResources().getColor(R.color.text_color_1));
-            }
-        });
-    }
-
-    private void setEditTextFatherNameOnFocusChangeListener() {
-        binding.editTextFatherName.setOnFocusChangeListener((view1, b) -> {
-            if (b) {
-                binding.editTextFatherName.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.linearLayoutFatherName.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.textViewFatherName.setTextColor(getResources().getColor(R.color.orange2));
-            } else {
-                binding.editTextFatherName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.linearLayoutFatherName.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewFatherName.setTextColor(getResources().getColor(R.color.text_color_1));
-            }
-        });
-    }
-
-    private void setEditTextNationNumberOnFocusChangeListener() {
-        binding.editTextNationNumber.setOnFocusChangeListener((view1, b) -> {
-            if (b) {
-                binding.editTextNationNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.linearLayoutNationNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.textViewNationNumber.setTextColor(getResources().getColor(R.color.orange2));
-            } else {
-                binding.editTextNationNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.linearLayoutNationNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewNationNumber.setTextColor(getResources().getColor(R.color.text_color_1));
-            }
-        });
-    }
-
-    private void setEditTextPhoneNumberOnFocusChangeListener() {
-        binding.editTextPhoneNumber.setOnFocusChangeListener((view1, b) -> {
-            if (b) {
-                binding.editTextPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.linearLayoutPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.textViewPhoneNumber.setTextColor(getResources().getColor(R.color.orange2));
-            } else {
-                binding.editTextPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.linearLayoutPhoneNumber.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewPhoneNumber.setTextColor(getResources().getColor(R.color.text_color_1));
-            }
-        });
-    }
-
-    private void setEditTextMobileOnFocusChangeListener() {
-        binding.editTextMobile.setOnFocusChangeListener((view1, b) -> {
-            if (b) {
-                binding.editTextMobile.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.linearLayoutMobile.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.textViewMobile.setTextColor(getResources().getColor(R.color.orange2));
-            } else {
-                binding.editTextMobile.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.linearLayoutMobile.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewMobile.setTextColor(getResources().getColor(R.color.text_color_1));
-            }
-        });
-    }
-
-    private void setEditTextPostalCodeOnFocusChangeListener() {
-        binding.editTextPostalCode.setOnFocusChangeListener((view1, b) -> {
-            if (b) {
-                binding.editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.textViewPostalCode.setTextColor(getResources().getColor(R.color.orange2));
-            } else {
-                binding.editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewPostalCode.setTextColor(getResources().getColor(R.color.text_color_1));
-            }
-        });
-    }
-
-    private void setEditTextBillIdOnFocusChangeListener() {
-        binding.editTextBillId.setOnFocusChangeListener((view1, b) -> {
-            if (b) {
-                binding.editTextBillId.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.linearLayoutBillId.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.textViewBillId.setTextColor(getResources().getColor(R.color.orange2));
-            } else {
-                binding.editTextBillId.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.linearLayoutBillId.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewBillId.setTextColor(getResources().getColor(R.color.text_color_1));
-            }
-        });
-    }
-
-    private void setEditTextAddressOnFocusChangeListener() {
-        binding.editTextAddress.setOnFocusChangeListener((view, b) -> {
-            if (b) {
-                binding.editTextAddress.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.linearLayoutAddress.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.textViewAddress.setTextColor(getResources().getColor(R.color.orange2));
-            } else {
-                binding.editTextAddress.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.linearLayoutAddress.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewAddress.setTextColor(getResources().getColor(R.color.text_color_1));
-            }
-        });
-    }
-
-    private void setEditTextNameChangedListener() {
-
-    }
-
-    private void setEditTextFamilyChangedListener() {
-    }
-
-    private void setEditTextFatherNameChangedListener() {
     }
 
     private void setEditTextNationNumberChangedListener() {
@@ -388,20 +249,6 @@ public class SaleActivity extends BaseActivity {
         });
     }
 
-    private void setEditTextPostalCodeChangedListener() {
-        binding.editTextPostalCode.setOnFocusChangeListener((view1, b) -> {
-            if (b) {
-                binding.editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_orange_2));
-                binding.textViewPostalCode.setTextColor(getResources().getColor(R.color.orange2));
-            } else {
-                binding.editTextPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.linearLayoutPostalCode.setBackground(getResources().getDrawable(R.drawable.border_gray_2));
-                binding.textViewPostalCode.setTextColor(getResources().getColor(R.color.text_color_1));
-            }
-        });
-    }
-
     private void setEditTextBillIdChangedListener() {
         binding.editTextPostalCode.addTextChangedListener(new TextWatcher() {
             @Override
@@ -417,7 +264,7 @@ public class SaleActivity extends BaseActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (editable.length() == 10) {
-                    viewFocus = binding.radioGroupService;
+                    viewFocus = binding.editTextAddress;
                     viewFocus.requestFocus();
                 }
             }
@@ -428,14 +275,10 @@ public class SaleActivity extends BaseActivity {
     }
 
     protected void SetEditTextChangedListener() {
-        setEditTextNameChangedListener();
-        setEditTextFamilyChangedListener();
-        setEditTextFatherNameChangedListener();
         setEditTextPhoneNumberChangedListener();
         setEditTextNationNumberChangedListener();
         setEditTextMobileChangedListener();
         setEditTextBillIdChangedListener();
-        setEditTextPostalCodeChangedListener();
         setEditTextAddressChangedListener();
     }
 

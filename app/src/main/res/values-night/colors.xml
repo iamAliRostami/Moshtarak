@@ -58,4 +58,5 @@
     <color name="color_15">#132F4A</color>
     <color name="color_16">#132F4A</color>
     <color name="color_17">@color/white</color>
+    <color name="color_18">#d8d8d8</color>
 </resources>

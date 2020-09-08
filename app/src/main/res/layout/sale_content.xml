@@ -5,8 +5,10 @@
     android:id="@+id/sale_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="rtl"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.app.leon.moshtarak.activities.SaleActivity">
+    tools:context="com.app.leon.moshtarak.activities.SaleActivity"
+    tools:ignore="UnusedAttribute">
 
     <include layout="@layout/footer" />
 
@@ -15,520 +17,491 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/linearLayoutFooter"
+        android:layout_above="@id/linearLayoutNavigation"
         android:layout_below="@id/linearLayoutHeader"
         android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/activity_large_margin"
+        android:layout_marginRight="@dimen/activity_large_margin"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="3">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_marginTop="@dimen/activity_large_margin"
+            android:layout_weight="2"
+            android:padding="@dimen/activity_medium_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/new_border_gray_1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:baselineAligned="false"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
                     android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewName"
-                            style="@style/text_bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/name"
-                            android:textColor="@color/text_color_1"
-                            android:textSize="@dimen/textSizeMedium"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:id="@+id/linearLayoutName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/border_gray_4"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTextName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/border_gray_4"
-                                android:gravity="center"
-                                android:inputType="text"
-                                android:lines="1"
-                                android:nextFocusLeft="@id/editTextFamily"
-                                android:nextFocusRight="@id/editTextFamily"
-                                android:nextFocusUp="@id/editTextFamily"
-                                android:nextFocusDown="@id/editTextFamily"
-                                android:nextFocusForward="@id/editTextFamily"
-                                android:padding="@dimen/activity_mid_padding"
-                                tools:ignore="Autofill,LabelFor" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewFamily"
-                            style="@style/text_bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/family"
-                            android:textColor="@color/text_color_1"
-                            android:textSize="@dimen/textSizeMedium"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:id="@+id/linearLayoutFamily"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/border_gray_4"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTextFamily"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/border_gray_4"
-                                android:gravity="center"
-                                android:inputType="text"
-                                android:lines="1"
-                                android:nextFocusLeft="@id/editTextFatherName"
-                                android:nextFocusRight="@id/editTextFatherName"
-                                android:nextFocusUp="@id/editTextFatherName"
-                                android:nextFocusDown="@id/editTextFatherName"
-                                android:nextFocusForward="@id/editTextFatherName"
-                                android:padding="@dimen/activity_mid_padding"
-                                tools:ignore="Autofill,LabelFor" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    tools:ignore="DisableBaselineAlignment">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewFatherName"
-                            style="@style/text_bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/father_name"
-                            android:textColor="@color/text_color_1"
-                            android:textSize="@dimen/textSizeMedium"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:id="@+id/linearLayoutFatherName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/border_gray_4"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTextFatherName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/border_gray_4"
-                                android:gravity="center"
-                                android:inputType="text"
-                                android:lines="1"
-                                android:nextFocusLeft="@id/editTextNationNumber"
-                                android:nextFocusRight="@id/editTextNationNumber"
-                                android:nextFocusUp="@id/editTextNationNumber"
-                                android:nextFocusDown="@id/editTextNationNumber"
-                                android:nextFocusForward="@id/editTextNationNumber"
-                                android:padding="@dimen/activity_mid_padding"
-                                tools:ignore="Autofill,LabelFor" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewNationNumber"
-                            style="@style/text_bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/nation_number"
-                            android:textColor="@color/text_color_1"
-                            android:textSize="@dimen/textSizeMedium"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:id="@+id/linearLayoutNationNumber"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/border_gray_4"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTextNationNumber"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/border_gray_4"
-                                android:gravity="center"
-                                android:inputType="number"
-                                android:lines="1"
-                                android:maxLength="10"
-                                android:nextFocusLeft="@id/editTextPhoneNumber"
-                                android:nextFocusRight="@id/editTextPhoneNumber"
-                                android:nextFocusUp="@id/editTextPhoneNumber"
-                                android:nextFocusDown="@id/editTextPhoneNumber"
-                                android:nextFocusForward="@id/editTextPhoneNumber"
-                                android:padding="@dimen/activity_mid_padding"
-                                tools:ignore="Autofill,LabelFor,TextFields" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    tools:ignore="DisableBaselineAlignment">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewPhoneNumber"
-                            style="@style/text_bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/phone_number"
-                            android:textColor="@color/text_color_1"
-                            android:textSize="@dimen/textSizeMedium"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:id="@+id/linearLayoutPhoneNumber"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/border_gray_4"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTextPhoneNumber"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/border_gray_4"
-                                android:gravity="center"
-                                android:inputType="number"
-                                android:lines="1"
-                                android:maxLength="8"
-                                android:nextFocusLeft="@id/editTextMobile"
-                                android:nextFocusRight="@id/editTextMobile"
-                                android:nextFocusUp="@id/editTextMobile"
-                                android:nextFocusDown="@id/editTextMobile"
-                                android:nextFocusForward="@id/editTextMobile"
-                                android:padding="@dimen/activity_mid_padding"
-                                tools:ignore="Autofill,LabelFor,TextFields" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewMobile"
-                            style="@style/text_bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/mobile_number"
-                            android:textColor="@color/text_color_1"
-                            android:textSize="@dimen/textSizeMedium"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:id="@+id/linearLayoutMobile"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/border_gray_4"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTextMobile"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:background="@drawable/border_gray_4"
-                                android:gravity="center"
-                                android:inputType="number"
-                                android:lines="1"
-                                android:maxLength="9"
-                                android:nextFocusLeft="@id/editTextBillId"
-                                android:nextFocusRight="@id/editTextBillId"
-                                android:nextFocusUp="@id/editTextBillId"
-                                android:nextFocusDown="@id/editTextBillId"
-                                android:nextFocusForward="@id/editTextBillId"
-                                android:padding="@dimen/activity_mid_padding"
-                                tools:ignore="Autofill,LabelFor" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/activity_mid_margin"
-                                android:layout_marginEnd="@dimen/activity_mid_margin"
-                                android:text="@string/_09"
-                                android:textSize="@dimen/textSizeMedium" />
-
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:baselineAligned="false"
-                    android:gravity="right"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    tools:ignore="RtlHardcoded">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewBillId"
-                            style="@style/text_bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/id_bill_neighbour"
-                            android:textColor="@color/text_color_1"
-                            android:textSize="@dimen/textSizeMedium"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:id="@+id/linearLayoutBillId"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/border_gray_4"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTextBillId"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/border_gray_4"
-                                android:gravity="center"
-                                android:inputType="number"
-                                android:lines="1"
-                                android:maxLength="13"
-                                android:padding="@dimen/activity_mid_padding"
-                                tools:ignore="Autofill,LabelFor,TextFields" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textViewPostalCode"
-                            style="@style/text_bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="@string/postal_code"
-                            android:textColor="@color/text_color_1"
-                            android:textSize="@dimen/textSizeMedium"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:id="@+id/linearLayoutPostalCode"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/border_gray_4"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTextPostalCode"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/border_gray_4"
-                                android:gravity="center"
-                                android:inputType="number"
-                                android:lines="1"
-                                android:maxLength="10"
-                                android:padding="@dimen/activity_mid_padding"
-                                tools:ignore="Autofill,LabelFor,TextFields" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:orientation="vertical"
-                    tools:ignore="RtlHardcoded">
+                    android:weightSum="5">
 
                     <TextView
-                        android:id="@+id/textViewService"
+                        android:id="@+id/textViewFamily"
                         style="@style/text_bold"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="@string/service"
-                        android:textColor="@color/text_color_1"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="2"
+                        android:background="@drawable/border_bill_blue_7"
+                        android:gravity="center"
+                        android:text="@string/name"
+                        android:textColor="@color/color_2"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editTextFamily"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_mid_margin"
+                        android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:layout_weight="3"
+                        android:background="@drawable/border_bill_blue_8"
+                        android:gravity="center"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:padding="@dimen/activity_mid_padding"
+                        android:textColor="@color/color_6"
+                        tools:ignore="Autofill,LabelFor" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:id="@+id/textViewName"
+                        style="@style/text_bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="2"
+                        android:background="@drawable/border_bill_blue_7"
+                        android:gravity="center"
+                        android:text="@string/family"
+                        android:textColor="@color/color_2"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editTextName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_mid_margin"
+                        android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:layout_weight="3"
+                        android:background="@drawable/border_bill_blue_8"
+                        android:gravity="center"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:padding="@dimen/activity_mid_padding"
+                        android:textColor="@color/color_6"
+                        tools:ignore="Autofill,LabelFor" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:id="@+id/textViewFatherName"
+                        style="@style/text_bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="2"
+                        android:background="@drawable/border_bill_blue_7"
+                        android:gravity="center"
+                        android:text="@string/father_name"
+                        android:textColor="@color/color_2"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editTextFatherName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_mid_margin"
+                        android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:layout_weight="3"
+                        android:background="@drawable/border_bill_blue_8"
+                        android:gravity="center"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:padding="@dimen/activity_mid_padding"
+                        android:textColor="@color/color_6"
+                        tools:ignore="Autofill,LabelFor" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:id="@+id/textViewNationNumber"
+                        style="@style/text_bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="2"
+                        android:background="@drawable/border_bill_blue_7"
+                        android:gravity="center"
+                        android:text="@string/nation_number"
+                        android:textColor="@color/color_2"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editTextNationNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_mid_margin"
+                        android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:layout_weight="3"
+                        android:background="@drawable/border_bill_blue_8"
+                        android:gravity="center"
+                        android:inputType="numberSigned"
+                        android:lines="1"
+                        android:maxLength="10"
+                        android:padding="@dimen/activity_mid_padding"
+                        android:textColor="@color/color_6"
+                        tools:ignore="Autofill,LabelFor" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:id="@+id/textViewPhoneNumber"
+                        style="@style/text_bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="2"
+                        android:background="@drawable/border_bill_blue_7"
+                        android:gravity="center"
+                        android:text="@string/phone_number"
+                        android:textColor="@color/color_2"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editTextPhoneNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_mid_margin"
+                        android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:layout_weight="3"
+                        android:background="@drawable/border_bill_blue_8"
+                        android:gravity="center"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:maxLength="8"
+                        android:padding="@dimen/activity_mid_padding"
+                        android:textColor="@color/color_6"
+                        tools:ignore="Autofill,LabelFor" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:id="@+id/textViewMobile"
+                        style="@style/text_bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="2"
+                        android:background="@drawable/border_bill_blue_7"
+                        android:gravity="center"
+                        android:text="@string/mobile_number"
+                        android:textColor="@color/color_2"
                         android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutService"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/activity_mid_margin"
-                        android:background="@drawable/border_gray_4"
-                        android:orientation="vertical"
-                        android:padding="@dimen/activity_mid_margin">
+                        android:layout_weight="3"
+                        android:background="@drawable/border_bill_blue_8"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/activity_large_padding"
+                        android:paddingRight="@dimen/activity_large_padding">
 
-                        <RadioGroup
-                            android:id="@+id/radioGroupService"
+
+                        <EditText
+                            android:id="@+id/editTextMobile"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/activity_mid_margin"
+                            android:layout_marginBottom="@dimen/activity_mid_margin"
+                            android:layout_weight="1"
+                            android:background="@color/color_2"
+                            android:gravity="center"
+                            android:inputType="phone"
+                            android:lines="1"
+                            android:maxLength="9"
+                            android:textColor="@color/color_6"
+                            tools:ignore="Autofill,LabelFor,NestedWeights,RtlHardcoded" />
+
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:orientation="horizontal"
-                            tools:ignore="RtlHardcoded,UselessParent">
-
-                            <RadioButton
-                                android:id="@+id/radioButtonService1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:enabled="true"
-                                android:text="@string/water_branch" />
-
-                            <RadioButton
-                                android:id="@+id/radioButtonService2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/water_and_fa_branch" />
-                        </RadioGroup>
+                            android:gravity="center"
+                            android:text="@string/_09"
+                            android:textColor="@color/color_6"
+                            android:textSize="@dimen/textSizeMedium"
+                            tools:ignore="RtlHardcoded" />
                     </LinearLayout>
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:id="@+id/textViewBillId"
+                        style="@style/text_bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="2"
+                        android:background="@drawable/border_bill_blue_7"
+                        android:gravity="center"
+                        android:text="@string/id_bill_neighbour"
+                        android:textColor="@color/color_2"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editTextBillId"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_mid_margin"
+                        android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:layout_weight="3"
+                        android:background="@drawable/border_bill_blue_8"
+                        android:gravity="center"
+                        android:inputType="numberSigned"
+                        android:lines="1"
+                        android:maxLength="13"
+                        android:padding="@dimen/activity_mid_padding"
+                        android:textColor="@color/color_6"
+                        tools:ignore="Autofill,LabelFor" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/activity_mid_margin"
-                    android:orientation="vertical">
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:id="@+id/textViewPostalCode"
+                        style="@style/text_bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="2"
+                        android:background="@drawable/border_bill_blue_7"
+                        android:gravity="center"
+                        android:text="@string/postal_code"
+                        android:textColor="@color/color_2"
+                        android:textSize="@dimen/textSizeMedium"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editTextPostalCode"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_mid_margin"
+                        android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:layout_weight="3"
+                        android:background="@drawable/border_bill_blue_8"
+                        android:gravity="center"
+                        android:inputType="numberSigned"
+                        android:lines="1"
+                        android:maxLength="10"
+                        android:padding="@dimen/activity_mid_padding"
+                        android:textColor="@color/color_6"
+                        tools:ignore="Autofill,LabelFor" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_mid_margin"
+                    android:layout_marginRight="@dimen/activity_mid_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
 
                     <TextView
                         android:id="@+id/textViewAddress"
                         style="@style/text_bold"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:maxLength="50"
+                        android:layout_margin="@dimen/activity_mid_margin"
+                        android:layout_weight="2"
+                        android:background="@drawable/border_bill_blue_7"
+                        android:gravity="center"
                         android:text="@string/address"
-                        android:textColor="@color/text_color_1"
-                        android:textSize="@dimen/textSizeLarge"
+                        android:textColor="@color/color_2"
+                        android:textSize="@dimen/textSizeMedium"
                         android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:id="@+id/linearLayoutAddress"
-                        android:layout_width="match_parent"
+                    <EditText
+                        android:id="@+id/editTextAddress"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/border_gray_4"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="@dimen/activity_mid_margin"
+                        android:layout_marginBottom="@dimen/activity_mid_margin"
+                        android:layout_weight="3"
+                        android:background="@drawable/border_bill_blue_8"
+                        android:gravity="center"
+                        android:inputType="text"
+                        android:lines="3"
+                        android:padding="@dimen/activity_mid_padding"
+                        android:textColor="@color/color_6"
+                        tools:ignore="Autofill,LabelFor" />
 
-                        <EditText
-                            android:id="@+id/editTextAddress"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/border_gray_4"
-                            android:gravity="top"
-                            android:lines="6"
-                            android:padding="@dimen/activity_mid_padding"
-                            tools:ignore="Autofill,LabelFor,RtlHardcoded,TextFields" />
-                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/activity_mid_margin"
+            android:layout_weight="1"
+            android:padding="@dimen/activity_medium_padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/new_border_gray_1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_medium_padding">
+
+                <TextView
+                    android:id="@+id/textViewService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/service"
+                    android:textColor="@color/color_5"
+                    android:textSize="@dimen/textSizeSmall"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_mid_margin"
+                    android:layout_marginBottom="@dimen/activity_mid_margin"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/activity_mid_padding"
+                    android:paddingBottom="@dimen/activity_mid_padding"
+                    android:textColor="@color/color_5">
+
+                    <RadioButton
+                        android:id="@+id/radioButtonService1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="true"
+                        android:text="@string/water_branch"
+                        android:textColor="@color/color_5"
+                        android:textSize="@dimen/textSizeMedium" />
+
+                    <RadioButton
+                        android:id="@+id/radioButtonService2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/water_and_fa_branch"
+                        android:textColor="@color/color_5"
+                        android:textSize="@dimen/textSizeMedium" />
+                </RadioGroup>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayoutFooter"
+        android:layout_marginLeft="@dimen/activity_large_margin"
+        android:layout_marginRight="@dimen/activity_large_margin">
+
         <Button
             android:id="@+id/buttonNavigation"
-            style="@style/text_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_large_margin"
-            android:layout_marginTop="@dimen/activity_mid_margin"
-            android:layout_marginRight="@dimen/activity_large_margin"
             android:layout_marginBottom="@dimen/activity_mid_margin"
-            android:background="@drawable/border_green_2"
-            android:focusable="true"
+            android:background="@drawable/new_border_green_2"
             android:text="@string/buy"
-            android:textColor="@color/text_color_2"
-            android:textSize="@dimen/textSizeLarge"
-            android:textStyle="bold" />
+            android:textColor="@color/green2"
+            android:textSize="@dimen/textSizeMedium" />
     </LinearLayout>
 </RelativeLayout>
