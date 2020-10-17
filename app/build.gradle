@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
+//apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     buildToolsVersion = '30.0.2'
@@ -17,7 +19,7 @@ android {
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 36
+        versionCode 37
         versionName "1.1.9"
         testInstrumentationRunner "androidx.register_item_popup.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config
@@ -99,8 +101,10 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation project(path: ':pecpayment-release')
     implementation 'com.mcxiaoke.volley:library:1.0.19'
-    implementation('com.crashlytics.sdk.android:crashlytics:2.10.1@aar') {
-        transitive = true
-    }
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.2'
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+//    implementation('com.crashlytics.sdk.android:crashlytics:17.2.2@aar') {
+//        transitive = true
+//    }
 }
 apply plugin: 'com.google.gms.google-services'

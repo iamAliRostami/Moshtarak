@@ -411,11 +411,8 @@ public class LastBillFileActivity extends AppCompatActivity {
         String base64 = new String(encodeValue);
         Call<LastBillInfoV2> call = getThisBillInfo.getLastBillInfo(billId, base64.substring(0,
                 base64.length() - 1));
-        GetBill bill = new GetBill();
-        GetBillIncomplete incomplete = new GetBillIncomplete();
-        GetError error = new GetError();
-        HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, bill,
-                incomplete, error);
+        HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, new GetBill(),
+                new GetBillIncomplete(), new GetError());
     }
 
     Code128 setCode128() {
@@ -516,7 +513,7 @@ public class LastBillFileActivity extends AppCompatActivity {
             String root = Environment.getExternalStoragePublicDirectory(
                     Environment.DIRECTORY_PICTURES).toString() + File.separator + getString(R.string.app_name);
             File myDir = new File(root);
-            myDir.mkdirs();
+            if (!myDir.mkdirs()) return;
 
             File file = new File(myDir, imageName);
             System.out.println(file.getAbsolutePath());
