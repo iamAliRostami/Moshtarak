@@ -18,11 +18,11 @@
     <include layout="@layout/header" />
 
     <ScrollView
-        android:visibility="gone"
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/linearLayoutFooter"
+        android:visibility="gone"
         tools:ignore="UselessParent">
 
         <androidx.appcompat.widget.LinearLayoutCompat

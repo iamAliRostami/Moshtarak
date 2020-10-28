@@ -52,22 +52,22 @@
             tools:ignore="UselessParent">
 
             <TextView
-                android:textColor="@color/color_12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/activity_large_padding"
                 android:paddingRight="@dimen/activity_large_padding"
                 android:text="@string/request_date_ask"
+                android:textColor="@color/color_12"
                 android:textSize="@dimen/textSizeMedium" />
 
             <TextView
-                android:textColor="@color/color_12"
                 android:id="@+id/textViewRequestDateAsk"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="@dimen/activity_large_padding"
                 android:paddingRight="@dimen/activity_large_padding"
+                android:textColor="@color/color_12"
                 android:textSize="@dimen/textSizeMedium" />
         </LinearLayout>
 
@@ -79,22 +79,22 @@
             tools:ignore="UselessParent">
 
             <TextView
-                android:textColor="@color/color_12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/activity_large_padding"
                 android:paddingRight="@dimen/activity_large_padding"
                 android:text="@string/request_date_request"
+                android:textColor="@color/color_12"
                 android:textSize="@dimen/textSizeMedium" />
 
             <TextView
-                android:textColor="@color/color_12"
                 android:id="@+id/textViewRequestDateRegister"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="@dimen/activity_large_padding"
                 android:paddingRight="@dimen/activity_large_padding"
+                android:textColor="@color/color_12"
                 android:textSize="@dimen/textSizeMedium" />
         </LinearLayout>
 
@@ -105,22 +105,22 @@
             tools:ignore="UselessParent">
 
             <TextView
-                android:text="@string/track_number_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/activity_large_padding"
                 android:paddingRight="@dimen/activity_large_padding"
+                android:text="@string/track_number_1"
                 android:textColor="@color/color_12"
                 android:textSize="@dimen/textSizeMedium" />
 
             <TextView
-                android:textColor="@color/color_12"
                 android:id="@+id/textViewParNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="@dimen/activity_large_padding"
                 android:paddingRight="@dimen/activity_large_padding"
+                android:textColor="@color/color_12"
                 android:textSize="@dimen/textSizeMedium" />
         </LinearLayout>
     </LinearLayout>

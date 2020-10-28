@@ -65,8 +65,8 @@ public class LastBillFileActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 626;
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION_FOR_SEND = 621;
     private static final int REQUEST_CODE_PAYMENT_BILL = 199;
-    SharedPreference sharedPreference;
     static LastBillInfoV2 lastBillInfo;
+    SharedPreference sharedPreference;
     LastBillFileActivityBinding binding;
     String imageName, billId, payId, apiKey;
     Context context;
@@ -430,109 +430,6 @@ public class LastBillFileActivity extends AppCompatActivity {
         return code;
     }
 
-
-    @SuppressLint("StaticFieldLeak")
-    class SendImages extends AsyncTask<Object, Object, Object> {
-        CustomProgressBar customProgressBar;
-        Bitmap bitmap;
-        Context context;
-
-        public SendImages(Context context, Bitmap bitmap) {
-            this.bitmap = bitmap;
-            this.context = context;
-            this.customProgressBar = new CustomProgressBar();
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            customProgressBar.show(context, getString(R.string.waiting), false, dialog -> {
-                Toast.makeText(MyApplication.getContext(),
-                        MyApplication.getContext().getString(R.string.canceled),
-                        Toast.LENGTH_LONG).show();
-                customProgressBar.getDialog().dismiss();
-            });
-        }
-
-        @Override
-        protected Object doInBackground(Object... objects) {
-            sendImage();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Object o) {
-            super.onPostExecute(o);
-            customProgressBar.getDialog().dismiss();
-        }
-
-        void sendImage() {
-            Intent share = new Intent(Intent.ACTION_SEND);
-            share.setType("image/jpeg");
-            share.putExtra(Intent.EXTRA_STREAM, getImageUri(bitmap, Bitmap.CompressFormat.JPEG, 100));
-            startActivity(Intent.createChooser(share, getString(R.string.send_to)));
-        }
-    }
-
-    @SuppressLint("StaticFieldLeak")
-    class SaveImages extends AsyncTask<Object, Object, Object> {
-        CustomProgressBar customProgressBar;
-        Bitmap bitmap;
-        Context context;
-
-        public SaveImages(Context context, Bitmap bitmap) {
-            this.bitmap = bitmap;
-            this.context = context;
-            this.customProgressBar = new CustomProgressBar();
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            customProgressBar.show(context, getString(R.string.waiting), false, dialog -> {
-                Toast.makeText(MyApplication.getContext(),
-                        MyApplication.getContext().getString(R.string.canceled),
-                        Toast.LENGTH_LONG).show();
-                customProgressBar.getDialog().dismiss();
-            });
-        }
-
-        @Override
-        protected Object doInBackground(Object... objects) {
-            saveImage();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Object o) {
-            super.onPostExecute(o);
-            customProgressBar.getDialog().dismiss();
-        }
-
-        void saveImage() {
-            String root = Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_PICTURES).toString() + File.separator + getString(R.string.app_name);
-            File myDir = new File(root);
-            if (!myDir.mkdirs()) return;
-
-            File file = new File(myDir, imageName);
-            System.out.println(file.getAbsolutePath());
-            if (file.exists()) file.delete();
-            Log.i("LOAD", root + imageName);
-            try {
-                FileOutputStream out = new FileOutputStream(file);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, out);
-                out.flush();
-                out.close();
-                runOnUiThread(() -> Toast.makeText(context, R.string.saved, Toast.LENGTH_LONG).show());
-            } catch (Exception e) {
-                e.printStackTrace();
-                runOnUiThread(() -> Toast.makeText(context, R.string.error_preparing, Toast.LENGTH_LONG).show());
-            }
-            MediaScannerConnection.scanFile(context, new String[]{file.getPath()}, new String[]{"image/jpeg"}, null);
-        }
-    }
-
     void getToken() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService service = retrofit.create(IAbfaService.class);
@@ -769,13 +666,132 @@ public class LastBillFileActivity extends AppCompatActivity {
 //        runOnUiThread(() -> binding.imageViewLastBill.setImageBitmap(dest));
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    class SendImages extends AsyncTask<Object, Object, Object> {
+        CustomProgressBar customProgressBar;
+        Bitmap bitmap;
+        Context context;
+
+        public SendImages(Context context, Bitmap bitmap) {
+            this.bitmap = bitmap;
+            this.context = context;
+            this.customProgressBar = new CustomProgressBar();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            customProgressBar.show(context, getString(R.string.waiting), false, dialog -> {
+                Toast.makeText(MyApplication.getContext(),
+                        MyApplication.getContext().getString(R.string.canceled),
+                        Toast.LENGTH_LONG).show();
+                customProgressBar.getDialog().dismiss();
+            });
+        }
+
+        @Override
+        protected Object doInBackground(Object... objects) {
+            sendImage();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            customProgressBar.getDialog().dismiss();
+        }
+
+        void sendImage() {
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.setType("image/jpeg");
+            share.putExtra(Intent.EXTRA_STREAM, getImageUri(bitmap, Bitmap.CompressFormat.JPEG, 100));
+            startActivity(Intent.createChooser(share, getString(R.string.send_to)));
+        }
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    class SaveImages extends AsyncTask<Object, Object, Object> {
+        CustomProgressBar customProgressBar;
+        Bitmap bitmap;
+        Context context;
+
+        public SaveImages(Context context, Bitmap bitmap) {
+            this.bitmap = bitmap;
+            this.context = context;
+            this.customProgressBar = new CustomProgressBar();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            customProgressBar.show(context, getString(R.string.waiting), false, dialog -> {
+                Toast.makeText(MyApplication.getContext(),
+                        MyApplication.getContext().getString(R.string.canceled),
+                        Toast.LENGTH_LONG).show();
+                customProgressBar.getDialog().dismiss();
+            });
+        }
+
+        @Override
+        protected Object doInBackground(Object... objects) {
+            saveImage();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            customProgressBar.getDialog().dismiss();
+        }
+
+        void saveImage() {
+            String root = Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_PICTURES).toString() + File.separator + getString(R.string.app_name);
+            File myDir = new File(root);
+            if (!myDir.mkdirs()) return;
+
+            File file = new File(myDir, imageName);
+            System.out.println(file.getAbsolutePath());
+            if (file.exists()) file.delete();
+            Log.i("LOAD", root + imageName);
+            try {
+                FileOutputStream out = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, out);
+                out.flush();
+                out.close();
+                runOnUiThread(() -> Toast.makeText(context, R.string.saved, Toast.LENGTH_LONG).show());
+            } catch (Exception e) {
+                e.printStackTrace();
+                runOnUiThread(() -> Toast.makeText(context, R.string.error_preparing, Toast.LENGTH_LONG).show());
+            }
+            MediaScannerConnection.scanFile(context, new String[]{file.getPath()}, new String[]{"image/jpeg"}, null);
+        }
+    }
+
     class GetToken implements ICallback<SimpleMessage> {
         @Override
         public void execute(SimpleMessage simpleMessage) {
             pay(simpleMessage.getMessage());
         }
     }
-
 
     class GetBill implements ICallback<LastBillInfoV2> {
         @SuppressLint("DefaultLocale")
@@ -837,23 +853,5 @@ public class LastBillFileActivity extends AppCompatActivity {
                     LastBillFileActivity.this.getString(R.string.login),
                     LastBillFileActivity.this.getString(R.string.accepted));
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
     }
 }

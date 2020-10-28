@@ -45,11 +45,11 @@ public class AfterSaleServicesActivity extends BaseActivity {
     Context context;
     SharedPreference sharedPreference;
     String billId;
-    private ArrayList<String> servicesTitle = new ArrayList<>();
-    private ArrayList<String> servicesId = new ArrayList<>();
-    private ArrayList<String> requestServices = new ArrayList<>();
     AfterSaleAdapter afterSaleAdapter;
     boolean isList = true;
+    private final ArrayList<String> servicesTitle = new ArrayList<>();
+    private final ArrayList<String> servicesId = new ArrayList<>();
+    private final ArrayList<String> requestServices = new ArrayList<>();
 
     @SuppressLint("CutPasteId")
     @Override
@@ -147,6 +147,24 @@ public class AfterSaleServicesActivity extends BaseActivity {
                 incomplete, getError);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
     class GetServices implements ICallback<ArrayList<Service>> {
         @Override
         public void execute(ArrayList<Service> services) {
@@ -217,23 +235,5 @@ public class AfterSaleServicesActivity extends BaseActivity {
                     AfterSaleServicesActivity.this.getString(R.string.login),
                     AfterSaleServicesActivity.this.getString(R.string.accepted));
         }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
     }
 }

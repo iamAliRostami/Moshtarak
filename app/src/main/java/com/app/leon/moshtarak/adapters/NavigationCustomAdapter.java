@@ -24,7 +24,7 @@ import java.util.List;
 public class NavigationCustomAdapter extends
         RecyclerView.Adapter<NavigationCustomAdapter.DrawerItemHolder> {
     public Context context;
-    private List<DrawerItem> drawerItemList;
+    private final List<DrawerItem> drawerItemList;
 
     public NavigationCustomAdapter(Context context, List<DrawerItem> listItems) {
         this.context = context;
@@ -112,7 +112,7 @@ public class NavigationCustomAdapter extends
 
     public static class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
         GestureDetector mGestureDetector;
-        private OnItemClickListener mListener;
+        private final OnItemClickListener mListener;
 
         public RecyclerItemClickListener(Context context, final RecyclerView recyclerView,
                                          OnItemClickListener listener) {
@@ -129,9 +129,9 @@ public class NavigationCustomAdapter extends
                             View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
                             if (child != null && mListener != null) {
                                 mListener.onLongItemClick(child, recyclerView.getChildAdapterPosition(child));
-                    }
-                }
-            });
+                            }
+                        }
+                    });
         }
 
         @Override

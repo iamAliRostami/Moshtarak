@@ -1,4 +1,3 @@
-
 package com.app.leon.moshtarak.Utils;
 
 import android.app.Dialog;
@@ -20,8 +19,8 @@ public class LovelyInfoDialog extends AbsLovelyDialog<LovelyInfoDialog> {
 
     private static final String KEY_DO_NOT_SHOW_AGAIN = "key_dont_show_again";
 
-    private CheckBox cbDoNotShowAgain;
-    private Button confirmButton;
+    private final CheckBox cbDoNotShowAgain;
+    private final Button confirmButton;
 
     private int infoDialogId;
 

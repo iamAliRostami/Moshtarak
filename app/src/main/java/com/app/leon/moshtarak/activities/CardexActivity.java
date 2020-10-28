@@ -44,9 +44,9 @@ public class CardexActivity extends BaseActivity {
     CardexCustomAdapter cardexCustomAdapter;
     ArrayList<Integer> yAxisData = new ArrayList<>();
     ArrayList<String> axisValues = new ArrayList<>();
+    SharedPreference sharedPreference;
     private Context context;
     private String billId;
-    SharedPreference sharedPreference;
 
     @SuppressLint("CutPasteId")
     @Override
@@ -105,6 +105,24 @@ public class CardexActivity extends BaseActivity {
                 incomplete, getError);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
     class GetCardex implements ICallback<ArrayList<Cardex>> {
         @Override
         public void execute(ArrayList<Cardex> cardexes) {
@@ -156,23 +174,5 @@ public class CardexActivity extends BaseActivity {
                     CardexActivity.this.getString(R.string.login),
                     CardexActivity.this.getString(R.string.accepted));
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
     }
 }

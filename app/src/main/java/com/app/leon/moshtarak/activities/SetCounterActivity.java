@@ -235,6 +235,40 @@ public class SetCounterActivity extends BaseActivity {
         HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, setCounter, incomplete, error);
     }
 
+    void setComponentPosition() {
+        WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = Objects.requireNonNull(wm).getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+        int height = metrics.heightPixels;
+
+        binding.linearLayout1.setY((float) (height - (double) 16 * height / 27));
+        binding.linearLayout2.setY((float) (height - (double) 2 * height / 5));
+
+//        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.img_water_meter);
+//        binding.linearLayout1.setY((float) (44 * src.getHeight() / 27));
+//        binding.linearLayout2.setY((float) (58 * src.getHeight() / 27));
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
     class SetCounter implements ICallback<LastBillInfo> {
         @Override
         public void execute(LastBillInfo lastBillInfo) {
@@ -275,39 +309,5 @@ public class SetCounterActivity extends BaseActivity {
                     SetCounterActivity.this.getString(R.string.login),
                     SetCounterActivity.this.getString(R.string.accepted));
         }
-    }
-
-    void setComponentPosition() {
-        WindowManager wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
-        Display display = Objects.requireNonNull(wm).getDefaultDisplay();
-        DisplayMetrics metrics = new DisplayMetrics();
-        display.getMetrics(metrics);
-        int height = metrics.heightPixels;
-
-        binding.linearLayout1.setY((float) (height - (double) 16 * height / 27));
-        binding.linearLayout2.setY((float) (height - (double) 2 * height / 5));
-
-//        Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.img_water_meter);
-//        binding.linearLayout1.setY((float) (44 * src.getHeight() / 27));
-//        binding.linearLayout2.setY((float) (58 * src.getHeight() / 27));
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
     }
 }

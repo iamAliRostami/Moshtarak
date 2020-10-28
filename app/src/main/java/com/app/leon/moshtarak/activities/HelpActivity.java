@@ -29,28 +29,6 @@ public class HelpActivity extends BaseActivity {
     ProgressDialog progressDialog;
     Context context;
 
-    @SuppressLint({"SetJavaScriptEnabled", "CutPasteId"})
-    @Override
-    protected void initialize() {
-        binding = HelpContentBinding.inflate(getLayoutInflater());
-        View childLayout = binding.getRoot();
-        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
-        parentLayout.addView(childLayout);
-        context = this;
-        clearCacheFolder(context.getCacheDir(), 1);
-        progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage(getString(R.string.waiting));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-        binding.webViewHelp.setWebChromeClient(new HelpWebChromeClient());
-
-        binding.webViewHelp.getSettings().setJavaScriptEnabled(true);
-        binding.webViewHelp.getSettings().setBuiltInZoomControls(true);
-        binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        binding.webViewHelp.setWebViewClient(new HelpWebViewClient());
-        binding.webViewHelp.loadUrl(getString(R.string.help_url));
-    }
-
     static int clearCacheFolder(final File dir, final int numDays) {
         int deletedFiles = 0;
         if (dir != null && dir.isDirectory()) {
@@ -73,19 +51,26 @@ public class HelpActivity extends BaseActivity {
         return deletedFiles;
     }
 
-    private class HelpWebChromeClient extends WebChromeClient {
-        public void onProgressChanged(WebView view, int progress) {
-            setTitle(getString(R.string.waiting));
-            setProgress(progress * 100);
-            Log.e("progress ", String.valueOf(progress));
-            if (progress >= 70) {
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
-                }
-            }
-            if (progress == 100)
-                setTitle(R.string.help);
-        }
+    @SuppressLint({"SetJavaScriptEnabled", "CutPasteId"})
+    @Override
+    protected void initialize() {
+        binding = HelpContentBinding.inflate(getLayoutInflater());
+        View childLayout = binding.getRoot();
+        ConstraintLayout parentLayout = findViewById(R.id.base_Content);
+        parentLayout.addView(childLayout);
+        context = this;
+        clearCacheFolder(context.getCacheDir(), 1);
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage(getString(R.string.waiting));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        binding.webViewHelp.setWebChromeClient(new HelpWebChromeClient());
+
+        binding.webViewHelp.getSettings().setJavaScriptEnabled(true);
+        binding.webViewHelp.getSettings().setBuiltInZoomControls(true);
+        binding.webViewHelp.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        binding.webViewHelp.setWebViewClient(new HelpWebViewClient());
+        binding.webViewHelp.loadUrl(getString(R.string.help_url));
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -99,6 +84,39 @@ public class HelpActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Runtime.getRuntime().totalMemory();
+        Runtime.getRuntime().freeMemory();
+        Runtime.getRuntime().maxMemory();
+        Debug.getNativeHeapAllocatedSize();
+    }
+
+    private class HelpWebChromeClient extends WebChromeClient {
+        public void onProgressChanged(WebView view, int progress) {
+            setTitle(getString(R.string.waiting));
+            setProgress(progress * 100);
+            Log.e("progress ", String.valueOf(progress));
+            if (progress >= 70) {
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+            }
+            if (progress == 100)
+                setTitle(R.string.help);
+        }
     }
 
     private class HelpWebViewClient extends WebViewClient {
@@ -122,23 +140,5 @@ public class HelpActivity extends BaseActivity {
             Toast.makeText(HelpActivity.this, getString(R.string.error).concat(" : ")
                     .concat(getString(R.string.error_connection)), Toast.LENGTH_SHORT).show();
         }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Runtime.getRuntime().totalMemory();
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().maxMemory();
-        Debug.getNativeHeapAllocatedSize();
     }
 }

@@ -16,9 +16,9 @@
     <include layout="@layout/footer" />
 
     <LinearLayout
+        android:id="@+id/linearLayoutAfterSale"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/linearLayoutAfterSale"
         android:layout_above="@id/linearLayoutFooter"
         android:layout_below="@id/linearLayoutHeader"
         android:layout_marginLeft="@dimen/activity_large_margin"

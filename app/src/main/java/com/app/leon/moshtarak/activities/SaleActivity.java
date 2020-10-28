@@ -85,40 +85,6 @@ public class SaleActivity extends BaseActivity {
         HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, saleRequest, incomplete, error);
     }
 
-    class SaleRequest implements ICallback<SimpleMessage> {
-        @Override
-        public void execute(SimpleMessage simpleMessage) {
-            new CustomDialog(DialogType.GreenRedirect, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
-                    context.getString(R.string.buy), context.getString(R.string.accepted));
-        }
-    }
-
-    class SaleRequestIncomplete implements ICallbackIncomplete<SimpleMessage> {
-        @Override
-        public void executeIncomplete(Response<SimpleMessage> response) {
-            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
-            String error = customErrorHandlingNew.getErrorMessageDefault(response);
-            if (response.code() == 400)
-                error = getString(R.string.error_billid_incorrect);
-            new CustomDialog(DialogType.Yellow, SaleActivity.this, error,
-                    SaleActivity.this.getString(R.string.dear_user),
-                    SaleActivity.this.getString(R.string.login),
-                    SaleActivity.this.getString(R.string.accepted));
-        }
-    }
-
-    class GetError implements ICallbackError {
-        @Override
-        public void executeError(Throwable t) {
-            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
-            String error = customErrorHandlingNew.getErrorMessageTotal(t);
-            new CustomDialog(DialogType.YellowRedirect, SaleActivity.this, error,
-                    SaleActivity.this.getString(R.string.dear_user),
-                    SaleActivity.this.getString(R.string.login),
-                    SaleActivity.this.getString(R.string.accepted));
-        }
-    }
-
     private void setButtonNavigationOnClickListener() {
         binding.buttonNavigation.setOnClickListener(view1 -> {
             View view;
@@ -298,5 +264,39 @@ public class SaleActivity extends BaseActivity {
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
         Debug.getNativeHeapAllocatedSize();
+    }
+
+    class SaleRequest implements ICallback<SimpleMessage> {
+        @Override
+        public void execute(SimpleMessage simpleMessage) {
+            new CustomDialog(DialogType.GreenRedirect, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
+                    context.getString(R.string.buy), context.getString(R.string.accepted));
+        }
+    }
+
+    class SaleRequestIncomplete implements ICallbackIncomplete<SimpleMessage> {
+        @Override
+        public void executeIncomplete(Response<SimpleMessage> response) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageDefault(response);
+            if (response.code() == 400)
+                error = getString(R.string.error_billid_incorrect);
+            new CustomDialog(DialogType.Yellow, SaleActivity.this, error,
+                    SaleActivity.this.getString(R.string.dear_user),
+                    SaleActivity.this.getString(R.string.login),
+                    SaleActivity.this.getString(R.string.accepted));
+        }
+    }
+
+    class GetError implements ICallbackError {
+        @Override
+        public void executeError(Throwable t) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageTotal(t);
+            new CustomDialog(DialogType.YellowRedirect, SaleActivity.this, error,
+                    SaleActivity.this.getString(R.string.dear_user),
+                    SaleActivity.this.getString(R.string.login),
+                    SaleActivity.this.getString(R.string.accepted));
+        }
     }
 }

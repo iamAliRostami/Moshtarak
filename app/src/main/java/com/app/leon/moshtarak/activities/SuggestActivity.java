@@ -136,38 +136,6 @@ public class SuggestActivity extends BaseActivity {
         }
     }
 
-    class Suggest implements ICallback<SimpleMessage> {
-        @Override
-        public void execute(SimpleMessage simpleMessage) {
-            new CustomDialog(DialogType.YellowRedirect, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
-                    context.getString(R.string.suggest), context.getString(R.string.accepted));
-        }
-    }
-
-    class SuggestIncomplete implements ICallbackIncomplete<SimpleMessage> {
-        @Override
-        public void executeIncomplete(Response<SimpleMessage> response) {
-            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
-            String error = customErrorHandlingNew.getErrorMessageDefault(response);
-            new CustomDialog(DialogType.Yellow, SuggestActivity.this, error,
-                    SuggestActivity.this.getString(R.string.dear_user),
-                    SuggestActivity.this.getString(R.string.login),
-                    SuggestActivity.this.getString(R.string.accepted));
-        }
-    }
-
-    class GetError implements ICallbackError {
-        @Override
-        public void executeError(Throwable t) {
-            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
-            String error = customErrorHandlingNew.getErrorMessageTotal(t);
-            new CustomDialog(DialogType.Yellow, SuggestActivity.this, error,
-                    SuggestActivity.this.getString(R.string.dear_user),
-                    SuggestActivity.this.getString(R.string.login),
-                    SuggestActivity.this.getString(R.string.accepted));
-        }
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.contact, menu);
@@ -200,5 +168,37 @@ public class SuggestActivity extends BaseActivity {
         Runtime.getRuntime().freeMemory();
         Runtime.getRuntime().maxMemory();
         Debug.getNativeHeapAllocatedSize();
+    }
+
+    class Suggest implements ICallback<SimpleMessage> {
+        @Override
+        public void execute(SimpleMessage simpleMessage) {
+            new CustomDialog(DialogType.YellowRedirect, context, simpleMessage.getMessage(), context.getString(R.string.dear_user),
+                    context.getString(R.string.suggest), context.getString(R.string.accepted));
+        }
+    }
+
+    class SuggestIncomplete implements ICallbackIncomplete<SimpleMessage> {
+        @Override
+        public void executeIncomplete(Response<SimpleMessage> response) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageDefault(response);
+            new CustomDialog(DialogType.Yellow, SuggestActivity.this, error,
+                    SuggestActivity.this.getString(R.string.dear_user),
+                    SuggestActivity.this.getString(R.string.login),
+                    SuggestActivity.this.getString(R.string.accepted));
+        }
+    }
+
+    class GetError implements ICallbackError {
+        @Override
+        public void executeError(Throwable t) {
+            CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
+            String error = customErrorHandlingNew.getErrorMessageTotal(t);
+            new CustomDialog(DialogType.Yellow, SuggestActivity.this, error,
+                    SuggestActivity.this.getString(R.string.dear_user),
+                    SuggestActivity.this.getString(R.string.login),
+                    SuggestActivity.this.getString(R.string.accepted));
+        }
     }
 }

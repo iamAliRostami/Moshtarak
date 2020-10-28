@@ -18,8 +18,8 @@
         android:background="@drawable/new_border_white_2"
         android:checkMark="?android:attr/listChoiceIndicatorMultiple"
         android:gravity="center_vertical"
-        android:textColor="@color/color_4"
         android:padding="@dimen/activity_large_padding"
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:textColor="@color/color_4"
         tools:ignore="RedundantNamespace,RtlCompat" />
 </LinearLayout>
