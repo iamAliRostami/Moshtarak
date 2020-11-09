@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layoutDirection="ltr"
+    android:background="@drawable/card_information_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.top.lib.mpl.view.PersianFontTextView
+        android:id="@+id/resultTxt"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="@color/grey"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_gravity="center"
+        android:id="@+id/dismissBtn"
+        android:background="@drawable/mpl_harimbtn_bg"
+        android:layout_marginBottom="10dp"
+        android:layout_width="80dp"
+        android:layout_height="45dp">
+        <com.top.lib.mpl.view.PersianFontTextView
+            android:layout_centerInParent="true"
+            android:textColor="@color/md_white_1000"
+            android:text="خُب"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</LinearLayout>

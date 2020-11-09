@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layoutDirection="ltr"
+    android:layout_width="match_parent"
+    android:background="@drawable/pay_view_bg"
+    android:layout_height="wrap_content">
+    <ScrollView
+        android:id="@+id/totalscroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:background="@drawable/pay_view_title_bg"
+                android:padding="8dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.top.lib.mpl.view.PersianFontTextView
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/pec_blue"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:text="درگاه خرید تاپ"
+                    android:layout_centerVertical="true"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:src="@drawable/pec_full_logo"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/pecLogo"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp" />
+                <ImageView
+                    android:id="@+id/shaparakLogo"
+                    android:src="@drawable/shaparak_logo_pec"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp" />
+                <ProgressBar
+                    android:layout_height="30dp"
+                    android:id="@+id/payment_progress"
+                    style="@style/infinite_progress_horizontal"
+                    android:layout_centerVertical="true"
+                    android:indeterminate="false"
+                    android:visibility="invisible"
+                    android:layout_margin="10dp"
+                    android:layout_width="30dp" />
+            </RelativeLayout> <!--title bar-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="right"
+                android:paddingRight="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.top.lib.mpl.view.PersianFontTextView
+                    android:text="نام شرکت"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/ShopName"
+                    android:textColor="@color/md_black_1000"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ShopImage"
+                    android:src="@drawable/company_img_placeholder"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp" />
+            </LinearLayout> <!--customer bar-->
+            <RelativeLayout
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingRight="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:src="@drawable/price_icon"
+                    android:layout_width="30dp"
+                    android:tint="@color/grey2"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/priceIcon"
+                    android:layout_height="30dp" />
+                <com.top.lib.mpl.view.PersianFontTextView
+                    android:layout_toLeftOf="@+id/priceIcon"
+                    android:text="مبلغ"
+                    android:textColor="@color/grey2"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/priceTxt"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <com.top.lib.mpl.view.PersianFontTextView
+                    android:textColor="@color/grey2"
+                    android:text="۱۰۰۰"
+                    android:id="@+id/bill_price"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:layout_toLeftOf="@+id/priceTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <com.top.lib.mpl.view.PersianFontTextView
+                    android:textColor="@color/grey2"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:text="ریال"
+                    android:layout_toLeftOf="@id/bill_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout> <!--price bar-->
+            <LinearLayout
+                android:background="@drawable/card_information_bg"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:background="@drawable/card_information_title_bg"
+                    android:layout_width="match_parent"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/card_icon"
+                        android:id="@+id/cardLogo"
+                        android:layout_width="25dp"
+                        android:layout_height="20dp" />
+                    <com.top.lib.mpl.view.PersianFontTextView
+                        android:text="اطلاعات کارت"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/md_white_1000"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/cardLogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/mpl_txt_bg"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="27dp">
+                    <AutoCompleteTextView
+                        android:id="@+id/pan"
+                        android:layout_width="match_parent"
+                        android:inputType="number"
+                        android:layout_gravity="left|center"
+                        android:maxLength="19"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:background="@drawable/mpl_txt_bg"
+                        style="@style/all_theme"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:hint="@string/card_id"
+                        android:imeOptions="flagNoExtractUi"
+                        android:layout_height="45dp">
+                        <requestFocus />
+                    </AutoCompleteTextView>
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="left|center"
+                        android:gravity="center"
+                        android:id="@+id/bank_pic"
+                        android:padding="3dp" />
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="right|center"
+                        android:gravity="center"
+                        android:id="@+id/clear"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_delall"/>
+
+                </FrameLayout>
+                <com.top.lib.mpl.view.customView.KeyboardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:id="@+id/PassKey"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:id="@+id/TSPLayout">
+
+
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:text="اطلاعات کارت را در درگاه بانک پارسیان ذخیره کن"
+                        android:id="@+id/tsptxt"
+                        android:textColor="#1E88E5"
+                        android:textStyle="normal"
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:breakStrategy="simple"
+                        android:textAlignment="center"
+                        android:layout_width="wrap_content" />
+
+                    <CheckBox
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:id="@+id/user_tsp"
+                        />
+
+                </LinearLayout> <!--save card question-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="27dp"
+                    android:layout_marginBottom="5dp">
+                    <RelativeLayout
+                        android:id="@+id/RuleLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <com.top.lib.mpl.view.PersianFontTextView
+                            android:layout_height="wrap_content"
+                            android:text="@string/pecrules"
+                            android:id="@+id/ruletxt"
+                            android:textColor="#1E88E5"
+                            android:layout_centerVertical="true"
+                            android:textSize="12dp"
+                            android:layout_width="wrap_content" />
+                        <ImageView
+                            android:layout_toRightOf="@+id/ruletxt"
+                            android:id="@+id/Certificate"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_marginRight="3dp"
+                            android:src="@drawable/certificate" />
+                    </RelativeLayout>
+
+                    <com.top.lib.mpl.view.PersianFontTextView
+                        android:layout_height="wrap_content"
+                        android:text="راهنمای رمز پویا"
+                        android:id="@+id/harimInfoBtn"
+                        android:textColor="#1E88E5"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:textStyle="normal"
+                        android:textSize="12dp"
+                        android:breakStrategy="simple"
+                        android:textAlignment="center"
+                        android:layout_width="wrap_content" />
+                </RelativeLayout> <!--rules bar preferred to be invis!-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="right"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:background="@drawable/mpl_cancel_pay_btn"
+                    android:textColor="@color/md_white_1000"
+                    android:text="انصراف"
+                    android:layout_marginRight="13dp"
+                    android:id="@+id/exitBtn"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:id="@+id/Paybutton"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:padding="10dp"
+                    android:background="@drawable/mpl_pay_btn"
+                    android:textColor="@color/md_white_1000"
+                    android:text="پرداخت"
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/elec_bill"
+                    android:textColor="#134d90"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:id="@+id/bill_name"
+                    android:paddingTop="8dp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/bill_pic"
+                    android:visibility="gone"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="6dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

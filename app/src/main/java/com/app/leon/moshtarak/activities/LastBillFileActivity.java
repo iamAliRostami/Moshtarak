@@ -833,7 +833,7 @@ public class LastBillFileActivity extends AppCompatActivity {
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
             new CustomDialog(DialogType.Yellow, LastBillFileActivity.this, error,
                     LastBillFileActivity.this.getString(R.string.dear_user),
-                    LastBillFileActivity.this.getString(R.string.login),
+                    LastBillFileActivity.this.getString(R.string.pay),
                     LastBillFileActivity.this.getString(R.string.accepted));
         }
     }
@@ -850,7 +850,7 @@ public class LastBillFileActivity extends AppCompatActivity {
             String error = customErrorHandlingNew.getErrorMessageTotal(t);
             new CustomDialog(DialogType.YellowRedirect, LastBillFileActivity.this, error,
                     LastBillFileActivity.this.getString(R.string.dear_user),
-                    LastBillFileActivity.this.getString(R.string.login),
+                    LastBillFileActivity.this.getString(R.string.pay),
                     LastBillFileActivity.this.getString(R.string.accepted));
         }
     }

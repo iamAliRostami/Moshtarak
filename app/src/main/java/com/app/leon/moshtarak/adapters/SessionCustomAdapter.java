@@ -14,8 +14,8 @@ import com.app.leon.moshtarak.R;
 import java.util.List;
 
 public class SessionCustomAdapter extends BaseAdapter {
-    private List<Session> sessionList = null;
-    private Context context;
+    private final List<Session> sessionList;
+    private final Context context;
 
     public SessionCustomAdapter(List<Session> sessions, Context context) {
         this.sessionList = sessions;
@@ -41,7 +41,7 @@ public class SessionCustomAdapter extends BaseAdapter {
     @SuppressLint("ViewHolder")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
+        View view;
         view = LayoutInflater.from(context).inflate(R.layout.item_session, parent, false);
         Session session = getItem(position);
 

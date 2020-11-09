@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/all_theme"
+    android:layoutDirection="ltr"
+    android:background="#00FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_bg_pec"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+
+
+        <ScrollView
+            android:id="@+id/totalscroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dialog_content"
+                android:orientation="vertical"
+                android:measureWithLargestChild="false">
+
+                <TextView
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/card_id_2"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/destPanCTC_2"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="ملی۱۴۸۹"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/dest_bank"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/destBankCTC"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="پارسیان"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/dest_name"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/destNameCTC"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="مسعود براتی"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/rial_amount"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/amountCTC"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="1,200,000"
+                    android:textColor="@color/md_black_1000"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingRight="22dp"
+                    android:paddingLeft="22dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center">
+
+                    <Button
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:background="@drawable/mpl_cancel_pay_btn"
+                        android:textColor="@color/md_white_1000"
+                        android:text="انصراف"
+                        android:layout_marginRight="13dp"
+                        android:id="@+id/exitBtn"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:padding="10dp"
+                        android:layout_height="wrap_content" />
+                    <Button
+                        android:id="@+id/CTCPayBtn"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:padding="10dp"
+                        android:background="@drawable/mpl_pay_btn"
+                        android:textColor="@color/md_white_1000"
+                        android:text="@string/confirm"
+                        android:layout_weight="2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>
