@@ -11,7 +11,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkHelper {
-    private static TimeUnit TIME_UNIT = TimeUnit.SECONDS;
+    private static final TimeUnit TIME_UNIT = TimeUnit.SECONDS;
 
     private NetworkHelper() {
 
@@ -44,7 +44,7 @@ public class NetworkHelper {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
-        String baseUrl = "http://37.191.92.130/";
+        String baseUrl = "https://37.191.92.157/";
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(NetworkHelper.getHttpClient())

@@ -9,6 +9,7 @@
     </base-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">37.191.92.130</domain>
+        <domain includeSubdomains="true">https://37.191.92.157</domain>
         <domain includeSubdomains="true">https://www.abfaesfahan.ir</domain>
         <domain includeSubdomains="true">http://crm.abfaesfahan.ir/</domain>
         <!--        <domain includeSubdomains="true">webservice.aspsms.com</domain>-->
