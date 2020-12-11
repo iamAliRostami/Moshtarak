@@ -103,6 +103,7 @@ public class RegisterAccountActivity extends BaseActivity {
         }
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     void setLinearLayoutAddOnClickListener() {
         binding.linearLayoutAdd.setOnClickListener(view -> {
             Transition transition1 = new Slide(Gravity.BOTTOM);

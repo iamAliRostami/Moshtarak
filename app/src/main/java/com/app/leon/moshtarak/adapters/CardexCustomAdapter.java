@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class CardexCustomAdapter extends ArrayAdapter<Cardex> {
-    private ArrayList<Cardex> cardexes;
-    private Context context;
+    private final ArrayList<Cardex> cardexes;
+    private final Context context;
 
     public CardexCustomAdapter(ArrayList<Cardex> cardexes, Context context) {
         super(context, 0);
@@ -44,7 +44,7 @@ public class CardexCustomAdapter extends ArrayAdapter<Cardex> {
     }
 
     @NonNull
-    @SuppressLint({"InflateParams", "DefaultLocale"})
+    @SuppressLint({"InflateParams", "DefaultLocale", "UseCompatLoadingForDrawables"})
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
