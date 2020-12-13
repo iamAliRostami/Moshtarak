@@ -14,6 +14,7 @@ import com.app.leon.moshtarak.databinding.HomeContentBinding;
 
 public class HomeActivity extends BaseActivity {
     HomeContentBinding binding;
+    @SuppressLint("NonConstantResourceId")
     View.OnClickListener onClickListener = view -> {
         Intent intent;
         switch (view.getId()) {

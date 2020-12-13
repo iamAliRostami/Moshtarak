@@ -98,6 +98,7 @@ public abstract class BaseActivity extends AppCompatActivity
             } else {
                 if (MyApplication.doubleBackToExitPressedOnce) {
                     super.onBackPressed();
+                    finishAffinity();
                 }
                 MyApplication.doubleBackToExitPressedOnce = true;
                 Toast.makeText(this, R.string.press_back_again, Toast.LENGTH_SHORT).show();
