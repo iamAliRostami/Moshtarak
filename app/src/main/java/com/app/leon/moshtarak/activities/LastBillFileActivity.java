@@ -34,17 +34,18 @@ import com.app.leon.moshtarak.Infrastructure.ICallback;
 import com.app.leon.moshtarak.Infrastructure.ICallbackError;
 import com.app.leon.moshtarak.Infrastructure.ICallbackIncomplete;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
+import com.app.leon.moshtarak.Models.DbTables.PayData;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
-import com.app.leon.moshtarak.Models.InterCommunation.SimpleMessage;
 import com.app.leon.moshtarak.MyApplication;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.Code128;
 import com.app.leon.moshtarak.Utils.CustomDialog;
 import com.app.leon.moshtarak.Utils.CustomErrorHandlingNew;
 import com.app.leon.moshtarak.Utils.CustomProgressBar;
+import com.app.leon.moshtarak.Utils.CustomTab;
 import com.app.leon.moshtarak.Utils.HttpClientWrapper;
 import com.app.leon.moshtarak.Utils.NetworkHelper;
 import com.app.leon.moshtarak.Utils.SharedPreference;
@@ -433,7 +434,7 @@ public class LastBillFileActivity extends AppCompatActivity {
     void getToken() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService service = retrofit.create(IAbfaService.class);
-        Call<SimpleMessage> call = service.getToken(apiKey);
+        Call<PayData> call = service.getToken(apiKey);
         GetToken token = new GetToken();
         GetTokenIncomplete incomplete = new GetTokenIncomplete();
         GetError error = new GetError();
@@ -506,7 +507,7 @@ public class LastBillFileActivity extends AppCompatActivity {
     }
 
     private void showErrorTypeMpl(int errorType) {
-        String message = "";
+        String message;
         switch (errorType) {
             case 2:
                 message = getString(R.string.time_out_error);
@@ -691,6 +692,7 @@ public class LastBillFileActivity extends AppCompatActivity {
         Context context;
 
         public SendImages(Context context, Bitmap bitmap) {
+            super();
             this.bitmap = bitmap;
             this.context = context;
             this.customProgressBar = new CustomProgressBar();
@@ -734,6 +736,7 @@ public class LastBillFileActivity extends AppCompatActivity {
         Context context;
 
         public SaveImages(Context context, Bitmap bitmap) {
+            super();
             this.bitmap = bitmap;
             this.context = context;
             this.customProgressBar = new CustomProgressBar();
@@ -786,10 +789,13 @@ public class LastBillFileActivity extends AppCompatActivity {
         }
     }
 
-    class GetToken implements ICallback<SimpleMessage> {
+    class GetToken implements ICallback<PayData> {
         @Override
-        public void execute(SimpleMessage simpleMessage) {
-            pay(simpleMessage.getMessage());
+        public void execute(PayData payData) {
+            if (payData.isMpl)
+                pay(payData.message);
+            else
+                new CustomTab(getString(R.string.mellat_site), MyApplication.getContext());
         }
     }
 
@@ -826,9 +832,9 @@ public class LastBillFileActivity extends AppCompatActivity {
         }
     }
 
-    class GetTokenIncomplete implements ICallbackIncomplete<SimpleMessage> {
+    class GetTokenIncomplete implements ICallbackIncomplete<PayData> {
         @Override
-        public void executeIncomplete(Response<SimpleMessage> response) {
+        public void executeIncomplete(Response<PayData> response) {
             CustomErrorHandlingNew customErrorHandlingNew = new CustomErrorHandlingNew(context);
             String error = customErrorHandlingNew.getErrorMessageDefault(response);
             new CustomDialog(DialogType.Yellow, LastBillFileActivity.this, error,

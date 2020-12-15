@@ -14,7 +14,6 @@ public class NetworkHelper {
     private static final TimeUnit TIME_UNIT = TimeUnit.SECONDS;
 
     private NetworkHelper() {
-
     }
 
     private static OkHttpClient getHttpClient() {
@@ -44,8 +43,8 @@ public class NetworkHelper {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
-        String baseUrl = "http://37.191.92.130/";
-//        String baseUrl = "https://37.191.92.157/";
+//        String baseUrl = "http://37.191.92.130/";
+        String baseUrl = "https://37.191.92.157/";
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(NetworkHelper.getHttpClient())

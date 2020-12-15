@@ -1,6 +1,9 @@
 package com.app.leon.moshtarak.Models.DbTables;
 
 public class PayData {
+    public String message;
+    public int errorCode;
+    public boolean isMpl;
     short Status;
     int Message;
     String Token;

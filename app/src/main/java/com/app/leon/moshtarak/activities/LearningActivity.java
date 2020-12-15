@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Debug;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -33,6 +34,9 @@ public class LearningActivity extends BaseActivity {
             Intent intent = new Intent(LearningActivity.this, UsingMethodActivity.class);
             startActivity(intent);
         });
+        binding.imageViewEquipment.setOnClickListener(v -> Toast.makeText(getApplicationContext(), "در نسخه های بعدی اضافه خواهد شد", Toast.LENGTH_LONG).show());
+        binding.imageViewLeakControl.setOnClickListener(v -> Toast.makeText(getApplicationContext(), "در نسخه های بعدی اضافه خواهد شد", Toast.LENGTH_LONG).show());
+        binding.imageViewWaterResources.setOnClickListener(v -> Toast.makeText(getApplicationContext(), "در نسخه های بعدی اضافه خواهد شد", Toast.LENGTH_LONG).show());
     }
 
     @Override

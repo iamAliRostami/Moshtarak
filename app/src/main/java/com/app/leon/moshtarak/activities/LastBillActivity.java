@@ -27,6 +27,7 @@ import com.app.leon.moshtarak.Infrastructure.ICallbackError;
 import com.app.leon.moshtarak.Infrastructure.ICallbackIncomplete;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
+import com.app.leon.moshtarak.Models.DbTables.PayData;
 import com.app.leon.moshtarak.Models.Enums.BundleEnum;
 import com.app.leon.moshtarak.Models.Enums.DialogType;
 import com.app.leon.moshtarak.Models.Enums.ProgressType;
@@ -273,12 +274,12 @@ public class LastBillActivity extends BaseActivity {
     void getToken() {
         Retrofit retrofit = NetworkHelper.getInstance();
         final IAbfaService service = retrofit.create(IAbfaService.class);
-        Call<SimpleMessage> call = service.getToken(apiKey);
+        Call<PayData> call = service.getToken(apiKey);
         GetToken token = new GetToken();
         GetTokenIncomplete incomplete = new GetTokenIncomplete();
         GetError error = new GetError();
-        HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, token,
-                incomplete, error);
+//        HttpClientWrapper.callHttpAsync(call, ProgressType.SHOW.getValue(), context, token,
+//                incomplete, error);
 //        HttpClientWrapperNew.callHttpAsync(call, token, context, ProgressType.SHOW.getValue());
     }
 

@@ -7,6 +7,7 @@ import com.app.leon.moshtarak.Models.DbTables.LastBillInfo;
 import com.app.leon.moshtarak.Models.DbTables.LastBillInfoV2;
 import com.app.leon.moshtarak.Models.DbTables.Login;
 import com.app.leon.moshtarak.Models.DbTables.MemberInfo;
+import com.app.leon.moshtarak.Models.DbTables.PayData;
 import com.app.leon.moshtarak.Models.DbTables.RegisterAsDto;
 import com.app.leon.moshtarak.Models.DbTables.RegisterNewDto;
 import com.app.leon.moshtarak.Models.DbTables.Request;
@@ -134,7 +135,7 @@ public interface IAbfaService {
     );
 
     @POST("/MoshtarakinApi/V2/Payment/GetTokenAb/{apiKey}")
-    Call<SimpleMessage> getToken(
+    Call<PayData> getToken(
             @Path("apiKey") String apiKey
     );
 }
