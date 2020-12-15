@@ -49,17 +49,6 @@ public class ContactUsActivity extends BaseActivity {
         }
     };
 
-//    @SuppressLint("NewApi")
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-//        super.onCreate(savedInstanceState);
-//        binding = ContactUsActivityBinding.inflate(getLayoutInflater());
-//        View view = binding.getRoot();
-//        setContentView(view);
-//        context = this;
-//    }
-
     @Override
     protected void initialize() {
         binding = ContactUsActivityBinding.inflate(getLayoutInflater());

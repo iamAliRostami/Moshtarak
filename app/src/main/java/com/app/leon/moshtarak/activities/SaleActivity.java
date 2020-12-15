@@ -38,7 +38,6 @@ public class SaleActivity extends BaseActivity {
     SharedPreference sharedPreference;
     View viewFocus;
 
-
     @SuppressLint("CutPasteId")
     @Override
     protected void initialize() {
