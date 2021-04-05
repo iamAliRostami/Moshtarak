@@ -7,6 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/my_font</item>
         <item name="background">@drawable/img_background</item>
+        <!--        <item name="android:gravity">right</item>-->
+        <!--        <item name="android:layout_gravity">right</item>-->
+        <!--        <item name="android:direction">right_to_left</item>-->
         <item name="android:windowBackground">@drawable/img_background</item>
     </style>
 
@@ -72,5 +75,10 @@
     </style>
     //TODO از اینجا
 
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@color/red2</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButton</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButton</item>
+    </style>
 
 </resources>

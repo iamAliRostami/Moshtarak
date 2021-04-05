@@ -9,6 +9,10 @@ import androidx.multidex.MultiDexApplication;
 
 public class MyApplication extends MultiDexApplication {
 
+    public static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
+    public static final long MIN_TIME_BW_UPDATES = 10000;
+    public static final long FASTEST_INTERVAL = 5;
+    public static final int GPS_CODE = 1231;
     public static final String fontName = "font/my_font.ttf";
     public static boolean isHome = false;
     public static boolean doubleBackToExitPressedOnce = false;

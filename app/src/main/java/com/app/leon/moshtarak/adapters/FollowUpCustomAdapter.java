@@ -22,8 +22,8 @@ import java.util.Collections;
 import java.util.Objects;
 
 public class FollowUpCustomAdapter extends ArrayAdapter<FollowUpDto> {
-    private ArrayList<FollowUpDto> followUpDtos;
-    private Context context;
+    private final ArrayList<FollowUpDto> followUpDtos;
+    private final Context context;
 
     public FollowUpCustomAdapter(Context context, ArrayList<FollowUpDto> followUpDtos) {
         super(context, 0);
