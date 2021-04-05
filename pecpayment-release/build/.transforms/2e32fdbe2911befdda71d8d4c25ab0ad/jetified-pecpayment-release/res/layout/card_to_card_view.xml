@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/all_theme"
+    android:layoutDirection="ltr">
+
+    <ScrollView
+        android:id="@+id/scroll_ctc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="-8dp"
+            android:gravity="center">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:background="@drawable/pay_view_title_bg"
+                    android:padding="8dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.top.lib.mpl.view.PersianFontTextView
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/pec_blue"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:text="کارت به کارت تاپ"
+                        android:layout_centerVertical="true"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:src="@drawable/pec_full_logo"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/pecLogo"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp" />
+                    <ImageView
+                        android:id="@+id/shaparakLogo"
+                        android:src="@drawable/shaparak_logo_pec"
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp" />
+                    <ProgressBar
+                        android:layout_height="30dp"
+                        android:id="@+id/payment_progress"
+                        style="@style/infinite_progress_horizontal"
+                        android:layout_centerVertical="true"
+                        android:indeterminate="false"
+                        android:visibility="invisible"
+                        android:layout_margin="10dp"
+                        android:layout_width="30dp" />
+                </RelativeLayout> <!--title bar-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@color/md_white_1000"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/layoutDots"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dots_height"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal"/>
+                <ImageView
+                    android:layout_width="60dp"
+                    android:src="@drawable/back_arrow_btn"
+                    android:paddingTop="18dp"
+                    android:paddingBottom="18dp"
+                    android:paddingRight="18dp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/ctc_backBtn"
+                    android:visibility="invisible"
+                    android:layout_centerVertical="true"
+                    android:layout_height="60dp" />
+            </RelativeLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+        <com.top.lib.mpl.view.CTCViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

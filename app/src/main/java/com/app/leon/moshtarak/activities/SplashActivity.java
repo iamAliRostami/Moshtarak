@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -21,15 +22,17 @@ public class SplashActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         binding = SplashActivityBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        Log.e("here", "1");
         if (!splashLoaded) {
+            Log.e("here", "2");
             setContentView(view);
             initialize();
             startSplash();
         } else {
+            Log.e("here", "3");
             Intent goToLoginActivity = new Intent(SplashActivity.this, HomeActivity.class);
             goToLoginActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(goToLoginActivity);
