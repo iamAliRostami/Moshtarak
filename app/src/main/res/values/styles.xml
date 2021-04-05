@@ -77,6 +77,9 @@
 
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:textColor">@color/red2</item>
+        <item name="android:gravity">right</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:direction">right_to_left</item>
         <item name="buttonBarNegativeButtonStyle">@style/DialogButton</item>
         <item name="buttonBarPositiveButtonStyle">@style/DialogButton</item>
     </style>

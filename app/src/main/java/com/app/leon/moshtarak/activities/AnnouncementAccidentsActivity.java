@@ -45,30 +45,6 @@ public class AnnouncementAccidentsActivity extends AppCompatActivity {
     SharedPreference sharedPreference;
     Activity activity;
 
-    public static boolean gpsEnabled(Activity activity) {
-        LocationManager locationManager = (LocationManager)
-                activity.getSystemService(Context.LOCATION_SERVICE);
-        boolean enabled =
-                LocationManagerCompat.isLocationEnabled(Objects.requireNonNull(locationManager));
-//        AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
-        androidx.appcompat.app.AlertDialog.Builder alertDialog = new androidx.appcompat.app.AlertDialog.Builder(new ContextThemeWrapper(activity, R.style.AlertDialogCustom));
-        if (!enabled) {
-            alertDialog.setCancelable(false);
-            alertDialog.setTitle(activity.getString(R.string.gps_setting));
-            alertDialog.setMessage(R.string.active_gps);
-            alertDialog.setPositiveButton(R.string.setting, (dialog, which) -> {
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                activity.startActivityForResult(intent, MyApplication.GPS_CODE);
-            });
-            alertDialog.setNegativeButton(R.string.exit, (dialog, which) -> {
-                dialog.cancel();
-                activity.finishAffinity();
-            });
-            alertDialog.show();
-        }
-        return enabled;
-    }
-
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +55,7 @@ public class AnnouncementAccidentsActivity extends AppCompatActivity {
         setContentView(view);
         activity = this;
         initialize();
-        if (gpsEnabled(activity))
+        if (gpsEnabled())
             if (checkLocationPermission(activity)) askLocationPermission();
             else initializeMap();
     }
@@ -264,6 +240,29 @@ public class AnnouncementAccidentsActivity extends AppCompatActivity {
                 binding.mapView.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    boolean gpsEnabled() {
+        LocationManager locationManager = (LocationManager)
+                activity.getSystemService(Context.LOCATION_SERVICE);
+        boolean enabled =
+                LocationManagerCompat.isLocationEnabled(Objects.requireNonNull(locationManager));
+        androidx.appcompat.app.AlertDialog.Builder alertDialog = new androidx.appcompat.app.AlertDialog.Builder(new ContextThemeWrapper(activity, R.style.AlertDialogCustom));
+        if (!enabled) {
+            alertDialog.setCancelable(false);
+            alertDialog.setTitle(activity.getString(R.string.gps_setting));
+            alertDialog.setMessage(R.string.active_gps);
+            alertDialog.setPositiveButton(R.string.setting, (dialog, which) -> {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                activity.startActivityForResult(intent, MyApplication.GPS_CODE);
+            });
+            alertDialog.setNegativeButton(R.string.exit, (dialog, which) -> {
+                dialog.cancel();
+                activity.finishAffinity();
+            });
+            alertDialog.show();
+        }
+        return enabled;
     }
 
     boolean checkLocationPermission(Context context) {
