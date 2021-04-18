@@ -14,30 +14,16 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Toast;
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.Color;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.fragment.app.Fragment;
 
 import com.app.leon.moshtarak.databinding.AnnouncementAccidentsActivityBinding;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
-import org.jetbrains.annotations.NotNull;
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.overlay.Marker;
-import org.osmdroid.views.overlay.Polyline;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
@@ -48,20 +34,8 @@ import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.core.app.ActivityCompat;
 import androidx.core.location.LocationManagerCompat;
 
-import org.jetbrains.annotations.NotNull;
-import org.osmdroid.api.IMapController;
-import org.osmdroid.bonuspack.kml.KmlDocument;
 import org.osmdroid.events.MapEventsReceiver;
-import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase;
-import org.osmdroid.util.GeoPoint;
-import org.osmdroid.util.MapTileIndex;
-import org.osmdroid.views.CustomZoomButtonsController;
-import org.osmdroid.views.overlay.FolderOverlay;
 import org.osmdroid.views.overlay.MapEventsOverlay;
-import org.osmdroid.views.overlay.Marker;
-import org.osmdroid.views.overlay.Polyline;
-import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
-import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import com.app.leon.moshtarak.Models.Enums.SharedReferenceKeys;
 import com.app.leon.moshtarak.MyApplication;
@@ -69,13 +43,13 @@ import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.Utils.GPSTracker;
 import com.app.leon.moshtarak.Utils.SharedPreference;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class AnnouncementAccidentsActivity extends AppCompatActivity {
     AnnouncementAccidentsActivityBinding binding;
     SharedPreference sharedPreference;
     Activity activity;
+    private int placeIndex;
 
     @SuppressLint("NewApi")
     @Override
@@ -116,6 +90,34 @@ public class AnnouncementAccidentsActivity extends AppCompatActivity {
                 new MyLocationNewOverlay(new GpsMyLocationProvider(activity), binding.mapView);
         locationOverlay.enableMyLocation();
         binding.mapView.getOverlays().add(locationOverlay);
+
+
+        binding.mapView.getOverlays().add(new MapEventsOverlay(new MapEventsReceiver() {
+            @Override
+            public boolean singleTapConfirmedHelper(GeoPoint p) {
+                return false;
+            }
+
+            @Override
+            public boolean longPressHelper(GeoPoint p) {
+                addPlace(p);
+                return false;
+            }
+        }));
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void addPlace(GeoPoint p) {
+        GeoPoint startPoint = new GeoPoint(p.getLatitude(), p.getLongitude());
+        Marker startMarker = new Marker(binding.mapView);
+        startMarker.setPosition(startPoint);
+        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        if (placeIndex != 0) {
+            binding.mapView.getOverlays().remove(placeIndex);
+        }
+        startMarker.setIcon(getResources().getDrawable(R.drawable.map_siphon_drop_point));
+        binding.mapView.getOverlays().add(startMarker);
+        placeIndex = binding.mapView.getOverlays().size() - 1;
     }
 
     @SuppressLint("SetTextI18n")
@@ -271,6 +273,17 @@ public class AnnouncementAccidentsActivity extends AppCompatActivity {
             if (isChecked) {
                 binding.buttonSubmit.setVisibility(View.VISIBLE);
                 binding.mapView.setVisibility(View.VISIBLE);
+            }
+        });
+        setOnButtonSubmitClickListener();
+    }
+
+    void setOnButtonSubmitClickListener() {
+        binding.buttonSubmit.setOnClickListener(v -> {
+            if (placeIndex == 0) {
+                Toast.makeText(activity, "محل حادثه را بر روی نقشه مشخص فرمایید.", Toast.LENGTH_LONG).show();
+            } else {
+
             }
         });
     }
