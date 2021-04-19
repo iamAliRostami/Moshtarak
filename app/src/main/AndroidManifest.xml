@@ -61,17 +61,6 @@
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator,LockedOrientationActivity" />
         <activity
-            android:name=".activities.AnnouncementAccidentsActivity"
-            android:icon="@drawable/accident_icon"
-            android:screenOrientation="portrait"
-            android:label="اعلام حوادث آب و فاضلاب">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator,LockedOrientationActivity">
@@ -81,6 +70,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.AnnouncementAccidentsActivity"
+            android:icon="@drawable/accident_icon"
+            android:label="اعلام حوادث آب و فاضلاب"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".activities.HomeActivity"
             android:screenOrientation="portrait"
