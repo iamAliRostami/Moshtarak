@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/after_sale_service_content.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/announcement_accidents_activity.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/announcement_app_bar.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/base_activity.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/base_activity_old.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/base_app_bar.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/base_content.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/base_info_content.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/cardex_content.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/chart_activity.xml" value="0.6" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/contact_developer_activity.xml" value="0.16510416666666666" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/contact_us_activity.xml" value="0.16510416666666666" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/follow_up_content.xml" value="0.16510416666666666" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/help_content.xml" value="0.536" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/home_content.xml" value="0.16510416666666666" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/last_bill_content.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/last_bill_file_activity.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/learning_content.xml" value="0.17760416666666667" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/recovery_code_activity.xml" value="0.17760416666666667" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/register_account_content.xml" value="0.17760416666666667" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/sale_content.xml" value="0.17760416666666667" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/session_activity.xml" value="0.17760416666666667" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/set_counter_content.xml" value="0.17760416666666667" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/show_sms_activity.xml" value="0.17760416666666667" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/suggest_content.xml" value="0.17760416666666667" />
+        <entry key="..\:/AndroidStudioProjects/Moshtarak/app/src/main/res/layout/using_method_content.xml" value="0.17760416666666667" />
+      </map>
+    </option>
+  </component>
   <component name="EntryPointsManager">
     <list size="1">
       <item index="0" class="java.lang.String" itemvalue="android.annotation.SuppressLint" />
@@ -10,7 +42,7 @@
     <option name="myDefaultNotNull" value="android.annotation.NonNull" />
     <option name="myNullables">
       <value>
-        <list size="12">
+        <list size="15">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
           <item index="2" class="java.lang.String" itemvalue="javax.annotation.CheckForNull" />
@@ -23,12 +55,15 @@
           <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableType" />
           <item index="10" class="java.lang.String" itemvalue="android.annotation.Nullable" />
           <item index="11" class="java.lang.String" itemvalue="com.android.annotations.Nullable" />
+          <item index="12" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.Nullable" />
+          <item index="13" class="java.lang.String" itemvalue="io.reactivex.annotations.Nullable" />
+          <item index="14" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.Nullable" />
         </list>
       </value>
     </option>
     <option name="myNotNulls">
       <value>
-        <list size="11">
+        <list size="15">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
           <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
@@ -40,6 +75,10 @@
           <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullType" />
           <item index="9" class="java.lang.String" itemvalue="android.annotation.NonNull" />
           <item index="10" class="java.lang.String" itemvalue="com.android.annotations.NonNull" />
+          <item index="11" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.NonNull" />
+          <item index="12" class="java.lang.String" itemvalue="io.reactivex.annotations.NonNull" />
+          <item index="13" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.NonNull" />
+          <item index="14" class="java.lang.String" itemvalue="lombok.NonNull" />
         </list>
       </value>
     </option>

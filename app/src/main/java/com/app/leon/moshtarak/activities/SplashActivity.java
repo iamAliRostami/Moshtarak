@@ -1,5 +1,6 @@
 package com.app.leon.moshtarak.activities;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.WindowManager;
 import com.app.leon.moshtarak.R;
 import com.app.leon.moshtarak.databinding.SplashActivityBinding;
 
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends Activity {
     SplashActivityBinding binding;
     private boolean splashLoaded = false;
@@ -25,14 +27,11 @@ public class SplashActivity extends Activity {
         binding = SplashActivityBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        Log.e("here", "1");
         if (!splashLoaded) {
-            Log.e("here", "2");
             setContentView(view);
             initialize();
             startSplash();
         } else {
-            Log.e("here", "3");
             Intent goToLoginActivity = new Intent(SplashActivity.this, HomeActivity.class);
             goToLoginActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(goToLoginActivity);

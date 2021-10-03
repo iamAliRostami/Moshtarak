@@ -185,6 +185,7 @@
     <string name="sepehr_shamsaei">سپهر شمسایی</string>
     <string name="abfa_site">https://www.abfaesfahan.ir</string>
     <string name="mellat_site">https://bill.bpm.bankmellat.ir/bpgwchannel/</string>
+    <string name="payment_site">https://crm.abfaesfahan.ir/%s/Bill</string>
     <string name="waiting">لطفا صبر کنید…</string>
     <string name="turn_internet_on">اینترنت وصل نیست، اینترنت وایفای یا همراه خود را روشن کنید.</string>
     <string name="active_user_1">اشتراک های شما</string>

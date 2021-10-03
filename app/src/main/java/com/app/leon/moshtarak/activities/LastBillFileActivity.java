@@ -120,8 +120,9 @@ public class LastBillFileActivity extends AppCompatActivity {
         public void onClick(View view) {
             //TODO
             if (!lastBillInfo.isPayed()) {
-                getToken();
+//                getToken();
                 //TODO
+                new CustomTab(String.format(getString(R.string.payment_site), lastBillInfo.getBillId()), MyApplication.getContext());
 //                new CustomTab(getString(R.string.mellat_site), MyApplication.getContext());
             } else
                 Toast.makeText(MyApplication.getContext(),
@@ -795,7 +796,7 @@ public class LastBillFileActivity extends AppCompatActivity {
             if (payData.isMpl)
                 pay(payData.message);
             else
-                new CustomTab(getString(R.string.mellat_site), MyApplication.getContext());
+                new CustomTab(String.format(getString(R.string.payment_site), lastBillInfo.getBillId()), MyApplication.getContext());
         }
     }
 
